@@ -10,7 +10,7 @@ def research_papers(faculty_name):
 
     query_params = {
         "query": authors_name,
-        'year': '2023-',
+        'year': '2023',
         "fields": "paperCount,papers.title,papers.abstract,papers.openAccessPdf,papers.authors,papers.year,papers.publicationVenue"
     }
 
@@ -38,11 +38,11 @@ def summary_research_papers(json_file_name):
             for paper_data in research_paper_data["data"]:
                 faculty_name = author
                 faculty_author_id = paper_data["authorId"]
-                for x in paper_data["papers"]:
-                    paper_title = x["title"]
-                    publication_link = x["openAccessPdf"]
-                    year_published = x["year"]
-                    paper_abstract = x["abstract"]
+                for data in paper_data["papers"]:
+                    paper_title = data["title"]
+                    publication_link = data["openAccessPdf"]
+                    year_published = data["year"]
+                    paper_abstract = data["abstract"]
                     if publication_link is None:
                         publication_link = 'Its not open access'
                         url ='Not given'
@@ -73,13 +73,18 @@ def paper_pdf_links(json_file_name):
 all_authors_data = {}
 
 url_faculty = 'https://lti.cs.cmu.edu/directory/all/154/1'
+url_faculty_page2 = 'https://lti.cs.cmu.edu/directory/all/154/1?page=1'
 url_affiliated_faculty = 'https://lti.cs.cmu.edu/directory/all/154/2728'
 url_adjunct_faculty = 'https://lti.cs.cmu.edu/directory/all/154/200'
 
 
+
 faculty_names = get_workers_info(url_faculty)
+faculty_names = get_workers_info(url_faculty_page2)+faculty_names
 faculty_names = get_workers_info(url_affiliated_faculty) + faculty_names
 faculty_names = get_workers_info(url_adjunct_faculty) + faculty_names
+
+
 
 for faculty in faculty_names:
     research_papers(faculty)
@@ -89,3 +94,4 @@ with open("research_papers_faculty.json", "w") as file:
 
 summary_research_papers('research_papers_faculty.json')
 paper_pdf_links('research_papers_faculty.json')
+
