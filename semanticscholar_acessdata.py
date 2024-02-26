@@ -31,7 +31,7 @@ def summary_research_papers(json_file_name):
     with open(json_url, "r") as file:
         json_data = json.load(file)
 
-    file_path = "questions_answer_pair.txt"
+    file_path = "questions_answer_pair_1.txt"
     with open(file_path, "w+", encoding='utf-8') as file:
         paper_number = 0
         for author, research_paper_data in json_data.items():
@@ -39,23 +39,24 @@ def summary_research_papers(json_file_name):
                 faculty_name = author
                 faculty_author_id = paper_data["authorId"]
                 for data in paper_data["papers"]:
-                    paper_title = data["title"]
-                    publication_link = data["openAccessPdf"]
-                    year_published = data["year"]
-                    paper_abstract = data["abstract"]
-                    if publication_link is None:
-                        publication_link = 'Its not open access'
-                        url ='Not given'
-                    else:
-                        url = publication_link['url']
-                    file.write(f"faculty_name: {faculty_name}\nfaculty_authorid: {faculty_author_id}\npaper_title: {paper_title}\npublication_link: {url} \nyear_published: {year_published} \nabstract_paper:{paper_abstract}\n================================\n")
+                    if data["year"] == 2023:
+                        paper_title = data["title"]
+                        publication_link = data["openAccessPdf"]
+                        year_published = data["year"]
+                        paper_abstract = data["abstract"]
+                        if publication_link is None:
+                            publication_link = 'Its not open access'
+                            url ='Not given'
+                        else:
+                            url = publication_link['url']
+                        file.write(f"faculty_name: {faculty_name}\nfaculty_authorid: {faculty_author_id}\npaper_title: {paper_title}\npublication_link: {url} \nyear_published: {year_published} \nabstract_paper:{paper_abstract}\n================================\n")
 
 def paper_pdf_links(json_file_name):
     json_url = json_file_name
     with open(json_url, "r") as file:
         json_data = json.load(file)
 
-    file_path = "research_papers_links.txt"
+    file_path = "research_papers_links_1.txt"
 
     with open(file_path, "w+", encoding='utf-8') as file:
         for author, research_paper_data in json_data.items():
@@ -70,28 +71,36 @@ def paper_pdf_links(json_file_name):
                         file.write(f"{url}\n")
 
 
+
 all_authors_data = {}
 
 url_faculty = 'https://lti.cs.cmu.edu/directory/all/154/1'
 url_faculty_page2 = 'https://lti.cs.cmu.edu/directory/all/154/1?page=1'
-url_affiliated_faculty = 'https://lti.cs.cmu.edu/directory/all/154/2728'
-url_adjunct_faculty = 'https://lti.cs.cmu.edu/directory/all/154/200'
+#url_affiliated_faculty = 'https://lti.cs.cmu.edu/directory/all/154/2728'
+#url_adjunct_faculty = 'https://lti.cs.cmu.edu/directory/all/154/200'
 
 
 
 faculty_names = get_workers_info(url_faculty)
 faculty_names = get_workers_info(url_faculty_page2)+faculty_names
-faculty_names = get_workers_info(url_affiliated_faculty) + faculty_names
-faculty_names = get_workers_info(url_adjunct_faculty) + faculty_names
+#faculty_names = get_workers_info(url_affiliated_faculty) + faculty_names
+#faculty_names = get_workers_info(url_adjunct_faculty) + faculty_names
 
-
+print(len(faculty_names))
 
 for faculty in faculty_names:
     research_papers(faculty)
 
-with open("research_papers_faculty.json", "w") as file:
+print('Faculty data pulling done')
+
+with open("research_papers_faculty_1.json", "w") as file:
     json.dump(all_authors_data, file, indent=4)
 
-summary_research_papers('research_papers_faculty.json')
-paper_pdf_links('research_papers_faculty.json')
+print('Created the JSON file')
+
+summary_research_papers('research_papers_faculty_1.json')
+print('meta data created')
+
+paper_pdf_links('research_papers_faculty_1.json')
+print('all research papers text generated')
 
