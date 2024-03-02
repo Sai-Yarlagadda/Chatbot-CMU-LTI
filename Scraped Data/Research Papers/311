@@ -1,0 +1,1118 @@
+A SINGLE SPEECH ENHANCEMENT MODEL UNIFYING DEREVERBERATION,
+DENOISING, SPEAKER COUNTING, SEPARATION, AND EXTRACTION
+Kohei Saijo1,3, Wangyou Zhang2,3, Zhong-Qiu Wang3, Shinji Watanabe3, Tetsunori Kobayashi1, Tetsuji Ogawa1
+1Waseda University, Japan
+2Shanghai Jiao Tong University, China
+3 Carnegie Mellon University, USA
+ABSTRACT
+We propose a multi-task universal speech enhancement (MUSE)
+model that can perform five speech enhancement (SE) tasks: dere-
+verberation, denoising, speech separation (SS), target speaker ex-
+traction (TSE), and speaker counting. This is achieved by integrating
+two modules into an SE model: 1) an internal separation module that
+does both speaker counting and separation; and 2) a TSE module
+that extracts the target speech from the internal separation outputs
+using target speaker cues. The model is trained to perform TSE if
+the target speaker cue is given and SS otherwise. By training the
+model to remove noise and reverberation, we allow the model to
+tackle the five tasks mentioned above with a single model, which
+has not been accomplished yet. Evaluation results demonstrate that
+the proposed MUSE model can successfully handle multiple tasks
+with a single model.
+Index Terms— Univseral speech enhancement, speech separa-
+tion, target speaker extraction, unknown number of speakers
+1. INTRODUCTION
+Speech enhancement (SE), including dereverberation, denoising,
+speech separation (SS), and target speaker extraction (TSE), has
+been used as front-ends of speech systems such as automatic speech
+recognition (ASR) to recover speech corrupted by interference
+speech and background noises [1].
+In recent years, deep neural
+networks (DNNs) have led to remarkable progress in SE [2,3]. Even
+with only a single microphone, SE models achieve great perfor-
+mance under challenging noisy-reverberant conditions [4].
+For front-end speech processing in multi-talker scenarios, two
+major approaches are SS [5, 6] and TSE [7–9]. SS aims to separate
+all the speakers in the mixture, while TSE extracts only the target
+speech by utilizing additional information about the target speaker,
+such as enrollment utterances. TSE is more suitable for applications
+where the identification of the target speaker is required alongside
+the separation process. However, TSE models cannot work without
+the target speaker’s information, while SS models can work without
+any additional information. In [10], unifying TSE and SS systems
+into a single model was proposed to capitalize on the complementary
+nature of these two approaches. The model first internally separates
+each speaker and then chooses the target speaker feature from in-
+ternal separation results using an attention-based speaker selection
+module. By switching between binary attention (for SS) and soft
+attention (for TSE), both SS and TSE tasks can be unified within a
+single model. Despite the elegant integration achieved through this
+approach, it however does not inherit one of the key advantages of-
+fered by TSE, and the model cannot handle mixtures with a variable
+number of speakers as the number of outputs in the internal separa-
+tion module is fixed.
+Several attempts have been made to perform speaker counting
+along with SS to handle mixtures with a variable number of speak-
+ers [5,11–16]. One major approach, recursive SS [17–20], separates
+speakers one by one in an iterative manner until all the speakers are
+separated. Recent work [21] introduces internal separation using the
+encoder-decoder-based attractor generation (EDA) module, which
+is initially proposed for speaker diarization [22], for efficient and
+high-performing separation. Since these methods are also capable
+of handling a single-speaker input, they perform denoising, SS, and
+speaker counting with a single model [21]. However, they still only
+address a limited range of SE tasks.
+In this paper, we present a multi-task universal speech enhance-
+ment (MUSE) model that performs five SE tasks: dereverberation,
+denoising, speaker counting, SS, and TSE. The proposed model is
+designed to handle mixtures with a variable number of speakers, in-
+cluding single-speaker scenarios, and it outputs all the speech signals
+while estimating the number of speakers. Additionally, the model
+can extract only the target speech when an enrollment utterance of
+the target speaker is provided. To achieve this, we integrate two mod-
+ules into an SE model: 1) an EDA-based internal separation module
+that performs both speaker counting and separation; and 2) a TSE
+module that extracts the target speaker feature from the internal sep-
+aration outputs. To efficiently and stably train the proposed model,
+we introduce a two-stage training strategy, where we first train the
+modules used for SS and speaker counting and then train the TSE
+module. By training the model to remove noise and reverberation,
+we allow the model to tackle the five tasks mentioned above. Our
+experiments on simulated mixtures with noises, reverberation, and
+up to five speakers show that the proposed MUSE model can handle
+all five tasks with promising results. The implementations1 and the
+audio samples2 are publicly available.
+2. MULTI-TASK UNIVERSAL SPEECH ENHANCEMENT
+This paper aims at building a multi-task universal speech enhance-
+ment (MUSE) model that performs dereverberation, denoising,
+speaker counting, SS, and TSE3. To achieve this, we exploit two
+modules: 1) an internal separation module that performs speaker
+counting and SS (Sect. 2.2); and 2) a TSE module that extracts a
+specified target speaker (Sect. 2.3).
+By incorporating these two
+modules into an SE model, the model can handle speaker counting,
+SS, and TSE. In addition, by training the model to perform dere-
+verberation and denoising, the model can address all the five tasks
+mentioned above.
+2.1. System overview
+The proposed model is shown in Fig. 1. It consists of an encoder, a
+feature extraction module, an internal separation module, a TSE
+module, a mask estimation module, and a decoder. Any SE model
+1https://github.com/kohei0209/espnet/tree/muse/
+egs2/wsj0_Nmix
+2https://kohei0209.github.io/muse-demo/
+3Differently from previous studies [23, 24], we define universality as the
+capability to handle multiple SE tasks.
+979-8-3503-0689-7/23/$31.00 ©2023 IEEE
+arXiv:2310.08277v1  [eess.AS]  12 Oct 2023
+Encoder
+Feature 
+extraction
+Internal 
+separation
+Mask est.
+& masking
+Decoder
+Mixture 𝒙 ∈ ℝ!
+Est. speech 𝒚%"#" ∈ ℝ!
+Loss
+Ground-truth 𝒚"#" ∈ ℝ!
+TSE module
+Enroll
+Utter. 
+𝒖 ∈ ℝ!"
+𝑿 ∈ ℝ!×#
+𝑿$%&'( ∈ ℝ)×*×#
+𝒁 ∈ ℝ+,×)×*×#
+𝒁-.- ∈ ℝ)×*×#
+𝐘 ∈ ℝ!×#
+Encoder
+Feature 
+extraction
+Internal 
+separation
+Mask est.
+& masking
+Decoder
+Mixture 𝒙 ∈ ℝ!
+Est. speech 𝒚% ∈ ℝ$%×!
+PIT Loss
+Ground-truth 𝒚 ∈ ℝ$×!
+𝑿 ∈ ℝ!×#
+𝑿$%&'( ∈ ℝ)×*×#
+𝒁 ∈ ℝ+,×)×*×#
+𝐘 ∈ ℝ+,×!×#
+Step 1. Train SS modules
+Step 2. Train TSE module
+Fig. 1: Illustration of proposed model and two-stage training procedure.
+Modules for speaker counting and separation are first trained (left), and then
+TSE modules are inserted and fine-tuned (right). Blocks in white are frozen.
+architecture can be used for the MUSE model, and we employ the
+dual-path transformer network (DPTNet) [25] as a basic architec-
+ture considering its high performance and compact model size. As
+shown in Fig. 1, we first train the modules for speaker counting and
+separation (shown in the left subplot), and then TSE modules are in-
+serted and fine-tuned (shown in the right subplot). This subsection
+provides an overview of each module.
+Encoder: Let us denote a monaural noisy-reverberant mixture con-
+taining N speech sources as x ∈ RL, with L denoting the number
+of samples in the time domain. The encoder, consisting of a 1-D
+convolution layer followed by a ReLU activation, maps the time-
+domain mixture to a feature representation X ∈ RT ×H, where T is
+the number of frames and H the hidden dimension.
+Feature extraction: The feature extraction module consists of a
+global layer normalization (gLN) [2], a segmentation operation, and
+four DPT blocks. Following [26], the encoder output X is first nor-
+malized with gLN and then split into C chunks along time-frame
+dimension with a length of K frames in each chunk and an overlap
+ratio of 50% between consecutive chunks, resulting in Xchunk ∈
+RC×K×H which is then processed by the four DPT blocks.
+Internal separation: The internal separation module consists of
+an encoder-decoder-based attractor generation (EDA) module [22]
+and a DPT block. The EDA module produces an estimate of the
+number of speakers (denoted as ˆ
+N) and a feature representation
+Zn ∈ RC×K×H for each speaker n ∈ {1, . . . , ˆ
+N}, by taking
+Xchunk as the input. The details of the EDA module will be de-
+scribed later in Sect. 2.2. Next, each Zn is processed by a DPT
+block with its parameters shared for all the ˆ
+N estimated speakers.
+TSE module: The TSE module extracts only the target speaker fea-
+ture Ztgt ∈ RC×K×H from the ˆ
+N internal separation outputs by
+using an enrollment utterance as a cue. One of our key contributions
+is to train our model so that the TSE module is only used when the
+model is informed to perform TSE and is not used otherwise. The
+TSE module will be detailed in Sect. 2.3.
+Mask estimation and masking: The mask estimation module has
+the same architecture as the one after the 6th DPT block of DPT-
+Net. The output of the internal separation module or the TSE mod-
+ule is first processed by a single DPT block, followed by a paramet-
+ric ReLU (PReLU) activation and a point-wise 2-D convolution, and
+then by a chunk-level overlap-add operation to reverse the segmenta-
+Shuffle
+(along 𝐶 dim)
+LSTM 
+encoder
+Linear+ 
+Sigmoid
+𝟎
+・・・
+𝒉!
+"#$ = 𝟎
+𝒄!
+"#$ = 𝟎
+𝟎 𝟎
+BCE Loss
+1
+1 0
+・・・
+Sequence
+Aggregation
+𝑿!"#$% ∈ ℝ&×(×)
+𝑿* ∈ ℝ&×)
+Enc. Initial state
+𝒉%
+"#$, 𝒄%
+"#$
+Enc. Final state
+LSTM 
+decoder
+・・・
+・・・
+・・・
+𝒉&'
+("$
+𝒉)
+("$
+𝒉&'*)
+("$
+𝒁𝑵,
+・・・
+Attractor generation
+𝑁' + 1 times
+𝒁𝟏
+𝑁) outputs
+Fig. 2: Overview of EDA in internal separation module. EDA estimates an
+attractor hdec
+n
+for each speaker, which is multiplied with input. A classifier
+(Linear + Sigmoid) is trained to decide when to stop attractor generation.
+tion operation [25]. The resulting tensor has a shape of ˆ
+N × T × H.
+Next, the tensor is used to estimate a mask for each target speaker
+of interest, and the mask is point-wisely multiplied with the encoder
+output, resulting in a feature representation Yn ∈ RT ×H for each
+target speaker of interest n.
+Decoder: The decoder is a transposed convolution layer used to re-
+construct target speech ˆyn ∈ RL for speaker n.
+2.2. Internal separation module
+The internal separation module has an EDA module and a DPT
+block. This subsection describes the EDA module, which enables
+the model to perform speaker counting and SS. The overview of the
+EDA module is illustrated in Fig. 2.
+2.2.1. Attractor generation
+The EDA module contains an intra-chunk sequence aggregation
+module and an LSTM encoder-decoder, as in [21].
+We first ag-
+gregate the input Xchunk ∈ RC×K×H within each chunk into
+X′ ∈ RC×H by the weighted averaging scheme, following [21].
+X′ is then shuffled along the chunk dimension to prevent EDA from
+exploiting the input order information for the attractor generation
+and speaker counting. Next, we input X′, which has a sequence
+length of C, into the LSTM encoder (Fig. 2) and update its hidden
+state henc
+c
+and cell state cenc
+c
+for C times:
+henc
+c
+, cenc
+c
+= LSTMenc(X′
+c, henc
+c−1, cenc
+c−1),
+(1)
+where c∈{1,. . . ,C} is the chunk index and henc
+0
+= cenc
+0
+= 0. The
+LSTM decoder (Fig. 2) estimates speaker-wise attractors hdec
+n
+∈RH:
+hdec
+n , cdec
+n
+= LSTMdec(0, hdec
+n−1, cdec
+n−1),
+(2)
+where hdec
+0
+and cdec
+0
+are respectively initialized using the final states
+of the LSTM encoder (i.e., hdec
+0
+= henc
+C
+and cdec
+0
+= cenc
+C ). The
+estimated attractors are point-wisely multiplied with the input of the
+EDA module Xchunk for each estimated speaker n, and in total we
+obtain ˆ
+N speaker representations, denoted as Zn ∈ RC×K×H for
+speaker n.
+2.2.2. Speaker counting
+Our speaker counting module follows [22].
+During training, the
+EDA module is supervised by the oracle number of speakers N to
+generate ˆ
+N = N attractors. At run time, we need a criterion to stop
+the attractor generation for speaker counting. We use a classifier
+consisting of a linear layer and a sigmoid activation (shown in the
+upper right of Fig. 2) to estimate the attractor existence probability
+pn ∈ [0, 1] for each attractor. The n-th speaker is deemed absent
+・・・
+MLPtv
+MLPti
+Attention-based spk. select.
+Enroll. utter. 𝒖 ∈ ℝ!"
+Internal separation outputs
+𝒁# ∈ ℝ$×&×', (𝑛 = 1, … , 𝑁()
+𝒁()( ∈ ℝ$×&×'
+Speaker selection
+Output refinement
+Auxiliary 
+network
+MEAN
+・・・
+MLPaux
+MEAN
+・・・
+Aux. Net.
+Encoder
+・・・
+・・・
+𝒁*𝒁+
+𝒁,-
+Conditional
+DPT block x 2
+DPT block
+𝒁*𝒁+
+𝒁,-
+FiLM module
+Fig. 3: Overview of TSE module. It first computes a target speaker embed-
+ding from an enrollment utterance and selects the target speaker feature from
+internal separation outputs. Then selected target speaker feature is further
+enhanced by two conditional DPT blocks (i.e., output refinement module).
+when pn is smaller than a pre-defined threshold and we stop the at-
+tractor generation. The classifier is trained to output ones for the first
+N iterations and a zero at the (N +1)-th iteration using the binary
+cross-entropy (BCE) loss, as shown in Fig. 2:
+Leda =
+1
+N + 1BCE(p, ˆp),
+(3)
+where p = [1, . . . , 1, 0]⊤ contains N ones and a zero and ˆp =
+[p1, . . . , pN+1]⊤ are the estimated probabilities. At run time, we
+stop the attractor generation process once the estimated probability
+becomes smaller than 0.5 (i.e., stop at the ( ˆ
+N + 1)-th iteration), and
+use the first ˆ
+N attractors to obtain Z1, . . . , Z ˆ
+N.
+2.3. TSE module
+This subsection describes the TSE module, which enables the model
+to perform TSE along with other SE tasks, as introduced in Sect. 2.1.
+The TSE module, shown in Fig. 3, contains an auxiliary network, a
+speaker selection module, and an output refinement module.
+2.3.1. Auxiliary network
+The auxiliary network adopts the same architecture as the feature
+extraction module in Sect. 2.1 except that the number of the DPT
+blocks is two. Let u ∈ RL′ be the enrollment utterance with L′
+samples in the time domain. u is first processed using the encoder
+which is shared with the separation model. Then we obtain the seg-
+mented target speaker embedding U chunk ∈ RC′×K×H with C′
+chunks using the auxiliary network in the same way as the feature
+extraction module.
+2.3.2. Speaker selection module
+The speaker selection module aims at selecting the target speaker
+feature from the
+ˆ
+N internal separation outputs {Z1, . . . , Z ˆ
+N}
+(Sect. 2.2.1). We follow the basic idea in [10] that introduced an
+attention-based speaker selection module to select the target speaker
+feature. Let us denote the time-variant attention weight of the n-th
+speaker as an ∈ [0, 1]C×K×1. The speaker selection output is
+Ztgt =
+X ˆ
+N
+n=1 anZn ∈ RC×K×H.
+(4)
+The attention weight is computed using the outputs of internal sep-
+aration Zn and the auxiliary target speaker embedding U chunk. We
+first obtain time-varying (tv) embeddings Stv
+n
+∈ RC×K×H′ and
+time-invariant (ti) embeddings sti
+n ∈ RH′ using simple MLP-based
+networks with H′ hidden dimension: Stv
+n = MLPtv(Zn), sti
+n =
+MEAN(MLPti(Zn)), where MEAN(·) denotes the averaging op-
+eration over intra- and inter-chunk dimensions (i.e., K and C).
+The MLP-based network consists of two linear layers, ReLU
+activation, and another linear layer.
+We also obtain the time-
+invariant embedding from the auxiliary target speaker embedding
+eaux = MEAN(MLPaux(U ′)) ∈ RH′.
+Finally, the attention
+weight is computed as
+an =
+exp(dn)
+P ˆ
+N
+n=1 exp(dn)
+,
+(5)
+dn = w⊤Tanh(W tvStv
+n + W tisti
+n + W auxeaux + b),
+(6)
+where w, W tv, W ti, W aux, b are learnable weights and biases.
+2.3.3. Output refinement module
+Since the speaker selection module in Sect. 2.3.2 just selects the tar-
+get speaker features Ztgt using the auxiliary target speaker informa-
+tion, the TSE performance heavily relies on the internal separation
+performance. To compensate for the errors from the internal separa-
+tion, we introduce an output refinement module after the speaker se-
+lection module. This output refinement module consists of two con-
+ditional DPT blocks composed of a feature-wise linear modulation
+(FiLM) [27] module followed by a DPT block (Fig. 3). The FiLM
+module consists of a linear layer, a PReLU activation, a FiLM layer,
+and another linear layer. The FiLM layer integrates the auxiliary
+target speaker embedding into the speaker selection output Ztgt:
+Ztgt ← γ(u′)Ztgt + β(u′),
+(7)
+where γ(·) and β(·) are linear layers, and u′ = MEAN(U ′) ∈ RH.
+The output of the FiLM module is further processed by a normal
+DPT block for refinement, as shown in Fig. 3.
+2.4. Two-stage training
+We found that training all the modules of the model at the same time
+causes instability, especially in challenging conditions (e.g., N ≥ 3).
+This is likely because the speaker selection part in the TSE module
+becomes unstable when the internal separation module does not per-
+form sufficiently well, especially in the first several training epochs.
+To deal with this, we propose a two-stage training strategy, where we
+first train the modules other than the TSE module and then train only
+the TSE module, as shown in the left and right subplots of Fig. 1.
+In the first stage, we train the encoder, feature extraction module,
+internal separation module, mask estimation module, and decoder.
+Given the N estimated speech signals ˆy ∈ RN×L from the model,
+we compute the permutation-invariant loss [6] with reference speech
+signals y ∈ RN×L as
+Lpit = min
+P
+1
+N
+XN
+n=1 L(yn, [P ˆy]n),
+(8)
+where L is a signal-level loss function and P is an N × N permu-
+tation matrix. The gradients are computed using the sum of the loss
+for separation in Eq.(8) and speaker counting in Eq.(3) as
+Lsep = Lpit + Leda.
+(9)
+In the second stage, we insert the TSE module between the in-
+ternal separation and mask estimation modules, as shown in Fig. 1
+(right). We train only the TSE module while freezing the other pa-
+rameters. The loss is computed between the estimated target speech
+ˆytgt ∈ RL and the reference ytgt ∈ RL as
+Ltse = L(ytgt, ˆytgt).
+(10)
+Note that, different from stage 1, in stage 2 we only compute Ltse
+and do not compute Leda because the EDA module is not updated.
+2.5. Relation to prior work
+SS with speaker counting based on EDA: In [21], EDA-based
+speaker counting, originally designed for speaker diarization [22], is
+introduced and shown to be capable of performing denoising, separa-
+tion, and speaker counting with a single model. Although our MUSE
+model is based on the same EDA-based method, there are several
+differences: 1) we enable the model to handle TSE by introducing a
+carefully designed TSE module; 2) our model performs dereverber-
+ation while the model in [21] does not; and 3) we use not only fully-
+overlapped mixtures, which are often used to evaluate models that
+perform speaker counting [11, 20, 21], but also partially-overlapped
+mixtures for evaluation. This allowed us to evaluate WER and con-
+duct deeper analysis on SS with speaker counting.
+Integration of SS and TSE: In [10], a speaker selection module
+is introduced inside the separation model to unify SS and TSE. Al-
+though the speaker selection module in our TSE module is motivated
+by the method in [10], we introduce several techniques to improve
+versatility and performance: 1) our MUSE model can handle a vari-
+able number of speakers by leveraging the EDA module, while the
+model in [10] works only for mixtures with a fixed number of speak-
+ers; 2) we introduce a two-stage training strategy, which leads to
+more stable training, while SS and TSE modules are trained at the
+same time in [10]; and 3) we introduce an output refinement module
+to the TSE module (Fig. 3), which can compensate for the drawback
+of the speaker selection module caused by its heavy reliance on the
+internal separation performance.
+3. EXPERIMENTS
+3.1. Dataset
+To evaluate the effectiveness of the proposed method for multiple
+tasks, we utilized the WSJ0-mix dataset4. It contained a min version
+of 2-, 3-, 4-, and 5-speaker mixtures simulated using clean speech
+in the WSJ0 corpus [28]. Each N-speaker mixture (N = 2, 3, 4, 5)
+contained 20000, 5000, and 3000 mixtures for training, validation,
+and testing, respectively. The sampling rate of all data was 8kHz.
+To extend the proposed method for a noisy-reverberant setup,
+we synthesized a noisy-reverberant version of the WSJ0-mix dataset
+by including noises and room reverberation5. The noises were drawn
+from the WHAM! dataset [29] and the noise gain is adjusted to attain
+an SNR between 0 dB to 15 dB against the speaker with the low-
+est power in each mixture. Room impulse responses (RIRs) were
+simulated with Pyroomacoustics [30] and the reverberation times
+ranged between 150 ms to 650 ms. We convolved the early part
+(first 50 ms) of RIRs with the clean speech as in [31] to obtain the
+reference signal. In the noisy-reverberant setup, we also simulated
+1-speaker mixtures to train the model to handle single-speaker cases.
+The 1-speaker dataset contained 8769, 3553, and 1770 mixtures for
+training, validation, and testing, respectively.
+3.2. Training details
+We chose DPTNet [25] as the backbone of our model. In the en-
+coder/decoder, we set the kernel size and shift to 2 ms and 1 ms,
+respectively. The number of filters H was set to 64. The model had
+six DPT blocks in total: four in the feature extraction module, one in
+the internal separation module, and one in the mask estimation mod-
+ule. Note that the TSE module had additional two conditional DPT
+blocks with H = 64 as described in Sect. 2.3.3. The hidden dimen-
+sion of the speaker selection module H′ was set to 512 (Sect.2.3.2).
+4https://github.com/mpariente/pywsj0-mix
+5We used a customized dataset because there is no open-source noisy-
+reverberant dataset for 3-, 4-, and 5-speaker mixtures. The simulation script
+is included in the published training recipe.
+Fig. 4: Confusion matrix of speaker counting rate [%] in anechoic (left) and
+noisy reverberant (right) conditions. Numbers in diagonal cells correspond
+to speaker counting accuracy.
+All the experiments were done using the ESPNet toolkit [32,33].
+During training, the batch size was 4 and the input was 4 seconds
+long. Scale-invariant signal-to-noise ratio (SI-SNR) [34] was used as
+the loss function L in Eqs.(8) and (10). The model was trained using
+the Adam optimizer [35]. The learning rate was increased linearly
+from 0 to Lr over the first 20000 training steps and then decayed
+by 0.98 every two epochs. In the anechoic condition, we trained
+models for 175 epochs and the peak learning rate Lr was 4 × 10−4.
+In the noisy-reverberant setup, we initialized the model using the
+one trained with the anechoic data and trained for 100 epochs with
+Lr = 10−4. In both conditions, the TSE module was trained from
+scratch for 50 epochs with 10000 warm-up steps and Lr = 10−4
+3.3. Evaluation details
+For evaluation, we considered four metrics, SI-SNR, signal-to-
+distortion ratio (SDR) [36, 37], narrow-band perceptual evaluation
+of speech quality (NB-PESQ) [38], and word error rate (WER)6.
+The Whisper Large v2 model7 [39] was used for evaluating the ASR
+performance with greedy decoding.
+We evaluated the performance with and without assuming the
+knowledge of the oracle number of speakers. In the latter case, the
+number of estimated speakers ˆ
+N can be different from the oracle
+number N since the model conducted speaker counting using the
+classifier (Sect. 2.2.2). When the model overestimated the number
+(i.e., ˆ
+N > N), we computed the optimal assignment of estimate-
+reference pairs and ignored the rest ˆ
+N − N speakers. In contrast,
+when the model underestimated the number (i.e., ˆ
+N < N), we first
+computed the optimal assignment of estimate-reference pairs, and
+then compensated for underestimated speeches by copying one of
+the ˆ
+N estimated signals that gave the highest SDR with the reference
+speech for each of the remaining N − ˆ
+N references.
+3.4. Results on anechoic setup
+We first examine the effectiveness of the proposed MUSE frame-
+work using the anechoic data. Here, the model handles three tasks:
+SS, TSE, and speaker counting. In addition to the proposed model,
+we trained several baseline models with the same architecture us-
+ing only the 2-, 3-, 4-, or 5-mix data to verify whether the perfor-
+mance of the proposed method is reasonable8, and report the results
+in the columns denoted as “Baseline”. From Table 1, we observe
+6To evaluate WER, we used the max version data. The SS and TSE mod-
+ules were fine-tuned with max data for 10 and 5 epochs, respectively. The
+separated signals are upsampled to 16kHz before fed into the ASR model.
+7https://huggingface.co/openai/whisper-large-v2
+8We trained each baseline for the same number of epochs as the MUSE
+model. Although this is not a completely fair comparison, the purpose of
+comparing with the baseline model is to see whether the proposed method
+achieves reasonable performance, not to show which is superior.
+Table 1: Results on anechoic WSJ0-mix test set. Input, Baseline, and MUSE columns are performances of unprocessed mixtures, models trained with only
+N-mix data, and proposed MUSE model trained using 2-, 3-, 4-, and 5-mix data combined, respectively. In MUSE⋆, proposed MUSE model estimated the
+number of speakers. Note that same model checkpoint was used for evaluation in MUSE and MUSE⋆.
+SI-SNR [dB]
+SDR [dB]
+NB-PESQ
+WER [%]
+Task
+Test set
+Input
+Baseline
+MUSE
+MUSE⋆
+Input
+Baseline
+MUSE
+MUSE⋆
+Input
+Baseline
+MUSE
+MUSE⋆
+Input
+MUSE
+MUSE⋆
+2-mix
+0.0
+18.8
+18.2
+18.2
+0.2
+19.2
+18.7
+18.7
+1.68
+3.65
+3.58
+3.58
+62.5
+7.5
+7.5
+3-mix
+-3.2
+12.8
+13.9
+13.9
+-2.9
+13.9
+14.5
+14.5
+1.42
+2.87
+2.99
+2.99
+98.1
+10.1
+10.1
+4-mix
+-5.0
+8.3
+9.5
+9.5
+-4.7
+9.1
+10.2
+10.2
+1.34
+2.26
+2.44
+2.44
+132.4
+22.2
+22.9
+SS
+5-mix
+-6.3
+5.5
+6.5
+6.4
+-5.8
+6.4
+7.4
+7.3
+1.30
+1.91
+2.09
+2.09
+175.1
+35.0
+35.9
+2-mix
+0.0
+15.4
+17.6
+17.6
+0.2
+16.4
+18.1
+18.1
+1.68
+3.43
+3.55
+3.55
+62.5
+17.6
+17.6
+3-mix
+-3.2
+11.0
+12.7
+12.7
+-2.9
+11.9
+13.5
+13.5
+1.42
+2.77
+2.94
+2.94
+98.1
+25.9
+25.9
+4-mix
+-5.0
+6.4
+7.4
+7.4
+-4.7
+7.3
+8.4
+8.4
+1.34
+2.19
+2.35
+2.35
+132.4
+48.1
+48.1
+TSE
+5-mix
+-6.3
+4.0
+4.5
+4.5
+-5.8
+5.0
+5.6
+5.5
+1.30
+1.87
+2.03
+2.03
+175.1
+67.2
+67.0
+Table 2: Results on noisy-reverberant WSJ0-mix test set. Input, baseline, and MUSE columns respectively present the results of unprocessed mixtures,
+models trained with only N-mix data, and the proposed MUSE model trained using 1-, 2-, 3-, 4-, and 5-mix data combined. In MUSE⋆, proposed MUSE
+model estimated the number of speakers. Note that same model checkpoint was used for evaluation in MUSE and MUSE⋆.
+SI-SNR [dB]
+SDR [dB]
+NB-PESQ
+WER [%]
+Task
+Test set
+Input
+Baseline
+MUSE
+MUSE⋆
+Input
+Baseline
+MUSE
+MUSE⋆
+Input
+Baseline
+MUSE
+MUSE⋆
+Input
+MUSE
+MUSE⋆
+1-mix
+4.5
+11.5
+11.5
+11.5
+6.7
+13.8
+13.9
+13.9
+2.09
+3.00
+3.01
+3.01
+9.2
+10.4
+10.4
+2-mix
+-1.6
+8.2
+8.4
+8.4
+-0.8
+9.9
+10.1
+10.1
+1.59
+2.43
+2.45
+2.45
+69.1
+21.9
+22.3
+3-mix
+-4.6
+4.9
+5.4
+5.3
+-3.7
+6.5
+7.0
+6.9
+1.42
+1.99
+2.05
+2.05
+104.8
+45.5
+47.2
+4-mix
+-6.4
+2.2
+2.5
+2.4
+-5.4
+3.9
+4.1
+4.0
+1.35
+1.76
+1.80
+1.79
+122.0
+71.1
+73.8
+SS
+5-mix
+-7.7
+0.0
+0.3
+0.2
+-6.7
+1.8
+1.9
+1.9
+1.32
+1.62
+1.64
+1.64
+148.5
+94.2
+94.6
+1-mix
+4.5
+11.5
+11.6
+11.6
+6.7
+13.8
+13.9
+13.9
+2.09
+3.00
+3.02
+3.02
+9.2
+10.3
+10.3
+2-mix
+-1.6
+6.9
+7.8
+7.8
+-0.8
+8.6
+9.6
+9.5
+1.59
+2.35
+2.42
+2.42
+69.1
+31.2
+31.7
+3-mix
+-4.6
+3.6
+4.4
+4.4
+-3.7
+5.3
+6.0
+6.0
+1.42
+1.96
+2.01
+2.01
+104.8
+58.6
+59.5
+4-mix
+-6.4
+0.4
+0.9
+0.8
+-5.4
+2.0
+2.6
+2.5
+1.35
+1.70
+1.74
+1.74
+122.0
+89.0
+88.0
+TSE
+5-mix
+-7.7
+-1.6
+-1.3
+-1.4
+-6.7
+0.1
+0.4
+0.4
+1.32
+1.57
+1.60
+1.60
+148.5
+111.1
+111.3
+that the MUSE model successfully handled both SS and TSE on all
+2-5 mix test sets. Significant improvement in both speech separation
+and recognition metrics indicates the effectiveness of the model as
+a front-end for diverse applications such as hearing aids and ASR.
+Furthermore, it is worth noting that the model is capable of counting
+the number of speakers with more than 90% accuracy for all 2-5 mix
+data, as shown in Fig. 4 (left). In particular, the model estimated
+the number of speakers almost perfectly on 2- or 3-mix data. It is
+also observed that both SE and ASR performances degrade when
+the number of speakers in the mixture increases, which is in line
+with the results reported in [21]. Overall, we confirm that the pro-
+posed MUSE model can successfully handle SS, TSE, and speaker
+counting with high performance.
+Interestingly, we found that the performance is similar whether
+the model was given the oracle speaker number N or not (MUSE
+versus MUSE⋆). This means that the qualities of the N − ˆ
+N sepa-
+rated signals obtained by enforcing the model to estimate N sources
+are low, considering the fact that most counting error comes from
+under-estimation. We attribute this to the nature of the EDA. Let us
+focus on the case where the model underestimates the speaker num-
+ber. As described in Sect. 2.2, the classifier in the EDA is trained
+to estimate a low existence probability for the (N + 1)-th attractor,
+which is not used for separation. In other words, separation perfor-
+mance when using an attractor with a low probability is not necessar-
+ily great. However, such attractors with low existence probabilities
+are used when the oracle number of speakers is given. Thus, the
+qualities of the last N − ˆ
+N separated signals can be poor.
+3.5. Results on noisy-reverberant setup
+After verifying the performance on anechoic conditions, we extend
+the MUSE model to additionally handle dereverberation and denois-
+ing by exploiting the noisy-reverberant data. Table 2 shows the
+results. First of all, even in the challenging noisy-reverberant setup,
+the model can still handle both SS and TSE tasks. Additionally,
+the result on 1-mix data demonstrates that the proposed model can
+successfully address the denoising and dereverberation tasks in the
+single-speaker scenario. On the other hand, the performance im-
+provement was limited compared to the anechoic case, especially on
+the challenging 4- or 5-mix data. The results in Table 2 and Fig. 4
+(right) suggest that the reverberation and noise make both separation
+and speaker counting more difficult. While we observed some per-
+formance degradation compared to anechoic conditions, our study is
+the first in the literature to report SE and ASR performance under
+realistic noisy reverberant conditions, encompassing up to five SE
+tasks. We hope this result and our released codes can attract more
+attention to tackle multiple SE tasks for variable numbers of speak-
+ers in realistic scenarios. In future work, we plan to leverage a larger
+amount of data to tackle challenging conditions and take advantage
+of the proposed MUSE model to leverage more diverse data regard-
+less of the tasks or the number of speakers.
+4. CONCLUSIONS
+This paper has made the first attempt towards building a univer-
+sal SE model that can handle all of the dereverberation, denoising,
+speaker counting, SS, and TSE tasks. The EDA module enables the
+model to perform speaker counting along with SS, and the proposed
+TSE module addresses TSE without any performance degradation
+in speaker counting and SS. Evaluation results demonstrate that the
+proposed MUSE model can address speaker counting, SS, and TSE
+with high performance in anechoic conditions and has strong poten-
+tial in challenging noisy-reverberant conditions.
+5. ACKNOWLEDGMENTS
+This work was supported in part by JST SPRING, Grant Num-
+ber JPMJSP2128.
+Part of the experiments were done using the
+PSC Bridges2 system via ACCESS allocation CIS210014, sup-
+ported by National Science Foundation grants #2138259, #2138286,
+#2138307, #2137603, and #2138296.
+6. REFERENCES
+[1] R. Haeb-Umbach et al., “Far-field automatic speech recogni-
+tion,” Proceedings of the IEEE, vol. 109, no. 2, pp. 124–148,
+2020.
+[2] Y. Luo and N. Mesgarani, “Conv-TasNet: Surpassing ideal
+time–frequency magnitude masking for speech separation,”
+IEEE Trans. Audio, Speech, Lang. Process., vol. 27, no. 8, pp.
+1256–1266, 2019.
+[3] C. Subakan et al., “Attention is all you need in speech separa-
+tion,” in Proc. ICASSP, 2021, pp. 21–25.
+[4] Z.-Q. Wang et al., “TF-GridNet: Making time-frequency do-
+main models great again for monaural speaker separation,” in
+Proc. ICASSP, 2023, pp. 1–5.
+[5] J. R. Hershey et al., “Deep clustering: Discriminative em-
+beddings for segmentation and separation,” in Proc. ICASSP,
+2016, pp. 31–35.
+[6] D. Yu et al., “Permutation invariant training of deep models for
+speaker-independent multi-talker speech separation,” in Proc.
+ICASSP, 2017, pp. 241–245.
+[7] K. ˇZmol´ıkov´a et al., “SpeakerBeam: Speaker aware neural net-
+work for target speaker extraction in speech mixtures,” IEEE
+Journal of Selected Topics in Signal Processing, vol. 13, no. 4,
+pp. 800–814, 2019.
+[8] Q. Wang et al., “VoiceFilter: Targeted voice separation by
+speaker-conditioned spectrogram masking,” in Proc. Inter-
+speech, 2019, pp. 2728–2732.
+[9] K. Zmolikova et al., “Neural target speech extraction: An
+overview,” IEEE Signal Processing Magazine, vol. 40, no. 3,
+pp. 8–29, 2023.
+[10] T. Ochiai et al., “A unified framework for neural speech sepa-
+ration and extraction,” in Proc. ICASSP, 2019, pp. 6975–6979.
+[11] E. Nachmani et al., “Voice separation with an unknown num-
+ber of multiple speakers,” in Proc. ICML, 2020, pp. 7164–
+7175.
+[12] J. Zhu et al., “Multi-decoder DPRNN: Source separation for
+variable number of speakers,” in Proc. ICASSP, 2021, pp.
+3420–3424.
+[13] M. Kolbæk et al.,
+“Multitalker speech separation with
+utterance-level permutation invariant training of deep recurrent
+neural networks,” IEEE Trans. Audio, Speech, Lang. Process.,
+vol. 25, no. 10, pp. 1901–1913, 2017.
+[14] Y. Luo et al., “Speaker-independent speech separation with
+deep attractor network,” IEEE Trans. Audio, Speech, Lang.
+Process., vol. 26, no. 4, pp. 787–796, 2018.
+[15] Y. Luo and N. Mesgarani, “Separating varying numbers of
+sources with auxiliary autoencoding loss,” in Proc. Inter-
+speech, 2020, pp. 2622–2626.
+[16] S. Wisdom et al., “What’s all the FUSS about free universal
+sound separation data?” in Proc. ICASSP, 2021, pp. 186–190.
+[17] K. Kinoshita et al., “Listening to each speaker one by one with
+recurrent selective hearing networks,” in Proc. ICASSP, 2018,
+pp. 5064–5068.
+[18] N. Takahashi et al., “Recursive speech separation for unknown
+number of speakers,” in Proc. Interspeech, 2019, pp. 1348–
+1352.
+[19] T. von Neumann et al., “Multi-talker ASR for an unknown
+number of sources: Joint training of source counting, separa-
+tion and ASR,” in Proc. Interspeech, 2020, pp. 3097–3101.
+[20] J. Shi et al., “Sequence to multi-sequence learning via condi-
+tional chain mapping for mixture signals,” Advances in Neu-
+ral Information Processing Systems, vol. 33, pp. 3735–3747,
+2020.
+[21] S. R. Chetupalli and E. A. Habets, “Speaker counting and sep-
+aration from single-channel noisy mixtures,” IEEE Trans. Au-
+dio, Speech, Lang. Process., 2023.
+[22] S. Horiguchi et al., “Encoder-decoder based attractors for end-
+to-end neural diarization,” IEEE Trans. Audio, Speech, Lang.
+Process., vol. 30, pp. 1493–1507, 2022.
+[23] I. Kavalerov et al., “Universal sound separation,” in Proc.
+WASPAA, 2019, pp. 175–179.
+[24] J. Serr`a et al., “Universal speech enhancement with score-
+based diffusion,” arXiv preprint arXiv:2206.03065, 2022.
+[25] J. Chen et al., “Dual-path transformer network: Direct context-
+aware modeling for end-to-end monaural speech separation,”
+in Proc. Interspeech, 2020, pp. 2642–2646.
+[26] Y. Luo et al., “Dual-path RNN: Efficient long sequence mod-
+eling for time-domain single-channel speech separation,” in
+Proc. ICASSP, 2020, pp. 46–50.
+[27] E. Perez et al., “FiLM: Visual reasoning with a general condi-
+tioning layer,” in Proc. AAAI, vol. 32, no. 1, 2018.
+[28] J. S. Garofolo et al., CSR-I (WSJ0) Complete LDC93S6A, Lin-
+guistic Data Consortium, Philadelphia, 1993, web Download.
+[29] G. Wichern et al., “WHAM!: Extending speech separation to
+noisy environments,” in Proc. Interspeech, 2019, pp. 1368–
+1372.
+[30] R. Scheibler et al., “Pyroomacoustics: A Python package for
+audio room simulation and array processing algorithms,” in
+Proc. ICASSP, 2018, pp. 351–355.
+[31] K. Kinoshita et al., “The REVERB challenge: A common eval-
+uation framework for dereverberation and recognition of rever-
+berant speech,” in Proc. WASPAA, 2013, pp. 1–4.
+[32] S. Watanabe et al., “ESPnet: End-to-end speech processing
+toolkit,” in Proc. Interspeech, 2018, pp. 2207–2211.
+[33] C. Li et al., “ESPnet-SE: End-to-end speech enhancement and
+separation toolkit designed for ASR integration,” in Proc. SLT,
+2021, pp. 785–792.
+[34] J. Le Roux et al., “SDR–half-baked or well done?” in Proc.
+ICASSP, 2019, pp. 626–630.
+[35] P. K. Diederik and B. Jimmy, “Adam: A method for stochastic
+optimization,” in ICLR, 2015.
+[36] E. Vincent et al., “Performance measurement in blind audio
+source separation,” IEEE Trans. Audio, Speech, Lang. Pro-
+cess., vol. 14, no. 4, pp. 1462–1469, 2006.
+[37] R. Scheibler, “SDR — Medium rare with fast computations,”
+in Proc. ICASSP, 2022.
+[38] A. Rix et al., “Perceptual evaluation of speech quality (PESQ)-
+a new method for speech quality assessment of telephone net-
+works and codecs,” in Proc. ICASSP, vol. 2, 2001, pp. 749–
+752.
+[39] A. Radford et al., “Robust speech recognition via large-scale
+weak supervision,” arXiv preprint arXiv:2212.04356, 2022.
+

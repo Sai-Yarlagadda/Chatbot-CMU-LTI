@@ -1,0 +1,1105 @@
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Strain-driven Kovacs-like memory effect
+in glasses
+Yu Tong1, Lijian Song1,2
+, Yurong Gao1, Longlong Fan3, Fucheng Li
+4,
+Yiming Yang3, Guang Mo3, Yanhui Liu
+4, Xiaoxue Shui5, Yan Zhang
+1,
+Meng Gao1, Juntao Huo
+1,2, Jichao Qiao6, Eloi Pineda
+7
+&
+Jun-Qiang Wang
+1,2
+Studying complex relaxation behaviors is of critical importance for under-
+standing the nature of glasses. Here we report a Kovacs-like memory effect in
+glasses, manifested by non-monotonic stress relaxation during two-step high-
+to-low strains stimulations. During the stress relaxation process, if the strain
+jumps from a higher state to a lower state, the stress does not continue to
+decrease, but increases ﬁrst and then decreases. The memory effect becomes
+stronger when the atomic motions become highly collective with a large
+activation energy, e.g. the strain in the ﬁrst stage is larger, the temperature is
+higher, and the stimulation is longer. The physical origin of the stress memory
+effect is studied based on the relaxation kinetics and the in-situ synchrotron
+X-ray experiments. The stress memory effect is probably a universal phe-
+nomenon in different types of glasses.
+The nature of glass is one of the most puzzling and challenging pro-
+blems in condensed matter physics. One crucial aspect is the complex
+relaxation behaviors that arise from nonequilibrium thermodynamics.
+When glasses are subjected to external stimulations, e.g. stress or
+elevated temperatures, they usually relax monotonically towards
+lower energy states1–4. But some anomalous nonmonotonic relaxations
+may happen under multi-step annealing, which was observed by
+Kovacs in the 1960s5. Since then, the enthalpy/volume rejuvenation
+phenomenon after two-step annealing is also known as the Kovacs
+memory effect5,6. Such memory effect is revealed to be related to the
+heterogeneous nature of glasses7,8, which can be described by phe-
+nomenological models such as the Tool-Narayanaswamy-Moynihan
+(TNM) model2,6,9–14, and is closely related to the complex relaxation
+paths in the deep aging stage15. Thus, studying complex relaxation
+behaviors is of vital importance for understanding the non-equilibrium
+nature of glasses.
+Besides the classical Kovacs memory effect in structural glasses
+that are triggered by the multi-step thermal annealing process15–20, the
+Kovacs-like memory effect has been widely observed in other complex
+disordered systems14,21–26. Multistep mechanic stimulation can trigger
+the memory effect in the disordered granular system, crumpled thin
+sheets, and elastic foams2,14,18,23,27,28. Multistep thermal and magnetic
+stimulations can trigger the memory effect in disordered magnetic
+nanoparticles21,29,30. For structural glasses, recent results suggest that
+the stress and the thermal effects both contribute similarly to trig-
+gering ﬂow31–33. However, the mechanic-ﬁeld-triggered memory effect
+has been rarely observed in structural glasses21. It is intriguing to study
+whether structural glasses exhibit Kovacs-like memory effect under
+multiple strain stimulations.
+In this Letter, we report a Kovacs-like memory effect in structural
+glasses, which is triggered by the two-step strain-stimulating proce-
+dure. This phenomenon is probably universal in glasses as it is
+Received: 25 April 2023
+Accepted: 4 December 2023
+Check for updates
+1CAS Key Laboratory of Magnetic Materials and Devices, and Zhejiang Province Key Laboratory of Magnetic Materials and Application Technology, Ningbo
+Institute of Materials Technology and Engineering, Chinese Academy of Sciences, Ningbo, China. 2Center of Materials Science and Optoelectronics Engi-
+neering, University of Chinese Academy of Sciences, Beijing, China. 3Beijing Synchrotron Radiation Facility, Institute of High Energy Physics, Chinese
+Academy of Sciences, Beijing, China. 4Institute of Physics, Chinese Academy of Sciences, Beijing, China. 5Ningbo Institute of Materials Technology and
+Engineering, Chinese Academy of Sciences, Ningbo, China. 6School of Mechanics, Civil Engineering and Architecture, Northwestern Polytechnical University,
+Xi’an, China. 7Department of Physics, Institute of Energy Technologies, Universitat Politècnica de Catalunya, Barcelona, Spain.
+e-mail: songlj@nimte.ac.cn;
+eloi.pineda@upc.edu; jqwang@nimte.ac.cn
+Nature Communications|        (2023) 14:8407 
+1
+1234567890():,;
+1234567890():,;
+observed in two metallic glasses (MGs) and a polymer glass (Polyvinyl
+chloride, PVC) with distinct properties. The inﬂuence of applied
+strains, temperatures, and preloading times have been systematically
+studied, and the relationship between the memory effect and relaxa-
+tion kinetics is unveiled. In-situ high energy X-ray diffraction is applied
+to unravel the micro-structure origin of the memory effect.
+Results
+Figure 1a illustrates the two-step tensile protocol, starting with an initial
+strain ε0 = 0. Subsequently, the strain holds at a preloading strain of ε1
+for time tw and then jumps to another stress-relaxation strain of ε2.
+Figure 1b shows the representative stress relaxation curves for
+Ti16.7Zr16.7Hf16.7Cu16.7Ni16.7Be16.7 high-entropy MG with ε1 = 0:5% at a
+tested temperature Ta = 593 K. The dynamic characterization is pre-
+sented in Supplementary Fig. 1. During the preloading step, the stress
+decays monotonically as expected. In the second step, when ε2 > ε1, the
+stress continues to decay monotonically. However, when ε2 < ε1, the
+stress increases ﬁrst and then decreases after reaching a maximum.
+Such a non-monotonic change in stress is analogous to the classical
+Kovacs memory effect of enthalpy/volume induced by low- to-high two
+temperatures annealing5,34. For the same ε1, a smaller ε2 gives a stronger
+stress rejuvenation. The anomalous nonmonotonic evolution in stress,
+here named the stress memory effect, is also observed in two other
+glasses with distinct chemical compositions, (Fe11Zr1)91.2B8.8 MG and
+Polyvinyl chloride (PVC), as shown in Fig. 1c. The three representative
+glasses cover a wide range of physical properties, e.g., glass transition
+temperature, fragility, and yield strength, suggesting that such a stress
+memory effect is probably a universal characteristic of glasses.
+The inﬂuence of preloading strain ε1 and annealing temperature
+on the stress memory effect are summarized in Fig. 2. Figure 2a shows
+stress evolution in the second iso-strain stage for different pre-loading
+strains ε1. The memory strength Δσ and the peak time tp increase when
+the pre-loading strain increases, as shown in Fig. 2a–c. Figure 2d shows
+the stress memory effect in the second iso-strain stage at different
+temperatures Ta. The peak time tp increases with temperature (see
+Fig. 2e). The memory strength Δσ also increases with temperature and
+increases faster at higher temperatures, as shown in Fig. 2f. The non-
+monotonic normalized stress can be well ﬁtted by double Kohlrausch-
+Williams-Watts (KWW) expression3,35,36:
+σðtÞ
+σ0
+= A  exp 
+t0
+τ1
+
+β1
+ 
+!
++ ð1  AÞ  exp 
+t0
+τ2
+
+β2
+ 
+!
+ð1Þ
+where σ tð Þ and σ0 represent the immediate and initial stress in the
+second stage, respectively; t’ = t-tw is the time in the second stage; τ1
+and τ2 are the characteristic relaxation times; β1 and β2 are the
+stretching exponents describing the non-exponential behavior of the
+relaxations. A and 1-A reﬂect the corresponding relaxation intensity.
+The ﬁtted relaxation time is shown in Supplementary Fig. 3.
+The inﬂuence of the pre-loading time tw on the stress memory
+effect is studied for three representative glasses, as shown in Fig. 3a–c.
+The dependence of the memory strength Δσ on pre-loading time is
+shown in Fig. 3d–f. Generally, the Δσ increases monotonically as the
+preloading time increases. It is interesting to note that there exists a
+critical time, before which the Δσ is very small, but after which the Δσ
+increases sharply. This is a notable result of the stress memory effect,
+which has not been reported in disordered granular systems.
+Discussion
+To study the physical origin of the emerging stress memory effect, the
+relaxation activation energy Ea during the preloading stage was calcu-
+lated according to the KWW and Arrhenius equations3,37,38 (see details in
+section 4 of Supplementary information). The time-dependent Ea for
+the three representative glasses during the preloading step are shown in
+the upper panels of Fig. 4a–c. Considering Figs. 3 and 4, the Ea is small
+and does not change much with relaxation time while the stress mem-
+ory effect is weak. When the relaxation time is long enough where the
+stress memory becomes strong, the Ea increases fast. The analogous
+change in Ea during isothermal annealing was reported in different
+glasses35,39–41, and it is attributed to the increased atomic collectivity
+during relaxation.
+Furthermore, we studied the strain recovery behavior after the
+preloading, see Supplementary Fig. 7. Below the glass transition tem-
+perature Tg, the mechanical response of the glassy system usually
+includes the instantaneous recoverable elastic strain εel, slow reco-
+verable anelastic strain εan, and irrecoverable viscoplastic strain εvp, as
+distinguished in Supplementary Fig. 7a. The fraction of strain recovery
+(1  εvp=ε1) of three glasses after various preloading times tw are shown
+in the lower panels of Fig. 4. When the tw is short, the glasses exhibit
+complete strain recovery. When the tw is long enough where stress
+memory thrives, the glass cannot recover completely, which suggests
+irreversible conﬁguration during the preloading process42. The rever-
+sible process is clearly associated with the small Ea (see the upper
+panels of Fig. 4), and it should be related to the activation and motion
+of localized soft domains that are constrained by the elastic matrix40–44.
+b
+0
+2500
+5000
+0
+100
+200
+0.6 %
+0.45 %
+0.4 %
+0.3 %
+0.2 %
+MPa)
+(
+t (s)
+1=
+0.5 %
+2
+c
+100
+101
+102
+103
+104
+70
+90
+110
+130
+ (MPa)
+t-tw (s)
+Fe-
+Memory
+0
+30
+60
+tp
+PVC
+Ti-
+3.5
+3.7
+3.9
+a
+F
+F
+tw
+t
+Fig. 1 | Two-step strain annealing protocol and stress memory effect. a The
+schematic of tensile stress relaxation with two different applied strains (ε1, ε2) with
+an initial strain ε0 = 0. The preloading time is tw. F represents axial tensile force. The
+blue gradient represents increasing strain, while the red gradient represents
+decreasing strain. b The stress relaxation curves of two-step strain stimulations
+(ε1 = 0:5%, ε2 = 0:2% ∼ 0:6%) for TiZrHfCuNiBe metallic glass at Ta = 593 K. c The
+semi-logarithmic plots of non-monotonic stress relaxation curves for three glasses
+(Red: TiZrHfCuNiBe high-entropy MG with the preload parameters of (ε1 = 0:5%,
+ε2 = 0:3%, tw = 900 s, Ta = 593 K); Black: (Fe11Zr1)91.2B8.8 MG with the preload para-
+meters of (ε1 = 0:4%, ε2 = 0:2%, tw = 1800 s, Ta = 597 K); Blue: PVC with the preload
+parameters of (ε1 = 0:5%, ε2 = 0:3%, tw = 300 s, Ta = 318 K)). The titles of all three
+y-axis are σ (MPa). The tp and Δσ denote the peak time and the strength of the
+memory effect, respectively. Source data are provided as a Source Data ﬁle.
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Nature Communications|        (2023) 14:8407 
+2
+As for the long-time annealing, the irrecoverable viscoplastic strain
+emerges associated with the sharp increase in Ea, and it derives from
+the percolation and cooperative motions of soft domains42,45. The fast
+and slow relaxation processes can be identiﬁed respectively as β pro-
+cess and collective motion39,40,42,46.
+To unravel the structural origin of the stress memory effect, we
+utilize high energy synchrotron X-ray diffraction to investigate the
+atomic scale structural changes in TiZrHfCuNiBe MG during the stress
+memory effect, and the experimental technical details are displayed in
+Supplementary Fig. 8. Figure 5a, c shows the reduced pair distribution
+functions G(r) of TiZrHfCuNiBe MG during the preloading stage and
+during the memory stage, respectively (stress evolution curve shown
+in Supplementary Fig. 8c). Close inspections indicate that the ﬁrst
+nearest neighbor shell split into two sub-peaks (insets in Fig. 5a, c),
+in which the left sub-peak corresponds to the shorter inter-atomic
+band lengths dominated by small-size atoms, while the larger atoms
+dominate the right sub-peak46–48. According to the interatomic bond
+lengths and weight factors provided in Supplementary Table 1, the left
+sub-peak at approximately 2.70 Å can be primarily attributed to the Hf-
+Cu and Hf-Ni atomic pairs, while the right sub-peak at around 3.10 Å is
+mainly dominated by the Zr-Hf, Hf-Hf, and Ti-Hf atomic pairs.
+As the stress decays, the full width athalf maximum (FWHM) of the ﬁrst
+G(r) peak decreases (Fig. 5b), together with the left-shifted peak
+position, it suggests that the atomic packing becomes denser at a
+longer time47. But when stress increases during the memory stage
+(Fig. 5d), the FWHM increases and the peak position shifts to the right-
+hand side. This suggests that the atomic packing in the short-range
+becomes loose.
+The anelastic recovery tests under the various preloading condi-
+tions in TiZrHfCuNiBe MG were performed to investigate the rever-
+sible contribution to the deformation, as illustrated in Supplementary
+Fig. 9. The anelastic recovery process can be ﬁtted by the KWW
+Strain
+Temperature
+c
+b
+a
+f
+e
+d
+100
+101
+102
+103
+104
+1
+10
+:           
+0.5 %
+0.35 %
+0.55 %
+0.4 %
+0.6 %
+/ 
+0
+t-tw (s)
+=0.3%
+tw =900 s
+Ta=593 K
+0.3
+0.4
+0.5
+0.6
+0
+10
+20
+30
+(%)
+Ta=593 K
+tw=900 s
+=0.3 %
+0.3
+0.4
+0.5
+0.6
+0
+500
+1000
+1500
+tp (s)
+1 (%)
+Ta=593 K
+tw=900 s
+=0.3 %
+100
+101
+102
+103
+104
+1
+2
+3
+=0.3%
+553 K
+593 K
+573 K
+603 K
+583 K
+/
+0
+t-tw (s)
+=0.5%
+tw =900 s
+Ta:
+540
+580
+620
+300
+550
+800
+tp (s)
+Ta (K)
+tw=900 s
+=0.5 %
+=0.3 %
+540
+580
+620
+1
+2
+3
+Ta (K)
+tw=900 s
+=0.5 %
+=0.3 %
+Fig. 2 | Inﬂuences of the preloading strain and temperature on stress memory
+effect for TiZrHfCuNiBe high-entropy MG. a The stress memory effect for dif-
+ferent preloading strains ε1. The dependence of b peak time tp and c the strength of
+memory effect 4σ on ε1. d The stress memory effect at different annealing
+temperatures Ta. The dependence of e peak time tp and f the relative strength of
+memory effect 4σ=σ0 on Ta. The solid curves correspond to double KWW ﬁtting.
+Error bars represent standard deviations. Source data are provided as a Source
+Data ﬁle.
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Nature Communications|        (2023) 14:8407 
+3
+equation: εan tð Þεan 1
+ð
+Þ
+εan 0
+ð Þεan 1
+ð
+Þ = expðð t
+τrecÞβrecÞ37,39. The relaxation characteristic
+time τrec reﬂects the timescale of the anelastic recovery3,42,46,49. The
+εan 1
+ð
+Þ represents the ultimate strain achieved at the end of the ane-
+lastic recovery, and βrec is a stretching exponent. The ﬁtting curves for
+various temperatures Ta, preloading strains ε1 and times tw are shown
+in Supplementary Fig. 9. Figure 5e conﬁrms a linear relationship
+between the peak time tp and the recovery characteristic time τrec over
+several decades. This indicates that the stress memory effect origi-
+nates from the recovery of reversible anelastic components.
+Figure 5f shows a schematic illustration of the local atomic
+arrangement for reversible events in stress relaxation. As the strain
+increases ðεI ! εΠÞ, the atoms pack more densely. This reconﬁgura-
+tion arises from the diffusion of small atoms within the network
+formed by the large solvent atomics, and it can be related to the left
+shift of the ﬁrst sub-peak (Fig. 5a). During the memory stage when
+unloading to a lower strain ðεΠ ! εIÞ, the small atoms move toward a
+looser conﬁguration according to the right shift of the ﬁrst sub-peaks
+(Fig. 5c). This observation coincides with the atomic mechanisms of
+the dynamic process in β relaxation47,50. This result indicates that the
+stress memory effect arises from reversible β relaxations.
+Recent evidence has stated that the rejuvenation of glasses could
+be induced by the mismatch of the thermal expansion coefﬁcient or
+the modulus ﬂuctuation between neighboring local domains51–53 when
+subjected to the same external perturbation. For the stress memory
+effect, as the applied strain jumps to a lower value, the mismatch of
+momentary modulus between neighboring local domains produces
+internal stresses, which would induce an inverse process and increase
+the stress. Longer preloading can stimulate abundant internal stress
+and facilitate more runback of reversible β events upon unloading,
+f
+d
+e
+c
+a
+b
+100
+101
+102
+103
+104
+0.1
+1
+10
+tw:          
+30 s
+900 s
+60 s
+1200 s
+300 s
+1800 s
+600 s
+2400 s
+/
+t-tw (s)
+Ta=593 K
+TiZrHfCuNiBe
+100
+101
+102
+103
+104
+0
+10
+20
+30
+MPa)
+(
+tw (s)
+TiZrHfCuNiBe
+100
+101
+102
+103
+104
+0
+10
+20
+30
+ (MPa)
+tw (s)
+(Fe11Zr1)91.2B8.8
+100
+101
+102
+103
+104
+0.6
+1.0
+1.4
+tw:
+600 s
+1200 s
+1800 s
+2400 s
+3600 s
+7200 s
+/
+t-tw (s)
+Ta=597 K
+0 s
+120 s
+300s
+450 s
+525 s
+(Fe11Zr1)91.2B8.8
+100
+101
+102
+103
+0.8
+1.0
+1.2
+9 s
+450 s
+30 s
+600 s
+60 s
+1200 s
+180 s
+1800 s
+300 s
+2400 s
+/
+t-tw (s)
+Ta=318 K
+tw:
+PVC
+100
+101
+102
+103
+104
+0.0
+0.1
+0.2
+ (MPa)
+tw (s)
+PVC
+Fig. 3 | Evolution of stress memory effect with annealing time for three glasses.
+a TiZrHfCuNiBe high-entropy MG at 593 K with ε1 = 0:5% and ε2 = 0:3%,
+b (Fe11Zr1)91.2B8.8 MG at 597 K with ε1 = 0:4% and ε2 = 0:2%, and c PVC polymer glass
+at 318 K with ε1 = 0:5% and ε2 = 0:3%. The solid curves correspond to KWW ﬁtting.
+The strength of the memory effect (Δσ) as a function of tw are shown in
+d–f accordingly. The blue shaded area highlights the fast increase of memory
+strength Δσ. Error bars represent standard deviations. Source data are provided as
+a Source Data ﬁle.
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Nature Communications|        (2023) 14:8407 
+4
+which generate a more pronounced stress memory effect in the col-
+lective motion process (see Fig. 3). This aligns with the thriving of the
+Kovacs memory effect in a deep aging state characterized by a large
+activation entropy15. The herein reversible β events also support the
+rational presence of the reversible faster relaxing element in the phe-
+nomenological Amir–Oreg–Imry (AOI) model1,2, which has been widely
+used to explain the nonmonotonic relaxation phenomenon2,22,23,54.
+The classical Kovacs memory effect has a typical three-temperature
+protocol5,6,19,25,34,55, say T0, T2 and T1, where T0 is the initial equilibrated
+temperature, T1 and T2 are annealing temperatures. The Kovacs mem-
+ory effect happens only as T0>T2>T1, while herein the stress memory
+effect happens only ε0<ε2<ε1. Inspired by the theoretical works of Pra-
+dos et al.14,19,26, the contribution of the temperature perturbation to the
+glass system is alike to the stress/strain by considering βE / βσε. Here
+β =
+1
+kBT, and kB is the Boltzmann constant. E represents the energy,
+which is basically proportional to σε19. Then, we can understand the
+effect of applied strain ε on the glass system as a perturbation β in the
+Kovacs memory effect. For instance, the low-to-high temperature
+annealing leads to a decrease in β, which is equal to the stimulation of
+high-to-low strain annealing in the protocol under a ﬁxed temperature
+(Fig. 1a). The convergence of the two memory effects stems from their
+common structural origin, as the classical Kovacs memory effect also
+may arise from the recovery of reversible loosely packed regions56,57.
+In conclusion, we have observed a Kovacs-like stress memory
+effect when glasses are stimulated by high-to-low two-step strain sti-
+mulations. The stress memory only appears when the second-step
+strain is smaller than the ﬁrst-step strain. Larger applied strain, longer
+stimulation time in the ﬁrst stage, and higher temperature make the
+memory effect stronger. The runback of reversible motions of small
+atoms is the essential mobilizing mechanism of the memory effect,
+which is conﬁrmed by the reconﬁguration of short-range atomic
+packing structures.
+Methods
+Sample fabrication
+The master alloys of Ti16.7Zr16.7Hf16.7Cu16.7Ni16.7Be16.7, (Fe11Zr1)91.2B8.8
+(at%) were prepared by arc melting. The metallic glass ribbons with a
+thickness of approximately 30 μm were fabricated by the melt spin-
+ning with a tangent velocity of approximately 40 m/s. Polyvinyl
+chloride ﬁlms with a thickness of approximately 150 μm were pur-
+chased from the manufacturer.
+Dynamic characterization
+The dynamical mechanical behavior of the three glasses was
+measured using the dynamic thermomechanical analysis apparatus
+(TA-DMA Q800). The mechanical spectroscopy measurements
+were performed at a heating rate of 5 K/min with a driving fre-
+quency of 1 Hz.
+Stress-relaxation and strain-recovery measurements
+Isothermal stress relaxation tests were performed on a TA DMA-Q800
+instrument using one or two-step protocols (see Fig. 1a) at target
+temperatures. Subsequently, the strain recovery tests were conducted
+by unloading the stress after the relaxation period.
+Structural characterization
+The local structural characterization was performed in China’s Beij-
+ing synchrotron radiation facility. The in-situ experiments were
+conducted in the synchrotron X-ray beam at 3W1, which utilized
+monochromatic synchrotron radiation with a wavelength of 0.2065 Å
+(energy of 60.037 keV). The diffraction experiments were carried out
+in the Debye-Scherrer geometry. The layout of the experimental
+setup is shown in Supplementary Fig. 8a. The incident beam had a
+well-collimated cross-section of 0.8× 0.8 mm². Diffraction patterns
+were collected using an iRay Mercu 1717HS image plate detector,
+which had a resolution of 3072 × 3072 pixels, with each pixel corre-
+sponding to a size of 139× 139 µm². The detector was carefully
+positioned orthogonal to the x-ray beam, and the distance between
+the 2D detector and the sample was adjusted to about 280 mm in
+terms
+of
+covering
+a
+high-Q
+range
+up
+to
+16.5 Å−¹
+(where
+Q = 4π sin θ=λ). θ is half the scattering angle, and λ is the incident
+wavelength. The samples were exposed to the incident beam for 5 s
+during the experiments. Each total diffusion pattern was fully inte-
+grated to achieve the diffraction data and the Fourier transforma-
+tions from I(Q) to G rð Þ were conducted using the PDFgetx3 program
+with the following equation48:
+S Q
+ð Þ = 1 +
+Ie Q
+ð Þ  P
+n
+i = 1
+cif 2
+i ðQÞ
+
+
+P
+n
+i = 1
+cif 2
+i ðQÞ
+
+
+,
+and G rð Þ = 2
+π
+R Qmax
+0
+Q S Q
+ð ð Þ  1
+Þ sin rQ
+ð
+ÞdQ.
+Where Ie Q
+ð Þ represents the normalized elastically scattered
+intensity, and r denotes the radial distance. ci and f iðQÞ refer to the
+atomic concentration and the scattering factor of ith atomic in the
+tested alloy. The weighting factor of i-j atoms pair was calculated
+c
+a
+b
+1
+2
+100
+101
+102
+103
+104
+60
+80
+100
+TiZrHfCuNiBe
+Ea (eV)
+fast
+slow
+1- vp/  (%)
+tw (s)
+Strain recovery
+10
+20
+100
+101
+102
+103
+104
+60
+80
+100
+Ea (eV)
+PVC
+fast
+slow
+1- vp/  (%)
+tw (s)
+Strain recovery
+0.2
+0.3
+100
+101
+102
+103
+104
+80
+90
+100
+(Fe11Zr1)91.2B8.8
+Ea (eV)
+fast
+slow
+1- vp/  (%)
+tw (s)
+Strain recovery
+Fig. 4 | Relaxation kinetics. Evolution of (Top) the activation energy Ea and
+(Bottom) the fraction of strain recovery (1  εvp=ε1) with tw for a TiZrHfCuNiBe MG,
+b (Fe11Zr1)91.2B8.8 MG, and c PVC polymer. The experimental condition for strain
+recovery tests: Ti-MG (Ta = 593 K, ε1 = 0.5%), Fe-MG (Ta = 597 K, ε1 = 0.4%), and PVC
+(Ta = 318 K, ε1 = 0.5%). (Calculation details for the activation energy and fraction of
+strain recovery are presented in sections 4 and 5 of Supplementary information).
+Source data are provided as a Source Data ﬁle.
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Nature Communications|        (2023) 14:8407 
+5
+according to the following manner48:
+wij =
+2cicjf ið0Þf jð0Þ
+P
+n
+k = 1
+ckf kð0Þ
+
+2 ,i≠j
+c2
+i f 2
+i ð0Þ
+P
+n
+k = 1
+ckf kð0Þ
+
+2 ,i = j
+8
+>
+>
+>
+>
+>
+>
+>
+<
+>
+>
+>
+>
+>
+>
+>
+:
+:
+The specimens of amorphous ribbon were subjected to tension
+using the Linkam TST350 straining system. Supplementary Fig. 8b
+shows the loading protocol for tensile stress relaxation with two dif-
+ferent applied strains (ε1 = 0:5%,ε1 = 0:3%) at a temperature of 593 K.
+The tensile strain was increased in increments of 200%/min, and the
+gauge length of Linkam TST350 was 40 mm. The stress evolution
+corresponding to the two-step process is shown in Supplemen-
+tary Fig. 8c.
+Reporting summary
+Further information on research design is available in the Nature
+Portfolio Reporting Summary linked to this article.
+Data availability
+All the necessary data that supports the ﬁndings of this article are
+provided in the main text and supplementary information. Source data
+are provided as a Source Data ﬁle. Additionally, the corresponding
+authors can provide the raw data upon request. Source data are pro-
+vided with this paper.
+0
+500
+1000
+1500
+2000
+600
+1600
+2600
+Temperature
+Strain
+Time 
+rec (s)
+tp (s)
+tp=-630.4+ rec
+R2=0.99
+Memory
+Anelasticity
+Small atoms
+Large atoms
+a
+b
+c
+d
+e
+f
+2
+6
+10
+14
+18
+-0.5
+0.0
+0.5
+1.0
+ t-tw :
+G(
+-2)
+r ( )
+300 s
+1500 s
+Memory
+0 s
+900 s
+2100 s
+2.6
+2.8
+3.0
+3.2
+0.70
+0.85
+1.00
+G(
+-2)
+r ( )
+2
+6
+10
+14
+18
+-0.5
+0.0
+0.5
+1.0
+0 s
+180 s
+600 s
+G(
+-2)
+r ( )
+Preloading
+120 s
+300 s
+900 s
+t :
+2.6
+2.8
+3.0
+3.2
+0.75
+0.90
+1.05
+G(
+-2)
+r ( )
+0
+300
+600
+900
+0.83
+0.84
+0.85
+0.86
+FWHM of
+G ( )
+t (s)
+Preloading
+0
+1000
+2000
+0.84
+0.85
+FWHM of
+G ( )
+t-tw (s)
+Memory
+Fig. 5 | Structural origin of stress memory effect for the TiZrHfCuNiBe high-
+entropy MG at 593 K. a The reduced pair distribution function G(r) in the stress
+decreasing stage during pre-loading at a ﬁxed strain of 0.5% and b the corre-
+sponding evolution of the full width at half maximum (FWHM) of the ﬁrst peak.
+c The evolution of G(r) during the memory stage with ε2 = 0.3% (after ε1 = 0.5% and
+tw = 900 s) and d the corresponding evolution of FWHM of the ﬁrst peak. The insets
+show the zoomed-in data of the corresponding nearest neighbor atomic diffraction
+peaks. e The correlation between the memory peak time tp and the recovery
+characteristic time τrec. The square, triangle, and circular symbols represent data
+measured at different preloading variables of temperature, strain, and time,
+respectively. The data of peak time tp are taken from Fig. 2 and Supplementary
+Fig. 2. The blue solid straight line represents the linear ﬁtting of tp = -630.4 + τrec,
+with a high regression coefﬁcient of R2 = 0.99. f The schematic illustration for the
+evolution of atomic packing structure for anelastic stress relaxation and recovery
+(memory) process. Source data are provided as a Source Data ﬁle.
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Nature Communications|        (2023) 14:8407 
+6
+References
+1.
+Amir, A., Oreg, Y. & Imry, Y. On relaxations and aging of various
+glasses. Proc. Natl Acad. Sci. USA 109, 1850–1855 (2012).
+2.
+Lahini, Y., Gottesman, O., Amir, A. & Rubinstein, S. M. Non-
+monotonic aging and memory retention in disordered mechanical
+systems. Phys. Rev. Lett. 118, 085501 (2017).
+3.
+Wang, W. H. Dynamic relaxations and relaxation-property relation-
+ships in metallic glasses. Prog. Mater. Sci. 106, 100561 (2019).
+4.
+Ramos, L. & Cipelletti, L. Ultraslow dynamics and stress relaxation in
+the aging of a soft glassy system. Phys. Rev. Lett. 87, 245503 (2001).
+5.
+Kovacs, A. Glass transition in amorphous polymers: a phenomen-
+ological study. Adv. Polym. Sci. 3, 394–507 (1963).
+6.
+Kovacs, A. J., Aklonis, J. J., Hutchinson, J. M. & Ramos, A. R. Isobaric
+volume and enthalpy recovery of glasses. II. A transparent multi-
+parameter theory. J. Polym. Sci. 17, 1097–1162 (1979).
+7.
+Richert, R. Heterogeneous dynamics in liquids: ﬂuctuations in
+space and time. J. Phys: Condens. Mat. 14, R703 (2002).
+8.
+McKenna, G. B. & Simon, S. L. 50th anniversary perspective: chal-
+lenges in the dynamics and kinetics of glass-forming polymers.
+Macromolecules 50, 6333–6361 (2017).
+9.
+Tool, A. Q. Relation between inelastic deformability and thermal
+expansion of glass in its annealing range. J. Am. Ceram. Soc. 29,
+240–253 (1946).
+10.
+Narayanaswamy, O. A model of structural relaxation in glass. J. Am.
+Ceram. Soc. 54, 491–498 (1971).
+11.
+Moynihan, C. et al. Structural relaxation in vitreous materials. Ann.
+Ny. Acad. Sci. 279, 15–35 (1976).
+12.
+Grassia, L., Koh, Y. P., Rosa, M. & Simon, S. L. Complete set of
+enthalpy recovery data using Flash DSC: experiment and modeling.
+Macromolecules 51, 1549–1558 (2018).
+13.
+Egami, T. Structural relaxation in metallic glasses. Ann. Ny. Acad.
+Sci. 371, 238–251 (1981).
+14.
+Prados, A. & Trizac, E. Kovacs-like memory effect in driven granular
+gases. Phys. Rev. Lett. 112, 198001 (2014).
+15.
+Song, L. et al. Activation entropy as a key factor controlling the
+memory effect in glasses. Phys. Rev. Lett. 125, 135501 (2020).
+16.
+Luo, P., Li, Y., Bai, H., Wen, P. & Wang, W. Memory effect manifested
+by a boson peak in metallic glass. Phys. Rev. Lett. 116, 175901 (2016).
+17.
+Li, M. et al. Signiﬁcantly enhanced memory effect in metallic glass
+by multistep training. Phys. Rev. B 96, 174204 (2017).
+18.
+Trizac, E. & Prados, A. Memory effect in uniformly heated granular
+gases. Phys. Rev. E 90, 012204 (2014).
+19.
+Prados A., Brey J. J. The Kovacs effect: a master equation analysis. J.
+Stat. Mech-Theory. E 2010, (2010).
+20. Brey, J. J. & Prados, A. Memory effects in the relaxation of Ising
+models. Europhys. Lett. 57, 171 (2002).
+21.
+Keim, N. C., Paulsen, J. D., Zeravcic, Z., Sastry, S. & Nagel, S. R.
+Memory formation in matter. Rev. Mod. Phys. 91, 035002 (2019).
+22. Dillavou, S. & Rubinstein, S. M. Nonmonotonic aging and memory in
+a frictional interface. Phys. Rev. Lett. 120, 224101 (2018).
+23. Murphy, K. A., Kruppe, J. W. & Jaeger, H. M. Memory in non-
+monotonic stress relaxation of a granular system. Phys. Rev. Lett.
+124, 168002 (2020).
+24. Morgan, I. L., Avinery, R., Rahamim, G., Beck, R. & Saleh, O. A. Glassy
+dynamics and memory effects in an intrinsically disordered protein
+construct. Phys. Rev. Lett. 125, 058001 (2020).
+25. Kürsten, R., Sushkov, V. & Ihle, T. Giant Kovacs-like memory effect
+for active particles. Phys. Rev. Lett. 119, 188001 (2017).
+26. Plata, C. A. & Prados, A. Kovacs-like memory effect in athermal
+systems: linear response analysis. Entropy 19, 539 (2017).
+27.
+Josserand, C., Tkachenko, A. V., Mueth, D. M. & Jaeger, H. M. Memory
+effects in granular materials. Phys. Rev. Lett. 85, 3632 (2000).
+28. Brey, J. J. & Prados, A. Memory effects in vibrated granular systems.
+J. Phys: Condens. Mat. 14, 1489 (2002).
+29. Sun, Y., Salamon, M., Garnier, K. & Averback, R. Memory effects in
+an interacting magnetic nanoparticle system. Phys. Rev. Lett. 91,
+167206 (2003).
+30. Du, J., Zhang, B., Zheng, R. & Zhang, X. Memory effect and spin-
+glass-like behavior in Co-Ag granular ﬁlms. Phys. Rev. B 75,
+014415 (2007).
+31.
+Chang, C. et al. Liquid-like atoms in dense-packed solid glasses.
+Nat. Mater. 1–6 (2022).
+32. Song, S., Zhu, F. & Chen, M. Universal scaling law of glass rheology.
+Nat. Mater. 21, 404–409 (2022).
+33. Guan, P., Chen, M. & Egami, T. Stress-temperature scaling for
+steady-state ﬂow in metallic glasses. Phys. Rev. Lett. 104,
+205701 (2010).
+34. Mossa, S. & Sciortino, F. Crossover (or Kovacs) effect in an aging
+molecular liquid. Phys. Rev. Lett. 92, 045504 (2004).
+35. Luo, P., Wen, P., Bai, H., Ruta, B. & Wang, W. Relaxation decoupling
+in metallic glasses at low temperatures. Phys. Rev. Lett. 118,
+225901 (2017).
+36. Palmer, R. G., Stein, D. L., Abrahams, E. & Anderson, P. W. Models of
+hierarchically constrained dynamics for glassy relaxation. Phys.
+Rev. Lett. 53, 958 (1984).
+37. Qiao, J. et al. Structural heterogeneities and mechanical behavior of
+amorphous alloys. Prog. Mater. Sci. 104, 250–329 (2019).
+38. Duan, Y. et al. Intrinsic correlation between the fraction of liquidlike
+zones and the β relaxation in high-entropy metallic glasses. Phys.
+Rev. Lett. 129, 175501 (2022).
+39. Jiao, W. et al. Crossover from stochastic activation to cooperative
+motions of shear transformation zones in metallic glasses. Appl.
+Phys. Lett. 103, 081904 (2013).
+40. Yu, H. B., Wang, W. H., Bai, H. Y. & Samwer, K. The β-relaxation in
+metallic glasses. Natl Sci. Rev. 1, 429–461 (2014).
+41.
+Song, L. et al. Inheritance from glass to liquid: β relaxation
+depresses the nucleation of crystals. Acta Mater. 185, 38–44
+(2020).
+42. Harmon, J. S., Demetriou, M. D., Johnson, W. L. & Samwer, K. Ane-
+lastic to plastic transition in metallic glass-forming liquids. Phys.
+Rev. Lett. 99, 135502 (2007).
+43. Johari, G. P. & Goldstein, M. Viscous liquids and the glass transition.
+II. Secondary relaxations in glasses of rigid molecules. J. Chem.
+Phys. 53, 2372–2388 (1970).
+44. Debenedetti, P. G. & Stillinger, F. H. Supercooled liquids and the
+glass transition. Nature 410, 259–267 (2001).
+45. Wang, Z., Sun, B., Bai, H. & Wang, W. Evolution of hidden localized
+ﬂow during glass-to-liquid transition in metallic glass. Nat. Com-
+mun. 5, 5823 (2014).
+46. Spieckermann, F. et al. Structure-dynamics relationships in cryo-
+genically deformed bulk metallic glass. Nat. Commun. 13,
+127 (2022).
+47. Liu, Y., Fujita, T., Aji, D., Matsuura, M. & Chen, M. Structural origins of
+Johari-Goldstein relaxation in a metallic glass. Nat. Commun. 5,
+1–7 (2014).
+48. Stoica, M. et al. Strain distribution in Zr64. 13Cu15. 75Ni10. 12Al10
+bulk metallic glass investigated by in situ tensile tests under syn-
+chrotron radiation. J. Appl. Phys. 104, (2008).
+49. Lei, T. et al. Microscopic characterization of structural relaxation
+and cryogenic rejuvenation in metallic glasses. Acta Mater. 164,
+165–170 (2019).
+50. Yu, H.-B., Samwer, K., Wu, Y. & Wang, W. H. Correlation between β
+relaxation and self-diffusion of the smallest constituting atoms in
+metallic glasses. Phys. Rev. Lett. 109, 095508 (2012).
+51.
+Ketov, S. et al. Rejuvenation of metallic glasses by non-afﬁne ther-
+mal strain. Nature 524, 200–203 (2015).
+52. Ross, P. et al. Linking macroscopic rejuvenation to nano-elastic
+ﬂuctuations in a metallic glass. Acta Mater. 138, 111–118 (2017).
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Nature Communications|        (2023) 14:8407 
+7
+53. Sun, Y., Concustell, A. & Greer, A. L. Thermomechanical processing
+of metallic glasses: extending the range of the glassy state. Nat.
+Rev. Mater. 1, 16039 (2016).
+54. He, Y. et al. Non-monotonic relaxation and memory effect of rock
+salt. Rock. Mech. Rock. Eng. 52, 2471–2479 (2019).
+55. Bouchbinder, E. & Langer, J. Nonequilibrium thermodynamics of
+the Kovacs effect. Soft Matter 6, 3065–3073 (2010).
+56. Meng, Y. et al. Rejuvenation by enthalpy relaxation in metallic
+glasses. Acta Mater. 241, 118376 (2022).
+57. Qiu, K. et al. Two-step annealing induced structural rejuvenation: A
+cause for memory effect in metallic glasses. Mater. Today Phys. 27,
+100824 (2022).
+Acknowledgements
+The X-ray pair distribution function measurements were performed at the
+3W1 beamline, Beijing Synchrotron Radiation Facility (BSRF). This work
+was supported by the National Natural Science Foundation of China
+(NSFC 52201193, 52231006, 52201194, 92163108, 52001319), the National
+Key R&D Program of China (2018YFA0703600), the Natural Science
+Foundation of Ningbo City (No. 2022J310), 3315 Innovation Youth Talent
+in Ningbo City (2021A-123-G). E.P. acknowledge ﬁnancial support from
+‘Proyecto PID2020-112975GB-I00 de investigación ﬁnanciado por MCIN/
+AEI’ and Generalitat de Catalunya AGAUR Grant No. 2021-SGR-00343.
+Author contributions
+J.Q.W., L.J.S. and E.P. initiated and conceived the current work. Y.T.
+fabricate the samples, perform the stress relaxation experiments and
+analyze the data. L.L.F, F.C.L. Y.M.Y., G.M. and Y.T. perform the in-situ
+synchrotron X-ray experiments and analyze the data. All the authors
+discussed the results and contributed to writing the manuscript.
+Competing interests
+The authors declare no competing interest.
+Additional information
+Supplementary information The online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-023-44187-x.
+Correspondence and requests for materials should be addressed to
+Lijian Song, Eloi Pineda or Jun-Qiang Wang.
+Peer review information Nature Communications thanks Konstantinos
+Georgarakis, and the other, anonymous, reviewer(s) for their contribu-
+tion to the peer review of this work. A peer review ﬁle is available.
+Reprints and permissions information is available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jur-
+isdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format, as
+long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons licence, and indicate if
+changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless
+indicated otherwise in a credit line to the material. If material is not
+included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted
+use, you will need to obtain permission directly from the copyright
+holder. To view a copy of this licence, visit http://creativecommons.org/
+licenses/by/4.0/.
+© The Author(s) 2023
+Article
+https://doi.org/10.1038/s41467-023-44187-x
+Nature Communications|        (2023) 14:8407 
+8
+

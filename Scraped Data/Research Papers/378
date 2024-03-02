@@ -1,0 +1,946 @@
+Citation: Tang, L.; Zhang, J.; Zha, L.;
+Hu, Y.; Yang, Y.; Zhao, Y.; Dong, X.;
+Wang, Z.; Deng, W.; Yang, Y.
+Optimization of Critical Factors
+Affecting Dynamic Membrane
+Formation in a Gravity-Driven
+Self-Forming Dynamic Membrane
+Bioreactor towards Low-Cost and
+Low-Maintenance Wastewater
+Treatment. Water 2023, 15, 3963.
+https://doi.org/10.3390/w15223963
+Academic Editor: Jesus
+Gonzalez-Lopez
+Received: 5 October 2023
+Revised: 3 November 2023
+Accepted: 13 November 2023
+Published: 15 November 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+water
+Article
+Optimization of Critical Factors Affecting Dynamic Membrane
+Formation in a Gravity-Driven Self-Forming Dynamic
+Membrane Bioreactor towards Low-Cost and Low-Maintenance
+Wastewater Treatment
+Luhe Tang 1, Jingyu Zhang 1, Lulu Zha 2,3, Yisong Hu 2,3,*, Yiming Yang 1, Yunsheng Zhao 1, Xinglong Dong 1,
+Zhanjiu Wang 1, Weihang Deng 2,3 and Yuan Yang 2,3
+1
+Beijing Huayu Brilliant Eco-Environmental Protection Technology Co., Ltd., Beijing 102412, China;
+tang_1680@126.com (L.T.); zhangjingyu@huayuhuihuang.cn (J.Z.); 15811321317@126.com (Y.Y.);
+shang_lisi@163.com (Y.Z.); dongxinglong163@163.com (X.D.); wzjayh9@163.com (Z.W.)
+2
+Shanxi Key Laboratory of Environmental Engineering, Xi’an University of Architecture and Technology,
+Xi’an 710055, China; cll01070204@163.com (L.Z.); yuanyang@xauat.edu.cn (Y.Y.)
+3
+Key Lab of Northwest Water Resource, Environment and Ecology, MOE, Xi’an University of Architecture and
+Technology, Xi’an 710055, China
+*
+Correspondence: huyisong@xauat.edu.cn; Tel.: +86-029-8220-5652
+Abstract: Self-forming dynamic membrane (SFDM) formation is affected by a variety of operating
+conditions. However, previous studies have only focused on individual inﬂuencing factors and a
+systematic analysis of important factors is lacking. In this study, an aerobic self-forming dynamic
+membrane bioreactor (SFDMBR) was developed for the treatment of domestic wastewater with the
+critical factors that affect the effective formation of SFDM optimized, and the operational perfor-
+mances under optimized formation conditions conﬁrmed. The results indicated that SFDM could
+be formed within 5 min using 48 µm stainless-steel mesh as the supporting material at a sludge
+concentration of 5–6 g/L and a gravity waterhead of 15 cm. And the SFDM formed could maintain
+a stable ﬂux of 30–50 LMH, and the removals of COD, SCOD, and NH4+-N were 93.28%, 82.85%,
+and 95.46%, respectively. Furthermore, the cake layer resistance (reversible fouling) contributed
+to 95.93% of the total ﬁltration resistance, thus a simple physical cleaning can effectively restore
+the ﬂux indicating a low-maintenance requirement. This study provides valuable insights into the
+optimization and application of the SFDMBR process.
+Keywords: self-forming dynamic membrane bioreactor; domestic wastewater; operational conditions;
+pollutants removal; ﬁltration resistance
+1. Introduction
+Membrane bioreactors (MBRs) technology, combining the membrane separation with
+biological treatment, is a cost-effective alternative for wastewater treatment [1,2]. Due to its
+complete solid retention, superior efﬂuent quality, compact footprint, and selective control
+over hydraulic retention time (HRT) and sludge retention time (SRT), the MBR technology
+has been extensively used in the treatment of municipal and industrial wastewater [3–5].
+However, membrane fouling caused by the complex interactions between various foulants
+and membrane materials reduces process efﬁciency, shortens membrane lifespan, and
+increases operational costs [6,7].
+The dynamic membrane bioreactor (DMBR) has garnered signiﬁcant interest re-
+cently due to its ability to address the low ﬂux and easy fouling limitation related to
+the MBR [8–10]. Dynamic membrane (DM) refers to the second membrane formed on
+the supporting material when ﬁltering solution contains suspended particles [11]. The
+primary difference between the supporting material used in the development of a DM and
+Water 2023, 15, 3963. https://doi.org/10.3390/w15223963
+https://www.mdpi.com/journal/water
+Water 2023, 15, 3963
+2 of 17
+a conventional membrane is membrane pore size, which ranges between 10 and 200 µm
+and 0.1–1.0 µm in the DMBR and MBR. Higher ﬁltration ﬂux, ease of cleaning, and cost-
+effectiveness make the DMBR increasingly competitive for wastewater and organic wastes
+management with the assistance of various coarse-pore supporting materials [12]. Based on
+the distinction in DM formation, DM can be classiﬁed as self-forming dynamic membranes
+(SFDMs) or precoated dynamic membranes (PCDMs) [13]. PCDM is formed by pre-ﬁltering
+a solution containing one or more colloidal components through the supporting mate-
+rial [12,14,15]; SFDM is created when organic matter, colloids, and suspended solids in the
+sludge mixture are naturally deposited on the surface of the supporting material during
+the ﬁltration process. SFDM is more promising than PCDM for wastewater treatment since
+PCDM requires additional pre-coating chemical and pre-coating process, which raises the
+difﬁculties of practical application.
+The development of a stable and resilient DM is a necessity for the removal of pollu-
+tions from SFDMBR, as the well-formed cake layer is the only factor that inﬂuences this
+process [16]. However, several variables, including pore size and supporting material,
+sludge concentration, and driving force (waterhead in gravity-driven ﬁltration mode), play
+an important role in the formation and steady operation of SFDM. Based on previous
+studies, larger pore sizes of supporting material is known to lengthen the period that SFDM
+production occurs (a process that results in low-quality efﬂuent), but smaller ones causes
+serious membrane fouling [17,18]. Sabaghian et al. [19] reported that the formation of DM
+took 120 min, 80 min, 40 min, and 5 min at sludge concentrations of 3 g/L, 5 g/L, 7 g/L,
+and 9 g/L. And another study also reported that high concentration of MLSS contributed
+to the rapid formation of DM [20]. One study showed that a gravity waterhead of 70 mm
+promotes the rapid formation of SFDM and eliminates the enrichment of excess sludge on
+the cake layer under high pressure [14]. Therefore, realizing rapid formation followed by a
+stable operation of the SFDM by adjusting aforementioned parameters is crucial for the
+development of SFDMBR. However, as known, the effects of a speciﬁc operating condition
+on SFDM formation have been reported, but there is a lack of systematic analysis and
+optimization of important factors to realize the rapid formation of SFDM and reduce the
+membrane cleaning requirement.
+Therefore, this study established a lab-scale gravity-driven SFDMBR to systematically
+investigate the effects of supporting material, membrane pore size, sludge concentration,
+and gravity waterhead on SFDM formation and stable operation. The study also discussed
+the ﬁltration performance, pollutant removal, and properties of the SFDM under optimized
+operational conditions. The results are expected to provide technical support for SFDMBR
+wastewater treatment technology.
+2. Materials and Methods
+2.1. Wastewater, Sludge Inoculation and Supporting Materials
+The SFDMBR was fed with the real domestic wastewater collected from the inlet
+of a local wastewater treatment plant (WWTP) in Xi’an, China. The inﬂuent had a total
+chemical oxygen demand (COD) of 526.73 ± 62.57 mg/L and soluble COD (SCOD) of
+188.67 ± 9.75 mg/L, an ammonia nitrogen (NH4+-N) of 46.57 ± 2.95 mg/L, a total nitrogen
+(TN) of 62.41 ± 3.07 mg/L, a total phosphorus (TP) 6.78 ± 0.65 mg/L, with the turbidity of
+148 NTU on average during the operation period. The activated sludge for inoculation was
+taken from the aerobic tank in the same WWTP adopting anaerobic-anoxic-oxic-MBR (AAO-
+MBR) process. The mixed liquor suspended solids (MLSS) used in the batch experiments
+were controlled at 3–4 g/L, 5–6 g/L, and 7–8 g/L, respectively, which were thickened by
+gravity concentration and acclimated for two weeks before use. The supporting materials
+used for SFDM formation were stainless steel mesh (pore size of 75, 48, and 25 µm),
+polyester (pore size of 75 µm), screen silk (pore size of 75 µm), nylon mesh (pore size of
+75 µm), and non-woven fabric (speciﬁc weight of 120 g/m2).
+Water 2023, 15, 3963
+3 of 17
+2.2. Experimental Setup and Operation Conditions
+2.2.1. Reactor Setup and Operation
+The lab-scale SFDMBR with a working volume of 9.8 L was established in the local
+WWTP, with the schematic shown in Figure 1a. Two self-fabricated, ﬂat-sheet SFDM
+modules were symmetrically submerged in the bioreactor, each having an effective ﬁltering
+area of 0.02 m2. As shown in Figure 1b, the self-fabricated ﬂat-sheet SFDM module
+was constructed with plexiglass for the frame, a grid-shaped, highly pressure-resistant
+stainless-steel bracket for internal support, and corresponding membrane material wrapped
+externally to create the appearance of a box with an interior cavity. The aeration system
+was installed in the bottom of the bioreactor to provide shear force across the membrane
+and dissolved oxygen (DO). Bottom aeration was regulated through gas ﬂowmeter to
+provide DO requirements for microorganisms at 2–5 mg/L. The inﬂuent was pumped
+into the bioreactor through a peristaltic pump (Longer BT-100, Baoding, China), and a
+controller (JYB-714, Wenzhou, China) was connected to the inﬂuent pump to maintain a
+relatively stable water level. Continuous efﬂuent was obtained under the gravity waterhead
+differences between the water level and the outlet in bioreactor. The operating temperature
+was maintained at 25 ± 1 ◦C
+Water 2023, 15, x FOR PEER REVIEW 
+3 of 17 
+ 
+ 
+polyester (pore size of 75 μm), screen silk (pore size of 75 μm), nylon mesh (pore size of 
+75 μm), and non-woven fabric (specific weight of 120 g/m2). 
+2.2. Experimental Setup and Operation Conditions 
+2.2.1. Reactor Setup and Operation 
+The lab-scale SFDMBR with a working volume of 9.8 L was established in the local 
+WWTP, with the schematic shown in Figure 1a. Two self-fabricated, flat-sheet SFDM mod-
+ules were symmetrically submerged in the bioreactor, each having an effective filtering 
+area of 0.02 m2. As shown in Figure 1b, the self-fabricated flat-sheet SFDM module was 
+constructed with plexiglass for the frame, a grid-shaped, highly pressure-resistant stain-
+less-steel bracket for internal support, and corresponding membrane material wrapped 
+externally to create the appearance of a box with an interior cavity. The aeration system 
+was installed in the bottom of the bioreactor to provide shear force across the membrane 
+and dissolved oxygen (DO). Bottom aeration was regulated through gas flowmeter to pro-
+vide DO requirements for microorganisms at 2–5 mg/L. The influent was pumped into the 
+bioreactor through a peristaltic pump (Longer BT-100, Baoding, China), and a controller 
+(JYB-714, Wenzhou, China) was connected to the influent pump to maintain a relatively 
+stable water level. Continuous effluent was obtained under the gravity waterhead differ-
+ences between the water level and the outlet in bioreactor. The operating temperature was 
+maintained at 25 ± 1 °C 
+ 
+Figure 1. The schematic diagram of the SFDMBR; and SFDM module: (a) SFDMDR; (b) SFDM mod-
+ule. 
+2.2.2. Batch Filtration Tests for Efficient SFDM Formation 
+To maximize the SFDM formation conditions, a series of batch experiments based on 
+single factor analysis and the control variable method (CVM) were developed. The four 
+stages of the batch filtering experiments were membrane pore size optimization, sludge 
+concentration optimization, gravity head optimization, and supporting material optimi-
+zation. Firstly, as for the supporting materials, five distinct membrane materials (stainless 
+steel mesh, polyester, silk sieve, nylon mesh, and non-woven fabric) were chosen. One 
+membrane material was then ideally chosen based on the filtration performance, while 
+other conditions are maintained as follows: a 75 μm membrane pore size, 3–4 g/L of sludge 
+concentration, and a 10 cm gravity waterhead. Subsequently, the membrane pore sizes (75 
+μm, 48 μm, and 25 μm) were altered based on the favored supporting material. Based on 
+Figure 1. The schematic diagram of the SFDMBR; and SFDM module: (a) SFDMDR; (b) SFDM
+module.
+2.2.2. Batch Filtration Tests for Efﬁcient SFDM Formation
+To maximize the SFDM formation conditions, a series of batch experiments based
+on single factor analysis and the control variable method (CVM) were developed. The
+four stages of the batch ﬁltering experiments were membrane pore size optimization,
+sludge concentration optimization, gravity head optimization, and supporting material
+optimization. Firstly, as for the supporting materials, ﬁve distinct membrane materials
+(stainless steel mesh, polyester, silk sieve, nylon mesh, and non-woven fabric) were chosen.
+One membrane material was then ideally chosen based on the ﬁltration performance, while
+other conditions are maintained as follows: a 75 µm membrane pore size, 3–4 g/L of
+sludge concentration, and a 10 cm gravity waterhead. Subsequently, the membrane pore
+sizes (75 µm, 48 µm, and 25 µm) were altered based on the favored supporting material.
+Based on pollutants removal and ﬁltration performances, the ideal pore size was selected.
+Afterwards, the sludge concentration was varied (3–4 g/L, 5–6 g/L, and 7–8 g/L) based
+on the constant supporting material and membrane pore size, and the optimal sludge
+Water 2023, 15, 3963
+4 of 17
+concentration was determined based on the ﬁltration performance and pollutants removal.
+Finally, to optimize the gravity waterhead, the process performance the SFDMBR was
+compared under various gravity waterheads (10 cm, 20 cm, and 30 cm). For each batch
+ﬁltration test, a fresh membrane module was used, and the ﬁltration time was set to 24 h to
+guarantee the correctness of the results.
+2.2.3. Continuous Operation of the SFDMBR
+Following batch tests, the SFDMBR was operated for ﬁve continuous ﬁltration cycles
+under optimal operating conditions. The ﬁltration cycle was set for 48 h, and at the end of
+each cycle the mesh was physically cleaned by air back-ﬂushing (2 min with an air ﬂow rate
+of 75 L/min) plus surface brushing (2 min) according to our previous work [21]. With the
+exception of sampling for sludge characteristics study, no sludge was released, indicating
+an inﬁnite SRT. To keep the DO concentration between 2 and 5 mg/L, the aeration intensity
+was set to 2 L/min.
+2.3. Analytical Methods
+2.3.1. Water Sample Collection and Measurement
+Water samples were collected at the end of each batch ﬁltration experiment and at
+the end of each operational cycle (48 h). SCOD and NH4+-N was detected after samples
+ﬁltrating through 0.45 µm ﬁlters. COD, SCOD, NH4+-N, TN, TP, MLSS, and mixed liquor
+volatile suspended solids (MLVSS) were determined according to the standard methods [22].
+The ﬁltration ﬂux (J, L/m2h, LMH) of the SFDM was calculated by measuring the permeate
+volume (∆v, L) collected during a speciﬁed time interval (t, h) and a given membrane
+area (A, 0.02 m2) (J = ∆V
+A t). The turbidity of inﬂuent and efﬂuent was conducted with a
+turbidity meter (TB 211 IR, Lovibond, German), DO was detected by using a DO meter
+(JPBJ-608, Shanghai, China), and pH was measured using a portable pH meter (PHS-3C,
+Shanghai, China).
+2.3.2. SFDM Properties Analysis
+The membrane module was carefully removed from the bioreactor, and then the SFDM
+was collected for further analysis at the end of a long-term ﬁltration period according to
+the previous studies [23]. In detail, the SFDM layer was scraped off by a plastic sheet
+and transferred to a measuring cylinder containing pure water. The average thickness
+was calculated according to the volume difference. In addition, the morphology and inor-
+ganic elements of pre-treated SFDM were analyzed using a scanning electron microscope
+(SEM, Quanta650FEG, FEI, USA) connected to an energy-dispersive X-ray analyzer (EDX,
+Quanta650FEG, FEI, USA).
+Another SFDM module was used to determine the ﬁltration resistance distribution by
+the following equation (Darcy’s Law) [16,24].
+Rt = Rm + Rc + Rp = ∆P/µ
+Rc = Rt − Rm − Rp
+where Rt is the total resistance of the SFDM layer (m−1); Rm is the intrinsic resistance of
+the stainless steel mesh (m−1), which was measured as the new membrane module in
+pure water; Rc is the cake layer resistance (m−1), which can be obtained by subtracting
+the ﬁltration resistance of Rm and Rp from Rt; Rp is the pore blocking resistance (m−1),
+calculated by subtracting Rm from Rt after air back-ﬂushing plus surface brushing; ∆P is
+the gravity waterhead induced hydrodynamic pressure; µ is the viscosity of the permeate
+(Pa·s); and J is the ﬁltration ﬂux (m/s).
+Water 2023, 15, 3963
+5 of 17
+2.3.3. Statistical Analysis
+The IBM SPSS Statistics 25.0 software (international Business Machines Co., Armonk,
+NY, USA) was used for statistical analysis. Speciﬁcally, the average values and stan-
+dard deviations (±SD) were determined. Graphics and error bars were drawn using
+Origin2021 software.
+3. Results and Discussion
+3.1. Optimization of SFDM Supporting Material
+Selection of an appropriate supporting material enabling the formation of a DM is
+a critical step for SFDMBR application. For the batch ﬁltration tests, stainless steel mesh,
+nylon mesh, polyester, silk sieve (pore size of 75 µm), and 120 g/m2 non-woven fabric were
+chosen as the supporting materials. Variation in ﬁltration ﬂux and efﬂuent turbidity using
+different supporting materials were shown in Figure 2. Initial ﬁltration ﬂux of stainless-
+steel mesh, nylon mesh, sieve silk, polyester, and non-woven fabrics was 585, 456, 498,
+420, and 777 LMH. The ﬁltration ﬂow decreased to 192, 207, 195, 195, and 297 LMH after
+ﬁve minutes later, respectively. The ﬁltration ﬂux of the ﬁve supporting materials was
+attenuated to about 40% of the initial ﬂuxes in the ﬁrst 5 min, indicating the formation of
+SFDM layer on the mesh surface and decrease in ﬁltration ﬂux along with the operation
+time. Afterwards, the decreasing rates of ﬂux slowed down, as the stable ﬂux at the end of
+operation for the ﬁve supporting materials was 33, 27, 33, 30, and 36 LMH, respectively.
+Water 2023, 15, x FOR PEER REVIEW 
+5 of 17 
+ 
+ 
+2.3.3. Statistical Analysis 
+The IBM SPSS Statistics 25.0 software (international Business Machines Co., Armonk, 
+NY, USA) was used for statistical analysis. Specifically, the average values and standard 
+deviations (±SD) were determined. Graphics and error bars were drawn using Origin2021 
+software. 
+3. Results and Discussion 
+3.1. Optimization of SFDM Supporting Material 
+Selection of an appropriate supporting material enabling the formation of a DM is a 
+critical step for SFDMBR application. For the batch filtration tests, stainless steel mesh, 
+nylon mesh, polyester, silk sieve (pore size of 75 μm), and 120 g/m2 non-woven fabric were 
+chosen as the supporting materials. Variation in filtration flux and effluent turbidity using 
+different supporting materials were shown in Figure 2. Initial filtration flux of stainless-
+steel mesh, nylon mesh, sieve silk, polyester, and non-woven fabrics was 585, 456, 498, 
+420, and 777 LMH. The filtration flow decreased to 192, 207, 195, 195, and 297 LMH after 
+five minutes later, respectively. The filtration flux of the five supporting materials was 
+attenuated to about 40% of the initial fluxes in the first 5 min, indicating the formation of 
+SFDM layer on the mesh surface and decrease in filtration flux along with the operation 
+time. Afterwards, the decreasing rates of flux slowed down, as the stable flux at the end 
+of operation for the five supporting materials was 33, 27, 33, 30, and 36 LMH, respectively. 
+ 
+Figure 2. Filtration performance using different supporting materials (stainless steel mesh, polyes-
+ter, nylon mesh, silk sieve and non-woven fabric): (a) filtration flux and (b) effluent turbidity. Each 
+circle corresponds to each horizontal coordinate in the 3D plot. 
+The trend of effluent turbidity altered in agreement with the flux, as shown in Figure 
+2b (fast drop to stabilization). The influent turbidity varied between 140 and 170 NTU; 
+however, the effluent turbidity of the five membrane materials decreased dramatically 
+after 5 min to 3.78, 4.76, 4.75, 3.89, and 4.08 NTU, respectively. According to the previous 
+studies [20,21,23], it was reported that effluent turbidity below 5 NTU was defined as an 
+indicator of SFDM formation, thus five supporting materials could form SFDM within 5 
+min. The effluent turbidity after SFDM formation was relatively stable, and decreased 
+Figure 2. Filtration performance using different supporting materials (stainless steel mesh, polyester,
+nylon mesh, silk sieve and non-woven fabric): (a) ﬁltration ﬂux and (b) efﬂuent turbidity. Each circle
+corresponds to each horizontal coordinate in the 3D plot.
+The trend of efﬂuent turbidity altered in agreement with the ﬂux, as shown in Figure 2b
+(fast drop to stabilization). The inﬂuent turbidity varied between 140 and 170 NTU;
+however, the efﬂuent turbidity of the ﬁve membrane materials decreased dramatically
+after 5 min to 3.78, 4.76, 4.75, 3.89, and 4.08 NTU, respectively. According to the previous
+studies [20,21,23], it was reported that efﬂuent turbidity below 5 NTU was deﬁned as an
+indicator of SFDM formation, thus ﬁve supporting materials could form SFDM within
+5 min. The efﬂuent turbidity after SFDM formation was relatively stable, and decreased
+slowly with the ﬁltration time. When the efﬂuent turbidity was reduced to less than 2 NTU,
+Water 2023, 15, 3963
+6 of 17
+it represented the formation of stabilized SFDM [25]. Therefore, for stainless steel mesh,
+nylon mesh, sieve silk, and polyester, 7 h was noted for efﬂuent turbidity declining below
+2 NTU and longer time for non-woven fabric.
+Stainless steel mesh, silk sieve, and non-woven fabric had greater stable ﬂux. However,
+non-woven fabric took longer to generate stable SFDM and was more difﬁcult to clean.
+Stainless steel mesh was chosen as the supporting material for effective SFDM construction
+because it had a solid structure that could sustain the necessary pressure for an extended
+period of time and could be reused after membrane cleaning.
+3.2. Optimization of Membrane Pore Size
+Large pore size supporting material might worsen the quality of the efﬂuent during
+the startup phase or following membrane cleaning. Additionally, it took them a fair
+amount of time to create an efﬁcient SFDM. However, membrane fouling requires frequent
+membrane cleaning for the supporting material with smaller pore size. As a result, the
+supporting material should have an appropriate pore size to balance SFDM formation and
+membrane fouling.
+As shown in Figure 3a,b, using stainless steel mesh with different pore size (75 µm,
+48 µm, and 25 µm) as the supporting materials, the ﬁltration ﬂux, and efﬂuent turbidity
+were measured to further explore the effect of pore size on SFDM formation. Initially, there
+were 585, 515, and 450 LMH in the 75, 48, and 25 µm stainless steel mesh, respectively.
+Afterwards, 25 µm stainless steel mesh tended to be blocked by sludge particles, causing
+a faster decrease in the ﬁltration ﬂux. The beneﬁt of high ﬂux operation was lost for the
+SFDMBR when the ﬁltration ﬂux of 25 µm stainless steel mesh dropped to 18 LMH at the
+conclusion of operation; however, for 75 and 48 µm stainless steel mesh, the ﬁltration ﬂux
+at the conclusion of a 24 h operation was 33 and 33 LMH, respectively. Thus, membrane
+fouling was signiﬁcantly lower than 25 µm stainless steel mesh, which is consistent with
+other ﬁndings [17,18]. It is noteworthy that the SFDM formation time could be shortened
+for smaller pore size, as evidenced by the fact that 75 µm stainless steel mesh required
+120 min to achieve efﬂuent turbidity lower than 2 NTU (deﬁned as an indicator of stable
+SFDM formation), whereas 48 and 25 µm stainless steel mesh required 80 and 50 min,
+respectively [14,26]. Following stable SFDM formation, no discernible variation in efﬂuent
+turbidity was noted for varying pore sizes.
+The COD and SCOD removal of stainless-steel mesh with different pore sizes (75 µm,
+48 µm, and 25 µm) were shown in Figure 3c. For three membrane pore sizes of stainless-
+steel mesh, the inﬂuent COD was 242.95, 303.7, and 288.35 mg/L, while the inﬂuent SCOD
+was 149.8, 92.74, and 96.78 mg/L, in that order. Moreover, 51.98, 35.61, and 34.95 mg/L of
+COD and 48.97, 35.09, and 33.75 mg/L of SCOD were found in the efﬂuent. The efﬂuent
+COD from the 75 µm stainless steel mesh was signiﬁcantly greater than that of the other
+meshes; however, Sahinkaya [10] and Meng [27] reported the efﬂuent COD was not affected
+by pore size after SFDM formation. This might be explained by the fact that the SFDM
+performed a poor job of retaining SCOD, and the high SCOD concentration in the inﬂuent
+during the batch tests conducted with 75 µm stainless steel mesh. Thus, considering the
+stable ﬂux, SFDM formation time, and COD removal, 48 µm was regarded as the most
+suitable pore size for SFDM formation.
+Water 2023, 15, 3963
+7 of 17
+Water 2023, 15, x FOR PEER REVIEW 
+7 of 17 
+ 
+ 
+ 
+Figure 3. Filtration performance and COD removal under different mesh pore sizes (75, 48, and 25 
+μm): (a) filtration flux; (b) effluent turbidity; (c) COD and SCOD removal. 
+3.3. Optimization of MLSS Concentration 
+The filtration flux in the SFDMBR at MLSS concentrations of 3–4 g/L, 5–6 g/L, and 7–
+8 g/L was shown in Figure 4a. The initial flux of the SFDMBRs was 507, 303, and 204 LMH, 
+respectively. Due to the rapid deposition of sludge particles on the stainless-steel mesh, 
+the filtration flux rapidly decreased to 162, 147, and 132 LMH within 5 min. Afterwards, 
+the decreasing rate of filtration flux slowed down along with the operation time, as the 
+filtration flux dropped to 27, 24, and 15 LMH at end of operation. The filtration flux was 
+significantly lower at 7–8 g/L MLSS concentration in comparison to those of 3–4 g/L and 
+5–6 g/L MLSS concentration. As the MLSS concentration increased, more particles would 
+be further deposited on the DM layer; as a result, membrane pore size was blocked caus-
+ing the decrease in filtration flux [28,29]. As shown in Figure 4b, the initial turbidity of the 
+SFDMBR was 21.5, 29.9, and 14.8 NTU, respectively. All of them could be reduced to less 
+than 5 NTU in 5 min. However, the initial formation of the SFDM was not stable, the ef-
+fluent turbidity was influenced by aeration in the SFDMBR. The effluent turbidity fluctu-
+ated from 2.88 NTU to 4.53 NTU at 3–4 g/L MLSS concentration; however, there was no 
+obvious fluctuation of effluent turbidity at higher MLSS concentration (5–6 g/L and 7–8 
+g/L), showing that the formation of SFDM with higher sludge concentration was more 
+stable, and the ability to resist hydrodynamic disturbance. A total of 150, 30 and 20 min 
+was required for SFDM formation at different MLSS concentrations (3–4 g/L, 5–6 g/L, and 
+7–8 g/L). However, the stable effluent turbidity of the SFDMBR was not the lowest at the 
+Figure 3. Filtration performance and COD removal under different mesh pore sizes (75, 48, and
+25 µm): (a) ﬁltration ﬂux; (b) efﬂuent turbidity; (c) COD and SCOD removal.
+3.3. Optimization of MLSS Concentration
+The ﬁltration ﬂux in the SFDMBR at MLSS concentrations of 3–4 g/L, 5–6 g/L, and
+7–8 g/L was shown in Figure 4a. The initial ﬂux of the SFDMBRs was 507, 303, and
+204 LMH, respectively. Due to the rapid deposition of sludge particles on the stainless-
+steel mesh, the ﬁltration ﬂux rapidly decreased to 162, 147, and 132 LMH within 5 min.
+Afterwards, the decreasing rate of ﬁltration ﬂux slowed down along with the operation time,
+as the ﬁltration ﬂux dropped to 27, 24, and 15 LMH at end of operation. The ﬁltration ﬂux
+was signiﬁcantly lower at 7–8 g/L MLSS concentration in comparison to those of 3–4 g/L
+and 5–6 g/L MLSS concentration. As the MLSS concentration increased, more particles
+would be further deposited on the DM layer; as a result, membrane pore size was blocked
+causing the decrease in ﬁltration ﬂux [28,29]. As shown in Figure 4b, the initial turbidity
+of the SFDMBR was 21.5, 29.9, and 14.8 NTU, respectively. All of them could be reduced
+to less than 5 NTU in 5 min. However, the initial formation of the SFDM was not stable,
+the efﬂuent turbidity was inﬂuenced by aeration in the SFDMBR. The efﬂuent turbidity
+ﬂuctuated from 2.88 NTU to 4.53 NTU at 3–4 g/L MLSS concentration; however, there was
+no obvious ﬂuctuation of efﬂuent turbidity at higher MLSS concentration (5–6 g/L and
+7–8 g/L), showing that the formation of SFDM with higher sludge concentration was more
+stable, and the ability to resist hydrodynamic disturbance. A total of 150, 30 and 20 min
+was required for SFDM formation at different MLSS concentrations (3–4 g/L, 5–6 g/L,
+and 7–8 g/L). However, the stable efﬂuent turbidity of the SFDMBR was not the lowest
+Water 2023, 15, 3963
+8 of 17
+at the high MLSS concentration (7–8 g/L), which may be due to the increased dynamic
+membrane thickness and the permeation of small particles into the efﬂuent under higher
+hydraulic pressure [25].
+Water 2023, 15, x FOR PEER REVIEW 
+8 of 17 
+ 
+ 
+high MLSS concentration (7–8 g/L), which may be due to the increased dynamic mem-
+brane thickness and the permeation of small particles into the effluent under higher hy-
+draulic pressure [25]. 
+ 
+Figure 4. Filtration performance and COD removal under different MLSS concentrations (3–4, 5–6 
+and 7–8 g/L): (a) filtration flux; (b) effluent turbidity; (c) COD and SCOD removal. 
+As shown in Figure 4c, influent COD fluctuated between 320 and 550 mg/L, and the 
+SCOD was in the range of 100–170 mg/L. At the end of operation, effluent COD at three 
+different sludge concentrations was 72.61 (3–4 g/L), 52.37 (5–6 g/L), and 45.31 mg/L (7–8 
+g/L); effluent SCOD was 72.01, 48.44, and 43.35 mg/L, respectively. The corresponding 
+COD removal was 77.71%, 89.61%, and 91.75%, and the SCOD removal was 55.89%, 
+55.88%, and 65.17%, respectively. On the one hand, as the MLSS concentration increased, 
+more COD could be degraded by abundant microorganisms. On the other hand, the 
+SFDM layer formed under high MLSS concentration was more denser, so more COD was 
+retained and degraded, which was in agreement with previous studies reported that 
+sludge concentration below 5 g/L resulted in inadequate biodegradation [30,31]. 
+In summary, the MLSS of 5–6 g/L concentration was more preferable to promote ef-
+ficient SFDM formation because of the shorter duration for SFDM formation, the reduced 
+propensity for pore blockage, as well as the stable and robust in dynamic membrane struc-
+ture. 
+Figure 4. Filtration performance and COD removal under different MLSS concentrations (3–4, 5–6
+and 7–8 g/L): (a) ﬁltration ﬂux; (b) efﬂuent turbidity; (c) COD and SCOD removal.
+As shown in Figure 4c, inﬂuent COD ﬂuctuated between 320 and 550 mg/L, and
+the SCOD was in the range of 100–170 mg/L. At the end of operation, efﬂuent COD at
+three different sludge concentrations was 72.61 (3–4 g/L), 52.37 (5–6 g/L), and 45.31 mg/L
+(7–8 g/L); efﬂuent SCOD was 72.01, 48.44, and 43.35 mg/L, respectively. The corresponding
+COD removal was 77.71%, 89.61%, and 91.75%, and the SCOD removal was 55.89%,
+55.88%, and 65.17%, respectively. On the one hand, as the MLSS concentration increased,
+more COD could be degraded by abundant microorganisms. On the other hand, the
+SFDM layer formed under high MLSS concentration was more denser, so more COD was
+retained and degraded, which was in agreement with previous studies reported that sludge
+concentration below 5 g/L resulted in inadequate biodegradation [30,31].
+Water 2023, 15, 3963
+9 of 17
+In summary, the MLSS of 5–6 g/L concentration was more preferable to promote
+efﬁcient SFDM formation because of the shorter duration for SFDM formation, the reduced
+propensity for pore blockage, as well as the stable and robust in dynamic membrane structure.
+3.4. Optimization of Gravity Waterhead
+As seen in Figure 5a, the ﬁltration ﬂux of SFDM in various gravity waterheads,
+including 10 cm, 20 cm, and 30 cm was examined. With the gravity waterhead increasing
+from 10 cm to 30 cm, the initial ﬂux increased from 303 LMH to 660 LMH, indicating that
+hydrodynamics had a major role in determining the initial ﬂux prior to SFDM formation.
+The highest ﬂux decreased was observed at 30 cm waterhead, as the ﬁltration ﬂux at the
+30 cm gravity waterhead decreased to 147 LMH after 5 min; however, which decreased
+to 162 LMH at 20 cm gravity waterhead. At the end of the 24 h operation, the ﬁltration
+ﬂux under the three gravity waterhead dropped to 18, 21 and 15 LMH, respectively, so it
+was obvious that there was no direct correlation between the gravity waterhead and the
+stable ﬂux after the formation of SFDM. This might be due to the strong compaction effect
+of the greater waterhead on the SFDM, resulting in an increase in the DM thickness and
+pore-clogging propensity, and a decrease in the membrane porosity [32,33].
+Water 2023, 15, x FOR PEER REVIEW 
+9 of 17 
+ 
+3.4. Optimization of Gravity Waterhead 
+As seen in Figure 5a, the filtration flux of SFDM in various gravity waterheads, in-
+cluding 10 cm, 20 cm, and 30 cm was examined. With the gravity waterhead increasing 
+from 10 cm to 30 cm, the initial flux increased from 303 LMH to 660 LMH, indicating that 
+hydrodynamics had a major role in determining the initial flux prior to SFDM formation. 
+The highest flux decreased was observed at 30 cm waterhead, as the filtration flux at the 
+30 cm gravity waterhead decreased to 147 LMH after 5 min; however, which decreased to 
+162 LMH at 20 cm gravity waterhead. At the end of the 24 h operation, the filtration flux 
+under the three gravity waterhead dropped to 18, 21 and 15 LMH, respectively, so it was 
+obvious that there was no direct correlation between the gravity waterhead and the stable 
+flux after the formation of SFDM. This might be due to the strong compaction effect of the 
+greater waterhead on the SFDM, resulting in an increase in the DM thickness and pore-
+clogging propensity, and a decrease in the membrane porosity [32,33]. 
+ 
+Figure 5. Filtration performance and COD removal under different gravity waterheads (10, 20, and 
+30 cm): (a) filtration flux; (b) effluent turbidity; (c) COD and SCOD removal. 
+ 
+ 
+Figure 5. Filtration performance and COD removal under different gravity waterheads (10, 20, and
+30 cm): (a) ﬁltration ﬂux; (b) efﬂuent turbidity; (c) COD and SCOD removal.
+Water 2023, 15, 3963
+10 of 17
+As shown in Figure 5b, initial efﬂuent turbidity was 29.4, 31.0, and 29.9 NTU at 10,
+20 and 30 cm gravity waterhead, respectively. A total of 10, 5, and 3 min was required for
+efﬂuent turbidity decreasing below 5 NTU, respectively, suggesting that SFDM formation
+was accelerated under higher gravity waterhead. In addition, the efﬂuent turbidity under
+high gravity waterhead lose was signiﬁcantly decreased at the initial stage (the initial
+efﬂuent turbidity under 30 cm waterhead is lower than those of 20 and 10 cm) due to the
+compaction and thickening of the DM. The COD and SCOD removal at different gravity
+waterhead were shown in Figure 5c. The COD removal under three gravity waterhead
+was 87.08%, 88.31%, and 90.82%, and the SCOD removal was 56.50%, 66.96%, and 69.77%,
+respectively. The removal efﬁciency of SCOD at 20 cm and 30 cm gravity waterhead was
+signiﬁcantly higher than that at 10 cm, which might be due to the fact that the more stable
+the SFDM structure formed under the higher waterhead [34,35].
+Based on the ﬁltration performance and COD removal, it can be concluded that the
+gravity waterhead for efﬁcient SFDM formation was between 10 and 20 cm, thus gravity
+waterhead of 10, 15, and 20 cm were selected and operated for 3 d to further determine
+the optimum gravity waterhead. As shown in Figure 6, consistent with the results of the
+above tests, the ﬁltration ﬂux was positively related to the gravity waterhead in the initial
+stage. But after the SFDM formation, the ﬁltration ﬂux at the end of the 3 d operation
+decreased to 24 LMH at 15 cm gravity waterhead, and the ﬁltration ﬂux was 15 LMH and
+12 LMH at 20 cm and 10 cm gravity waterhead, indicating that the SFDM layer was severely
+consolidated at greater waterhead causing the decrease in the porosity and ﬁltration ﬂux.
+The efﬂuent turbidity during the initial SFDM formation stage was lowest at 20 cm gravity
+waterhead; however, the efﬂuent turbidity during the stabilization stage was lowest at
+15 cm gravity waterhead. This might because that the rate of SFDM formation increased
+during the initial stage at high waterhead, and therefore the turbidity decreased at a
+faster rate; however, after stabilization of the SFDM formation, too many particles escaped
+through the DM into the efﬂuent under 20 cm waterhead. The inﬂuent COD at 10, 15, and
+20 cm gravity waterhead was 481.11, 574.71, and 536.73 mg/L, and the efﬂuent COD was
+41.96, 40.33, and 36.67 mg/L, and the COD removal rate was 91.26%, 92.97%, and 93.17%
+on average. To sum up, 15 cm was ﬁnally selected as the optimal gravity waterhead for
+SFDM formation under the operational conditions in this work.
+3.5. Long-Term Process Performance of the SFDMBR
+3.5.1. Filtration Performance
+The ﬁltration ﬂux and efﬂuent turbidity of during ﬁve consecutive operation cycles
+of the SFDMBR under optimized condition (48 µm stainless steel mesh, 5–6 g/L MLSS
+concentration and 15 cm gravity waterhead) were shown in Figure 7. The constant pressure
+ﬁltration mode driven by an average gravity waterhead of 15 cm resulted in a gradual
+decrease in the ﬁltration ﬂux. The initial ﬂux varied between 401 and 428 LMH during ﬁve
+consecutive ﬁltration cycles. Then, after 5 min the ﬁltration ﬂux was quickly reduced to
+148–192 LMH, consistent with previous study showing that the ﬁltration ﬂux halved during
+SFDM formation stage [23]. The ﬁnal stabilized ﬂux could be maintained at 30–50 LMH,
+which was higher than the reported results of 4.2–16 LMH [36]. For most ﬁltration cycles,
+it was noted that the ﬂux recovery after physical cleaning was nearly 100%, indicating a
+combined physical cleaning (air backwashing plus surface brushing) could be effective in
+membrane cleaning for SFDM regeneration [37].
+Water 2023, 15, 3963
+11 of 17
+Water 2023, 15, x FOR PEER REVIEW 
+11 of 17 
+ 
+ 
+ 
+Figure 6. Filtration performance and COD removal under different gravity waterheads (10, 15, and 
+20 cm): (a) filtration flux; (b) effluent turbidity; (c) COD and SCOD removal. 
+3.5. Long-Term Process Performance of the SFDMBR 
+3.5.1. Filtration Performance 
+The filtration flux and effluent turbidity of during five consecutive operation cycles 
+of the SFDMBR under optimized condition (48 μm stainless steel mesh, 5–6 g/L MLSS 
+concentration and 15 cm gravity waterhead) were shown in Figure 7. The constant pres-
+sure filtration mode driven by an average gravity waterhead of 15 cm resulted in a gradual 
+decrease in the filtration flux. The initial flux varied between 401 and 428 LMH during five 
+consecutive filtration cycles. Then, after 5 min the filtration flux was quickly reduced to 
+148–192 LMH, consistent with previous study showing that the filtration flux halved dur-
+ing SFDM formation stage [23]. The final stabilized flux could be maintained at 30–50 
+LMH, which was higher than the reported results of 4.2–16 LMH [36]. For most filtration 
+cycles, it was noted that the flux recovery after physical cleaning was nearly 100%, indi-
+cating a combined physical cleaning (air backwashing plus surface brushing) could be 
+effective in membrane cleaning for SFDM regeneration [37]. 
+Figure 6. Filtration performance and COD removal under different gravity waterheads (10, 15, and
+20 cm): (a) ﬁltration ﬂux; (b) efﬂuent turbidity; (c) COD and SCOD removal.
+The average inﬂuent turbidity was 148 NTU at the initial stage. In each ﬁltration cycle,
+the efﬂuent turbidity could drop to less than 2 NTU within 5 min. With the prolonged
+ﬁltration time, the efﬂuent turbidity further decreased to approximately 1 NTU in about
+30 min. And thereafter, the efﬂuent turbidity maintained in a low level, indicating that the
+SFDM could be formed with 5 min under the optimized condition and the formed SFDM
+was stable in structure evidenced by stabilized ﬂux and efﬂuent turbidity.
+Water 2023, 15, 3963
+12 of 17
+2023, 15, x FOR PEER REVIEW 
+12 of 17 
+ 
+Figure 7. Filtration performance of the SFDMBR: (a) filtration flux and (b) effluent turbidity. 
+The average influent turbidity was 148 NTU at the initial stage. In each filtration cy-
+cle, the effluent turbidity could drop to less than 2 NTU within 5 min. With the prolonged 
+filtration time, the effluent turbidity further decreased to approximately 1 NTU in about 
+30 min. And thereafter, the effluent turbidity maintained in a low level, indicating that the 
+SFDM could be formed with 5 min under the optimized condition and the formed SFDM 
+was stable in structure evidenced by stabilized flux and effluent turbidity. 
+3.5.2. Pollutants Removal Performance 
+In this study, the average concentrations of common pollutants (including COD, 
+SCOD, NH4+-N, TN, and TP) in the influent and effluent as well as removal rates during 
+continuous SFDMBR operation period were shown in Figure 8 (similar SFDMBR perfor-
+mance listed in Table S2). The results showed that the influent COD was 526.73 mg/L, and 
+the effluent COD was 35.65 mg/L, and the removal efficiency of COD was as high as 
+93.28% on average. The retention effect of the efficiently formed SFDM and biodegrada-
+tion both contributed to organics removal. Yang et al. [36] reported that the COD removal 
+rate was 88%, but the removal rate of SCOD was only 68% in SFDMBR system. However, 
+the COD removal in this investigation was as high as 82.58%, which might be because the 
+more stable SFDM structure created under optimal conditions enhanced SCOD retention. 
+The NH4+-N removal rate was as high as 95.46% due to the efficient nitrification process 
+under the complete aerobic condition, whereas the removal rate of TN was only 21.83%, 
+Figure 7. Filtration performance of the SFDMBR: (a) ﬁltration ﬂux and (b) efﬂuent turbidity.
+3.5.2. Pollutants Removal Performance
+In this study, the average concentrations of common pollutants (including COD, SCOD,
+NH4+-N, TN, and TP) in the inﬂuent and efﬂuent as well as removal rates during continuous
+SFDMBR operation period were shown in Figure 8 (similar SFDMBR performance listed
+in Table S2). The results showed that the inﬂuent COD was 526.73 mg/L, and the efﬂuent
+COD was 35.65 mg/L, and the removal efﬁciency of COD was as high as 93.28% on
+average. The retention effect of the efﬁciently formed SFDM and biodegradation both
+contributed to organics removal. Yang et al. [36] reported that the COD removal rate was
+88%, but the removal rate of SCOD was only 68% in SFDMBR system. However, the COD
+removal in this investigation was as high as 82.58%, which might be because the more
+stable SFDM structure created under optimal conditions enhanced SCOD retention. The
+NH4+-N removal rate was as high as 95.46% due to the efﬁcient nitriﬁcation process under
+the complete aerobic condition, whereas the removal rate of TN was only 21.83%, limited
+by negligible denitriﬁcation effect. Similarly, in this SFDMBR, about 21.83% of TP was
+removed mainly due to microbial assimilation [38].
+Water 2023, 15, 3963
+13 of 17
+Water 2023, 15, x FOR PEER REVIEW 
+13 of 17 
+ 
+ 
+limited by negligible denitrification effect. Similarly, in this SFDMBR, about 21.83% of TP 
+was removed mainly due to microbial assimilation [38]. 
+ 
+Figure 8. Common pollutants removal of SFDMBR under optimized SFDM formation conditions. 
+3.5.3. Properties of the Dynamic Membrane 
+Photographs of membrane modules, and SEM images and EDX analysis of pristine 
+mesh and SFDM layer under optimized conditions were shown in Figure 9a. The yellow-
+brown sludge layer on the surface of the supporting material of the membrane module at 
+the end of one operation cycle could be visualized, indicating the effective formation of 
+SFDM. The thickness of this cake layer was determined to be 1.5 mm, so it could effectively 
+retain the particulate matter and provide sufficient biodegradation of entrapped pollu-
+tants. The SEM images showed that the pristine membrane was distributed with even and 
+clear micropores. Sludge particles and microbial cells could be observed in the SFDM [13]. 
+Moreover, the morphology of the SFDM was rough and porous, thus the SFDM formed 
+under the optimized conditions could maintain a high and stable flux. 
+The inorganic elements of pristine mesh and SFDM were revealed by EDX analysis. 
+The following elemental composition was detected in the SFDM, and the relative weight 
+percentages of the elementals were presented as follows: 47.11% C, 10.07% N, 17.48 O, 
+0.37% Mg, 0.18% Na, 0.22% Al, 1.15% Si, 5.59% P, 3.03% S, 1.51% Cl, 0.92% K, 3.78% Ca, 
+3.32% Cr, and 6.28% Fe. The relative content of the elements of C, N, and O was close to 
+the molecular formula of microbial cells (C5H7O2N) and the molecular formula of proteins 
+(C16H24O5N4) according to a previous study [13]. This might indicate that the SFDM layer 
+consists mainly of microorganisms and microbial metabolites. According to the previous 
+work, although the contents of some metal elements (e.g., Mg, Al, Fe and Ca) accounted 
+for a relatively small percentage, they could bridge the biopolymers and deposited mi-
+crobes enhancing the formation of cake layer [39,40]. Further analysis of SFDM composi-
+tion using FTIR analysis was carried out to reveal the main functional groups of the or-
+ganic matter in the SFDM (Figure 9b). The peaks at 2974 cm−1 and 2979 cm−1 corresponded 
+to C-H stretching. The peaks at 1660 cm−1, 1546 cm−1, 1388 cm−1, and 1231 cm−1 corre-
+sponded to amide Ⅰ, amide Ⅱ, and amide Ⅲ, respectively [41]. And the peak at 1066 cm−1 
+corresponded to the C-O stretching of PS or PS-like substances [42]. The stretching of these 
+peaks further indicates that the main organic components in the SFDM layer are PN and 
+PS. 
+COD
+SCOD
+NH4
++-N
+TN
+TP
+0
+100
+200
+300
+400
+500
+600
+ Influent
+ effluent
+ Removal rate
+Concentration (mg/L)
+0
+20
+40
+60
+80
+100
+ Removal rate (%)
+Figure 8. Common pollutants removal of SFDMBR under optimized SFDM formation conditions.
+3.5.3. Properties of the Dynamic Membrane
+Photographs of membrane modules, and SEM images and EDX analysis of pristine
+mesh and SFDM layer under optimized conditions were shown in Figure 9a. The yellow-
+brown sludge layer on the surface of the supporting material of the membrane module at
+the end of one operation cycle could be visualized, indicating the effective formation of
+SFDM. The thickness of this cake layer was determined to be 1.5 mm, so it could effectively
+retain the particulate matter and provide sufﬁcient biodegradation of entrapped pollutants.
+The SEM images showed that the pristine membrane was distributed with even and clear
+micropores. Sludge particles and microbial cells could be observed in the SFDM [13].
+Moreover, the morphology of the SFDM was rough and porous, thus the SFDM formed
+under the optimized conditions could maintain a high and stable ﬂux.
+The inorganic elements of pristine mesh and SFDM were revealed by EDX analysis.
+The following elemental composition was detected in the SFDM, and the relative weight
+percentages of the elementals were presented as follows: 47.11% C, 10.07% N, 17.48 O,
+0.37% Mg, 0.18% Na, 0.22% Al, 1.15% Si, 5.59% P, 3.03% S, 1.51% Cl, 0.92% K, 3.78% Ca,
+3.32% Cr, and 6.28% Fe. The relative content of the elements of C, N, and O was close to
+the molecular formula of microbial cells (C5H7O2N) and the molecular formula of proteins
+(C16H24O5N4) according to a previous study [13]. This might indicate that the SFDM layer
+consists mainly of microorganisms and microbial metabolites. According to the previous
+work, although the contents of some metal elements (e.g., Mg, Al, Fe and Ca) accounted for
+a relatively small percentage, they could bridge the biopolymers and deposited microbes
+enhancing the formation of cake layer [39,40]. Further analysis of SFDM composition using
+FTIR analysis was carried out to reveal the main functional groups of the organic matter
+in the SFDM (Figure 9b). The peaks at 2974 cm−1 and 2979 cm−1 corresponded to C-H
+stretching. The peaks at 1660 cm−1, 1546 cm−1, 1388 cm−1, and 1231 cm−1 corresponded to
+amide I, amide II, and amide III, respectively [41]. And the peak at 1066 cm−1 corresponded
+to the C-O stretching of PS or PS-like substances [42]. The stretching of these peaks further
+indicates that the main organic components in the SFDM layer are PN and PS.
+Water 2023, 15, 3963
+14 of 17
+Water 2023, 15, x FOR PEER REVIEW 
+14 of 17 
+ 
+ 
+ 
+Figure 9. (a) SEM images and EDX analysis; pristine mesh and SFDM; (b) FTIR spectrum of SFDM. 
+The filtration resistance distribution of SFDM was further analyzed, as shown in Ta-
+ble 1. The total filtration resistance (Rt) of SFDM was calculated to be 1.72 × 1011 m−1 at the 
+end of filtration cycle, and this value was one to three orders of magnitude lower than 
+those commonly observed in conventional MBRs (1012–1014 m−1) [43]. The intrinsic re-
+sistance (Rm) of the stainless-steel mesh (pore size of 48 μm) was 4.5 × 109 m−1, which ac-
+counted for 1.33% of the total filtration resistance. Furthermore, the cake layer resistance 
+(Rc) was 1.65 × 1011 m−1, accounting for 95.93% of the total resistance, with pore blocking 
+resistance (Rp) of 0.47 × 1010 m−1 which was far less than the cake layer resistance. It meant 
+that cake layer resistance was the major filtration resistance and membrane flux could be 
+effectively restored only by simple physical cleaning due to the reversible nature of cake 
+layer, and the pore resistance contributing much to filtration resistance in the MBRs could 
+be effectively avoided in the SFDMBRs. It is worth noting that the SFDMBR showing 
+lower filtration resistance and higher permeability is easy to clean compared with the 
+MBR, but the membrane fouling cannot be avoided after a long-term operation. Thus, 
+Figure 9. (a) SEM images and EDX analysis; pristine mesh and SFDM; (b) FTIR spectrum of SFDM.
+The ﬁltration resistance distribution of SFDM was further analyzed, as shown in
+Table 1. The total ﬁltration resistance (Rt) of SFDM was calculated to be 1.72 × 1011 m−1
+at the end of ﬁltration cycle, and this value was one to three orders of magnitude lower
+than those commonly observed in conventional MBRs (1012–1014 m−1) [43]. The intrinsic
+resistance (Rm) of the stainless-steel mesh (pore size of 48 µm) was 4.5 × 109 m−1, which
+accounted for 1.33% of the total ﬁltration resistance. Furthermore, the cake layer resistance
+(Rc) was 1.65 × 1011 m−1, accounting for 95.93% of the total resistance, with pore blocking
+resistance (Rp) of 0.47 × 1010 m−1 which was far less than the cake layer resistance. It
+meant that cake layer resistance was the major ﬁltration resistance and membrane ﬂux
+could be effectively restored only by simple physical cleaning due to the reversible nature
+of cake layer, and the pore resistance contributing much to ﬁltration resistance in the MBRs
+could be effectively avoided in the SFDMBRs. It is worth noting that the SFDMBR showing
+lower ﬁltration resistance and higher permeability is easy to clean compared with the MBR,
+but the membrane fouling cannot be avoided after a long-term operation. Thus, mitigating
+Water 2023, 15, 3963
+15 of 17
+SFDM fouling using low-cost physical cleaning methods need to be subsequently explored
+and optimized using advanced techniques like artiﬁcial intelligence.
+Table 1. Filtration resistance distribution of the SFDMBR.
+Intrinsic
+Resistance (Rm)
+Cake Resistance
+(Rc)
+Pore Blocking
+Resistance (Rp)
+Total Resistance
+(Rt)
+R (×1010 m−1)
+0.45
+16.5
+0.47
+17.2
+Percentage (%)
+1.33
+95.93
+2.74
+100
+4. Conclusions
+The SFDM could be efﬁciently formed within 5 min under the optimized formation
+condition, namely stainless-steel mesh with the pore size of 48 µm under MLSS concen-
+tration of 5–6 g/L and a gravity waterhead of 15 cm. Porous SFDM with a thickness of
+1.5 mm formed under optimized conditions, allowing for efﬁcient ﬁltration performance
+and pollutants removal at a high steady-state ﬁltration ﬂux (30–50 LMH). Additionally,
+near 100% cake layer resistance indicated that the ﬂux can be efﬁciently restored via simple
+physical cleaning methods. These results provided a helpful reference for the development
+and application of the low-cost SFDMBR process with limited maintenance requirement.
+Towards large-scale applications of the SFDMBR, artiﬁcial intelligence (such as machine
+learning methods) might be used to further analyze the SFDM ﬁltration process and to
+optimize the SFDM formation conditions and fouling mitigation strategies.
+Supplementary Materials: The following supporting information can be downloaded at: https://
+www.mdpi.com/article/10.3390/w15223963/s1. Table S1: A nomenclature list; Table S2: Operational
+performance comparison of SFDMBRs.
+Author Contributions: L.T.: funding acquisition, writing-review and editing; J.Z.: funding acquisi-
+tion, writing-review and editing; L.Z.: Investigation, writing-original draft operation, software; Y.H.:
+Conceptualization, supervision, writing-review and editing, funding acquisition, Y.Y. (Yiming Yang):
+writing-review and editing; Y.Z.: writing-review and editing; X.D.: writing-review and editing; Z.W.
+writing-review and editing; W.D.: software; Y.Y. (Yuan Yang): investigation. All authors have read
+and agreed to the published version of the manuscript.
+Funding: This work was supported by the Natural Science Foundation of the Shaanxi Province (grant
+no. 2022JM-237), the China Postdoctoral Science Foundation (grant no. 2021MD703870) and the
+Shaanxi Provincial Program for Innovative Research Team (no. 2019TD-025).
+Data Availability Statement: The data that supported the ﬁndings of this study are available from
+the corresponding author upon reasonable request.
+Conﬂicts of Interest: The authors Luhe Tang, Jingyu Zhang, Yiming Yang, Yunsheng Zhao, Xinglong
+Dong, Zhanjiu Wang were employed by the Beijing Huayu Brilliant Eco-Environmental Protection
+Technology company. And remaining authors declare that the research was conducted in the absence
+of any commercial or ﬁnancial relationships that could be construed as a potential conﬂict of interest.
+References
+1.
+Meng, F.; Zhang, S.; Oh, Y.; Zhou, Z.; Shin, H.S.; Chae, S.R. Fouling in Membrane Bioreactors: An Updated Review. Water Res.
+2017, 114, 151–180. [CrossRef] [PubMed]
+2.
+Nguyen, M.L.; Nakhjiri, A.T.; Kamal, M.; Mohamed, A.; Algarni, M.; Yu, S.T.; Wang, F.M.; Su, C.H. State-of-the-Art Review on the
+Application of Membrane Bioreactors for Molecular Micro-Contaminant Removal from Aquatic Environment. Membranes 2022,
+12, 429. [CrossRef] [PubMed]
+3.
+Meng, F.; Chae, S.R.; Shin, H.S.; Yang, F.; Zhou, Z. Recent Advances in Membrane Bioreactors: Conﬁguration Development,
+Pollutant Elimination, and Sludge Reduction. Environ. Eng. Sci. 2012, 29, 139–160. [CrossRef]
+4.
+Zhang, J.; Xiao, K.; Huang, X. Full-Scale MBR Applications for Leachate Treatment in China: Practical, Technical, and Economic
+Features. J. Hazard. Mater. 2020, 389, 122138. [CrossRef]
+5.
+Marjani, A.; Taghvaie Nakhjiri, A.; Adimi, M.; Fathinejad Jirandehi, H.; Shirazian, S. Modiﬁcation of Polyethersulfone Membrane
+Using MWCNT-NH2 Nanoparticles and Its Application in the Separation of Azeotropic Solutions by Means of Pervaporation.
+PLoS ONE 2020, 15, e0236529. [CrossRef]
+Water 2023, 15, 3963
+16 of 17
+6.
+Liu, Q.; Ren, J.; Lu, Y.; Zhang, X.; Roddick, F.A.; Fan, L.; Wang, Y.; Yu, H.; Yao, P. A Review of the Current In-Situ Fouling Control
+Strategies in MBR: Biological versus Physicochemical. J. Ind. Eng. Chem. 2021, 98, 42–59. [CrossRef]
+7.
+Chen, C.; Sun, M.; Chang, J.; Liu, Z.; Zhu, X.; Xiao, K.; Song, G.; Wang, H.; Liu, G.; Huang, X. Unravelling Temperature-Dependent
+Fouling Mechanism in a Pilot-Scale Anaerobic Membrane Bioreactor via Statistical Modelling. J. Memb. Sci. 2022, 644, 120145.
+[CrossRef]
+8.
+Ersahin, M.E.; Ozgun, H.; Dereli, R.K.; Ozturk, I.; Roest, K.; van Lier, J.B. A Review on Dynamic Membrane Filtration: Materials,
+Applications and Future Perspectives. Bioresour. Technol. 2012, 122, 196–206. [CrossRef]
+9.
+Wu, Y.; Huang, X.; Wen, X.; Chen, F. Function of Dynamic Membrane in Self-Forming Dynamic Membrane Coupled Bioreactor.
+Water Sci. Technol. 2005, 51, 107–114. [CrossRef]
+10.
+Sahinkaya, E.; Yurtsever, A.; Çınar, Ö. Treatment of Textile Industry Wastewater Using Dynamic Membrane Bioreactor: Impact of
+Intermittent Aeration on Process Performance. Sep. Purif. Technol. 2017, 174, 445–454. [CrossRef]
+11.
+Fan, B.; Huang, X. Characteristics of a Self-Forming Dynamic Membrane Coupled with a Bioreactor for Municipal Wastewater
+Treatment. Environ. Sci. Technol. 2002, 36, 5245–5251. [CrossRef] [PubMed]
+12.
+Mohan, S.M.; Nagalakshmi, S. A Review on Aerobic Self-Forming Dynamic Membrane Bioreactor: Formation, Performance,
+Fouling and Cleaning. J. Water Process Eng. 2020, 37, 101541. [CrossRef]
+13.
+Yang, Y.; Deng, W.; Zhang, J.; Dzakpasu, M.; Chen, R.; Wang, X.C.; Hu, Y. A Novel Precoated Anaerobic Dynamic Membrane
+Bioreactor for Real Domestic Wastewater Treatment: In-Situ Formation, Filtration Performance and Characterization of Dynamic
+Membrane. Chem. Eng. J. 2023, 466, 143313. [CrossRef]
+14.
+Loderer, C.; Wörle, A.; Fuchs, W. Inﬂuence of Different Mesh Filter Module Conﬁgurations on Efﬂuent Quality and Long-Term
+Filtration Performance. Environ. Sci. Technol. 2012, 46, 3844–3850. [CrossRef]
+15.
+Ersahin, M.E.; Tao, Y.; Ozgun, H.; Gimenez, J.B.; Spanjers, H.; van Lier, J.B. Impact of Anaerobic Dynamic Membrane Bioreactor
+Conﬁguration on Treatment and Filterability Performance. J. Memb. Sci. 2017, 526, 387–394. [CrossRef]
+16.
+Ji, J.; Sakuma, S.; Ni, J.; Chen, Y.; Hu, Y.; Ohtsu, A.; Chen, R.; Cheng, H.; Qin, Y.; Hojo, T.; et al. Application of Two Anaerobic
+Membrane Bioreactors with Different Pore Size Membranes for Municipal Wastewater Treatment. Sci. Total Environ. 2020, 745,
+140903. [CrossRef]
+17.
+Saleem, M.; Masut, E.; Spagni, A.; Lavagnolo, M.C. Exploring Dynamic Membrane as an Alternative for Conventional Membrane
+for the Treatment of Old Landﬁll Leachate. J. Environ. Manag. 2019, 246, 658–667. [CrossRef]
+18.
+Guan, D.; Dai, J.; Watanabe, Y.; Chen, G. Changes in the Physical Properties of the Dynamic Layer and Its Correlation with
+Permeate Quality in a Self-Forming Dynamic Membrane Bioreactor. Water Res. 2018, 140, 67–76. [CrossRef]
+19.
+Sabaghian, M.; Mehrnia, M.R.; Esmaieli, M.; Noormohammadi, D. Formation and Performance of Self-Forming Dynamic
+Membrane (SFDM) in Membrane Bioreactor (MBR) for Treating Low-Strength Wastewater. Water Sci. Technol. 2018, 78, 904–912.
+[CrossRef]
+20.
+Chu, L.; Li, S. Filtration Capability and Operational Characteristics of Dynamic Membrane Bioreactor for Municipal Wastewater
+Treatment. Sep. Purif. Technol. 2006, 51, 173–179. [CrossRef]
+21.
+Hu, Y.; Wang, X.C.; Tian, W.; Ngo, H.H.; Chen, R. Towards Stable Operation of a Dynamic Membrane Bioreactor (DMBR):
+Operational Process, Behavior and Retention Effect of Dynamic Membrane. J. Memb. Sci. 2016, 498, 20–29. [CrossRef]
+22.
+Nepa, C. Water and Wastewater Monitoring Methods, 4th ed.; Chinese Environmental Science Publishing House: Beijing, China,
+2002.
+23.
+Hu, Y.; Yang, Y.; Wang, X.C.; Hao Ngo, H.; Sun, Q.; Li, S.; Tang, J.; Yu, Z. Effects of Powdered Activated Carbon Addition on
+Filtration Performance and Dynamic Membrane Layer Properties in a Hybrid DMBR Process. Chem. Eng. J. 2017, 327, 39–50.
+[CrossRef]
+24.
+Zhang, X.; Wang, Z.; Wu, Z.; Lu, F.; Tong, J.; Zang, L. Formation of Dynamic Membrane in an Anaerobic Membrane Bioreactor for
+Municipal Wastewater Treatment. Chem. Eng. J. 2010, 165, 175–183. [CrossRef]
+25.
+Li, L.; Xu, G.; Yu, H.; Xing, J. Dynamic Membrane for Micro-Particle Removal in Wastewater Treatment: Performance and
+Inﬂuencing Factors. Sci. Total Environ. 2018, 627, 332–340. [CrossRef]
+26.
+Cai, D.; Huang, J.; Liu, G.; Li, M.; Yu, Y.; Meng, F. Effect of Support Material Pore Size on the Filtration Behavior of Dynamic
+Membrane Bioreactor. Bioresour. Technol. 2018, 255, 359–363. [CrossRef]
+27.
+Meng, Z.G.; Yang, F.L.; Zhang, X.W. MBR Focus: Do Nonwovens Offer a Cheaper Option? Filtr. Sep. 2005, 42, 28–30. [CrossRef]
+28.
+Liang, S.; Qu, L.; Meng, F.; Han, X.; Zhang, J. Effect of Sludge Properties on the Filtration Characteristics of Self-Forming Dynamic
+Membranes (SFDMs) in Aerobic Bioreactors: Formation Time, Filtration Resistance, and Fouling Propensity. J. Memb. Sci. 2013,
+436, 186–194. [CrossRef]
+29.
+Zahid, W.M.; El-Shafai, S.A. Use of Cloth-Media Filter for Membrane Bioreactor Treating Municipal Wastewater. Bioresour. Technol.
+2011, 102, 2193–2198. [CrossRef]
+30.
+Chang, W.K.; Hu, A.Y.J.; Horng, R.Y.; Tzou, W.Y. Membrane Bioreactor with Nonwoven Fabrics as Solid-Liquid Separation Media
+for Wastewater Treatment. Desalination 2007, 202, 122–128. [CrossRef]
+31.
+Wang, C.; Chen, W.N.; Hu, Q.Y.; Ji, M.; Gao, X. Dynamic Fouling Behavior and Cake Layer Structure Changes in Nonwoven
+Membrane Bioreactor for Bath Wastewater Treatment. Chem. Eng. J. 2015, 264, 462–469. [CrossRef]
+32.
+Xiong, J.; Fu, D.; Singh, R.P. Self-Adaptive Dynamic Membrane Module with a High Flux and Stable Operation for the Municipal
+Wastewater Treatment. J. Memb. Sci. 2014, 471, 308–318. [CrossRef]
+Water 2023, 15, 3963
+17 of 17
+33.
+Poostchi, A.A.; Mehrnia, M.R.; Rezvani, F.; Sarrafzadeh, M.H. Low-Cost Monoﬁlament Mesh Filter Used in Membrane Bioreactor
+Process: Filtration Characteristics and Resistance Analysis. Desalination 2012, 286, 429–435. [CrossRef]
+34.
+Rezvani, F.; Mehrnia, M.R.; Poostchi, A.A. Optimal Operating Strategies of SFDM Formation for MBR Application. Sep. Purif.
+Technol. 2014, 124, 124–133. [CrossRef]
+35.
+Wang, Y.K.; Sheng, G.P.; Li, W.W.; Yu, H.Q. A Pilot Investigation into Membrane Bioreactor Using Mesh Filter for Treating
+Low-Strength Municipal Wastewater. Bioresour. Technol. 2012, 122, 17–21. [CrossRef] [PubMed]
+36.
+Yang, Y.; Deng, W.; Hu, Y.; Chen, R.; Wang, X.C. Gravity-Driven High Flux Filtration Behavior and Microbial Community of an
+Integrated Granular Activated Carbon and Dynamic Membrane Bioreactor for Domestic Wastewater Treatment. Sci. Total Environ.
+2022, 825, 153930. [CrossRef] [PubMed]
+37.
+Chu, H.; Cao, D.; Dong, B.; Qiang, Z. Bio-Diatomite Dynamic Membrane Reactor for Micro-Polluted Surface Water Treatment.
+Water Res. 2010, 44, 1573–1579. [CrossRef]
+38.
+Kimura, K.; Nishisako, R.; Miyoshi, T.; Shimada, R.; Watanabe, Y. Bafﬂed Membrane Bioreactor (BMBR) for Efﬁcient Nutrient
+Removal from Municipal Wastewater. Water Res. 2008, 42, 625–632. [CrossRef]
+39.
+Higgins, M.J.; Novak, J.T. Characterization of Exocellular Protein and Its Role in Bioﬂocculation. J. Environ. Eng. 1997, 123,
+479–485. [CrossRef]
+40.
+Gao, W.J.; Leung, K.T.; Qin, W.S.; Liao, B.Q. Effects of Temperature and Temperature Shock on the Performance and Microbial
+Community Structure of a Submerged Anaerobic Membrane Bioreactor. Bioresour. Technol. 2011, 102, 8733–8740. [CrossRef]
+41.
+Gao, W.J.; Lin, H.J.; Leung, K.T.; Schraft, H.; Liao, B.Q. Structure of Cake Layer in a Submerged Anaerobic Membrane Bioreactor.
+J. Memb. Sci. 2011, 374, 110–120. [CrossRef]
+42.
+Subtil, E.L.; Almeria Ragio, R.; Lemos, H.G.; Scaratti, G.; García, J.; Le-Clech, P. Direct Membrane Filtration (DMF) of Municipal
+Wastewater by Mixed Matrix Membranes (MMMs) Filled with Graphene Oxide (GO): Towards a Circular Sanitation Model.
+Chem. Eng. J. 2022, 441, 136004. [CrossRef]
+43.
+Meng, F.; Chae, S.R.; Drews, A.; Kraume, M.; Shin, H.S.; Yang, F. Recent Advances in Membrane Bioreactors (MBRs): Membrane
+Fouling and Membrane Material. Water Res. 2009, 43, 1489–1512. [CrossRef] [PubMed]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

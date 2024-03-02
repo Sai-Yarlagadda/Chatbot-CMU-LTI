@@ -1,0 +1,1519 @@
+Learning a Fourier Transform for Linear Relative Positional Encodings in
+Transformers
+Krzysztof Choromanski * 1 2
+Shanda Li * 3
+Valerii Likhosherstov 4
+Avinava Dubey 1
+Shengjie Luo 5
+Di He 5
+Yiming Yang 3
+Tamas Sarlos 1
+Thomas Weingarten 1
+Adrian Weller 4 6
+Abstract
+We propose a new class of linear Transformers
+called FourierLearner-Transformers (FLTs),
+which incorporate a wide range of relative po-
+sitional encoding mechanisms (RPEs). These in-
+clude regular RPE techniques applied for nonge-
+ometric data, as well as novel RPEs operating
+on the sequences of tokens embedded in higher-
+dimensional Euclidean spaces (e.g. point clouds).
+FLTs construct the optimal RPE mechanism im-
+plicitly by learning its spectral representation. As
+opposed to other architectures combining efﬁcient
+low-rank linear attention with RPEs, FLTs re-
+main practical in terms of their memory usage
+and do not require additional assumptions about
+the structure of the RPE-mask. FLTs allow also
+for applying certain structural inductive bias tech-
+niques to specify masking strategies, e.g. they
+provide a way to learn the so-called local RPEs
+introduced in this paper and providing accuracy
+gains as compared with several other linear Trans-
+formers for language modeling. We also thor-
+oughly tested FLTs on other data modalities and
+tasks, such as: image classiﬁcation and 3D molec-
+ular modeling. For 3D-data FLTs are, to the best
+of our knowledge, the ﬁrst Transformers architec-
+tures providing RPE-enhanced linear attention.
+1. Introduction
+Transformers architectures have revolutionized machine
+learning (ML), not only by providing signiﬁcant quantitative
+gains of ML models, but by leading to dramatic qualitative
+improvements and opening new opportunities for applying
+them in few- or even zero-shot learning and abstract reason-
+ing settings (Chowdhery et al., 2022; Brown et al., 2020;
+*Equal contribution 1Google Research 2Columbia University
+3Carnegie Mellon University 4University of Cambridge 5Peking
+University
+6The Alan Turing Institute.
+Correspondence to:
+Krzysztof Choromanski <kchoro@google.com>.
+Preprint Under Review.
+Radford & Narasimhan, 2018; Ramesh et al., 2021; Reed
+et al., 2022; Ouyang et al., 2022; Srivastava et al., 2022;
+Lewkowycz et al., 2022; Rae et al., 2021; Borgeaud et al.,
+2022; Devlin et al., 2019; Raffel et al., 2020; Liu et al., 2019;
+Lan et al., 2020; Du et al., 2022; Thoppilan et al., 2022).
+The research on scaling up the attention architecture, a core
+module of Transformers responsible for direct propagation
+of the signal between different tokens of the input sequence,
+started with their birth (Vaswani et al., 2017). Attention
+modules have quadratic space and time complexity with
+respect to the input sequence length L and thus are com-
+putationally incapable of modeling longer-range distances
+in long input sequences. The research on “efﬁcient” Trans-
+formers has taken on a new importance as the size of Trans-
+formers models grew from the GPT-1 architecture of “only”
+117M parameters to GPT-3 with 175B parameters, a 1000×
+increase within just two years.
+In several applications, local attention (Vaswani et al.,
+2021a; Zhou et al., 2021) addresses these new challenges.
+Tokens attend only to the compact sets of their neighbors,
+and the attention matrix is effectively zeroed out in most
+entries. In other problems requiring direct modeling of
+long-range dependencies, this approach is not sufﬁcient (Za-
+heer et al., 2020). For instance, genome modeling (Gupta
+& Rush, 2017; Ji et al., 2021; Clauwaert et al., 2021) is a
+notoriously difﬁcult task, because several of the DNA’s func-
+tionalities, such as regulatory properties, depend directly on
+the DNA’s 3D conformation and thus are inherently non-
+local phenomena.
+To model long-range dependencies directly, several other
+models were proposed, where tokens were grouped together
+into subsets via clustering or hashing methods (Roy et al.,
+2021; Vyas et al., 2020; Kitaev et al., 2020; Sun et al.,
+2022). The attention was then modeled only for pairs of
+tokens within the same partition. In these approaches, the
+resulting attention matrices are still sparse.
+Another popular class of scalable Transformers architec-
+tures, called Performers, was proposed by Choromanski
+et al. (2021). The idea is to ﬁnd an approximate low-rank
+decomposition of the attention matrix and leverage it to
+improve space and time complexity of the attention mecha-
+arXiv:2302.01925v1  [cs.LG]  3 Feb 2023
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+nism via the associativity property of matrix multiplications.
+Interestingly, in contrast to previously discussed methods,
+the approximate attention matrix (that is never explicitly
+constructed, but rather used implicitly) is an unbiased esti-
+mate of the original attention matrix encoding similarities
+between tokens via the softmax-kernel. The random feature
+map mechanism used in Performers to produce the low-rank
+decomposition of the softmax attention matrix was the sub-
+ject of signiﬁcant follow-up research (Choromanski et al.,
+2022b; Likhosherstov et al., 2022; Chowdhury et al., 2022).
+Several other kernels for replacing softmax attention upon
+their effective linearization, such as Performer-ReLU, were
+studied. Furthermore, as they are straightforward to im-
+plement, Performers were adopted into many Transformers
+stacks to provide linear space and time complexity (Yuan
+et al., 2021; Horn et al., 2021; Tay et al., 2021) – recently
+even for robotic navigation (Xiao et al., 2022).
+Unfortunately this simplicity comes at a price. It is well
+known that incorporating structural inductive priors – which
+is usually implemented via various additive relative masking
+mechanisms in regular attention architectures – is difﬁcult
+for Performers. We refer to these methods as Relative Po-
+sitional Encodings (or RPEs) (Shaw et al., 2018; Raffel
+et al., 2020; Wu et al., 2021; Gong et al., 2022; Luo et al.,
+2022b). RPEs play a critical role in improving the perfor-
+mance of Transformers in long-range modeling, e.g. for
+speech (Liutkus et al., 2021) and genomic data (ˇZiga Avsec
+et al., 2021).
+At ﬁrst glance, Performers are not compatible with general
+RPE techniques, since they seem to require explicit mate-
+rialization of the attention matrix to apply the RPE-mask,
+which is exactly what Performers avoid in order to achieve
+computational improvements.1 Recently a substantial effort
+was made to reconcile Performers with RPEs (more details
+in Sec. 2), but so far these attempts fell short of providing
+two properties at the same time: (a) practical computational
+gains, and (b) inclusion of general RPE methods, for inputs
+with nontrivial topological structures.
+In this paper, we propose a new class of linear Transform-
+ers called FourierLearner-Transformers (FLTs), which
+incorporate a wide range of relative positional encoding
+mechanisms (RPEs). These include regular RPE techniques
+applied for nongeometric data, and novel RPEs operating
+on sequences of tokens embedded in higher-dimensional
+Euclidean spaces (e.g. point clouds). FLTs construct the
+optimal RPE mechanism implicitly by learning its spectral
+representation. As opposed to other architectures combining
+1Certain RPE masking mechanisms can be implemented in
+linear space and time complexity, for instance causal masking that
+can be thought of as an instantiation of RPE and admits linear
+incorporation into Performers via the preﬁx-sum mechanism, see
+(Choromanski et al., 2021).
+efﬁcient low-rank linear attention with RPEs, FLTs remain
+practical in terms of their memory usage and do not require
+additional assumptions about the structure of the RPE-mask.
+FLTs also allow the application of certain structural induc-
+tive bias techniques to specify masking strategies, e.g. they
+provide a way to learn what we call local RPEs, introduced
+in this paper and providing accuracy gains compared with
+several other linear Transformers for language modeling.
+We thoroughly test FLTs on other data modalities and tasks,
+such as image classiﬁcation and molecular modeling. For
+3D-data FLTs are, to the best of our knowledge, the ﬁrst
+Transformers architectures providing linear attention and
+incorporating RPE-masking.
+To summarize, our main contributions are as follows:
+1. In Sec. 3, we introduce the RPE-enhanced linear at-
+tention deﬁning FourierLearner-Transformers. We
+discuss several instantiations (see Sec. 3.3), in par-
+ticular FLTs with so-called Gaussian mixture RPEs,
+shift-invariant kernel RPEs and local RPEs.
+2. In Sec. 4, we conduct extensive empirical evaluations
+of FLTs on tasks ranging from language modeling
+(Sec. 4.1), through image classiﬁcation (Sec. 4.2) to
+molecular property predictions (Sec. 4.3). We show in
+particular that FLTs obtain the most accurate language
+models compared to nine other strong scalable Trans-
+former architectures, with the local RPE variant intro-
+duced in this paper achieving the best performance.
+2. Related works
+One of the ﬁrst attempts to address the problem of combin-
+ing low-rank implicit attention Transformers with RPEs was
+presented in (Liutkus et al., 2021). The method relies on
+the low-rank decomposition of the RPE-mask and comes in
+two variants: sineSPE (also in a gated form) and convSPE.
+Both model the RPE-mask as a stationary position kernel
+with a Toeplitz mask structure. While sineSPE represents
+the values of the kernel via periodic functions with a ﬁxed
+number of sinusoidal components, convSPE uses convolu-
+tions and random projections.
+The time complexity of the two variants are O(drLT 2) and
+O(drLP) respectively, where d is query/key dimensional-
+ity, r is the number of rows of the random noise (projection)
+matrices, L is the sequence length, T stands for the number
+of sinusoidal components and P is the convolutional ﬁlters’
+lengths. While linear in L, in practice these mechanisms
+need to be used with sufﬁciently small T and P to satisfy
+computational demands, and effectively achieved 7 points
+worse perplexity on language modeling tasks compared to
+FLTs (see Sec. 4.1). They also constrain the RPE-mask
+to be a valid kernel-matrix, which need not to be the case
+(for instance, the causal mechanism can be considered an
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+RPE masking method but does not even provide a symmet-
+ric RPE-mask). Finally, they cannot be applied for even
+more general RPE mechanisms with tokens embedded in
+the higher-dimensional Euclidean spaces.
+More recently, Luo et al. (2021) showed that the RPE mech-
+anism for 1D sequential data (e.g., language sequences) can
+be combined with Performers in O(L log(L)) time com-
+plexity. The method relies on the elegant observation that
+log-linear time complexity can be achieved as long as the
+exponentiated RPE-mask supports fast matrix-vector multi-
+plication, and that this is the case for the RPEs deﬁned in
+1D since the the corresponding masks have a Toeplitz struc-
+ture. Interestingly, the algorithm does not even approximate
+the RPE mechanism, but applies its exact variant. Unfor-
+tunately, the space complexity of the method is O(Lmd),
+where m stands for the number of kernel features and L
+and d are as before. Even though still linear in L, it is
+now much larger than for the corresponding Performer vari-
+ant (O(Lm + md + Ld)). In our experiments, this variant
+worked well for language modeling (see Sec. 4.1), but ran
+out of memory for image classiﬁcation tasks (see Sec. 4.2).
+Even more recently, this algorithm has been extended to the
+substantially more general RPE mechanisms, enabling high-
+dimensional spaces for positional vectors, and leveraging a
+large class of methods for efﬁcient matrix-vector multiplica-
+tion for the exponentiated RPE-mask matrix (Choromanski
+et al., 2022a). Though providing a comprehensive support
+for the general RPE mechanism, this method is still char-
+acterized by O(Lmd) space complexity, which becomes a
+computational bottleneck unless a sufﬁciently small number
+of kernel features m is used.
+3. The algorithm
+3.1. Preliminaries
+We start by introducing the general relative positional en-
+coding (RPE) mechanism in Transformers, and regular RPE-
+free Performer architectures.
+Consider an input sequence of L tokens. The attention
+used in a regular Transformer linearly projects their repre-
+sentations: x1, ..., xL ∈ RN into three learnable matrices
+Q, K ∈ RN×dQK, V ∈ RN×dV called queries, keys and
+values respectively. We also associate with all the tokens
+additional feature vectors r1, ..., rL ∈ Rℓ that are used to
+deﬁne the RPE mechanism, see below.
+Deﬁnition 3.1 (General RPE for attention). General Rel-
+ative Positional Encoding enhanced attention is of the fol-
+lowing form, where N = [f(ri − rj)]i,j=1,...,L ∈ RL×L is
+the so-called RPE-mask and f : Rℓ → R is a (potentially
+learnable) functon:
+Att(Q, K, V, N) = D−1AV,
+A = exp
+ 
+N + QK⊤
+p
+dQK
+!
+,
+D = diag(A1L).
+(1)
+Here exp(·) is applied element-wise, 1L is the all-one vector
+of length L, and diag(·) is a diagonal matrix with the input
+vector as the diagonal. The time complexity of computing
+Eq. (1) is O(L2d).
+Low-rank attention techniques leverage a decomposition
+of the attention matrix A to avoid the quadratic space and
+time complexity in L by avoiding explicit materialization
+of A. For the softmax attention, this is achieved by lineariz-
+ing the softmax-kernel K(x, y)
+def
+= exp(x⊤y) via novel
+random features mechanisms: K(x, y) = E[φ(x)⊤φ(y)]
+for certain randomized mappings: φ : RdQK → Rm (and
+some m ∈ N∗). This mechanism leads to the fruitful class
+of linear space and time complexity Transformers, called
+Performers (Choromanski et al., 2021). We refer to vector
+φ(u) as a random feature map (RFM) for u ∈ RdQK. We
+then deﬁne Q′, K′ ∈ RL×m as matrices of rows given as
+φ(q⊤
+i d
+− 1
+4
+QK)⊤ and φ(k⊤
+i d
+− 1
+4
+QK)⊤ respectively. The softmax-
+kernel linearization with no RPE-masking directly leads to
+the following approximate algorithm for attention:
+[
+AttK(Q, K, V) = bD−1(Q′((K′)⊤V)),
+bD = diag(Q′((K′)⊤1L)).
+(2)
+Here [
+AttK stands for the approximate attention and brackets
+indicate the order of computations. The time and space
+complexity of this mechanism are O(Lmd) and O(Lm +
+md + Ld) respectively, compared to O(L2d) and O(L2 +
+Ld) for regular attention. Thus for m ≪ L, Performers
+provide substantial computational improvements.
+3.2. The FourierLearner-Transformer (FLT)
+The algorithm presented in Eq. (2) does not incorporate
+RPE mechanisms. However, any low rank decomposition
+of the RPE-mask N from Eq. (1) would naturally lead to a
+Performer-friendly RPE attention mechanism. Indeed, the
+following is true if bN = N1N⊤
+2 for N1, N2 ∈ RL×r:
+bA
+def
+= exp
+ 
+bN + QK⊤
+p
+dQK
+!
+= exp
+
+bQ bK⊤
+,
+(3)
+and bQ = [N1, Qd
+− 1
+4
+QK] ∈ RL×(m+r), bK = [N2, Kd
+− 1
+4
+QK] ∈
+RL×(m+r) where the concatenation is conducted along the
+second axis. RPE-masked attention is now translated to
+regular softmax attention that admits “Performization”, as
+described in Eq. (2). The time and space complexity of
+this mechanism are: O(L(m + r)d) and O(L(m + r) +
+(m + r)d + Ld) respectively. Below we explain how the
+decomposition of N into N1 and N2 is conducted.
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+Figure 1. Examples of the local RPE mechanisms discussed in Sec. 3.3 and supported via FLTs. Both examples are for tokens with
+positions described by two coordinates (ℓ = 2). The x and y coordinates encode the difference vector ∆r = (∆r1, ∆r2)⊤. The
+z-coordinate provides the value of a function f. Left: Non-continuous local RPE mechanism for ℓ = 2 of the form: fv,C(∆r) =
+C · 1[|∆r1| ≤ v1]1[|∆r2| ≤ v2] for some v = (v1, v2)⊤. Right: This time fv(∆r) = 1[|∆r1| ≤ v1]1[|∆r2| ≤ v2](−|∆r1| +
+v1)(−|∆r2| + v2). The latter local RPE mechanism is continuous, but as the former, vanishes outside the bounded region. Both can be
+modeled with FLTs via FTs, factorized into powers of sinc functions sin(πx)
+πx
+.
+The key observation is that the function f : Rℓ → R can be
+rewritten as follows, where g : Rℓ → R denotes its Fourier
+Transform (FT):
+f(z) =
+Z
+Rd exp(2πiz⊤ξ)g(ξ)
+p(ξ) p(ξ)dξ.
+(4)
+Here i2 = −1 and p is the probability density function of
+some probabilistic distribution P ∈ P(Rℓ). The representa-
+tion from Eq. (4) leads to the following RFM-mechanism
+for unbiased approximation of f(x − y) for any x, y ∈ Rℓ,
+where m stands for the number of random features:
+f(x − y) = E[ϕ(x)⊤ψ(y)].
+(5)
+The random feature maps ϕ, ψ : Rℓ → Rr are deﬁned as
+follows for ξ1, ..., ξr
+iid
+∼ P, bξj = −ξj, and tjuj = 1 for
+j = 1, ..., r:
+ϕ(z)
+def
+= 1
+√r
+ 
+e2πiz⊤ξ1
+s
+g(ξ1)
+p(ξ1)t1, · · · , e2πiz⊤ξr
+s
+g(ξr)
+p(ξr)tr
+!⊤
+ψ(z)
+def
+= 1
+√r
+ 
+e2πiz⊤bξ1
+s
+g(ξ1)
+p(ξ1)u1, · · · , e2πiz⊤bξr
+s
+g(ξr)
+p(ξr)ur
+!⊤
+Then, we can deﬁne N1 = [ϕ(x1), · · · , ϕ(xL)]⊤ ∈ RL×r
+and N2 = [ψ(x1), · · · , ψ(xL)]⊤ ∈ RL×r, respectively.
+Instead of learning function f and trying to compute its
+Fourier Transform g to obtain a low-rank decomposition of
+N, the FourierLearner-Transformer (FLT) directly learns
+g, effectively learning an implicit representation of f. In
+practice, P needs to be chosen in such a way that we can ef-
+ﬁciently sample from it and compute its probability density
+function (e.g. Gaussian or truncated Gaussian distribution).
+We point out that our formulations are general enough to
+cover a wide range of RPE variants used in practice.
+Regular RPE for sequential data:
+In this setting the in-
+put sequence does not have richer geometric structure and
+thus vectors rj can be identiﬁed with the indices of tokens
+in the sequence, i.e., rj = j. Thus, FLT learns a function
+g : R → R (see: Sec. 4.1, 4.2).
+RPE for the 3D-data:
+For this input type (e.g. point
+clouds or 3D molecular data), it is natural to identify vectors
+rj with the 3D coordinates of tokens. Therefore, FLT learns
+a function g : R3 → R (see: Sec. 4.3).
+Nowhere in the analysis so far have we relied on any struc-
+tural properties of f.
+In particular, the matrix N does
+not need to be a valid positive deﬁnite kernel-matrix or
+even symmetric. However, if needed, desired inductive bias
+can be incorporated into FLT via certain parameterization
+schemes used to train g, as we discuss next.
+3.3. The topology of the Fourier Transform g
+Gaussian mixture RPEs.
+One of the most general param-
+eterizations of g that we have considered is the so-called
+Gaussian mixture variant:
+g(ξ) =
+T
+X
+t=1
+wt exp
+
+−∥ξ − µt∥2
+2σ2
+t
+
+.
+(6)
+Therefore the FT g is parameterized by (2 + ℓ)T numbers:
+w1, ..., wT , σ1, ..., σT ∈ R, µ1, ..., µT ∈ Rℓ. In the special
+case where T = 1, the FT becomes a renormalized Gaussian
+kernel and as such, deﬁnes f as another Gaussian kernel.
+Shift-invariant kernels for RPE-masks.
+It is straightfor-
+ward to apply the FLT mechanism for RPEs to make N a
+kernel-matrix of any shift-invariant kernel (Rahimi & Recht,
+2007). Note that by Bochner’s Theorem:
+K(x − y) = C
+Z
+Rd ei(x−y)⊤ξpK(ξ)dξ
+(7)
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+for the shift-invariant kernel: K : Rℓ × Rℓ → R, the cor-
+responding probabilistic distribution pK and some positive
+constant C > 0. Thus to unbiasedly approximate an RPE-
+mask N representing kernel-matrix [K(si, sk)]i,k=1,...,L for
+the shift-invariant kernel K, it sufﬁces to take: rj =
+1
+2πsj,
+g(ξ) = CpK(ξ), and tj = uj = 1 for j = 1, ....r. Even if
+a particular class of shift-invariant kernels has been chosen,
+FLT still provides a way to learn its speciﬁc instantiation
+through learning an appropriately parameterized g.
+Local RPEs.
+FLT is also capable (through the corre-
+sponding structured parameterized Fourier Transforms g)
+of modeling various schemes where the RPE mechanism
+needs to be applied only locally and regular attention is to
+be used for tokens far enough from each other. We call
+such strategies local RPEs or LRPEs. These include higher-
+dimensional LRPEs, particularly relevant for tokens with
+positions embedded in Rℓ for ℓ > 1. The mechanism, which
+we present below in detail, can be considered an RFM-based
+smoothing of the original objective described by discrete
+parameters (such as the radius of the local RPE measured
+in the number of the nearest tokens).
+The most basic LRPE type takes rj = j and deﬁnes f as
+follows for an attention radius v > 0 and constant C ∈ R:
+fv,C(∆r) = C · 1[|∆r| ≤ v].
+(8)
+Such an RPE mechanism would (de)amplify the regular
+attention score between tokens close to each other by a
+certain multiplicative amount and might play a similar role
+as local attention (Vaswani et al., 2021b). It turns out that
+the FT for such a f has a particularly simple form:
+gfv,C(ξ) = C · sin(2πvξ)
+πξ
+.
+(9)
+Instead of using one indicator function in Eq. (8), one can
+also apply a sum of many with learnable radii and a list
+of coefﬁcients C. Interestingly, RPEs from Eq. (8) can
+be easily generalized to a higher-dimensional LRPE of the
+following form (with rj in the formula for N corresponding
+to positions of tokens in the higher-dimensional space Rℓ):
+fv,C(∆r) =
+ℓ
+Y
+j=1
+C · 1[|∆rj| ≤ vj].
+(10)
+The corresponding FT g can be factorized as follows:
+gfv,C(ξ) = C ·
+ℓ
+Y
+j=1
+sin(2πvjξj)
+πξj
+.
+(11)
+This result can be further generalized. The inverse FTs for
+functions g of the following form:
+gv1,...,vℓ
+k1,...,kℓ(ξ) = C ·
+ℓ
+Y
+j=1
+sinkj(2πvjξj)
+πξj
+(12)
+Model
+Perplexity
+Linear Trans. (Katharopoulos et al., 2020)
+38.4
+RFA-Gaussian (Peng et al., 2021)
+33.6
+RFA-arccos (Peng et al., 2021)
+36.0
+RFA-GATE-Gaussian (Peng et al., 2021)
+31.3
+RFA-GATE-arccos (Peng et al., 2021)
+32.8
+Performer (Choromanski et al., 2021)
+31.1
+Performer-sineSPE (Liutkus et al., 2021)
+38.0
+Performer-convSPE (Liutkus et al., 2021)
+37.8
+Log-linear Performer (Luo et al., 2021)
+30.6
+FLT (Gaussian mixture RPE) (ours)
+30.3
+FLT (local RPE) (ours)
+30.1
+Table 1. Language model perplexity scores on the WikiText-103
+validation set. We highlight in bold the lowest perplexity.
+are of the form: f(∆r) = M · Qd
+j=1 f vj
+j (∆rj), where M
+is a constant and each f vj
+j
+is: (1) continuous, (2) symmetric,
+(3) with compact support of length depending on vj, and (4)
+piece-wise a polynomial of order kj − 1. Such functions
+f are natural candidates for continuous LRPE mechanisms
+for tokens with positions embedded in Rℓ and any ℓ ≥ 1.
+Examples of local RPE variants for ℓ = 2, supported via
+FLT, are presented in Fig. 1.
+The above theoretical results can be directly obtained via
+straightforward integration and a realization that the N-dim
+FT of a function: h(x1, · · · , xN)
+def
+= h1(x1) · · · · · hN(xN)
+can be represented as the product of 1D FTs of the individual
+components hj.
+4. Experiments
+In this section, we provide experimental results on diverse
+tasks from language modeling, through image classiﬁca-
+tion to molecular property prediction, to demonstrate the
+effectiveness of the FLT architecture.
+4.1. Language modeling
+We conduct experiments on the WikiText-103 language
+modeling task to show the effectiveness of our proposed
+method in NLP applications.
+4.1.1. COMPARED METHODS
+In this experiment, we study FLT with two RPE vaiants,
+Gaussian mixture RPE and local RPE. We compare our
+model with the following strong baselines:
+• Linear Transformer proposed by Katharopoulos et al.
+(2020), which uses kernelized low-rank attention with
+elu(·) + 1 as the feature map.
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+Dataset name
+# of classes
+Training set size
+Test set size
+ImageNet2012 (Deng et al., 2009)
+1K
+1.2M
+100K
+Places365 (Zhou et al., 2018)
+365
+1.8M
+328K
+I naturalist2021 (Horn et al., 2018)
+10K
+2.7M
+500K
+Fashion-MNIST (Xiao et al., 2017)
+10
+60K
+10K
+Table 2. Details of the datasets used in image classiﬁcation tasks with the FourierLearner-Transformer.
+2
+4
+6
+8
+10
+# of Iterations (x104)
+30
+40
+50
+60
+70
+Accuracy (%)
+FLT
+Performer
+2
+4
+6
+8
+10
+# of Iterations (x104)
+30
+40
+50
+60
+70
+Accuracy (%)
+FLT, T=12, r=64
+FLT, T=25, r=64
+FLT, T=50, r=64
+FLT, T=50, r=32
+FLT, T=400, r=32
+Figure 2. Left: Comparison of the FLT with a regular Performer on the ImageNet classiﬁcation task. FLT provides 2.3% accuracy gain.
+Right: Additional ablation studies for the FLT architecture, where number of modes T for the Gaussian mixture RPEs as well as the
+number of random features r used to encode the RPE varies. The red dotted line indicates the performance of the regular Performer.
+• Random feature attention (RFA) proposed by Peng
+et al. (2021), which has two variants (Gaussian and
+arc-cosine) and an optional gating mechanism.
+• The regular Performer proposed by Choromanski et al.
+(2021), which applies the FAVOR+ mechanism for
+attention matrix approximation.
+• Performer-SPE proposed by Liutkus et al. (2021),
+which incorporates a special class of RPE into low-rank
+attention and has two variants (sineSPE and convSPE).
+• The log-linear Performer proposed by Luo et al. (2021)
+which extends Performers to work with an arbitrary
+Toeplitz RPE attention mask.
+Implementation details.
+All the tested models are efﬁ-
+cient Transformer variants based on kernelized low-rank
+attention, with 6 decoder layers. In each layer, there are 8
+attention heads. The hidden dimension is set to 512. The
+dimension of the feed-forward sub-layer is set to 2048. The
+feature map dimension m is set to 64 in the low-rank ap-
+proximation of the attention matrix. For our FLT models,
+the number of random features for RPE r is set to 32. More
+details regarding training can be found in Appendix A.2.
+We use the validation perplexity as the evaluation metric:
+lower perplexity indicates better performances.
+4.1.2. RESULTS
+The results are shown in Table 1. Both variants of our
+FLT outperform all the baselines. Compared with efﬁcient
+Transformers without RPE, our FLT obtains much stronger
+performance. For example, the validation perplexity of our
+FLT with local RPE is 1.0 point lower than that of the
+regular Performer, which indicates that our method brings
+substantial performance gains by incorporating RPE into
+the attention module.
+Compared with other efﬁcient Transformer variants with
+RPE, our FLT is still very competitive. For example, our
+FLT achieves lower perplexity than the strong log-linear
+Performer baseline. Note that our FLT is also more efﬁcient
+than the log-linear Performer. As we have noted before, the
+time and space complexity of the FLT are O(L(m + r)d)
+and O(L(m + r) + (m + r)d + Ld), respectively, while
+the time and space complexity of log-linear Performer are
+O(Lmd log L) and O(Lmd). Therefore, our FLT is both
+more accurate and more scalable than the baselines.
+4.2. Image classiﬁcation
+We thoroughly benchmarked FLT variants of Vision Trans-
+formers (ViTs, Dosovitskiy et al., 2021) on several image
+classiﬁcation datasets, see Table 2.
+4.2.1. COMPARED METHODS
+We compared FLT with the regular Performer and its vari-
+ations incorporating different methods for efﬁcient RPE-
+masking. We chose our most competitive competitor from
+Sec. 4.1, the log-linear Performer, and added the Factor-
+Performer variant based on the matrix approximation frame-
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+2
+4
+6
+8
+10
+# of Iterations (x104)
+45
+50
+55
+Accuracy (%)
+Places365
+FLT
+Performer
+1
+2
+3
+4
+5
+6
+# of Iterations (x105)
+10
+11
+12
+Accuracy (%)
+Inaturalist
+FLT
+Performer
+2
+4
+6
+8
+10
+# of Iterations (x104)
+89
+90
+91
+Accuracy (%)
+Fashion-MNIST
+FLT
+Performer
+2
+4
+6
+8
+10
+# of Iterations (x104)
+20
+30
+40
+50
+Accuracy (%)
+ImageNet
+FLT
+Performer
+Figure 3. Comparison of the FLT with a regular Performer on different classiﬁcation datasets: Places365, I naturalist, Fashion-MNIST
+and ImageNet, but with the Transformer topology from (Dehghani et al., 2019) (as opposed to Fig. 2).
+Dataset name
+ImageNet2012
+Places365
+I naturalist2021
+Fashion-MNIST
+Performer training time
+6h 22 min
+6h 41 min
+7h 28 min
+56 min
+FLT training time
+6h 28min
+8h 23 min
+6h 43 min
+55 min
+Performer # steps / sec
+5.331
+5.283
+27.38
+33.18
+FLT # steps / sec
+4.625
+4.586
+28.38
+33.93
+Table 3. Comparisons of the total train time and number of steps per second for the FLT and Performer architecture on four classiﬁcation
+datasets. Total train time includes also preemptions periods and thus is not as accurate metric as the number of steps per second (we report
+it for completeness though). We highlighted in bold the faster architecture. All the experiments were run on the TPU architecture.
+work from (Halko et al., 2011). The latter ﬁrst approxi-
+mates the action-space of a matrix N by applying random
+Gaussian vectors to probe it (such a probing can be done
+efﬁciently without explicitly materializing N since N in
+this setting is Toeplitz and admits log-linear matrix-vector
+multiplication) and then computes its orthonormal basis to
+use for the low-rank decomposition of N.
+Implementation details.
+All tested ViTs consist of 12
+layers with 12 attention heads in each layer. The dimension
+of the feed-forward sub-layer is set to 3072. More details
+regarding training can be found in Appendix A.2.
+The regular Performer baseline applies the FAVOR+ mecha-
+nism from (Choromanski et al., 2021) for attention matrix
+approximation with m = 128 random features and resam-
+pling mechanism turned off. The FLT variant uses the same
+core attention mechanism and applies Gaussian mixture
+RPEs (Sec. 3.3) with T varying between 6 and 50, and the
+number of random features for RPE-encoding r = 64. In
+addition, we run more detailed ablation studies on T and r
+for the ImageNet dataset.
+4.2.2. RESULTS
+The results are presented in Figs. 2 and 3. The log-linear
+Performer architecture ran out of memory for m = 128 and
+did not train when m was reduced (with a ﬁxed batch size
+of 4096) to ﬁt the assigned memory. The Factor-Performer
+variant did not exceed the allocated memory, but also did not
+train due to the numerical instability of the Gram-Schmidt
+orthogonalization procedure applied to ﬁnd an orthonormal
+basis of the action-spacee of N. Hence these variants are
+not presented on the plots.
+For the ImageNet classiﬁcation task, FLT provided a 2.3%
+accuracy improvement over regular Performer with the num-
+ber of Gaussian mixture modes T = 25 and the number of
+random features for RPE r = 64 (Fig. 2). Additional abla-
+tions over T and r demonstrated that increasing r improves
+accuracy, but more interestingly, this does not need to be the
+case when T is increased. In fact the best FLT variant used
+only T = 25 Gaussian modes and was substantially better
+than its counterpart with T = 50 (and the same r = 64).
+This suggests that even though increasing T also increases
+model expressiveness, it might make training more difﬁcult.
+Fig. 3 shows that FLT provides improvements also on other
+datasets, though the gains vary. We also present there the
+performance of FLT, as compared to the Performeer, on
+the ImageNet dataset, but for the modiﬁed ViT model, the
+so-called Universal Transformer (Dehghani et al., 2019).
+In all the experiments from Fig. 3 we applied at most T =
+50 Gaussian modes - a negligible overhead in terms of the
+total number of parameters of the architecture.
+The comparison of the training time of the regular Performer
+and the FLT architecture on all considered image datasets
+as well as the number of Transformer steps per second for
+both architectures is presented in Table 3. Total training
+time includes the preemption periods that are not related
+to the time complexity of the mechanism. We see that in
+practice FLT has speed comparable to the regular Performer
+and in fact is faster on two out of four datasets.
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+4.3. Molecular property prediction
+We further evaluate our FLT model on the molecular prop-
+erty prediction task to show its capability to handle 3D input
+data and complicated (non-Toeplitz) RPE-masks. To the
+best of our knowledge, in this scenario, FLT is the ﬁrst
+Transformer providing RPE-enhanced scalable attention
+that enjoys linear complexity with respect to the number of
+input tokens.
+We use a publicly-available large-scale electrocatalysts
+dataset - the Open Catalyst 2020 (OC20) dataset and fo-
+cus on the IS2RE task which requires to predict the energy
+of the relaxed structure given the initial structure of solid cat-
+alysts with adsorbate molecules (Chanussot* et al., 2021).
+4.3.1. COMPARED METHODS
+We compare our FLT with the regular Performer with-
+out RPE. For the FLT model, we consider to approximate
+RPE-masks based on Gaussian basis functions, which are
+popularly used in neural networks for molecular model-
+ing (Gasteiger et al., 2021; Shi et al., 2022; Luo et al.,
+2022a). Speciﬁcally, the RPE-mask is deﬁned as N =
+[f(ri − rj)]i,j=1,...,L ∈ RL×L, where ri ∈ R3 is the posi-
+tion of the i-th input atom, L is the total number of input
+atom, and f(r) = PT
+t=1
+wt
+(
+√
+2πσt)3 exp
+
+− ∥r∥2
+2σ2
+t
+
+. Note that
+RPE only calculates the relative distances between atoms,
+which naturally preserves many invariant and equivariant
+properties. It easy to see that the Fourier Transform of f is
+gf(ξ) = PT
+t=1 wt exp
+ −2π2σ2
+t ∥ξ∥2
+, which enables us to
+approximate the RPE-mask N in FLTs using the technique
+described in Sec. 3.
+Implementation details.
+We adopt most of the hyperpa-
+rameters and training recipes of 3D-Graphormer (Shi et al.,
+2022). Speciﬁcally, we trained a regular Performer with
+12 layers and two FLT with 10 and 12 layers respectively.
+Following existing works (Jumper et al., 2021; Shi et al.,
+2022), model outputs are repeatedly fed to the model for
+four times. In each layer, there are 48 attention heads. The
+hidden dimension is set to 768. The dimension of the feed-
+forward sub-layer is set to 2048. The feature map dimension
+m is set to 64 in the low-rank approximation of the atten-
+tion matrix. For our FLT models, the number of random
+features for RPE r is set to 16 and the number of Gaussian
+basis functions in RPE T is set to 32. More details can be
+found in Appendix A.2.
+We evaluate the performance of the tested models on the
+in-domain validation set, where the validation samples come
+from the same distribution as the training distribution. We
+use Mean Absolute Error (MAE) of the energies and the
+percentage of Energies within a Threshold (EwT) of the
+ground truth energy to evaluation the accuracy of the pre-
+Energy MAE (eV)
+EwT (%)
+Performer-12L
+0.5454
+4.90
+FLT-10L (ours)
+0.5157
+5.44
+FLT-12L (ours)
+0.5046
+5.33
+Table 4. Comparisons of the FLT with the regular Performer on
+OC20 IS2RE task. The sufﬁx “-kL” means the model consists of
+k layers, e.g., FLT-10L refers to a 10-layer FLT. The evaluation
+metrics are Mean Absolute Error (MAE) of the energies and the
+percentage of Energies within a Threshold (EwT) of the ground
+truth energy. We highlighted in bold the best performance.
+1
+2
+3
+4
+5
+# of Iterations (x105)
+0.50
+0.55
+0.60
+0.65
+Validation Loss
+FLT 10L
+FLT 12L
+Performer
+Figure 4. Validation loss curves of FLTs and the regular Performer
+on the IS2RE task of OC20 dataset.
+dicted energies.
+4.3.2. RESULTS
+The results are presented in Table 4. We also present the
+validation loss curves of the models in Fig. 4 for a more com-
+prehensive comparison. Clearly, our FLT models obtain
+better performance in both evaluation metrics and produce
+more accurate energy predictions. For example, the energy
+MAE of the 12-layer FLT is more than 0.04eV lower than
+that of the 12-layer regular Performer, which indicates that
+the use of RPE effectively increases the predictive power of
+the model. One may argue that the use of RPE in FLT may
+add some computational overhead and increase the number
+of model parameters. However, it should be noted that a
+shallower 10-layer FLT can also signiﬁcantly outperform
+the 12-layer regular Performer, while being faster and using
+less parameters. Therefore, we believe our FLT is a power-
+ful scalable Transformer variant for 3D data with complex
+RPE.
+5. Conclusion
+We introduced a new class of Transformers called
+FourierLearner-Transformers (FLTs) that effectively adapt
+the relative positional encoding (RPE) mechanism into Per-
+formers - low-rank implicit-attention Transformers with
+linear space and time complexity. In contrast to other ar-
+chitectures combining Performers with RPEs, FLTs main-
+tain linear complexity of the attention modules with no
+additional structural assumptions regarding the RPE-mask.
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+FLTs allow the use of certain structural inductive bias tech-
+niques to specify masking strategies, e.g. they provide a way
+to learn local RPEs and inject locality bias. We thoroughly
+tested FLTs on various tasks and data modalities, including
+language modeling, image classiﬁcation and 3D molecular
+property prediction. For certain modalities, such as 3D data,
+they are (to the best of our knowledge) the ﬁrst Transformers
+providing linear attention and including RPE-masking.
+References
+Borgeaud, S., Mensch, A., Hoffmann, J., Cai, T., Ruther-
+ford, E., Millican, K., van den Driessche, G., Lespiau,
+J., Damoc, B., Clark, A., de Las Casas, D., Guy, A.,
+Menick, J., Ring, R., Hennigan, T., Huang, S., Mag-
+giore, L., Jones, C., Cassirer, A., Brock, A., Paganini,
+M., Irving, G., Vinyals, O., Osindero, S., Simonyan,
+K., Rae, J. W., Elsen, E., and Sifre, L. Improving lan-
+guage models by retrieving from trillions of tokens. In
+Chaudhuri, K., Jegelka, S., Song, L., Szepesv´ari, C., Niu,
+G., and Sabato, S. (eds.), International Conference on
+Machine Learning, ICML 2022, 17-23 July 2022, Balti-
+more, Maryland, USA, volume 162 of Proceedings of
+Machine Learning Research, pp. 2206–2240. PMLR,
+2022. URL https://proceedings.mlr.press/
+v162/borgeaud22a.html.
+Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan,
+J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G.,
+Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G.,
+Henighan, T., Child, R., Ramesh, A., Ziegler, D. M.,
+Wu, J., Winter, C., Hesse, C., Chen, M., Sigler, E.,
+Litwin, M., Gray, S., Chess, B., Clark, J., Berner, C.,
+McCandlish, S., Radford, A., Sutskever, I., and Amodei,
+D.
+Language models are few-shot learners.
+CoRR,
+abs/2005.14165, 2020. URL https://arxiv.org/
+abs/2005.14165.
+Chanussot*, L., Das*, A., Goyal*, S., Lavril*, T., Shuaibi*,
+M., Riviere, M., Tran, K., Heras-Domingo, J., Ho, C., Hu,
+W., Palizhati, A., Sriram, A., Wood, B., Yoon, J., Parikh,
+D., Zitnick, C. L., and Ulissi, Z. Open catalyst 2020
+(oc20) dataset and community challenges. ACS Catalysis,
+2021. doi: 10.1021/acscatal.0c04525.
+Choromanski, K., Lin, H., Chen, H., Zhang, T., Sehanobish,
+A., Likhosherstov, V., Parker-Holder, J., Sarl´os, T.,
+Weller, A., and Weingarten, T.
+From block-Toeplitz
+matrices to differential equations on graphs: towards
+a general theory for scalable masked transformers. In
+Chaudhuri, K., Jegelka, S., Song, L., Szepesv´ari, C.,
+Niu, G., and Sabato, S. (eds.), International Confer-
+ence on Machine Learning, ICML 2022, 17-23 July
+2022, Baltimore, Maryland, USA, volume 162 of Pro-
+ceedings of Machine Learning Research, pp. 3962–3983.
+PMLR, 2022a. URL https://proceedings.mlr.
+press/v162/choromanski22a.html.
+Choromanski, K. M., Likhosherstov, V., Dohan, D., Song,
+X., Gane, A., Sarl´os, T., Hawkins, P., Davis, J. Q.,
+Mohiuddin, A., Kaiser, L., Belanger, D. B., Colwell,
+L. J., and Weller, A.
+Rethinking attention with per-
+formers.
+In 9th International Conference on Learn-
+ing Representations, ICLR 2021, Virtual Event, Austria,
+May 3-7, 2021. OpenReview.net, 2021. URL https:
+//openreview.net/forum?id=Ua6zuk0WRH.
+Choromanski, K. M., Lin, H., Chen, H., Sehanobish, A.,
+Ma, Y., Jain, D., Varley, J., Zeng, A., Ryoo, M. S.,
+Likhosherstov, V., Kalashnikov, D., Sindhwani, V., and
+Weller, A. Hybrid random features. In The Tenth Inter-
+national Conference on Learning Representations, ICLR
+2022, Virtual Event, April 25-29, 2022. OpenReview.net,
+2022b. URL https://openreview.net/forum?
+id=EMigfE6ZeS.
+Chowdhery, A., Narang, S., Devlin, J., Bosma, M., Mishra,
+G., Roberts, A., Barham, P., Chung, H. W., Sutton,
+C., Gehrmann, S., Schuh, P., Shi, K., Tsvyashchenko,
+S., Maynez, J., Rao, A., Barnes, P., Tay, Y., Shazeer,
+N., Prabhakaran, V., Reif, E., Du, N., Hutchinson, B.,
+Pope, R., Bradbury, J., Austin, J., Isard, M., Gur-Ari,
+G., Yin, P., Duke, T., Levskaya, A., Ghemawat, S., Dev,
+S., Michalewski, H., Garcia, X., Misra, V., Robinson,
+K., Fedus, L., Zhou, D., Ippolito, D., Luan, D., Lim,
+H., Zoph, B., Spiridonov, A., Sepassi, R., Dohan, D.,
+Agrawal, S., Omernick, M., Dai, A. M., Pillai, T. S., Pel-
+lat, M., Lewkowycz, A., Moreira, E., Child, R., Polozov,
+O., Lee, K., Zhou, Z., Wang, X., Saeta, B., Diaz, M.,
+Firat, O., Catasta, M., Wei, J., Meier-Hellstern, K., Eck,
+D., Dean, J., Petrov, S., and Fiedel, N. Palm: Scaling lan-
+guage modeling with pathways. CoRR, abs/2204.02311,
+2022. doi: 10.48550/arXiv.2204.02311. URL https:
+//doi.org/10.48550/arXiv.2204.02311.
+Chowdhury, S. P., Solomou, A., Dubey, A., and Sachan,
+M. On learning the transformer kernel. Transactions
+of Machine Learning Research, 2022. URL https:
+//arxiv.org/abs/2110.08323.
+Clauwaert, J., Menschaert, G., and Waegeman, W. Ex-
+plainability in transformer models for functional ge-
+nomics. Brieﬁngs Bioinform., 22(5), 2021. doi: 10.1093/
+bib/bbab060. URL https://doi.org/10.1093/
+bib/bbab060.
+Dehghani, M., Gouws, S., Vinyals, O., Uszkoreit, J., and
+Kaiser, L. Universal transformers. In 7th International
+Conference on Learning Representations, ICLR 2019,
+New Orleans, LA, USA, May 6-9, 2019. OpenReview.net,
+2019. URL https://openreview.net/forum?
+id=HyzdRiR9Y7.
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+Deng, J., Dong, W., Socher, R., Li, L., Li, K., and Fei-Fei, L.
+Imagenet: A large-scale hierarchical image database. In
+2009 IEEE Computer Society Conference on Computer
+Vision and Pattern Recognition (CVPR 2009), 20-25 June
+2009, Miami, Florida, USA, pp. 248–255. IEEE Com-
+puter Society, 2009. doi: 10.1109/CVPR.2009.5206848.
+URL https://doi.org/10.1109/CVPR.2009.
+5206848.
+Devlin, J., Chang, M., Lee, K., and Toutanova, K. BERT:
+pre-training of deep bidirectional transformers for lan-
+guage understanding. In Burstein, J., Doran, C., and
+Solorio, T. (eds.), Proceedings of the 2019 Conference of
+the North American Chapter of the Association for Com-
+putational Linguistics: Human Language Technologies,
+NAACL-HLT 2019, Minneapolis, MN, USA, June 2-7,
+2019, Volume 1 (Long and Short Papers), pp. 4171–4186.
+Association for Computational Linguistics, 2019. doi:
+10.18653/v1/n19-1423.
+URL https://doi.org/
+10.18653/v1/n19-1423.
+Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn,
+D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer,
+M., Heigold, G., Gelly, S., Uszkoreit, J., and Houlsby,
+N. An image is worth 16x16 words: Transformers for
+image recognition at scale. In 9th International Con-
+ference on Learning Representations, ICLR 2021, Vir-
+tual Event, Austria, May 3-7, 2021. OpenReview.net,
+2021. URL https://openreview.net/forum?
+id=YicbFdNTTy.
+Du, N., Huang, Y., Dai, A. M., Tong, S., Lepikhin, D., Xu,
+Y., Krikun, M., Zhou, Y., Yu, A. W., Firat, O., Zoph, B.,
+Fedus, L., Bosma, M. P., Zhou, Z., Wang, T., Wang, Y. E.,
+Webster, K., Pellat, M., Robinson, K., Meier-Hellstern,
+K. S., Duke, T., Dixon, L., Zhang, K., Le, Q. V., Wu,
+Y., Chen, Z., and Cui, C. Glam: Efﬁcient scaling of lan-
+guage models with mixture-of-experts. In Chaudhuri, K.,
+Jegelka, S., Song, L., Szepesv´ari, C., Niu, G., and Sabato,
+S. (eds.), International Conference on Machine Learning,
+ICML 2022, 17-23 July 2022, Baltimore, Maryland, USA,
+volume 162 of Proceedings of Machine Learning Re-
+search, pp. 5547–5569. PMLR, 2022. URL https://
+proceedings.mlr.press/v162/du22c.html.
+Gasteiger, J., Becker, F., and G¨unnemann, S. Gemnet: Uni-
+versal directional graph neural networks for molecules.
+Advances in Neural Information Processing Systems, 34:
+6790–6802, 2021.
+Gong, Z., Gao, C., Wang, Y., Gu, W., Peng, Y., and Xu, Z.
+Source code summarization with structural relative posi-
+tion guided transformer. In IEEE International Confer-
+ence on Software Analysis, Evolution and Reengineering,
+SANER 2022, Honolulu, HI, USA, March 15-18, 2022,
+pp. 13–24. IEEE, 2022. doi: 10.1109/SANER53432.
+2022.00013. URL https://doi.org/10.1109/
+SANER53432.2022.00013.
+Gupta, A. and Rush, A. Dilated convolutions for model-
+ing long-distance genomic dependencies, 2017. URL
+https://doi.org/10.1101/200857.
+Halko, N., Martinsson, P., and Tropp, J. A. Finding struc-
+ture with randomness: Probabilistic algorithms for con-
+structing approximate matrix decompositions. SIAM Rev.,
+53(2):217–288, 2011. doi: 10.1137/090771806. URL
+https://doi.org/10.1137/090771806.
+Horn, G. V., Aodha, O. M., Song, Y., Cui, Y., Sun, C.,
+Shepard, A., Adam, H., Perona, P., and Belongie, S. J.
+The inaturalist species classiﬁcation and detection
+dataset.
+In 2018 IEEE Conference on Computer
+Vision and Pattern Recognition, CVPR 2018, Salt
+Lake City, UT, USA, June 18-22, 2018, pp. 8769–8778.
+Computer Vision Foundation / IEEE Computer Society,
+2018. doi: 10.1109/CVPR.2018.00914. URL http:
+//openaccess.thecvf.com/content_cvpr_
+2018/html/Van_Horn_The_INaturalist_
+Species_CVPR_2018_paper.html.
+Horn, M., Shridhar, K., Groenewald, E., and Baumann, P.
+F. M. Translational equivariance in kernelizable attention.
+CoRR, abs/2102.07680, 2021. URL https://arxiv.
+org/abs/2102.07680.
+Ji, Y., Zhou, Z., Liu, H., and Davuluri, R. V. DNABERT:
+pre-trained bidirectional encoder representations from
+transformers model for dna-language in genome. Bioin-
+form.,
+37(15):2112–2120,
+2021.
+doi:
+10.1093/
+bioinformatics/btab083. URL https://doi.org/
+10.1093/bioinformatics/btab083.
+Jumper, J., Evans, R., Pritzel, A., Green, T., Figurnov, M.,
+Ronneberger, O., Tunyasuvunakool, K., Bates, R., ˇZ´ıdek,
+A., Potapenko, A., et al. Highly accurate protein structure
+prediction with alphafold. Nature, 596(7873):583–589,
+2021.
+Katharopoulos, A., Vyas, A., Pappas, N., and Fleuret, F.
+Transformers are rnns: Fast autoregressive transformers
+with linear attention. In International Conference on
+Machine Learning, pp. 5156–5165. PMLR, 2020.
+Kitaev, N., Kaiser, L., and Levskaya, A.
+Reformer:
+The efﬁcient transformer. In 8th International Confer-
+ence on Learning Representations, ICLR 2020, Addis
+Ababa, Ethiopia, April 26-30, 2020. OpenReview.net,
+2020. URL https://openreview.net/forum?
+id=rkgNKkHtvB.
+Lan, Z., Chen, M., Goodman, S., Gimpel, K., Sharma, P.,
+and Soricut, R. ALBERT: A lite BERT for self-supervised
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+learning of language representations. In 8th International
+Conference on Learning Representations, ICLR 2020, Ad-
+dis Ababa, Ethiopia, April 26-30, 2020. OpenReview.net,
+2020. URL https://openreview.net/forum?
+id=H1eA7AEtvS.
+Lewkowycz, A., Andreassen, A., Dohan, D., Dyer, E.,
+Michalewski, H., Ramasesh, V. V., Slone, A., Anil, C.,
+Schlag, I., Gutman-Solo, T., Wu, Y., Neyshabur, B., Gur-
+Ari, G., and Misra, V. Solving quantitative reasoning
+problems with language models. CoRR, abs/2206.14858,
+2022. doi: 10.48550/arXiv.2206.14858. URL https:
+//doi.org/10.48550/arXiv.2206.14858.
+Likhosherstov, V., Choromanski, K., Dubey, A., Liu, F.,
+Sarl´os, T., and Weller, A. Chefs’ random tables: Non-
+trigonometric random features.
+to appear at AAAI
+2023, abs/2205.15317, 2022.
+doi:
+10.48550/arXiv.
+2205.15317. URL https://doi.org/10.48550/
+arXiv.2205.15317.
+Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy,
+O., Lewis, M., Zettlemoyer, L., and Stoyanov, V. Roberta:
+A robustly optimized BERT pretraining approach. CoRR,
+abs/1907.11692, 2019. URL http://arxiv.org/
+abs/1907.11692.
+Liutkus, A., C´ıfka, O., Wu, S., Simsekli, U., Yang, Y., and
+Richard, G. Relative positional encoding for transform-
+ers with linear complexity. In Meila, M. and Zhang,
+T. (eds.), Proceedings of the 38th International Con-
+ference on Machine Learning, ICML 2021, 18-24 July
+2021, Virtual Event, volume 139 of Proceedings of Ma-
+chine Learning Research, pp. 7067–7079. PMLR, 2021.
+URL http://proceedings.mlr.press/v139/
+liutkus21a.html.
+Luo, S., Li, S., Cai, T., He, D., Peng, D., Zheng, S.,
+Ke, G., Wang, L., and Liu, T. Stable, fast and accu-
+rate: Kernelized attention with relative positional en-
+coding. CoRR, abs/2106.12566, 2021. URL https:
+//arxiv.org/abs/2106.12566.
+Luo, S., Chen, T., Xu, Y., Zheng, S., Liu, T.-Y., Wang, L.,
+and He, D. One transformer can understand both 2d & 3d
+molecular data. arXiv preprint arXiv:2210.01765, 2022a.
+Luo, S., Li, S., Zheng, S., Liu, T.-Y., Wang, L., and He, D.
+Your transformer may not be as powerful as you expect.
+arXiv preprint arXiv:2205.13401, 2022b.
+Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright,
+C. L., Mishkin, P., Zhang, C., Agarwal, S., Slama, K.,
+Ray, A., Schulman, J., Hilton, J., Kelton, F., Miller,
+L., Simens, M., Askell, A., Welinder, P., Christiano,
+P. F., Leike, J., and Lowe, R.
+Training language
+models to follow instructions with human feedback.
+CoRR, abs/2203.02155, 2022.
+doi: 10.48550/arXiv.
+2203.02155. URL https://doi.org/10.48550/
+arXiv.2203.02155.
+Peng, H., Pappas, N., Yogatama, D., Schwartz, R., Smith,
+N., and Kong, L.
+Random feature attention.
+In In-
+ternational Conference on Learning Representations,
+2021. URL https://openreview.net/forum?
+id=QtTKTdVrFBB.
+Radford, A. and Narasimhan, K. Improving language un-
+derstanding by generative pre-training. 2018.
+Rae, J. W., Borgeaud, S., Cai, T., Millican, K., Hoffmann, J.,
+Song, H. F., Aslanides, J., Henderson, S., Ring, R., Young,
+S., Rutherford, E., Hennigan, T., Menick, J., Cassirer, A.,
+Powell, R., van den Driessche, G., Hendricks, L. A.,
+Rauh, M., Huang, P., Glaese, A., Welbl, J., Dathathri, S.,
+Huang, S., Uesato, J., Mellor, J., Higgins, I., Creswell,
+A., McAleese, N., Wu, A., Elsen, E., Jayakumar, S. M.,
+Buchatskaya, E., Budden, D., Sutherland, E., Simonyan,
+K., Paganini, M., Sifre, L., Martens, L., Li, X. L., Kun-
+coro, A., Nematzadeh, A., Gribovskaya, E., Donato, D.,
+Lazaridou, A., Mensch, A., Lespiau, J., Tsimpoukelli,
+M., Grigorev, N., Fritz, D., Sottiaux, T., Pajarskas, M.,
+Pohlen, T., Gong, Z., Toyama, D., de Masson d’Autume,
+C., Li, Y., Terzi, T., Mikulik, V., Babuschkin, I., Clark,
+A., de Las Casas, D., Guy, A., Jones, C., Bradbury, J.,
+Johnson, M., Hechtman, B. A., Weidinger, L., Gabriel,
+I., Isaac, W. S., Lockhart, E., Osindero, S., Rimell, L.,
+Dyer, C., Vinyals, O., Ayoub, K., Stanway, J., Bennett,
+L., Hassabis, D., Kavukcuoglu, K., and Irving, G. Scal-
+ing language models: Methods, analysis & insights from
+training gopher. CoRR, abs/2112.11446, 2021. URL
+https://arxiv.org/abs/2112.11446.
+Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S.,
+Matena, M., Zhou, Y., Li, W., and Liu, P. J. Exploring the
+limits of transfer learning with a uniﬁed text-to-text trans-
+former. J. Mach. Learn. Res., 21:140:1–140:67, 2020.
+URL http://jmlr.org/papers/v21/20-074.
+html.
+Rahimi, A. and Recht, B. Random features for large-scale
+kernel machines. In Platt, J. C., Koller, D., Singer, Y.,
+and Roweis, S. T. (eds.), Advances in Neural Information
+Processing Systems 20, Proceedings of the Twenty-First
+Annual Conference on Neural Information Processing
+Systems, Vancouver, British Columbia, Canada, Decem-
+ber 3-6, 2007, pp. 1177–1184. Curran Associates, Inc.,
+2007.
+Ramesh, A., Pavlov, M., Goh, G., Gray, S., Voss, C.,
+Radford, A., Chen, M., and Sutskever, I.
+Zero-shot
+text-to-image generation. In Meila, M. and Zhang, T.
+(eds.), Proceedings of the 38th International Confer-
+ence on Machine Learning, ICML 2021, 18-24 July
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+2021, Virtual Event, volume 139 of Proceedings of Ma-
+chine Learning Research, pp. 8821–8831. PMLR, 2021.
+URL http://proceedings.mlr.press/v139/
+ramesh21a.html.
+Reed, S. E., Zolna, K., Parisotto, E., Colmenarejo, S. G.,
+Novikov, A., Barth-Maron, G., Gimenez, M., Sulsky,
+Y., Kay, J., Springenberg, J. T., Eccles, T., Bruce, J.,
+Razavi, A., Edwards, A., Heess, N., Chen, Y., Hadsell, R.,
+Vinyals, O., Bordbar, M., and de Freitas, N. A generalist
+agent. CoRR, abs/2205.06175, 2022. doi: 10.48550/arXiv.
+2205.06175. URL https://doi.org/10.48550/
+arXiv.2205.06175.
+Roy, A., Saffar, M., Vaswani, A., and Grangier, D. Efﬁ-
+cient content-based sparse attention with routing trans-
+formers.
+Trans. Assoc. Comput. Linguistics, 9:53–
+68, 2021.
+URL https://transacl.org/ojs/
+index.php/tacl/article/view/2405.
+Shaw, P., Uszkoreit, J., and Vaswani, A. Self-attention with
+relative position representations. In Walker, M. A., Ji,
+H., and Stent, A. (eds.), Proceedings of the 2018 Confer-
+ence of the North American Chapter of the Association
+for Computational Linguistics: Human Language Tech-
+nologies, NAACL-HLT, New Orleans, Louisiana, USA,
+June 1-6, 2018, Volume 2 (Short Papers), pp. 464–468.
+Association for Computational Linguistics, 2018. doi:
+10.18653/v1/n18-2074.
+URL https://doi.org/
+10.18653/v1/n18-2074.
+Shi, Y., Zheng, S., Ke, G., Shen, Y., You, J., He, J.,
+Luo, S., Liu, C., He, D., and Liu, T.-Y. Benchmarking
+graphormer on large-scale molecular modeling datasets.
+arXiv preprint arXiv:2203.04810, 2022.
+Srivastava, A., Rastogi, A., Rao, A., Shoeb, A. A. M.,
+Abid, A., Fisch, A., Brown, A. R., Santoro, A., Gupta,
+A., Garriga-Alonso, A., Kluska, A., Lewkowycz, A.,
+Agarwal, A., Power, A., Ray, A., Warstadt, A., Ko-
+curek, A. W., Safaya, A., Tazarv, A., Xiang, A., Par-
+rish, A., Nie, A., Hussain, A., Askell, A., Dsouza, A.,
+Rahane, A., Iyer, A. S., Andreassen, A., Santilli, A.,
+Stuhlm¨uller, A., Dai, A. M., La, A., Lampinen, A. K.,
+Zou, A., Jiang, A., Chen, A., Vuong, A., Gupta, A., Got-
+tardi, A., Norelli, A., Venkatesh, A., Gholamidavoodi,
+A., Tabassum, A., Menezes, A., Kirubarajan, A., Mul-
+lokandov, A., Sabharwal, A., Herrick, A., Efrat, A.,
+Erdem, A., Karakas, A., and et al.
+Beyond the imi-
+tation game: Quantifying and extrapolating the capa-
+bilities of language models.
+CoRR, abs/2206.04615,
+2022. doi: 10.48550/arXiv.2206.04615. URL https:
+//doi.org/10.48550/arXiv.2206.04615.
+Sun, Z., Yang, Y., and Yoo, S. Sparse attention with learn-
+ing to hash. In The Tenth International Conference on
+Learning Representations, ICLR 2022, Virtual Event,
+April 25-29, 2022. OpenReview.net, 2022. URL https:
+//openreview.net/forum?id=VGnOJhd5Q1q.
+Tay, Y., Dehghani, M., Abnar, S., Shen, Y., Bahri, D.,
+Pham, P., Rao, J., Yang, L., Ruder, S., and Metzler,
+D. Long range arena : A benchmark for efﬁcient trans-
+formers.
+In 9th International Conference on Learn-
+ing Representations, ICLR 2021, Virtual Event, Austria,
+May 3-7, 2021. OpenReview.net, 2021. URL https:
+//openreview.net/forum?id=qVyeW-grC2k.
+Thoppilan, R., Freitas, D. D., Hall, J., Shazeer, N., Kul-
+shreshtha, A., Cheng, H., Jin, A., Bos, T., Baker, L., Du,
+Y., Li, Y., Lee, H., Zheng, H. S., Ghafouri, A., Mene-
+gali, M., Huang, Y., Krikun, M., Lepikhin, D., Qin, J.,
+Chen, D., Xu, Y., Chen, Z., Roberts, A., Bosma, M.,
+Zhou, Y., Chang, C., Krivokon, I., Rusch, W., Pickett,
+M., Meier-Hellstern, K. S., Morris, M. R., Doshi, T.,
+Santos, R. D., Duke, T., Soraker, J., Zevenbergen, B.,
+Prabhakaran, V., Diaz, M., Hutchinson, B., Olson, K.,
+Molina, A., Hoffman-John, E., Lee, J., Aroyo, L., Ra-
+jakumar, R., Butryna, A., Lamm, M., Kuzmina, V., Fen-
+ton, J., Cohen, A., Bernstein, R., Kurzweil, R., Aguera-
+Arcas, B., Cui, C., Croak, M., Chi, E. H., and Le, Q.
+Lamda: Language models for dialog applications. CoRR,
+abs/2201.08239, 2022. URL https://arxiv.org/
+abs/2201.08239.
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones,
+L., Gomez, A. N., Kaiser, L., and Polosukhin, I. Attention
+is all you need. In Guyon, I., von Luxburg, U., Bengio,
+S., Wallach, H. M., Fergus, R., Vishwanathan, S. V. N.,
+and Garnett, R. (eds.), Advances in Neural Information
+Processing Systems 30: Annual Conference on Neural
+Information Processing Systems 2017, December 4-9,
+2017, Long Beach, CA, USA, pp. 5998–6008, 2017.
+Vaswani, A., Ramachandran, P., Srinivas, A., Parmar, N.,
+Hechtman, B. A., and Shlens, J.
+Scaling local self-
+attention for parameter efﬁcient visual backbones. In
+IEEE Conference on Computer Vision and Pattern Recog-
+nition, CVPR 2021, virtual, June 19-25, 2021, pp. 12894–
+12904. Computer Vision Foundation / IEEE, 2021a. doi:
+10.1109/CVPR46437.2021.01270.
+Vaswani, A., Ramachandran, P., Srinivas, A., Parmar,
+N., Hechtman, B. A., and Shlens, J.
+Scaling local
+self-attention for parameter efﬁcient visual backbones.
+In IEEE Conference on Computer Vision and Pattern
+Recognition, CVPR 2021, virtual, June 19-25, 2021,
+pp. 12894–12904. Computer Vision Foundation / IEEE,
+2021b.
+URL https://openaccess.thecvf.
+com/content/CVPR2021/html/Vaswani_
+Scaling_Local_Self-Attention_for_
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+Parameter_Efficient_Visual_Backbones_
+CVPR_2021_paper.html.
+Vyas, A., Katharopoulos, A., and Fleuret, F. Fast trans-
+formers with clustered attention.
+In Larochelle, H.,
+Ranzato, M., Hadsell, R., Balcan, M., and Lin, H. (eds.),
+Advances in Neural Information Processing Systems 33:
+Annual Conference on Neural Information Processing
+Systems 2020, NeurIPS 2020, December 6-12, 2020,
+virtual,
+2020.
+URL https://proceedings.
+neurips.cc/paper/2020/hash/
+f6a8dd1c954c8506aadc764cc32b895e-Abstract.
+html.
+Wu, K., Peng, H., Chen, M., Fu, J., and Chao, H. Rethinking
+and improving relative position encoding for vision trans-
+former. In 2021 IEEE/CVF International Conference on
+Computer Vision, ICCV 2021, Montreal, QC, Canada,
+October 10-17, 2021, pp. 10013–10021. IEEE, 2021. doi:
+10.1109/ICCV48922.2021.00988. URL https://doi.
+org/10.1109/ICCV48922.2021.00988.
+Xiao, H., Rasul, K., and Vollgraf, R. Fashion-mnist: a
+novel image dataset for benchmarking machine learning
+algorithms. CoRR, abs/1708.07747, 2017. URL http:
+//arxiv.org/abs/1708.07747.
+Xiao, X., Zhang, T., Choromanski, K., Lee, T. E., Fran-
+cis, A. G., Varley, J., Tu, S., Singh, S., Xu, P., Xia, F.,
+Persson, S. M., Kalashnikov, D., Takayama, L., Frostig,
+R., Tan, J., Parada, C., and Sindhwani, V.
+Learning
+model predictive controllers with real-time attention for
+real-world navigation.
+CoRL 2022, abs/2209.10780,
+2022. doi: 10.48550/arXiv.2209.10780. URL https:
+//doi.org/10.48550/arXiv.2209.10780.
+Yuan, L., Chen, Y., Wang, T., Yu, W., Shi, Y., Jiang, Z.,
+Tay, F. E. H., Feng, J., and Yan, S. Tokens-to-token
+vit: Training vision transformers from scratch on ima-
+genet. In 2021 IEEE/CVF International Conference on
+Computer Vision, ICCV 2021, Montreal, QC, Canada,
+October 10-17, 2021, pp. 538–547. IEEE, 2021. doi:
+10.1109/ICCV48922.2021.00060. URL https://doi.
+org/10.1109/ICCV48922.2021.00060.
+Zaheer, M., Guruganesh, G., Dubey, K. A., Ainslie, J., Al-
+berti, C., Ontanon, S., Pham, P., Ravula, A., Wang, Q.,
+Yang, L., et al. Big bird: Transformers for longer se-
+quences. Advances in Neural Information Processing
+Systems, 33:17283–17297, 2020.
+Zhou, B., Lapedriza, `A., Khosla, A., Oliva, A., and
+Torralba, A.
+Places: A 10 million image database
+for scene recognition.
+IEEE Trans. Pattern Anal.
+Mach. Intell., 40(6):1452–1464, 2018. doi: 10.1109/
+TPAMI.2017.2723009. URL https://doi.org/10.
+1109/TPAMI.2017.2723009.
+Zhou, J., Wang, P., Wang, F., Liu, Q., Li, H., and Jin,
+R. ELSA: enhanced local self-attention for vision trans-
+former. CoRR, abs/2112.12786, 2021. URL https:
+//arxiv.org/abs/2112.12786.
+ˇZiga Avsec, Agarwal, V., Visentin, D., Ledsam, J. R.,
+Grabska-Barwinska, A., Taylor, K. R., Assael, Y., Jumper,
+J. M., Kohli, P., and Kelley, D. R. Effective gene expres-
+sion prediction from sequence by integrating long-range
+interactions. Nature Methods, 18:1196 – 1203, 2021.
+Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers
+A. Appendix
+A.1. Potential negative social impact & limitations
+This paper works on building scalable and powerful Transformer variants. While they led to signiﬁcant advances in language
+modeling and several other domains, we note that they should be used cautiously, given the carbon emission footprint of their
+training. In addition, this paper only studies scalable Transformer variants based on low-rank attention (e.g., Performer), and
+the technique may not be directly applied to other classes of efﬁcient Transformers.
+A.2. Detailed experiment settings
+Language modeling.
+Following existing works (Peng et al., 2021; Luo et al., 2021), the sequence length is set to 512
+during both training and evaluation. All models are trained without access to the context from previous mini-batches for a
+fair comparison. The dropout ratio and weight decay are set to 0.1 and 0.01, respectively. The batch size is set to 64. We use
+Adam as the optimizer, and set its hyperparameter ε to 1e − 6 and (β1, β2) to (0.9, 0.98). The model is trained for 150k
+steps with a 6k-step warm-up stage followed by an inverse square-root learning rate scheduler, with the peak learning rate
+set to 2e − 3.
+For the FLT variant with Gaussian mixture RPE, the FT of the RPE function, i.e., the function g, is parameterized as
+described in Eq. (6). For the FLT variant with local RPE, the function g is parameterized as
+g(ξ) =
+T
+X
+t=1
+wt · sin(2πvtξ)
+πξ
+,
+(13)
+where w1, · · · , wT and v1, · · · , vT are learnable parameters and T is a pre-deﬁned hyper-parameter. In this case, the
+underlying implict RPE function f is
+f(∆r) =
+T
+X
+t=1
+wt · 1[|∆r| ≤ vt].
+(14)
+For both FLT variants, the RPE masks are different in different attention heads, but are shared across different layers. The
+random features ξ1, · · · , ξr are sampled from the standard Gaussian distribution.
+Image classiﬁcation.
+For all the models, we used a dropout rate of 0.1 and no attention dropout. We applied the Adam
+optimizer with weight decay equal to 0.05 and a standard batch size of 4096. All Transformers were trained on TPU
+architectures until convergence.
+Table 5. Hyperparameters for Image Classiﬁcation.
+Parameter
+Value
+Batch size
+4096
+Optimizer
+AdamW
+Base Learning rate
+1.5e − 4
+Weight decay
+0.05
+Optimizer momentum
+(β1, β2) = (0.9, 0.95)
+Learning rate schedule
+cosine decay
+Warm up epochs
+40
+Augmentation
+RandomResizedCrop
+Compute resources
+8 × 8 TPUv3
+Molecular property prediction.
+For all the models, the attention dropout ratio and the weight decay are set to 0.1 and
+0.001, respectively. The batch size is set to 64. We use Adam as the optimizer, and set its hyperparameter ε to 1e − 6 and
+(β1, β2) to (0.9, 0.98). The peak learning rate is set to 3e − 4 with a 10K-step warm-up stage. After the warm-up stage, the
+learning rate decays linearly to zero. All the models are trained for 500k steps in total.
+

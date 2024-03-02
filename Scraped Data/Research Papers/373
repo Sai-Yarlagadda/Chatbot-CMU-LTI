@@ -1,0 +1,1439 @@
+Shao et al. BMC Plant Biology          (2023) 23:641  
+https://doi.org/10.1186/s12870-023-04652-7
+RESEARCH
+Open Access
+© The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which 
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or 
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory 
+regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this 
+licence, visit http://creativecommons.org/licenses/by/4.0/. The Creative Commons Public Domain Dedication waiver (http://creativecom-
+mons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+BMC Plant Biology
+Genome- and transcriptome-wide 
+identification of trehalose-6-phosphate 
+phosphatases (TPP) gene family and their 
+expression patterns under abiotic stress 
+and exogenous trehalose in soybean
+Wenjing Shao1, Xinlin Zhang1, Zhiheng Zhou1, Yue Ma1, Duo Chu1, Lei Wang1, Yiming Yang1, Lin Du1, 
+Yanli Du1,2, Jidao Du1,2* and Qiang Zhao1,2* 
+Abstract 
+Background Trehalose-6-phosphate phosphatase (TPP) is an essential enzyme catalyzing trehalose synthesis, 
+an important regulatory factor for plant development and stress response in higher plants. However, the TPP gene 
+family in soybean has not been reported.
+Results A comprehensive analysis of the TPP gene family identified 18 GmTPPs classified into eight groups based 
+on the phylogenetic relationships and the conservation of protein in six monocot and eudicot plants. The closely 
+linked subfamilies had similar motifs and intron/exon numbers. Segmental duplication was the main driving force 
+of soybean GmTPPs expansion. In addition, analysis of the cis-regulatory elements and promoter regions of GmT-
+PPs revealed that GmTPPs regulated the response to several abiotic stresses. Moreover, RNA-seq and qRT-PCR 
+analysis of the tissue-specific GmTPPs under different abiotic stresses revealed that most GmTPPs were associated 
+with response to different stresses, including cold, drought, saline-alkali, and exogenous trehalose. Notably, exoge-
+nous trehalose treatment up-regulated the expression of most TPP genes under saline-alkali conditions while increas-
+ing the carbohydrate and trehalose levels and reducing reactive oxygen species (ROS) accumulation in soybean 
+sprouts, especially in the saline-alkali tolerant genotype. Furthermore, the interaction network and miRNA target 
+prediction revealed that GmTPPs interacted with abiotic stress response-related transcription factors.
+Conclusions The findings in this study lay a foundation for further functional studies on TPP-based breeding 
+to improve soybean development and stress tolerance.
+Keywords Trehalose-6-phosphate phosphatase (TPP), Soybean, Expression pattern, Abiotic stress, Saline-alkali stress, 
+Trehalose
+*Correspondence:
+Jidao Du
+djdbynd@163.com
+Qiang Zhao
+zqiang0416@hotmail.com
+Full list of author information is available at the end of the article
+Page 2 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+Background
+Trehalose, a non-reducing disaccharide composed of two 
+α- glucose molecules, is widely found in bacteria, yeast, 
+invertebrates, protozoa, and higher plants [1–3]. It serves 
+as an energy source during intracellular metabolism and 
+also acts as a signaling molecule that regulates pathways 
+involved in energy metabolism [4]. In plants, stress toler-
+ance is significantly improved by regulating sugar accu-
+mulation, modulating the activity of sugar transporters, 
+and sugar metabolism [5]. Trehalose accumulation is 
+observed in many plant species under various abiotic 
+stress conditions such as high and low temperatures, 
+drought, salt, and high osmotic pressure. This accumula-
+tion is believed to have important evolutionary roles in 
+protecting cellular structuresand biologically active sub-
+stances like nucleic acids, membranes, and proteins [6]. 
+However, plant response to abiotic stress is complex, 
+involving many physiological and biochemical processes 
+and molecular mechanisms, such as the differential 
+expression of stress-related genes in various pathways [7].
+The synthesis of trehalose in plants follows a highly 
+conserved pathway that involves two enzymes. First, 
+trehalose 6-phosphate synthase (TPS) catalyzes the 
+synthesis of trehalose 6-phosphate (T6P) from uridine 
+diphosphate-glucose and glucose 6-phosphate. Sub-
+sequently, trehalose-6-phosphate phosphatase (TPP) 
+dephosphorylates T6P to produce trehalose [8, 9]. In 
+addition, TPP acts as a signaling molecule that regulates 
+important metabolic and developmental processes in 
+plants. For example, TPP inhibits the activity of sucrose 
+nonfermenting-related kinase1, crucial in the transcrip-
+tional regulatory network under stress conditions and 
+energy metabolism [10].
+Members of the TPP genes family encode TPP 
+enzymes, and with the advant of genome sequencing 
+technology, an increasing number of TPP gene fam-
+ily members have been identified in various plants. For 
+example, 10 TPP gene family members (AtTPPA-G) have 
+been identified in Arabidopsis [11], 13 (OsTPP1-13) in 
+rice (Oryza sativa) [12], 79 (GaTPP1-17, GrTPP1-12, 
+GbTPP1-26, Gh1-24) in cotton (Gossypium spp) [13], and 
+11 (ZmTPPA1.1–1.2, Zm TPPB1.1–1.6, ZmTPPB2.1–2.2) 
+in maize (Zea mays) [14]. The TPP structure is highly 
+conserved in plants, with specific structural domains 
+containing only phosphatase domains. Furthermore, 
+while TPP gene family members exhibit similar enzy-
+matic activities, they display different patterns of differ-
+ential expression, suggesting their involvement in specific 
+tissues, stages, or processes [15].
+Several TPP genes have been implicated in plant 
+responses to abiotic stresses. Specifically, the overexpres-
+sion or mutation of certain TPP genes has been shown 
+to significantly impact plant growth, development, and 
+tolerance to abiotic stress. For example, a mutation in the 
+maize RAMOSA3 TPP gene has been linked to extensive 
+inflorescence branching [16]. Similarly, the overexpres-
+sion of AtTPPI or AtTPPF has been found to enhanced 
+drought tolerance in Arabidopsis [17, 18]. In addition, 
+the overexpression of AtTPPD, the only TPP family gene 
+related to salt stress in Arabidopsis, which regulates sugar 
+metabolism under salt stress, led to a significant accu-
+mulation of starch and soluble sugar [15]. In rice, the 
+overexpression of OsTPP1 or OsTPP3 has been found 
+to enhance tolerance to both salt and drought stresses 
+[19, 20]. Additionally, the overexpression of Mads6, 
+a promoter driving OsTPP1 expression in maize, has 
+been shown to significantly improves maize yield under 
+drought conditions [21].
+Soybean (Glycine max) is an economically important 
+crop due to its high protein content and edible oil. How-
+ever, soybean is susceptible to various abiotic stresses, 
+which can negatively impacttheir growth and reduce 
+crop productivity [22, 23]. Currently,, there is no research 
+on TPP genes in soybean. In this study, we aimed to iden-
+tify, describ, and phylogenetically classified 18 putative 
+TPP genes in soybean. In addition, we also analyzed their 
+gene structure, motifs, conserved structures, replication 
+patterns, interaction networks, tissue-specific expression 
+patterns, and cis-elements. Furthermore, we investigated 
+the expression patterns of GmTPPs under abiotic stresses 
+using RNA-seq and Real-time quantitative polymerase 
+chain reaction (qRT-PCR). Additionally,, we analyzed the 
+tissue-specific expression of GmTPPs and examined the 
+effects of exogenous trehalose treatment on saline-alkali 
+tolerance of soybean sprouts. This comprehensive analy-
+sis of the GmTPP gene family will serve as a foundation 
+for further studies on their functions in soybean.
+Results
+Genome‑wide identification and fundamental analysis 
+of GmTPP genes
+BLASTp search of the GmTPP gene members using 10 
+Arabidopsis protein sequences as the query identified 
+18 putative TPP genes in the soybean genome (Addi-
+tional file 2: Table S1). The 18 TPP genes in the reference 
+soybean genome (Glycine max Wm82.a2. v1) were con-
+firmed by the combined Pfam (Trehalose_PPase; Pfam: 
+PF02358), CDD-search, and HMMER analysis. Subse-
+quently, they were labeled GmTPP1 – GmTPP18 accord-
+ing to their orders on the chromosomes. The physical 
+and chemical properties of these genes are indicated in 
+Table  1. The GmTPP protein lengths ranged from 214 
+to 392 aa with molecular weights of 24.24 (GmTPP11) 
+to 43.43 (GmTPP7) kDa. In addition, their theoreti-
+cal isoelectric point ranged from 5.51 (GmTPP16) to 
+9.78 (GmTPP8). GRAVY was predicted to be -0.518 
+Page 3 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+(GmTPP17) to -0.027 (GmTPP11), implying that these 
+proteins were hydrophilic. Finally, subcellular localiza-
+tion prediction revealed that the GmTPPs were localized 
+in the vacuole and chloroplast.
+Chromosome distribution and phylogenetic analysis 
+of GmTPP genes in soybean
+The chromosome maps based on the genomic sequences 
+revealed the genomic distribution of GmTPPs on soybean 
+chromosomes (Fig. 1a). The maps revealed that the TPP 
+family members were evenly distributed on 13 chromo-
+somes in the soybean genome.
+Phylogenetic analysis based on the 87 TPP protein 
+sequences from six plant species, including monocoty-
+ledonous angiosperms, wheat (Triticum aestivum), rice 
+and maize, and the dicotyledonous angiosperms, Arabi-
+dopsis, tomato and soybean categorized the TPPs into 
+eight subfamilies (I-VIII) (Fig.  1b; (Additional file  3: 
+Table  S2)). Subfamily III was comprised of TPP genes 
+from the six plant species, while subfamily V comprised 
+only TPP genes from the dicotyledonous angiosperms. 
+Subfamilies I, II, VII, and VIII comprised TPP genes from 
+different monocotyledonous angiosperms species, while 
+subfamily VI had three TPP genes from Arabidopsis and 
+one from tomato. The phylogenetic analysis revealed five, 
+three, and ten GmTPPs in the subfamilies III, IV, and 
+V, respectively. Most of the soybean TPP proteins were 
+closed related to those of Arabidopsis and tomato. This 
+implies that the differentiation of TPP genes in dicotyle-
+donous angiosperms occurred later than in monocotyle-
+donous angiosperms.
+GmTPPs conserved motif, gene structure, and domain 
+analysis
+Domain analysis of the 18 full-length GmTPP protein 
+sequences divided these proteins into three separate sub-
+families (Fig. 2a). Motifs 3 and 4 were present in all the 18 
+GmTPPs proteins, implying that the two domains were 
+highly conserved in TPP genes (Fig. 2a). Motifs 1, 2, 5, 
+6, and 8 existed simultaneously in sisteen GmTPP mem-
+bers, while Motifs 9 and 10 existed only in four GmTPP 
+members. Overall, motifs 1–8 were present in most 
+members. The conserved sequences of motifs 1–10 are 
+shown in Fig. 2b.
+Gene structure analysis revealed that GmTPP exons 
+ranged from 9 to 11 and introns from 8 to 11, with genes 
+clustered together having similar structures (Fig.  2c). 
+GmTPP genes in the same subfamily had similar gene 
+structures (intron number and exon length), particu-
+larly those of subfamily V, which had 11 introns in soy-
+bean. GmTPP6 had the longest gene length, implying a 
+different evolution pattern with variant characteristics. 
+Furthermore, the Pfam analysis revealed that all the 
+GmTPP proteins contained a specific Trehalose PPase 
+domain (PF02358). In addition, GmTPP5, GmTPP14, and 
+GmTPP15 proteins in subfamily II had a transmembrane 
+Table 1 Physicochemical properties of identified GmTPPs in soybean
+Gene ID
+Gene Name
+Chr
+Number of 
+amino acids
+Molecular weight
+PI
+GRAVY
+Formula
+Subcellular
+(aa)
+(kDa)
+Location
+Glyma.04G103600.1
+GmTPP1
+chr4
+371
+41.44
+9.35
+-0.277
+C1852H2957N511O542S12
+Chloroplast
+Glyma.04G119700.1
+GmTPP2
+ch4
+382
+42.05
+5.29
+-0.208
+C1863H2936N502O573S16
+Cytosol
+Glyma.04G237900.1
+GmTPP3
+chr4
+367
+41.77
+8.86
+-0.297
+C1872H2956N504O548S15
+Chloroplast
+Glyma.05G179800.1
+GmTPP4
+chr5
+362
+41.20
+9.27
+-0.448
+C1826H2911N513O536S18
+Chloroplast
+Glyma.06G104800.1
+GmTPP5
+chr6
+380
+42.41
+9.46
+-0.221
+C1899H3036N522O553S12
+Chloroplast
+Glyma.06G126300.1
+GmTPP6
+chr6
+367
+42.05
+9.09
+-0.327
+C1884H2974N512O550S14
+Chloroplast
+Glyma.06G318400.1
+GmTPP7
+chr6
+392
+43.43
+5.82
+-0.258
+C1929H3039N523O581S18
+Cytosol
+Glyma.07G165100.1
+GmTPP8
+chr7
+285
+32.37
+9.78
+-0.146
+C1468H2349N399O402S11
+Chloroplast
+Glyma.08G137500.1
+GmTPP9
+chr9
+367
+41.47
+9.21
+-0.476
+C1837H2931N519O538S18
+Chloroplast
+Glyma.09G231400.1
+GmTPP10
+chr10
+389
+43.42
+8.54
+-0.476
+C1837H2931N519O538S18
+Cytosol
+Glyma.11G168300.1
+GmTPP11
+chr11
+214
+24.24
+9.61
+-0.027
+C1940H3058N524O576S15
+Chloroplast
+Glyma.11G239300.1
+GmTPP12
+chr11
+363
+41.04
+9.31
+-0.45
+C1103H1781N291O304S8
+Chloroplast
+Glyma.12G005200.1
+GmTPP13
+chr12
+389
+43.28
+7.66
+-0.279
+C1822H2901N511O537S15
+Chloroplast
+Glyma.13G088300.1
+GmTPP14
+chr13
+372
+41.82
+9.29
+-0.353
+C1933H3041N521O576S15
+Chloroplast
+Glyma.14G171700.1
+GmTPP15
+chr14
+379
+42.54
+9.47
+-0.445
+C1869H2988N508O550S14
+Chloroplast
+Glyma.16G025600.1
+GmTPP16
+chr16
+313
+35.20
+5.51
+-0.267
+C1888H3020N528O559S15
+Cytosol
+Glyma.17G138700.1
+GmTPP17
+chr17
+362
+41.04
+5.79
+-0.518
+C1566H2471N413O475S16
+Cytosol
+Glyma.18G018100.1
+GmTPP18
+chr18
+364
+41.07
+9.31
+-0.441
+C1808H2843N501O560S15
+Chloroplast
+Page 4 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+Fig. 1 Chromosomal distribution and phylogenetic tree of GmTPPs. a Chromosomal distribution of GmTPPs. b Phylogenetic tree of GmTPPs 
+from soybean, Arabidopsis, rice, wheat, tomato and maize. Different colors represent different groups. The blue lines indicate gene densit, filled stars 
+represent GmTPPs genes and empty stars represent TPPs genes of other speciese
+Fig. 2 Phylogenetic tree, protein motifs, gene structures and protein conserved domain of GmTPPs. a Phylogenetic tree of GmTPPs in soybean 
+and ten conserved motifs of GmTPPs proteins, each small box indicating a motif. b Conserved sequence of each motif. c The structures of intron 
+and exon and untranslated regions (UTR) are shown in black line, green and pink boxes, respectively. d Conserved domain of GmTPPs protein 
+in soybean
+Page 5 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+region (Fig.  2d). The 18 proteins also had similar 3D 
+structures (Additional file  1: Fig S1). The 3D structure 
+of these proteins lays the foundation for their biological 
+function.
+Gene duplication and homology analysis of TPP genes
+The evolutionary mechanism of the soybean TPP fam-
+ily was revealed based on the collinear relationships of 
+the TPP gene family in dicots (soybean, Arabidopsis, 
+tomato) and monocots (wheat, rice, and maize) (Fig. 3). 
+Among the 18 GmTPP genes, 14 possible pairs of dupli-
+cated genes existed (Fig.  3a). Based on the gene rep-
+etition analysis, all the identified paralogous genes were 
+segmental duplications (SD), implying that SD was the 
+main expansion mechanism of the GmTPP gene family. 
+The ratio of the non-synonymous mutation rate (Ka) to 
+the synonymous mutation rate (Ks) was used to express 
+the selection pressure analysis of coding sequences, with 
+Ka/Ks < 1 indicating purified/negative selection and Ka/
+Ks > 1 Darwinian/positive selection. The Ka/Ks ratio 
+ranged from 0.0109503 to 0.1057524, implying that puri-
+fying selection was important during gene replication 
+(Additional file 4: Table S3). These findings suggest that 
+fragment replication events had important effects on the 
+diversity of TPP genes in soybean.
+Furthermore, homology analysis revealed that seven 
+GmTPPs and five AtTPPs were orthologous gene 
+pairs, resulting in 13 syntenic relationships. GmTPP5, 
+GmTPP14, and GmTPP15 were collinear with AtTPPD, 
+while GmTPP10 was collinear with AtTPPE, imply-
+ing that they may have similar functions.The GmTPPs 
+were collinear with 26 relationships in tomato, while 
+nine GmTPP genes were collinear with 33 relation-
+ships in wheat. In addition, two GmTPPs, two ZmTPPs, 
+one GmTPPs, and one OsTPPs were orthologous gene 
+pairs, resulting in syntenic relationships, respectively. 
+The orthologous relationships between the soybean TPP 
+genes and related genes from the six representative spe-
+cies, including three dicots (Arabidopsis, soybean, and 
+tomato) and three monocots (rice, maize, and wheat) are 
+illustrated in Fig. 3b.
+Promoter regions cis‑acting regulatory elements analysis
+The CREs analysis identified 18 major CREs in the GmT-
+PPs promoter sequence (Fig.  4a). The 18 major CREs 
+were classified into four element categories, including 
+phytohormones, cellular development, photoresponsive, 
+and environmental stress (Additional file  5: Table  S4). 
+Among them, the light-responsiveness CREs accounted 
+for the largest proportion (44.4%), followed by the hor-
+mone-regulated elements (such as auxin, abscisic acid, 
+Fig. 3 Collinear analysis of GmTPPs. a Collinearity analysis of TPP gene family in soybean. b Collinear analysis of GmTPPs with Arabidopsis, maize, 
+rice, wheat, tomato. Different gene colors represent different groups
+Page 6 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+gibberellins, salicylic acid, and methyl jasmonate), which 
+accounted for 24.5%. The other two categories, including 
+developmental and stress-related elements, accounted 
+for 31.1% (Fig. 4b). The promoter regions of seven genes 
+had low-temperature responsiveness elements, which 
+contained all members of group III. In addition, there 
+were nine genes involved in defense/stress, including four 
+genes in group III (GmTPP2, GmTPP10, GmTPP13, and 
+GmTPP17), two in group IV, and two in group V. Overall, 
+genes in group III played an important role in defense/
+stress response. The promoter regions of six genes also 
+had drought induction elements, of which three were in 
+group III and the other three were in group V. The CREs 
+analysis revealed that GmTPPs respond to several hor-
+mones and stresses, which may directly affect the stress 
+response ability of GmTPPs under stress conditions. 
+Among them, GmTPP2 and GmTPP15 were involved in 
+response to several abiotic stress and hormones and the 
+growth regulation of soybean.
+Expression pattern of GmTPP genes in different tissues
+The expression levels of GmTPPs in different tissues, 
+including the flowers, stems, roots, nodules, shoots, 
+leaves, pods, and seeds, were obtained from the Phyto-
+zome database. The expression levels of GmTPPs in the 
+soybean tissues were significantly different (Fig. 5a). For 
+example, GmTPP4, GmTPP9, GmTPP14, and GmTPP15 
+were up-regulated in the roots, and GmTPP13 in the 
+leaves. In addition, the relative expression of GmTPP5, 
+GmTPP7, GmTPP9, and GmTPP10 was also significantly 
+higher in the leaves than in the other organs or tissues. 
+GmTPP13 was also highly expressed in pods. In con-
+trast, GmTPP6, GmTPP12, GmTPP16, GmTPP17, and 
+GmTPP18 were lowly expressed in all the plant tissues.
+qRT-PCR analysis of the expression patterns of the 18 
+GmTPPs during the sprout stage revealed tissue-spe-
+cific expression in soybean tissues (Fig. 5b). The expres-
+sion pattern of 10 GmTPPs was detected in the soybean 
+sprouts. GmTPP2, GmTPP7, GmTPP15, and GmTPP17 
+in soybean radicles were highly expressed, with the high-
+est expression level in GmTPP15. Besides, GmTPP4 and 
+GmTPP6 expression levels in the soybean cotyledon 
+were higher than in the radicle and hypocotyls. Simi-
+larly, GmTPP7, GmTPP17, and GmTPP18 expression 
+levels in the soybean hypocotyls were higher than in the 
+radicle and cotyledon (Additional file  6: Fig S2). Taken 
+together, GmTPPs expression in soybean is tissue-specific 
+expressed during the sprout stage.
+Expression profiles of GmTPP genes under abiotic stresses
+qRT-PCR analysis on the soybean sprouts treated with 
+4˚C, PEG, saline-alkali, and exogenous trehalose (T + SA) 
+revealed the expression pattern of GmTPPs in response 
+to abiotic stress (Fig. 6). Precisely, the expression levels of 
+TPP family genes under the same treatment conditions 
+were different. Besides, the expression patterns of the 
+same genes under different treatment conditions differed.
+The GmTPP6, GmTPP7, GmTPP13, GmTPP15, and 
+GmTPP18 expression were induced under 4˚C and 
+drought (PEG) treatments, with peak expression at 
+72 h after treatment, implying that these genes are sen-
+sitive to cold and drought stresses (Fig.  6ab). Except 
+Fig. 4 The Cis-regulatory analysis of GmTPPs. a Cis-regulatory elements in promoter region of GmTPPs genes and their proportions (b)
+Page 7 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+for GmTPP6 and GmTPP7, the expression levels of all 
+the other genes increased to more than 6 folds under 
+saline-alkali stress (Fig.  6c). The expression levels of 
+GmTPP13 and GmTPP15 were increased with the expo-
+sure time to saline-alkali stress. GmTPP2, GmTPP5, 
+GmTPP6, GmTPP7, GmTPP13, and GmTPP15 were also 
+up-regulated under exogenous trehalose treatment com-
+pared to under saline-alkali treatment (Fig. 6d). Moreo-
+ver, GmTPP4 and GmTPP18 expression levels were 
+decreased under exogenous trehalose treatment. At the 
+same time, GmTPP2 and GmTPP5 responded only to 
+saline-alkali and T + SA treatments, while GmTPP6 and 
+Fig. 5 The expression levels of GmTPPs in different tissues. a The schematic diagram of different tissues of soybean and the expression of GmTPPs 
+in different tissues. b The schematic diagram of different tissues of soybean sprouts and the expression level of GmTPPs in cotyledons, hypocotyls, 
+and radicles. Red and green indicate high and low transcription levels, respectively. The expression levels of GmTPPs were analyzed using the  2− 
+△△Ct methods
+Page 8 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+GmTPP7 were downregulated only under saline-alkali 
+stress. In addition, GmTPP13 and GmTPP15 were signifi-
+cantly up-regulated under the four abiotic stress condi-
+tions. In summary, the GmTPP genes were responsive to 
+abiotic stress, with most genes responding (up-regulated) 
+to saline-alkali stress. In addition, gene expression was 
+significantly increased after trehalose treatment, imply-
+ing that trehalose could alleviate the damage caused by 
+saline-alkali stress.
+Validation of GmTPPs differential expression
+The integrated transcriptome analysis revealed the GmT-
+PPs expression patterns in the radicle of the different soy-
+bean genotypes under saline-alkali stress (Fig.  7a). The 
+raw data were submitted to the NCBI database. There 
+was a significant difference in the expression of the two 
+genotypes (N and K) GmTPPs genes under saline treat-
+ment. GmTPP2, GmTPP5, GmTPP12, GmTPP14, and 
+GmTPP15 were significantly up-regulated in the N 
+genotype compared to K genotype. Among them, the 
+expression levels of GmTPP2, GmTPP7, GmTPP12, 
+and GmTPP15 were more than threefold. In contrast, 
+GmTPP4, GmTPP6, GmTPP9, GmTPP10, and GmTPP13 
+were down-regulated under saline-alkaline stress. Vali-
+dation of the RNA-seq results by qRT-PCR analysis of 
+the expression levels of the 18 GmTPP genes revealed 
+that their expression levels had the same trend based on 
+RNA-seq and qRT-PCR analysis, with an  R2 of 0.8931 
+(Fig. 7b). Furthermore, Go enrichment and KEGG path-
+way annotation analyses revealed that the starch and 
+sucrose metabolism pathway was enriched. In particular, 
+all the GmTPPs were enriched in the trehalose biosyn-
+thetic process (Fig. 7c).
+Exogenous trehalose in both genotypes 
+and the expression of GmTPPs
+To investigate the effect of trehalose on soybean response 
+to saline-alkali stress, the N and K soybean genotypes 
+were treated with 10 μmol/L trehalose and 160 mmol/L 
+mixed saline-alkali solution consisting of NaCl,  Na2CO3, 
+ NaHCO3, and  Na2SO4 (the molar ratio is 1:1:9:9) for 3 d, 
+with the N and K soybean genotypes cultured in water 
+serving as the control. The nitro blue tetrazolium (NBT), 
+diaminobenzidine (DAB) and TB staining revealed that 
+the active, hydrogen peroxide  (H2O2) and superoxide 
+anion  (O2
+−) content in the ‘N’ genotype were greater than 
+in the ‘K’ genotype under saline-alkali stress. In contrast, 
+trehalose immersion resulted in a lower ROS accumula-
+tion compared to the control and saline-alkali treatment 
+(Fig. 8d-i).
+The trehalose levels were increased under saline-
+alkali stress, significantly increasing after trehalose 
+Fig. 6 Expression profiles of soybean GmTPPs genes in response to various abiotic stress treatments. The various abiotic stress treatments 
+including low temperature (a), drought (b), SA (c) and T + SA (d). Low temperature treatment at 4 ◦C for 24 h and 72 h; untreat indicates control 
+plants; PEG: drought treatment; SA: saline-alkali treatment; T + SA: trehalose immersion plus saline-alkali treatment. The expression levels of GmTPPs 
+were analyzed using the  2−△△Ct methods
+Page 9 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+immersion. However, the trends of soluble sugar, glu-
+cose, fructose, sucrose, and starch were inconsistent 
+with trehalose levels (Fig.  8a-e). Under saline-alkali 
+treatment alone, the soluble sugar, fructose, glucose, 
+sucrose, and starch contents were decreased but 
+increased under the T + SA treatment, especially in the 
+saline-alkali tolerant genotype (N). Besides, the treha-
+lose content under T + SA treatment was higher than 
+under saline-alkali treatment (Fig.  8f). These results 
+indicate that the energy metabolism of soybean was 
+severely inhibited under saline-alkali stress but was 
+alleviated by soaking in trehalose.
+Interaction network analysis of GmTPPs and transcription 
+factors and the prediction of miRNAs encoded by TPP 
+family genes
+Orthology-based prediction of the transcription fac-
+tor- GmTPP genes interactions revealed that the GmTPP 
+genes interacted with many transcription factors, includ-
+ing NAC, MYB, bZIP, bHLH, ERF, and WRKY. GmTPP14 
+and GmTPP15 homologous to AtTPPD interacted with 
+COG, Dof, AGL, BPC, and AIL (Fig. 9a). GmTPP15 also 
+interacted with multiple MYBs and one WRKY, while 
+GmTPP14 also interacted with CAMTA. In addition, 
+GmTPP5 interacted with multiple NACs and one WOX 
+Fig. 7 RNA-seq analysis of the two genotypess under saline-alkali stress. a Eighteen GmTPPs selected for qRT-PCR analysis and the accuracy 
+of RNA-seq was verified. Red to green represent high to low expression. b Eighteen GmTPPs selected for qRT-PCR analysis and the accuracy 
+of RNA-seq was verified. c GmTPPs enriched in trehalose biosynthetic pathway. The ‘K’ represent saline-alkali sensitive genotype and ‘N’ represent 
+saline-alkali tolerant genotype
+Page 10 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+and GmTPP2 with TCP and ARF. Some transcription 
+factors also interacted with multiple genes. For example, 
+MYB and AGL interacted with 13 GmTPPs, NAC with 
+eight GmTPPss, and Dof with 14 GmTPPs.
+The miRNAs are non-coding single-stranded RNA 
+molecules with approximately 22 nucleotides in length. 
+Encoded by endogenous genes, miRNAs regulate gene 
+expression and responses to biotic and abiotic stresses in 
+plants. The prediction of the miRNA-targeting gene net-
+works of TPP family genes in soybean (Fig. 9b) identified 
+55 interaction relationships, including 33 miRNAs and 
+14 TPP family genes. Among the genes, gma-miR1508b 
+regulated the expression of four GmTPP genes, GmTPP1/ 
+5/ 8 /15. In addition, GmTPP2, GmTPP7, GmTPP10, 
+and GmTPP13 were targeted by the same miRNA 
+(gma-miR5034). Seven miRNAs targeted GmTPP1, while 
+GmTPP4 and GmTPP13 were each targeted by six miR-
+NAs. Moreover, GMA-miR4379a, GMA-miR5038a, and 
+gma-miR5038b regulated the expression of three TPP 
+genes, GmTPP4/12/18, while gma-miR9758 and gma-
+miR1508b regulated the expression of three other TPP 
+genes, GmTPP5 /7 / 8.
+Discussion
+Trehalose plays a crucial role in plant growth, develop-
+ment, and response to abiotic stresses [24]. In plants, 
+trehalose is synthesized through the TPS-TPP meta-
+bolic pathway, with T6P acting as an intermediate [25]. 
+The TPP gene is a key regulator of trehalose synthe-
+sis in plants, and its transcription and expression are 
+Fig. 8 Effects of trehalose immersion on ROS and carbohydrate content of soybean sprouts under saline-alkali conditions. a-c was NBT, DAB and TB 
+staining, respectively. d Soluble content. e Glucose content. f Fructose content. g Sucrose content. h starch conten. i Trehalose content. The results 
+showed the mean ± SE of three replicates, and the different letters denote the significant difference among treatments (p < 0.05). 0 d, control; SA, 
+160 mM saline-alkali; T + , 10 mM trehalose + 10 mM saline-alkali
+Page 11 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+essential for mitigating plant damage caused by abiotic 
+stress [26]. With the development of whole-genome 
+sequencing, TPP gene have been identified in mono-
+cots and dicots, including 10 in Arabidopsis [11], 11 in 
+maize [14], 13 in rice [12], 30 in wheat [27], 8 in tomato 
+[28], and 79 in cotton [29]. The number of GmTPP 
+genes among the different plant species, indicating that 
+the TPP gene family is not conserved. In this study, 
+we identified 18 potential TPP genes in the soybean 
+genome, distributed across its 13 soybean chromo-
+somes. Phylogenetic analysis classified these genes into 
+three subgroups, which showed similar motifs, gene 
+structures, and CREs. Additionally, the 18 GmTPPs 
+exhibitedtypical characteristics of the Trehalose_PPase 
+domain.
+Exon–intron diversity plays an important role in the 
+evolution of gene families [30]. Therefore, gene function 
+can be elucidated by analyzing the gene structure [18]. 
+Generally, functionally similar genes have similar exon–
+intron arrangements and protein structures [27]. In this 
+study, the structure and number of exons and introns of 
+GmTPP genes in the same subpopulation were similar, 
+suggesting that genes in the same subpopulation might 
+have similar functions. However, some differences were 
+observed among subfamilies, possibly due to the evolu-
+tionary diversification of gene functions.
+Fig. 9 Prediction of transcription factors and miRNAs targeting GmTPPs genes. The green circles reflect the predicted TFs or miRNAs, and the pink 
+circles depict the targeted TPP genes. The lines between the circles represent their connections
+Page 12 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+Gene duplication is one of the major drivers of the 
+genome and genetic system evolution. It plays an essen-
+tial role in evolution by facilitating the generation of new 
+genes and gene functions [31]. There are four main evo-
+lutionary gene duplication events: whole genome dupli-
+cation, tandem duplication, SD, and retro-transposition. 
+Tandem and segmental duplications are the major gene 
+replication events driving the plant gene family expansion 
+[32]. Gene duplication events can leads to the emergence 
+of novel functions [33]. In our analysis, we identified 14 
+pairs of fragment duplicate GmTPP genes in the soybean 
+genome, indicating the importance of this duplication 
+mechanism in expanding the TPP gene family. The Ka/
+Ks analysis further revealed that all the 14 duplicated 
+GmTPP gene pairs had Ka/Ks ratios < 1, implying that 
+they had undergone extensive purifying selection. Simi-
+lar results have been observed in wheat and cotton [13]. 
+Furthermore, the analysis collinearity patterns showed 
+a closer relationship between soybean and wheat com-
+pared to other plant species, such as Arabidopsis, maize, 
+tomato, and rice, suggesting that soybean and wheat are 
+closely related. [34].
+Homologous genes with higher collinearity usually 
+have similar functions [35]. Therefore, the soybean TPPs 
+that show collinearity with members of the Arabidopsis 
+TPP family possibly have similar functions. Our results 
+revealed that GmTPP5, GmTPP14, and GmTPP15 were 
+collinear with AtTPPD, suggesting that they may have 
+similar functions. Previous studies revealed that the 
+overexpression of AtTPPD improves plant tolerance to 
+salt stress, increases plant starch levels under high soil 
+salinity conditions, and regulates carbohydrate metabo-
+lism [15]. Therefore, GmTPP5, GmTPP14, and GmTPP15 
+could have been involved in soybean response to salt 
+stress and improving the salt resistance capacity of soy-
+bean. Furthermore, GmTPP10 was collinear with AtT-
+PPE, which is know to regulateROS accumulation and 
+promote ABA-inhibited root elongation [36].
+Furthermore, extensive studies have revealed that 
+TPP genes are expressed in various tissue. For exam-
+ple, TaTPPA、TaTPPB, and TaTPPG are predominantly 
+expressed in leaves, while TaTPP9-6A/D and TaTPP8-
+5A/B/D are highly expressed in the roots [27]. Simi-
+larly, the GmTPP gene family exhibits tissue-specific 
+expression pattern. The expression of several GmTPPs 
+(GmTPP4/9/14/15) show higher expression levels in 
+root tissues, which is consistent with the expression 
+patterns of their Arabidopsis homologs AtTPPD, AtT-
+PPG, and AtTPPI, suggesting their involvement in the 
+root development [37]. Furthermore, GmTPP15 shows 
+high expressed in flowers, indicating its potential rolein 
+soybean flowering. The high expression of GmTPP5, 
+GmTPP7, GmTPP9, GmTPP10, and GmTPP13 in the 
+leaves also suggested that they might play important 
+roles in soybean leaf development. In soybean, GmTPP13 
+was highly expressed in the pods at various developmen-
+tal stages, implying it could be involved in pod develop-
+ment. However, GmTPP14 and GmTPP15 were highly 
+expressed in different tissues, indicating that they were 
+involved in plant growth and development.
+The predicted interaction network of GmTPP proteins 
+with other transcription factors was also predicted based 
+on an orthology-based method. The soybean TPP protein 
+interacted with several transcription factors, including 
+NAC, MYB, WRKY, and bHLH. These transcription fac-
+tors are essential in regulating plant growth and devel-
+opment and stress responses. For example, GmTPP2 
+interacted with MYB93, MYB15, and WRKY8. AtMYB93 
+is a negative modulator of lateral root development in 
+Arabidopsis. The Atmyb93 mutant has a faster lateral 
+root development and enhanced lateral root density [38]. 
+MYB15 positively regulates the cold tolerance of toma-
+toes through the CRT/DRE binding factors (CBF) path-
+way [39].
+Furthermore, the expression of WRKY8 induced by salt 
+stress enhanced the plant tolerance to salt stress [40]. In 
+rice, MYB61, which interacts with GmTPP15, improves 
+grain yield and cold tolerance [41]. GmTPP15 also inter-
+acts with AGL16, a negative regulator of stress response 
+in Arabidopsis. AGL16 mutations promote seed germi-
+nation, root elongation, and increased plant resistance 
+to salt stress [42].The prediction of miRNA-targeted 
+GmTPPs provides insights into the complex regulatory 
+network governing the expression of these genes. The 
+identification of 33 miRNAs targeting 14 GmTPPs high-
+lights the intricate regulation of 33 miRNAs through 
+miRNA-mediated pathways, of which six genes were 
+targeted by at least four miRNAs, revealing the complex 
+regulation network of GmTPPs. This miRNA-GmTPP 
+relationship provides insights into the precise genetic 
+engineering of GmTPPs through miRNA mediation. 
+Integrating the protein interaction network and miRNA-
+mediated pathways of GmTPPs could enhance our under-
+standing of the regulation of stress responses and the 
+growth and development of gene networks in soybean.
+Under stress conditions, transcription factors are acti-
+vated to bind specific cis-acting elements, regulating the 
+expression of downstream stress-responsive genes. In this 
+study, it was found that 89% of the TPP genes contained 
+elements associated with anaerobic induction, which is 
+relevant to waterlogging stress in soybean. However, reg-
+ulating the TPP family genes may improve the resistance 
+of soybean roots to waterlogging stress [43]. GmTPP2, 
+GmTPP10, and GmTPP17 genes contain defense and 
+stress, drought-inducible, and low temperature-respon-
+sive elements, which may play a certain role in improving 
+Page 13 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+the drought and cold resistance of plants. In addition, the 
+flavonoid biosynthetic regulation elements regulate the 
+biosynthesis of flavonoids in plants. Flavonoid accumula-
+tion in plants is an important feature of plant resistance 
+against environmental stresses. Besides, flavonoid com-
+pounds improve the plant resistance to peroxidation and 
+ultraviolet radiation [44, 45].Furthermore, the presence 
+of flavonoid biosynthetic regulatory elements in GmTPP1 
+and GmTPP15 suggests their involvement in flavonoid 
+biosynthesis, which is important for plant resistance 
+against environmental stresses. Moreover, more than half 
+of the TPP genes contained ABA-responsive elements. 
+In Arabidopsis, ABF2, a transcription factor responsive 
+to ABA, directly binds the AtTPPE promoter, triggering 
+its expression through ROS generation, which promotes 
+root elongation and stomatal movement [36].
+Previous studies revealed that trehalose production 
+regulated by TPP genes alleviates the adverse effects 
+of salt stress on plants [46, 47]. Herein, analysis of the 
+response of the GmTPP genes to low-temperature, 
+drought, saline-alkali, and exogenous trehalose stresses 
+revealed that the gene expression profiles were similar 
+after low-temperature and drought treatment. However, 
+the expression induction, inhibition, or upregulation 
+intensities were different. In this study, it was observed 
+that GmTPP2 and GmTPP5 were significantly up-regu-
+lated under saline-alkali stress and trehalose immersion, 
+suggesting their potential roles in improving salt and 
+drought tolerance. GmTPP5 had a collinear relationship 
+with AtTPPD, which regulates plant tolerance to salt 
+stress [15]. At the same time, GmTPP10 was significantly 
+up-regulated under drought stress. Collinearity analy-
+sis revealed that GmTPP10 was collinear with AtTPPE, 
+whose overexpression enhances the drought resistance of 
+Arabidopsis [36].
+Moreover, GmTPP15 was significantly up-regulated 
+under four abiotic stresses, indicating that its plays an 
+important role in soybean response to abiotic stresses. 
+Interestingly, the expression of most genes was up-regu-
+lated under the saline-alkaline treatment and exacerbated 
+after trehalose immersion. For example, the expression 
+ratio of GmTPP2 was 2.2 under saline-alkaline stress for 
+72  h but increased to 22.9 after trehalose immersion. 
+Similarly, the expression ratio of GmTPP15 was increased 
+from 15.2 to 20.5. These results are consistent to those 
+found in tomatoes, where exogenous trehalose enhanced 
+the expression of SlTPPJ and SlTPPH [48].
+The GmTPPs may regulate soybean saline-alkali stress 
+response by regulating trehalose metabolism. Trehalose 
+plays a significant role in plant growth, development, and 
+stress tolerance, especially tolerance to salt and drought 
+stress [49], which explains the high trehalose concen-
+trations in desert plants [50]. In this study, we drew a 
+summary diagram of soybean response changes after 
+Fig. 10 Trehalose metabolism in a plant cell, its role in carbohydrate metabolism and plant growth and development. Trehalose-6-phosphate 
+(T6P) originates from the sucrose metabolic pathway. T6P is produced by the enzyme TREHALOSE-6-PHOSPHATE SYNTHASE (TPS) using 
+UDP-glucose (UDPG) and glucose-6-phosphate (G6P), which is then transformed to trehalose by TREHALOSE-6-PHOSPHATE PHOSPHATASE (TPP) 
+in the cytoplasm. Trehalose is cleaved into two molecules of glucose by TREHALASE1 (TRE1). The carbohydrate accumulation of plants was different 
+under saline-alkali stress and exogenous trehalose
+Page 14 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+salt-alkali stress and exogenous trehalose immersion 
+(Fig. 10). Surprisingly, in this study, it was observed that 
+sucrose and trehalose levels increased under saline-alka-
+line treatment alone, regardless of the altered expression 
+of GmTPP genes and the decrease in glucose, fructose, 
+and starch contents. Notably, high levels of soluble carbo-
+hydrate can positively regulated genes involved in sugar 
+sensing and carbon metabolism under saline condi-
+tions [51]. For example, enhancing sucrose synthesis and 
+reducing sucrose decomposition to increase sucrose con-
+tent alleviated salt stress in salt-tolerant sweet sorghum 
+[52]. In soybean sprouts, this phenomenon could be 
+attributed to the reduced hydrolysis rate of sucrose and 
+the conversion of trehalose to glucose under saline-alka-
+line stress. Trehalose immersion promoted the accumula-
+tion of carbohydrates, including endogenous trehalose, in 
+soybean sprouts during saline-alkali stress. These results 
+are consistent with previous reports [48, 53]. Addition-
+ally, analysis of ROS analysis revealed that saline-alkali 
+sensitive varieties had higher ROS levels under saline-
+alkali stress, while trehalose-immersed seeds exhibited 
+reduced ROS accumulation. These results demonstrates 
+that trehalose immersion induces the expression of 
+GmTPP gene, enhances the accumulation of carbohy-
+drates in plants, and reduces the accumulation of ROS 
+in plants, thereby improving the saline-alkali tolerance of 
+soybeans.
+The analysis of TPP family genes in soybean is essen-
+tial for further studies on the response of soybean to 
+environmental stress, soybean growth and development, 
+and soybean yield improvement under stress condi-
+tions. Since plant stress resistance is an extremely com-
+plex physiological process controlled by multiple genes, 
+the effect of transforming a single gene to improve plant 
+stress resistance is significantly limited. However, add-
+ing and applying TPP gene promoters could resolve the 
+shape changes of TPP gene plants [54]. Besides, using tre-
+halose defense response to breed high-performing varie-
+ties under drought and salt stress is one of the research 
+hotspots. With the deepening of our understanding of 
+the specific biological function of trehalose, trehalose 
+is expected to play a more important role in breeding 
+resistance in crops.
+Conclusions
+A total of 18 GmTPP genes were identified in the soybean 
+genome and classified into three groups. The GmTPPs 
+are highly conserved in soybean and involved in response 
+to abiotic stresses. The results of RNA-seq showed that 
+GmTPP genes are enriched in the trehalose biosynthe-
+sis pathway. Furthermore, exogenous trehalose applica-
+tion up-regulates GmTPPs, reducing ROS accumulation 
+in plants and increasing the carbohydrate concentration 
+under saline-alkaline stress, alleviating plant damage 
+caused by saline-alkaline stress. The transcription fac-
+tors-GmTPPs and miRNA-GmTPPs regulation relation-
+ships reveal the regulatory network of genes regulating 
+the response to abiotic stress. The findings in this study 
+unravel the biological activities of GmTPP proteins in 
+developmental processes and stress responses in soy-
+bean, essential in breeding cultivars resistant to abiotic 
+stresses.
+Methods
+Identification and classification of TPP genes in soybean
+To identify the TPP family members in soybean, we 
+downloaded the soybean reference genome assembly 
+(Glycine max Wm82.a2.v1) and the gene annotation file 
+from the Ensembl plants (http:// jul20 18- plants. ensem 
+bl. org/ index. html). At the same time, the HMMER pro-
+gram was used to search the TPP family gene sequences 
+against the Pfam (http:// pfam. xfam. org/) library to iden-
+tify the TPP genes in soybean. Subsequently, the TPP 
+(Trehalose_PPase, PF02358) protein domains were iden-
+tified using the SMART (http:// smart. embl- heide lberg. 
+de) and CDD (https:// www. ncbi. nlm. nih.gov/Structure/
+cdd/wrpsb.Cgi) websites, and proteins lacking the TPP 
+domain were removed [55]. Next, the isoelectric point 
+and molecular weight of soybean TPP proteins were cal-
+culated using the bioinformatics resource portal, ExPASy 
+(http:// prosi te. expasy. org/). The subcellular localization 
+of GmTPP proteins was predicted using WoLF PSORT 
+(https:// wolfp sort. hgc. jp/). The GmTPP genes were 
+named based on their location on the chromosomes after 
+their physical locations were mapped using MapChart 
+software (https:// www. wur. nl/ enshow/ Mapch art/) [56]. 
+Subsequently, the TPP protein sequences encoded by 
+TPP genes in Arabidopsis, maize, wheat (Triticum aes-
+tivum), tomato (Solanum lycopersicum), and rice were 
+downloaded from Phytozome13 or TAIR (https:// www. 
+arabi dopsis. org/). All the TPP protein sequences in soy-
+bean obtained via the HMMER search were imported 
+into MEGA X, and aligned. The ClustalW program 
+in MEGA-X software was used to conduct multiple 
+sequence alignment of TPP genes from multiple spe-
+cies, and a phylogenetic tree was constructed using a 
+maximum likelihood (ML) with 1000 bootstraps. Next, a 
+phylogenetic tree was generated in the bootstrap analy-
+sis using MEGA11. The phylogenetic tree was visualized 
+and optimized using iTOL (https:// itol. embl. de/) [57]. 
+At the same time, the MEME online tool (http:// meme. 
+nbcr. net/ meme/) was used to detect the GmTPPs motif, 
+with 10 as the maximum number of lookups. Thereaf-
+ter, the distribution map of the motifs was constructed 
+by TBtools. The number of motifs was then compared 
+among the GmTPPs to identify the group-conserved or 
+Page 15 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+group-specific signatures. Exon–intron structures of 
+TPP genes in soybean were identified by the coding and 
+the genomic sequences in Glycine max Wm82.a2.v1. 
+The exon–intron structures were analyzed using Gene 
+Structure Display Server (GSDS) (http:// gsds. cbi. pku. 
+edu. cn/). Finally, the expression data of GmTPPs in the 
+specific tissues were obtained from the Phytozome data-
+base (https:// phyto zomne xt. jgi. doe. gov/ pz/). We predict 
+the 3D structure of GmTPP protein by homology mod-
+eling method. First, we use the location-specific iterative 
+BLAST algorithm (PSI-BLAST) to find the most similar 
+homology in the PDB database (http:// www. rcsb. org/), 
+and then use the Swiss-Model interactive tool (https:// 
+swiss model. expasy. org/ inter active/) to predict the 3D 
+structure of the GmTPP protein. In addition, in the save 
+server 
+(http:// nihse rver. mbi. ucla. edu/ SAVES/) 
+using 
+PROCHECK test to detect the TPP protein 3D structure, 
+and through Pymol software to display 3D structure.
+Homology analysis of the GmTPP family members
+The soybean whole genome protein sequences were 
+aligned using BLAST. Next, the whole genome collinear-
+ity analysis was performed using the MCScanX software. 
+The non-synonymous (Ka) and synonymous (Ks) were 
+used to assess the selection history and divergence time 
+[58]. Ka and Ks substitution rates per TPP gene pair were 
+calculated using the Simple Ka/Ks Calculator in TBtools. 
+At the same time, MCScanX was used to analyze the 
+gene duplication events of GmTPPs, which were subse-
+quently visualized using TBtools.
+Analysis of the GmTPP promoters
+The upstream 2000 bp coding DNA sequences (CDS) of 
+GmTPPs were retrieved from the soybean genome and 
+mapped against the PlantCare database (http:// bioin 
+forma tics. psb. ugent. be/ webto ols/ plant care/) to identify 
+the putative cis-regulatory elements in the promoter 
+regions [59]. Subsequently, the putative cis-regulatory 
+elements were visualized using Tbtool [60]. In addition, 
+the GmTPPs expression levels in the specific tissues were 
+obtained from the Phytozome database. Finally, TBtools 
+and circos (version 0.69) (http:// circos. ca/) were used to 
+visualize the results [61].
+Plant materials and growth conditions
+Inbred “Niuyanjing” (saline-alkali tolerant genotype, N) 
+soybean seeds were provided by the National Coarse 
+Cereals Engineering Research Center (Daqing, Heilongji-
+ang, China). The seeds were surface-sterilized in 5% (v/v) 
+sodium hypochlorite (NaClO) for 5 min and then thor-
+oughly rinsed with distilled water. After sterilization, 
+the seeds were assigned to five groups. Seeds in the first 
+group were germinated in Petri dishes lined with a wet 
+filter paper for 2 d in the dark at 25 °C before they were 
+incubated in the refrigerator at 4 ℃ for 3 d. For seeds in 
+groups two and three, drought and saline-alkali stresses 
+were induced by soaking the seeds in 5% PEG-6000 
+(PEG treatment) or 10  mL mixed saline-alkali solution 
+(NaCl,  Na2CO3,  NaHCO3,  Na2SO4; molar ratio—1:1:9:9) 
+of 160  mmol/L (saline-alkali treatment) for 3 d. In the 
+fourth groups, the seeds were soaked in 10 mmol/L tre-
+halose for 12 h, incubated in distilled water for 36 h, and 
+finally treated with 160 mmol/L mixed saline-alkali solu-
+tion for 3 d (T + SA treatment). The last group served as 
+a control, kept the seeds in water. After 2 d of distilled 
+water culture, hypocotyl, radicle and cotyledon were col-
+lected for tissue-specific expression analysis. The root tis-
+sue of soybean treated with 4 ℃, PEG, saline-alkali, and 
+T + SA for 2 d were used for gene expression analysis, 
+using those in water culture as the control. Each treat-
+ment had three biological replicates.
+RNA isolation and transcriptome and qRT‑PCR analysis
+The total RNA in the soybean tissues except the cotyle-
+don was exacted 0, 12, 24, 48, and 72 h after being treated 
+with 80 and 160 mmol/L saline-alkali solution using the 
+TRIzol reagent (Invitrogen, Carlsbad, CA, United States) 
+following the manufacturer’s instructions. The quan-
+tity of the extracted RNA was detected using NanoDrop 
+(Thermo, Carlsbad, CA, United States). The  OD260/280 of 
+the extracted RNA was between 1.8 and 2.2, while 28S/ 
+18S was greater than 1, indicating good quality. The RNA 
+integrity was assessed using an Agilent Bioanalyzer 2100 
+(Agilent Technologies, Carlsbad, California). The quali-
+fied RNA was used for RNA library construction. At 
+the same time, we used these samples for transcriptome 
+sequencing and identification of differentially expressed 
+gene RNA-seq data validation.
+The RNA sequencing was performed on the Illumina 
+HiSeq platform at BMK (Biomarker Technologies, Bei-
+jing, China) with three biological replicates per treat-
+ment. The raw sequencing data were filtered to remove 
+adapter sequences and obtain high-quality clean reads. 
+Reads with > 50% of the bases having a Q-value ≤ 5 
+were retained. The clean sequences of each library were 
+mapped to the reference sequence (https:// phyto zomne 
+xt. jgi. doe. gov/ info/ Gmax_ Wm82_ a2_ v1) using TopHat 
+(http:// tophat. cbcb. umd. edu/). In addition, the dif-
+ferentially expressed genes (DEGs) were determined 
+using default parameters, including a false discov-
+ery rate (FDR) < 0.05 and a logarithm two-fold change 
+|log2FC|≥ 2. Subsequently, the Gene Ontology (GO) 
+and Kyoto Encyclopedia of Genes and Genomes (KEGG) 
+enrichment analysis and annotation of the DEGs were 
+performed using the KEGG pathway database (http:// 
+www. genome. jp/ keg).
+Page 16 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+Moreover, the total RNA from the T + SA treatment 
+was reverse transcribed using oligo (dT) primer and 
+SuperScript Reverse Transcriptase (TaKaRa, Nanjing, 
+China). qRT-PCR was then performed using SYBR green 
+(TaKaRa Biotechnology) on Roche Cycler 480II system 
+(Roche, Roche Diagnostics, Switzerland). The gene-
+specific primers (Additional file  7. Table  S5) for each 
+GmTPPs were designed using Premier 5.0 software [62]. 
+GmACTIN-11 was used as the internal control gene. 
+Each treatment had three biological and three independ-
+ent replicates. Finally, the relative gene expression of 
+GmTPPs was analyzed using the 2 −ΔΔc(t) method [63].
+Nitro blue tetrazolium (NBT), diaminobenzidine (DAB) 
+and trypan blue (TB) staining
+The soybean sprouts were treated with different stress 
+treatments for 3 d and stained with NBT, DAB and TB 
+dye solutions according to previously reported methods 
+[64]. NBT, DAB and TB stainings were repeated thrice.
+Carbohydrate and trehalose contents analysis
+Frozen tissues (100–150 mg) were weighed and ground 
+for 30 to 60  s. Sugars (Sucrose, fructose, and glucose) 
+were then extracted following the method described by 
+Lunn et al. (2006) with minor modifications [46]. At the 
+same time, starch was extracted from the precipitate 
+during the extraction of soluble sugars and quantified 
+through Glc analysis during hydrolysis. To generate the 
+standard curve, standard glucose, fructose, and sucrose 
+(Sigma, purity ≥ 99.9%) samples were accurately weighed, 
+and each prepared into a mother liquor (10 mg/mL). The 
+standard mixture was then diluted into a standard solu-
+tion. Finally, the standard curve of the different sugars 
+with the abscissa and ordinate as the mass concentration 
+and chromatographic peak area, respectively, was gener-
+ated [48]. The trehalose content was measured using a 
+trehalose kit (Solarbio, Beijing, China).
+Prediction of the transcription factors and miRNAs
+The transcription factors interacting with GmTPP genes 
+were predicted using the Plant Transcriptional Regula-
+tory Map website (http:// plant regmap. gao- lab. org/ netwo 
+rk. php) based on the homologous genes between soy-
+bean and Arabidopsis. At the same time, the psRNATar-
+get server (https:// www. zhaol ab. org/ psRNA Target/) was 
+used to predict the target relationships between miRNA 
+and TPP genes in soybean [65]. Briefly, the CDS sequence 
+of TPP genes in soybean was submitted as target can-
+didates against the published miRBase of soybean. The 
+default option was selected for other parameters. The 
+results were visualized using Cytoscape [66]
+Statistical analyses
+Each experiment was performed in triplicates. All data 
+were analyzed and presented as mean ± standard devia-
+tion (SD). The data were analyzed by student’s t-test at 
+P < 0.05 (statistically significant and P < 0.01 (highly statis-
+tically significant) levels of significance.
+Supplementary Information
+The online version contains supplementary material available at https:// doi. 
+org/ 10. 1186/ s12870- 023- 04652-7.
+Additional file1: Figure S1. Calculated ramachandran plots for modeled 
+3D structures of GmTPP. 
+Additional file 2: Table S1. TPP protein sequences used by this study.
+Additional file 3: Table S2. All protein sequences used by this study.
+Additional file 4: Table S3. KaKs data of TPP genes of soybean, Arabidop-
+sis, maize, wheat, rice and tomato.
+Additional file 5: Table S4. Organization of cis-acting regulatory ele-
+ments in soybean GmTPP gene family promoters.
+Additional file 6: Figure S2. Results of qRT-PCR in different tissue parts of 
+GmTPP gene.
+Additional file 7: Table S5. Primers used in this research.
+Acknowledgements
+We would like to thank the National Coarse Cereals Engineering Research 
+Center for providing the laboratory.
+Authors’ contributions
+JDD, QZ and WJS conceived the study; WJS wrote the manuscript; XLZ, YM 
+and DC conducted the experiments; ZHZ and LD modified the manuscript 
+pictures; YMY and LW did data analysis; YLD checked the manuscript.
+Funding
+This work was supported by National Key Research and Development 
+Program subproject (2021YFD1201603-3) and Postdoctoral General Project of 
+Heilongjiang Province (LBH-Z21196), Heilongjiang Bayi Agricultural University 
+Support Program for San Zong (ZRCQC202201).
+Availability of data and materials
+All data generated or analyzed during this study are included in this article 
+and its supplementary information files. All databases used in this study are 
+open for public and the links are as follows:
+Ensembl plants: http:// jul20 18- plants. ensem bl. org/ index. html
+Pfam: http:// pfam. xfam. org
+CDD: https:// www. ncbi. nlm . nih. gov/ Struc ture/ cdd/ wrpsb. Cgi.
+ExPASy: http:// prosi te. expasy. org/
+WoLF PSORT: https:// wolfp sort. hgc. jp
+MapChart: https:// www. wur. nl/ enshow/ Mapch art/
+TAIR: https:// www. arabi dopsis. org/
+iTOL: https:// itol. embl. de/
+MEME: http:// meme. nbcr. net/ meme/
+GSDS: http:// gsds. cbi. pku. edu. cn/
+Phytozome 13: https:// phyto zomne xt. jgi. doe. gov/ pz/.
+PlantCare: https:// bioin forma tics. psb. ugent. be/ webto ols/ plant care/ html/
+TopHat:http:// tophat. cbcb. um d. edu/
+KEGG database: http:// www. genome. jp/ kegg
+psRNATarget server: https:// www. zhaol ab. org/ psRNA Target/
+Declarations
+Ethics approval and consent to participate
+The soybean (Glycine max) was a commercial available variety. Therefore, no 
+voucher specimens were prepared. No specific permits were needed for the 
+Page 17 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+ 
+described experiments, and this study did not involve any endangered or 
+protected species. All experimental studies on plants were complied with 
+relevant institutional, national, and international guidelines and legislation.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+Author details
+1 College of Agriculture, Heilongjiang Bayi Agricultural University, 
+Daqing 163319, Heilongjiang, China. 2 National Coarse Cereals Engineering 
+Research Center, Daqing, Heilongjiang, China. 
+Received: 25 May 2023   Accepted: 30 November 2023
+References
+ 1. 
+Bansal R, Mian MAR, Mittapalli O, Michel AP. Molecular characterization 
+and expression analysis of soluble trehalase gene in Aphis glycines, a 
+migratory pest of soybean. Bull Entomol Res. 2013;103:286–95.
+ 2. 
+Tang B, Wang S, Wang S-G, Wang H-J, Zhang J-Y, Cui S-Y. Invertebrate 
+trehalose-6-phosphate synthase gene: genetic architecture, biochem-
+istry, physiological function, and potential applications. Front Physiol. 
+2018;9:30.
+ 3. 
+Fichtner F, Lunn JE. The role of trehalose 6-phosphate (Tre6P) in plant 
+metabolism and development. Annu Rev Plant Biol. 2021;72:737–60.
+ 4. 
+Kataya ARA, Elshobaky A, Heidari B, Dugassa N-F, Thelen JJ, Lillo C. Multi-
+targeted trehalose-6-phosphate phosphatase I harbors a novel peroxi-
+somal targeting signal 1 and is essential for flowering and development. 
+Planta. 2020;251(5):1–14.
+ 5. 
+Saddhe AA, Manuka R, Penna S. Plant sugars: Homeostasis and transport 
+under abiotic stress in plants. Physiol Plant. 2021;171(4):739–55.
+ 6. 
+Deyanira Q-M, Estrada-Luna AA, Altamirano-Hernández J, PeñaCabriales 
+JJ, de Oca-Luna RM, Cabrera-Ponce JL. Use of trehalose metabolism as a 
+biochemical marker in rice breeding. Mol Breeding. 2012;30(1):469–77.
+ 7. 
+Espasandin FD, Calzadilla PI, Maiale SJ, Ruiz OA, Sansberro PA. Overexpres-
+sion of the Arginine Decarboxylase gene improves tolerance to salt stress 
+in Lotus tenuis plants. J Plant Growth Regul. 2018;37(1):156–65.
+ 8. 
+Cabib LFL. The biosynthesis of trehalose phosphate. J Biol Chem. 
+1958;231:259.
+ 9. 
+Svanström Å, Leeuwen MRV, Dijksterhuis J, Melin P. Trehalose synthesis 
+in Aspergillus Niger: characterization of six homologous genes, all with 
+conserved orthologs in related species. BMC Microbiol. 2014;14:90.
+ 10. Satoh-Nagasawa N, Nagasawa N, Malcomber S, Sakai H, Jackson D. A 
+trehalose metabolic enzyme controls inflorescence architecture in maize. 
+Nature. 2006;441:227–30.
+ 11. Delorge I, Figueroa CM, Feil R, Lunn JE, Dijck PV. Trehalose-6-phosphate 
+synthase 1 is not the only active TPS in Arabidopsis thaliana. Biochem J. 
+2015;466:283–90.
+ 12. Jin Q, Hu X, Li X, Wang B, Wang Y, Jiang H, Mattson N, Xu Y. Genome-wide 
+identification and evolution analysis of Trehalose-6-phosphate synthase 
+gene family in Nelumbo nucifera. Front Plant Sci. 2016;7:1445.
+ 13. Wang W, Cui H, Xiao X, Wu B, Sun J, Zhang Y, Yang Q, Zhao Y, Liu G, Qin 
+T. Genome-wide identification of cotton (Gossypium spp.) Trehalose-
+6-Phosphate Phosphatase (TPP) gene family members and the role of 
+GhTPP22 in the response to drought stress. Plants (Basel). 2022;11(8):1079.
+ 14. Acosta-Pérez P, Camacho-Zamora BD, Espinoza-Sánchez EA, Gutiérrez-
+Soto G, Zavala-García F, Abraham-Juárez MJ, Sinagawa-García SR. Charac-
+terization of Trehalose-6-phosphate synthase and Trehalose-6-phosphate 
+phosphatase genes and analysis of its differential expression in maize 
+(Zea mays) seedlings under drought stress. Plants. 2020;9:315.
+ 15. Krasensky J, Broyart C, Rabanal FA, Jonak C. The redox-sensitive chloro-
+plast trehalose-6-phosphate phosphatase AtTPPD regulates salt stress 
+tolerance. AntioxidRedox Sign. 2014;21:1289–304.
+ 16. Carillo P, Feil R, Gibon Y, Satoh-Nagasawa N, Jackson D, Bläsing OE, Stitt M, 
+Lunn JE. A fluorometric assay for trehalose in the picomole range. Plant 
+Methods. 2013;9:21–36.
+ 17. Lin Q, Yang J, Wang Q, Zhu H, Chen Z, Dao Y, Wang K. Overexpres-
+sion of the trehalose-6-phosphate phosphatase family gene AtTPPF 
+improves the drought tolerance of Arabidopsis thaliana. BMC Plant Biol. 
+2019;19:381.
+ 18. Li Y, Chen D, Luo S, Zhu Y, Jia X, Duan Y, Zhou M. Intron-mediated regula-
+tion of β-tubulin genes expression affects the sensitivity to carbendazim 
+in Fusarium graminearum. Curr Genet. 2019;65:1057–69.
+ 19. Ge L-F, Chao AY, Shi M, Zhu MZ, Gao JP, Lin HX. Overexpression of the 
+trehalose-6-phosphate phosphatase gene OsTPP1 confers stress toler-
+ance in rice and results in the activation of stress responsive genes. 
+Planta. 2008;228:191–201.
+ 20. Jiang D, Chen W, Gao J, Yang F, Zhuang C. Overexpression of the 
+trehalose-6-phosphate phosphatase OsTPP3 increases drought tolerance 
+in rice. Plant Biotechnol Rep. 2019;13:285–92.
+ 21. Nuccio ML, Wu J, Mowers R, Zhou H-P, Meghji M, Primavesi LF, Paul MJ, 
+Xi Chen YG, Haque E, Basu SS, et al. Expression of trehalose-6-phosphate 
+phosphatase in maize ears improves yield in well-watered and drought 
+conditions. Nat Biotechnol. 2015;33:862–9.
+ 22. Rastegar Z, Aghighi M, Kandi S. The effect of salinity and seed size on 
+seed reserve utilization and seedling growth of soybean. Int J Agron Plant 
+Prod. 2011;2:1–4.
+ 23. Wang F, Chen H-W, Li Q-T, Wei W, Li W, Zhang W-K, Ma B, Bi Y-D, Lai Y-C, Liu 
+X-L, et al. GmWRKY27 interacts with GmMYB174 to reduce expression of 
+GmNAC29 for stress tolerance in soybean plants. Plant J. 2015;83:224–36.
+ 24. Delorge I, Janiak M, Carpentier S, Dijck PV. Fine tuning of trehalose bio-
+synthesis and hydrolysis as novel tools for the generation of abiotic stress 
+tolerant plants. Front Plant Sci. 2014;5:147.
+ 25. Lin Y, Zhang J, Gao W, Chen Y, Li H, Lawlor DW, Paul MJ, Pan W. Exogenous 
+trehalose improves growth under limiting nitrogen through upregulation 
+of nitrogen metabolism. BMC Plant Biol. 2017;17:213–47.
+ 26. Zhang P, He Z, Tian X, Gao F, Xu D, Liu J, Wen W, Fu L, Li G, Sui X, et al. 
+Cloning of TaTPP-6AL1 associated with grain weight in bread wheat and 
+development of functional marker. Mol Breed. 2017;37:78.
+ 27. Du L, Li S, Ding L, Cheng X, Kang Z, Mao H. Genome-wide analysis 
+of trehalose-6-phosphate phosphatases (TPP) gene family in wheat 
+indicates their roles in plant development and stress response. BMC Plant 
+Biol. 2022;22:1–20.
+ 28. Mollavali M, Börnke F. Characterization of Trehalose-6-phosphate 
+synthase and trehalose-6-Phosphate phosphatase genes of tomato 
+(Solanum lycopersicum L.) and analysis of their differential expression in 
+response to temperature. Int J Mol Sci. 2022;23:11436.
+ 29. Wang W, Cui H, Xiao X, Wu B, Sun J, Zhang Y, Yang Q, Zhao Y, Liu G. 1 TQ: 
+Trehalose-6-Phosphate Phosphatase (TPP) gene family members and 
+the role of GhTPP22 in the response to drought stress. Plants (Basel). 
+2022;11:1079.
+ 30. Qi L, Chen L, Wang C, Zhang S, Yang Y, Liu J, Li D, Song J, Wang R. Char-
+acterization of the auxin efflux transporter PIN proteins in pear. Plants. 
+2020;9:349.
+ 31. Wang Y, Li Y, Zhou F, Zhang L, Gong J, Cheng C, Chen J, Lou Q. Genome-
+wide characterization, phylogenetic and expression analysis of Histone 
+gene family in cucumber (Cucumis sativus L.). Int J Biol Macromol. 
+2023;230:123401.
+ 32. Cannon SB, Mitra A, Baumgarten A, Young ND, May G. The roles of 
+segmental and tandem gene duplication in the evolution of large gene 
+families in Arabidopsis thaliana. BMC Plant Biol. 2004;4:10.
+ 33. Li Z, Zhang C, Guo Y, Niu W, Wang Y, Xu Y. Evolution and expression analy-
+sis reveal thepotential role of the HD-zip gene family in regulation of 
+embryo abortion in grapes (Vitis vinifera L.). BMC Genomics. 2017;18:744.
+ 34. Heidari P, Abdullah, Faraji S, Poczai P. Magnesium transporter gene family: 
+genomewide identification and characterization in theobroma cacao, 
+corchorus capsularis, and gossypium hirsutum of family malvaceae. 
+Agronomy. 2021;11:49.
+ 35. Moore RC, Purugganan MD. The early stages of duplicate gene evolution. 
+Proc Natl Acad Sci U S A. 2003;100(26):15682–7.
+ 36. Wang W, Chen Q, Shouming XU, Wen-Cheng L, Zhu X, Song CP. 
+Trehalose-6-Phosphate phosphatase E modulates ABA-controlled root 
+growth and stomatal movement in Arabidopsis. J Integr Plant Biol. 
+2020;62(10):1518–34.
+ 37. Vandesteene L, López-Galvis L, Vanneste K, Feil R, Maere S, Lammens W, 
+Rolland F, Lunn JE, Avonce N, Beeckman T, et al. Expansive evolution of 
+Page 18 of 18
+Shao et al. BMC Plant Biology          (2023) 23:641 
+•
+ 
+fast, convenient online submission
+ 
+•
+  
+thorough peer review by experienced researchers in your ﬁeld
+• 
+ 
+rapid publication on acceptance
+• 
+ 
+support for research data, including large and complex data types
+•
+  
+gold Open Access which fosters wider collaboration and increased citations 
+ 
+maximum visibility for your research: over 100M website views per year 
+•
+  
+At BMC, research is always in progress.
+Learn more biomedcentral.com/submissions
+Ready to submit your research
+Ready to submit your research ?  Choose BMC and benefit from: 
+?  Choose BMC and benefit from: 
+the Trehalose-6-Phosphate Phosphatase gene family in Arabidopsis. Plant 
+Physiol. 2012;160(2):884–96.
+ 38. Gibbs DJ, Voß U, Harding SA, Fannon J, Moody LA, Yamada E, Swarup 
+K, Nibau C, Bassel GW, Choudhary A, et al. AtMYB93 is a novel nega-
+tive regulator of lateral root development in Arabidopsis. New Phytol. 
+2014;203(4):1194–207.
+ 39. Zhang L, Jiang X, Liu Q, Ahammed GJ, Lin R, Wang L, Shao S, Yu J, 
+Zhou Y. The HY5 and MYB15 transcription factors positively regulate 
+cold tolerance in tomato via the CBF pathway. Plant Cell Environ. 
+2020;43(11):2712–26.
+ 40. Hu Y, Chen L, Wang H, Zhang L, Wang F, Yu D. Arabidopsis transcription 
+factor WRKY8 functions antagonistically with its interacting partner VQ9 
+to modulate salinity stress tolerance. Plant J. 2013;74(5):730–45.
+ 41. Gao Y, Xu Z, Zhang L, Li S, Wang S, Yang H, Liu X, Zeng D, Liu Q, Qian Q, 
+et al. MYB61 is regulated by GRF4 and promotes nitrogen utilization and 
+biomass production in rice. Nat Commun. 2020;11(1):5219.
+ 42. Zhao P-X, Zhang J, Chen S-Y, Wu J, Xia J-Q, Sun L-Q, Ma S-S, Xiang C-B. 
+Arabidopsis MADS-box factor AGL16 is a negative regulator of plant 
+response to salt stress by downregulating salt-responsive genes. New 
+Phytol. 2021;232(6):2418–39.
+ 43. Vitor SC, Sodek L. Products of anaerobic metabolism in waterlogged 
+roots of soybean are exported in the xylem. Plant Sci. 2019;284:82–90.
+ 44. Beatriz L, Nascimento DS, Tattini M. Beyond Photoprotection: the 
+multifarious roles of flavonoids in plant terrestrialization. Int J Mol Sci. 
+2022;23(9):5284.
+ 45. Sharma A, Shahzad B, Rehman A, Bhardwaj R, Landi M, Zheng B. 
+Response of Phenylpropanoid pathway and the role of polyphenols in 
+plants under abiotic stress. Molecules. 2019;24(13):2452.
+ 46. Lunn JE, Delorge I, Figueroa CM, Dijck PV, Stitt M. Trehalose metabolism in 
+plants. Plant J. 2014;79:544–67.
+ 47. Islam MO, Kato H, Shima S, Tezuka D, Matsui H, Imai R. Functional iden-
+tification of a rice trehalase gene involved in salt stress tolerance. Gene. 
+2019;685:42–9.
+ 48. Yang Y, Yao Y, Li J, Zhang J, Zhang X, Hu L, Ding D, Bakpa EP, Xie J. 
+Trehalose alleviated salt stress in tomato by regulating ROS metabolism, 
+photosynthesis, Osmolyte synthesis, and Trehalose metabolic pathways. 
+Front Plant Sci. 2022;13:772948.
+ 49. Jang I-C, Oh S-J, Seo J-S, Choi W-B, Song SI, Kim CH, Kim YS, Seo H-S, Choi 
+YD, Nahm BH, et al. Expression of a bifunctional fusion of the Escheri-
+chia coli genes for Trehalose-6-phosphate synthase and Trehalose-
+6-Phosphate Phosphatase in transgenic rice plants increases Trehalose 
+accumulation and abiotic stress tolerance without stunting growth. Plant 
+Physiol. 2003;131(2):516–24.
+ 50. Ambastha V, Tiwari BS. Cellular water and anhydrobiosis in plants. J Plant 
+Growth Regul. 2015;34:665–71.
+ 51. Wang X, Wang M, Huang Y, Zhu P, Qian G, Zhang Y, Liu Y, Zhou J, Li AL. 
+Genome-wide identification and analysis of stress response of Trehalose-
+6-Phosphate synthase and Trehalose-6-Phosphate Phosphatase genes in 
+Quinoa. Int J Mol Sci. 2023;24(8):6950.
+ 52. Sui N, Yang Z, Liu M, Wang B. Identification and transcriptomic profiling 
+of genes involved in increasing sugar content during salt stress in sweet 
+sorghum leaves. BMC Genomics. 2015;16(1):534.
+ 53. Sm S. Physiological role of trehalose on enhancing salinity tolerance of 
+wheat plant. Bull Natl Res Cent. 2019;43:1–10.
+ 54. Karim S, Aronsson H, Ericson H, Pirhonen M, Leyman B, Welin B, Mäntylä E, 
+Palva ET, Dijck PV, Holmström K-O. Improved drought tolerance without 
+undesired side effects in transgenic plants producing trehalose. Plant Mol 
+Biol. 2007;64(4):371–86.
+ 55. Lu S, Wang J, Chitsaz F, Derbyshire MK, Geer RC, Gonzales NR, Gwadz M, 
+Hurwitz DI, Marchler GH, Song JS, et al. CDD/SPARCLE: the conserved 
+domain database in 2020. Nucleic Acids Res. 2020;48:265–8.
+ 56. Voorrips RE. MapChart: software for the graphical presentation of linkage 
+maps and QTLs. J Hered. 2002;93(1):77–8.
+ 57. Letunic I, Bork P. Interactive Tree Of Life (iTOL) v5: an online tool for phylo-
+genetic tree display and annotation. Nucleic Acids Res. 2021;49:293–6.
+ 58. Nei M, Gojobori T. Simple methods for estimating the numbers of syn-
+onymous and nonsynonymous nucleotide substitutions. Mol Biol Evol. 
+1986;3(5):418–26.
+ 59. Lescot M, Déhais P, Thijs G, Marchal K, Moreau Y, Peer YVD, Rouzé P, Rom-
+bauts S. PlantCARE, a database of plant cis-acting regulatory elements 
+and a portal to tools for in silico analysis of promoter sequences. Nucleic 
+Acids Res. 2002;30(1):325–7.
+ 60. Chen C, Chen H, Zhang Y, Thomas HR, Frank MH, He Y, Xia R. TBtools: an 
+integrative toolkit developed for interactive analyses of big biological 
+data. Mol Plant. 2020;13(8):1194–202.
+ 61. Rasche H, Hiltemann S. Galactic circos: user-friendly circos plots within 
+the galaxy platform. Gigascience. 2020;9(6):giaa065.
+ 62. Singh VK, Mangalam AK, Dwivedi S, Naik S. Primer premier: program for 
+design of degenerate primers from a protein sequence. Biotechniques. 
+1998;24(2):318–9.
+ 63. Giulietti A, Overbergh L, Valckx D, Decallonne B, Bouillon R, Mathieu C. An 
+overview of real-time quantitative PCR: applications to quantify cytokine 
+gene expression. Methods. 2001;25(4):386–401.
+ 64. Kumar D, Yusuf MA, Singh P, Sardar M, Sarin N: Histochemical detection 
+of superoxide and H2O2 accumulation in Brassica juncea seedlings. Bio-
+Protocol 2014 4.
+ 65. Dai X, Zhuang Z, Zhao PX. psRNATarget: A plant small RNA target analysis 
+server (2017 release). Nucleic Acids Res. 2018;46:45–54.
+ 66. Otasek D, Morris JH, Bouças J, Pico AR, Demchak B. Cytoscape Automa-
+tion: Empowering workflow-based network analysis. Genome Biol. 
+2019;20(1):185.
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in pub-
+lished maps and institutional affiliations.
+

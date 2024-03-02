@@ -1,0 +1,814 @@
+Abstract. Background/Aim: Claudin-10 (CLDN10) is a
+membrane integral protein. It is one of the widely expressed
+tight junctional claudins with functions not well defined. In the
+present study, the expression profile and its role in cerebral
+endothelial cells and in the interaction between breast cancer
+and endothelial cells were investigated. Materials and Methods:
+CLDN10 expression was examined in a wide range of cell
+types. Brain endothelial cell models with or without CLDN10
+expression were generated using the hCMEC/D3 cell line and
+used to test the barrier and permeability functions. Trans-
+endothelial drug delivery and invasion were also evaluated.
+Results: hCMEC/D3 cells express high levels of CLDN10,
+compared with peripheral endothelial cells, mesothelial cells,
+fibroblasts, and breast cancer cells, which were either negative
+or expressed low levels of CLDN10. Knockdown of CLDN10 in
+hCMEC/D3 cells resulted in impaired tight junctions as seen by
+reduced transendothelial electric resistance and paracellular
+permeability. It also accelerated invasion of breast cancer cells
+through the endothelial cell layer. CLDN10 knockdown in
+hCMEC/D3 cells led to an increase in transendothelial
+chemodrug delivery. Furthermore, the SRC kinase inhibitor
+(AZM475271) was able to decrease the impedance and increase
+the paracellular permeability in cerebral endothelial cells.
+Conclusion: Cerebral endothelial cells express high levels of
+CLDN10, a protein regulating barrier function and thereby
+drug permeability and cancer invasiveness in brain endothelial
+cells, suggesting that it is a novel therapeutic target for the
+treatment of brain metastasis-related diseases.
+The blood-brain barrier (BBB) is composed of brain
+microvascular endothelial cells (BMECs), astrocytes,
+pericytes, and many intercellular molecular structures (1, 2).
+Tight junctions (TJs) between BMECs construct a robust
+physical barrier preventing the free exchange of substances
+between the bloodstream and the brain parenchyma and
+migration of tumor cells (3-7). Patients with brain metastases
+have poor clinical outcomes. However, there are marked
+improvement of the clinical course and patient’s outcome as
+a result of improved local and systemic therapies and
+advanced imaging technologies allowing early diagnosis (8).
+The blood-brain barrier can also block the entry of drugs into
+metastatic lesions, especially antibody-based drugs (9). Once
+breast cancer patients have brain metastases, their quality of
+life and survival time are seriously affected. The median
+survival time of breast cancer patients with brain metastases
+in the United States is only 10 months (10). Therefore, it is
+essential to understand the molecular mechanisms of the
+BBB, as it can help us understand the process of breast
+cancer brain metastasis and develop more targeted therapies.
+The TJs are formed by the interaction of transmembrane
+proteins, such as occludin and claudins, and cytoplasmic
+scaffolding proteins, such as zonula occludens and cingulin.
+3923
+Correspondence to: Tracy A. Martin, Cardiff China Medical
+Research Collaborative, Division of Cancer and Genetics,
+University School of Medicine, Heath Park, Cardiff, U.K. Tel: +44
+2920687209, e-mail: martinta1@cardiff.ac.uk
+Key Words: Claudin-10, CLDN10, brain endothelial, blood brain
+barrier, tight junction, breast cancer, metastasis.
+ANTICANCER RESEARCH 43: 3923-3934 (2023)
+doi:10.21873/anticanres.16580
+Claudin-10 in the Blood Brain Barrier Function of Cerebral
+Endothelial Cells and Transendothelial Invasion of Breast
+Cancer Cells
+XINGUO ZHUANG1,2,3, WENXIAO JI2, ZIQIAN FANG2, YIMING YANG2, FIONA RUGE2,
+Q. PING DOU4, XUN LI3, BING XU1, WEN G. JIANG2 and TRACEY A. MARTIN2
+1Department of Hematology, The First Affiliated Hospital of Xiamen University and Institute of Hematology,
+School of Medicine, Xiamen University, Xiamen, P.R. China;
+2Cardiff China Medical Research Collaborative, Division of Cancer and Genetics,
+University School of Medicine, Cardiff, U.K.;
+3Department of Clinical Laboratory, The First Affiliated Hospital of Xiamen University,
+School of Medicine, Xiamen University, Xiamen, P.R. China;
+4Karmanos Cancer Institute, Department of Oncology, 
+School of Medicine, Wayne State University, Detroit, MI, U.S.A.
+This article is an open access article distributed under the terms and
+conditions of the Creative Commons Attribution (CC BY-NC-ND) 4.0
+international license (https://creativecommons.org/licenses/by-nc-nd/4.0).
+These proteins work together to regulate the permeability of the
+BBB (1, 11). However, what makes these highly specialized
+BBB-TJs extremely restrictive remains unknown. Many studies
+have demonstrated that CLDNs are the major proteins involved
+in TJs and are essential for maintaining the BBB structure (12,
+13). We have reported that Claudin-5 (CLDN5), a member of
+this superfamily that plays a key role in TJ formation, is
+involved in the barrier function of ECs (14). Nevertheless,
+previous studies have shown that a single claudin subtype, such
+as claudin-5, is insufficient for completing TJ formation at the
+BBB (15). Therefore, it is of interest to identify other proteins
+involved in TJ formation at the BBB.
+It has been reported that claudin-10 is highly expressed in
+mouse brain capillary endothelial cells (BCECs), but not in
+non-BCECs (16). However, the protein levels and localization
+of CLDN10 in BCECs have not yet been described. Although
+CLDN10 has been found in many human epithelial and
+endothelial cells (17), such as kidney and uterus cells (18), its
+mRNA and protein expression and localization in human BBB
+have not been reported. Equally important, it has been
+reported that CLDN10 is involved in TJ strands (17). Previous
+studies have shown that claudin-10 not only regulates
+paracellular ion selectivity, but also plays a role in certain ion
+channels (18). However, some questions remain unanswered,
+such as: How is CLDN10 expressed in the human blood-brain
+barrier? What is the function of CLDN10 in TJs? How does
+it affect the invasion of breast cancer cells into the brain and
+trans-endothelial drug delivery? 
+In the present study, we first explored the expression
+levels of CLDN10 in brain endothelial cells, common
+vascular endothelial cells, mesothelial cells, fibroblasts, and
+breast cancer cells. We found that CLDN10 is highly
+expressed only in brain endothelial cells and involved in the
+formation of TJs. We then generated cell models of brain
+endothelial cells with altered levels of CLDN10 expression.
+Using these cell models, we studied the roles of CLDN10 in
+the function of TJs in brain endothelial cells and
+transendothelial invasion of breast cancer cells, as well as
+the effect of CLDN10 knockdown in brain endothelial cells
+on the trans-endothelial drug delivery. Furthermore, we
+examined the potential role of a SRC kinase in the junctional
+functions of cerebral endothelial cells, aided by the cell
+models with differential CLDN10 expression.
+Materials and Methods
+Cell lines and cell transfection. In this study, three immortalized
+human brain endothelial cell lines, hCMEC/D3 (kind gift from Dr
+Guilaume, Flury of Institut COCHIN, Paris, France), TY9, and
+TY10 (kindly gifted by Dr Yasuteru Sano of Department of
+Neurology and Clinical Neuroscience, Yamaguchi University
+Graduate School of Medicine, Yamaguchi, Japan) were cultured in
+endothelial 
+cell 
+(EC) 
+growth 
+medium 
+(EBM-2 
+medium
+supplemented with EGM-2 MV, 5% foetal calf serum (FCS)
+(Sigma-Aldrich, Dorset, UK), and 1% antibiotics (Sigma-Aldrich). 
+Three vascular endothelial cell lines namely human vascular
+endothelial cells (HECV) (ICLC, Genova, Italy), primary cultured
+human umbilical vascular endothelial cells (HuVEC), and human
+microvascular endothelial cells (HmVEC) (Life Technologies, Paisley,
+UK) were used. HECV were cultured in Dulbecco’s Modified Eagle
+Medium (DMEM)/F12 (Sigma-Aldrich) supplemented with 10% FCS
+and 1% antibiotics; HmVEC cells were maintained in Medium 131
+supplemented with Microvascular Growth Supplement (MVGS) in
+flasks treated with Attachment Factor Protein (Life Technologies);
+HuVEC cells were obtained from human umbilical vein and cultured
+in M199 containing 20%-30% FCS.
+The human immortalized mesothelial cells MET5A (ATCC,
+Manassas, VA, USA) and a human foetal lung fibroblast cell line
+(MRC5) (European Collection of Animal Cell Cultures, Salisbury,
+UK) were cultured in DMEM/F12 supplemented with 10% FCS and
+1% antibiotics. Five human breast cancer cells lines, MDA-MB-231,
+MDA-MB-361, BT474, HCC1419, and MCF-7 (European
+Collection of Animal Cell Cultures) were cultured in DMEM/F12
+supplemented with 10% FCS and 1% antibiotics.
+hCMEC/D3 cells were transfected with CLDN10 siRNA or
+control siRNA (Santa Cruz Biotechnologies, Santa Cruz, CA, USA)
+following the manufacturer’s protocol in order to establish
+CLDN10-manipulated cell models. After incubation for the
+indicated time, cells were harvested for expression analysis and
+further experiments.
+All the cells were cultured in a humidified incubator at 37˚C, 5%
+CO2, and 95% humidity except TY9 and TY10 cells that were
+cultured at 34˚C.
+Key reagents. The fluorescence dye, DiI (1,10-Dioctadecyl-
+3,3,30,30Tetramethylindocarbocyanine Perchlorate), was purchased
+from Sigma-Aldrich. A small molecule inhibitor to human SRC,
+namely AZM475271 was from Tocris (Bristol, UK). Cell Counting
+Kit-8 was from NBS Biologicals (Huntingdon, UK). Cisplatin was
+from Tocris Cookson Ltd.; Neratinib (Puma Biotechnologies, Los
+Angeles, CA, USA). Antibodies to CLDN10 (sc-373700) and a
+housekeeping protein anti-GAPDH antibodies were from Santa Cruz
+Biotechnologies Inc.
+Extraction of RNA from cells and PCR analysis of gene transcripts.
+Total RNA was extracted using the TRI Reagent (Sigma-Aldrich).
+Reverse transcription of the RNA was then performed using a
+reverse transcription kit from Promega (Southampton, UK). For
+conventional PCR, GoTaq Green Master Mix (Promega) was applied
+using primers for CLDN10 and GAPDH. Quantitative analysis of
+gene transcripts was conducted using a StepOne Plus thermocycler
+from Fisher Scientific (Loughborough, Leicestershire, UK). The
+primers used in the study are listed in Table I and a FAM tagged
+Uniprimer™ and reverse primer with a unique z-sequence were used.
+GAPDH was used as a housekeeping control to normalize the data.
+Western blot analysis. Cells were harvested, lysed in a RIPA lysis
+buffer (50 mM Tris HCl, 150 mM NaCl, 1.0% (v/v) NP-40, 0.5%
+(w/v) Sodium Deoxycholate, 1.0 mM EDTA, 0.1% (w/v) SDS and
+0.01% (w/v) sodium azide, pH of 7.4), and proteins were separated
+using SDS-PAGE. The proteins were then transferred to an
+Immobilon-P PVDF membrane (Merck Millipore, Hertfordshire, UK)
+for further analysis. After blocking with a skimmed milk mixture, the
+membrane was incubated overnight with the appropriate primary
+ANTICANCER RESEARCH 43: 3923-3934 (2023)
+3924
+antibody, washed, and incubated with the secondary antibody
+conjugated with HRP. The proteins were visualized using the EZ-ECL
+solution (Geneflow Ltd., Litchfield, UK), and images were captured
+using a G-BOX detection system (Syngene, Cambridge, UK).
+Dynamic monitoring of TJ of human brain endothelial cell
+(hCMEC/D3) layer and tumour- human brain endothelial cell
+(hCMEC/D3) layer interactions by ECIS. Electric cell-substrate
+impedance sensing (ECIS) can be used to investigate the formation
+and dynamics of epithelial TJs. ECIS can provide a continuous
+measurement of cell growth and changes in cell behaviour,
+including the formation and disassembly of TJs, by monitoring the
+impedance of cells growing on a substrate with electrodes (Applied
+Biophysics Inc., Troy, NJ, USA). 
+The assay was performed as previously described with
+modifications (19). Briefly, ECIS arrays (96W1E) (Applied
+Biophysics Inc.) were first activated, stabilized, and cleaned; 7×104
+hCMEC/D3 cells were seeded in ECIS arrays and incubated for 24
+h to reach confluence before the ECIS arrays were placed in the
+incubated array station. The resistance/impedance were measured
+over the course of the experiment. In selected wells, an appropriate
+concentration of SRCi (AZM475271) was added into medium, and
+changes in impedance were measured and analysed to assess the
+dynamics of TJ disassembly.
+ECIS was also used to monitor interactions of breast cancer and
+endothelial cells. 7×104 hCMEC/D3 control cells, or hCMEC/
+D3CLDN10-KD were plated in the ECIS array and incubated for 24 h
+to reach confluence. Breast cancer cells were then added to the
+endothelium and migration of breast cancer cells was automatically
+tracked and recorded.
+Trans-endothelial resistance (TER). TER was measured using an
+EVOM voltohmmeter (EVOL, World Precision Instruments, Aston,
+Herts, UK) and a pair of STX-2 chopstick electrodes (WPI,
+Sarasota, FL, USA). The resistance was measured with a
+voltohmmeter after electrodes were placed in the upper and lower
+chambers. hCMEC/D3 cells were seeded into the 0.4 mm pore size
+insert (upper chamber) and allowed to reach full confluence for
+further experiments. The TER of inserts with hCMEC/D3Control
+cells, or hCMEC/D3CLDN10-KD cells was then examined. 
+Paracellular permeability (PCP). PCP was determined using
+fluorescently labeled dextran FITC-Dextran-40, molecular weight
+being 40 kDa, as we previously reported (20). hCMEC/D3 cells
+were seeded into the 0.4 μm pore size insert (upper chamber) and
+allowed to reach full confluence for further experiments. With or
+without SRCi (AZM475271), Dextran-40 alone or in combination
+with breast cells was added to the upper chamber. Then the medium
+from the lower chamber was collected at the indicated time. The
+fluorescence from these collections was read on a multichannel
+fluorescence reader (Promega).
+Transendothelial invasion of breast cancer cells assay. Trans-well
+chambers equipped with 6.5 mm diameter polycarbonate filter (pore
+size 8 μm) (Becton Dickinson Labware, Oxford, UK) were pre-
+coated with Collagen (Type I solution from rat tail) from Sigma
+Aldrich (St. Louis, MO, USA). Then, hCMEC/D3 cells were seeded
+and left to reach confluency. Following this, 30,000 breast cancer
+cells previously labeled with DiI (Tetramethylindocarbocyanine
+Perchlorate) were aliquoted into each insert. After 96 h co-culture,
+non-invasive cells are removed from the inner chamber with a
+cotton swab. The breast cancer cells passing through the insert were
+fixed (4% formalin) and counted using fluorescent microscopy.
+Trans-endothelial drug delivery. hCMEC/D3 cells with or without
+CLDN10 knockdown were seeded into the 0.4 μm pore size inserts
+(upper chamber) and allowed to reach full confluence. Meanwhile,
+1×105 breast cancer cells were seeded to each well of a 24-well
+plate and incubated overnight. Then inserts were transferred to the
+24-well plate and indicated concentrations of antitumor agents were
+added. After 96 h co-culture, the breast cancer cells were fixed with
+4% formalin and stained with crystal violet solution. The cells were
+then counted using microscopy.
+Immunofluorescence (IFC). Cells were seeded in a chamber slide to
+reach confluence. They were then fixed with ice cold pure ethanol
+for overnight. After rehydration with PBC, cells were first
+permeabilized with 0.5% Triton X100 for 5 min, followed by
+washing and blocking with 10% horse serum. Anti-CLDN10
+antibody (1:200 dilution) was added and the slide kept in dark on a
+rocking platform for 2 h. Following washing, FITC-conjugated
+secondary antibody (1:1,000 dilution) together with DAPI (4’,6-
+diamidino-2-phenylindole) (1:1,000, as a nucleus counter stain) was
+added to the cells for a further 2 h. The slides were mounted with
+FluoSave for photographing. 
+Statistical analysis. Statistical Product and Service Solutions (SPSS)
+27.0 (IBM Corp., Armonk, NY, USA), as well as GraphPad Prism
+6 (GraphPad Software, La Jolla, CA, USA) were used to conduct
+the statistical analyses. Statistical significance was determined using
+Student’s t-test or Anova test, where appropriate. p<0.05 was
+considered statistically significant. 
+Zhuang et al: CLDN10 in Cerebral Endothelial Cells and Cancer Invasion
+3925
+Table I. Primers used in the study.
+Target                                     Forward primer                                                             Reverse primer*
+GAPDH                                 AAGGTCATCCATGACAACTT                                 ACTGAACCTGACCGTACAGCCATCCACAGTCTTCTG
+GAPDH                                 GGCTGCTTTTAACTCTGGTA                                  GACTGTGGTCATGAGTCCTT
+SRC                                       TGTGGCCCTCTATGACTATG                                  ACTGAACCTGACCGTACAAAACTCCCCTTGCTCATGTA
+ZO-1                                      TGGTGATGACACACATGGTA                                ACTGAACCTGACCGTACAGGTGGTACTTGCTCGTAA
+CLDN10                                CTGGACGGTTATATACAGGC                                  ACTGAACCTGACCGTACACATCATTCCAAAGAGCGCAA
+CLDN10                                CTGGACGGTTATATACAGGC                                  CGTTGTATGTGTATCTGGGT
+*The underlined are the Z-sequence.
+Results
+The expression of CLDN10 is relatively high in brain
+endothelial cells. Claudins (Cldns) are the pivotal
+transmembrane proteins that establish paracellular tightness
+between neighboring endothelial and epithelial cells (21).
+Members of this family have been described to play a vital role
+in BBB to resist the brain metastasis of tumour cells (5, 7, 15).
+However, few studies discuss whether CLDN10 (claudin-10),
+as a member of the claudins family, plays a role in breast
+cancer brain metastasis.
+To investigate whether CLDN10 is involved in the process
+of breast cancer cell invasion through the blood-brain barrier,
+we first examined the expression of CLDN10 in brain
+endothelial cells and breast cancer cells using PCR; MET5A
+non-cancerous mesothelial cells and MRC5 fibroblasts were
+used for comparison (Figure 1A). We found that the
+CLDN10 transcript was relatively highly expressed in brain
+endothelial cells, while its expression was very low in breast
+cancer cells, and undetectable in other types of cells (Figure
+1A). On the protein level, we found relatively high
+expression levels of CLDN10 in brain endothelial cells
+hCMEC/D3 cells, but it was not detected in other cells
+(Figure 1B). This indicates that CLDN10 expression is
+relatively high in brain endothelial cells, but very low in
+breast cancer cells. We then used immunofluorescent staining
+(IFC) to determine the cellular localization of CLDN10 in
+hCMEC/D3 cells and found that CLDN10 staining was
+ANTICANCER RESEARCH 43: 3923-3934 (2023)
+3926
+Figure 1. The expression and distribution of CLDN10 in brain endothelial cells, vascular endothelial cells, mesothelial cells, fibroblasts, and breast
+cancer cells. (A): The CLDN10 transcript expression in human cerebrovascular endothelial cells, vascular endothelial cells, mesothelial cells,
+fibroblasts, and breast cancer cells assayed using RT-PCR. (B): CLDN10 protein in the representational cell lines assayed using protein blotting.
+(C) The ultrastructure of TJ strands reconstituted by stable expression of CLDN10 is shown using immunofluorescent staining between hCMEC/D3
+cells. Data are representative of three independent experiments (n=3).
+indeed located at the intercellular junction are of the
+hCMEC/D3 cells (Figure 1C), in line with the location of
+tight junction in these cells. 
+The generation of cell models with altered levels of CLDN10.
+Brain endothelial cells are an important components of the
+blood-brain barrier, and the claudin protein family in brain
+endothelial cells plays an important role in the strength of
+the blood-brain barrier, which can seriously affect substance
+diffusion (e.g. drug delivery) and brain metastasis of tumours
+including breast cancer (4, 22, 23). However, the role of
+CLDN10 in TJs of the blood brain barrier and brain
+metastasis of breast cancer has not been reported. To further
+explore the role of CLDN10 in TJs of brain endothelial cells,
+a key component of the blood brain barrier (BBB), and the
+potential impact of CLDN10 on brain metastases in breast
+cancer, we generated cell models by manipulating CLDN10
+expression levels in brain endothelial cells to explore
+tumour-brain endothelial cell interactions in vitro. Brain
+endothelial hCMEC/D3 cells were used to generate CLDN10
+knockdown cell models because of their relatively higher
+CLDN10 expression. As demonstrated in Figure 2A,
+CLDN10 expression of these cells showed a clear decrease
+following transfection, as detected by both quantitative PCR
+and IFC (Figure 2B). Additionally, in order to verify whether
+CLDN10 gene expression level affects the proliferation of
+hCMEC/D3 cells, we performed a CCK-8 proliferation assay
+and found that reduction in the levels of CLDN10 did not
+affect hCMEC/D3 cell proliferation (Figure 2C).  
+Effect of reduction in CLDN10 expression on transendothelial
+resistance (TER) of brain endothelial cells. The BBB is a
+diffusion barrier that selectively excludes most blood-derived
+substances and cells from entering the brain. TER
+measurement is a reliable parameter characterizing the
+integrity of BBB (24). In order to examine the effect of
+CLDN10 changes on the barrier integrity between brain
+endothelial cells, we established the brain endothelial cell
+Zhuang et al: CLDN10 in Cerebral Endothelial Cells and Cancer Invasion
+3927
+Figure 2. Generation of cell models with differential expression of CLDN10 as confirmed using quantitative PCR and immunofluorescent staining.
+(A): The CLDN10 transcript expression in hCMEC/D3 wild type cells (hCMEC/D3WT), hCMEC/D3 control cells (hCMEC/D3Control) and CLDN10
+knockdown cells (hCMEC/D3CLDN10-KD). (B): TJ strands reconstituted by CLDN10 in the respective hCMEC/D3 cells as shown using IFC. (C)
+Viability hCMEC/D3 cells assayed using Cell Counting Kit-8 a after 36 h of incubation. Data are representative of three independent experiments
+(n=3). Data are given as the mean± SEM, n=3. *p<0.05; **p<0.01; Student’s t-test.
+barrier models in vitro
+using CLDN10 knockdown
+hCMEC/D3 and the parental hCMEC/D3 cell line that
+expresses high levels of CLDN10. The TER of CLDN10KD
+hCMEC/D3 brain endothelial cell barrier was decreased
+(Figure 3A). We further examined TER changes following
+coculture of brain endothelial cells with three different breast
+cancer cell lines. As shown in Figure 3B–D, after the addition
+of tumour cells TER showed a downward trend, which may
+be related to the destruction of BBB by tumour cells.
+Effect of CLDN10 down-regulation on PCP between brain
+endothelial cells. Paracellular permeability (PCP) of BBB is
+governed by TJs between brain endothelial cells (20); as
+another assessment method of TJ function, its aberration of
+which is linked to substance transport from the blood to the
+brain and is also explored as means to enhance brain drug
+delivery (1, 3). In order to determine whether paracellular
+permeability of the brain endothelial cell barrier is altered in
+the presence of reduced CLDN10 levels the PCP was
+measured. The result showed that permeability in
+hCMEC/D3CLDN10-KD cell 
+is 
+higher 
+than 
+that 
+of
+hCMEC/D3Control cells over a 2 h period, indicating changes
+in PCP between brain endothelial cells (Figure 4A). Addition
+of three breast cancer cell lines had differential effects on
+permeability over a 4 h period: addition of MCF7 cells
+reduced the permeability over 2 h; whereas BT-474 cells had
+no effect. It is interesting to note that addition of MDA-MB-
+231 cells led to a contrasting trend to that seen with MCF-7
+cells (Figure 4B-D). This could imply that adding different
+breast cancer cells into the brain endothelial cell model has
+differential effects on PCP.
+Effects of CLDN10 down-regulation on barrier functions of
+brain endothelial cells assessed by ECIS. ECIS was further
+employed to evaluate TJ function of brain endothelial cells in
+order to evaluate if barrier functions simulating the BBB using
+the hCMEC/D3 cell model. hCMEC/D3 cells were first
+allowed to grow to confluence on the gold-plated electrodes.
+Upon the formation of cell monolayer in the well overnight,
+the resistance (or impedance) of the system was measured.
+The rate of resistance represents the sealing and permeability
+properties of the brain endothelial cell barrier. Impedance in
+hCMEC/D3CLDN10-KD
+cells was lower than that in
+hCMEC/D3Control cells (Figure 5A). The addition of three
+different types of breast cancer cells to the brain endothelial
+barrier model in ECIS caused a slight decrease in resistance
+ANTICANCER RESEARCH 43: 3923-3934 (2023)
+3928
+Figure 3. Effect of CLDN10 down-regulation on TER of brain endothelial cells. (A) Trans-epithelial resistance (TER) (ohms) of hCMEC/D3 cells
+simulating the blood-brain barrier; (B-D) Change in trans-epithelial resistance (TER) (ohms) of hCMEC/D3 cells simulating the blood-brain barrier
+treated with human breast cancer cells. Data are given as the mean±SEM, n=3. *p<0.05; **p<0.01; Student’s t-test.
+at first, but resistance increased over time, and the resistance
+level of the hCMEC/D3Control cells remained higher than that
+of the hCMEC/D3CLDN10-KD cells (Figure 5B-D). 
+Effect of CLDN10 knockdown in hCMEC/D3 cells on the
+invasion of breast cancer cells through a human brain
+endothelial cell (hCMEC/D3) monolayer. The blood–brain
+barrier (BBB) protects the brain from pathogens and cancer
+cells. The effect of CLDN10 knockdown in hCMEC/D3 cells
+on the invasive potential of breast cancer cells was assessed
+using an in vitro invasion model composed of a semi-
+permeable membrane layered with basement membrane and
+brain endothelial cells with or without CLDN10 knockdown.
+As seen in Figure 6, invasion of all three breast cancer cell
+lines was significantly increased due to CLDN10 knockdown
+in the brain endothelial cells hCMEC/D3 (Figure 6). 
+Effect of CLDN10 alteration in hCMEC/D3 cells on drug
+trans-endothelial permeability. To investigate the effects of
+CLDN10 knock-down in the BBB on the delivery of
+chemotherapy and targeted drugs across the brain endothelial
+cell barrier, we evaluated a number of chemotherapeutics. We
+modified the transwell assay to assess differences in killing
+cancer cells after chemotherapy and targeted drugs passed
+through the brain endothelial cell barrier to determine the
+effect of CLDN10 knockdown on drug trans-endothelial
+barrier delivery. Cisplatin and the targeted drug Neratinib that
+passes through the hCMEC/D3CLDN10-KD cell layer were
+found to increase the death rate of breast cancer cells, as it
+was evident by decreased cell number after drug treatment,
+implying that an increased amounts of the therapeutics were
+able to cross the blood-brain barrier (Figure 7A-D).
+CLDN10 is closely related to ZO-1 in forming TJs, which is
+regulated by the SRC Pathway in hCMEC/D3. A functional TJ
+requires the interactions between the membrane integral TJ
+proteins (claudins and occluding), the subcoat scaffolding
+proteins (Zonula Occludens, ZOs) and the cytoskeleton.
+Claudin association with actin dependents on ZO-1, but
+colocalization demonstrates intermittent rather than continuous
+association between claudin, ZO-1, and actin (25). To
+determine whether inhibiting CLDN10 had an impact on ZO-
+1, we measured the transcription levels of ZO-1 in the
+hCMEC/D3 cells. As shown in Figure 8A, the transcription
+level of ZO-1 decreased. Additionally, we found a slight
+decline in the expression of SRC, a known key signaling
+Zhuang et al: CLDN10 in Cerebral Endothelial Cells and Cancer Invasion
+3929
+Figure 4. Effect of CLDN10 down-regulation on PCP between human brain capillary endothelial cells. (A): Change in paracellular permeability
+(PCP) (RFU) of hCMEC/D3 cells simulating the blood-brain barrier over 2 h. (B-D): Change in paracellular permeability (PCP) (RFU) of
+hCMEC/D3 cells simulating the blood-brain barrier treated with human breast cancer cells. Data are given as the mean±SEM, n=3. *p<0.05;
+**p<0.01; ***p<0.001; Student’s t-test.
+regulator for CLDN10. To investigate whether SRC influences
+TJ function via CLDN10, we performed ECIS and PCP
+experiments to assess the effect of the SRC inhibitor (SRCi)
+AZM475271 on TJ function in hCMEC/D3 cells with or
+without CLDN10 knockdown. After adding the SRCi, ECIS
+detected resistance of hCMEC/D3CLDN10-KD
+cells and
+hCMEC/D3Control cells was differentially affected; ECIS
+detected 
+resistance 
+was 
+significantly 
+reduced 
+in
+hCMEC/D3CLDN10-KD cells when SRC were inhibited, while
+PCP was increased in the hCMEC/D3CLDN10-KD cells more
+than in the hCMEC/D3Control cells (Figure 8B and C).
+Discussion
+This study reports for the first time the differential
+expression of CLDN-10 among human brain endothelial
+cells, vascular endothelial cells, mesothelial cells, fibroblasts,
+and breast cancer cells. We observed that CLDN-10 is highly
+expressed in brain endothelial cells and is involved in the
+formation of TJ strands between brain endothelial cells. Its
+expression level affects the function of the brain endothelial
+ANTICANCER RESEARCH 43: 3923-3934 (2023)
+3930
+Figure 5. Effects of CLDN10 down-regulation on TJ of hCMEC/D3 cells simulating BBB using ECIS with or without breast cancer cells. (A) The
+impedance of hCMEC/D3 cells simulating BBB. (B-D) The impedance of hCMEC/D3 cell simulating BBB cocultured with breast cancer cells. The
+red arrow indicates the addition of breast cancer cells. Data are given as the mean±SEM, n=3. One way ANOVA was used for statistical analysis.
+Figure 6. CLDN10 knockdown in hCMEC/D3 cells boosts breast cancer
+cell invasion through a human brain endothelial cell (hCMEC/D3)
+layer. The three breast cancer cells have different abilities to invade the
+endothelial cell layer, but they are more likely to cross the
+hCMEC/D3CLDN10-KD cell layer. The images were taken with a Nikon
+microscope (original magnification, ×100). Data are given as the
+mean±SEM, n=3. *p<0.05; **p<0.01; Student’s t-test.
+barrier-TJ and correspondingly, the transendothelial invasion
+of breast cancer cells and drug delivery. This study also
+revealed for the first time that ZO-1 gene expression is
+decreased upon CLDN10 knock down in brain endothelial
+cells; meanwhile, the TJ function of the brain endothelial cell
+barrier was more vulnerable to being altered by a SRC
+kinase inhibitor.
+Claudins are the main proteins forming the backbone of
+TJ and important determinants of paracellular "tightness"
+between adjacent brain endothelial cells (6, 26). Previous
+research suggests that claudin-5 (CLDN-5) is the dominant
+TJ protein at the BBB, with minor contributions from
+CLDN3 and -12, as well as occluding (27). However, the
+BBB appears ultrastructurally normal in CLDN5 knock-out
+mice, which suggests that additional claudins and/or TJ-
+associated marvel proteins (TAMPs) may be involved (27).
+In this study, we report that CLDN10 was highly expressed
+in three immortalized human brain capillary cell lines, which
+is consistent with Ohtsuki’s report that claudin-10 is highly
+expressed in mouse brain capillary endothelial cells (16). It
+has been recognized in recent years that 27 members of the
+claudin family exhibit tissue-specific expression, resulting in
+different barrier properties in different tissues (5, 6, 28, 29).
+Previous studies have also reported that CLDN10 is
+expressed in epithelial cells in organs such as the kidney and
+uterus and is associated with TJs between epithelia (18, 30,
+31). However, we did not observe its expression in vascular
+endothelial cells, mesothelial cells, and fibroblasts.
+Furthermore, we detected the very low levels of CLDN10 in
+breast cancer cells that were prone to brain metastasis. In
+summary, CLDN10 is differentially expressed in different
+vascular endothelial cells and different tumor cells.
+To investigate the role of CLDN-10 in BBB TJs, we used
+immunohistochemistry to determine its distribution and
+discovered that it is involved in TJ strands, which is
+consistent with other reports (18, 30). To further study the
+role of CLDN10 in brain endothelial cell barrier-TJ, we
+generated cell models that express decreased levels of
+CLDN10 expression compared to controls. To monitor the
+impact of CLDN10 down-regulation on the sealing and
+permeability properties of brain endothelial cell barrier -TJ,
+we performed TER, ECIS (measuring the barrier function
+between brain endothelial cells), and PCP assays. Knocking
+down CLDN10 in brain endothelial cells dramatically
+reduced transendothelial barrier resistance. The changes in
+TER and ECIS indicated that CLDN10 plays an important
+role in the integrity and sealing properties of brain endothelial
+cell barrier. The changes in PCP indicated that CLDN10 plays
+a regulatory role in the permeability of the brain endothelial
+cell barrier. Furthermore, it is critical that the TJs of the
+blood-brain barrier strictly limit the entry of tumor cells and
+drugs into the brain. In order to evaluate the impact of
+Zhuang et al: CLDN10 in Cerebral Endothelial Cells and Cancer Invasion
+3931
+Figure 7. Effect of CLDN10 down-regulation in hCMEC/D3 cells on drug trans-endothelial barrier delivery. (A-C) The corresponding concentration
+of the chemotherapy drug cisplatin passed through the endothelial cell layer and killed the three breast cancer cells. (D) The corresponding
+concentration of the targeted drug neratinib killed the three breast cancer cells after crossing the endothelial cell layer. Data are given as the
+mean±SEM, n=3. *p<0.05; **p<0.01; ***p<0.001; Student’s t-test.
+CLDN10 down-regulation on trans-endothelial drug delivery
+and breast cancer cell invasion, we designed experiments in
+which chemotherapy and targeted drugs penetrate through the
+endothelial barrier and kill breast cancer cells. It was
+discovered that CLDN10 knockdown improved the ability of
+chemotherapy and targeted drugs to kill breast cancer cells
+after crossing the endothelial barrier. In addition, breast
+cancer cell transendothelial invasion assays showed that
+knockdown of CLDN10 in hCMEC/D3 cells also facilitated
+transendothelial invasion by breast cancer cells.
+The organization and integrity of epithelial TJs depend on
+interactions between claudins, ZO scaffolding proteins, and
+the cytoskeleton (25). ZO-1 is a TJ protein that interacts with
+both occludin and claudins (32, 33). Additionally, ZO-1 is
+necessary for claudins to associate with actin. Prot-Bertoye et
+al. reported that CLDN10 was colocalized with ZO-1 in the
+human kidney cortex (34). However, Anderson et al. reported
+that although colocalized, the association between claudin,
+ZO-1, and actin is intermittent rather than continuous, and
+breaking and reannealing of claudin strands are independent
+of ZO-1 or actin interactions in fibroblasts (25).  
+A small number of previous studies have also investigated
+the association and role of CLDN10, ZO-1 and SRC in brain
+endothelial cells. In this study, we found that ZO-1 transcript
+levels decreased in CLDN10 knockdown brain endothelial
+cells. Junyan et al. report that decreased expression of p-SRC
+is associated with increased levels of claudin-5, occludin and
+ZO-1 TJ proteins (35). SRC kinase activity appears to be
+involved in both TJ assembly and disassembly. However, the
+role of SRC kinase in TJ regulation in CLDN10 knockdown
+brain endothelial cells is unknown. In this study, we also
+examined SRC mRNA levels, and our result showed that
+they decreased along with CLDN10 knockdown.
+We further assessed the effect of SRC kinases on TJ
+function of brain endothelial cells using ECIS detected
+resistance and PCP by adding a SRCi. The result showed that
+ECIS detected resistance in the hCMEC/D3CLDN10-KD cells
+was significantly reduced following inhibition of SRC kinase
+ANTICANCER RESEARCH 43: 3923-3934 (2023)
+3932
+Figure 8. The relation between CLDN10 and ZO-1 and the role of SRC kinase. (A) Expression of potential CLDN10 interacting partners and
+regulatory factor in hCMEC/D3 cells. (B) The effects of the SRC inhibitor (SRCi) AZM475271 on the tight junction function of hCMEC/D3Control
+cells and hCMEC/D3CLDN10-KD cells were assessed using the ECIS assay. (C) The effects of the SRC inhibitor (SRCi) AZM475271 on paracellular
+permeability in hCMEC/D3Control cells and hCMEC/D3CLDN10-KD cells were measured using the PCP assay. Data are given as the mean±SEM,
+n=3. Comparisons were made between control hCMEC/D3 and hCMEC/D3CLDN10-KD after adding SRCi (indicated by red arrow). (D). Paracellular
+permeability (PCP) following CLDN10 knockdown and cells response to SRCi. *p<0.05; **p<0.01; ***p<0.001; Student’s t-test.
+inhibited, whereas ECIS detected resistance was moderately
+decreased in the hCMEC/D3Control cells. In contrast, in the
+hCMEC/D3CLDN10-KD cells, there was a significant elevation
+in PCP with the addition of the SRCi, while there was no
+significant change in in hCMEC/ D3Control cells. These results
+demonstrate that CLDN10 knockdown in hCMEC/D3 cells
+suppresses SRC transcript levels, and in return, that TJ
+function in hCMEC/D3CLDN10-KD cells becomes more drug
+sensitive. 
+Conclusion
+In conclusion. claudin-10 has a unique pattern of expression
+in cerebral endothelial cells. Its high expression in brain
+endothelial cells is important in the formation of TJs and the
+function of brain endothelial cell barrier. Moreover, CLDN10
+expression affects the function of endothelial TJs, which in
+turn affects the entry of tumor cells and drugs across the
+blood brain barrier. Collectively, CLDN10 is an important
+factor in the pathophysiology of the cerebral endothelium and
+cancer invasion, and thereby is a favorable therapeutic target.
+Conflicts of Interest
+The Authors have no conflicts of interest to declare in relation to
+this study.
+Authors’ Contributions
+WJ, XZ, and TAM conceived the study. XZ, ZF, YY, QPD FR, and
+WJ carried out the experimental work. WJ, TAM, and XZ conducted
+the statistical analyses. All participated in manuscript preparation.
+Acknowledgements
+The Authors are grateful for the generous gifts of hCMEC/D3 by
+Dr Guilaume Flury of Institut COCHIN, Paris and Ty9 and Ty10
+cell lines by Dr. Yasuteru Sano of Department of Neurology and
+Clinical Neuroscience, Yamaguchi University Graduate School of
+Medicine, Yamaguchi, Japan.
+Funding
+This work was financially supported by the Xiamen Medical and
+Health Guidance Project (No.3502Z20224ZD1014), the Natural
+Scientific Foundation of Xiamen (No.3502Z20227340), the Fujian
+Natural Science Foundation of China (No. 2022J011372) and the
+National Natural Science Foundation of China (No. 81871305); Dr.
+Xinguo Zhuang is supported by the Cardiff University-Xiamen
+University Strategic Partnership Fund.
+References
+1 Bayir E, Sendemir A: Role of intermediate filaments in blood-
+brain barrier in health and disease. Cells 10(6): 1400, 2021. DOI:
+10.3390/cells10061400
+2 Yazdani S, Jaldin-Fincati JR, Pereira RVS, Klip A: Endothelial
+cell barriers: Transport of molecules between blood and tissues.
+Traffic 20(6): 390-403, 2019. DOI: 10.1111/tra.12645
+3 Sasson E, Anzi S, Bell B, Yakovian O, Zorsky M, Deutsch U,
+Engelhardt B, Sherman E, Vatine G, Dzikowski R, Ben-Zvi A:
+Nano-scale architecture of blood-brain barrier tight-junctions.
+Elife 10: e63253, 2021. DOI: 10.7554/eLife.63253
+4 Arshad F, Wang L, Sy C, Avraham S, Avraham HK: Blood-brain
+barrier integrity and breast cancer metastasis to the brain.
+Patholog Res Int 2011: 1-12, 2011. DOI: 10.4061/2011/920509 
+5 Zhu L, Han J, Li L, Wang Y, Li Y, Zhang S: Claudin family
+participates in the pathogenesis of inflammatory bowel diseases
+and colitis-associated colorectal cancer. Front Immunol 10:
+1441, 2019. DOI: 10.3389/fimmu.2019.01441
+6 Lochhead JJ, Yang J, Ronaldson PT, Davis TP: Structure,
+function, and regulation of the blood-brain barrier tight junction
+in central nervous system disorders. Front Physiol 11: 914, 2020.
+DOI: 10.3389/fphys.2020.00914
+7 Gupta I, Ryan A: Claudins: unlocking the code to tight junction
+function during embryogenesis and in disease. Clin Genet 77(4):
+314-325, 2010. DOI: 10.1111/j.1399-0004.2010.01397.x
+8 Péchoux CL, Sun A, Slotman BJ, De Ruysscher D, Belderbos J,
+Gore EM: Prophylactic cranial irradiation for patients with lung
+cancer. Lancet Oncol 17(7): e277-e293, 2016. DOI: 10.1016/
+S1470-2045(16)30065-1
+9 Adkins CE, Mittapalli RK, Manda VK, Nounou MI, Mohammad
+AS, Terrell TB, Bohn KA, Yasemin C, Grothe TR, Lockman JA,
+Lockman PR: P-glycoprotein mediated efflux limits substrate and
+drug uptake in a preclinical brain metastases of breast cancer model.
+Front Pharmacol 4: 136, 2013. DOI: 10.3389/fphar.2013.00136
+10 Cagney DN, Martin AM, Catalano PJ, Redig AJ, Lin NU, Lee
+EQ, Wen PY, Dunn IF, Bi WL, Weiss SE, Haas-Kogan DA,
+Alexander BM, Aizer AA: Incidence and prognosis of patients
+with brain metastases at diagnosis of systemic malignancy: a
+population-based study. Neuro Oncol 19(11): 1511-1521, 2017.
+DOI: 10.1093/neuonc/nox077
+11 Redzic Z: Molecular biology of the blood-brain and the blood-
+cerebrospinal fluid barriers: similarities and differences. Fluids
+Barriers CNS 8(1): 3, 2011. DOI: 10.1186/2045-8118-8-3
+12 Berselli A, Benfenati F, Maragliano L, Alberini G: Multiscale
+modelling of claudin-based assemblies: A magnifying glass for
+novel structures of biological interfaces. Comput Struct Biotechnol
+J 20: 5984-6010, 2022. DOI: 10.1016/j.csbj.2022.10.038
+13 Hashimoto Y, Campbell M: Tight junction modulation at the
+blood-brain barrier: Current and future perspectives. Biochim
+Biophys
+Acta Biomembr
+1862(9): 183298, 2020. DOI:
+10.1016/j.bbamem.2020.183298 
+14 Ma SC, Li Q, Peng JY, Zhouwen JL, Diao JF, Niu JX, Wang X,
+Guan XD, Jia W, Jiang WG: Claudin-5 regulates blood-brain
+barrier permeability by modifying brain microvascular
+endothelial cell proliferation, migration, and adhesion to prevent
+lung cancer metastasis. CNS Neurosci Ther 23(12): 947-960,
+2017. DOI: 10.1111/cns.12764
+15 Berndt P, Winkler L, Cording J, Breitkreuz-Korff O, Rex A,
+Dithmer S, Rausch V, Blasig R, Richter M, Sporbert A, Wolburg
+H, Blasig IE, Haseloff RF: Tight junction proteins at the blood–
+brain barrier: far more than claudin-5. Cell Mol Life Sci 76(10):
+1987-2002, 2019. DOI: 10.1007/s00018-019-03030-7 
+16 Ohtsuki S, Yamaguchi H, Katsukura Y, Asashima T, Terasaki T:
+mRNA expression levels of tight junction protein genes in
+Zhuang et al: CLDN10 in Cerebral Endothelial Cells and Cancer Invasion
+3933
+mouse brain capillary endothelial cells highly purified by
+magnetic cell sorting. J Neurochem 0(0): 071106220454002-???,
+2007. DOI: 10.1111/j.1471-4159.2007.05008.x
+17 Milatz S, Piontek J, Hempel C, Meoli L, Grohe C, Fromm A,
+Lee IM, El-Athman R, Günzel D: Tight junction strand
+formation by claudin-10 isoforms and claudin-10a/-10b
+chimeras. Ann. N.Y. Acad. Sci. 1405(1): 102-115, 2017. DOI:
+10.1111/nyas.13393
+18 Sewerin S, Piontek J, Schönauer R, Grunewald S, Rauch A,
+Neuber S, Bergmann C, Günzel D, Halbritter J: Defective
+claudin-10 causes a novel variation of HELIX syndrome through
+compromised tight junction strand assembly. Genes Dis 9(5):
+1301-1314, 2021. DOI: 10.1016/j.gendis.2021.06.006
+19 Yang W, Zhang K, Zhang Z, Zhou J, Li L, Xu Y, Qiu J, Cai L,
+Gong Y, Gong K: Claudin-10 overexpression suppresses human
+clear cell renal cell carcinoma growth and metastasis by
+regulating ATP5O and causing mitochondrial dysfunction. Int J
+Biol Sci 18(6): 2329-2344, 2022. DOI: 10.7150/ijbs.70105
+20 Martin TA, Das T, Mansel RE, Jiang WG: Enhanced tight
+junction function in human breast cancer cells by antioxidant,
+selenium and polyunsaturated lipid. J Cell Biochem 101(1): 155-
+166, 2007. DOI: 10.1002/jcb.21162
+21 Ganieva U, Schneiderman S, Bu P, Beaman K, Dambaeva S: IL-
+22 regulates endometrial regeneration by enhancing tight
+junctions and orchestrating extracellular matrix. Front Immunol
+13: 955576, 2022. DOI: 10.3389/fimmu.2022.955576
+22 Yang YM, Ye L, Ruge F, Fang Z, Ji K, Sanders AJ, Jia S, Hao
+C, Dou QP, Ji J, Jiang WG: Activated leukocyte cell adhesion
+molecule (ALCAM), a potential ‘seed’ and ‘soil’ receptor in the
+peritoneal metastasis of gastrointestinal cancers. Int J Mol Sci
+24(1): 876, 2023. DOI: 10.3390/ijms24010876 
+23 Chen CC, Marshall WS, Robertson GN, Cozzi RRF, Kelly SP:
+Mummichog gill and operculum exhibit functionally consistent
+claudin-10 paralog profiles and Claudin-10c hypersaline response.
+Biol Open 10(7): bio058868, 2021. DOI: 10.1242/bio.058868
+24 Park-Windhol
+C, D’Amore PA: Disorders of vascular
+permeability. Annu Rev Pathol 11: 251-281, 2016. DOI:
+10.1146/annurev-pathol-012615-044506
+25 Adil MS, Parvathagiri V, Verma A, Liu F, Rudraraju M, Narayanan
+SP, Somanath PR: Claudin-17 deficiency in mice results in kidney
+injury due to electrolyte imbalance and oxidative stress. Cells
+11(11): 1782, 2022. DOI: 10.3390/cells11111782
+26 Srinivasan B, Kolli AR, Esch MB, Abaci HE, Shuler ML,
+Hickman JJ: TEER measurement techniques for in vitro barrier
+model systems. J Lab Autom 20(2): 107-126, 2015. DOI: 10.1
+177/2211068214561025 
+27 Van Itallie CM, Tietgens AJ, Anderson JM: Visualizing the
+dynamic coupling of claudin strands to the actin cytoskeleton
+through ZO-1. Mol Biol Cell 28(4): 524-534, 2017. DOI:
+10.1091/mbc.E16-10-0698 
+28 Günzel D, Yu AS: Claudins and the modulation of tight junction
+permeability. Physiol
+Rev 93(2): 525-569, 2013. DOI:
+10.1152/physrev.00019.2012
+29 Berndt P, Winkler L, Cording J, Breitkreuz-Korff O, Rex A,
+Dithmer S, Rausch V, Blasig R, Richter M, Sporbert A, Wolburg
+H, Blasig IE, Haseloff RF: Tight junction proteins at the blood–
+brain barrier: far more than claudin-5. Cell Mol Life Sci 76(10):
+1987-2002, 2019. DOI: 10.1007/s00018-019-03030-7
+30 Hwang I, Yang H, Kang H, Ahn C, Lee G, Hong E, An B, Jeung
+E: Spatial expression of claudin family members in various
+organs of mice. Mol Med Rep 9(5): 1806-1812, 2014. DOI:
+10.3892/mmr.2014.2031
+31 Markov AG, Aschenbach JR, Amasheh S: Claudin clusters as
+determinants of epithelial barrier function. IUBMB Life 67(1):
+29-35, 2015. DOI: 10.1002/iub.1347
+32 Furuse M, Itoh M, Hirase T, Nagafuchi A, Yonemura S, Tsukita
+S, Tsukita S: Direct association of occludin with ZO-1 and its
+possible involvement in the localization of occludin at tight
+junctions. J Cell Biol 127(6 Pt 1): 1617-1626, 1994. DOI:
+10.1083/jcb.127.6.1617
+33 Kim S, Kim GH: Roles of claudin-2, ZO-1 and occludin in leaky
+HK-2 cells. PLoS
+One 12(12): e0189221, 2017. DOI:
+10.1371/journal.pone.0189221
+34 Prot-Bertoye C, Griveau C, Skjødt K, Cheval L, Brideau G,
+Lievre L, Ferriere E, Arbaretaz F, Garbin K, Zamani R,
+Marcussen N, Figueres L, Breiderhoff T, Muller D, Bruneval P,
+Houillier P, Dimke H: Differential localization patterns of
+claudin 10, 16, and 19 in human, mouse, and rat renal tubular
+epithelia. Am J Physiol Renal Physiol 321(2): F207-F224, 2021.
+DOI: 10.1152/ajprenal.00579.2020
+35 Yan J, Xu W, Lenahan C, Huang L, Ocak U, Wen J, Li G, He
+W, Le C, Zhang JH, Mo L, Tang J: Met-RANTES preserves the
+blood-brain barrier through inhibiting CCR1/SRC/Rac1 pathway
+after intracerebral hemorrhage in mice. Fluids Barriers CNS
+19(1): 7, 2022. DOI: 10.1186/s12987-022-00305-3
+Received June 20, 2023
+Revised July 24, 2023
+Accepted July 26, 2023
+ANTICANCER RESEARCH 43: 3923-3934 (2023)
+3934
+

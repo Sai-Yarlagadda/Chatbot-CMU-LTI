@@ -1,0 +1,943 @@
+Citation: Zheng, L.; Liu, Y.; Li, R.;
+Yang, Y.; Jiang, Y. Recent Advances
+in the Ecology of Bloom-Forming
+Raphidiopsis (Cylindrospermopsis)
+raciborskii: Expansion in China,
+Intraspeciﬁc Heterogeneity and
+Critical Factors for Invasion. Int. J.
+Environ. Res. Public Health 2023, 20,
+1984. https://doi.org/10.3390/
+ijerph20031984
+Academic Editors: Paul A. Sandifer
+and José Ángel Fernández
+Received: 24 November 2022
+Revised: 9 January 2023
+Accepted: 18 January 2023
+Published: 21 January 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+International  Journal  of
+Environmental Research
+and Public Health
+Review
+Recent Advances in the Ecology of Bloom-Forming Raphidiopsis
+(Cylindrospermopsis) raciborskii: Expansion in China,
+Intraspeciﬁc Heterogeneity and Critical Factors for Invasion
+Ling Zheng 1, Yang Liu 2
+, Renhui Li 3, Yiming Yang 4 and Yongguang Jiang 1,*
+1
+Department of Biological Sciences and Technology, School of Environmental Studies,
+China University of Geosciences, Wuhan 430074, China
+2
+College of Life Sciences, Henan Normal University, Xinxiang 453007, China
+3
+College of Life and Environmental Sciences, Wenzhou University, Wenzhou 325035, China
+4
+Guangdong Engineering Research Center of Oral Restoration and Reconstruction,
+Guangzhou Key Laboratory of Basic and Applied Research of Oral Regenerative Medicine,
+Afﬁliated Stomatology Hospital of Guangzhou Medical University, Guangzhou 510182, China
+*
+Correspondence: jiangyg@cug.edu.cn
+Abstract: Water blooms caused by the invasive cyanobacterium Raphidiopsis raciborskii occur in many
+reservoirs in the tropical and subtropical regions of China. In recent decades, this species has spread
+rapidly to temperate regions. Phenotypic plasticity and climate warming are thought to promote
+the worldwide dispersion of R. raciborskii. However, investigations into the genetic and phenotypic
+diversities of this species have revealed signiﬁcant intraspeciﬁc heterogeneity. In particular, com-
+petition between R. raciborskii and Microcystis aeruginosa was highly strain dependent. Although
+the concept of an ecotype was proposed to explain the heterogeneity of R. raciborskii strains with
+different geographic origins, microevolution is more reasonable for understanding the coexistence of
+different phenotypes and genotypes in the same environment. It has been suggested that intraspeciﬁc
+heterogeneity derived from microevolution is a strong driving force for the expansion of R. raciborskii.
+Additionally, temperature, nutrient ﬂuctuations, and grazer disturbance are critical environmental
+factors that affect the population establishment of R. raciborskii in new environments. The present
+review provides new insights into the ecological mechanisms underlying the invasion of R. raciborskii
+in Chinese freshwater ecosystems.
+Keywords: cyanobacterial blooms; climate warming; cylindrospermopsin; microbial invasion;
+microevolution; nutrient ﬂuctuations
+1. Introduction
+Cyanobacterial blooms are severe environmental problems in eutrophic freshwater
+ecosystems [1,2]. Raphidiopsis raciborskii (previously known as Cylindrospermopsis raciborskii)
+is a ﬁlamentous bloom-forming cyanobacterium belonging to Nostocales with heterocysts
+and akinetes (Figure 1A). Upon the occurrence of an R. raciborskii bloom, a signiﬁcant
+amount of cell ﬁlaments usually distributes evenly in the water column (Figure 1B). As a
+major producer of hepatotoxic cylindrospermopsin (CYN) and its analogs (Figure 1C) [3–6],
+R. raciborskii often proliferates in lakes or reservoirs in tropical and subtropical zones [7,8],
+posing a signiﬁcant threat to ecological safety. In the past decades, the occurrence frequency
+of this species has been signiﬁcantly increased over the world, including both subtropical
+and temperate zones of the globe [7,9,10]. Therefore, R. raciborskii was suggested to be an
+invasive cyanobacterium, and much attention has been paid to its dispersion routes and
+adaptation mechanisms [9,11,12].
+Int. J. Environ. Res. Public Health 2023, 20, 1984. https://doi.org/10.3390/ijerph20031984
+https://www.mdpi.com/journal/ijerph
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+2 of 13
+Int. J. Environ. Res. Public Health 2023, 20, x FOR PEER REVIEW 
+2 of 14 
+ 
+ 
+was suggested to be an invasive cyanobacterium, and much attention has been paid to its 
+dispersion routes and adaptation mechanisms [9,11,12]. 
+ 
+Figure 1. Cell differentiation of R. raciborskii filament (A), aerial view of the R. raciborskii bloom (B), 
+and chemical structure of cylindrospermopsins (C). Inset in (B) is a microscopic graph of R. raci-
+borskii bloom. Scale bars in (A) and (B), 10 µm. 
+Based on the phylogenetic relationship of strains isolated worldwide, three hypoth-
+eses have been proposed for the biogeographic origin and global dispersion of R. raci-
+borskii [7]. First, R. raciborskii was suggested to be derived from tropical regions in Africa 
+due to its temperature dependence and the high diversity of African strains [13]. After 
+invasion and colonization in Australia, R. raciborskii was dispersed throughout Eurasia 
+and America [13]. Similarly, a recent study on the biogeography of R. raciborskii supports 
+central Africa as the original dispersion center for nontoxic strains of this species [14]. The 
+ability to produce CYN and paralytic shellfish poison (PSP) is thought to be acquired after 
+dispersion to new settlements in tropical Africa and the South American continent [14]. 
+Second, it was thought that R. raciborskii was extinct in most areas of the world during the 
+Pleistocene Ice Age, except for the warm refuges of each continent at low latitudes [15]. 
+The surviving R. raciborskii strains were dispersed to high-latitude areas when the global 
+climate became warm. Third, R. raciborskii was thought to be derived from a tropical re-
+gion in America and dispersed to other continents [11]. Considering that phylogeographic 
+analysis was strongly affected by the genetic variation of the strains used in different stud-
+ies [16], sufficient strains from different continents and environments should be investi-
+gated to clarify the dispersion route of R. raciborskii. 
+The invasion success of R. raciborskii was mainly ascribed to its phenotypic plasticity 
+and growth optimization under different environments [9,17–20]. R. raciborskii is tolerant 
+to low and high light intensity and a wide range of temperatures [19,21–25]. This species 
+has flexible strategies for utilizing various forms of nitrogen (N), such as accumulating 
+nitrogen as cyanophycin [26] and switching to N2 fixation under N depletion [27–29]. With 
+a strong affinity for phosphate, R. raciborskii is capable of absorbing and storing a lot of 
+phosphorus (P) [18,30]. After depletion of inorganic P, dissolved organic phosphorus can 
+be used by R. raciborskii through the secretion of alkaline phosphatase (ALP) [31,32]. Thus, 
+R. raciborskii can be dominant in the phytoplankton community at both very low and high 
+N:P ratios [33]. In addition, it has been suggested that this species has a competitive ad-
+vantage over other bloom-forming cyanobacteria under N- or P-limited conditions 
+[30,34,35]. For example, toxic R. raciborskii is favored by the allelopathic effects of CYN on 
+the surrounding phytoplankton [36–39]. 
+Recent investigations have revealed high genetic and phenotypic diversity within the 
+population of R. raciborskii [40–42]. The adaptation mechanisms of different strains were 
+divergent and the competitive advantage of R. raciborskii against Microcystis aeruginosa 
+Figure 1. Cell differentiation of R. raciborskii ﬁlament (A), aerial view of the R. raciborskii bloom (B),
+and chemical structure of cylindrospermopsins (C). Inset in (B) is a microscopic graph of R. raciborskii
+bloom. Scale bars in (A,B), 10 µm.
+Based on the phylogenetic relationship of strains isolated worldwide, three hypotheses
+have been proposed for the biogeographic origin and global dispersion of R. raciborskii [7].
+First, R. raciborskii was suggested to be derived from tropical regions in Africa due to its
+temperature dependence and the high diversity of African strains [13]. After invasion and
+colonization in Australia, R. raciborskii was dispersed throughout Eurasia and America [13].
+Similarly, a recent study on the biogeography of R. raciborskii supports central Africa as the
+original dispersion center for nontoxic strains of this species [14]. The ability to produce
+CYN and paralytic shellﬁsh poison (PSP) is thought to be acquired after dispersion to
+new settlements in tropical Africa and the South American continent [14]. Second, it was
+thought that R. raciborskii was extinct in most areas of the world during the Pleistocene Ice
+Age, except for the warm refuges of each continent at low latitudes [15]. The surviving
+R. raciborskii strains were dispersed to high-latitude areas when the global climate became
+warm. Third, R. raciborskii was thought to be derived from a tropical region in America and
+dispersed to other continents [11]. Considering that phylogeographic analysis was strongly
+affected by the genetic variation of the strains used in different studies [16], sufﬁcient
+strains from different continents and environments should be investigated to clarify the
+dispersion route of R. raciborskii.
+The invasion success of R. raciborskii was mainly ascribed to its phenotypic plasticity
+and growth optimization under different environments [9,17–20]. R. raciborskii is tolerant
+to low and high light intensity and a wide range of temperatures [19,21–25]. This species
+has ﬂexible strategies for utilizing various forms of nitrogen (N), such as accumulating
+nitrogen as cyanophycin [26] and switching to N2 ﬁxation under N depletion [27–29]. With
+a strong afﬁnity for phosphate, R. raciborskii is capable of absorbing and storing a lot of
+phosphorus (P) [18,30]. After depletion of inorganic P, dissolved organic phosphorus can
+be used by R. raciborskii through the secretion of alkaline phosphatase (ALP) [31,32]. Thus,
+R. raciborskii can be dominant in the phytoplankton community at both very low and high
+N:P ratios [33]. In addition, it has been suggested that this species has a competitive advan-
+tage over other bloom-forming cyanobacteria under N- or P-limited conditions [30,34,35].
+For example, toxic R. raciborskii is favored by the allelopathic effects of CYN on the sur-
+rounding phytoplankton [36–39].
+Recent investigations have revealed high genetic and phenotypic diversity within the
+population of R. raciborskii [40–42]. The adaptation mechanisms of different strains were
+divergent and the competitive advantage of R. raciborskii against Microcystis aeruginosa was
+strain dependent [43–46]. These ﬁndings indicated apparent intraspeciﬁc heterogeneity
+in R. raciborskii. A comprehensive investigation of R. raciborskii diversity and dispersion
+in local ecosystems can provide new insights into its invasion success. R. raciborskii has
+been detected in many lakes and reservoirs in China [8,35,47–52]. The recent expansion of
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+3 of 13
+R. raciborskii in Chinese freshwater bodies, its intraspeciﬁc heterogeneity, and critical factors
+for its invasion are the focus of this review.
+2. Distribution and Dispersion in China
+The ﬁrst reported R. raciborskii bloom in Chinese water bodies occurred in 2002 at
+21◦59′ N–22◦25′ N and 113◦05′ E–113◦25′ E [53]. To date, the presence of this species has
+been observed from 20◦09′ N to 39◦59′ N and between 100◦03′ E and 121◦41′ E, that is,
+from the tropical to temperate regions of China (Table S1, Figure 2). R. raciborskii was
+distributed in the basins of Zhujiang River, Yangtze River, Huaihe River, Yellow River,
+Haihe River, Yongjiang River, Qiantang River, and in the southeastern rivers in Fujian
+and Taiwan (Figure 2). Dominance or high biomass of this species was observed in most
+of the basins, except in the Haihe and Qiantang River basins. The Haihe River basin
+is the northernmost line with the presence of R. raciborskii in China [50]; this species
+may have dispersed to this basin recently and has not been fully adapted to the local
+environment. Given that the Qiantang River basin is located in a subtropical zone with
+favorable temperature conditions for the proliferation of R. raciborskii, its distribution in
+this basin needs further investigation. Although historical data on R. raciborskii distribution
+are lacking, it should be noted that bloom events of this species have increased in recent
+decades. In 2006, only a low concentration of R. raciborskii ﬁlaments was observed in
+Liangzi lake (30◦10′ N, 114◦36′ N) [48]. However, its biomass reached 52.03 mg L−1, with
+an obvious water bloom between 2013 and 2017 [35]. This ﬁnding indicates that R. raciborskii
+has evolved from an occasional species to a dominant species in Liangzi lake, which is
+likely a typical succession process after the invasion of new water bodies.
+has been detected in many lakes and reservoirs in China [8,35,47–52]. The rec
+sion of R. raciborskii in Chinese freshwater bodies, its intraspecific heterogeneit
+ical factors for its invasion are the focus of this review. 
+2. Distribution and Dispersion in China 
+The first reported R. raciborskii bloom in Chinese water bodies occurred
+21°59′ N–22°25′ N and 113°05′ E–113°25′ E [53]. To date, the presence of this s
+been observed from 20°09′ N to 39°59′ N and between 100°03′ E and 121°41′ E, th
+the tropical to temperate regions of China (Table S1, Figure 2). R. raciborskii w
+uted in the basins of Zhujiang River, Yangtze River, Huaihe River, Yellow Ri
+River, Yongjiang River, Qiantang River, and in the southeastern rivers in Fujia
+wan (Figure 2). Dominance or high biomass of this species was observed in m
+basins, except in the Haihe and Qiantang River basins. The Haihe River basin is
+ernmost line with the presence of R. raciborskii in China [50]; this species may
+persed to this basin recently and has not been fully adapted to the local env
+Given that the Qiantang River basin is located in a subtropical zone with favo
+perature conditions for the proliferation of R. raciborskii, its distribution in this b
+further investigation. Although historical data on R. raciborskii distribution are
+should be noted that bloom events of this species have increased in recent d
+2006, only a low concentration of R. raciborskii filaments was observed in Li
+(30°10′ N, 114°36′ N) [48]. However, its biomass reached 52.03 mg L–1, with a
+water bloom between 2013 and 2017 [35]. This finding indicates that R. raci
+evolved from an occasional species to a dominant species in Liangzi lake, whi
+a typical succession process after the invasion of new water bodies. 
+ 
+Figure 2. Distribution of R. raciborskii in major river basins of China. A, Haihe Riv
+Huanghe River basin; C, Huaihe River basin; D, Yangtze River basin; E, Zhujiang Riv
+basins of southeastern rivers. Blue-green color, areas with presence of R. raciborskii. 
+The wide distribution of R. raciborskii in the same basin (Figure 2) indicate
+species might be dispersed from upstream lakes to downstream lakes throug
+(Figure 3). On the other hand, lakes located separately in floodplain could be
+large floods, creating opportunities for R. raciborskii to invade new environme
+Figure 2. Distribution of R. raciborskii in major river basins of China. A, Haihe River basin; B, Huanghe
+River basin; C, Huaihe River basin; D, Yangtze River basin; E, Zhujiang River basin; F, basins of
+southeastern rivers. Blue-green color, areas with presence of R. raciborskii.
+The wide distribution of R. raciborskii in the same basin (Figure 2) indicated that this
+species might be dispersed from upstream lakes to downstream lakes through the river
+(Figure 3). On the other hand, lakes located separately in ﬂoodplain could be linked by
+large ﬂoods, creating opportunities for R. raciborskii to invade new environments. Water
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+4 of 13
+diversion projects (WDPs) also provide an important dispersion route for aquatic organisms.
+For example, ﬁsh invasion has occurred through the south-to-north WDP in China [54].
+This WDP is designed to divert water from humid subtropical areas to arid or semi-arid
+temperate areas and thus is favorable for the dispersion of R. raciborskii. Five lakes in the
+Huaihe River basin were linked with three reservoirs and one pond in the Yellow and
+Haihe River basins by the east route of the south-to-north WDP (Table S1), and abundant
+R. raciborskii were observed in all of these water bodies. In addition, the ﬁlaments of this
+species can be conveyed between lakes via natural water used for the transport of aquatic
+products and ballast water of commercial ships [7]. Owing to their high survivability,
+the akinetes of R. raciborskii are likely to be transported by migratory birds via feet or
+gut carryover [55].
+Int. J. Environ. Res. Public Health 2023, 20, x FOR PEER REVIEW 
+4 of 
+ 
+diversion projects (WDPs) also provide an important dispersion route for aquatic orga
+isms. For example, fish invasion has occurred through the south-to-north WDP in Chin
+[54]. This WDP is designed to divert water from humid subtropical areas to arid or sem
+arid temperate areas and thus is favorable for the dispersion of R. raciborskii. Five lakes 
+the Huaihe River basin were linked with three reservoirs and one pond in the Yellow an
+Haihe River basins by the east route of the south-to-north WDP (Table S1), and abunda
+R. raciborskii were observed in all of these water bodies. In addition, the filaments of th
+species can be conveyed between lakes via natural water used for the transport of aquat
+products and ballast water of commercial ships [7]. Owing to their high survivability, th
+akinetes of R. raciborskii are likely to be transported by migratory birds via feet or g
+carryover [55]. 
+ 
+Figure 3. Probable dispersion routes for R. raciborskii. 
+CYN is synthesized by a series of enzymes encoded by cyr genes [56]. Characterizin
+the distribution and variation of cyr genes can provide insights into the dispersion 
+CYN-producing R. raciborskii strains. A systematic investigation into the sequences of cy
+and cyrJ genes in Chinese water bodies divided them into four and three main sequen
+types, respectively (Table 1) [48]. It was shown that low-latitude reservoirs contain mo
+sequence types. Given that Itype4af and Itype4ar are Itype1 variants with transpositio
+elements, and that Jtype2b is a Jtype2a variant with a deletion of six nucleotides, the Ti
+gang reservoir presumably contains all the ancestral cyrI and cyrJ sequence types. Th
+finding indicated that low-latitude lakes in Southeast China are potential dispersion ce
+ters of toxic R. raciborskii. Similarly, the tropical regions in Southeast China were al
+thought to be a glacial refuge for higher plant species [57]. These findings provide furth
+evidence for the refuge hypothesis about R. raciborskii dispersion [15]. PSP-producing 
+raciborskii strains were also isolated and identified from Chinese water bodies [58,59]. Ph
+logenetic analysis revealed that these strains were closely related to strains from the Nor
+and South American continents [58]. This finding may imply the dispersion of PSP-pr
+ducing strains from America to China because the ability of R. raciborskii to produce PS
+was proposed to originate from America [14]. 
+ 
+ 
+Figure 3. Probable dispersion routes for R. raciborskii.
+CYN is synthesized by a series of enzymes encoded by cyr genes [56]. Characterizing
+the distribution and variation of cyr genes can provide insights into the dispersion of
+CYN-producing R. raciborskii strains. A systematic investigation into the sequences of cyrI
+and cyrJ genes in Chinese water bodies divided them into four and three main sequence
+types, respectively (Table 1) [48]. It was shown that low-latitude reservoirs contain more
+sequence types. Given that Itype4af and Itype4ar are Itype1 variants with transposition
+elements, and that Jtype2b is a Jtype2a variant with a deletion of six nucleotides, the
+Tiegang reservoir presumably contains all the ancestral cyrI and cyrJ sequence types. This
+ﬁnding indicated that low-latitude lakes in Southeast China are potential dispersion centers
+of toxic R. raciborskii. Similarly, the tropical regions in Southeast China were also thought to
+be a glacial refuge for higher plant species [57]. These ﬁndings provide further evidence
+for the refuge hypothesis about R. raciborskii dispersion [15]. PSP-producing R. raciborskii
+strains were also isolated and identiﬁed from Chinese water bodies [58,59]. Phylogenetic
+analysis revealed that these strains were closely related to strains from the North and South
+American continents [58]. This ﬁnding may imply the dispersion of PSP-producing strains
+from America to China because the ability of R. raciborskii to produce PSP was proposed to
+originate from America [14].
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+5 of 13
+Table 1. Types of cyrI and cyrJ sequences from Chinese water bodies.
+Water Body
+Latitude (N), Longitude (E)
+cyrI
+cyrJ
+Liangzi lake, Ezhou, Hubei
+114◦31′ E, 30◦15′ N
+Itype2
+Not detected
+Qiaodun lake, Daye, Hubei
+114◦43′ E, 30◦14′ N
+Itype4af
+Jtype2a
+Chidong lake, Qichun, Hubei
+115◦25′ E, 30◦06′ N
+Itype4af, Itype4ar
+Jtype2a
+Xianghu lake, Hangzhou, Zhejiang
+120◦12′ E, 30◦7′ N
+Itype1
+Jtype2a
+Qiandao lake, Hangzhou, Zhejiang
+118◦57′ E, 29◦33′ N
+Itype2
+Jtype2a, Jtype2b
+Dongzhen reservoir, Putian, Fujian
+118◦57′ E, 25◦29′ N
+Itype3
+Jtype1
+Shiyan reservoir, Shenzhen
+113◦54′ E, 22◦42′ N
+Itype1
+Jtype1, Jtype2b
+Tiegang reservoir, Shenzhen
+113◦53′ E, 22◦37′ N
+Itype1, Itype2, Itype3
+Jtype1, Jtype2a, Jtype3
+3. Intraspeciﬁc Heterogeneity
+3.1. Phenotypic and Genetic Diversity
+In previous studies on the environmental adaptability of R. raciborskii, it has often been
+regarded as a homogenous population because of the highly similar 16S rRNA genes of
+different strains. For example, most present studies suggest that R. raciborskii is a mesophile
+with a tolerance to low temperatures [7,19,60,61]. However, laboratory experimentation has
+found that several strains maintain a high growth rate at 15 ◦C, while the growth of some
+strains is completely inhibited under low-temperature conditions [17,47]. These ﬁndings
+indicate that low-temperature tolerance is not an intrinsic characteristic of R. raciborskii and
+that signiﬁcant intraspeciﬁc heterogeneity exists for the temperature adaptability of this
+species. Similarly, the intraspeciﬁc heterogeneity of R. raciborskii has also been found in
+its response to light intensity [9,62,63] and conductivity [64], as well as its strategies for
+the utilization of N [26,27] and P [41]. In addition, varied growth rates, morphologies, and
+toxicities have been observed in genetically similar isolates of R. raciborskii [65,66].
+In contrast to the 16S rRNA gene, the RNA polymerase C1 (rpoC1) gene and ITS-L
+sequence, which is the larger fragment of the inter-transcribed sequence of rRNA, are
+useful molecular markers for discriminating different R. raciborskii strains [58,67]. The
+strains were classiﬁed into nontoxic, CYN-producing, and PSP-producing clusters based
+on the phylogenetic analysis of rpoC1 and ITS-L [58]. This result is supported by the
+genomic variations between R. raciborskii strains [16,42,68]. The relationship between
+genetic diversity and phenotypic variation remains to be clariﬁed and requires further
+systematic investigation.
+The presence of cyr genes is the main genetic difference between CYN-producing and
+non-CYN-producing strains [48]. However, genomic variations were also found in genes
+associated with stress and adaptation, which are probably related to the physiological role
+of CYN [42]. In fact, CYN has been shown to contribute to the successful invasion and
+survival of R. raciborskii [4,5]. For example, CYN-producing strains have a competitive
+advantage under nutrient-replete conditions [69]. In comparison to nontoxic R. raciborskii,
+toxic strains have a more efﬁcient response to inorganic phosphorus and could become
+dominant in the community [70]. A recent study also found that toxic strains were more
+competitive under Fe-starved conditions [71].
+Previous investigations have revealed that the cell quotas of CYN varied signiﬁcantly
+between R. raciborskii strains [65,66,72]. However, the genetic basis of this ﬁnding remains
+unknown. As aforementioned, sequence variations were observed for cyrI and cyrJ genes,
+which encodes a hydroxylase and a sulfotransferase, respectively [48,73–75]. These two
+enzymes catalyze tailoring reactions in the last two steps of CYN biosynthesis [56]. An
+inactivated mutation of cyrI inhibits the synthesis of CYN, leading to an accumulation in
+the intermediate product 7-deoxy-CYN [76]. Therefore, variations in cyr genes may change
+the activity of the enzymes encoded by them and further affect CYN synthesis efﬁciency.
+3.2. Competition between R. raciborskii and M. aeruginosa
+M. aeruginosa is the dominant species in most eutrophic water bodies, both in China
+and worldwide [51,77]. Competition against M. aeruginosa is inevitable for R. raciborskii
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+6 of 13
+during invasion. However, recent culture experiments have produced inconsistent results
+regarding the competition between R. raciborskii and M. aeruginosa (Table 2). Under light- or
+P-limited conditions, both R. raciborskii and M. aeruginosa are likely to dominate the mixed
+culture of these two species with equal starting biovolumes [45]. R. raciborskii, with N-
+ﬁxation capability, was a more successful invader than M. aeruginosa when N was depleted
+in batch culture [35]. Likewise, the model prediction of species competition outcomes is
+strongly affected by the growth variability of strains [78]. These ﬁndings demonstrate the
+intraspeciﬁc heterogeneity for R. raciborskii and M. aeruginosa [44].
+Table 2. Results of competition experiments using R. raciborskii and M. aeruginosa.
+Strain Pair and Culture Condition
+Dominant Strain
+Reference
+R. raciborskii FACHB 1096 vs. M. aeruginosa strain 205
+P substrates
+K2HPO4, β-glycerol phosphate,
+(2-aminoethyl)-phosphinic acid, P-free
+R. raciborskii FACHB 1096
+[34]
+Glyphosate
+M. aeruginosa strain 205
+R. raciborskii CS vs. M. aeruginosa LEA
+P and light
+P-limitation
+R. raciborskii CS
+[45]
+Light-limitation
+R. raciborskii CS
+R. raciborskii CP vs. M. aeruginosa MIRF
+P and light
+P-limitation
+M. aeruginosa MIRF
+[45]
+Light-limitation
+M. aeruginosa MIRF
+R. raciborskii N8 vs. M. aeruginosa FACHB905
+Temperature
+16 ◦C, 24 ◦C, 32 ◦C
+M. aeruginosa FACHB905
+[44]
+R. raciborskii N8 vs. M. aeruginosa (FACHB469 and 915) with a biovolume ratio of 30:1
+Temperature
+16 ◦C, 24 ◦C, 32 ◦C
+R. raciborskii N8 maintained initial
+advantages at 16 ◦C and 32 ◦C
+[44]
+M. aeruginosa strains at 24 ◦C
+R. raciborskii ITEP-A1 vs. M. aeruginosa NPLJ-4
+pH and inorganic carbon
+Aeration
+R. raciborskii ITEP-A1
+[79]
+Bicarbonate
+M. aeruginosa NPLJ-4
+R. raciborskii NW-R vs. M. aeruginosa NW-M
+Growth capability
+Multiple inoculation ratios
+R. raciborskii NW-R
+[35]
+Four M. aeruginosa vs. eight R. raciborskii strains
+Growth capability
+Simulated using a deterministic model
+No absolute winner
+[78]
+3.3. Ecotype and Microevolution
+In several studies, R. raciborskii was assumed to have evolved into different ecotypes
+with special physiological characteristics in its original habitats, and the geographic dis-
+persion of this species is a dynamic selection process for existing ecotypes [60,61,72]. The
+concept of an ecotype is reasonable for understanding the intraspeciﬁc heterogeneity of
+R. raciborskii in different environments but not for explaining the coexistence of differ-
+ent phenotypes and genotypes in the same environment [16,65]. Heterogeneity between
+coexisting strains is better deﬁned as microevolution, the concept of which refers to mi-
+nor variations within species [80]. Microevolution is the source of adaptive variation for
+organisms, and the accumulation of microevolution may further lead to new speciation.
+The ecotypes of R. raciborskii were presumably established by the natural selection of
+heterogeneous strains generated during microevolution.
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+7 of 13
+4. Critical Factors for Invasion
+4.1. Temperature and Effective Accumulated Temperature (EAT)
+Temperature is an important ecological factor that drives the global distribution of
+R. raciborskii [10,13,81]. Climate warming is expected to increase the biomass of this species
+and promote its dispersion in new habitats (Table 3). In addition to its proliferation in
+warm areas, the dominance and bloom of this species were observed in cool water between
+10 ◦C and 15 ◦C [22,47]. This ﬁnding indicates that R. raciborskii is likely to disperse and
+survive in most freshwater bodies in China. Under nutrient-replete conditions, the potential
+biomass that R. raciborskii can reach is probably determined by the Effective Accumulated
+Temperature (EAT) affecting the heat that organisms can obtain during multiplication
+seasons. To date, there are no available data on the effects of EAT on the growth of
+R. raciborskii. In China, the EAT varies with latitude from south to north and altitude from
+east to west. It is necessary to investigate the relationship between EAT and the distribution
+of R. raciborskii to assess the bloom risk this species presents.
+Table 3. Adaptation of R. raciborskii to different ecological scenarios.
+Scenarios
+Level
+Response
+Consequence
+Climate warming
+Higher temperature
+Growth promotion
+Biomass increase and
+dispersion to new habitats
+P ﬂuctuation
+Low concentration
+ALP or CYN secretion
+Become dominant
+High concentration
+High P absorption
+Biomass increase
+N ﬂuctuation
+Low concentration
+N ﬁxation
+Become dominant
+High concentration
+Heterocyst inhibition
+and N absorption
+Biomass increase
+Grazing pressure
+Grazer feeding on R. raciborskii
+Growth inhibition
+Biomass decrease
+Grazer feeding on
+non-R. raciborskii phytoplankton
+Growth promotion
+Become dominant
+4.2. Nutrient Fluctuations
+The coexistence of multiple species is frequently observed during cyanobacterial
+blooms in eutrophic water bodies [51]. This ﬁnding implies that competitive exclusion
+does not occur, which may be attributed to nutrient repletion in the environment. For
+example, R. raciborskii may invade into an M. aeruginosa-dominated culture and survive
+with relatively low biomass [35]. The coexistence of R. raciborskii and M. aeruginosa has been
+found in many subtropical water bodies located in the Yangtze River basin [35]. Sometimes,
+R. raciborskii becomes the dominant species in the phytoplankton community. Considering
+intraspeciﬁc heterogeneity, it cannot be predicted that R. raciborskii will eventually compete
+against M. aeruginosa.
+Niche and ﬁtness differences are thought to determine invasion success in bacterial
+communities [82]. Field investigations have demonstrated that Raphidiopsis, rather than
+Microcystis, beneﬁt from low P concentrations [83]. This ﬁnding was supported by labo-
+ratory experiments indicating that R. raciborskii could be advantageous under P-limited
+conditions [34,84]. This advantage may be enhanced using the allelopathic effects of CYN,
+which can induce extracellular ALP production in other phytoplankton species [39,85]. In
+addition, stoichiometric analysis revealed a lower metabolic cost of synthesizing CYN than
+that of producing ALP [39]. Moreover, N limitation may favor the growth of R. raciborskii
+strains with N-ﬁxation capability. However, previous studies have claimed that this high-
+energy-consuming function cannot support the proliferation of R. raciborskii [40]. Nutrient
+ﬂuctuations frequently occur in natural water bodies [84,86,87]. Intermittent P and N limi-
+tations may create opportunities for R. raciborskii to become dominant in the phytoplankton
+community [87] and proliferate when nutrients are repleted (Table 3).
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+8 of 13
+4.3. Grazer Disturbance
+Local grazers have a significant impact on the structure of phytoplankton communities [88].
+Daphnia feeding on R. raciborskii can hamper the population establishment of this species [88,89],
+whereas copepods, preferentially grazing on non-Raphidiopsis species, can promote the
+persistence of R. raciborskii [90,91] (Table 3). Therefore, a low grazing pressure or loss
+of top-down control is a critical factor for the invasion success of R. raciborskii [88]. In
+addition, CYN-producing strains may be more advantageous because of the toxicity of CYN
+on zooplankton [5].
+5. Conclusions
+R. raciborskii has spread widely in Chinese freshwater bodies in recent decades. In
+addition to its adaptability to various environments, the intraspeciﬁc heterogeneity of
+R. raciborskii presumably has a signiﬁcant contribution to the species’ rapid expansion.
+Temperature, nutrient ﬂuctuations, and grazer disturbance are important factors that affect
+the invasion success of R. raciborskii.
+6. Perspectives
+6.1. Hypothesis for the Invasion Success of R. raciborskii
+Field populations of R. raciborskii are mixtures of heterogeneous strains. When the
+mixtures were dispersed in new environments, strains with strong adaptability could
+survive under natural selection and evolve into ecotypes with speciﬁc genetic and phe-
+notypic characteristics. Some ecotypes of R. raciborskii are likely to proliferate and form
+blooms under appropriate conditions. In summary, the invasion success of R. raciborskii
+may be ascribed to sufﬁcient intraspeciﬁc heterogeneity, rather than the adaptability of
+individual strains.
+6.2. Future Outlook
+Given that R. raciborskii has a growth advantage under nutrient-limited conditions,
+the expansion of this species may beneﬁt from a reduction in P and N during the reme-
+diation of lake eutrophication [92]. To enhance our understanding of the bloom-forming
+mechanisms of R. raciborskii, knowledge of the intraspeciﬁc heterogeneity of R. raciborskii
+should be strengthened in the future. To accurately discriminate between strain differences,
+quantitative traits should be deﬁned and investigated systematically. The growth rate,
+photosynthetic rate, electron transfer rate, afﬁnity for inorganic carbon, pigment content,
+extracellular ALP activity, toxin content, and critical requirements for nutrients, tempera-
+ture, and light intensity, are candidate quantitative traits for R. raciborskii. Moreover, highly
+variable genetic markers, such as ITS-L, can be used to discriminate strain differences at the
+molecular level. The consistency between molecular markers and quantitative traits should
+be carefully evaluated. Moreover, it is crucial to identify genes controlling quantitative
+traits to provide more reliable genetic evidence for the heterogeneity of R. raciborskii.
+When a speciﬁc ﬁeld population of R. raciborskii is investigated, many strains should
+be isolated to fully capture their variability. Considering the effects of in-culture evolution
+on laboratory experiments [93], strains should be maintained under conditions similar to
+their original habitats, and their quantitative traits should be characterized after isolation
+as soon as possible. To develop a worldwide database describing the intraspeciﬁc hetero-
+geneity of R. raciborskii, uniﬁed and standard experimental methods and procedures are
+required. Furthermore, attention should be paid to the effects of EAT on the distribution
+and heterogeneity of R. raciborskii for assessing its bloom risk.
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+9 of 13
+Supplementary Materials: The following supporting information can be downloaded at: https://
+www.mdpi.com/article/10.3390/ijerph20031984/s1, Table S1: Distribution of Raphidiopsis raciborskii
+in Chinese freshwater bodies. References [8,35,47,48,50,52,53,69,83,85,92,94–108] are cited in the
+supplementary materials.
+Author Contributions: L.Z.: investigation, validation, and data curation. Y.L.: validation and
+writing—review and editing. R.L.: validation and writing—review and editing. Y.Y.: investigation
+and data curation. Y.J.: funding acquisition, conceptualization, and writing—original draft. All
+authors have read and agreed to the published version of the manuscript.
+Funding: This research was funded by the National Natural Science Foundation of China, grant
+number 31170189 and 31901185; China Postdoctoral Science Foundation, grant number 2015M572349.
+Data Availability Statement: The data presented in this study are available on request from the
+corresponding author.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Huisman, J.; Codd, G.A.; Paerl, H.W.; Ibelings, B.W.; Verspagen, J.M.H.; Visser, P.M. Cyanobacterial blooms. Nat. Rev. Microbiol.
+2018, 16, 471–483. [CrossRef] [PubMed]
+2.
+Ho, J.C.; Michalak, A.M.; Pahlevan, N. Widespread global increase in intense lake phytoplankton blooms since the 1980s. Nature
+2019, 574, 667–670. [CrossRef] [PubMed]
+3.
+La Cruz, A.A.D.; Hiskia, A.; Kaloudis, T.; Chernoff, N.; Hill, D.; Antoniou, M.G.; He, X.; Loftin, K.A.; Oshea, K.E.; Zhao, C. A
+review on cylindrospermopsin: The global occurrence, detection, toxicity and degradation of a potent cyanotoxin. Environ. Sci.
+Process Impacts 2013, 15, 1979–2003. [CrossRef]
+4.
+Yang, Y.; Yu, G.; Chen, Y.; Jia, N.; Li, R. Four decades of progress in cylindrospermopsin research: The ins and outs of a potent
+cyanotoxin. J. Hazard. Mater. 2020, 406, 124653. [CrossRef]
+5.
+Rzymski, P.; Poniedzialek, B. In search of environmental role of cylindrospermopsin: A review on global distribution and ecology
+of its producers. Water Res. 2014, 66, 320–337. [CrossRef] [PubMed]
+6.
+Scarlett, K.R.; Kim, S.; Lovin, L.M.; Chatterjee, S.; Scott, J.T.; Brooks, B.W. Global scanning of cylindrospermopsin: Critical review
+and analysis of aquatic occurrence, bioaccumulation, toxicity and health hazards. Sci. Total Environ. 2020, 738, 139807. [CrossRef]
+[PubMed]
+7.
+Antunes, J.T.; Leao, P.N.; Vasconcelos, V.M. Cylindrospermopsis raciborskii: Review of the distribution, phylogeography, and
+ecophysiology of a global invasive species. Front. Microbiol. 2015, 6, 473. [CrossRef] [PubMed]
+8.
+Lei, L.; Peng, L.; Huang, X.; Han, B. Occurrence and dominance of Cylindrospermopsis raciborskii and dissolved cylindrospermopsin
+in urban reservoirs used for drinking water supply, South China. Environ. Monit. Assess. 2014, 186, 3079–3090. [CrossRef]
+9.
+Burford, M.A.; Beardall, J.; Willis, A.; Orr, P.T.; Magalhaes, V.F.; Rangel, L.M.; Azevedo, S.; Neilan, B.A. Understanding the
+winning strategies used by the bloom-forming cyanobacterium Cylindrospermopsis raciborskii. Harmful Algae 2016, 54, 44–53.
+[CrossRef] [PubMed]
+10.
+Sinha, R.; Pearson, L.A.; Davis, T.W.; Burford, M.A.; Orr, P.T.; Neilan, B.A. Increased incidence of Cylindrospermopsis raciborskii in
+temperate zones–Is climate change responsible? Water Res. 2012, 46, 1408–1419. [CrossRef]
+11.
+Moreira, C.; Fathalli, A.; Vasconcelos, V.; Antunes, A. Phylogeny and biogeography of the invasive cyanobacterium Cylindrospermopsis
+raciborskii. Arch. Microbiol. 2015, 197, 47–52. [CrossRef] [PubMed]
+12.
+Ribeiro, K.F.; Ferrero, A.P.; Duarte, L.; Turchetto-Zolet, A.C.; Crossetti, L.O. Comparative phylogeography of two free-living
+cosmopolitan cyanobacteria: Insights on biogeographic and latitudinal distribution. J. Biogeogr. 2020, 47, 1106–1118. [CrossRef]
+13.
+Padisák, J. Cylindrospermopsis raciborskii (Woloszynska) Seenayya et Subba Raju, an expanding, highly adaptive cyanobacterium:
+Worldwide distribution and review of its ecology. Arch. Hydrobiol. Suppl. 1997, 107, 563–593.
+14.
+Vico, P.; Bonilla, S.; Cremella, B.; Aubriot, L.; Iriarte, A.; Piccini, C. Biogeography of the cyanobacterium Raphidiopsis (Cylindrospermopsis)
+raciborskii: Integrating genomics, phylogenetic and toxicity data. Mol. Phylogenet. Evol. 2020, 148, 106824. [CrossRef] [PubMed]
+15.
+Gugger, M.; Molica, R.; Le Berre, B.; Dufour, P.; Bernard, C.; Humbert, J.-F. Genetic diversity of Cylindrospermopsis strains
+(Cyanobacteria) isolated from four continents. Appl. Environ. Microbiol. 2005, 71, 1097–1100. [CrossRef] [PubMed]
+16.
+Willis, A.; Woodhouse, J.N.; Ongley, S.E.; Jex, A.R.; Burford, M.A.; Neilan, B.A. Genome variation in nine co-occurring toxic
+Cylindrospermopsis raciborskii strains. Harmful Algae 2018, 73, 157–166. [CrossRef] [PubMed]
+17.
+Soares, M.C.S.; Lürling, M.; Huszar, V.L.M. Growth and temperature-related phenotypic plasticity in the cyanobacterium
+Cylindrospermopsis raciborskii. Psychol. Res. 2013, 61, 61–67. [CrossRef]
+18.
+Amaral, V.; Bonilla, S.; Aubriot, L. Growth optimization of the invasive cyanobacterium Cylindrospermopsis raciborskii in response
+to phosphate ﬂuctuations. Eur. J. Phycol. 2014, 49, 134–141. [CrossRef]
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+10 of 13
+19.
+Bonilla, S.; Aubriot, L.; Soares, M.C.S.; Gonzalezpiana, M.; Fabre, A.; Huszar, V.L.M.; Lurling, M.; Antoniades, D.; Padisak, J.;
+Kruk, C. What drives the distribution of the bloom-forming cyanobacteria Planktothrix agardhii and Cylindrospermopsis raciborskii?
+FEMS Microbiol. Ecol. 2012, 79, 594–607. [CrossRef]
+20.
+Wu, Z.; Yang, S.; Shi, J. Overview of the distribution and adaptation of a bloom-forming cyanobacterium Raphidiopsis raciborskii:
+Integrating genomics, toxicity, and ecophysiology. J. Oceanol. Limnol. 2022, 40, 1774–1791. [CrossRef]
+21.
+Antosiak, A.; Tokodi, N.; Maziarz, R.; Kokoci´nski, M.; Brzozowska, A.; Strzałka, W.; Bana´s, A.K.; Willis, A.; Dziga, D. Different
+gene expression response of Polish and Australian Raphidiopsis raciborskii strains to the chill/light stress. Appl. Sci. 2020, 10, 5437.
+[CrossRef]
+22.
+Bonilla, S.; Gonzalez-Piana, M.; Soares, M.C.S.; Huszar, V.L.M.; Becker, V.; Somma, A.; Marinho, M.M.; Kokocinski, M.; Dokulil,
+M.; Antoniades, D.; et al. The success of the cyanobacterium Cylindrospermopsis raciborskii in freshwaters is enhanced by the
+combined effects of light intensity and temperature. J. Limnol. 2016, 75, 606–617. [CrossRef]
+23.
+Dokulil, M.T. Vegetative survival of Cylindrospermopsis raciborskii (Cyanobacteria) at low temperature and low light. Hydrobiologia
+2016, 764, 241–247. [CrossRef]
+24.
+Tonetta, D.; Hennemann, M.C.; Brentano, D.M.; Petrucio, M.M. Considerations regarding the dominance of Cylindrospermopsis
+raciborskii under low light availability in a low phosphorus lake. Acta Bot. Bras. 2015, 29, 448–451. [CrossRef]
+25.
+Wojciechowski, J.; Fernandes, L.F.; Buck Fonseca, F.V. Morpho-physiological responses of a subtropical strain of Cylindrospermopsis
+raciborskii (Cyanobacteria) to different light intensities. Acta Bot. Bras. 2016, 30, 232–238. [CrossRef]
+26.
+Lu, Z.; Ye, J.; Chen, Z.; Xiao, L.; Lei, L.; Han, B.-p.; Paerl, H.W. Cyanophycin accumulated under nitrogen-ﬂuctuating and
+high-nitrogen conditions facilitates the persistent dominance and blooms of Raphidiopsis raciborskii in tropical waters. Water Res.
+2022, 214, 118215. [CrossRef]
+27.
+Willis, A.; Chuang, A.W.; Burford, M.A. Nitrogen ﬁxation by the diazotroph Cylindrospermopsis raciborskii (Cyanophyceae).
+J. Phycol. 2016, 52, 854–862. [CrossRef]
+28.
+Stucken, K.; John, U.; Cembella, A.; Soto-Liebe, K.; Vasquez, M. Impact of nitrogen sources on gene expression and toxin
+production in the diazotroph Cylindrospermopsis raciborskii CS-505 and non-diazotroph Raphidiopsis brookii D9. Toxins 2014, 6,
+1896–1915. [CrossRef] [PubMed]
+29.
+Moisander, P.H.; Cheshire, L.A.; Braddy, J.; Calandrino, E.S.; Hoffman, M.; Piehler, M.F.; Paerl, H.W. Facultative diazotrophy
+increases Cylindrospermopsis raciborskii competitiveness under ﬂuctuating nitrogen availability. FEMS Microbiol. Ecol. 2012, 79,
+800–811. [CrossRef]
+30.
+Wu, Z.; Shi, J.; Li, R. Comparative studies on photosynthesis and phosphate metabolism of Cylindrospermopsis raciborskii with
+Microcystis aeruginosa and Aphanizomenon ﬂos-aquae. Harmful Algae 2009, 8, 910–915. [CrossRef]
+31.
+Wu, Z.; Zeng, B.; Li, R.; Song, L. Physiological regulation of Cylindrospermopsis raciborskii (Nostocales, Cyanobacteria) in response
+to inorganic phosphorus limitation. Harmful Algae 2012, 15, 53–58. [CrossRef]
+32.
+Shi, J.-q.; Ou-yang, T.; Yang, S.-q.; Zhao, L.; Ji, L.-l.; Wu, Z.-x. Transcriptomic responses to phosphorus in an invasive cyanobac-
+terium, Raphidiopsis raciborskii: Implications for nutrient management. Harmful Algae 2022, 111, 102150. [CrossRef] [PubMed]
+33.
+Chislock, M.F.; Sharp, K.L.; Wilson, A.E. Cylindrospermopsis raciborskii dominates under very low and high nitrogen-to-phosphorus
+ratios. Water Res. 2014, 49, 207–214. [CrossRef] [PubMed]
+34.
+Bai, F.; Shi, J.; Yang, S.; Yang, Y.; Wu, Z. Interspeciﬁc competition between Cylindrospermopsis raciborskii and Microcystis aeruginosa
+on different phosphorus substrates. Environ. Sci. Pollut. Res. 2020, 27, 42264–42275. [CrossRef]
+35.
+Jia, N.; Yang, Y.; Yu, G.; Wang, Y.; Qiu, P.; Li, H.; Li, R. Interspeciﬁc competition reveals Raphidiopsis raciborskii as a more successful
+invader than Microcystis aeruginosa. Harmful Algae 2020, 97, 101858. [CrossRef]
+36.
+Rzymski, P.; Poniedzialek, B.; Kokocinski, M.; Jurczak, T.; Lipski, D.; Wiktorowicz, K. Interspeciﬁc allelopathy in cyanobacteria:
+Cylindrospermopsin and Cylindrospermopsis raciborskii effect on the growth and metabolism of Microcystis aeruginosa. Harmful
+Algae 2014, 35, 1–8. [CrossRef]
+37.
+Campos, A.; Araujo, P.; Pinheiro, C.; Azevedo, J.; Osorio, H.; Vasconcelos, V. Effects on growth, antioxidant enzyme activity and
+levels of extracellular proteins in the green alga Chlorella vulgaris exposed to crude cyanobacterial extracts and pure microcystin
+and cylindrospermopsin. Ecotoxicol. Environ. Saf. 2013, 94, 45–53. [CrossRef]
+38.
+Bbéres, V.; Vasas, G.; Dobronoki, D.; Gonda, S.; Nagy, S.A.; Bácsi, I. Effects of cylindrospermopsin producing cyanobacterium and
+its crude extracts on a benthic green alga-competition or allelopathy? Mar. Drugs 2015, 13, 6703–6722. [CrossRef]
+39.
+Bar-Yosef, Y.; Sukenik, A.; Hadas, O.; Viner-Mozzini, Y.; Kaplan, A. Enslavement in the water body by toxic Aphanizomenon
+ovalisporum, inducing alkaline phosphatase in phytoplanktons. Curr. Biol. 2010, 20, 1557–1561. [CrossRef]
+40.
+Burford, M.A.; Willis, A.; Chuang, A.; Man, X.; Orr, P.T. Recent insights into physiological responses to nutrients by the
+cylindrospermopsin producing cyanobacterium, Cylindrospermopsis raciborskii. Chin. J. Oceanol. Limnol. 2018, 36, 1032–1039.
+[CrossRef]
+41.
+Xiao, M.; Hamilton, D.P.; Chuang, A.; Burford, M.A. Intra-population strain variation in phosphorus storage strategies of the
+freshwater cyanobacterium Raphidiopsis raciborskii. FEMS Microbiol. Ecol. 2020, 96, ﬁaa092. [CrossRef] [PubMed]
+42.
+Sinha, R.; Pearson, L.A.; Davis, T.W.; Muenchhoff, J.; Pratama, R.; Jex, A.; Burford, M.A.; Neilan, B.A. Comparative genomics of
+Cylindrospermopsis raciborskii strains with differential toxicities. BMC Genom. 2014, 15, 83. [CrossRef]
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+11 of 13
+43.
+Guedes, L.A.; Pacheco, A.B.F.; Vilar, M.C.P.; Mello, M.M.; Marinho, M.M.; Lurling, M.; Azevedo, S.M.F.O. Intraspeciﬁc variability
+in response to phosphorus depleted conditions in the cyanobacteria Microcystis aeruginosa and Raphidiopsis raciborskii. Harmful
+Algae 2019, 86, 96–105. [CrossRef]
+44.
+Lei, L.; Dai, J.; Lin, Q. Competitive dominance of Microcystis aeruginosa against Raphidiopsis raciborskii is strain- and temperature-
+dependent. Knowl. Manag. Aquat. Ecosyst. 2020, 421, 36. [CrossRef]
+45.
+Marinho, M.M.; Souza, M.B.G.; Lurling, M. Light and phosphate competition between Cylindrospermopsis raciborskii and Microcystis
+aeruginosa is strain dependent. Microb. Ecol. 2013, 66, 479–488. [CrossRef] [PubMed]
+46.
+Ma, Z.; Zhang, X.; Li, R.; Wang, M.; Qin, W.; Zhang, H.; Li, G.; Yu, H.; Dai, C.; Zhao, M. Competitiveness of alga Microcystis
+aeruginosa co-cultivated with cyanobacterium Raphidiopsis raciborskii conﬁrms its dominating position. J. Oceanol. Limnol. 2022, 40,
+1804–1818. [CrossRef]
+47.
+Jia, N.; Wang, Y.; Guan, Y.; Chen, Y.; Li, R.; Yu, G. Occurrence of Raphidiopsis raciborskii blooms in cool waters: Synergistic effects
+of nitrogen availability and ecotypes with adaptation to low temperature. Environ. Pollut. 2021, 270, 116070. [CrossRef]
+48.
+Jiang, Y.; Xiao, P.; Yu, G.; Shao, J.; Liu, D.; Azevedo, S.M.F.O.; Li, R. Sporadic distribution and distinctive variations of
+cylindrospermopsin genes in cyanobacterial strains and environmental samples from Chinese freshwater bodies. Appl. Environ.
+Microbiol. 2014, 80, 5219–5230. [CrossRef] [PubMed]
+49.
+Wu, Z.; Shi, J.; Xiao, P.; Liu, Y.; Li, R. Phylogenetic analysis of two cyanobacterial genera Cylindrospermopsis and Raphidiopsis based
+on multi-gene sequences. Harmful Algae 2011, 10, 419–425. [CrossRef]
+50.
+Xie, J.; Yu, G.; Xu, X.; Li, S.; Li, R. The morphological and molecular detection for the presence of toxic Cylindrospermopsis
+(Nostocales, Cyanobacteria) in Beijing city, China. J. Oceanol. Limnol. 2018, 36, 263–272. [CrossRef]
+51.
+Huo, D.; Gan, N.; Geng, R.; Cao, Q.; Song, L.; Yu, G.; Li, R. Cyanobacterial blooms in China: Diversity, distribution, and
+cyanotoxins. Harmful Algae 2021, 109, 102106. [CrossRef] [PubMed]
+52.
+Yamamoto, Y.; Shiah, F.-K. Factors related to the dominance of Cylindrospermopsis raciborskii (cyanobacteria) in a shallow pond in
+northern Taiwan. J. Phycol. 2012, 48, 984–991. [CrossRef]
+53.
+Zha, G. Investigation on the ecological factor in Cylindrospermopsis raciborskii bloom in low salty prawn ponds. Ecol. Sci. 2009, 28,
+293–298. (In Chinese) [CrossRef]
+54.
+Schmidt, B.V.; Wang, Z.; Ren, P.; Guo, C.; Qin, J.; Cheng, F.; Xie, S. A review of potential factors promoting ﬁsh movement in
+inter-basin water transfers, with emergent patterns from a trait-based risk analysis for a large-scale project in china. Ecol. Freshw.
+Fish 2020, 29, 790–807. [CrossRef]
+55.
+Atkinson, K.M. Experiments in dispersal of phytoplankton by ducks. Eur. J. Phycol. 1980, 15, 49–58. [CrossRef]
+56.
+Mihali, T.K.; Kellmann, R.; Muenchhoff, J.; Barrow, K.D.; Neilan, B.A. Characterization of the gene cluster responsible for
+cylindrospermopsin biosynthesis. Appl. Environ. Microbiol. 2008, 74, 716–722. [CrossRef]
+57.
+Fan, D.; Lei, S.; Liang, H.; Yao, Q.; Kou, Y.; Cheng, S.; Yang, Y.; Qiu, Y.; Zhang, Z. More opportunities more species: Pleistocene
+differentiation and northward expansion of an evergreen broad-leaved tree species Machilus thunbergii (Lauraceae) in Southeast
+China. BMC Plant Biol. 2022, 22, 35. [CrossRef] [PubMed]
+58.
+Jiang, Y.; Chen, Y.; Yang, S.; Li, R. Phylogenetic relationships and genetic divergence of paralytic shellﬁsh toxin- and
+cylindrospermopsin- producing Cylindrospermopsis and Raphidiopsis. Harmful Algae 2020, 93, 101792. [CrossRef]
+59.
+Chen, Y. Distribution, Molecular Characteristics and Monitoring of Neurotoxin-Producing Cyanobacteria in China. Ph.D. Thesis,
+University of Chinese Academy of Sciences, Wuhan, China, 2018.
+60.
+Chonudomkul, D.; Yongmanitchai, W.; Theeragool, G.; Kawachi, M.; Kasai, F.; Kaya, K.; Watanabe, M.M. Morphology, genetic
+diversity, temperature tolerance and toxicity of Cylindrospermopsis raciborskii (Nostocales, Cyanobacteria) strains from Thailand
+and Japan. FEMS Microbiol. Ecol. 2004, 48, 345–355. [CrossRef]
+61.
+Piccini, C.; Aubriot, L.; Fabre, A.; Amaral, V.; González-Piana, M.; Giani, A.; Figueredo, C.C.; Vidal, L.; Kruk, C.; Bonilla, S.
+Genetic and eco-physiological differences of South American Cylindrospermopsis raciborskii isolates support the hypothesis of
+multiple ecotypes. Harmful Algae 2011, 10, 644–653. [CrossRef]
+62.
+Briand, J.-F.; Leboulanger, C.; Humbert, J.-F.; Bernard, C.; Dufour, P. Cylindrospermopsis raciborskii (cyanobacteria) invasion at
+mid-latitudes: Selection, wide physiological tolerance, or global warming? J. Phycol. 2004, 40, 231–238. [CrossRef]
+63.
+Pierangelini, M.; Stojkovic, S.; Orr, P.T.; Beardall, J. Photosynthetic characteristics of two Cylindrospermopsis raciborskii strains
+differing in their toxicity. J. Phycol. 2014, 50, 292–302. [CrossRef] [PubMed]
+64.
+Neves de Lima, D.V.; Furlanetto Pacheco, A.B.; Goulart, C.L.; de Oliveira e Azevedo, S.M.F. Physiological responses of Raphidiopsis
+raciborskii (Cyanobacteria) strains to water conductivity: Effect of sodium and magnesium ions. Hydrobiologia 2020, 847, 2449–2464.
+[CrossRef]
+65.
+Willis, A.; Chuang, A.W.; Woodhouse, J.N.; Neilan, B.A.; Burford, M.A. Intraspeciﬁc variation in growth, morphology and toxin
+quotas for the cyanobacterium, Cylindrospermopsis raciborskii. Toxicon 2016, 119, 307–310. [CrossRef]
+66.
+Saker, M.L.; Neilan, B.A. Varied diazotrophies, morphologies, and toxicities of genetically similar isolates of Cylindrospermopsis
+raciborskii (Nostocales, Cyanophyceae) from Northern Australia. Appl. Environ. Microbiol. 2001, 67, 1839–1845. [CrossRef]
+67.
+Li, X.; Li, S.; Kong, R.; Li, R. Molecular separation of two long taxonomically debated cyanobacterial genera Cylindrospermopsis
+and Raphidiopsis (Nostocales) based on the ITS-L phylogeny. Harmful Algae 2016, 57, 88–97. [CrossRef]
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+12 of 13
+68.
+Abreu, V.A.C.; Popin, R.V.; Alvarenga, D.O.; Schaker, P.D.C.; Hoff-Risseti, C.; Varani, A.M.; Fiore, M.F. Genomic and genotypic
+characterization of Cylindrospermopsis raciborskii: Toward an intraspeciﬁc phylogenetic evaluation by comparative genomics.
+Front. Microbiol. 2018, 9, 306. [CrossRef]
+69.
+Lei, L.; Lei, M.; Cheng, N.; Chen, Z.; Xiao, L.; Han, B.; Lin, Q. Nutrient regulation of relative dominance of cylindrospermopsin-
+producing and non-cylindrospermopsin-producing Raphidiopsis raciborskii. Front. Microbiol. 2021, 12, 793544. [CrossRef]
+70.
+Burford, M.A.; Davis, T.W.; Orr, P.T.; Sinha, R.; Willis, A.; Neilan, B.A. Nutrient-related changes in the toxicity of ﬁeld blooms of
+the cyanobacterium, Cylindrospermopsis raciborskii. FEMS Microbiol. Ecol. 2014, 89, 135–148. [CrossRef]
+71.
+D’Agostino, P.M.; Yeung, A.C.Y.; Poljak, A.; David Waite, T.; Neilan, B.A. Comparative proteomics of the toxigenic diazotroph
+Raphidiopsis raciborskii (cyanobacteria) in response to iron. Environ. Microbiol. 2021, 23, 405–414. [CrossRef]
+72.
+Willis, A.; Adams, M.P.; Chuang, A.W.; Orr, P.T.; O’Brien, K.R.; Burford, M.A. Constitutive toxin production under various
+nitrogen and phosphorus regimes of three ecotypes of Cylindrospermopsis raciborskii ((Woloszyriska) Seenayya et Subba Raju).
+Harmful Algae 2015, 47, 27–34. [CrossRef]
+73.
+Mazmouz, R.; Chapuis-Hugon, F.; Pichon, V.; Mejean, A.; Ploux, O. The last step of the biosynthesis of the cyanotoxins cylindros-
+permopsin and 7-epi-cylindrospermopsin is catalysed by CyrI, a 2-Oxoglutarate-dependent iron oxygenase. ChemBioChem 2011,
+12, 858–862. [CrossRef] [PubMed]
+74.
+Mazmouz, R.; Essadik, I.; Hamdane, D.; Méjean, A.; Ploux, O. Characterization of CyrI, the hydroxylase involved in the last step
+of cylindrospermopsin biosynthesis: Binding studies, site-directed mutagenesis and stereoselectivity. Arch. Biochem. Biophys.
+2018, 647, 1–9. [CrossRef] [PubMed]
+75.
+Méjean, A.; Ploux, O. Biosynthesis of cylindrospermopsin in cyanobacteria: Characterization of CyrJ the sulfotransferase. J. Nat.
+Prod. 2021, 84, 408–416. [CrossRef] [PubMed]
+76.
+Jiang, Y.; Xiao, P.; Yu, G.; Sano, T.; Pan, Q.; Li, R. Molecular basis and phylogenetic implications of deoxycylindrospermopsin
+biosynthesis in the cyanobacterium Raphidiopsis curvata. Appl. Environ. Microbiol. 2012, 78, 2256–2263. [CrossRef] [PubMed]
+77.
+Xiao, M.; Li, M.; Reynolds, C.S. Colony formation in the cyanobacterium Microcystis. Biol. Rev. 2018, 93, 1399–1420. [CrossRef]
+78.
+Xiao, M.; Adams, M.P.; Willis, A.; Burford, M.A.; O’Brien, K.R. Variation within and between cyanobacterial species and strains
+affects competition: Implications for phytoplankton modelling. Harmful Algae 2017, 69, 38–47. [CrossRef]
+79.
+da Silva Brito, M.T.; Duarte-Neto, P.J.; Reis Molica, R.J. Cylindrospermopsis raciborskii and Microcystis aeruginosa competing under
+different conditions of pH and inorganic carbon. Hydrobiologia 2018, 815, 253–266. [CrossRef]
+80.
+Hendry, A.P.; Kinnison, M.T. An introduction to microevolution: Rate, pattern, process. Genetica 2001, 112, 1–8. [CrossRef]
+81.
+Sidelev, S.; Koksharova, O.; Babanazarova, O.; Fastner, J.; Chernova, E.; Gusev, E. Phylogeographic, toxicological and ecological
+evidence for the global distribution of Raphidiopsis raciborskii and its northernmost presence in Lake Nero, Central Western Russia.
+Harmful Algae 2020, 98, 101889. [CrossRef]
+82.
+Li, S.-p.; Tan, J.; Yang, X.; Ma, C.; Jiang, L. Niche and ﬁtness differences determine invasion success and impact in laboratory
+bacterial communities. ISME J. 2019, 13, 402–412. [CrossRef] [PubMed]
+83.
+Yang, Y.; Jiang, Y.; Li, X.; Li, H.; Chen, Y.; Xie, J.; Cai, F.; Li, R. Variations of growth and toxin yield in Cylindrospermopsis raciborskii
+under different phosphorus concentrations. Toxins 2017, 9, 13. [CrossRef] [PubMed]
+84.
+Aguilera, A.; Aubriot, L.; Echenique, R.O.; Donadelli, J.L.; Salerno, G.L. Raphidiopsis mediterranea (Nostocales) exhibits a ﬂexible
+growth strategy under light and nutrient ﬂuctuations in contrast to Planktothrix agardhii (Oscillatoriales). Hydrobiologia 2019, 839,
+145–157. [CrossRef]
+85.
+Lu, Z.; Lei, L.; Lu, Y.; Peng, L.; Han, B. Phosphorus deﬁciency stimulates dominance of Cylindrospermopsis through facilitating
+cylindrospermopsin-induced alkaline phosphatase secretion: Integrating ﬁeld and laboratory-based evidences. Environ. Pollut.
+2021, 290, 117946. [CrossRef]
+86.
+Bolius, S.; Wiedner, C.; Weithoff, G. Low invasion success of an invasive cyanobacterium in a chlorophyte dominated lake.
+Sci. Rep. 2019, 9, 8297. [CrossRef]
+87.
+Tilahun, S.; Kiﬂe, D. The inﬂuence of El Niño-induced drought on cyanobacterial community structure in a shallow tropical
+reservoir (Koka Reservoir, Ethiopia). Aquat. Ecol. 2019, 53, 61–77. [CrossRef]
+88.
+Weithoff, G.; Taube, A.; Bolius, S. The invasion success of the cyanobacterium Cylindrospermopsis raciborskii in experimental
+mesocosms: Genetic identity, grazing loss, competition and biotic resistance. Aquat. Invasions 2017, 12, 333–341. [CrossRef]
+89.
+Ferrão-Filho, A.S.; Pereira, U.J.; Vilar, M.C.P.; de Magalhães, L.; Marinho, M.M. Can small-bodied Daphnia control Raphidiopsis
+raciborskii in eutrophic tropical lakes? A mesocosm experiment. Environ. Sci. Pollut. Res. 2020, 27, 35459–35473. [CrossRef]
+90.
+Hong, Y.; Burford, M.A.; Ralph, P.J.; Udy, J.W.; Doblin, M.A. The cyanobacterium Cylindrospermopsis raciborskii is facilitated by
+copepod selective grazing. Harmful Algae 2013, 29, 14–21. [CrossRef]
+91.
+Ferrao-Filho, A.D.S.; Dias, T.M.; Pereira, U.J.; dos Santos, J.A.A.; Kozlowsky-Suzuki, B. Nutritional and toxicity constraints of
+phytoplankton from a Brazilian reservoir to the ﬁtness of cladoceran species. Environ. Sci. Pollut. Res. 2019, 26, 12881–12893.
+[CrossRef]
+92.
+Li, X.; Huo, S.; Zhang, J.; Xiao, Z.; Xi, B.; Li, R. Factors related to aggravated Cylindrospermopsis (cyanobacteria) bloom following
+sediment dredging in an eutrophic shallow lake. Environ. Sci. Ecotechnol. 2020, 2, 100014. [CrossRef] [PubMed]
+93.
+Lakeman, M.B.; von Dassow, P.; Cattolico, R.A. The strain concept in phytoplankton ecology. Harmful Algae 2009, 8, 746–758.
+[CrossRef]
+Int. J. Environ. Res. Public Health 2023, 20, 1984
+13 of 13
+94.
+Wang, Y. Variation of cyanobacteria community and in the main regulating reservoirs in Shandong province and the growth
+characteristics of Cylindrospermopsis. Master’s Thesis, Shandong University, Jinan, China, 2018. (In Chinese).
+95.
+Zheng, H. Risk assessment of cyanobacterial blooms in drinking water reservoirs of Fujian province. Hua Xue Gong Cheng Yu
+Zhuang Bei 2012, 201–203. (In Chinese) [CrossRef]
+96.
+Gao, X.; Wang, W.; Ndayishimiye, J.C.; Govaert, L.; Chen, H.; Jeppesen, E.; Xue, Y.; Yu, X.; Yang, J. Invasive and toxic cyanobacteria
+regulate allochthonous resource use and community niche width of reservoir zooplankton. Freshw. Biol. 2022, 67, 1344–1356.
+[CrossRef]
+97.
+Zheng, H. Characteristics of phytoplankton community and nutrient conditions in Dongzhen reservoir. Hua Xue Gong Cheng Yu
+Zhuang Bei 2012, 193–195+200. (In Chinese) [CrossRef]
+98.
+Jiang, Y.; Xiao, P.; Liu, Y.; Wang, J.; Li, R. Targeted deep sequencing reveals high diversity and variable dominance of bloom-
+forming cyanobacteria in eutrophic lakes. Harmful Algae 2017, 64, 42–50. [CrossRef]
+99.
+Wang, Z.F.; Zhang, W.; Yang, L.; Xu, Y.P.; Zhao, F.B.; Wang, L.Q. Characteristics of phytoplankton community and its relationship
+with environmental factors in different regions of Yilong Lake, Yunnan Province, China. Huan Jing Ke Xue 2019, 40, 2249–2257.
+(In Chinese) [CrossRef]
+100. Wang, X.; Li, Q.; Chen, W.; Han, M.; Han, L.; Brancelj, A. Composition and indication of plankton fatty acids under the inﬂuence
+of environmental factors in the Hongfeng Reservoir, Southwest China. Aquat. Ecol. 2022, 56, 653–666. [CrossRef]
+101. Ouyang, T.; Yang, S.; Zhao, L.; Ji, L.; Shi, J.; Wu, Z. Temporal heterogeneity of bacterial communities and their responses to
+Raphidiopsis raciborskii blooms. Microbiol. Res. 2022, 262, 127098. [CrossRef]
+102. Wu, D.; Xu, Z.; Wang, Y.; Gao, Y. Seasonal variation of phytoplankton community structure in Hengshan reservoir. Shui Sheng Tai
+Xue Za Zhi 2012, 33, 54–57. (In Chinese) [CrossRef]
+103. Zou, H.; Hu, R.; Han, B. Structure and dynamics of phytoplankton community in Hedi Reservoir, South China. J. Trop. Subtrop.
+Botany 2010, 18, 196–202. (In Chinese) [CrossRef]
+104. Lei, M.; Peng, L.; Han, B.; Lei, L. Distribution and affecting factors of Cylindrospermopsis raciborskii in Guangdong reservoirs.
+Huan Jing Ke Xue 2018, 39, 5523–5531. (In Chinese) [CrossRef] [PubMed]
+105. Zhao, L.; Lei, L.; Peng, L.; Han, B. Seasonal dynamic and driving factors of Cylindrospermopsis raciborskii in Zhenhai Reservoir,
+Guangdong Province. Hu Po Ke Xue 2017, 29, 193–199. (In Chinese) [CrossRef]
+106. Xue, X.; Fang, G.; Zou, C.; Zhu, D.; Xiao, L.; Peng, L. Diel vertical distribution patterns of Raphidiopsis raciborskii in Dashahe
+Reservoir. Sheng Tai Xue Za Zhi 2020, 39, 2348–2355. (In Chinese) [CrossRef]
+107. Lu, Y.; Lei, M.; Ye, J.; Lei, L.; Han, B. Intraspeciﬁc variation of morphological traits and toxin-producing capacity and phylogenetic
+analysis for Cylindrospermopsis raciborskii from Qiandenghu Lake, Guangdong Province. Hu Po Ke Xue 2020, 32, 144–153.
+(In Chinese) [CrossRef]
+108. Tang, H.; Liu, P.; Wu, J.; Liao, H.; He, A. Phytoplankton functional groups and their response to physiochemical factors in
+Hongchaojiang Reservoir in Guangxi Province. Shui Sheng Tai Xue Za Zhi 2022, 1–13. (In Chinese) [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

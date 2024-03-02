@@ -1,0 +1,497 @@
+O R I G I N A L  R E S E A R C H
+Dual Responsive Magnetic Drug Delivery 
+Nanomicelles with Tumor Targeting for Enhanced 
+Cancer Chemo/Magnetothermal Synergistic Therapy
+Jianmeng Zhu
+1,*, Yimin Yang
+2,3,*, Jian Wang1, Wenzhong Hong1, Yiping Li1, Zhen Wang
+2, 
+Kaiqiang Li2
+1Clinical Laboratory of Chun’an First People’s Hospital, Zhejiang Provincial People’s Hospital Chun’an Branch, Hangzhou, Zhejiang, People’s Republic 
+of China; 2Laboratory Medicine Center, Allergy Center, Department of Transfusion Medicine, Zhejiang Provincial People’s Hospital (Affiliated People’s 
+Hospital), Hangzhou Medical College, Hangzhou, Zhejiang, People’s Republic of China; 3College of Pharmaceutical Sciences, Zhejiang University of 
+Technology, Hangzhou, Zhejiang, People’s Republic of China
+*These authors contributed equally to this work 
+Correspondence: Zhen Wang; Kaiqiang Li, Laboratory Medicine Center, Allergy Center, Department of Transfusion Medicine, Zhejiang Provincial 
+People’s Hospital (Affiliated People’s Hospital), Hangzhou Medical College, 158 Shangtang Road, Hangzhou, Zhejiang, 310014, People’s Republic of China, 
+Tel/Fax +86 571 8589 3270, Email wangzhen@hmc.edu.cn; likaiqiang@hmc.edu.cn 
+Introduction: Stimulus-responsive nanocarrier systems are promising in cancer treatment. They improve drug stability and facilitate 
+controlled drug release. However, single-responsive nanocarriers still face insufficient tumor targeting and low efficacy.
+Methods: In this study, we synthesized folate-modified DSPE-PEOz nanomicelles with PEG chains and loaded them with magnetic 
+iron particles and doxorubicin (DOX). Folic acid (FA) was employed as a ligand to target cancer cells actively. The nanomicelles are 
+biocompatible and acid-sensitive drug carriers. Magnetic field-responsive nanoparticles enable moderately controlled magnetothermal 
+therapy of tumors regardless of tumor location. The pH/magnetic field dual-responsive nanomicelles shed their PEG layer in response 
+to tumor tissue acidity and react to magnetic fields through magnetothermal effects.
+Results: In vitro and in vivo experiments demonstrated that the nanomicelles could efficiently target cancer cells, release drugs in 
+response to pH changes, and enhance drug uptake through magnetothermal effects.
+Discussion: The dual-responsive magnetic nanomicelles are expected to enhance the anti-cancer efficacy of chemo/magnetothermal 
+synergistic therapy.
+Keywords: nanomicelles, synergistic therapy, stimulus-responsive, tumor targeting, Chemo/magnetothermal
+Introduction
+Cancer is a significant public health issue, and conventional chemotherapy medications often have poor pharmacokinetics 
+and absorption, resulting in inferior therapeutic outcomes.1 Stimulus-responsive nanocarrier systems offer promising 
+potential in cancer therapy. They can enhance drug solubility and stability, selectively deliver drugs to tumor tissues, and 
+minimize toxicity to healthy tissues. These nanocarriers can be designed to respond to various stimuli, such as changes in 
+pH, temperature, or enzymatic activity.2,3 Among these, pH-responsive nanocarriers are a hot topic. Researchers have 
+developed various pH-responsive nanocarriers, including hydrogels, nanomicelles, and liposomes.4,5 Nanomicelles are 
+stable systems with extended circulation and safety.6 By integrating PEG (polyethylene glycol) chains onto their surface, 
+nanomicelles generate a hydration layer that prevents their binding to plasma proteins, enzymes, and other components, 
+maintaining a lengthy circulation in the body.7,8 pH-responsive nanomicelles infiltrate tumor tissues through enhanced 
+permeability and long retention (EPR). The lower pH ruptures nanomicelles, swiftly releasing their pharmacological 
+payload. This selective drug release mechanism improves chemotherapeutic efficacy and reduces undesirable effects.9,10
+International Journal of Nanomedicine 2023:18 7647–7660                                               
+7647
+© 2023 Zhu et al. This work is published and licensed by Dove Medical Press Limited. The full terms of this license are available at https://www.dovepress.com/terms.php 
+and incorporate the Creative Commons Attribution – Non Commercial (unported, v3.0) License (http://creativecommons.org/licenses/by-nc/3.0/). By accessing the work 
+you hereby accept the Terms. Non-commercial uses of the work are permitted without any further permission from Dove Medical Press Limited, provided the work is properly attributed. For 
+permission for commercial use of this work, please see paragraphs 4.2 and 5 of our Terms (https://www.dovepress.com/terms.php).
+International Journal of Nanomedicine                                                 
+Dovepress
+open access to scientific and medical research
+Open Access Full Text Article
+Received: 18 September 2023
+Accepted: 6 December 2023
+Published: 14 December 2023
+International Journal of Nanomedicine downloaded from https://www.dovepress.com/
+For personal use only.
+However, some limitations and challenges still need to be addressed for applying pH-responsive nanomicelles in 
+tumor treatment. First, the pH of tumors can vary substantially between tumor types and even within the same tumor, 
+which can lead to unpredictable drug release and poor therapeutic outcomes. Second, the EPR effect is only effective in 
+tumors with leaky vasculature and poor lymphatic drainage and only promotes drug accumulation in the perivascular area 
+of cancer. In contrast, the hypoxic and necrotic regions, usually found in the tumor core, remain challenging for 
+nanocarriers to reach.11,12
+Small-sized magnetic iron oxide nanoparticles have recently gained extensive attention in tumor therapy due to their 
+superparamagnetic characteristics, advanced manufacturing procedures, and convenient surface modification.13 Magnetic 
+targeting is an emerging tumor therapy technique that involves injecting magnetic nanoparticles into the body and using 
+an external magnetic field to deliver drugs, heat, or other therapeutic substances to the tumor tissue.14,15 The technique 
+can cure tumor tissue long-term and effectively with recurrent magnetic treatment. Magnetic targeting exhibits 
+a magnetothermal effect that generates heat more uniformly than photothermal and photodynamic therapy.16 The thermal 
+effect is independent of tumor volume and location, allowing it to penetrate deep into the solid tumor tissue. The effect’s 
+intensity can be modulated by manipulating the magnetic field and the shape of the particles.17 In addition, magne-
+tothermal therapy and chemotherapy have an excellent synergistic effect. Magnetic hyperthermia can speed up drug 
+carrier uptake by tumor cells and shorten the release time of chemotherapy drugs, avoiding cellular drug resistance and 
+improving therapeutic outcomes.18,19
+To further improve the tumor-targeting ability of nanomicelles, researchers have introduced various targeting 
+molecules into nanomicelles, such as aptamers, antibodies, peptides, and ligands. Folic acid (FA), a member of the water- 
+soluble group of vitamins, has been shown in numerous studies to be an optimal ligand for tumor targeting.20,21 Folate 
+receptors are highly active on the cell membranes of most human-derived malignancies (eg, ovarian, breast, cervical, 
+colon, rectal, and nasopharyngeal cancers), and folic acid as a natural ligand for folate receptors is non-immunogenic, 
+easily chemically bonded to other substances, and highly stable.22,23
+In this study, we developed a pH/magnetic field dual-responsive drug-loaded nanomicelle for targeted magnetother-
+mal synergistic chemotherapy of cancer. As Scheme 1 illustrated, we first prepared folate-modified DSPE-PEOz (DSPE- 
+PEOz-FA, Distearoyl phosphatidylethanolamine-poly(2-ethyl-2-oxazoline)-folic acid) nanomicelles and attached PEG 
+chains to obtain stealth nanocarriers in vivo. Then, magnetic iron particles and DOX were loaded with nanomicelles to 
+synthesize Fe3O4@DOX@DSPE-PEOz-FA (DP@Fe3O4@DOX-FA). The magnetic nanocarriers are passively targeted 
+by EPR and actively targeted by folic acid to reach the acidic environment of tumor tissues. At this time, the PEG layer is 
+shed, and the nanomicelles release the drug-carrying nanoparticles, completing the first pH response and increasing the 
+tumor cell uptake of DOX. After nanoparticles enter tumor cells, magnetic Fe3O4 particles encounter the magnetothermal 
+effect caused by an external magnetic field, completing the second response. Magnetic hyperthermia raises the tumor 
+cells’ temperature and promotes drug uptake. The dual response is expected to enhance the anti-cancer efficacy by 
+chemo/magnetothermal synergistic therapy.
+Graphical Abstract
+https://doi.org/10.2147/IJN.S436414                                                                                                                                                                                                                                    
+DovePress                                                                                                                                         
+International Journal of Nanomedicine 2023:18 
+7648
+Zhu et al                                                                                                                                                              
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Materials and Methods
+Reagents
+Distearoyl phosphatidylethanolamine-methyl poly(ethylene glycol) MW5000 (mPEG-DSPE) was purchased from 
+Guangzhou 
+Tansh 
+Technology 
+Co., 
+Ltd. 
+(Guangzhou, 
+China). 
+DSPE-PEOz-FA 
+was 
+purchased 
+from 
+Xi’an Ruixi Technology Co., Ltd. (Xi’an, China). DOX·HCl was purchased from Aladdin Industrial Corporation 
+(Shanghai, China). Fe3O4@OA (oleate) was purchased from Nanjing Xianfeng nano Biotechnology Co., Ltd. (Nanjing, 
+China). Chloroform was purchased from Sinopharm Chemical Reagent Co., Ltd. (Shanghai, China). All chemicals and 
+reagents were analytical grades.
+Cell Culture
+Huh-7 cells were purchased from the Chinese Academy of Science Cell Bank (Shanghai, China). The cells were cultured 
+in Dulbecco’s modified Eagles medium (Gibco) and supplemented with 10% fetal bovine serum, 100 U/mL penicillin, 
+and 100 μg/mL streptomycin in a humidified atmosphere containing 5% of CO2 at 37°C.
+Tumor-Bearing Animal Model
+Female BALB/c nude mice (6–8 weeks) were provided by Jiangsu Jitaike Biopharmaceuticals Co., Ltd. (Nanjing, 
+China). The Animal experiment protocol has been reviewed and approved by Laboratory Animal Management and 
+Ethics Committee of Zhejiang Provincial People’s Hospital. All animal experiments were conducted in accordance with 
+the guidelines of Laboratory Animal Management and Ethics Committee of Zhejiang Provincial People’s Hospital, the 
+Scheme 1 Illustration of the synthesis and dual-responsive chemo/magnetothermal synergistic therapy mechanism of DP@ Fe3O4 @DOX-FA system. In vivo stealth 
+nanocarriers were created by attaching PEG chains to folate-modified DSPE-PEOz nanomicelles. After loading nanomicelles with magnetic iron particles and DOX, 
+DP@Fe3O4@DOX-FA was synthesized. EPR and folic acid target magnetic nanocarriers to tumor tissues’ acidic environment. The PEG layer is shed, and the micelles 
+release the drug-carrying nanoparticles, finishing the first pH response and boosting tumor cell nanomedicine uptake. The second response occurs when magnetic Fe3O4 
+nanoparticles enter tumor cells and meet the magnetothermal effect caused by an external magnetic field. Magnetic hyperthermia directly kills tumor cells and enhances 
+chemotherapeutic intake.
+International Journal of Nanomedicine 2023:18                                                                                   
+https://doi.org/10.2147/IJN.S436414                                                                  
+DovePress                                                                
+7649
+Dovepress                                                                                                                                                              
+Zhu et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+guidelines followed include provisions for the welfare of laboratory animals. 1.5×106 Huh-7 hepatocellular carcinoma 
+cells in the logarithmic phase were seeded into the foreleg’s right axilla to establish tumor-bearing mice.
+Synthesis of DP@Fe3O4@DOX-FA
+To prepare the DOX-HCl-loaded chloroform solution, 20 mg DOX-HCl was dissolved in 5 mL water. To this, 10mL 
+chloroform was added and shaken gently. DOX-HCl did not diffuse into the chloroform layer. Next, a 20mM NaHCO3 
+solution was added dropwise to the solution with slight shaking until the color of DOX in the chloroform layer became 
+brighter, and the color in the aqueous phase became purple. The resulting chloroform solution was separated and kept 
+aside for further use. To prepare the DOX-loaded lipid nanoparticles (DP@Fe3O4@DOX-FA), 150 mg of DSPE-mPEG 
+and 50 mg of DSPE-PEOz-FA were dissolved in 5 mL of the previously prepared DOX-chloroform solution. The 
+resulting solution was then placed in an eggplant bottle, and 10mg of Fe3O4@OA was added. Next, 6mL of purified 
+water was added, and the mixture was emulsified using an ultrasonic shaker. The emulsion was then evaporated for 30 
+minutes under rotary evaporation at 70°C water bath temperature until no further bubbles were generated, resulting in 
+a translucent solution. Finally, the product was separated and purified using a 30k ultrafiltration tube. The materials were 
+characterized by transmission electron microscopy (TEM, HT7800, Hitachi, Tokyo, Japan), hydrodynamic particle size 
+analyzer (Malvern Panalytical, Zetasize LAB, Malvern, United Kingdom), Fourier infrared Spectroscopy (FTIR, 
+LAMBDA950, Shimadzu, Japan) and UV spectrophotometer (UV-1780, Shimadzu, Kyoto, Japan).
+Drug-Loading Capacity, Encapsulation Efficiency, and in vitro Drug Release of  
+DP@Fe3O4@DOX-FA
+An acetonitrile solution containing 10% tretinoin was prepared. Three standards of known DOX concentration and 
+DP@Fe3O4@DOX-FA solution were added to the acetonitrile solution separately, and then the spectra were scanned in 
+the UV spectrophotometer (DP@ Fe3O4@DOX-FA solution was diluted two-fold). Drug loading capacity (mg/mL) = 
+Amount of DOX in nanoparticles/Volume of the solution, ie, adriamycin concentration. Encapsulation efficiency = 
+Amount of DOX in nanoparticles/Amount of DOX input. To evaluate the drug release efficiency, drug-loaded micelles 
+were placed at pH 6.0 or pH 7.2 with or without AMF (418 Oe, 250 kHz) application for 10 min and the supernatant was 
+collected after incubation at room temperature for different time. UV-vis spectrophotometer (UV-1780, Shimadzu, Japan) 
+measured DOX absorbances, and the drug release curves due to AMF and pH stimulation were plotted.
+Cellular Fluorescence Detection
+Laser scanning confocal microscopy (CLSM, TI-E-A1, Nikon Corporation, Tokyo, Japan) was used to observe the 
+fluorescence of Huh-7 cells. First, Huh-7 cells were added to 35 mm four-well culture dishes and incubated for 12 h at 
+37°C in a CO2 incubator; the original culture medium was removed, and 500 μL of DP@ Fe3O4@DOX-FA or free DOX 
+culture medium was added and placed in a 37°C CO2 incubator for 4 h or 2 h with or without the AMF (418 Oe, 250 
+kHz, 10 min); the culture medium was removed and washed with PBS for three times (2 mL/time); 1 mL of 4% 
+paraformaldehyde solution was added and placed in a refrigerator at 4°C for 12h, and then imaging was performed. 
+Further, the cellular uptake of DOX was measured by flow cytometry at 488 nm (Agilent, Hangzhou, China). Briefly, 
+Huh-7 cells were inoculated in 24-well plates at a 1.0×105 cells/well. After 12 hours of cell culture, the cells were treated 
+as described above. Subsequently removing the medium, cells were collected using tryptic digestion. Supernatants were 
+then removed, and the cells were centrifuged again with 300ul stain buffer. The resulting mixture was filtered and added 
+to flow-through tubes to detect DOX fluorescence. The data were analyzed using NovoExpress software.
+Toxicity Assessment of Nanomaterials and in vitro Cell Killing Experiments
+In vitro toxicity of DP@ Fe3O4-FA and the tumor cell killing ability of DP@ Fe3O4@DOX-FA were investigated by the 
+MTT (3-(45)-dimethylthiahiazo(-z-y1)-35-di-phenytetrazoliumromide) method. Huh-7 cells in the logarithmic phase 
+were harvested, and the culture medium was removed. For the toxicity assay, the cells were added with DP@ Fe3O4- 
+FA at different concentrations of Fe3O4 with or without the AMF (418 Oe, 250 kHz, 10 min). For the killing assay, the 
+https://doi.org/10.2147/IJN.S436414                                                                                                                                                                                                                                    
+DovePress                                                                                                                                         
+International Journal of Nanomedicine 2023:18 
+7650
+Zhu et al                                                                                                                                                              
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+cells were treated with free DOX or DP@Fe3O4@DOX-FA at different concentrations of DOX with or without the AMF 
+(418 Oe, 250 kHz, 10 min); after incubation, the culture medium was removed and washed with PBS. MTT solution was 
+added to each well, mixed, and removed after incubation. A small amount of DMSO solution was added and shaken for 
+10 min to dissolve the formazan crystals. The UV spectrophotometer measured the absorbance value to determine the 
+relative cell survival rates.
+Tumor MRI Imaging
+MRI images were acquired on an I-CON MR scanner (Bruker USA).100 μL PBS or DP@Fe3O4@DOX-FA solution (Fe 
+concentration of 150 μg/mL) was injected via the tail vein. with or without the AMF (418 Oe, 250 kHz, 10 min). After 30 
+min, the mice were anesthetized with 5% chloral hydrate, and in vivo T2 MRI was performed at 24 h. The T1 cor 
+imaging conditions were TE = 9 ms, TR = 500 ms, average number = 4, slice thickness = 1 mm, and FOV = 35 mm * 
+35 mm. Each experimental group was imaged twice.
+In vivo Fluorescence Signal Detection
+Fluorescent images of the tumor-bearing mice were obtained by an in vivo image formation system 
+(IVIS Lumina XR III, USA). 100 μL of DOX or DP@Fe3O4@DOX-FA solution (Fe concentration of 150 μg/mL) 
+was injected via the tail vein with or without the AMF (418 Oe, 250 kHz) application for 10 min per 6 h, and in vivo 
+fluorescence imaging was performed at 480 nm excitation wavelength at 0 h, 12 h, 24 h, and 48 h.
+In vivo Antitumor Efficacy Assessment
+The tumor-bearing mice were divided into five groups (n = 8/group): group 1 was injected with PBS via the tail vein, 
+group 2 received free DOX, group 3 received DP@Fe3O4-FA, and DP@Fe3O4@DOX-FA was injected into groups 4 and 
+5. For groups 3 and 5, the AMF(418 Oe, 250 kHz) was applicated for 10 min per 6 h. For the dosing groups, the dose of 
+DOX was set uniformly at 6 mg/kg per group and administered every two days. Tumor volume was measured every two 
+days during treatment. It was determined by the long and short diameter of the tumor (d, D) for tumor volume (V) (V = 
+d2 × D/2). After 20 days of treatment, mice were euthanized according to animal welfare requirements, and tumor tissues 
+were separated and weighed. H-E staining of tumor tissues assesses the tumor treatment of each group. To evaluate the 
+biotoxicity of magnetic nanomicelles, tissues from major organs of PBS and DP@ Fe3O4@DOX-FA (AMF) groups were 
+collected for H-E staining. Finally, survival curves were plotted based on the survival time of mice.
+Statistical Analysis
+Data were presented as mean ± SD. Statistically significant differences were determined using the independent samples 
+t-test, and p< 0.05(*) was defined as statistically significant differences and highly significant differences when p< 
+0.01 (**).
+Results and Discussion
+Characterization
+TEM was used to analyze the particle size and morphology of Fe3O4, DP@Fe3O4@DOX-FA. Figure 1a and b display 
+TEM images of Fe3O4, and DP@ Fe3O4,@DOX-FA at pH 7.2, respectively. The average size of Fe3O4 particles is 
+approximately 10 nm. Due to the comparatively high amount of magnetic particles encapsulated within the nanomicelles, 
+their size is approximately 105 nm. Figure 1c displays TEM images of nanomicelles at pH 6.0. As shown in the figure, 
+the increased acidity of the solution causes the nanomicelles to decompose, releasing both the medication and the 
+magnetic particles.
+DLS (Dynamic light scattering) analysis revealed that Fe3O4 (Figure 1d) and DP@ Fe3O4@DOX-FA (Figure 1e) 
+were well distributed in solution (PDI< 0.5), with the size of approximately 32.2±1.8 nm and 133.1± 3.6 nm, 
+respectively. Due to medium viscosity, and diffusion coefficient, hydrodynamic particle size is slightly bigger than 
+nanoparticle size.
+International Journal of Nanomedicine 2023:18                                                                                   
+https://doi.org/10.2147/IJN.S436414                                                                  
+DovePress                                                                
+7651
+Dovepress                                                                                                                                                              
+Zhu et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+The chemical functional groups of the synthesized nanomaterials were characterized by Fourier transform infrared 
+(FTIR) spectroscopy (Figure 2). As shown in the figure, the band at 586 cm−1 corresponds to Fe-O group, and a large 
+band at 3425 cm−1 might be caused by O-H and NH stretching vibrations in Fe3O4@OA. For the IR spectrum of DOX, 
+the amino group’s vibration at 3528 cm-1 disappears in the spectrum of the synthesized material, indicating the group’s 
+reaction. The peak at 3324 cm-1 relates to the vibration of the hydroxyl group on the benzene ring in DOX. 1729 cm-1 
+corresponds to the carbonyl group and is preserved in the spectrum of DP@Fe3O4@DOX-FA. The spectrum of the 
+synthesized material shows stretching in the backbone of the aromatic ring of FA at 1465 cm-1, the C-O group in the 
+PEG at 1114 cm-1, the amide bond vibration at 1639 cm-1, implying the amidation reaction, and the wide band at 
+3361 cm-1, corresponding to the OH acid groups on FA, the C-H stretching bands in DSPE’s aliphatic structure match 
+the vibrational frequency at 2918 cm-1. The above analysis shows that DSPE was effectively loaded with Fe3O4 
+particles, DOX and PEG-FA.
+Assessment of Nanomicelle Drug Loading and Dual Responsive Drug Release in vitro
+To calculate the drug loading capacity of the magnetic drug-loaded nanomicelles(DP@Fe3O4@DOX-FA), we first 
+measured the UV absorbance values of three DOX standard solutions (Figure 3a) and then plotted a standard curve of 
+DOX concentration versus UV absorbance values(Figure 3b). After that, we measured the nanomicelles’ UV absorbance 
+values. When FA-modified DSPE nanomicelles encapsulate adriamycin, the UV-absorbing aromatic ring structure in FA 
+can interact with the aromatic ring structure in DOX by π-π stacking, thus affecting the UV absorption spectrum of DOX. 
+Figure 3a shows that the nanomicelles’ UV peak was red-shifted, demonstrating DOX loading. The absorption peak and 
+DOX standard curve indicate the concentration of DOX, ie, drug loading capacity of 0.098mg/mL. To further calculate 
+the drug encapsulation rate, we added three different concentrations of DOX standard solutions to the nanomicelles, then 
+removed the unbound DOX and measured their absorbance values. (Figure 3b). Encapsulation efficiency = Amount of 
+DOX in nanoparticles/Amount of DOX input. The concentration of DOX in the nanomicelles was obtained by reading 
+the UV absorbance value, and then the encapsulation efficiency was calculated to be about 85%.
+Figure 1 Nanoparticle size and morphology measurements. TEM images of Fe3O4 (a), DP@Fe3O4,@DOX-FA (b) at pH 7.2 and DP@Fe3O4,@DOX-FA (c) at pH 6.0. 
+Hydrodynamic particle sizes measurement of Fe3O4 (d) and DP@Fe3O4,@DOX-FA (e). (d) and (e) were created using OriginPro 2019b software (OriginLab Corporation, 
+Northampton, MA, USA).
+https://doi.org/10.2147/IJN.S436414                                                                                                                                                                                                                                    
+DovePress                                                                                                                                         
+International Journal of Nanomedicine 2023:18 
+7652
+Zhu et al                                                                                                                                                              
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+Figure 2 FTIR analysis of Fe3O4@OA, DP@Fe3O4@DOX-FA and DOX. In Fe3O4@OA, O-H and NH stretching vibrations may cause the broad band at 3425 cm−1 and 
+the Fe-O group band at 586 cm−1. The amino group’s 3528 cm-1 vibration disappears in DOX’s IR spectrum, showing the group’s reaction. DOX’s hydroxyl group on the 
+benzene ring vibrates at 3324 cm-1. DP@Fe3O4@DOX-FA preserves the carbonyl group at 1729 cm-1. IR of DP@Fe3O4@DOX-FA shows the stretching in the aromatic 
+ring of FA at 1465 cm-1, the C-O group in the PEG at 1114 cm-1, vibration of amide bond at 1639 cm-1, indicating amidation reaction, and the wide band at 3361 cm-1 
+corresponding to the OH acid groups on the FA ring. DSPE’s aliphatic structure has C-H stretching bands at 2918 cm-1. The graph were generated by OriginPro 2019b.
+Figure 3 Measurement of Drug loading capacity and Encapsulation efficiency of DP@Fe3O4@DOX-FA. (a) UV absorbance values of three DOX standard solutions and 
+DP@Fe3O4@DOX-FA. (b) UV absorption curves of different concentrations of DOX added to the nanomicelles and DOX encapsulated in the nanomicelles. Graphing was 
+undertaken in OriginPro 2019b.
+International Journal of Nanomedicine 2023:18                                                                                   
+https://doi.org/10.2147/IJN.S436414                                                                  
+DovePress                                                                
+7653
+Dovepress                                                                                                                                                              
+Zhu et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+Tumor cells have a pH gradient environment from early endosomes (pH 6.0–6.5) to late endosomes (pH 5.0–6.0) and 
+then to lysosomes (pH 4.5–5.0). The nanomicelles can enter tumor cells through the endocytosis pathway and distribute 
+in the acidic environment of endosomes and lysosomes. pH 6.0 is a representative acidic condition of tumors. To explore 
+the drug release behavior of the nanomicelles, we evaluated their drug release efficiency at pH 6.0 and 7.2, respectively. 
+Figure 4 shows that nanomicelles released less drug at pH 7.2 than at 6.0. The AMF improved drug release efficiency in 
+nanomicelles at the same pH. In acidic environments where AMF is present, the nanomicelles can release more than 70% 
+of the drugs, which suggests that a dual stimulus is much more effective at releasing drugs than a single trigger.
+In vitro Cellular Targeting and Uptake
+To evaluate cellular targeting and uptake of DP@Fe3O4@DOX-FA, the intracellular DOX fluorescence was detected 
+with CLSM. The Huh-7 cells were incubated with DP@Fe3O4@DOX-FA for 2h and 4h with or without the AMF. As 
+shown in the merged images of Figure 5, the fluorescence of the free DOX group was weaker than that of the DP@Fe3O4 
+@DOX-FA (2h) group after incubation with cells for 4h. DP@Fe3O4@DOX-FA (AMF 2h) group has stronger 
+fluorescence than DP@Fe3O4@DOX-FA groups without the AMF application. The flow cytometry measurement dis-
+plays the relative frequencies of cellular uptake. The cellular internalization of free DOX exhibited a low level. In 
+contrast, the drug-loaded nanomicelles exhibited a noticeable increase. The AMF significantly enhanced the cellular 
+uptake of nanomicelles, leading to a notable uptake frequency of 98.6%. The photographs demonstrate that the 
+nanomicelles targeted DOX to cells, and the AMF enhances the uptake of DOX.
+In vitro Cytotoxicity Evaluation
+DP@Fe3O4-FA includes DSPE-PEOz, FA, PEG, and Fe3O4. DSPE-PEOz is a phospholipid that is lipophilic and 
+biocompatible. Folic acid is water-soluble and not biotoxic. PEG, known as polyethylene glycol, is a non-toxic, FDA- 
+approved, non-immunogenic polymer. The toxicity of DP@Fe3O4-FA mainly lies in iron, so we examined its toxicity to 
+cells at different Fe3O4 concentrations. Figure 6a shows that DP@Fe3O4-FA without DOX loading was biocompatible, as 
+Figure 4 Drug release patterns of the nanomicelles under different stimuli. OriginPro 2019b software was used to plot the results.
+https://doi.org/10.2147/IJN.S436414                                                                                                                                                                                                                                    
+DovePress                                                                                                                                         
+International Journal of Nanomedicine 2023:18 
+7654
+Zhu et al                                                                                                                                                              
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+cell survival was over 65% even at high doses (640 μg/mL). Due to the magnetothermal effect, the DP@Fe3O4-FA(AMF) 
+group had lower cell survival but was still over 60%. It also indicates that the magneto-thermal effect is moderate. 
+Figure 6b shows the tumor cell-killing statistics of DP@Fe3O4@DOX-FA at different DOX concentrations with or 
+without the AMF. DP@Fe3O4@DOX-FA killed more tumor cells than Free DOX because it targeted tumor cells more 
+effectively. AMF enhances the killing capacity of DP@Fe3O4@DOX-FA, and at a DOX concentration of 100 g/mL, it 
+kills about 60% of tumor cells.
+Figure 5 Cytofluorescence assay. Cellular targeting and uptake of DP@Fe3O4@DOX-FA and DOX were examined by CLSM (a) and flow cytometry (b).
+Figure 6 Statistical chart of cytotoxicity experiments. (a) Toxicity analysis of DP@Fe3O4-FA without DOX loading to tumor cells (b) Tumor cell killing research using free 
+DOX and DP@Fe3O4@DOX-FA with or without the AMF. *p < 0.05. Graphs were created using OriginPro 2019b software.
+International Journal of Nanomedicine 2023:18                                                                                   
+https://doi.org/10.2147/IJN.S436414                                                                  
+DovePress                                                                
+7655
+Dovepress                                                                                                                                                              
+Zhu et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+Tumor MRI Signal Detection
+To evaluate the magnetic properties of DP@Fe3O4@DOX-FA, we injected the magnetic nanomicelles into mice for 
+tumor MRI imaging. For each experimental group, MRI imaging was performed twice. As shown in the Figure 7, 
+nanoparticles dimmed the tumor area, and the AMF also reduced the signal value. When adding the magnetic field, the 
+nanoparticles were activated better and produced better MRI contrast effects. The signal values of the tumor sites for 
+each group are as follows: PBS (181.149T), DP@Fe3O4@DOX-FA 1(36.849T), DP@Fe3O4@DOX-FA 2 (37.155T), 
+DP@Fe3O4@DOX-FA(AMF) 1(28.926T), DP@Fe3O4@DOX-FA(AMF) 2 (29.792T).
+In vivo Live Imaging and Targeting
+Figure 8a shows the fluorescence images of the nanomicelles (DP@Fe3O4@DOX-FA) after injection into the mice. 
+Figure 8b shows the histogram of fluorescence intensity statistics. As exhibited in Figure 8a, the DP@ Fe3O4@DOX- 
+FA group showed drug aggregation at the tumor site at 12h, while the DOX group did not. At 24h, a slight red 
+fluorescence was visible in the DOX group. In contrast, the DP@Fe3O4@DOX-FA group and the DP@Fe3O4@DOX- 
+FA(AMF) group displayed significantly enhanced red fluorescence, indicating that the nanomicelles actively targeted 
+DOX to the tumor region, and AMF enhanced the targeting effect of DOX. At 48h, the fluorescence of experimental 
+groups was significantly reduced because the nanomicelles were metabolized and degraded in vivo to reduce the toxic 
+side effects.
+In vivo Chemo/Magnetothermal Synergistic Therapy Evaluation
+Figure 9a shows the tumor tissue images of mice at the end of the 20-day treatment. The tumor volumes of the PBS 
+group are the largest, followed by the DOX group. The volumes of the DP@Fe3O4@-FA (AMF) group are larger than 
+Figure 7 MRI imaging of tumors with DP@Fe3O4@DOX-FA with or without the AMF.
+https://doi.org/10.2147/IJN.S436414                                                                                                                                                                                                                                    
+DovePress                                                                                                                                         
+International Journal of Nanomedicine 2023:18 
+7656
+Zhu et al                                                                                                                                                              
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+Figure 8 In vivo targeting and drug uptake. (a) Distribution of free DOX and the nanomicelles with or without the AMF after injection into mice. (b) Histogram of 
+fluorescence intensity statistics (created using OriginPro 2019b software).
+Figure 9 Antitumor effectiveness in vivo. (a) The tumor tissue images of mice after 20 days of therapy (b) Tumor weight statistics (c) Alterations in tumor volume 
+throughout treatment. (b) and (c) were created using OriginPro 2019b software. *p < 0.05, **p < 0.01.
+International Journal of Nanomedicine 2023:18                                                                                   
+https://doi.org/10.2147/IJN.S436414                                                                  
+DovePress                                                                
+7657
+Dovepress                                                                                                                                                              
+Zhu et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+that of the DP@Fe3O4@DOX-FA group, indicating that in terms of a single treatment, the chemotherapy is more 
+effective than the magnetothermal therapy. The DP@Fe3O4@DOX-FA(AMF) group shows the smallest tumor volume, 
+which verifies that chemo/magnetothermal synergistic therapy could improve the antitumor efficacy. Figure 9b shows the 
+tumor weight statistics of each group, and the results coincide with Figure 9a. The tumor weight of the DP@Fe3O4 
+@DOX-FA(AMF) group was smaller than the other groups.
+Figure 9c shows the changes in tumor volume during the treatment. On day 8, the tumor volumes were closest 
+between the groups. After day 10, the tumor volumes of the PBS group grew fast, probably because the immune system 
+of mice hardly suppressed tumor growth. The tumor volumes of the DOX group were nearly unchanged due to the 
+in vivo drug resistance resulting from the low targeting. However, the other three experimental groups could inhibit 
+tumor growth, and the DP@Fe3O4@DOX-FA(AMF) group showed the smallest tumor volumes at the end of treatment. 
+HE staining was performed to assess the toxicity of DP@Fe3O4@DOX-FA to the major organs of mice and tumor tissue 
+after treatment. Figure 10a shows the HE staining images of tumor tissues at the end of treatment in each group of mice. 
+Tumor cell nuclei in the PBS and DOX groups almost covered the field of view but were seldom found in the DP@Fe3O4 
+@DOX-FA(AMF) group. Therefore, its anti-tumor efficacy was better than that of single therapy groups, ie, DP@Fe3O4 
+@DOX (AMF) and DP@Fe3O4@DOX-FA. As shown in Figure 10b, no significant damage was found in the heart, liver, 
+spleen, lung, and kidney of the DP@Fe3O4@DOX-FA(AMF) group, indicating the drug-loaded nanomicelles system 
+were biocompatible. Figure 11 presents the survival curves of mice. Kaplan-Meier curves indicate the median survival 
+times for the PBS, Free DOX, DP@Fe3O4@-FA(AMF), DP@Fe3O4@DOX-FA, and DP@Fe3O4@DOX-FA(AMF) 
+groups were 33, 36, 43, 50, and 70 days, respectively. This result demonstrates that dual-responsive drug-loaded 
+nanomicelles can effectively synergize chemotherapy and magneto-thermal therapy to improve tumor treatment.
+Figure 10 HE-stained images (a) Tumor tissues after different treatments. (b) Assess the toxicity of DP@Fe3O4@DOX-FA with the AMF to the major organs.
+https://doi.org/10.2147/IJN.S436414                                                                                                                                                                                                                                    
+DovePress                                                                                                                                         
+International Journal of Nanomedicine 2023:18 
+7658
+Zhu et al                                                                                                                                                              
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+Conclusions
+This study has developed and characterized dual-responsive magnetic drug delivery nanomicelles (DP@Fe3O4@DOX- 
+FA). These nanomicelles possess the EPR effect, active folic acid targeting, and magnetic targeting. Selective drug 
+release and tailored magnetothermal therapy for cancer have been rendered possible by the nanomicelles’ sensitivity to 
+pH and magnetic fields. The dual-responsive magnetic drug delivery nanomicelles with tumor targeting showed 
+significantly enhanced treatment efficacy than traditional chemotherapy and mono-responsive nanomicelles. The 
+approach provides a promising strategy for enhanced chemo/magnetothermal synergistic therapy. Cellular and animal 
+experiments did not reveal any noticeable biotoxicity of the nanomicelles. Additionally, efforts should be made to 
+optimize the design of these nanocarriers to increase their targeting efficiency and safety. The successful translation of 
+these nanocarriers to clinical use could significantly enhance cancer treatment outcomes and improve patients’ quality of 
+life.
+Acknowledgments
+This research was supported by Traditional Chinese Medicine Scientific Research Project of Zhejiang Province 
+(2023ZL010) and Zhejiang Medical and Health Science and Technology Project (2021KY272, 2022KY529).
+Disclosure
+The authors declare no competing interests in this work.
+References
+1. Saha RN, Vasanthakumar S, Bende G, Snehalatha M. Nanoparticulate drug delivery systems for cancer chemotherapy. Mol Membr Biol. 2010;27 
+(7):215–231. doi:10.3109/09687688.2010.510804
+2. Zhang ZT, Huang-Fu MY, Xu WH, Han M. Stimulus-responsive nanoscale delivery systems triggered by the enzymes in the tumor 
+microenvironment. Eur J Pharm Biopharm. 2019;137:122–130. doi:10.1016/j.ejpb.2019.02.009
+3. Pourmadadi M, Ahmadi MJ, Dinani HS, Ajalli N, Dorkoosh F. Theranostic applications of stimulus-responsive systems based on Fe(2)O(3). Pharm 
+Nanotechnol. 2022;10(2):90–112. doi:10.2174/2211738510666220210105113
+Figure 11 Survival analysis of mice in each group (created using OriginPro 2019b software). *p < 0.05, **p < 0.01.
+International Journal of Nanomedicine 2023:18                                                                                   
+https://doi.org/10.2147/IJN.S436414                                                                  
+DovePress                                                                
+7659
+Dovepress                                                                                                                                                              
+Zhu et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+4. He Y, Fan X, Wu X, et al. pH-Responsive size-shrinkable mesoporous silica-based nanocarriers for improving tumor penetration and therapeutic 
+efficacy. Nanoscale. 2022;14(4):1271–1284. doi:10.1039/D1NR07513F
+5. Zhang WJ, Li S, Vijayan V, et al. ROS- and pH-responsive polydopamine functionalized Ti(3)C(2)T(x) MXene-based nanoparticles as drug 
+delivery nanocarriers with high antibacterial activity. Nanomaterials. 2022;12(24):4392. doi:10.3390/nano12244392
+6. Yu YM, Bu FZ, Yu Y, et al. 5-fluorouracil-caffeic acid cocrystal delivery agent with long-term and synergistic high-performance antitumor effects. 
+Nanomedicine. 2022;17(30):2215–2229. doi:10.2217/nnm-2022-0208
+7. Yi T, Qian J, Ye Y, et al. Crizotinib nanomicelles synergize with chemotherapy through inducing proteasomal degradation of Mutp53 proteins. ACS 
+Appl Mater Interfaces. 2023;15(1):511–523. doi:10.1021/acsami.2c18020
+8. Yao L, Daniels J, Wijesinghe D, Andreev OA, Reshetnyak YK. pHLIP(R)-mediated delivery of PEGylated liposomes to cancer cells. J Control 
+Release. 2013;167(3):228–237. doi:10.1016/j.jconrel.2013.01.037
+9. Du T, Wang Y, Luan Z, Zhao C, Yang K. Tumor-associated macrophage membrane-camouflaged pH-responsive polymeric micelles for combined 
+cancer chemotherapy-sensitized immunotherapy. Int J Pharm. 2022;624(121911):121911. doi:10.1016/j.ijpharm.2022.121911
+10. Gao Y, Zhou Y, Zhao L, et al. Enhanced antitumor efficacy by cyclic RGDyK-conjugated and paclitaxel-loaded pH-responsive polymeric micelles. 
+Acta Biomater. 2015;23:127–135. doi:10.1016/j.actbio.2015.05.021
+11. Koo AN, Lee HJ, Kim SE, et al. Disulfide-cross-linked PEG-poly(amino acid)s copolymer micelles for glutathione-mediated intracellular drug 
+delivery. Chem Commun. 2008;48(48):6570–6572. doi:10.1039/b815918a
+12. Piktel E, Niemirowicz K, Watek M, et al. Recent insights in nanotechnology-based drugs and formulations designed for effective anti-cancer 
+therapy. J Nanobiotechnol. 2016;14(1):39. doi:10.1186/s12951-016-0193-x
+13. Cheng HW, Tsao HY, Chiang CS, Chen SY. Advances in magnetic nanoparticle-mediated cancer immune-theranostics. Adv Healthc Mater. 2021;10 
+(1):e2001451. doi:10.1002/adhm.202001451
+14. Abed Z, Shakeri-Zadeh A, Eyvazzadeh N. Magnetic targeting of magneto-plasmonic nanoparticles and their effects on temperature profile of NIR 
+laser irradiated to CT26 tumor in BALB/C mice. J Biomed Phys Eng. 2021;11(3):281–288. doi:10.31661/jbpe.v0i0.1032
+15. Chen S, Song Y, Yan X, et al. Injectable magnetic montmorillonite colloidal gel for the postoperative treatment of hepatocellular carcinoma. 
+J Nanobiotechnol. 2022;20(1):381. doi:10.1186/s12951-022-01559-7
+16. Zhao S, Yu X, Qian Y, Chen W, Shen J. Multifunctional magnetic iron oxide nanoparticles: an advanced platform for cancer theranostics. 
+Theranostics. 2020;10(14):6278–6309. doi:10.7150/thno.42564
+17. Tong S, Quinto CA, Zhang L, Mohindra P, Bao G. Size-dependent heating of magnetic iron oxide nanoparticles. ACS Nano. 2017;11(7):6808–6816. 
+doi:10.1021/acsnano.7b01762
+18. Gavilan H, Avugadda SK, Fernandez-Cabada T, et al. Magnetic nanoparticles and clusters for magnetic hyperthermia: optimizing their heat 
+performance and developing combinatorial therapies to tackle cancer. Chem Soc Rev. 2021;50(20):11614–11667. doi:10.1039/d1cs00427a
+19. Wang J, Zhang W, Xie Z, et al. Magnetic nanodroplets for enhanced deep penetration of solid tumors and simultaneous magnetothermal-sensitized 
+immunotherapy against tumor proliferation and metastasis. Adv Healthc Mater. 2022;11(23):e2201399. doi:10.1002/adhm.202201399
+20. Donadoni E, Siani P, Frigerio G, Di Valentin C. Multi-scale modeling of folic acid-functionalized TiO(2) nanoparticles for active targeting of tumor 
+cells. Nanoscale. 2022;14(33):12099–12116. doi:10.1039/D2NR02603A
+21. Moharil P, Wan Z, Pardeshi A, et al. Engineering a folic acid-decorated ultrasmall gemcitabine nanocarrier for breast cancer therapy: dual targeting 
+of tumor cells and tumor-associated macrophages. Acta Pharm Sin B. 2022;12(3):1148–1162. doi:10.1016/j.apsb.2021.09.024
+22. Wang X, Wei W, Zheng D, Chen Z, Dai H. Folic acid-functionalized L-cys/ZnS:O nanoparticles for homologous targeting and photodynamic 
+therapy of tumor cells. J Mater Chem B. 2022;10(31):6001–6008. doi:10.1039/D2TB00719C
+23. Jaiswal N, Halder S, Mahata N, Chanda N. Bi-functional gold nanorod-protein conjugates with biomimetic BSA@Folic acid corona for improved 
+tumor targeting and intracellular delivery of therapeutic proteins in colon cancer 3D spheroids. ACS Appl Bio Mater. 2022;5(4):1476–1488. 
+doi:10.1021/acsabm.1c01216
+International Journal of Nanomedicine                                                                                             
+Dovepress 
+Publish your work in this journal 
+The International Journal of Nanomedicine is an international, peer-reviewed journal focusing on the application of nanotechnology in diagnostics, 
+therapeutics, and drug delivery systems throughout the biomedical field. This journal is indexed on PubMed Central, MedLine, CAS, SciSearch®, 
+Current Contents®/Clinical Medicine, Journal Citation Reports/Science Edition, EMBase, Scopus and the Elsevier Bibliographic databases. The 
+manuscript management system is completely online and includes a very quick and fair peer-review system, which is all easy to use. Visit http:// 
+www.dovepress.com/testimonials.php to read real quotes from published authors.  
+Submit your manuscript here: https://www.dovepress.com/international-journal-of-nanomedicine-journal
+DovePress                                                                                                      
+International Journal of Nanomedicine 2023:18 
+7660
+Zhu et al                                                                                                                                                              
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+

@@ -1,0 +1,635 @@
+Approximation and interpolation with neural network 
+Yiming Yang 
+Department of mathematics, Fudan University, Shanghai, 200433, China 
+ 
+19300180068@fudan.edu.cn 
+Abstract. In this paper we show that multilayer feedforward networks with one single hidden 
+layer.and certain types of activation functions can approximate univariant continuous functions 
+defined on a compact set. arbitrarily well. In particular, our results contain some usual activation 
+functions such as sigmoidal functions, RELU functions and threshold functions. Besides, since 
+interpolation problems are highly related to approximation problem, we demonstrate that a wide 
+range of functions have the ability to interpolate and generalize our results to functions which 
+are not polynomial on ℝ. Compared to existing results by numerous work, our methods are more 
+intuitive and less technical. Lastly, the paper discusses the possibility of combining interpolation 
+property and approximating property together, and demonstrates that given any Riemann 
+integrable functions on a compact set in ℝ , with several points on its graph, the finite 
+combination of monotone sigmoidal functions can pass through these points and approximate 
+the given function arbitrarily well with respect to 𝐿1(𝑑𝑥) (in the sense of Riemann integral) when 
+the number of points getting large. 
+Keywords: neural networks, approximation, interpolation. 
+1.  Introduction 
+The universality of activation function in neural network with one hidden layer has been vastly studied 
+in the last three decades. Roughly speaking, people have considered whether the form of 
+∑
+𝑎𝑖
+𝑛
+𝑖=1
+σ(𝑤𝑖⊤𝑥 + 𝑏𝑖)  
+ 
+ 
+ 
+ 
+ 
+ 
+(1) 
+have nice approximating property in certain function space, where 𝜎: ℝ → ℝ is the activation function, 
+ 𝑤𝑖, 𝑥, 𝑏𝑖 ∈ ℝ𝑛 . Both constructive and non-constructive methods have been adopted and various 
+activation functions and function spaces have been studied.  
+For example, the main result of Cybenko states that any continuous sigmoidal functions (functions 
+that have different limits when 𝑥 → +∞ 𝑎𝑛𝑑 𝑥 → −∞) have the density property in the uniform on 
+compacta, namely, given ϵ > 0 and 𝑓 ∈ 𝐶(𝐾) (space of continuous functions defined on a compact set), 
+there exists 𝑔(𝑥) which is the form of (1), where σ is a continuous sigmoidal function such that 
+|𝑔(𝑥) − 𝑓(𝑥)| < ϵ. His proof used the tool of Hahn-Banach theorem and Riesz-Representation theroem, 
+which is quite standard nowadays[1]. 
+Some other types of activation functions have also studied. In Cotter, he used Stone-Weierstrass 
+theorem to conclude that activation function such as 𝑒𝑥 also have approximating property in the uniform 
+on compacta[2]. Hornik improved Cybenko's tool by some techniques in Fourier analysis in groups and 
+Sobolev space to develop 𝐿𝑝(μ) and derivative approximation results[3]. In 1993, Leshno, Lin, Pinkus 
+Proceedings of the 2nd International Conference on Computing Innovation and Applied Physics
+DOI: 10.54254/2753-8818/18/20230354
+© 2023 The Authors. This is an open access article distributed under the terms of the Creative Commons Attribution License 4.0
+(https://creativecommons.org/licenses/by/4.0/).
+126
+and Schocken proved a striking result that the necessary and sufficient condition for 𝜎 to have density 
+property in the uniform on compacta is that 𝜎 is not a polynomial[4]. 
+When lots of studies focused on the family of (1) to approximate functions, some tools in harmonic 
+analysis got into people’s eyes. Namely, instead of varying 𝑤𝑖, one may consider whether the family 
+∑
+𝑎𝑖𝜎(𝑤⊤𝑥 + 𝑏𝑖)
+𝑛
+𝑖=1
+ can approximate continuous functions defined on a compact set well, and this 
+turned out to be linked with 𝑚𝑒𝑎𝑛 − 𝑝𝑒𝑟𝑖𝑜𝑑𝑖𝑐  functions, that is, functions in 𝐶(ℝ𝑛)  such that 
+𝑠𝑝𝑎𝑛{𝑓(𝑥 − 𝑎): 𝑎 ∈ ℝ𝑛} is not dense in 𝐶(ℝ𝑛) in the uniform on compacta. However, the property of 
+𝑚𝑒𝑎𝑛 − 𝑝𝑒𝑟𝑖𝑜𝑑𝑖𝑐 functions in higher dimension is far too complicated, and for one dimensional case, 
+Schwartz used the property of 𝑚𝑒𝑎𝑛 − 𝑝𝑒𝑟𝑖𝑜𝑑𝑖𝑐 functions and proved the following result: given 𝜎 ∈
+𝐶(ℝ) which is not a polynomial, and assume that 𝑤𝑖 ∈ 𝐹 ⊂ ℝ, where 𝐹 contains a sequence that has 
+finite limit point, the form of (1) is dense in 𝐶(ℝ) in the uniform on compacta. 
+At the same period, the ability of activation function to interpolate was also considered by a lot of 
+researchers. Specifically, given 𝑚  different points {𝑥𝑖}𝑖=1
+𝑚  in ℝ𝑛 , values {𝑦𝑖}𝑖=1
+𝑚  and continuous 
+activation function σ, does there exist 𝑔 is the form of (1) (𝑚, 𝑛 don't have to be dependent on each 
+other) such that 𝑔(𝑥𝑖) = 𝑦𝑖 , 1 ≤ 𝑖 ≤ 𝑚. In Itô and Saito, they proved that if σ is a continuous, 
+nondecreasing sigmoidal function then one can find 𝑚 = 𝑛, 𝑤𝑖 with |𝑤𝑖| ≤ 1 such that the previous 
+question has a positive answer[5]. Huang and Babri extended their results to the case when σ is bounded, 
+continuous, nonlinear and exists one-side limit (when 𝑥 approaches to the point ∞) [6]. In 1999. Pinkus 
+gave a beautiful proof to generalize the case to 𝜎 not a polynomial [7]. 
+In this paper, we mainly focus on the dimension one case and give some constructive methods which 
+are less technical and abstract than previous researches to study both approximation and interpolation 
+problems. Our main tools are the properties of approximate identity and Gershgorin’s theorem. At the 
+end of the paper, we will slightly discuss is it able to combine interpolation and approximation together, 
+that is, given 𝑓 defined on a compact set in ℝ, does there exist 𝑔 which is the form of (1) and equals 𝑓 
+at given points and approximates 𝑓 well? We show that it is hard to approximate in the topology of 
+𝐶(𝐾), but we may put other conditions on 𝑓 and try to approximate in another topology. Though the 
+paper does not give a satisfying result in the case of approximating in the topology of 𝐶(𝐾), the 
+discussion is still constructive. 
+2.  Main results 
+Given an activation function 𝑓, let 𝑆𝑓 denote the set of finite sums of form 𝑔(𝑥) = ∑
+𝑎𝑖
+𝑛
+𝑖=1
+𝑓(𝑤𝑖𝑥 + 𝑏𝑖). 
+We use || ⋅ || to denote the uniform norm on 𝐶[0,1]. We have the following result. 
+Theorem 1. Suppose 𝑓 is absolutely Riemann integrable on ℝ. Then 𝑆𝑓 is dense in 𝐶[0,1] in the uniform 
+norm. In other words, for any ℎ ∈ 𝐶[0,1] and ϵ > 0, there exists 𝑔 ∈ 𝑆𝑓 such that  
+sup
+𝑥∈[0,1]
+|ℎ(𝑥) − 𝑔(𝑥)| < ϵ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(2) 
+𝑃𝑟𝑜𝑜𝑓: Let 𝐶 ≔ ∫ 𝑓(𝑥)𝑑𝑥
+ℝ
+, 𝑓𝑎(𝑥) =
+𝑎𝑓(𝑎𝑥)
+𝐶
+. Then 𝑓𝑎 is an approximate identity. Extend ℎ to ℝ, 
+such that the extension is bounded on ℝ. For simplicity, we still denote the extension by ℎ. Then by the 
+property of approximate identity (for example, one can see),  𝑓𝑎 ∗ ℎ → ℎ uniformly on every compact 
+set in ℝ. In particular, 𝑓𝑎 ∗ ℎ → ℎ uniformly on [0,1]. Since 𝑓𝑎 ∗ ℎ is the limit of Riemann sum, which 
+is in the set 𝑆𝑓, we deduce the desired result [8].  
+Remark. The terminology “Riemann integrable on ℝ” here means the corresponding “improper” 
+integral exists on ℝ which is used throughout the text. 
+In particular, we focus on two cases by the theorem. 
+Example 1. Suppose 𝑓 is a continuous nondecreasing sigmoidal function, that is, 
+lim
+𝑥→+∞ 𝑓 (𝑥) = 1, lim
+𝑥→−∞ 𝑓 (𝑥) = 0. 
+Proceedings of the 2nd International Conference on Computing Innovation and Applied Physics
+DOI: 10.54254/2753-8818/18/20230354
+127
+Let 𝑔(𝑥) = 𝑓 (𝑥 +
+1
+2) − 𝑓 (𝑥 −
+1
+2). We want to show that 𝑔 is absolutely Riemann integrable. Since 
+𝑔 ≥  0, we only need to show it is Riemann integrable. 
+Given ϵ > 0, choose 𝐴 > 0 such that |𝑓(𝑥) − 𝑓(𝑦)| < ϵ for any 𝑥, 𝑦 > 𝐴. Consider the sum 
+1
+𝑛 ∑
+𝑔 (𝑥 +
+𝑖
+𝑛)
+𝑐𝑛
+𝑖=1
+=
+1
+𝑛 ∑
+𝑓 (𝑥 +
+𝑖
+𝑛 +
+1
+2)
+𝑐𝑛
+𝑖=(𝑐−1)𝑛+1
+−
+1
+𝑛 ∑
+𝑓 (𝑥 +
+𝑖
+𝑛 −
+1
+2)
+𝑛
+𝑖=1
+ 
+ 
+ 
+(3) 
+where 𝑐 is a positive integer, 𝑥 > 𝐴 + 1. It turns out that the sum is less than ϵ, so let 𝑐 → +∞ 𝑎𝑛𝑑 𝑛 →
++∞, we conclude that 𝑔 is integrable on [𝐴, +∞), 𝐴 is a real number. By a similar argument, we can 
+show that 𝑔 is integrable on the real line ℝ. 
+Combined with theorem 1, we conclude that continuous nondecreasing sigmoidal functions have 
+density property. Moreover, since nondecreasing function only has countable discontinuous points, we 
+can even drop the continuous condition. 
+Example 2. Define 𝑔𝑒𝑛𝑒𝑟𝑎𝑙𝑖𝑧𝑒𝑑 𝑝𝑜𝑤𝑒𝑟 𝑓𝑢𝑛𝑐𝑡𝑖𝑜𝑛𝑠 to be the function set  
+𝐸 ≔ {ℎ(𝑥) |ℎ(𝑥) = 0 , 𝑤ℎ𝑒𝑛 𝑥 < 0; ℎ(𝑥) = 𝑥𝛼, 𝑤ℎ𝑒𝑛  𝑥 ≥ 0 }. If ℎ ∈ 𝐸, we say ℎ is of order 𝑛, if 
+𝑛 is the least integer that 𝑛 ≥ α, where ℎ(𝑥) = 𝑥𝛼, 𝑥 ≥ 0. Consider 𝑓 ∈  𝐸, 𝑓(𝑥) = 𝑥α when  𝑥 ≥ 0. 
+Suppose 𝑓 is of order n. 
+Given 𝑏 > 0, consider the function sequence:  
+𝑓0(𝑥) = 𝑓(𝑥),  𝑓𝑖(𝑥) = 𝑓𝑖−1 (𝑥 +
+𝑏
+2𝑖−1) − 𝑓𝑖−1 (𝑥 −
+𝑏
+2𝑖−1), where 1 ≤ 𝑖 ≤ 𝑛 + 1  
+ 
+(4) 
+We want to show that 𝑓𝑛+1(𝑥) is absolutely Riemann integral. The case if α is an integer is easier 
+since 𝑓𝑛+1(𝑥) is compactly supported. Suppose α is not an integer. By using Lagrange mean value 
+theorem several times, we see that 𝑓𝑛(𝑥) = 𝐶𝑛,𝑏𝑓(𝑛)(𝑦𝑛,𝑥) for 𝑥 is sufficiently large (if 𝑥 is small, 
+derivative may not exist), where 𝐶𝑛,𝑏 is a constant relies on 𝑛 and 𝑏, 𝑦𝑛,𝑥 ∈ (𝑥 − 2𝑏, 𝑥 + 2𝑏). 
+In our following analysis we always assume that 𝑥 is sufficiently large in case derivative does not exist. 
+Therefore 𝑓𝑛  tends to 0  when 𝑥  is sufficiently large. Furthermore, 𝑓𝑛 is monotone when 𝑥  is 
+sufficiently large. In fact, in order to prove that 𝑓𝑛 is decreasing, we only have to show that the second 
+derivative of 𝑓𝑛−1 is less than 0, and we can get the result by showing the third derivative of 𝑓𝑛−2 is less 
+than 0...finally, we only have to show that the (𝑛 + 1) − 𝑡ℎ derivative of 𝑓 is less than 0.  
+Since the last statement is clear, our first claim holds.  
+Mimicking the method in example 1, we find that 𝑓𝑛+1 is integrable, therefore absolutely integrable 
+on the real line ℝ. By theorem 1 and above construction, we conclude that activation functions in  𝐸 
+have density property. In particular, RELU function and threshold function have density property. 
+Next, we will turn to some interpolation problems. Our main tool here is Gershgorin’s theorem. 
+Gershgorin’s Theorem. Every eigenvalue of 𝐴 lies within at least one of the Gershgorin discs 
+𝐷(𝑎𝑖𝑖, 𝑅𝑖), where 𝐷(𝑎𝑖𝑖, 𝑅𝑖) = {𝑥 ∈ ℝ2:  |𝑥 − 𝑎𝑖𝑖| ≤   ∑
+𝑗≠𝑖|𝑎𝑖𝑗|
+}.   
+𝑃𝑟𝑜𝑜𝑓: We take the proof as in [9,10]. Let 𝜆 be an eigenvalue of 𝐴 with corresponding eigenvector 
+𝑥 = (𝑥𝑗). Choose 𝑖  such that 𝑥𝑖 has the largest absolute value in the elements of 𝑥. Then we have 
+∑ 𝑎𝑖𝑗
+𝑗
+𝑥𝑗 = 𝜆𝑥𝑖.  Alternatively, we have ∑
+𝑗≠𝑖 𝑎𝑖𝑗𝑥𝑗 = (𝜆 − 𝑎𝑖𝑖)𝑥𝑖
+. 
+Therefore, by triangle inequality and our assumption, the following is valid: 
+|𝜆 − 𝑎𝑖𝑖| =
+|∑
+𝑗≠𝑖 𝑎𝑖𝑗𝑥𝑗
+|
+|𝑥𝑖|
+≤ ∑
+𝑗≠𝑖 |𝑎𝑖𝑗|
+ 
+ 
+ 
+ 
+ 
+ 
+(5) 
+Therefore the conclusion holds. 
+Theorem 2. Suppose 𝑓: ℝ → ℝ with 𝑙𝑖𝑚|𝑥|→∞𝑓(𝑥) = 0, then given 𝑚 different points {𝑥𝑖}𝑖=1
+𝑚  in ℝ, 
+and {𝑦𝑖}𝑖=1
+𝑚 , there exists 𝑔 ∈ 𝑆𝑓, 𝑔 = ∑
+𝑎𝑗
+𝑚
+𝑗=1
+𝑓(𝑤𝑗𝑥 + 𝑏𝑗), such that 𝑔(𝑥𝑖) = 𝑦𝑖, 1 ≤ 𝑖 ≤ 𝑚. 
+𝑃𝑟𝑜𝑜𝑓 : Set η(𝑥) = 𝑓(𝑤𝑥) , 𝑤 > 0 , we want to find a sequence 𝑎𝑗 , such that 𝐺(𝑥) ≔
+∑
+𝑎𝑗
+𝑚
+𝑗=1
+η𝑗(𝑥) satisfies 𝐺(𝑥𝑗) = 𝑦𝑖, 1 ≤ 𝑖 ≤ 𝑚, where η𝑗(𝑥) = η(𝑥 − 𝑥𝑗). In other words, we want to 
+solve the following equation: 𝑎 ⋅ 𝐴 = 𝑑 , where 𝐴  is an 𝑚 × 𝑚  matrix, 𝑎𝑖𝑗 = η𝑖(𝑥𝑗) , 𝑎 =
+(𝑎1, … , 𝑎𝑚), 𝑑 = (𝑦1, , , 𝑦𝑚). 
+Proceedings of the 2nd International Conference on Computing Innovation and Applied Physics
+DOI: 10.54254/2753-8818/18/20230354
+128
+We should find 𝑤  such that ∑
+𝑗≠𝑖|η𝑖(𝑥𝑗)|
+< |η𝑖(𝑥𝑖)|. First note that |η𝑖(𝑥𝑖)| = 𝑓(0). Set δ ≔
+𝑚𝑖𝑛|𝑥𝑖 − 𝑥𝑗|, 1 ≤ 𝑖, 𝑗 ≤ 𝑚, and choose 𝑤 large enough such that when |𝑥| > 𝑤δ, |𝑓(𝑥)| <
+𝑓(0)
+𝑚 . Then 
+∑
+𝑗≠𝑖|η𝑖(𝑥𝑗)|
+< 𝑚 ⋅
+𝑓(0)
+𝑚 < |η𝑖(𝑥𝑖)|. By Gershgorin’s theorem, 𝐴 is invertible, thus we conclude the 
+result. 
+Remark. The intuition of the above proof is that interpolation equation can be solved by 
+∑
+𝑎𝑖
+𝑚
+𝑖=1
+ℎ(𝑥 − 𝑥𝑗) , where ℎ(𝑥) = 1, when 𝑥 = 0; ℎ(𝑥) = 0, when 𝑥 ≠ 0. What we do here is to 
+approximate ℎ by 𝑓. A slight look at the proof shows that when 𝑤 is large, the matrix 𝐴 looks more like 
+diagonal matrix, and 𝜂 looks more like ℎ. 
+We also dive into cases discussed in example 1 and 2. 
+Example 3. When 𝑓  is a sigmoidal function, the case is quite easy. Set 𝑔(𝑥) = 𝑓 (𝑥 +
+1
+2) −
+𝑓 (𝑥 −
+1
+2), then 𝑔 satisfies the condition in theorem 2, a priori, 𝑓 has interpolation property. 
+Example 4. Consider 𝑓 to be a generalized power function as defined in example 2. Define 𝑓𝑖 the 
+same as in example 2, and by the discussion in example 2, we see that, 𝑓𝑛+1 satisfies the condition in 
+theorem 2, therefore 𝑓 has interpolation property. In particular, RELU function and threshold function 
+have interpolation property. 
+Next, we are going to extend theorem 2 by the famous result in [4]. We cite it here without proof. 
+Theorem (Leshno, Lin, Pinkus and Schocken). The necessary and sufficient condition for 𝜎 to have 
+density property in the uniform on compacta is that 𝜎 is not a polynomial. That is, given 𝜖 > 0 and 𝑔 ∈
+𝐶(𝐾) , there exists 𝑓(𝑥) ∈ 𝑆𝜎, such that |𝑔(𝑥) − 𝑓(𝑥)| < 𝜖 iff σ is not a polynomial on ℝ. 
+Theorem 3. Suppose 𝑓 ∈ 𝐶(ℝ) which is not a polynomial, then given 𝑚 different points {𝑥𝑖}𝑖=1
+𝑚  in ℝ, 
+and {𝑦𝑖}𝑖=1
+𝑚 , there exists 𝑔 ∈ 𝑆𝑓, 𝑔 = ∑
+𝑎𝑗
+𝑚
+𝑗=1
+𝑓(𝑤𝑗𝑥 + 𝑏𝑗), such that 𝑔(𝑥𝑖) = 𝑦𝑖, 1 ≤ 𝑖 ≤ 𝑚. 
+𝑃𝑟𝑜𝑜𝑓: We will modify the method in theorem 2. First by the above theorem, given 
+1
+𝑚 > ϵ > 0, there 
+exists ℎ ∈ 𝑆𝑓, such that ||ℎ − 𝑝|| < ϵ on [−𝑎, 𝑎] (we will set the value of 𝑎 later, of course 𝑎 > 0), 
+where 𝑝(𝑥) = 𝑚𝑎𝑥{0,1 − |𝑥|}. 
+Set η(𝑥) = ℎ(𝑤𝑥), 𝑤 > 0, we want to find a sequence 𝑎𝑗, such that 𝐺(𝑥) ≔ ∑
+𝑎𝑗
+𝑚
+𝑗=1
+η𝑗(𝑥) satisfies 
+𝐺(𝑥𝑗) = 𝑦𝑖, 1 ≤ 𝑖 ≤ 𝑚, where η𝑗(𝑥) = η(𝑥 − 𝑥𝑗). Namely we will solve 𝑐 ⋅ 𝐴 = 𝑑, where 𝐴 is an 
+𝑚 × 𝑚 matrix, 𝑎𝑖𝑗 = η𝑖(𝑥𝑗), 𝑐 = (𝑎1, … , 𝑎𝑚), 𝑑 = (𝑦1, , , 𝑦𝑚). 
+Just as in the proof of theorem 2, we will find suitable 𝑤 such that ∑
+𝑗≠𝑖|η𝑖(𝑥𝑗)|
+< |η𝑖(𝑥𝑖)|.  
+Set δ ≔ 𝑚𝑖𝑛{|𝑥𝑖 − 𝑥𝑗|}, Δ ≔ 𝑚𝑎𝑥{|𝑥𝑖 − 𝑥𝑗|}, 1 ≤ 𝑖, 𝑗 ≤ 𝑚, we choose 𝑤 such that 𝑤δ > 1, 𝑤Δ < 𝑎. 
+To satisfy these two inequalities, we choose 𝑎 = 1 +
+Δ
+δ. Then we have ∑
+𝑗≠𝑖|η𝑖(𝑥𝑗)|
+< (𝑚 − 1)ϵ < 1 −
+ϵ < ℎ(0) = |η𝑖(𝑥𝑖)|. By Gershgorin’s theorem, 𝐴 is invertible, thus we get the desired result. 
+Remark. In Pinkus’s paper, the result is formulated under the same condition but through a more 
+technical proof[7]. Namely, the paper converts the problem to the linear dependency of 𝑓(𝑤𝑥𝑖 + 𝑏) 
+(regarded as functions in 𝑤 and 𝑏) and uses tools in linear algebra and functional analysis (more 
+precisely, as mentioned in the introduction section, Hahn-Banach theorem and Riesz representation 
+theorem are applied) to derive the result. 
+Comment. All interpolation results above can be generalized to multidimensional case: given 𝑚 
+different points {𝑥𝑖}𝑖=1
+𝑚  in ℝ𝑛 , values {𝑦𝑖}𝑖=1
+𝑚  and activation function 𝑓: ℝ → ℝ, we consider the 
+existence of 𝑔 = ∑
+𝑎𝑗𝑓(𝑤𝑗⊤𝑥 + 𝑏𝑗)
+𝑚
+𝑗=1
+, such that 𝑔(𝑥𝑖) = 𝑦𝑖, 1 ≤ 𝑖 ≤ 𝑚. We first choose 𝑤 ∈ ℝ𝑛 
+such that {𝑡𝑖}𝑖=1
+𝑚 are distinct, where 𝑡𝑖 = 𝑤 ⋅ 𝑥𝑖 . Set 𝑤𝑗 = 𝑠𝑗𝑤, 𝑠𝑗 ∈ ℝ, then we only have to find 
+{𝑎𝑗}, {𝑏𝑗}, {𝑠𝑗}, such that 𝑔′ = ∑
+𝑎𝑗𝑓(𝑠𝑗𝑡 + 𝑏𝑗)
+𝑚
+𝑗=1
+ with 𝑔′(𝑡𝑖) = 𝑦𝑖, which will be the dimension one 
+case. 
+Proceedings of the 2nd International Conference on Computing Innovation and Applied Physics
+DOI: 10.54254/2753-8818/18/20230354
+129
+3.  Further discussion 
+In this section we discuss the relation between approximation and interpolation. Given 𝑓 ∈ 𝐶(𝐾) and 𝑛 
+points on the graph of 𝑓(𝑥), one attempt to prove density property of a certain activation function is to 
+prove interpolation property first and then try to prove that interpolation function oscillates slowly when 
+𝑛 gets larger. For example, given 𝑓 ∈ 𝐶([0,1]), if one can show that (i): there exists  
+𝑔𝑚(𝑛)(𝑥) = ∑
+𝑎𝑖
+𝑚
+𝑖=1
+σ(𝑤𝑖𝑥 + 𝑏𝑖)  
+ 
+ 
+ 
+ 
+ 
+(6) 
+with 𝑔 (
+𝑖
+𝑛) = 𝑓 (
+𝑖
+𝑛), 0 ≤ 𝑖 ≤ 𝑛, where σ is the activation function and (ii):  
+𝑙𝑖𝑚𝑛→∞
+sup
+|𝑥−𝑦|≤1
+𝑛
+|𝑔𝑚(𝑛)(𝑥) − 𝑔𝑚(𝑛)(𝑦)| = 0 
+ 
+ 
+ 
+ 
+(7) 
+However, it is difficult to find such 𝑔𝑚(𝑛) satisfies the two conditions at the same time. In our 
+construction in theorem 2 and theorem 3, we can find 𝑔𝑚(𝑛) satisfies (i) but they can not satisfy (ii) 
+which can be seen from the remark after theorem 2. 
+While it is difficult to require an activation function to have interpolation property and approximating 
+property in 𝐶(𝐾) at the same time, we can loose ourselves to another kind of approximating property. 
+Theorem 4. Suppose 𝑓  is a continuous monotone sigmoidal function. Given 𝑔: ℝ → ℝ  Riemann 
+integrable in [0,1] and 𝑛 a positive integer, there exists ℎ ∈ 𝑆𝑓 such that ℎ (
+𝑖
+𝑛) = 𝑔 (
+𝑖
+𝑛),  0 ≤ 𝑖 ≤ 𝑛 and 
+𝑙𝑖𝑚𝑛→∞ ∫
+[0,1]|𝑔 − ℎ|𝑑𝑥
+= 0 
+𝑃𝑟𝑜𝑜𝑓: Set  
+𝑓𝑚(𝑥) ≔ 𝑓 (𝑚 (𝑥 +
+1
+2)) − 𝑓 (𝑚 (𝑥 −
+1
+2))  
+ 
+ 
+ 
+ 
+(8) 
+𝑚 > 0,  η(𝑥) = 𝑓𝑚(𝑤𝑥). 
+We will set the value of 𝑚 and 𝑤 later (𝑚 will depend on 𝑛). 
+First we want to solve the interpolation equations. Mimicking the proof if Theorem 2, we want to 
+find a sequence 𝑎𝑗, such that 𝐺(𝑥) ≔ ∑
+𝑎𝑗
+𝑚
+𝑗=1
+η𝑗(𝑥) satisfies 𝐺(𝑥𝑖) = 𝑦𝑖, 0 ≤ i, 𝑗 ≤ 𝑛, where η𝑗(𝑥) =
+η(𝑥 − 𝑥𝑗), 𝑥𝑗 =
+𝑗
+𝑛, 𝑦𝑗 = 𝑔(𝑥𝑗). We have to solve the inequality: ∑
+𝑗≠𝑖|η𝑖(𝑥𝑗)|
+< |η𝑖(𝑥𝑖)|. 
+We choose 𝑤 = 𝑛 + 𝑘, where 𝑘 is a positive constant (independent of 𝑛). We choose 𝑚 large 
+enough such that  
+η(𝑥) = 𝑜(𝑛−2)   𝑤ℎ𝑒𝑛 |𝑥| ≥
+1
+2𝑛  
+ 
+ 
+ 
+ 
+ 
+(9) 
+and  
+|1 − η(𝑥)| = 𝑜(𝑛−2)  𝑤ℎ𝑒𝑛 |𝑥| <
+1
+2(𝑛+2𝑘)  
+ 
+ 
+ 
+      (10) 
+Indeed, given 𝑥 < −
+1
+2(𝑛+𝑘), we can choose 𝑚 large enough such that 𝑓 (𝑚 (𝑤𝑥 +
+1
+2)) is arbitrarily 
+close to 0, in particular, we may choose 𝑚 such that = 𝑓 (𝑚 (𝑤𝑥 +
+1
+2)) = 𝑜(𝑛−2), and by monotone 
+assumption, we have that η (−
+1
+2𝑛) = 𝑜(𝑛−2), and by monotone assumption once again, we can find 𝑚 
+such that η(𝑥) = 𝑜(𝑛−2)   𝑤ℎ𝑒𝑛 𝑥 ≤ −
+1
+2𝑛. By a similar argument, for suitably big 𝑚, (9) holds. For 
+−
+1
+2(𝑛+𝑘) < 𝑥 <
+1
+2(𝑛+𝑘), we can find big 𝑚 such that 𝑓 (𝑚 (𝑤𝑥 +
+1
+2)) is arbitrarily close to 1 and 
+𝑓 (𝑚 (𝑤𝑥 −
+1
+2)) is arbitrarily close to 0. In particular, there exists large 𝑚 such that (10) holds. 
+Therefore ∑
+𝑗≠𝑖|η𝑖(𝑥𝑗)|
+= 𝑜(𝑛−1) < |η𝑖(𝑥𝑖)| when 𝑛 is large and the interpolation equations are 
+solved. 
+Proceedings of the 2nd International Conference on Computing Innovation and Applied Physics
+DOI: 10.54254/2753-8818/18/20230354
+130
+Next, we notice that |𝑎𝑖 − 𝑦𝑖| < ϵ𝑛,𝑖 with 𝑙𝑖𝑚𝑛→∞𝜖𝑛,𝑖 = 0 and all 𝑎𝑖 are bounded. By the above 
+estimate, we have the following inequality    
+∫ |𝐺(𝑥) − 𝑦0|
+1
+2𝑛
+0
+𝑑𝑥 < 𝑜(𝑛−2) +
+1
+2𝑛 ϵ𝑛,0 
+ 
+ 
+ 
+ 
+      (11) 
+Indeed, by triangle inequality, we have ∫ |𝐺(𝑥) − 𝑦0|
+1
+2𝑛
+0
+𝑑𝑥 ≤ ∫ |𝐺(𝑥) − 𝑎0|
+1
+2𝑛
+0
+𝑑𝑥+
+1
+2𝑛 ϵ𝑛,0. Notice that 
+𝐺(𝑥) = 𝑎0𝜂(𝑥) + ∑
+𝑖≠0 𝑎𝑖𝜂𝑖(𝑥)
+, we have  
+∫ |𝑎0𝜂(𝑥) − 𝑎0|
+1
+2𝑛
+0
+𝑑𝑥 = |𝑎0| ∫ |1 − 𝜂(𝑥)
+1
+2𝑛
+0
+|𝑑𝑥
+= |𝑎0|( ∫
+|1 − 𝜂(𝑥)|𝑑𝑥 +
+1
+2(𝑛+𝑘)
+0
+∫
+|1 − 𝜂(𝑥)|)
+1
+2𝑛
+1
+2(𝑛+𝑘)
+≤ 𝐶1(𝑜(𝑛−3) + 𝐶2𝑜(𝑛−2)) = 𝑜(𝑛−2)                        (12) 
+The contribution of other terms are small: 
+∫ |𝑎𝑖𝜂𝑖(𝑥)|𝑑𝑥 ≤
+1
+2𝑛 𝐶𝑖𝑜(𝑛−2)
+1
+2𝑛
+0
+= 𝑜(𝑛−3)  
+ 
+ 
+ 
+      (13) 
+So we have ∑
+∫
+|𝑎𝑖𝜂𝑖(𝑥)|𝑑𝑥 = 𝑜(𝑛−2)
+1/2𝑛
+𝑖≠0 0
+. Add (12) and (13) and by triangle inequality again, 
+we have (11). 
+By a similar argument with proper translation, we have following inequalities: 
+∫
+|𝐺(𝑥) − 𝑦𝑖|𝑑𝑥
+2𝑖+1
+2𝑛
+2𝑖−1
+2𝑛
+< 𝑜(𝑛−2) +
+1
+2𝑛 ϵ𝑛,𝑖 
+ 
+ 
+ 
+ 
+      (14) 
+for 1 ≤ 𝑖 ≤ 𝑛 − 1  
+∫
+|𝐺(𝑥) − 𝑦𝑛 |𝑑𝑥
+1
+2𝑛−1
+2𝑛
+< 𝑜(𝑛−2) +
+1
+2𝑛 ϵ𝑛,𝑛  
+ 
+ 
+ 
+      (15) 
+Add them up and notice that  
+∑
+1
+𝑛 𝑦𝑖
+𝑛−1
+𝑖=1
++
+1
+2𝑛 𝑦0 +
+1
+2𝑛 𝑦1 → ∫
+[0,1] 𝑔(𝑥)𝑑𝑥
+  
+ 
+ 
+ 
+      (16) 
+when 𝑛 → ∞, we have that 𝑙𝑖𝑚𝑛→∞ ∫
+[0,1]|𝑔 − 𝐺|𝑑𝑥
+= 0 
+Remark. We don't necessarily need 𝑓 to be continuous. Replacing continuity by Riemann integrable 
+also works. 
+4.  Conclusion 
+We have demonstrated that finite combination of a univariate function that is absolute Riemann 
+integrable on ℝ  can uniformly approximate any continuous functions of one variable with compact 
+support. We then show that there exists a finite sum of monotone sigmoidal functions and generalized 
+functions that is absolute Riemann integrable. Combined with the previous result, we derive that any 
+univariant continuous function can be approximated by a neural network with one hidden layer and 
+monotone sigmoidal functions and generalized power functions as activation functions. (example 1 and 
+example 2). 
+Next, we show that functions have limit 0 when |𝑥| approaches to +∞ have the interpolation ability. 
+(theorem 2) After that, we prove the existence of finite combination of sigmoidal functions and 
+generalized power functions that tends to 0 when |𝑥| → +∞ and derive the interpolation results as 
+Proceedings of the 2nd International Conference on Computing Innovation and Applied Physics
+DOI: 10.54254/2753-8818/18/20230354
+131
+application of theorem 2. Moreover, we loose the restriction on activation function and show that when 
+𝑓 is not a polynomial on ℝ and prove the interpolation ability of such functions. (theorem 3) 
+In section 3, the combination of approximation and interpolation is discussed and we deduce that 
+monotone sigmoidal functions have the interpolation property and approximate the original function 
+well with respect to 𝐿1(𝑑𝑥) (in the sense of Riemann integral) when the number of interpolating value 
+gets larger. (theorem 4) 
+While we have derived a lot of useful results about approximation and interpolation with feedforward 
+artificial neural networks, there are still some questions we cannot answer in this paper. First, are there 
+any analogues of theorem 1 in higher dimension? One can not apply the proof in theorem 1 directly to 
+derive the corresponding result. Second, is it possible to get other types of approximation in theorem 4? 
+For example, given certain type of continuous activation function 𝑓, 𝑔: ℝ → ℝ a continuous function 
+and 𝑛 a positive integer, does there exist ℎ ∈ 𝑆𝑓 such that ℎ (
+𝑖
+𝑛) = 𝑔 (
+𝑖
+𝑛), 0 ≤ 𝑖 ≤ 𝑛 and 𝑙𝑖𝑚𝑛→∞||𝑔 −
+ℎ|| = 0? Moreover, is it possible to consider the problem in multidimensional case? We believe these 
+problems are interesting enough to raise more attention.  
+References 
+[1] 
+Cybenko,G., (1989) Approximation by superpositions of a sigmoidal function, Math Control 
+Signals Systems 2, 303-314 
+[2] 
+Cotter,A.E. (1990) Stone-Weierstrass theorem and its application to neural networks. IEEE Trans. 
+Neural Networks 1, 290-295  
+[3] 
+Hornik,K, (1991) Approximation capabilities of multilayers feedforword networks, Neural 
+Network 1, 261-257 
+[4] 
+Leshno,M. Lin,V.Y., Pinkus,A. and Schocken,S. (1993), Multilayer feedforward neural networks 
+with a non-polynomial activation function can approximate any function, Neural Networks 6,  
+861-867 
+[5] 
+Itô,Y. Saito,K. (1996) Superposition of linearly independent functions and finite mappings by 
+neural networks, Math Scient 21,  27-33 
+[6] 
+Huang, G.B., Babri, H.A. (1998) Upper bounds on the number of hidden neurons in feedforward 
+networks with arbitrary bounded nonlinear activation functions, IEEE Trans. Neural Networks 
+9, 224-229 
+[7] 
+Pinkus, A. (1999) Approximation theory of the MLP model in neural networks, Acta Numerica, 
+143-195 
+[8] 
+Grafakus. L.(2014) Classical Fourier Analysis (3rd ed.) Springer-Verlag, New York 
+[9] 
+Varga, R.S. (2002) Matrix Iterative Analysis (2nd ed.), Springer-Verlag, Berlin 
+[10] Schwartz, L. (1947) Theorie Generale des Fonctions Moyenne-Periodiques.,Ann. Math. 48, 857-
+928  
+Proceedings of the 2nd International Conference on Computing Innovation and Applied Physics
+DOI: 10.54254/2753-8818/18/20230354
+132
+

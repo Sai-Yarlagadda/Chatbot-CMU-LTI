@@ -1,0 +1,2924 @@
+ 
+1 
+ 
+De novo assembling a high-quality genome sequence of Amur 
+1 
+grape (Vitis amurensis Rupr.) gives insight into Vitis 
+2 
+divergence and sex determination 
+3 
+Pengfei Wang1#, Fanbo Meng2#, Yiming Yang3, Qian Mu1, Tingting Ding1, 
+4 
+Huiping Liu1, Fengxia Wang1, Ao Li1, Qingtian Zhang1, Shutian Fan2, Bo Li1, 
+5 
+Zhiyao Ma4, Tianhao Zhang4, Yongfeng Zhou4, Hongjun Zhao1*, Xiyin 
+6 
+Wang5*  
+7 
+ 
+8 
+1.Shandong Academy of Grape, Jinan 250100, China 
+9 
+2.State Key Laboratory of Southwestern Chinese Medicine Resources, 
+10 
+Chengdu University of Traditional Chinese Medicine, Chengdu 611137, China 
+11 
+3.Institute of special animal and plant sciences of CAAS, Changchun 130000, 
+12 
+China 
+13 
+4.Shenzhen Branch, Guangdong Laboratory of Lingnan Modern Agriculture, 
+14 
+Genome Analysis Laboratory of the Ministry of Agriculture and Rural Affairs, 
+15 
+Agricultural Genomics Institute at Shenzhen, Chinese Academy of Agricultural 
+16 
+Sciences, Shenzhen, 518000, China 
+17 
+5.North China University of Science and Technology, Tangshan 063000, China 
+18 
+ 
+19 
+# Contribute equally to this work 
+20 
+*Corresponding author, Hongjun Zhao, 13964190239@139.com; Xiyin Wang, 
+21 
+wangxiyin@vip.sina.com  
+22 
+ 
+23 
+Short title: Amur grape genome sequence 
+24 
+ 
+25 
+Author Contributions 
+26 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+2 
+ 
+P.W., Y.Z., Y.Y., H.Z. and B.L. designed the experiments. Q.M., T.D., H.L., 
+27 
+F.W., S.F. and Q.Z. performed the experiments and wrote the manuscript. F.M., 
+28 
+A.L., Z. M. and T. Z. analyzed the data. J.J., Y.Z. and X.W. edited the 
+29 
+manuscript. 
+30 
+ 
+31 
+One Sentence Summary 
+32 
+We presented a high-quality Vitis amurensis genome sequence and conducted 
+33 
+an in-depth study of grape genome variation, sex determination, and cold 
+34 
+resistance, contributing to understanding of grape biology and breeding fine 
+35 
+grapes. 
+36 
+ 
+37 
+The author responsible for distribution of materials integral to the findings 
+38 
+presented in this article in accordance with the policy described in the 
+39 
+Instructions 
+for 
+Authors 
+40 
+(https://academic.oup.com/pphys/pages/General-Instructions) is Xiyin Wang. 
+41 
+ 
+42 
+Abstract  
+43 
+To date, there is no high-quality sequence for genomes of the East Asian grape 
+44 
+species, hindering biological and breeding research efforts to improve grape 
+45 
+cultivars. This study presents a ~522 Mb of the Vitis amurensis (Va) genome 
+46 
+sequence containing 27,635 coding genes. Phylogenetic analysis indicated that 
+47 
+V. riparia (Vr) may firstly split from the other two species, Va, V. Vinifera (Vv; 
+48 
+Pinot Noir: PN40024 and Cabernet Sauvignon). Much divergent gene 
+49 
+reservation among three grape duplicated gene sets suggests that the core eudicot 
+50 
+common hexaploidy (ECH), 130 million years ago (Mya), has still played a 
+51 
+non-negligible role in grape species divergence and biological innovation. 
+52 
+Prominent accumulation of sequence variants might have improved cold 
+53 
+resistance in Va, resulting in a more robust cold resistance gene regulatory 
+54 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+3 
+ 
+network than those in Vv and Vr. In contrast, Va preserved much fewer NBS 
+55 
+disease resistance genes than the other grapes. Notably, multi-omics analysis 
+56 
+identified one trans-cinnamate 4-monooxygenase gene positively correlated to 
+57 
+the resveratrol accumulated during Va berry development. A selective sweep 
+58 
+analysis revealed a hypothetical Va sex-determination region (SDR). Besides, a 
+59 
+PPR-containing protein-coding gene in the hypothetical SDR may be related 
+60 
+with sex determination in Va. The content and arrangement order of genes in the 
+61 
+putative SDR of female Va were similar to the SDR of female Vv. However, the 
+62 
+putative SDR of female Va lost one Flavin-containing monooxygenases (FMO) 
+63 
+and contained one extra uncharacterized protein-coding gene. These findings 
+64 
+will improve the understanding of Vitis biology and contribute to the 
+65 
+improvement of grape breeding. 
+66 
+ 
+67 
+Keywords: 
+Vitis 
+amurensis, 
+genome, 
+structural 
+variation, 
+nutrient 
+68 
+accumulation, sex determination, selective sweep 
+69 
+ 
+70 
+Introduction 
+71 
+Grape genus (Vitis) contain about 60 species of vining plants. Eurasian grape, 
+72 
+East Asian grape, American grape, and other intergeneric hybrid grapes are 
+73 
+some of the most common grape varieties globally (Foria et al., 2022). 
+74 
+As a wild plant, originated in eastern Asia, Amur grape (Vitis amurensis), 
+75 
+also called "Chinese wild grape" or "Shanputao" (Wang et al., 2019; Wang et al., 
+76 
+2021), is one of the East Asian grape species, resembling the wine grape (one of 
+77 
+the Eurasian grapes). Wild Amur grapes are mainly found in the Yellow River 
+78 
+basin and Songhua River basin in China, Siberia in Russia, Korea, Japan, and 
+79 
+many other areas around the world (Chen et al., 2018). Amur grapes have 
+80 
+female, male, or bisexual plants (Figure 1b-d). The Latin name “Vitis amurensis 
+81 
+Rupr.” of the Amur grape was first proposed in 1857 by botanist Franz Josef 
+82 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+4 
+ 
+Ruprecht, and the cultivation of Vitis amurensis can be traced back to 1907 
+83 
+(wine-world.com). A female Amur grape cultivated variant (cv), called 
+84 
+“Zuoshan No. 1” is vastly planted in the Northern China. A bisexual Amur grape 
+85 
+cv. “Shuangyou” is also widely cultivated. 
+86 
+Amur grape has huge commercial potential, for containing abundant 
+87 
+phenolic compounds, procyanidins, oligostilbenes, and stilbenes (Chen et al., 
+88 
+2018). Its fruits are dark purple with small berries, more acidic than Vv, and are 
+89 
+used as raw materials for claret, sweet red wine, semi-dry wine, semisweet red 
+90 
+wine, and brandy (wine-world.com). Young twigs of the Amur grape have spider 
+91 
+silk-like hairs (Figure 1a). Amur grape is extremely cold-tolerant and can 
+92 
+survive temperatures as low as -40°C (Wan et al. 2008; Xu et al. 2014). Now, 
+93 
+Amur grape has become a valuable germplasm resource for grape breeding and 
+94 
+wine production. Cv. “Beibinghong”, a cross of Vitis amurensis and Vitis 
+95 
+vinifera, is a good example in cold resistance, having ability to tolerate 
+96 
+temperatures of -37 °C and therefore used for preparing fancy red ice wine. 
+97 
+Recent pharmacological studies showed that Amur grape possesses 
+98 
+anti-inflammatory, antimicrobial, antioxidant, and anticancer properties (Chen 
+99 
+et al., 2018).  
+100 
+The genome sequence of Vitis Vinifera cv. “Pinot Noir (PN40024)”, a kind 
+101 
+of Eurasian grape species, was deciphered (Jaillon et al., 2007; Canaguier et al., 
+102 
+2017) and has been used as the standard grape genome for grapes' gene analyses 
+103 
+(Liang et al., 2019; Ma et al. 2018). A high-quality genome sequence of Vv cv. 
+104 
+Cabernet Sauvignon was sequenced in 2021 with the Hi-C technology. The 
+105 
+genome for V. riparia, an American grape species, was recently decoded 
+106 
+(Girolletet al., 2019). Va IBCAS1988 genome was sequenced in 2021 with a 
+107 
+genome size 604.56 Mb and N50 282,256 bp (Wang et al., 2021). To date, there 
+108 
+is no high-quality sequence for genomes of the East Asian grape species, 
+109 
+hindering biological and breeding research efforts to improve grape cultivars.  
+110 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+5 
+ 
+Here, we present a high-quality sequence for the Vitis amurensis cv. “Zuoshan 
+111 
+No.1” genome. The availability of the genome sequence of Amur grape will lay 
+112 
+a solid foundation to understand grape biology and develop new breeding lines, 
+113 
+by deepening our insight into grapes' evolution and genetic variability, the 
+114 
+molecular basis for cold adaptation and sex determination of grapes, etc. 
+115 
+ 
+116 
+Results 
+117 
+A high-quality Amur grape reference genome 
+118 
+The study used the female Amur grape “Zuoshan No.1” (Figure 1E-G) as the 
+119 
+material. The Amur grape genome sequence was de novo assembled with 52.69 
+120 
+Gb (~101.46 fold coverage) of Nanopore reads, 98.79 Gb (~189.23 fold 
+121 
+coverage) of MGISEQ short reads, and 58.12 Gb (~111.34 fold coverage) of 
+122 
+Hi-C data. A k-mer analysis of Illumina reads estimated the Amur grape genome 
+123 
+to be ~532 Mb, with DNA heterozygosity 1.20% (Table 1). The final assembled 
+124 
+genome sequence reached to ~522 Mb, covering ~97.5% of the estimated 
+125 
+genome (BUSCO value = 97.5), with a GC content 0.345 (Table 1). Moreover, 
+126 
+the assembly comprised 56 contigs with 2.5 Mb of contig N50. The N50 of Va 
+127 
+IBCAS1988 is much shorter (282,256 bp) (Wang et al., 2021) than that of the 
+128 
+Va Zuoshan No.1 genome, suggesting quality differences in the genome 
+129 
+assemblies. The resultant 615 contigs accounted for 98.31% (~513.47Mb) of the 
+130 
+total assembled genome, anchored onto 19 pseudo-chromosomes using Hi-C 
+131 
+reads (Figure 2A and B). Repetitive elements accounts for 59.21% of the 
+132 
+genome sequence (Table 1), much higher than the finding (47.06%) in Va 
+133 
+IBCAS1988 genome (Wang et al., 2021). 
+134 
+We predicted 27,635 protein-coding genes using an integrative strategy 
+135 
+combining de novo gene prediction, protein-based homology search, and 
+136 
+transcript data from RNA sequences of various tissues. The ~96.4% of annotated 
+137 
+protein-coding genes could be annotated by at least one public database 
+138 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+6 
+ 
+(InterPro, Nr, GO, KOG, Swissprot, TrEMBL and KEGG) (Table S1). 
+139 
+Moreover, 231 miRNAs, 651 tRNAs, 291 rRNAs, and 412 snRNAs were 
+140 
+annotated. LTR accounts for the largest proportion of transposable elements, 
+141 
+making up ~46.39% of the genome. 
+142 
+The homologous gene dotplotting analysis showed a big difference in 
+143 
+arrangement order of homologous genes between the Va Zuoshan No.1 and Va 
+144 
+IBCAS1988 genomes (Figure S1). Moreover, homologous gene dotplots and 
+145 
+chromosome synteny analysis showed highly similar arrangement order of 
+146 
+homologous genes across Va Zuoshan No.1, Vv PN40024, Vv Cabernet 
+147 
+Sauvignon, and Vr genomes (Figure 2C-E). Va has large inversions on 
+148 
+chromosomes 3, 9, 10, and 18 relative to Vv and Vr (Figure 2D, E). Besides, Va 
+149 
+IBCAS1988 chromosomes have large inversions on Va Zuoshan No.1 
+150 
+chromosomes 1, 5, 15, 16, 18, and 19 (Figure S1). The homologous gene 
+151 
+dotplots also showed a major difference between Va IBCAS1988 and Va 
+152 
+Zuoshan No.1 genomes on chromosome 13. The homologous region between 
+153 
+chromosome 13 of Va IBCAS1988 and Va Zuoshan No.1 is clearly divided into 
+154 
+two parts. The anterior part of chromosome 13 (~19.6 Mb) of Va IBCAS1988 is 
+155 
+homologous to the posterior part of Va Zuoshan No.1 chromosome while the 
+156 
+posterior part of Va IBCAS1988 chromosome is homologous to the anterior part 
+157 
+of Va Zuoshan No.1 chromosome (~12.6 Mb) (Figure S1). Previous studies on 
+158 
+the Va IBCAS1988 genome indicated a major difference between Va 
+159 
+IBCAS1988 and Vv PN40024 on chromosome 13 (Wang et al., 2021). Here, we 
+160 
+found a minimal difference between Va Zuoshan No.1 and Vv PN40024 on 
+161 
+chromosome 13 (Figure 2C). 
+162 
+In order to discover the differences between the previous genome and our 
+163 
+genome. The “putative structural variation (SV) analysis” of genomes based on 
+164 
+the genome alignment showed big differences in the genome structures between 
+165 
+Va IBCAS1988 and Va Zuoshan No.1 genomes. This study identified 171 
+166 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+7 
+ 
+inversions (95.46Mb), 794 translocations (9.86 Mb), and 481 duplications 
+167 
+(3.41Mb) (Table S2) between the Amur grape Zuoshan No.1 and Va 
+168 
+IBCAS1988 genomes. The SV analysis of the genome alignment proved the 
+169 
+large inversions on chromosomes 1, 5, 15, 16, 18, and 19 shown by the 
+170 
+homologous gene dot plots. Moreover, the SV analysis also indicated large 
+171 
+inversions on chromosomes 3, 8, 9, 10, 11, 14, and 17. However, the 122 
+172 
+duplications between the Amur grape Zuoshan No.1 and Va IBCAS1988 
+173 
+genomes involved 97 protein-coding genes. The 99 translocations between the 
+174 
+Amur grape and Va IBCAS1988 genomes involved 82 protein-coding genes. 
+175 
+As to the SNPs, a total of 1,382,913 SNPs were identified between two Va 
+176 
+cultivars, Zuoshan No.1 and IBCAS1988 (Table S2), including 10,733 
+177 
+protein-coding genes. Besides, a total of 379,188 indels were identified, with 
+178 
+insertions affecting 7654 protein-coding genes, and deletions 8356 ones.  
+179 
+The Amur grape Zuoshan No.1 genome had 12018 genomic-specific segments 
+180 
+(17.51 Mb), and the Va IBCAS1988 had 8465 genomic-specific segments 
+181 
+(12.25 Mb), including 2271 Va-specific PAV (presence-absence variation) and 
+182 
+237 Va IBCAS1988 specific PAV genes (Table S3). Many Va Zuoshan 
+183 
+No.1-specific PAV genes include pentatricopeptide repeat-containing protein 
+184 
+and TF genes (Table S4). Many Va IBCAS1988-specific PAV genes include 
+185 
+hypothetical protein genes (Table S5). 
+186 
+ 
+187 
+Comparative genomics analysis of three grape species  
+188 
+Duplicated genes produced by the core-eudicot-common hexaploidy (ECH) 
+189 
+(Jaillon et al., 2007), common to major core eudicot, may have contributed to the 
+190 
+divergence of the species. We found that Vr contains more duplicated genes 
+191 
+(5231, 20.04%) than Va (4494, 16.26%) and Vv (3993, 12.49%) (Table S2), 
+192 
+showing 800-1300 duplicated gene composition difference. This should have 
+193 
+been caused by unbalanced gene losses in the ECH-produced regions. 
+194 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+8 
+ 
+Polyploidization was anticipated to result in genome instability, characterized by 
+195 
+extensive DNA rearrangements and gene losses, especially in the early days after 
+196 
+the tripling of the genome. Notably, the present finding suggest much divergent 
+197 
+evolutionary patterns among these grapes and the ECH, as ancient as 130 million 
+198 
+years ago (Mya), played and has still played a non-negligible role in grape 
+199 
+species divergence and biological innovation. 
+200 
+The Ks distribution of duplicated genes generated by the ECH shows an up 
+201 
+to 3.2% difference in their evolutionary rates. Vv, Vr, and Va, had peaks located 
+202 
+at 1.29 (+/- 0.150), 1.27 (+/-0.165), and 1.25 (+/- 0.135), respectively, indicating 
+203 
+that Va evolved the slowest among the three species (ANOVA, P Value=0.023) 
+204 
+(Figure 3a, Supplementary Table 7). The Ks peaks derived from the orthologous 
+205 
+gene pairs between species were located around 0.026 (Figure 3b, Table S3). 
+206 
+Considering the proposed occurrence time of the ECH, and the Ks between 
+207 
+paralogous generated by each grape ECH event was ~1.25 (Figure 3a), we 
+208 
+calculated the three species should have diverged ~2.3-2.8 Mya based on the Ks 
+209 
+between orthologous of every two grapes was ~0.025-0.026 (Figure 3b). 
+210 
+By using the concatenated multiple sequence alignment of single-copy 
+211 
+genes (5929) inferred by Orthofinder, between the three Vitis genomes and 
+212 
+Aquilegia coerulea, acting as an outgroup, a phylogenetic tree was constructed 
+213 
+and showed that the Va was more closer to Vv in evolution history (Figure 3C). 
+214 
+When Arabidopsis or Boxwood was used as an outgroup, we obtained the same 
+215 
+inference (Figure S2). 
+216 
+The SVs analysis revealed large DNA inversions on Va chromosomes 3, 9, 
+217 
+10, and 18, relative to Vv (both Cabernet Sauvignon and PN40024) and Vr, 
+218 
+consistent with the homologous gene dotplots (Figure 2; Figure 4; Figure S3). 
+219 
+Large DNA rearrangements contributed to the divergence of different grapes. 
+220 
+DNA rearrangements in Vitis chromosomes 19 were inferred across the three 
+221 
+species, large inversions were found between the Vr and Vv chromosomes 3, 7, 
+222 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+9 
+ 
+and 18, especially one large DNA segmental translocation was detected on Vr 
+223 
+and Vv chromosome 18 (Figure 4; Figure S3).  
+224 
+Genome instability due to the ECH resulted in species-specific regions, 
+225 
+further contributing to their biological divergence. A comparison of Va and Vv 
+226 
+showed that Amur grape had 12105 specific genomic segments, accumulated to 
+227 
+15.46 Mb, whereas Vv had 8465 (11.73 Mb), with 1609 Va-specific PAV genes 
+228 
+and 79 Vv-specific PAV genes positioned within these specific genomic 
+229 
+segments (Table S4). The Va-specific PAV genes include those respectively 
+230 
+encoding cold-responsive protein kinase 1, ethylene-responsive transcription 
+231 
+factor, flavonoid 3’,5’-hydroxylase 2, DELLA2, heat shock 70 kDa protein, 
+232 
+methyl-CpG-binding domain protein, and WRKY transcription factor 14 genes 
+233 
+(Table S5). In contrast, Vv-specific PAV genes contain several uncharacterized 
+234 
+genes (Table S6). We found 16 Va-specific PAV genes were cold resistance 
+235 
+related genes. The enriched GO terms of Va-specific PAV genes (P<0.05) 
+236 
+comprise monolayer-surrounded lipid storage body (GO:0012511) and stress 
+237 
+fiber (GO:0001725). The enriched KEGG pathway of Va-specific PAV genes 
+238 
+(P<0.05) comprise Calcium signaling pathway (ko04020), and phosphonate and 
+239 
+phosphinate metabolism (ko00440).  
+240 
+A comparison of Amur grape and Vr genomes found that Va had 7142 
+241 
+specific genomic segments (6.53 Mb), while Vr had 3489 segments (7.68 Mb), 
+242 
+including 266 Va-specific (Table S7) and 88 Vr-specific PAV genes (Table S8). 
+243 
+We found the Vitis03G0393, Vitis11G0466, Vitis16G0074, Vitis14G1585, and 
+244 
+Vitis05G0085 from Va-specific PAV genes were cold resistance related genes. 
+245 
+The enriched GO terms of Va-specific PAV genes (P<0.05) comprise negative 
+246 
+regulation of stomatal complex development (GO:2000122), regulation of 
+247 
+vacuolar 
+transport 
+(GO:1903335) 
+and 
+cellular 
+water 
+homeostasis 
+248 
+(GO:0009992). The enriched KEGG pathway of Va-specific PAV genes 
+249 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+10 
+ 
+(P<0.05) comprise Cutin, suberine, and wax biosynthesis (ko00073), and fatty 
+250 
+acid biosynthesis (ko00061).  
+251 
+We also identified 11503 Vr specific (19.93 Mb) and 5439 Vv 
+252 
+genomic-specific segments (14.26 Mb), including 1556 Vr-specific and 224 
+253 
+Vv-specific PAV genes positioned within these specific segments.  
+254 
+We identified 349 cold resistance related genes (CRGs) in Va, 437 in Vv 
+255 
+and 404 in Vr, accounting 1.26%, 1.37% and 1.01% of the total number of 
+256 
+genes in each genome, respectively. An in silico interaction network of key cold 
+257 
+resistance related genes in Va, Vv, and Vr was constructed as previously 
+258 
+described (Song et al., 2020). Though having the fewest CRG genes in Va, a 
+259 
+research into the robustness of CRG regulatory networks showed that Va CRG 
+260 
+regulatory network was more robust in Va than those in Vv and Vr (Table 2).  
+261 
+In addition to cold resistance related genes, we studied disease resistance 
+262 
+genes. We identified totally 64 nucleotide binding site (NBS) genes in Va, 
+263 
+which is less than in Vv (158 NBS family genes) and in Vr (172 NBS family 
+264 
+genes). 34 Va NBS family genes (53.13% of Va NBS genes) were related to the 
+265 
+ECH and 42 (65.63% of Va NBS family genes) were related to the tandem 
+266 
+duplication. The Ks value of 4 pairs Va NBS genes is less than 0.025 (Figure 
+267 
+S4), showing likely being generated after divergence of Va from the other 
+268 
+grape species. We found 151 ancestral vitis NBS family genes based on the 
+269 
+collinear relationship across three grapes and A. coerulea and also found that 
+270 
+124 of the ancestral NBS genes were lost in Va. In contrast, Vv lost 57 and Vr 
+271 
+lost 54 genes. The evolutionary tree of NBS genes supports this viewpoint. 
+272 
+Figure S5 showed in many branches which existed more than one Vv or Vr 
+273 
+genes contain one or none Va gene. 
+274 
+ 
+275 
+The 
+regulatory 
+mechanisms 
+of 
+nutrient 
+accumulation 
+at 
+four 
+276 
+developmental stages of Vitis amurensis 
+277 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+11 
+ 
+Berries of Va are nutrient-richand contain many phenolic compounds, such as 
+278 
+anthocyanins and procyanidins, and stilbenes such as resveratrol (Chen et al., 
+279 
+2018). Besides, Va berries can be used in wine making because it is rich in 
+280 
+sugars and organic acids. 
+281 
+To reveal the molecular mechanisms of nutrient accumulation in Va cv. 
+282 
+Zuoshan No.1 berries, we profiled the RNA-seq (Table 3) and calculated the 
+283 
+gene expression changes of key biological pathways during grape development, 
+284 
+and correlated the gene expression changes and metabolite accumulation. Four 
+285 
+development stages of berries, including Stage1 (S1, late period of berry 
+286 
+expansion), Stage 2 (S2, Veraison), Stage 3 (S3, the period when berries change 
+287 
+color completely), and Stage 4 (S4, maturity stage) (Figure 5a) were analyzed. 
+288 
+The total sugar content increased significantly, and titratable acidity content 
+289 
+was decreased significantly from S1 to S4 (Figure S6). Widely targeted 
+290 
+metabolomics analysis showed that succinic acid and 2-isopropyl malic acid 
+291 
+contents decreased significantly from S1 to S4. However, there was no 
+292 
+significant change in tartaric acid content in berries at the four stages. 
+293 
+Widely targeted metabolomics analysis showed that the content of 
+294 
+D-glucose, a monosaccharide, significantly increased between S1 and S4. 
+295 
+Trehalose and sucrose, two disaccharides, significantly increased at S3.  
+296 
+Here, RNA-seq analysis is used for joint analysis with the widely targeted 
+297 
+metabolomic analysis. Two starch and sucrose metabolism pathway (Ko00500) 
+298 
+key genes (metabolic pathways key genes were judged based on KEGG 
+299 
+database, and the metabolic pathways key genes were the genes could be 
+300 
+mapped 
+in 
+related 
+KEGG 
+pathways) 
+for 
+sucrose 
+synthesis 
+301 
+(sucrose-6-phosphatase gene (Vitis08G0202)) and trehalose synthesis (alpha, 
+302 
+alpha-trehalase gene (Vitis02G0204)) were significantly up-regulated (fold > 2, 
+303 
+P value < 0.05) at S4 compared to S1. At S3, the key genes for sucrose synthesis 
+304 
+(sucrose-phosphate synthase (Vitis05G0995 and Vitis18G2061)) and trehalose 
+305 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+12 
+ 
+synthesis (alpha, alpha-trehalase gene (Vitis02G0204)) were significantly 
+306 
+up-regulated. 
+In 
+contrast, 
+the 
+key 
+gene 
+of 
+trehalose 
+degradation 
+307 
+beta-fructofuranosidase (Vitis16G0541) was significantly down-regulated (fold 
+308 
+< 0.5, P value < 0.05) at S3. At S4, the key genes for sucrose synthesis 
+309 
+(sucrose-6-phosphatase 
+(Vitis08G0202)), 
+sucrose-phosphate 
+synthase 
+310 
+(Vitis05G0995 and Vitis18G2061), trehalose synthesis (alpha, alpha-trehalase 
+311 
+gene (Vitis02G0204)) were significantly up-regulated. In contrast, sucrose 
+312 
+metabolism-related 
+genes 
+(beta-fructofuranosidase, 
+Vitis16G0541, 
+and 
+313 
+Vitis02G0497) were significantly down-regulated at S4 than S2. 
+314 
+Widely targeted metabolomics analysis showed that the resveratrol content 
+315 
+increased significantly from S1 to S4, but there was no significant change in the 
+316 
+resveratrol content between berries sampled at S1 and S2. In the stilbenoid, 
+317 
+diarylheptanoid, and gingerol biosynthesis pathway (Ko00945), stilbene 
+318 
+synthase competitively convert the p-Coumaroyl-CoA synthesized by 
+319 
+trans-cinnamate 4-monooxygenase to resveratrol. In contrast, shikimate 
+320 
+O-hydroxycinnamoyltransferase 
+and 
+5-O-(4-coumaroyl)-D-quinate 
+321 
+3'-monooxygenase could convert the same to caffeoylquinic acid. From S1 to 
+322 
+S2, 
+the 
+key 
+genes 
+for 
+caffeoylquinic 
+acid 
+synthesis, 
+shikimate 
+323 
+O-hydroxycinnamoyltransferase 
+gene 
+(Vitis11G0727) 
+and 
+324 
+5-O-(4-coumaroyl)-D-quinate 3'-monooxygenase gene (Vitis08G0528) were 
+325 
+significantly 
+down-regulated. From 
+S1 
+to 
+S3, 
+the 
+trans-cinnamate 
+326 
+4-monooxygenase gene (Vitis06G0746) was significantly up-regulated, and the 
+327 
+shikimate 
+O-hydroxycinnamoyltransferase 
+gene 
+(Vitis11G0727) 
+was 
+328 
+significantly down-regulated. Meanwhile, the content of caffeoylquinic acid was 
+329 
+significantly down-regulated, and the resveratrol content increased significantly. 
+330 
+From S1 to S4, the trans-cinnamate 4-monooxygenase gene (Vitis06G0746) was 
+331 
+significantly up-regulated, while the shikimate O-hydroxycinnamoyltransferase 
+332 
+(Vitis11G0727) 
+and 
+5-O-(4-coumaroyl)-D-quinate 
+3'-monooxygenase 
+333 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+13 
+ 
+(Vitis08G0528) genes were significantly down-regulated. Meanwhile, the 
+334 
+content of caffeoylquinic acid decreased significantly, while the resveratrol 
+335 
+content increased significantly. The canonical correlation analysis (CCA) 
+336 
+showed that the trans-cinnamate 4-monooxygenase gene (Vitis06G0746), 
+337 
+related to the resveratrol content, and shikimate O-hydroxycinnamoyltransferase 
+338 
+(Vitis11G0727) 
+and 
+5-O-(4-coumaroyl)-D-quinate 
+3'-monooxygenase 
+339 
+(Vitis08G0528) gene are also related to the caffeoylquinic acid content (Figure 
+340 
+5b, C).  
+341 
+Divergently expressed genes (DEGs) were checked (Table 4) between 
+342 
+S1-S4. They included the putative ripening-related gene (Vitis08G0132), the 
+343 
+chalcone 
+synthase 
+2 
+gene 
+(Vitis05G0886), 
+the 
+flavonoid 
+344 
+3-O-glucosyltransferase gene (Vitis16G0156), and sugar transporter SWEET2a 
+345 
+(Vitis10G0718) gene, the ethylene-responsive transcription factor 3-like gene 
+346 
+(Vitis12G0453), the UDP-glucose: flavonol synthase/flavanone 3-hydroxylase 
+347 
+gene (Vitis08G0277), and some bHLH, MYB transcription factors, and WD 
+348 
+repeat-containing protein.  
+349 
+Exploring Amur grape “putative sex-determining region (SDR)” 
+350 
+A previous study showed that Vv SDR is located on the segment between 
+351 
+4,801,876 bp and 5,061,548 bp on chromosome 2 and involves 15 
+352 
+protein-encoding genes (Massonnet et al., 2020). The 5’ terminus of the SDR 
+353 
+segment has a PPR-containing protein-coding gene and the 3’terminus has an 
+354 
+APT3 gene (Massonnet et al., 2020). Another study showed the SDR is located 
+355 
+on the segment between 4,810,929 bp and 4,921,949 bp on chromosome 2 
+356 
+which overlapped with the previous SDR region (Badouin et al.,2020). We 
+357 
+explored the Vv SDR syntenic region between 5055465 and 5198824 on Amur 
+358 
+grape chromosome 2, showing good synteny between two species. To 
+359 
+determine whether the Amur grape putative SDR region is related to sex, we 
+360 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+14 
+ 
+adopted the selective sweep method, which allows analysis of fewer samples 
+361 
+than GWAS (Kim et al., 2020). 
+362 
+Through re-sequencing and analyzing SNPs in 24 Amur grape individuals, 
+363 
+including five male, ten female, and nine hermaphroditic individuals (including 
+364 
+four tetraploids), we performed phylogeny analysis and examined genetic 
+365 
+population structure among the Amur plants (Table S9). A set of 2588125 
+366 
+high-quality SNPs were inferred and explored to characterize the relationship 
+367 
+among these 24 Va individuals and the Va reference genome (this study). A 
+368 
+phylogenetic tree was constructed based on the SNPs of the 24 Va individuals 
+369 
+and indicated that the individuals could be divided into two groups. However, 
+370 
+the grouping proved unrelated to sex division (Figure 6A). Then, a genetic 
+371 
+population structure analysis was performed and showed that the individuals 
+372 
+could be divided into two groups, and the grouping pattern proved unrelated to 
+373 
+sex division, either (Figure 6B). Alternatively, based on the SNPs in the SDR 
+374 
+regions of the 24 individuals, we reconstructed a phylogenetic tree. Notably, we 
+375 
+found that the tree had groups consistent to sex division (Figure 6C). Grossly, 
+376 
+the above analysis showed that the genetic relationship at the population level is 
+377 
+not related to sex division, while the SNP difference in SDR regions is related to 
+378 
+gender.  
+379 
+Therefore, a selective sweep analysis was performed according to the sex 
+380 
+groups rather than the population structure. One of the selected regions inferred 
+381 
+(both θπ ratios and FST in the top 5% range) from the comparison of male and 
+382 
+female accessions totally overlapped the Amur grape putative SDR. We found 
+383 
+that the Amur grape putative SDR contains 16 genes (Vitis02G0494, 
+384 
+Vitis02G0495, Vitis02G0496, Vitis02G0497, Vitis02G0498, Vitis02G0499, 
+385 
+Vitis02G0500, Vitis02G0501, Vitis02G0502, Vitis02G0503, Vitis02G0504, 
+386 
+Vitis02G0505, 
+Vitis02G0506, 
+Vitis02G0507, 
+Vitis02G0508 
+and 
+387 
+Vitis02G0509), respectively homologous to Vv SDR genes associated with sex 
+388 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+15 
+ 
+(Figure 6D). Another selected region inferred between male and hermaphroditic 
+389 
+groups overlapped part of the Amur grape putative SDR gene Vitis02G0494 
+390 
+(Figure 6D). However, none of the selected regions inferred between female and 
+391 
+hermaphroditic groups overlapped the Amur grape putative SDR (Figure 6D).  
+392 
+Previous studies showed that the SDR of Vv M and H haplotype genes 
+393 
+include those respectively encoding PPR-containing proteins, a YABBY 
+394 
+transcription 
+factor 
+(VvYABBY3), 
+a 
+VviSKU5 
+(Skewed5), 
+a 
+395 
+beta-fructofuranosidase, an aldolase, a trehalose-6-phosphate phosphatase 
+396 
+(TPP), an inaperturate pollen1 (VviINP1), an exostosin family protein, KASIII, 
+397 
+two 
+TPR-containing 
+protein, 
+a 
+PLATZ 
+transcription 
+factor, 
+three 
+398 
+Flavin-containing monooxygenases (FMO), a hypothetical protein (VviFSEX), 
+399 
+a WRKY transcription factor, and an Adenine phosphoribosyltransferase 
+400 
+(VviAPT3). The SDR of Vv F haplotypes included genes encoding a 
+401 
+PPR-containing protein, a YABBY transcription factor (VviYABBY3), a 
+402 
+VviSKU5, a beta-fructofuranosidase, an Aldolase, a Trehalose-6-phosphate 
+403 
+phosphatase (TPP), an inaperturate pollen1 (VviINP1), an exostosin family 
+404 
+protein, a KASIII, a PLATZ transcription factor. The F haplotypes also had four 
+405 
+flavin-containing monooxygenases, a hypothetical protein (VviFSEX), a 
+406 
+WRKY transcription factor, and an Adenine phosphoribosyltransferase 
+407 
+(VviAPT3), respectively (Massonnet et al., 2020).   
+408 
+In Va, the F haplotypes included 16 genes encoding a PPR-containing 
+409 
+protein, a YABBY transcription factor (VviYABBY3), a VviSKU5, a 
+410 
+beta-fructofuranosidase, a fusion protein of aldolase and trehalose-6-phosphate 
+411 
+phosphatase (TPP), an inaperturate pollen1 (VviINP1), an uncharacterized 
+412 
+protein (homologous to VIT_202s0154g00120 of Vv PN40024), an exostosin 
+413 
+family protein, a KASIII, and a PLATZ transcription factor. Besides, the F 
+414 
+haplotypes contained three flavin-containing monooxygenases, a hypothetical 
+415 
+protein (VviFSEX), a WRKY transcription factor, and an adenine 
+416 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+16 
+ 
+phosphoribosyltransferase (VviAPT3), respectively. The SDR of Va F 
+417 
+haplotypes had an additional uncharacterized protein gene (Vitis02G0500) and 
+418 
+lost one FMO gene, as compared to the Vv Cabernet Sauvignon F haplotypes 
+419 
+(Figure 7).  
+420 
+In Vv, the female-specific DNA polymorphisms at -13, -5, and +2 bp may 
+421 
+reduce transcription and/or alter mRNA decay of the female PLATZ 
+422 
+transcription factor allele on Vv SDR (Iocco-Corena et al., 2021). However, Va 
+423 
+lacks these DNA polymorphisms upstream of the ATG of the PLATZ 
+424 
+transcription factor gene in the Amur grape putative SDR. In other words, there 
+425 
+is no difference of DNA polymorphisms between female, hermaphrodite, and 
+426 
+male Va individuals within 20 bp upstream of the PLATZ transcription factor 
+427 
+gene.  
+428 
+We found some other selected regions may be related to sex-determination 
+429 
+(θπ ratios and FST estimates in the top of 5%). For example, the region (chr3: 
+430 
+6730001bp-8840000 bp) from the comparison of male and female accessions, 
+431 
+the region (chr16:3565001bp-4830000bp) from the comparison of male and 
+432 
+female accessions, the region (chr16:15590001bp-18015000bp) from the 
+433 
+comparison 
+of 
+male 
+and 
+female 
+accessions, 
+and 
+the 
+region 
+434 
+(chr17:11450001bp-13785000bp) 
+from the comparison of male and 
+435 
+hermaphroditic accessions. In these regions, there are the MADS-box protein 
+436 
+AGL62 genes (Vitis03G0709, Vitis03G0710, Vitis03G0711 and Vitis03G0712) 
+437 
+from chr3: 6730001bp-8840000 bp. We found that there are the 
+438 
+Pentatricopeptide 
+repeat-containing 
+protein 
+genes 
+in 
+439 
+chr16:3565001bp-4830000bp 
+(Vitis16G0214 
+and 
+Vitis16G0215), 
+in 
+440 
+chr16:15590001bp-18015000bp 
+(Vitis16G0545), 
+and 
+in 
+441 
+chr17:11450001bp-13785000bp (Vitis17G0924). These Pentatricopeptide 
+442 
+repeat-containing genes are the homologs of putative SDR gene Vitis02G0494 
+443 
+(a Pentatricopeptide repeat-containing gene).  
+444 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+17 
+ 
+ 
+445 
+Discussion 
+446 
+Vitis mainly include the Eurasian grape, East Asian grape, and the American 
+447 
+grape. The sequence of the Vv genome (PN 40024), of a Eurosian grape, was 
+448 
+published in 2007 (Jaillon et al., 2007) and incurred researches to understand 
+449 
+grape biology (Wang et al., 2018a; Wang et al., 2018b; Wang et al., 2019; 
+450 
+Liang et al., 2019). Given that its genome has only undergone one 
+451 
+polyploidization, the ECH, after split from the basal endicots, it is often used as 
+452 
+outgroup reference for studying the other endicot genomes (Wang et al., 
+453 
+2018a). The sequence of Vr RGM genome, of an American grape, was published 
+454 
+in 2019 (Girollet et al., 2019). The Cabernet Sauvignon genome sequence, a Vv 
+455 
+variety, was later published, being assembled using the Hi-C technology 
+456 
+(Massonnet et al., 2020).  
+457 
+Here, we assembled the genomes of Vitis amurensis. The above analysis 
+458 
+showed that the assembled Va genome sequence reported here is much 
+459 
+improved as to the previous one. Based on the present genome sequence, we 
+460 
+discovered a likely assemble error in chromosome 13 of the previous grape 
+461 
+genome sequence.  
+462 
+The availability of multiple grape genome sequences allows for comparing 
+463 
+and analyzing gene sequences of several grape species so that we could detect 
+464 
+the evolution history and other important comparative genomics information 
+465 
+across the grapes. In the present study, gene synteny analysis showed the 
+466 
+arrangement order of orthologous genes between Va, Vv, and Vr genomes are 
+467 
+much conservative. We have to note here, genome instability due to the ECH, as 
+468 
+ancient as 130 Mya, contributed to the divergence of the grape genomes. 
+469 
+Actually, a characterization of homologous genes showed that Vr is the most 
+470 
+conservative one among the three. Vr contains more paralogous genes produced 
+471 
+by the ECH, comparing with Va and Vv, showing the conservativeness of the Vv 
+472 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+18 
+ 
+genome, and implying that Vr may much resemble their common ancestor. 
+473 
+Moreover, more orthologous genes were preserved between Vr and the other two 
+474 
+grapes (Vv and Va) than between Vv and Va. Besides, phylogenetic analysis 
+475 
+supported that Vr was the first one to split from the other grapes. These show that 
+476 
+Vr genome may be taken as a better reference for Vitis biology and even all the 
+477 
+eudicots. The present finding that a 130-Mya polyploidization contributed to the 
+478 
+species divergence of grapes reminded us that it may has played a non-negligible 
+479 
+role in grape divergence and genetic innovation, as to a similar finding in rice 
+480 
+and other grasses (Wang et al., 2011). Possibly, the genomic feature of 
+481 
+thousands of duplicated genes in crops could be manipulated to breed high-yield 
+482 
+and/or high-quality crops. 
+483 
+Species-specific genomic segments also make up a large proportion of the 
+484 
+genomes for all the three species, implying significant genomic differences 
+485 
+among the three species. SV may generate phenotypic differences (Chawla et al., 
+486 
+2021), for example, Va being more cold-resistant than the other two species. 
+487 
+Biased sequence preservation in Va may have contributed to its capability to 
+488 
+resist coldness. Sequence variations, especially incurred by the ECH, may 
+489 
+generate phenotypic differences. Here, we found that the Va-specific PAV genes 
+490 
+contain cold resistance-related genes (CRG), such as those encoding the 
+491 
+ethylene-responsive transcription factors and cold-regulated 413 inner 
+492 
+membrane proteins. The robustness of CRG regulatory networks in Va is higher 
+493 
+than those in Vv and Vr. This showed that the stronger cold resistance of Va may 
+494 
+be related to the preferential preservation of cold-related genes, and Va 
+495 
+cold-related genes may constitute a more robust and effective interaction 
+496 
+network. A study of CRGs in angiosperms, including Vv, supported the 
+497 
+expansion of them was significantly related to the occurrence of polyploidization 
+498 
+(Song et al., 2020). The present study provides further evidence that the ECH, 
+499 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+19 
+ 
+though occurred 130-150 million ago, still contribute to enhance resistance to 
+500 
+coldness in plants. 
+501 
+Multi-omics analysis of the Va was performed to understand the mechanism 
+502 
+underlying the regulation of nutrient accumulation in the Vitis amurensis over its 
+503 
+developmental period. Va is sourer than Vv, a factor that needs urgent resolution 
+504 
+by breeders, in that high sourness makes the fruits taste unpleasant, and the 
+505 
+wine tastes unbalanced. The present analysis revealed that the total sugar 
+506 
+increased continuously during the “Zuoshan No.1” berry development, while the 
+507 
+total sugar content in this species/variety was almost equal to that in Vv. Further 
+508 
+analyses revealed that the total acid content decreased significantly during 
+509 
+“Zuoshan No.1” berry development. Wide target metabolome analysis showed 
+510 
+no decrease in tartaric acid content during berry of “Zuoshan No.1” 
+511 
+development, while those of citric acid and several malic acid types decreased 
+512 
+significantly in “Zuoshan No.1”. Combined transcriptome and metabolome 
+513 
+analyses revealed that sucrose-6-phosphatase, alpha, alph-trehalase, and beta 
+514 
+fructofuranosidase genes jointly regulate the accumulation of sucrose and 
+515 
+trehalose during “Zuoshan No.1” development. The DEGs during S1-S4 
+516 
+comprises the ripening-related protein-like gene and chalcone synthase gene, 
+517 
+which is the first enzyme activated the flavonoid biosynthetic pathway (Waki et 
+518 
+al., 2020), UDP-glucose: flavonoid 3-O-glucosyltransferase gene, which 
+519 
+promotes anthocyanin accumulation in grape (Yamazaki et al., 2021), SWEET 
+520 
+gene, which is a sugar transporter and uniporter gene (Chong et al., 2014), 
+521 
+ethylene-responsive transcription factor 3-like gene, certaining bHLH, MYB 
+522 
+transcription factor genes, and WD repeat-containing protein genes. Most of 
+523 
+these genes may be involved in Va berry ripening. Therefore, we infer that these 
+524 
+DEGs may play a central role in the process of Va berry ripening.   
+525 
+The Va genome was further analyzed to understand the relationship between 
+526 
+different Vitis amurensis phenotypes and genotypes. Given the scarcity of 
+527 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+20 
+ 
+hermaphroditic Vitis amurensis in nature, we explored the sex determination 
+528 
+region in this grape. Previous studies have uncovered the SDR of Vv (Massonnet 
+529 
+et al., 2020). The three Vv types (varieties) are determined by the genotype at the 
+530 
+SDR. Males are heterozygous for the male and female haplotypes (MF), females 
+531 
+are homozygous (FF), and cultivated Vv hermaphrodites are either homozygous 
+532 
+for hermaphrodite haplotypes (HH) or heterozygous (HF). Previous studies have 
+533 
+shown that the SDR of Vv M and H haplotypes have 2 TPR-containing protein 
+534 
+genes and 3 Flavin-containing monooxygenases (FMO), and the SDR of Vv F 
+535 
+haplotypes contain 4 Flavin-containing monooxygenases (FMO) without 
+536 
+TPR-containing protein gene (Massonnet et al., 2020). This implies that the type 
+537 
+or number of genes in the SDR of grapes vary between sexes.  
+538 
+Further analyses to clarify whether SDR is also present in Va revealed that 
+539 
+one fragment from Va is homologous to Vv SDR in Vitis amurensis and call it 
+540 
+the Amur grape putative SDR. In the present study, we sequenced the female Va 
+541 
+genome. Therefore, further analyses were performed to explore whether the 
+542 
+types and numbers of genes in female Va putative SDR were consistent with 
+543 
+those in the female Vv SDR. Selective sweep analysis of male, female, and 
+544 
+hermaphroditic individuals revealed one selective region from the comparison 
+545 
+of male and female accessions overlapped total the Amur grape putative SDR 
+546 
+including 16 genes all homologous to Vv SDR genes (such as APT3 gene, 
+547 
+PLATZ transcription factor gene and TPP gene). A previous study inferred that 
+548 
+VaAPT3 gene (orthologous to Vitis02G0508 in the present Va genome), located 
+549 
+in Amur grape putative SDR, was associated to sex determination (Men et al., 
+550 
+2021). Recently, the PLATZ transcription factor gene has been found to 
+551 
+determine the grape's sexuality (Iocco-Corena et al., 2021). The TPP gene also 
+552 
+located in Amur grape putative SDR and TPP genes in many species have also 
+553 
+been associated with sex determination, flower development, reproduction, and 
+554 
+synthesis of plant hormones, among other functions (Kataya et al., 2020; Qiu et 
+555 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+21 
+ 
+al., 2020). PtTPPs displayed a specific expression pattern in seven 
+556 
+developmental stages of Populus male and female floral buds (Gao et al., 2021). 
+557 
+Trehalose-6-phosphate phosphatase (TPP) controls inflorescence architecture in 
+558 
+maize through sugar signal modification (Satoh-Nagasawa et al., 2006). This 
+559 
+suggests that the hypothetical Va SDR may be related to sex determination. One 
+560 
+selected region was from the comparison of male and hermaphroditic accessions 
+561 
+overlapped part of Amur grape putative SDR including only one gene 
+562 
+(PPR-containing gene), which is homologous to the Vv SDR gene 
+563 
+PPR-containing gene. Additionally, some selective regions may be related to 
+564 
+Va sex determining. Previous study indicated that some PPR-containing 
+565 
+proteins genes could restore fertility to cytoplasmic male-sterile plants 
+566 
+(Bentolila et al., 2002; Koizuka et al., 2003; Kazama et al., 2003; Hu et al., 
+567 
+2012). A study on RNA-Seq analysis of three flower sex types in grapevine 
+568 
+showed some grape PPR-containing genes could be essential for carpel 
+569 
+development (Ramos et al., 2014). The study also inferred that PPR-containing 
+570 
+gene may be essential for the perfect development of sexual floral organs. Here, 
+571 
+we found that some other selected regions comprises many PPR-containing 
+572 
+protein genes, allowing for further exploration of their likely contribution to 
+573 
+sex determination.  
+574 
+However, no selected region overlapped the Amur grape putative SDR 
+575 
+from the comparison of male and hermaphroditic accessions was found. We 
+576 
+found that the type and arrangement order of all genes in the putative SDR of 
+577 
+female Va and the SDR of Vitis vinifera were similar. However, compared with 
+578 
+Vv F haplotypes, the putative SDR of female Vitis amurensis has lost one FMO 
+579 
+gene and contains one extra Uncharacterized protein. The Uncharacterized 
+580 
+protein gene has never been found in SDR of Vv Cabernet Sauvignon and Vv. 
+581 
+sylvestris (Massonnet et al., 2020). The role of the Uncharacterized protein gene 
+582 
+in Vitis amurensissex determination needs further exploration.  
+583 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+22 
+ 
+In the other selective region (chr17:11450001bp-13785000bp)， we found 
+584 
+from the comparison of Va male and hermaphroditic accessions, there are many 
+585 
+MADS-box protein AGL62 genes. Previous study inferred MADS-box protein 
+586 
+genes may be also related to developing male and female flowers (Hardenack 
+587 
+et al., 1994; Ainsworth et al., 1995). We consider that the region  
+588 
+(chr17:11450001bp-13785000bp) may be also related to Va sex-determining. 
+589 
+Plus those selective regions that have been found to contain the PPR-containing 
+590 
+proteins genes, it should be explored whether Vitis amurensis sex may be 
+591 
+determined by several different genomic regions in the future. 
+592 
+ 
+593 
+Materials and methods 
+594 
+Plant materials and DNA sequencing 
+595 
+Fresh leaves and stems of Vitis amurensis cv. “Zuoshan No. 1” were sampled for 
+596 
+DNA extraction and sequencing. Total genomic DNA was extracted using the 
+597 
+CTAB (cetyltrimethylammonium Ammonium Bromide)) method (Tel-Zur et al., 
+598 
+1999). The library for ONT sequencing (Oxford Nanopore Technology, Oxford, 
+599 
+UK) was constructed using large (>15 kb) DNA fragments with the 
+600 
+SQK-LSK109 Ligation Sequencing Kit and sequenced using the ONT platform. 
+601 
+Adapters and low-quality nucleotides (with <7 mean quality score) were 
+602 
+trimmed off. Paired-end libraries with 350 bp insert sizes were constructed 
+603 
+following the manufacturer’s protocols and sequenced using the MGIseq 2000 
+604 
+platform (MGI Tech Co. LTD, Guangdong, China). The MGIseq reads were 
+605 
+filtered 
+using 
+the 
+SOAPnuke1.5.6 
+online 
+software 
+606 
+(https://github.com/BGI-flexlab/SOAPnuke). 
+For 
+the 
+high-throughput 
+607 
+chromosome conformation capture (Hi-C) analysis, fresh leaves and stems of 
+608 
+Vitis amurensis cv. “Zuoshan No. 1” were treated following previous methods 
+609 
+(Yang et al., 2020).  
+610 
+ 
+611 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+23 
+ 
+Genome size and heterozygosity estimation  
+612 
+The genome size was estimated from the MGIseq reads using k-mer analysis, 
+613 
+and the k-mer depth-frequency distribution was generated using the jellyfish 
+614 
+software (Marçais and Kingsford, 2011). The genome size and heterozygosity 
+615 
+were calculated using the genomeScope software (Vurture et al., 2017).  
+616 
+ 
+617 
+De novo genome assembly  
+618 
+Long 
+ONT 
+reads 
+were 
+corrected 
+using 
+Canu 
+619 
+(https://github.com/marbl/canu/releases), and de novo assembled using the 
+620 
+Smartdenovo software (https://github.com/ruanjue/smartdenovo). The Racon 
+621 
+(https://github.com/isovic/racon) 
+and 
+Medaka 
+622 
+(https://github.com/nanoporetech/medaka) software were applied to polish the 
+623 
+assembled contigs. The polished, assembled data were then corrected using 
+624 
+Pilon (v.1.22, https://github.com/broadinstitute/pilon/). Next, the Haplomerger2 
+625 
+pipeline reduced the assembly to ~522 Mb. After that, the purged assembled 
+626 
+contigs were anchored into 19 pseudochromosomes using the Juicer with the 
+627 
+parameters “-g draft -s MboI” and 3D de novo assembly (3D-DNA) pipeline 
+628 
+with the parameters “-m haploid -r 2” (Durand et al., 2016; Dudchenko et al., 
+629 
+2017).  
+630 
+ 
+631 
+Genome annotation and gene prediction 
+632 
+Transposable elements (TEs) were predicted using combined homology-based 
+633 
+comparisons with RepeatMaskerv4.0.7, RepeatProteinMask v4.0.7, and de novo 
+634 
+approaches with Piler (Edgar and Myers, 2005) (http://www.drive5.com/piler/), 
+635 
+RepeatScout, and RepeatModeler. Tandem repeats were identified using the 
+636 
+Tandem 
+Repeats 
+Finder 
+v4.09 
+(Benson., 
+1999) 
+637 
+(http://tandem.bu.edu/trf/trf.html) and LTR_FINDER v1.06 (Zhao and Hao, 
+638 
+2007) (http://tlife.fudan.edu.cn/ltr_finder/). Furthermore, the Va protein-coding 
+639 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+24 
+ 
+gene set was deduced by de novo, homology, and evidence-based gene 
+640 
+prediction (transcriptome data) (Guo et al., 2021). The transcript evidence 
+641 
+included transcripts assembled from the RNA-Seq data of different tissues (leaf, 
+642 
+stem, flowers, tendril, and fruit; Table S9). Next, the predicted genes were 
+643 
+functionally annotated using a previous method (Guo et al., 2021). Moreover, 
+644 
+tRNA was identified using tRNAscan-SE 1.3.1 (Lowe and Eddy, 1997) 
+645 
+(http://lowelab.ucsc.edu/tRNAscan-SE/), BLASTN identifiedrRNA, while 
+646 
+INFERNAL (http://infernal.janelia.org/) identified miRNA and snRNA.  
+647 
+ 
+648 
+Genome homology inference 
+649 
+Protein sequences from one plant were searched against themself and those 
+650 
+another plant genome using BLASTP (Camacho et al., 2009) to find the best, 
+651 
+secondarily best, and the other matches with E_value<1E-5. Dot plots were 
+652 
+produced using the WGDI package of Python (Sun et al., 2021). Colinear genes 
+653 
+were inferred using the -icl subprogram contained in WGDI package with 
+654 
+default parameters. Nucleotide substitution rates were estimated between 
+655 
+colinear homologous genes using the YN00 program in the PAML (v4.9h) 
+656 
+package implementing the Nei-Gojobori approach (Yang, 2007).   
+657 
+ 
+658 
+Species tree 
+659 
+A rooted species tree was inferred using the Orthofinder (version 2.5.4) with the 
+660 
+“-M msa” parameter (Emms and Kelly, 2015; Emms and Kelly, 2019) based on 
+661 
+5929 single-copy genes. 
+662 
+ 
+663 
+Identification and characterization of cold-related genes 
+664 
+The cold-related genes in the three grape species and gene network robustness 
+665 
+were determined following previous methods (Song et al., 2020). 
+666 
+ 
+667 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+25 
+ 
+Structural variations analysis 
+668 
+The SV analysis was performed using the NUCmer program embedded in 
+669 
+MUMmer with the parameters “-mumreference -g 1000 -c 90 -l 40”. (Yu et al., 
+670 
+2021). Genomic-specific segment analysis was performed as follows. First, the 
+671 
+query genome sequences was split into 500bp windows with a overlapping step 
+672 
+size of 100bp. and then all the 500bp windows subsequnces was aligned against 
+673 
+the references genome by BWA-mem with the parameters “-w 500 -M”. The 
+674 
+500bp window that failed to align or aligned with less than 25% coverage were 
+675 
+defined as the 
+genomic-specific segments. 
+The genes 
+within the 
+676 
+genomic-specific segments, were defined as the specific-genes of the query 
+677 
+genome (species-specific PAV genes). Structural variation plots was drawn 
+678 
+using ggplot2. 
+679 
+ 
+680 
+Widely targeted metabolomic analysis 
+681 
+Berries from four growth stages were used for this study, including Stage1 (S1, 
+682 
+the late period of berry expansion), Stage 2 (S2, Veraison), Stage 3 (S3, the 
+683 
+period when berries change color completely), and Stage 4 (S4, maturity stage). 
+684 
+Three biological replicates from each stage were used for metabolome analysis. 
+685 
+The Metware Biotechnology Co., Ltd. (Wuhan, China) performed the 
+686 
+metabolome extraction and analysis using previous methods (Ma et al., 2021). 
+687 
+The metabolites were identified using the Metware database (MWDB), and 
+688 
+metabolite abundances were determined according to the metabolite peak areas. 
+689 
+Metabolites were considered as differentially accumulated when the variable 
+690 
+importance in projection (VIP) was ≥1, and the absolute log2 (fold change) was 
+691 
+≥1. Metabolic pathways were constructed according to the KEGG database. 
+692 
+ 
+693 
+Total sugar and titratable acidity content analysis 
+694 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+26 
+ 
+Berries from four growth stages (S1, S2, S3 and S4) were grind into 
+695 
+homogenate used for this study. Three biological replicates from each stage 
+696 
+were used for metabolome analysis. We analyzed the total sugar content using 
+697 
+sulfuric acid-anthrone colorimetric method and the instrument used is Lanbda 
+698 
+365 ultraviolet/visible spectrophotometer. We analyzed the titratable acidity 
+699 
+content using acid-base titration and the standard solution is Sodium hydroxide 
+700 
+standard solution (0.05 mol/L). 
+701 
+ 
+702 
+RNA-seq 
+703 
+Just as we analyzed the metabolome, berries from four stages, S1, S2, S3, and 
+704 
+S4, were used for the RNA-seq analysis. Three biological replicates from each 
+705 
+berry stage were used for RNA-seq analysis. Novogene Co. LTD performed the 
+706 
+RNA-seq experiments on the Illumina Novaseq 6000 platform (Illumina, CA, 
+707 
+USA) following the manufacturer’s instructions and previously described steps 
+708 
+(Zhang et al., 2021). All paired-end reads were mapped to the Va genome using 
+709 
+Hisat2 v2.0.5. Expression levels were calculated using the fragments per 
+710 
+kilobase of exon model per million mapped fragments (FPKM). The DEGSeq R 
+711 
+package (1.20.0) was used to identify differentially expressed genes (DEGs). 
+712 
+Genes with adjusted P value < 0.05 and fold changes ≥ 2 or ≤ -2 were identified 
+713 
+as differentially expressed genes (DEGs). 
+714 
+ 
+715 
+Integrated analysis of metabolome and RNA-seq 
+716 
+For the combined analysis of all metabolome and transcriptome, the canonical 
+717 
+correlation analysis (CCA) was performed on the metabolome and RNA-seq 
+718 
+data using CCA package in the R statistical environment (Gonzalez et al., 
+719 
+2008). Next, the WGCNA (Weighted correlation network analysis) was 
+720 
+performed on all RNA-seq and metabolome data using the WGCNA package in 
+721 
+the R statistical environment.  
+722 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+27 
+ 
+ 
+723 
+Population genetic analysis 
+724 
+Essentially, 24 Amur grape genotypes were re-sequenced based on the Va 
+725 
+genome assembled in this studyand used for calling SNPs. Concurrently, the 
+726 
+ANNOVAR package was employed for population genetic analysis. Ten folds 
+727 
+Va genome size of clean reads data of 24 kind of Amur grapewere separately 
+728 
+obtained on the MGI2000 platform. The SNPs in LD were filtered using PLINK 
+729 
+with a window size of 50 SNPs (advancing 5 SNPs at a time) and a 0.5 r2 
+730 
+threshold. The PCA was conducted using GCTA (v1.25.2) (Yang et al., 2011). 
+731 
+Furthermore, the population structure was analyzed using FRAPPE, and the 
+732 
+MLtree was constructed using SNPhylo (Lee et al., 2014) to clarify the 
+733 
+phylogenetic relationships. 
+734 
+ 
+735 
+Selective sweep analysis 
+736 
+Selective sweep analysis was performed using a previous method (Lin et al., 
+737 
+2022). In briefly, Fst and θπ were used to detect candidate selective regions 
+738 
+between the three grape populations, Fst and θπ were calculated using 
+739 
+PopGenome (Brigida et al., 2016; Pfeiferet et al., 2014); regions with both θπ 
+740 
+ratios and FST estimates in the top of 5% were considered as the selection 
+741 
+regions.  
+742 
+ 
+743 
+Accession number 
+744 
+The V. amurensis genome project was deposited at NCBI under BioProject 
+745 
+number PRJNA868106 and BioSample SAMN30308461. 
+746 
+ 
+747 
+Acknowledgements 
+748 
+This research was supported by the Key Research and Development Project of 
+749 
+Shandong Province (2021LZGC025; 2022CXGC010605), Improved Variety 
+750 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+28 
+ 
+Program of Shandong Province (2020LZGC008), Shandong Natural Science 
+751 
+Funding (ZR2020QC145), Scientific Research Guide Foundation of Shandong 
+752 
+Academy of Grape (SDAG2021A01; SDAG2021A02), Shandong Academy of 
+753 
+Agricultural Sciences, Introduction and Training of High-level Talents 
+754 
+(CXGC2022E15), National Horticulture Germplasm Resources Center-Amur 
+755 
+Grapevine Germplasm Resources Branch Center (NHGRC2022-NH04) and 
+756 
+Species and variety Germplasm resources protection project (2130135).  
+757 
+ 
+758 
+Conflict interest statement 
+759 
+No conflict of interest declared. 
+760 
+ 
+761 
+References 
+762 
+Ainsworth C, Crossley S, Buchanan-Wollaston V, Thangavelu M, Parker J 
+763 
+(1995) Male and female flowers of the dioecious plant sorrel show different 
+764 
+patterns of MADS box gene expression. Plant Cell 7:1583-1598.  
+765 
+Badouin H, Velt A, Gindraud F, Flutre T, Dumas V, Vautrin S, Marande W 
+766 
+et al (2020) The wild grape genome sequence provides insights into the 
+767 
+transition from dioecy to hermaphroditism during grape domestication. 
+768 
+Genome Biol 21:223. 
+769 
+Benson, G (1999) Tandem repeats finder: a program to analyze DNA se
+770 
+quences. Nucleic Acids Res 27: 573-580.  
+771 
+Bentolila S, Alfonso AA, Hanson MR. A (2002) pentatricopeptide 
+772 
+repeat-containing gene restores fertility to cytoplasmic male-sterile plants. 
+773 
+Proc Natl Acad Sci U S A 99:10887-10892.  
+774 
+Brigida G, Jan S, Troels P, Leahm S, Veerle S, Beatriz, HM, Adriaan M，
+775 
+et al(2016) Domestication and divergence of Saccharomyces cerevisiae 
+776 
+beer yeasts. Cell 166: 1397–1410.  
+777 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+29 
+ 
+Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, 
+778 
+Madden TL (2009) BLAST+: architecture and applications. BMC 
+779 
+bioinformatics 10: 421.  
+780 
+Canaguier A, Grimplet J, Gaspero GD, Scalabrin S, Duchêne E, Choisne N, 
+781 
+Mohellibi N et al (2017) A new version of the grapevine reference genome 
+782 
+assembly (12x.v2) and of its annotation (VCost.v3). Genomics Data 14: 
+783 
+56-62.  
+784 
+Chawla HS, Lee H, Gabur I, Vollrath P, Tamilselvan-Nattar-Amutha 
+785 
+S, Obermeier C, Schiessl SV et al (2021) Long-read sequencing re
+786 
+veals widespread intragenic structural variants in a recent allopolyplo
+787 
+id crop plant. Plant Biotechnol J 19: 240-250.  
+788 
+Chen Q, Diao L, Song H, Zhu X (2018) Vitis amurensis Rupr: A review of 
+789 
+chemistry and pharmacology. Phytomedicine 49: 111-122.  
+790 
+Chong J, Piron MC, Meyer S, Merdinoglu D, Bertsch C Mestre P (2
+791 
+014) The SWEET family of sugar transporters in grapevine: VvSWE
+792 
+ET4 is involved in the interaction with Botrytis cinerea. J Exp Bot 
+793 
+65: 6589-6601.  
+794 
+Dudchenko O, Batra SS, Omer AD, Nyquist SK, Hoeger M, Durand
+795 
+ NC, Shamim MS et al (2017) De novo assembly of the Aedes ae
+796 
+gypti genome using Hi-C yields chromosome-length scaffolds. Scienc
+797 
+e 356: 92-95.  
+798 
+Durand NC, Shamim MS, Machol I, Rao SS, Huntley MH, Lander 
+799 
+ES Aiden EL (2016) Juicer Provides a One-Click System for Analy
+800 
+zing Loop-Resolution Hi-C Experiments. Cell Syst 3: 95-98. 
+801 
+Edgar RC, Myers EW (2005) PILER: identification and classification of
+802 
+ genomic repeats. Bioinformatics 21 Suppl 1: i152-158.  
+803 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+30 
+ 
+Emms DM Kelly S (2015) OrthoFinder: solving fundamental biases in whole 
+804 
+genome comparisons dramatically improves orthogroup inference 
+805 
+accuracy. Genome Bio 16: 157. 
+806 
+Emms DM Kelly S (2019) OrthoFinder: phylogenetic orthology inference for 
+807 
+comparative genomics. Genome Biol 20: 238.  
+808 
+Foria S, Magris G, Jurman I, Schwope R, Candido MD, Luca ED, 
+809 
+Ivanišević D et al (2022) Extent of wild–to–crop interspecific 
+810 
+introgression in grapevine (vitis vinifera) as a consequence of resistance 
+811 
+breeding and implications for the crop species definition. Hortic Res 9: 
+812 
+uhab010.  
+813 
+Gao Y, Yang X, Yang X, Zhao T, An X Chen Z (2021) Characterization and 
+814 
+expression 
+pattern 
+of 
+the 
+trehalose-6-phosphate 
+synthase 
+and 
+815 
+trehalose-6-phosphate phosphatase gene families in Populus. Int J Biol 
+816 
+Macromol 187: 9-23.  
+817 
+Girollet N, Rubio B, Lopez-Roques C, valière S, Ollat N, Bert PF (2019) De 
+818 
+novo phased assembly of the Vitis riparia grape genome. Sci Data 19: 127.  
+819 
+Gonzalez I, Dejean S, Martin P Baccini A (2008) CCA: An R Package to 
+820 
+Extend CanonicalCorrelation Analysis. J Stat Softw 23: 1-14.  
+821 
+Guo X, Fang D, Sahu SK, Yang S, Guang X, Folk R, Smith SA et al (2021) 
+822 
+Chloranthus genome provides insights into the early diversification of 
+823 
+angiosperms. Nature Communications 12: 6930.  
+824 
+Hardenack S, Ye D, Saedler H, Grant S (1994) Comparison of MADS box 
+825 
+gene expression in developing male and female flowers of the dioecious 
+826 
+plant white campion. Plant Cell 6:1775-1787. 
+827 
+Hu J, Wang K, Huang W, Liu G, Gao Y, Wang J, Huang Q et al (2012) 
+828 
+The rice pentatricopeptide repeat protein RF5 restores fertility in Hong-Lian 
+829 
+cytoplasmic male-sterile lines via a complex with the glycine-rich protein 
+830 
+GRP162. Plant Cell 24:109-22. 
+831 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+31 
+ 
+Iocco-Corena P, Chaïb J, Torregrosa L, Mackenzie D, Thomas MR, Smith 
+832 
+HM (2021) VviPLATZ1 is a major factor that controls female flower 
+833 
+morphology determination in grapevine. Nat Commun. 12:6995.  
+834 
+Jaillon O, Aury JM, Noel B, Policriti A, Clepet C, Casagrande A, Choisne N 
+835 
+et al (2007) The grapevine genome sequence suggests ancestral 
+836 
+hexaploidization in major angiosperm phyla. Nature 449: 463-468.  
+837 
+Kataya ARA, Elshobaky A, Heidari B, Dugassa NF, Thelen JJ Lillo 
+838 
+C (2020) Multi-targeted trehalose-6-phosphate phosphatase I harbors 
+839 
+a novel peroxisomal targeting signal 1 and is essential for flowering
+840 
+ and development. Planta 251: 98. 
+841 
+Kazama T, Toriyama K (2003) A pentatricopeptide repeat-containing gene 
+842 
+that promotes the processing of aberrant atp6 RNA of cytoplasmic 
+843 
+male-sterile rice. FEBS Lett. 544: 99-102.  
+844 
+Kim MS, Hur YY, Ji HK, Jeong SC (2020) Genome resequencing, 
+845 
+improvement of variant calling, and population genomic analyses provide 
+846 
+insights into the seedlessness in the genus vitis. G3-Genes Genomes 
+847 
+Genetics 10: 3365-3377.  
+848 
+Koizuka N, Imai R, Fujimoto H, Hayakawa T, Kimura Y, Kohno-Murase 
+849 
+J, Sakai T et al (2003) Genetic characterization of a pentatricopeptide 
+850 
+repeat protein gene, orf687, that restores fertility in the cytoplasmic 
+851 
+male-sterile Kosena radish. Plant J. 34:407–415. 
+852 
+Lee TH, Guo H, Wang X, Kim C Paterson AH (2014) SNPhylo: a pipeline to 
+853 
+construct a phylogenetic tree from huge SNP data. BMC Genomics 15: 
+854 
+162–7.  
+855 
+Liang Z, Duan S, Sheng J, Zhu S, Ni X, Shao J, Liu C et al (2019) 
+856 
+Whole-genome resequencing of 472 Vitis accessions for grapevine 
+857 
+diversity and demographic history analyses. Nat Commun 10: 1190.  
+858 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+32 
+ 
+Lin P, Wang K, Wang Y, Hu Z, Yan C, Huang H, Ma X et al (2022) The 
+859 
+genome of oil-Camellia and population genomics analysis provide insights 
+860 
+into seed oil domestication. Genome Biol 23: 14.  
+861 
+Lowe TM  Eddy SR (1997) tRNAscan-SE: a program for improved detection 
+862 
+of transfer RNA genes in genomic sequence. Nucleic Acids Res25: 
+863 
+955-964. 
+864 
+Ma W, Xu L, Gao S, Lyu X, Cao X Yao Y (2021) Melatonin alters the 
+865 
+secondary metabolite profile of grape berry skin by promoting 
+866 
+VvMYB14-mediated ethylene biosynthesis. Hortic Res 8: 43.  
+867 
+Ma ZY, Wen J, Tian JP, Jamal A, Chen LQ Liu XQ (2018) Testing reticulate 
+868 
+evolution of four vitis species from East Asia using restriction-site 
+869 
+associated DNA sequencing. J Syst Evol 56: 331-339.  
+870 
+Marcais G Kingsford C (2011) A fast, lock-free approach for efficient 
+871 
+parallel counting of occurrences of k-mers. Bioinformatics 27: 764-7
+872 
+70.  
+873 
+Massonnet M, Cochetel N, Minio A, Vondras AM, Lin J, Muyle A, Garcia 
+874 
+JF et al (2020) The genetic basis of sex determination in grapes. Nat 
+875 
+Commun 11: 2902.  
+876 
+Men Y, Li JR, Shen HL, Yang YM, Fan ST, Li K, Guo YS et al (2021) 
+877 
+VaAPRT3 Gene is Associated With Sex Determination in Vitis amurensis. 
+878 
+Front Genet 12: 727260.  
+879 
+Pfeifer B, Wittelsbürger U, Onsins SER Lercher MJ (2014) PopGeno
+880 
+me: an efficient Swiss army knife for population genomic analyses in
+881 
+ R. Mol Biol Evol 31: 1929–36.  
+882 
+Qiu L, Wei XY, Wang SJ Wang JJ (2020) Characterization of trehalos
+883 
+e-6-phosphate phosphatase in trehalose biosynthesis, asexual develop
+884 
+ment, stress resistance and virulence of an insect mycopathogen. Pes
+885 
+tic Biochem Physiol 163: 185-192.  
+886 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+33 
+ 
+Ramos MJ, Coito JL, Silva HG, Cunha J, Costa MM, Rocheta M (2
+887 
+014) Flower development and sex specification in wild grapevine. B
+888 
+MC Genomics. 5:1095.  
+889 
+Satoh-Nagasawa N, Nagasawa N, Malcomber S, Sakai H Jackson D 
+890 
+(2006) A trehalose metabolic enzyme controls inflorescence architect
+891 
+ure in maize. Nature 441: 227-230. 
+892 
+Song XM, Wang JP, Sun PC, Ma X, Yang QH, Hu JJ, Sun SR et al (2020) 
+893 
+Preferential gene retention increases the robustness of cold regulation in 
+894 
+Brassicaceae and other plants after polyploidization. Hortic Res 7: 20.  
+895 
+Sun P, Jiao B, Yang Y, Shan L, Li T, Li XN, Xi ZX et al (2021) WGDI: A 
+896 
+user-friendly toolkit for evolutionary analyses of whole-genome 
+897 
+duplications 
+and 
+ancestral 
+karyotypes. 
+898 
+https://doi.org/10.1101/2021.04.29.441969 
+899 
+Tel-Zur N, Abbo S, Myslabodski D Mizrahi Y (1999) Modified CTAB
+900 
+ procedure for DNA isolation from epiphytic cacti of the genera Hy
+901 
+locereus and Selenicereus (Cactaceae). Plant Mol Biol Rep 17: 249–
+902 
+254.  
+903 
+Vurture GW, Sedlazeck FJ, Nattestad M, Underwood CJ, Fang H, G
+904 
+urtowski J Schatz MC (2017) GenomeScope: fast reference-free ge
+905 
+nome profiling from short reads. Bioinformatics 33: 2202-2204.  
+906 
+Waki T, Mameda R, Nakano T, Yamada S, Terashita M, Ito K, Ten
+907 
+ma N et al (2020) A conserved strategy of chalcone isomerase-like 
+908 
+protein to rectify promiscuous chalcone synthase specificity. Nat Co
+909 
+mmun 11: 870.  
+910 
+Wan Y, Schwaninger H, Li D, Simon CJ, Wang Y He P (2008) The 
+911 
+eco-geographic distribution of wild grape germplasm in China. Vitis 47: 
+912 
+77-80.  
+913 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+34 
+ 
+Wang JP, Yu JG, Li J, Sun PC, Wang L, Yuan JQ, Meng FB et al (2018a) 
+914 
+Two likely auto-tetraploidization events shaped kiwifruit genome and 
+915 
+contributed to establishment of the actinidiaceae family. iScience 7: 
+916 
+230-240.  
+917 
+Wang P, Su L, Gao H, Jiang X, Wu X, Li Y, Zhang Q et al (2018b)
+918 
+ Genome-Wide Characterization of bHLH Genes in Grape and Anal
+919 
+ysis of their Potential Relevance to Abiotic Stress Tolerance and Sec
+920 
+ondary Metabolite Biosynthesis. Front Plant Sci 9: 64.  
+921 
+Wang P, Yang Y, Shi H, Wang Y Ren F (2019) Small RNA and degradome 
+922 
+deep sequencing reveal respective roles of cold-related micrornas across 
+923 
+Chinese wild grapevine and cultivated grapevine. BMC Genomics 20: 740.  
+924 
+Wang X, Tang H, Paterson AH (2011) Seventy million years of concerted 
+925 
+evolution of a homoeologous chromosome pair, in parallel, in major 
+926 
+Poaceae lineages. Plant Cell 23:27-37. 
+927 
+Wang Y, Xin H, Fan P, Zhang J, Liu Y, Dong Y, Wang Z et al (2021) The 
+928 
+genome of shanputao (Vitis amurensis) provides a new insight into cold 
+929 
+tolerance of grapevine. Plant J 105: 1495-1506.  
+930 
+Xu W, Li R, Zhang N, Ma F, Jiao Y Wang Z (2014) Transcriptome profiling 
+931 
+of Vitis amurensis, an extremely cold-tolerant Chinese wild Vitis species, 
+932 
+reveals candidate genes and events that potentially connected to cold stress. 
+933 
+Plant Mol Biol 86: 527-541.  
+934 
+Yamazaki M, Ishida A, Suzuki Y, Aoki Y, Suzuki S Enoki S (2021) 
+935 
+Ethylene Induced by Sound Stimulation Enhances Anthocyanin Accu
+936 
+mulation in Grape Berry Skin through Direct Upregulation of UDP-
+937 
+Glucose: Flavonoid 3-O-Glucosyltransferase. Cell 10.  
+938 
+Yang J, Lee SH, Goddard ME Visscher PM (2011) GCTA: a tool for 
+939 
+genome-wide complex trait analysis. Am J Hum Genet 88: 76–82.  
+940 
+Yang Y, Sun P, Lv L, Wang D, Ru D, Li Y, Ma T et al (2020) Pric
+941 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+35 
+ 
+kly waterlily and rigid hornwort genomes shed light on early angios
+942 
+perm evolution. Nat Plants 6: 215-222.  
+943 
+Yang Z (2007) PAML 4: phylogenetic analysis by maximum likelihood. 
+944 
+Mol Biol Evol 24: 1586-91.  
+945 
+Yu Y, Guan J, Xu Y, Ren F, Zhang Z, Yan J, Fu J et al (2021) 
+946 
+Population-scale peach genome analyses unravel selection patterns and 
+947 
+biochemical basis underlying fruit flavor. Nat Commun 12: 3604.  
+948 
+Zhang Q, Wang L, Wang Z, Zhang R, Liu P, Liu M, Liu Z et al (2021) The 
+949 
+regulation of cell wall lignification and lignin biosynthesis during 
+950 
+pigmentation of winter jujube. Hortic Res 8: 238.  
+951 
+Zhao X  Hao W (2007) LTR_FINDER: an efficient tool for the prediction of 
+952 
+full-length LTR retrotransposons. Nucleic Acids Res 35: W265-8.  
+953 
+ 
+ 
+954 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+36 
+ 
+Tables 
+955 
+Table 1 Summary statistics for the Va Zuoshan No.1 genome assembly in 
+956 
+comparison with the Va IBCAS1988 genome.   
+957 
+Genomic feature 
+Zuoshan No.1 
+IBCAS1988 
+Estimated genome size 
+532.35Mb 
+607Mb 
+Total assembly size 
+522.28Mb 
+604.56Mb 
+Number of contigs  
+615 
+－ 
+Largest contig 
+14,947,757bp 
+2,623,866bp 
+Contig N50 length 
+2,512,611bp 
+282,256bp 
+Scaffold N50  
+26,519,999bp 
+748,673bp 
+Sequences anchored to chromosomes 
+513.47 Mb/98.31%
+－ 
+GC content  
+34.50% 
+34.37% 
+Complete BUSCOs 
+97.50% 
+－ 
+Repeat(%) 
+59.21% 
+47.06% 
+Protein-coding genes 
+27,635 
+32,885 
+Heterozygous ratio(%) 
+1.20% 
+1.23% 
+ 
+958 
+ 
+959 
+Table 2 The assessment of interaction networks constructed using 
+960 
+candidate CRGs in Va, Vr and Vv 
+961 
+ 
+All nodes in 
+a network 
+5 
+10 
+5% 
+10% 
+20% 
+Va 
+84 
+0.851 0.807 
+0.861 
+0.826 
+0.754 
+Vr 
+91 
+0.832 0.793 
+0.839 
+0.801 
+0.728 
+Vv 
+85 
+0.816 0.782 
+0.823 
+0.797 
+0.731 
+Network robustness was calculated after the removal of certain numbers (5 or 
+962 
+10) or percentages (5%, 10%, or 20%) of nodes.  
+963 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+37 
+ 
+Table 3 Summary of the RNA-seq 
+964 
+sample 
+clean_reads 
+mapping rate 
+S1_1 
+42378612 
+95.52% 
+S1_2 
+44413474 
+96.27% 
+S1_3 
+42453694 
+95.60% 
+S2_1 
+43634464 
+95.63% 
+S2_2 
+39853380 
+94.96% 
+S2_3 
+40757404 
+95.10% 
+S3_1 
+43282574 
+93.71% 
+S3_2 
+44118914 
+94.34% 
+S3_3 
+43169656 
+94.15% 
+S4_1 
+44205082 
+92.82% 
+S4_2 
+42005090 
+92.90% 
+S4_3 
+44053722 
+93.42% 
+ 
+965 
+Table 4 The number of DEGs 
+966 
+ group 
+all 
+up 
+down 
+S2vsS1 
+3307 
+1367 
+1940 
+S3vsS1 
+4633 
+1862 
+2771 
+S4vsS1 
+5969 
+2209 
+3760 
+S3vsS2 
+2904 
+1196 
+1708 
+S4vsS2 
+4817 
+1904 
+2913 
+S4vsS3 
+1797 
+652 
+1145 
+ 
+967 
+Figure legends 
+968 
+Figure 1 Amur grape Atlas 
+969 
+(A) Spider silk-like hairs of Amur grape. (B) The bisexual flower. (C) The 
+970 
+female flower. (D) The male flower. (E) Amur grape cv. Zuoshan No.1. (F) 
+971 
+The leaf of Zuoshan No.1. (G) The flower of Zuoshan No.1. 
+972 
+ 
+973 
+Figure 2 Genomic feature of Va Zuoshan No.1 and comparison with other 
+974 
+genomes. 
+975 
+(A) The landscape of genome assembly and annotation of Va Zuoshan No.1. 
+976 
+Tracks from outside to the inner correspond to I, chromosomes; II, gene density; 
+977 
+III, repeat density IV, Non-coding RNA density; V, GC content; VI-IX, Gene 
+978 
+expression levels (FPKM) in S4-S1; and X, synteny information. 
+979 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+38 
+ 
+(B) Hi-C map of Va Zuoshan No.1. 
+980 
+(C) Dotplot of homologous genes between Va Zuoshan No.1 and Vv PN40024. 
+981 
+(D) Dotplot of homologous genes between Va Zuoshan No.1 and Vv Cabernet 
+982 
+Sauvignon.  
+983 
+(E) Dotplot of homologous genes between Vv Cabernet Sauvignon and Vr. 
+984 
+ 
+985 
+Figure 3 Ks distribution of collinear genes and phylogenetic relationship of 
+986 
+species. 
+987 
+(A) Ks distribution of homologous genes within a species. 
+988 
+(B) Ks distribution of homologous genes between any two species. 
+989 
+(C) Evolutionary tree of selected plants. The number is the step size and 
+990 
+represents the size of the difference between two adjacent sequences. 
+991 
+ 
+992 
+Figure 4 Structural Variation analysis 
+993 
+(A) A comparison between Va and Vv, with Va as the reference. (B) A 
+994 
+comparison between Va and Vr, with Va as the reference. (C) A comparison 
+995 
+between Vr and Vv, with Vr as the reference.    
+996 
+ 
+997 
+Figure 5 Multiomics analysis of Vitis amurensis fruit at different stages 
+998 
+(A) Fruits at stages S1, S2, S3 and S4. (B) CCA analysis of key genes and 
+999 
+metabolites in resveratrol metabolic pathway. (C) Schematic diagram of 
+1000 
+resveratrol synthesis and metabolism mechanism during fruit ripening of vitis 
+1001 
+amurensis. “*” represents that these genes expression or metabolites content of 
+1002 
+the sample changes significantly compared with S1(P<0.05). CYP73A is the 
+1003 
+symbol of trans-cinnamate 4-monooxygenase, ST is the symbol of stilbene 
+1004 
+synthase, HTC is the symbol of shikimate O-hydroxycinnamoyltransferase, 
+1005 
+ROMT is the symbol of trans-resveratrol di-O-methyltransferase and CYP98A 
+1006 
+is the symbol o of 5-O-(4-coumaroyl)-D-quinate 3'-monooxygenase.  
+1007 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+39 
+ 
+ 
+1008 
+Figure 6 Population structure analysis and selective sweep analysis of 24 
+1009 
+Va individuals. 
+1010 
+(A) Population structure of 24 Vitis amurensis individuals (There are some 
+1011 
+individuals whose names use abbreviations here. Please refer to table s14 for 
+1012 
+the corresponding relationship between abbreviations and full names of 
+1013 
+individual names). (B) An evolutionary tree based on the whole-genome SNPs 
+1014 
+of 24 Va individuals. (C) An evolutionary tree based on the SNPs on the SDRs 
+1015 
+of 24 Va individuals. (D) A Manhattan diagram of the selective region. The top 
+1016 
+subfigure shows the selective region from the comparison of female and male 
+1017 
+groups comparison. The middle subfigure is the selective region from the 
+1018 
+comparison of female and hermaphroditic groups. The bottom subfigure shows 
+1019 
+the selective region from the comparison of male and hermaphroditic groups. 
+1020 
+The red dashed line represents the threshold of θπ ratios and FST (top 5%). The 
+1021 
+blue asterisk represents the selective region which harbored SDR genes.  
+1022 
+  
+1023 
+Figure 7 Genes of Vv and Va SDRs 
+1024 
+Genes of Vv H, F hap SDRs are from Vv Cabernet Sauvignon. Genes of Vv M 
+1025 
+hap SDR are from Vv. sylvestris. Genes of Va F hap are from Zuoshan No.1. 
+1026 
+The gene with a arrowhead is the Va Uncharacterized protein gene. 
+1027 
+ 
+1028 
+ 
+1029 
+ 
+1030 
+ 
+ 
+1031 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+40 
+ 
+Supplementary tables 
+ 
+1032 
+Table S1 Statistics of gene annotations for Va Zuoshan No.1 genome. 
+1033 
+ 
+1034 
+Table S2 Number of Homologous Genes Residing in Blocks within each 
+1035 
+Genome or between Genomes. 
+1036 
+ 
+1037 
+Table S3 Kernel Function Analysis of 𝑲𝑺  Distribution Related to 
+1038 
+Duplication Events Within each Genome and Between Genomes. 
+1039 
+ 
+1040 
+Table S4 Statistics of PAV regions between Va genome and Vv genome or 
+1041 
+Va genome and Vr genome. 
+1042 
+ 
+1043 
+Table S5 Va-specific PAV genes between Va genome and Vv genome. 
+1044 
+ 
+1045 
+Table S6 Vv-specific PAV genes between Va genome and Vv genome. 
+1046 
+ 
+1047 
+Table S7 Va-specific PAV genes between Va genome and Vr genome. 
+1048 
+ 
+1049 
+Table S8 Vr-specific PAV genes between Va genome and Vr genome. 
+1050 
+ 
+1051 
+Table S9 Information of 24 Vitis amurensis individuals.  
+1052 
+ 
+1053 
+ 
+1054 
+Supplementary figure legends 
+1055 
+ 
+1056 
+Figure S1. Dotplot of homologous genes between Va Zuoshan No.1 and Va 
+1057 
+IBCAS1988 genomes 
+1058 
+ 
+1059 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+ 
+41 
+ 
+Figure S2. The evolutionary tree based on the 3 grapes and Arabidopsis or 
+1060 
+Boxwood. 
+1061 
+ 
+1062 
+Figure S3. Structural Variation analysis plot based on ggplot2. 
+1063 
+ 
+1064 
+Figure S4. Tree of NBS family genes of the three species. 
+1065 
+ 
+1066 
+Figure S5. The distribution of NBS family genes on the chromosomes of 
+1067 
+the three species. Lines represent Ks values of NBS gene pairs that are less 
+1068 
+than 0.025 (red), larger than 0.025 but less than 1 (orange), and larger 
+1069 
+than 1 but less than 1.5 (grey). 
+1070 
+ 
+1071 
+Figure S6. The total sugar and titratable acid content of Vitis amurensis 
+1072 
+fruit at different stages. 
+1073 
+CC-BY-NC-ND 4.0 International license.
+available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+Parsed Citations
+Ainsworth C, Crossley S, Buchanan-Wollaston V, Thangavelu M, Parker J (1995) Male and female flowers of the dioecious plant
+sorrel show different patterns of MADS box gene expression. Plant Cell 7:1583-1598.
+Google Scholar: Author Only Title Only Author and Title
+Badouin H, Velt A, Gindraud F, Flutre T, Dumas V, Vautrin S, Marande W et al (2020) The wild grape genome sequence provides
+insights into the transition from dioecy to hermaphroditism during grape domestication. Genome Biol 21:223.
+Google Scholar: Author Only Title Only Author and Title
+Benson, G (1999) Tandem repeats finder: a program to analyze DNA sequences. Nucleic Acids Res 27: 573-580.
+Google Scholar: Author Only Title Only Author and Title
+Bentolila S, Alfonso AA, Hanson MR. A (2002) pentatricopeptide repeat-containing gene restores fertility to cytoplasmic male-
+sterile plants. Proc Natl Acad Sci U S A 99:10887-10892.
+Google Scholar: Author Only Title Only Author and Title
+Brigida G, Jan S, Troels P, Leahm S, Veerle S, Beatriz, HM, Adriaan M，，et al(2016) Domestication and divergence of
+Saccharomyces cerevisiae beer yeasts. Cell 166: 1397–1410.
+Google Scholar: Author Only Title Only Author and Title
+Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL (2009) BLAST+: architecture and applications.
+BMC bioinformatics 10: 421.
+Google Scholar: Author Only Title Only Author and Title
+Canaguier A, Grimplet J, Gaspero GD, Scalabrin S, Duchêne E, Choisne N, Mohellibi N et al (2017) A new version of the
+grapevine reference genome assembly (12x.v2) and of its annotation (VCost.v3). Genomics Data 14: 56-62.
+Google Scholar: Author Only Title Only Author and Title
+Chawla HS, Lee H, Gabur I, Vollrath P, Tamilselvan-Nattar-Amutha S, Obermeier C, Schiessl SV et al (2021) Long-read sequencing
+reveals widespread intragenic structural variants in a recent allopolyploid crop plant. Plant Biotechnol J 19: 240-250.
+Google Scholar: Author Only Title Only Author and Title
+Chen Q, Diao L, Song H, Zhu X (2018) Vitis amurensis Rupr: A review of chemistry and pharmacology. Phytomedicine 49: 111-122.
+Google Scholar: Author Only Title Only Author and Title
+Chong J, Piron MC, Meyer S, Merdinoglu D, Bertsch C Mestre P (2014) The SWEET family of sugar transporters in grapevine:
+VvSWEET4 is involved in the interaction with Botrytis cinerea. J Exp Bot 65: 6589-6601.
+Google Scholar: Author Only Title Only Author and Title
+Dudchenko O, Batra SS, Omer AD, Nyquist SK, Hoeger M, Durand NC, Shamim MS et al (2017) De novo assembly of the Aedes
+aegypti genome using Hi-C yields chromosome-length scaffolds. Science 356: 92-95.
+Google Scholar: Author Only Title Only Author and Title
+Durand NC, Shamim MS, Machol I, Rao SS, Huntley MH, Lander ES Aiden EL (2016) Juicer Provides a One-Click System for
+Analyzing Loop-Resolution Hi-C Experiments. Cell Syst 3: 95-98.
+Google Scholar: Author Only Title Only Author and Title
+Edgar RC, Myers EW (2005) PILER: identification and classification of genomic repeats. Bioinformatics 21 Suppl 1: i152-158.
+Google Scholar: Author Only Title Only Author and Title
+Emms DM Kelly S (2015) OrthoFinder: solving fundamental biases in whole genome comparisons dramatically improves
+orthogroup inference accuracy. Genome Bio 16: 157.
+Google Scholar: Author Only Title Only Author and Title
+Emms DM Kelly S (2019) OrthoFinder: phylogenetic orthology inference for comparative genomics. Genome Biol 20: 238.
+Google Scholar: Author Only Title Only Author and Title
+Foria S, Magris G, Jurman I, Schwope R, Candido MD, Luca ED, Ivanišević D et al (2022) Extent of wild–to–crop interspecific
+introgression in grapevine (vitis vinifera) as a consequence of resistance breeding and implications for the crop species
+definition. Hortic Res 9: uhab010.
+Google Scholar: Author Only Title Only Author and Title
+Gao Y, Yang X, Yang X, Zhao T, An X Chen Z (2021) Characterization and expression pattern of the trehalose-6-phosphate
+synthase and trehalose-6-phosphate phosphatase gene families in Populus. Int J Biol Macromol 187: 9-23.
+Google Scholar: Author Only Title Only Author and Title
+Girollet N, Rubio B, Lopez-Roques C, valière S, Ollat N, Bert PF (2019) De novo phased assembly of the Vitis riparia grape
+genome. Sci Data 19: 127.
+Google Scholar: Author Only Title Only Author and Title
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+Gonzalez I, Dejean S, Martin P Baccini A (2008) CCA: An R Package to Extend CanonicalCorrelation Analysis. J Stat Softw 23: 1-14.
+Google Scholar: Author Only Title Only Author and Title
+Guo X, Fang D, Sahu SK, Yang S, Guang X, Folk R, Smith SA et al (2021) Chloranthus genome provides insights into the early
+diversification of angiosperms. Nature Communications 12: 6930.
+Google Scholar: Author Only Title Only Author and Title
+Hardenack S, Ye D, Saedler H, Grant S (1994) Comparison of MADS box gene expression in developing male and female flowers
+of the dioecious plant white campion. Plant Cell 6:1775-1787.
+Google Scholar: Author Only Title Only Author and Title
+Hu J, Wang K, Huang W, Liu G, Gao Y, Wang J, Huang Q et al (2012) The rice pentatricopeptide repeat protein RF5 restores
+fertility in Hong-Lian cytoplasmic male-sterile lines via a complex with the glycine-rich protein GRP162. Plant Cell 24:109-22.
+Google Scholar: Author Only Title Only Author and Title
+Iocco-Corena P, Chaïb J, Torregrosa L, Mackenzie D, Thomas MR, Smith HM (2021) VviPLATZ1 is a major factor that controls
+female flower morphology determination in grapevine. Nat Commun. 12:6995.
+Google Scholar: Author Only Title Only Author and Title
+Jaillon O, Aury JM, Noel B, Policriti A, Clepet C, Casagrande A, Choisne N et al (2007) The grapevine genome sequence suggests
+ancestral hexaploidization in major angiosperm phyla. Nature 449: 463-468.
+Google Scholar: Author Only Title Only Author and Title
+Kataya ARA, Elshobaky A, Heidari B, Dugassa NF, Thelen JJ Lillo C (2020) Multi-targeted trehalose-6-phosphate phosphatase I
+harbors a novel peroxisomal targeting signal 1 and is essential for flowering and development. Planta 251: 98.
+Google Scholar: Author Only Title Only Author and Title
+Kazama T, Toriyama K (2003) A pentatricopeptide repeat-containing gene that promotes the processing of aberrant atp6 RNA of
+cytoplasmic male-sterile rice. FEBS Lett. 544: 99-102.
+Google Scholar: Author Only Title Only Author and Title
+Kim MS, Hur YY, Ji HK, Jeong SC (2020) Genome resequencing, improvement of variant calling, and population genomic
+analyses provide insights into the seedlessness in the genus vitis. G3-Genes Genomes Genetics 10: 3365-3377.
+Google Scholar: Author Only Title Only Author and Title
+Koizuka N, Imai R, Fujimoto H, Hayakawa T, Kimura Y, Kohno-Murase J, Sakai T et al (2003) Genetic characterization of a
+pentatricopeptide repeat protein gene, orf687, that restores fertility in the cytoplasmic male-sterile Kosena radish. Plant J.
+34:407–415.
+Google Scholar: Author Only Title Only Author and Title
+Lee TH, Guo H, Wang X, Kim C Paterson AH (2014) SNPhylo: a pipeline to construct a phylogenetic tree from huge SNP data.
+BMC Genomics 15: 162–7.
+Google Scholar: Author Only Title Only Author and Title
+Liang Z, Duan S, Sheng J, Zhu S, Ni X, Shao J, Liu C et al (2019) Whole-genome resequencing of 472 Vitis accessions for
+grapevine diversity and demographic history analyses. Nat Commun 10: 1190.
+Google Scholar: Author Only Title Only Author and Title
+Lin P, Wang K, Wang Y, Hu Z, Yan C, Huang H, Ma X et al (2022) The genome of oil-Camellia and population genomics analysis
+provide insights into seed oil domestication. Genome Biol 23: 14.
+Google Scholar: Author Only Title Only Author and Title
+Lowe TM Eddy SR (1997) tRNAscan-SE: a program for improved detection of transfer RNA genes in genomic sequence. Nucleic
+Acids Res25: 955-964.
+Google Scholar: Author Only Title Only Author and Title
+Ma W, Xu L, Gao S, Lyu X, Cao X Yao Y (2021) Melatonin alters the secondary metabolite profile of grape berry skin by promoting
+VvMYB14-mediated ethylene biosynthesis. Hortic Res 8: 43.
+Google Scholar: Author Only Title Only Author and Title
+Ma ZY, Wen J, Tian JP, Jamal A, Chen LQ Liu XQ (2018) Testing reticulate evolution of four vitis species from East Asia using
+restriction-site associated DNA sequencing. J Syst Evol 56: 331-339.
+Google Scholar: Author Only Title Only Author and Title
+Marcais G Kingsford C (2011) A fast, lock-free approach for efficient parallel counting of occurrences of k-mers. Bioinformatics
+27: 764-770.
+Google Scholar: Author Only Title Only Author and Title
+Massonnet M, Cochetel N, Minio A, Vondras AM, Lin J, Muyle A, Garcia JF et al (2020) The genetic basis of sex determination in
+grapes. Nat Commun 11: 2902.
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+Google Scholar: Author Only Title Only Author and Title
+Men Y, Li JR, Shen HL, Yang YM, Fan ST, Li K, Guo YS et al (2021) VaAPRT3 Gene is Associated With Sex Determination in Vitis
+amurensis. Front Genet 12: 727260.
+Google Scholar: Author Only Title Only Author and Title
+Pfeifer B, Wittelsbürger U, Onsins SER Lercher MJ (2014) PopGenome: an efficient Swiss army knife for population genomic
+analyses in R. Mol Biol Evol 31: 1929–36.
+Google Scholar: Author Only Title Only Author and Title
+Qiu L, Wei XY, Wang SJ Wang JJ (2020) Characterization of trehalose-6-phosphate phosphatase in trehalose biosynthesis,
+asexual development, stress resistance and virulence of an insect mycopathogen. Pestic Biochem Physiol 163: 185-192.
+Google Scholar: Author Only Title Only Author and Title
+Ramos MJ, Coito JL, Silva HG, Cunha J, Costa MM, Rocheta M (2014) Flower development and sex specification in wild
+grapevine. BMC Genomics. 5:1095.
+Google Scholar: Author Only Title Only Author and Title
+Satoh-Nagasawa N, Nagasawa N, Malcomber S, Sakai H Jackson D (2006) A trehalose metabolic enzyme controls inflorescence
+architecture in maize. Nature 441: 227-230.
+Google Scholar: Author Only Title Only Author and Title
+Song XM, Wang JP, Sun PC, Ma X, Yang QH, Hu JJ, Sun SR et al (2020) Preferential gene retention increases the robustness of
+cold regulation in Brassicaceae and other plants after polyploidization. Hortic Res 7: 20.
+Google Scholar: Author Only Title Only Author and Title
+Sun P, Jiao B, Yang Y, Shan L, Li T, Li XN, Xi ZX et al (2021) WGDI: A user-friendly toolkit for evolutionary analyses of whole-
+genome duplications and ancestral karyotypes. https://doi.org/10.1101/2021.04.29.441969
+Google Scholar: Author Only Title Only Author and Title
+Tel-Zur N, Abbo S, Myslabodski D Mizrahi Y (1999) Modified CTAB procedure for DNA isolation from epiphytic cacti of the genera
+Hylocereus and Selenicereus (Cactaceae). Plant Mol Biol Rep 17: 249–254.
+Google Scholar: Author Only Title Only Author and Title
+Vurture GW, Sedlazeck FJ, Nattestad M, Underwood CJ, Fang H, Gurtowski J Schatz MC (2017) GenomeScope: fast reference-
+free genome profiling from short reads. Bioinformatics 33: 2202-2204.
+Google Scholar: Author Only Title Only Author and Title
+Waki T, Mameda R, Nakano T, Yamada S, Terashita M, Ito K, Tenma N et al (2020) A conserved strategy of chalcone isomerase-
+like protein to rectify promiscuous chalcone synthase specificity. Nat Commun 11: 870.
+Google Scholar: Author Only Title Only Author and Title
+Wan Y, Schwaninger H, Li D, Simon CJ, Wang Y He P (2008) The eco-geographic distribution of wild grape germplasm in China.
+Vitis 47: 77-80.
+Google Scholar: Author Only Title Only Author and Title
+Wang JP, Yu JG, Li J, Sun PC, Wang L, Yuan JQ, Meng FB et al (2018a) Two likely auto-tetraploidization events shaped kiwifruit
+genome and contributed to establishment of the actinidiaceae family. iScience 7: 230-240.
+Google Scholar: Author Only Title Only Author and Title
+Wang P, Su L, Gao H, Jiang X, Wu X, Li Y, Zhang Q et al (2018b) Genome-Wide Characterization of bHLH Genes in Grape and
+Analysis of their Potential Relevance to Abiotic Stress Tolerance and Secondary Metabolite Biosynthesis. Front Plant Sci 9: 64.
+Google Scholar: Author Only Title Only Author and Title
+Wang P, Yang Y, Shi H, Wang Y Ren F (2019) Small RNA and degradome deep sequencing reveal respective roles of cold-related
+micrornas across Chinese wild grapevine and cultivated grapevine. BMC Genomics 20: 740.
+Google Scholar: Author Only Title Only Author and Title
+Wang X, Tang H, Paterson AH (2011) Seventy million years of concerted evolution of a homoeologous chromosome pair, in
+parallel, in major Poaceae lineages. Plant Cell 23:27-37.
+Google Scholar: Author Only Title Only Author and Title
+Wang Y, Xin H, Fan P, Zhang J, Liu Y, Dong Y, Wang Z et al (2021) The genome of shanputao (Vitis amurensis) provides a new
+insight into cold tolerance of grapevine. Plant J 105: 1495-1506.
+Google Scholar: Author Only Title Only Author and Title
+Xu W, Li R, Zhang N, Ma F, Jiao Y Wang Z (2014) Transcriptome profiling of Vitis amurensis, an extremely cold-tolerant Chinese
+wild Vitis species, reveals candidate genes and events that potentially connected to cold stress. Plant Mol Biol 86: 527-541.
+Google Scholar: Author Only Title Only Author and Title
+Yamazaki M, Ishida A, Suzuki Y, Aoki Y, Suzuki S Enoki S (2021) Ethylene Induced by Sound Stimulation Enhances Anthocyanin
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+Accumulation in Grape Berry Skin through Direct Upregulation of UDP-Glucose: Flavonoid 3-O-Glucosyltransferase. Cell 10.
+Google Scholar: Author Only Title Only Author and Title
+Yang J, Lee SH, Goddard ME Visscher PM (2011) GCTA: a tool for genome-wide complex trait analysis. Am J Hum Genet 88: 76–
+82.
+Google Scholar: Author Only Title Only Author and Title
+Yang Y, Sun P, Lv L, Wang D, Ru D, Li Y, Ma T et al (2020) Prickly waterlily and rigid hornwort genomes shed light on early
+angiosperm evolution. Nat Plants 6: 215-222.
+Google Scholar: Author Only Title Only Author and Title
+Yang Z (2007) PAML 4: phylogenetic analysis by maximum likelihood. Mol Biol Evol 24: 1586-91.
+Google Scholar: Author Only Title Only Author and Title
+Yu Y, Guan J, Xu Y, Ren F, Zhang Z, Yan J, Fu J et al (2021) Population-scale peach genome analyses unravel selection patterns
+and biochemical basis underlying fruit flavor. Nat Commun 12: 3604.
+Google Scholar: Author Only Title Only Author and Title
+Zhang Q, Wang L, Wang Z, Zhang R, Liu P, Liu M, Liu Z et al (2021) The regulation of cell wall lignification and lignin biosynthesis
+during pigmentation of winter jujube. Hortic Res 8: 238.
+Google Scholar: Author Only Title Only Author and Title
+Zhao X Hao W (2007) LTR_FINDER: an efficient tool for the prediction of full-length LTR retrotransposons. Nucleic Acids Res 35:
+W265-8.
+Google Scholar: Author Only Title Only Author and Title
+available under aCC-BY-NC-ND 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.10.09.561595; this version posted October 10, 2023. The copyright holder for this preprint
+

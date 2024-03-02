@@ -1,0 +1,9244 @@
+Contextualized Networks Reveal Heterogeneous Transcriptomic
+1
+Regulation in Tumors at Sample-Specific Resolution
+2
+Caleb N. Ellington*1, Benjamin J. Lengerich2,3, Thomas B.K. Watkins4, Jiekun Yang2,3, Hanxi
+3
+Xiao5, Manolis Kellis†2,3, and Eric P. Xing†1,6,7
+4
+1Carnegie Mellon University
+5
+2Massachusetts Institute of Technology
+6
+3Broad Institute of MIT and Harvard
+7
+4Cancer Institute, University College London
+8
+5University of Pittsburgh
+9
+6Petuum, Inc
+10
+7Mohamed bin Zayed University of Artificial Intelligence
+11
+December 1, 2023
+12
+Abstract
+13
+Cancers are shaped by somatic mutations, microenvironment, and patient background, each altering gene ex-
+14
+pression and regulation in complex ways, resulting in heterogeneous cellular states and dynamics. Inferring gene
+15
+regulatory network (GRN) models from expression data can help characterize this regulation-driven heterogeneity,
+16
+but network inference requires many statistical samples, traditionally limiting GRNs to cluster-level analyses that
+17
+ignore intra-cluster heterogeneity. We propose to move beyond cluster-based analyses by using contextualized learn-
+18
+ing, a multi-task learning paradigm which allows us to infer sample-specific models using phenotypic, molecular,
+19
+and environmental information pertinent to the model, encoded as the model’s "context" to be conditioned on. We
+20
+unify three network model classes (Correlation, Markov, Neighborhood) and estimate context-specific GRNs for
+21
+7997 tumors across 25 tumor types, with each network contextualized by copy number and driver mutation profiles,
+22
+tumor microenvironment, and patient demographics. Contextualized GRNs provide a structured view of expression
+23
+dynamics at sample-specific resolution, which reveal co-expression modules in correlation networks (CNs), as well
+24
+as cliques and independent regulatory elements in Markov Networks (MNs) and Neighborhood Regression Networks
+25
+(NNs). Our generative modeling approach allows us to predict GRNs for unseen tumor types based on a pan-cancer
+26
+model of how somatic mutations affect gene regulation. Finally, contextualized networks enable GRN-based preci-
+27
+sion oncology, explaining known biomarkers in terms of network-mediated effects, and leading to novel subtypings
+28
+for thyroid, brain, and gastrointestinal tumors that improve survival prognosis.
+29
+Introduction
+30
+Tumors are heterogeneous, developing through clonal evolution that accumulates mutations, including cancer-driving
+31
+single-nucleotide variants (SNVs) and somatic copy number alterations (SCNAs). In addition to tumor cell intrinsic
+32
+changes, tumors develop in and are shaped by a microenvironment that includes immune cells, the extracellular ma-
+33
+trix, blood vessels and surrounding cells. This extensive heterogeneity necessitates hetereogeneous treatments targeted
+34
+*cellingt@cs.cmu.edu
+†Corresponding Authors: eric.xing@mbzuai.ac.ae, manoli@mit.edu
+1
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Figure 1: (a) Traditional modeling approaches assume each training cohort or (sub)population is homogeneous and
+samples are identically distributed. Cohorts must be large enough to allow robust inference, presenting a tradeoff be-
+tween personalization and power. (b) Contextualization assumes model parameters are a function of context, allowing
+powerful context-specific inference without a priori clustering of subpopulations or assuming homogeneity. Contexts
+can be unique to each sample, permitting sample-specific model inference. (c) Sample-specific models reveal pop-
+ulation heterogeneity, relate rare pathological mechanisms to more common ones, and provide new data views for
+prognosis and biomarker identification. (d) Graphical depiction of the deep learning framework. Sample context is
+used to predict weights on each of the model archetypes, which we call the subtype. The sample-specific network is
+estimated as the tensor dot product of archetypal networks and subtype weights. The network archetypes are learned
+simultaneously alongside the context encoder using backpropagation.
+to individual patients. However, estimating treatment effects and patient prognosis at patient-specific resolution im-
+35
+plies an n-of-1 approach to treatment that is technically and temporally infeasible. Instead, methods have historically
+36
+sought to identify prognostic biomarkers that stratify patients into tumor subtype cohorts, and predictive biomarkers
+37
+that identify patients who generally respond to treatment. The Cancer Genome Atlas1 (TCGA) derives prognostic
+38
+subtypes via cluster analysis on clinical and molecular data, including cancer-driving SNVs, SCNAs, DNA methy-
+39
+lation, mitochondrial DNA, RNA-seq, miRNA, protein abundance arrays, histology images, patient demographics,
+40
+and/or immunological data, and further identifies prognostic biomarkers as features that differentiate these clusters
+41
+[1–23]. While clusters can be analyzed in terms of feature stratification, clustering ignores the latent feature interac-
+42
+tions and hierarchical feature relationships that define biological systems. Biomarkers identified by cluster analysis
+43
+have no mechanistic interpretation, and require further experimentation to validate their role in tumorigenesis and
+44
+1https://www.cancer.gov/tcga
+2
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+tumor pathology. Consequently, the identification of biomarkers using somatic DNA alterations or gene expression
+45
+patterns has proved challenging [24], but biological dogma and notable exceptions (e.g. HER2 amplification in breast
+46
+cancer) motivate us to find a systematic way to search for differentiating regulatory factors that reflect cellular states
+47
+and foreshadow cellular responses to treatments. In our view, biomarker discovery should directly inform the devel-
+48
+opment of novel treatments, revealing molecular features that relate to the robustness or fragility of molecular systems
+49
+in individual tumors. Addressing the shortcomings of cluster analysis, we focus on three questions: (1) how do we
+50
+model the mechanisms of molecular interactions as it relates to tumorigenesis and treatment efficacy, (2) how do we
+51
+identify prognostic biomarkers for rare diseases and outlier patients that are too sparsely sampled to cluster, and (3)
+52
+how can we quantify the heterogeneity of tumor pathology, which is widely acknowledged but poorly understood, and
+53
+encode or represent the myriad of phenotypic, molecular, and environmental factors driving this heterogeneity from
+54
+observational data alone?
+55
+Toward representing interactions, gene regulatory networks (GRNs) represent the functional circuitry within cells
+56
+that simultaneously respond to biomolecular stimulus and drive tumorigenesis. We intuit that many interactions be-
+57
+tween disparate biomolecular features can be identified at the cellular level through transcriptomic regulation, both
+58
+directly and indirectly. Further, tumor-specific GRNs capture regulatory redundancy and fragility in individual can-
+59
+cers, whereby multi-omic features relate to GRN structure and organization, and GRN organization reveals the func-
+60
+tional mechanisms of tumor pathology and the robustness of therapeutic targets. Single-cell and multi-omic profiling
+61
+have advanced the potential for studying highly context-specific regulatory relationships in GRNs, but computational
+62
+methods of inferring GRNs continue to rely on partitioning samples into homogeneous sets of samples [25–28]. As
+63
+such, existing methods for high-resolution network inference either impose strong biological priors based on known
+64
+transcription factor-gene regulation [29], or apply a sample-left-out approach that lacks statistical power [30, 31].
+65
+Partition-based modeling is insufficient to capture high-resolution or continuously rewiring GRNs, a problem for pre-
+66
+cision oncology because some types of cancer neither form discrete clusters [32] nor cluster by tissue of origin [33].
+67
+More generally, the exponential increase of data set complexity, heterogeneity, and size, has motivated the need for
+68
+sample-specific inference in many application areas [34–38]. Contextualized modeling [39] addresses this by repre-
+69
+senting the heterogeneity in data as driven by sample-specific models, and explaining variation among sample-specific
+70
+models in terms of sample context encodings. These contexts can be any information that may explain heterogeneity
+71
+in the data (e.g. age, genotype, medical images, environmental factors). More traditionally, context-driven hetero-
+72
+geneity might be controlled by performing probabilistic inference on context-specific data sets, but this fails to scale
+73
+to high-dimensional and continuously-varying contexts, common in biomedical data, where context data splits have
+74
+as few as one sample and most context conditions are missing entirely. The simplest and most classic version of
+75
+the contextualization paradigm are varying-coefficient models [40], which account for the effects of a univariate and
+76
+continuously-varying context on a linear model’s parameters.
+77
+Modern contextualized models, proposed in [41] and generalized in [39], are a combination of statistical modeling
+78
+and deep learning, where context encoders are typically neural networks that can utilize any multi-modal contextual
+79
+information. This framework also introduces the concept of model archetypes (Figure 1d), whereby all sample-specific
+80
+models are spanned by the set of model archetypes, constraining and explaining their variation through the context
+81
+encoding which parameterizes this space (See Methods). Thus, these archetypes, also learned from data, link the
+82
+heterogeneity of sample-specific models to variation in the context encoding and enable sharing information between
+83
+sample-specific model inference tasks. Many notable works on heterogeneous linear effects use this framework [41–
+84
+46], but contextualized models have yet to be extended to the more general graphical modeling regime.
+85
+To infer tumor-specific GRNs that account for patient-to-patient heterogeneity, we propose to reframe GRN in-
+86
+ference within the contextualized modeling paradigm, thereby sharing information among tumor-specific inference
+87
+tasks by relating these tasks through their clinical and molecular contexts. By recasting networks as the output of a
+88
+learnable function, our approach shares statistical power between samples while also permitting fine-grained varia-
+89
+tion to capture the complexity of sample-specific contexts such as tissue-of-origin, somatic mutation landscape, tumor
+90
+microenvironment and clinical measurements. We formulate three types of GRNs (Markov, Neighborhood, and Cor-
+91
+relation networks) under this paradigm, and estimate sample-specific GRNs which enable sample-specific analyses of
+92
+latent regulatory processes. By applying this computational framework to over 7000 samples, we find that contextu-
+93
+alized networks improve prediction of held-out expression data and reveal latent heterogeneity which has previously
+94
+been obscured by partition-based methods of network inference.
+95
+3
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Results
+96
+Graphical model inference is a canonical task in the life sciences, whereby unstructured observational data is trans-
+97
+formed into graph revealing the latent structure, strength, and direction of interactions between biological entities.
+98
+However, for heterogeneous populations where latent models change from individual to individual, such as how tu-
+99
+morigenesis is driven by patient-specific environmental and molecular factors, traditional modeling approaches are
+100
+ill-defined. We introduce contextualized GRNs, which learn to model the effect of individual clinical and molecular
+101
+contexts on GRN parameters, revealing latent model-based drivers of GRN dysregulation and tumor heterogeneiety.
+102
+While GRNs are commonly interpreted as adjacency graphs [25, 27, 29], existing methods for GRN inference can
+103
+be categorized as variants of four probabilistic models: Markov networks, which represent pairwise dependencies,
+104
+Pearson’s correlation networks, which represent pairwise correlations, neighborhood regression networks, which rep-
+105
+resent each node as a linear combination of its neighbors, and Bayesian networks, and which represent directed and
+106
+acyclic interactions. We focus on Markov, correlation, and neighborhood networks, unifying these models through a
+107
+reparameterization trick, and thus enable them to be contextualized uniformly within our framework.
+108
+The power gained from contextualization allows us to estimate highly accurate sample-specific network models
+109
+without incorporating any prior knowledge of network structure. We apply contextualized graph estimation to infer
+110
+context-specific networks for 7997 patients in TCGA, utilizing molecular contexts including cancer-driving single nu-
+111
+cleotide variations (SNVs), somatic copy number alterations (SCNAs), biopsy composition metrics, and patient demo-
+112
+graphics. Across all network classes, contextualized networks confer significant improvements for network accuracy
+113
+and likelihood, generalizing to held-out populations and held-out disease types. We evaluate our 7997 patient-specific
+114
+GRNs for new clinical and biological insights, discovering robust state-of-the-art prognostic subtypes for thyroid carci-
+115
+noma (THCA) and brain lower grade glioma (LGG), as well as cross-tissue disease groups like the gastointestinal tract
+116
+that includes four distinct tumor types. Finally, patient-specific networks relate prognostic biomarkers to changes in
+117
+specific regulatory modules and gross GRN organization, and identify candidate biomarkers for further investigation.
+118
+Contextualization Recovers Latent Variation from Heterogeneous Observational Data
+119
+Observational data is cheap and abundant in comparison to experimental data, but suffers from complex environmen-
+120
+tal confounders, contexts, and conditions. To recover latent processes of data generation through model estimation
+121
+with observational data, the user must artificially control for on sample contexts and conditions to emulate a con-
+122
+trolled experimental environment. However, controlling for all conditions and contexts simultaneously, especially on
+123
+biomedical data with high-dimensional contexts, leads to conditions with as few as just one sample – too small to
+124
+infer accurate context-specific models. Ignoring contextual effects (i.e. population modeling) is similarly ill-advised
+125
+for heterogeneous data, leading to spurious results from models that are misspecified and inaccurate (e.g. Simpson’s
+126
+paradox).
+127
+Contextualization [39] addresses this by applying deep learning to the meta-relationship between contextual in-
+128
+formation and context-specific model parameters. Contextualization unifies previous approaches such as varying-
+129
+coefficient modeling [40], cluster analysis, and cohort analysis by introducing two simple concepts: a context en-
+130
+coder which translates sample context into model parameters, and a sample-specific model which represents the latent
+131
+context-specific mechanisms of data generation. By learning how models change in response to context, contextual-
+132
+ization enables powerful control over high-dimensional and continuously varying contexts, discovering dynamic latent
+133
+structure underlying data generation in heterogeneous populations.
+134
+Contextualization Enables Estimation of Sample-Specific Correlation, Markov, and Neigh-
+135
+borhood Networks
+136
+To contextualize Markov, correlation, and neighborhood networks, we first unify them with linear parameterizations
+137
+equivalent to each models’ unique constraints (See Methods). Linear parameterization provides a differentiable ob-
+138
+jective for optimizing each model and the linear residual errors are proportional to the negative log likelihood of
+139
+each network model under the data. Our unifying linearization of these models allows us to apply contextualization
+140
+uniformly to each network class, and further enables us to benchmark and test the effects of common model personal-
+141
+ization paradigms against contextualization in terms of model likelihood and modeling errors.
+142
+4
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Markov
+Neighborhood
+Correlation
+Population
+0.985 ± 0.006
+0.984 ± 0.004
+0.963 ± 0.000
+Cluster-specific
+0.365 ± 0.014
+0.349 ± 0.012
+0.683 ± 0.052
+Disease-specific
+0.368 ± 0.003
+0.351 ± 0.003
+0.673 ± 0.002
+Contextualized
+0.322 ± 0.014
+0.296 ± 0.013
+0.529 ± 0.019
+Error Reduction
+14.6% ± 3.4%
+18.1% ± 3.3%
+20.2% ± 3.4%
+Table 1: Error of inferred networks to match held-out gene expression profiles. For all three types of networks (Markov,
+Neighborhood, and Correlation), we report mean-squared error (MSE) of gene expression predicted by the network.
+Reported values are mean ± std over 30 runs with a bootstrapped training set and randomly initialized model weights.
+Error reduction is reported relative to the best baseline, which in all cases is disease-specific modeling.
+Contextualized Networks Improve Likelihood of Held-Out Expression Profiles
+143
+Contextualization improves the fit of networks models to gene expression data (Table 1). We benchmark the contextu-
+144
+alized networks by comparing against several granularities of partition-based models: (1) a population network model
+145
+which estimates the same network for all samples, (2) cluster-specific networks that are estimated independently for
+146
+each cluster of contextual information, and (3) disease-specific networks that are estimated independently for each
+147
+cancer type (Fig. 7). For all three network models, we evaluate the fit of the network model to actual expression
+148
+data by measuring the predictive performance of the network graphical model. These predictive performances are
+149
+measured as mean-squared errors between predicted and observed expression data which are inversely proportional to
+150
+the model likelihood under the probabilistic interpretation of the network graphical model. Relative to disease-specific
+151
+model inference (the best baseline method), contextualized networks reduce modeling error on average by 14.6% for
+152
+Markov networks, 18.1% for neighborhood selection, and 20.2% for correlation networks. Contextualized graphical
+153
+models achieve this improved predictive performance by accounting for contextual dependencies in model parameters
+154
+without imposing prior assumptions on the form of these dependencies. As a result, contextualized graphical mod-
+155
+els capture context-specific effects that can be overlooked by group-level modeling approaches (e.g. cluster-specific,
+156
+disease-specific models).
+157
+Contextualized Networks Share Power Between All Cancer Types and Infer Models for Un-
+158
+seen Diseases
+159
+Contextualization relates transcriptional regulation to genomic variation through a context encoder (Fig. 1). During
+160
+training, the encoder learns to modify the parameters of a downstream network model in response to contextual signals.
+161
+At test time, the encoder uses learned context signals to generalize between sparsely sampled contexts. Rare or
+162
+undersampled diseases like Kidney Chromophobe (KICH) and Glioblastoma multiforme (GBM) can benefit from
+163
+contextual signals learned from well-sampled diseases in similar tissues (Figure 2b). In disease-specific modeling,
+164
+these smaller subpopulations must either be lumped within a larger tissue group, ignoring subpopulation heterogeneity,
+165
+or modeled individually, sacrificing statistical power in a "large p small n" regime. For example, there are n = 75
+166
+training samples from KICH patients, while each disease-specific network has 50 × 50 edges, or p = 2500 parameters;
+167
+estimating a disease-specific network from such limited data would be prohibitively high-variance.
+168
+Furthermore, contextualization adapts models to unseen contexts at test time, responding to even extreme dis-
+169
+tribution shift (Fig. 2a). For completely unseen contexts, the context encoder can still leverage learned relationships
+170
+between contexts and models to infer zero-shot network models on-demand. We evaluate model performance through a
+171
+disease-fold cross vaidation, where we hold out each of the 25 disease types in turn and learn to contextualize networks
+172
+on the remaining 24. Notably, disease-specific modeling cannot be applied in this regime. In contrast, contextualized
+173
+networks improve model performance and reduce error on 22 or 25 hold-out diseases, even when generalizing to an
+174
+entirely new disease type.
+175
+5
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+(a) Contextualized Graphs are Generated On-Demand for Held-Out Disease Types
+(b) Contextualized Graphs Generalize to Held-Out Patients and Improve Accuracy by Learning to Model Intra-disease Heterogeneity
+Markov Graph
+Inference Method
+Figure 2: Performance of Contextualized Markov Networks. (a) Disease-fold cross-validation, in which each of the 25
+disease types are held out from training and evaluated only at testing time. Disease-specific network inference cannot
+be applied in this regime. (b) Testing on held-out patients. Results are from 30 bootstrapped runs for each hold-out
+disease type and the hold-out patient set. Bar height is the group-averaged mean squared-error of the bootstrap-
+averaged network models. Error bars are the standard deviation over bootstraps of the group-averaged mean squared-
+error of the network models.
+Sample Type
+Primary Site
+Disease Type
+Disease Type
+BLCA
+BRCA
+CHOL
+COAD
+DLBC
+ESCA
+GBM
+HNSC
+KICH
+KIRC
+KIRP
+LGG
+LIHC
+LUAD
+LUSC
+OV
+PAAD
+PRAD
+READ
+SKCM
+STAD
+THCA
+UCEC
+UCS
+UVM
+Primary Site
+Bladder
+Breast
+Bile Duct
+Colorectal
+Lymph Nodes
+Esophagus
+Brain
+Head and Neck
+Kidney
+Liver
+Lung
+Ovary
+Pancreas
+Prostate
+Skin
+Stomach
+Thyroid
+Uterus
+Eye
+Sample Type
+Primary Tumor
+Solid Tissue Normal
+−1
+−0.5
+0
+0.5
+1
+Pancancer Network Organization
+Sample Type
+Primary Site
+Disease Type
+Disease Type
+BLCA
+BRCA
+CHOL
+COAD
+DLBC
+ESCA
+GBM
+HNSC
+KICH
+KIRC
+KIRP
+LGG
+LIHC
+LUAD
+LUSC
+OV
+PAAD
+PRAD
+READ
+SKCM
+STAD
+THCA
+UCEC
+UCS
+UVM
+Primary Site
+Bladder
+Breast
+Bile Duct
+Colorectal
+Lymph Nodes
+Esophagus
+Brain
+Head and Neck
+Kidney
+Liver
+Lung
+Ovary
+Pancreas
+Prostate
+Skin
+Stomach
+Thyroid
+Uterus
+Eye
+Sample Type
+Primary Tumor
+Solid Tissue Normal
+−1
+−0.5
+0
+0.5
+1
+Pancancer Network Organization
+Sample Type
+Primary Site
+Disease Type
+Disease Type
+BLCA
+BRCA
+CHOL
+COAD
+DLBC
+ESCA
+GBM
+HNSC
+KICH
+KIRC
+KIRP
+LGG
+LIHC
+LUAD
+LUSC
+OV
+PAAD
+PRAD
+READ
+SKCM
+STAD
+THCA
+UCEC
+UCS
+UVM
+Primary Site
+Bladder
+Breast
+Bile Duct
+Colorectal
+Lymph Nodes
+Esophagus
+Brain
+Head and Neck
+Kidney
+Liver
+Lung
+Ovary
+Pancreas
+Prostate
+Skin
+Stomach
+Thyroid
+Uterus
+Eye
+Sample Type
+Primary Tumor
+Solid Tissue Normal
+−1
+−0.5
+0
+0.5
+1
+Pancancer Network Organization
+Sample Type
+Primary Site
+Disease Type
+Disease Type
+BLCA
+BRCA
+CHOL
+COAD
+DLBC
+ESCA
+GBM
+HNSC
+KICH
+KIRC
+KIRP
+LGG
+LIHC
+LUAD
+−1
+−0.5
+0
+0.5
+1
+Pancancer Transcriptomic Organization
+Sample Type
+Primary Site
+Disease Type
+Disease Type
+BLCA
+BRCA
+CHOL
+COAD
+DLBC
+ESCA
+GBM
+HNSC
+KICH
+KIRC
+KIRP
+LGG
+LIHC
+LUAD
+−1
+−0.5
+0
+0.5
+1
+Pancancer Network Organization
+Transcriptomics
+Contexts
+Networks
+Figure 3: Embeddings, colored by disease type, reveal the organization of different disease views. Context views
+alone cannot capture tumor disease types. Transcriptomic views recapitulate disease types. Contextualized networks
+discover new separations and similarities, revealing disease subtypes and cross-disease relationships.
+6
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Contextualized Networks Reveal Tissue-Specific Regulatory Modules
+176
+Contextualization produces context-specific network models, resulting in patient-specific networks for all 7997 pa-
+177
+tients in our TCGA dataset. Organizing patients according to their network models reveals that tissue type is a primary
+178
+driver, but not the sole factor in determining gene-gene interactions (Fig. 3). In particular, diseased networks dif-
+179
+fer drastically from healthy networks, while gene and PCA-derived metagene expression profiles are still largely
+180
+tissue-derived. Additionally, intra-disease (Fig. 5a) and inter-disease (Fig. 6a) subtypes are visible even at pan-cancer
+181
+resolution (Fig. 3), making obvious common tumorigenesis mechanisms that underly noisy gene expression dynamics.
+182
+Contextualized Networks Reveal Regulatory Modules Conserved Across Tissues in Cancer
+183
+Contextualized networks reveal that tumors of the GI tract display a continuum of GRN dysregulation (Figure 6).
+184
+While this continuum cannot be captured by existing TCGA subtypes [47], contextualized networks form clusters that
+185
+relate existing subtypes to inter-disease and intra-disease heterogeneity via conserved regulatory motifs and shared
+186
+dysregulation motifs. Contextualized networks reveal that tumors of the GI tract display a continuum of GRN dys-
+187
+regulation (Figure 6). While this continuum cannot be captured by existing TCGA subtypes, contextualized networks
+188
+form clusters that relate existing subtypes to inter-disease and intra-disease heterogeneity via conserved regulatory
+189
+motifs and shared dysregulation motifs. Finally, contextualized networks discover disparate types of GRN dysregula-
+190
+tion within patients assigned to the SCNA-derived GI.CIN subtype, comprising the majority of GI tract tumors (Fig.
+191
+6a). Re-assigning patients based on GRN-derived subtypes improves prognosis (Fig. 6b) and reveals biomarkers of
+192
+these dysregulation subtypes (Fig. 6a) including SNV-SCNA interactions such as HRAS mutations with chromosome
+193
+18 arm p loss of heterozygosity.
+194
+Contextualized Networks Discover Novel Prognostic Subtypes
+195
+Expression
+TCGA CoCA
+Networks
+Multivariate log-rank test (-log(p))
+8.53
+9.65
+11.24
+Minimum Pairwise log-rank test (-log(p))
+8.27
+9.55
+11.71
+Table 2: Stratification disease subtypes in terms of survival. Survival tests quantify the difference in survival distri-
+butions between groups as a p-value. Contextualized networks improve on both tests on average by several orders of
+magnitude compared with other subtyping methods. The multivariate log-rank test quantifies overall stratification of
+survival distributions across all subtypes. The minimum pairwise result is the minimum p-value of all pairwise subtype
+tests, showing the maximum survival stratification between prognostic subtypes.
+For each of the 25 tumor types, we cluster patients by their contextualized networks to identify network-based tumor
+196
+subtypes by flattening the network parameters and applying hierarchical ward clustering. To compare the prognostic
+197
+utility of network-based subtypes against the prognostic utility of state-of-the-art TCGA subtypes and expression
+198
+subtypes, we use the same number of clusters for each disease as subtypes annotated in TCGA. We find that network-
+199
+based subtypes are more prognostic on average than both expression-derived subtypes and TCGA subtypes (Table 2).
+200
+In general, we find that network-based subtypes either recapitulate or refine prognostic subtypes produced by TCGA,
+201
+which often utilize additional data types including DNA methylation, miRNA, and histopathological imaging. All
+202
+subtype comparisons by disease are available in Appendix S4. For 10 of 25 tumor types, contextualized networks
+203
+reduce one of the survival function p-values by at least an order of magnitude, and in some cases, as much as 9
+204
+orders of magnitude on KIRC, 4 orders of magnitude on LGG, 2.4 orders of magnitude on THCA, and 2.3 orders
+205
+of magnitude on HNSC. On KICH, both network subtypes and TCGA subtyapes are outperformed by expression
+206
+subtypes by 13.5 orders of magnitude. In the second and third worst cases for contextualized networks, network
+207
+subtypes are outperformed by TCGA subtypes on GBM and UVM in terms of survival prognosis by about 1.5 and 1.3
+208
+orders of magnitude, respectively.
+209
+7
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Figure 4: Exploration of network subtypes for LGG, looking at correlated clinical information, arm-level copy alter-
+ations, gene-level copy alterations, and gene-level single nucleotide variations.
+8
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Figure 5: Exploration of network subtypes for THCA, looking at correlated clinical information, arm-level copy
+alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+9
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Figure 6: Exploration of cross-disease network subtypes for cancers of the GI tract, including READ, COAD, STAD,
+and ESCA, looking at correlated clinical information, arm-level copy alterations, gene-level copy alterations, and
+gene-level single nucleotide variations.
+10
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Discussion
+210
+In this study, we propose contextualized GRNs as cohesive sample-specific representations of latent tumor states
+211
+underlying disease progression and survival. Our models reveal new insights about cancer heterogeneity by relating
+212
+transcriptomic, genetic, immune, and clinical factors to through tumor regulatory network topology.
+213
+The importance of context in cancer development and treatment is well recognised with treatment decisions fre-
+214
+quently determined by a tumor’s tissue of origin. The frequency of mutations in specific driver mutations varies
+215
+substantially between tumors of different tissues and likely reflects the importance of distinct signaling pathways
+216
+within distinct cellular contexts [48]. For example, BRAF(V600E) driver mutations vary substantially in frequency
+217
+across cancer types and drugs that target the BRAF(V600E) mutant product are less effective in colorectal cancers
+218
+than in skin cutaneous melanoma and non-small cell lung cancers with this mutation [49]. Further emphasizing the
+219
+importance of context beyond the tissue-level, considerable variation in terms of aggressiveness, drug sensitivity, and
+220
+genomic mutations, is also observed between tumors arising from the same cell type and tissue [50]. These hetero-
+221
+geneous genetic contexts likely hinder efforts to define tumor subgroups based on specific mutations with epistasis,
+222
+which involves the action of one gene on another, having been shown to affect treatment efficacy in acute myeloid
+223
+leukemia where NPM1 mutations confer a favorable prognosis only in the presence of a co-occurring IDH1 or IDH2
+224
+mutation [51].
+225
+Although genetic heterogeneity between tumors from the same tumor type is known to be widespread, it has long
+226
+been thought that heterogeneity at the phenotype level may not be so marked, with the same cellular pathways often
+227
+affected [52]. For example, dysregulation of the G1–S transition is observed in almost all cancers, and may occur
+228
+through multiple routes, both promoting proliferation and overriding cellular senescence [53]. However, in spite of
+229
+the evidence for functional convergence, it is challenging with current statistical methods to identify biomarkers that
+230
+define similar phenotypes on genetically diverse contexts in order to guide treatment.
+231
+Many promising expression-based biomarkers use the level of expression across gene pathways or multiple genes
+232
+rather than identifying specific somatic mutations [24]. Contextualized GRNs provide an intuitive way of identifying
+233
+both subpopulations with differential transcriptomic regulation and the pathway-level cohorts of genes that should
+234
+be studied as potential biomarkers, as well as the likely effect size of pathway dysregulation. Contextualized GRNs
+235
+further identify associated contextual signals with these subpopulations, providing new leads for traditional classes of
+236
+genomic biomarkers.
+237
+More broadly, contextualized modeling seeks to estimate context-specific models beyond context-specific sam-
+238
+pling constraints. By sharing information among samples while also allowing sample-specific variation, our frame-
+239
+work models complex and dynamic distributions despite physical and technical barriers that would typically prohibit
+240
+sample-specific inference. Context-dependent models models naturally account for non-identically distributed data
+241
+and provide a principled method for performing statistical inference on data that would traditionally be too small or
+242
+too heterogeneous. While it is generally believed that biological observations are a product of latent cellular states and
+243
+tumors exhibit extreme patient-to-patient heterogeneity, these ideas are orthogonal in traditional modeling regimes.
+244
+Contextualized GRNs are the first to effectively unite the two: networks are a useful latent representation, relating
+245
+biomarkers to pathology through systems of molecular interactions, and accounting for network heterogeneity allows
+246
+us to explore both population-level and per-patient tumor pathology in terms of latent representations of molecular
+247
+systems.
+248
+Materials and methods
+249
+Contextualized Networks
+250
+We seek a context-specific density of network parameters P(θ ∣ C) such that
+251
+P(X ∣ C) = ∫θ dθPM(X ∣ θ)P(θ ∣ C)
+is maximized, where PN(X ∣ θ) is the probability of gene expression X ∈ Rp under network model class M with
+252
+parameters θ ∈ Rp×p and context C, which can contain both multivariate and real features. To overcome θ being a
+253
+11
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+high-dimensional, structured latent variable, we assume that all contextualized networks lie on a subspace spanned by
+254
+a set of K network archetypes A ∶= span({Ak ∈ Rp×p ∶ A1,...,AK}), i.e. θ ∈ A. Further, the space spanned by A is
+255
+parameterized by a latent variable (“subtype”) Z ∈ RK such that Z is a deterministic function of context Z = f(C)
+256
+and the context-specific network model θ (and subsequently the gene expression observations X) are independent of
+257
+context given Z, i.e. C ⊥ (X,θ) ∣ Z. In this way, we constrain θ as a convex combination of network archetypes via
+258
+latent mixing.
+259
+P(X ∣ C) = ∫θ,Z dθdZPM(X ∣ θ)P(θ∣Z)P(Z ∣ C)
+= ∫θ,Z dθdZPM(X ∣ θ)δ(θ −
+K
+∑
+k=1
+ZkAk)δ(Z − f(C))
+= PM(X∣ϕ(C;f,A))
+ϕ(C;f,A) =
+K
+∑
+k=1
+ZkAk =
+K
+∑
+k=1
+f(C)kAk
+Where the context encoder ϕ(C;f,A) is parameterized by a learnable context-to-subtype mapping f and the set of
+260
+archetypes A. This architecture is shown in Figure 1d, and is learned end-to-end with backpropagation. While the
+261
+archetypal networks Ak could use prior knowledge for initialization or regularization, no prior knowledge is required.
+262
+In all experiments reported here, we do not use any prior knowledge of network structure or parameters.
+263
+This framework unites three different perspectives of GRNs: (1) Correlation networks, in which network edges
+264
+are the pairwise Pearson’s correlation between nodes, (2) Markov networks, in which edges are the pairwise precision
+265
+values representing conditional dependencies between nodes, and (3) Neighborhood regression networks, in which
+266
+edges represent directed linear relationships between nodes. The key challenge for each network class is to define a
+267
+differentiable loss function ℓM that is proportional to the negative log probability of our contextualized network model.
+268
+̂f, ̂
+A = argmax
+f,A
+N
+∑
+n=1
+log (PM(Xn∣ϕ(Cn;f,A)))
+= argmin
+f,A
+N
+∑
+n=1
+ℓM (ϕ(Cn;f,A),Xn)
+The loss objective can be used in the end-to-end optimization, solving for the context encoder and the network
+269
+archetypes simultaneously, and subsequently inferring the context-specific parameters θ. Below, we outline a uni-
+270
+fying linear parameterization of each network loss. Implementation details are discussed in Appendix S1.
+271
+Contextualized Neighborhood Regression
+272
+We first apply contextualization to the graph variable selection algorithm proposed by Meinhausen and Buhlmann
+273
+[54]. The direct relationship of this model to lasso regression links contextualized neighborhood regression to original
+274
+works on contextualized linear models [41], making it a convenient stepping stone toward the graphical models in the
+275
+sequel. The model is a Gaussian graphical model where X ∼ N(0,Σ) and Σ has sparse off-diagonal entries. The
+276
+algorithm, neighborhood regression, recovers edges between nodes with non-zero partial correlations by solving the
+277
+lasso regression for every feature Xi, given every other feature X−i, where regression maximizes P(Xi∣X−i) via the
+278
+loss
+279
+̂θi = argmin
+θ
+∥Xi − X−iθ∥2
+2 + λ∥θ∥1
+resulting in edges with source Xj for every j ≠ i and sink Xi and strength θij, or no edge if θij = 0. Equivalently, we
+280
+parameterize the neighborhood selection objective using the square matrix of network edge parameters θ ∈ Rp×p.
+281
+12
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+̂θ = argmin
+θ
+∥X − Xθ∥2
+F + λ∑
+i
+∥θi∥1 s.t. diag(θ) = [0]
+Where the contextualized neighborhood network objective replaces θ for each sample with a context-specific θn =
+282
+ϕ(Cn;f,A). Finally, we define a function ϕ′ to mask the diagonal of θ, presenting the loss function ℓNN for contex-
+283
+tualized neighborhood regression networks
+284
+ℓNN(ϕ(C;f,A),X) = ∥X − Xϕ′(C;f,A)∥2
+2 + λ∑
+i
+∥ϕ′(C;f,A)i∥1
+ϕ′(C;f,A) = (1 − I) ⊗ ϕ(C;f,A)
+where ⊗ is the hadamard product.
+285
+Contextualized Markov Networks
+286
+Linear regression and Gaussian graphical models are intrinsically related, allowing us to extend work on contextualized
+287
+linear models to various graphical representations of the Gaussian graphical model. To estimate sample-specific
+288
+precision matrices representing the conditional dependency structure of an undirected graphical model or Markov
+289
+network, we assume the data is drawn from X ∼ N(0,Ω−1) where Ω = Σ−1 and estimate pairwise partial correlation
+290
+coefficients. Using an equivalence defined by Peng et al. [55], the partial correlation coefficient is defined by regression
+291
+as
+292
+ρij = sign(βij)
+√
+βijβji = − ωij
+ωiiωjj
+Where the precision matrix Ω has elements ωij and β is the ordinary least squares solution to multivariate linear
+293
+regression βi = argminβ ∥Xi − X−iβ∥2
+2. Critically, the precision matrix directly encodes conditional independence
+294
+between features in X, and thus precision encodes the Markov network.
+295
+ωij = 0 ⇐⇒ Xi ⊥ Xj ∣ X−{i,j}
+Following [56], we assume constant diagonal precision wii = wjj∀i,j and therefore achieve proportionality between
+296
+the regression and the precision matrix.
+297
+ωij ∝ −sign(̂βij)
+√
+̂βij ̂βji
+Assuming unit diagonal precisions ωii = 1, the proportionality becomes exact equivalence. Further, proportionality
+298
+induces symmetry in the regression, i.e. βij = βji. We encode this in the objective by requiring our estimate for θ to
+299
+be a symmetrically augmented matrix based on γ, i.e. β = γ + γT
+300
+̂γ = argmin
+γ
+∥X − X(γ + γT )∥2
+F s.t. diag(γ) = [0]
+If Ω is sparse, we can apply lasso regularization to the multivariate regression objective [54]. Given the similarity
+301
+between this differential Markov network objective and the neighborhood regression objective, we follow the exact
+302
+contextualization procedure from above to contextualize γ and arrive at a loss function ℓMN
+303
+ℓMN(ϕ(C;f,A),X) = ∥X − X(ϕ′(C;f,A) + ϕ′(C;f,A)T )∥2
+2 + λ∑
+i
+∥ϕ′(C;f,A)i∥1
+where ϕ′ is defined identically for masking the diagonal. The resulting precision matrix estimate is ̂Ω = −(ϕ′(C; ̂f, ̂
+A)+
+304
+ϕ′(C; ̂f, ̂
+A)T ). In practice we do not threshold the estimated precision to non-zero values, instead using the exact pre-
+305
+cision matrix to represent the Markov network, retaining information about dependency strength as well as dependency
+306
+structure in the network.
+307
+13
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Contextualized Correlation Networks
+308
+Correlation networks are simple to estimate and often state-of-the-art for gene regulatory network inference [27];
+309
+contextualized correlation expand this utility to the granularity of sample-specific network inferences. To estimate
+310
+sample-specific correlation networks, we assume the data was drawn from X ∼ N(0,Σ) and use the well known
+311
+univariable regression view of Pearson’s marginal correlation coefficient:
+312
+ρ2
+ij =
+σij
+σiiσjj
+= βijβji
+where the covariance matrix Σ has elements σij, and βij = argminβ(Xj − Xiβ)2. This form converts correlation into
+313
+two separable univariate least-squares regressions that maximize the marginal conditional probabilities P(Xi∣Xj) and
+314
+P(Xj∣Xi). Contextualizing this differentiable objective, we get the contextualized correlation network loss
+315
+ℓCN(ϕ(C;f,A),X) = ∥X − X ⊗ ϕ(C;f,A)∥2
+F
+where the context-specific correlation matrix is reconstructed as ̂ρ2 = ϕ(C; ̂f, ̂
+A) ⊗ ϕ(C; ̂f, ̂
+A)T .
+316
+Baselines
+317
+We compare contextualized modeling with several traditional approaches for context-controlled and context-agnostic
+318
+inference, including population modeling, cluster modeling, and cohort modeling (Fig. 7). A population model as-
+319
+sumes that the entire sample population is identically distributed. As a result, population modeling infers a single
+320
+model representing all observations. In reality, sample populations often contains two or more uniquely distributed
+321
+subpopulations. If we expect that there are several subpopulations with many observations each, and that these subpop-
+322
+ulations can be stratified by context, it may be appropriate to cluster the data by context to identify these subpopulations
+323
+and then infer a model for each context-clustered subpopulation. This assumes that all context features are equally
+324
+important and therefore does not tolerate noise features well. Alternatively, when subpopulation groupings are known
+325
+to be determined by a few important features, cohort modeling is more appropriate. Sample cohorts can be identified
+326
+based on prior knowledge about important context features (e.g. disease type).
+327
+Figure 7: Modeling regimes for personalized inference.
+14
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+The baseline modeling regimes enjoy the benefits of traditional inference methods (i.e. identifiability, conver-
+328
+gence) by relying on the assumption there are a discrete number of subpopulations underlying the observed data that
+329
+are each defined by a latent model, and each of these subpopulations is well-sampled. This assumption is rarely, if
+330
+ever, satisfied in a real-world setting. We develop contextualized modeling as a synthesis between traditional statis-
+331
+tical inference and modern deep learning to enable model-based analysis of heterogeneous real data. Contextualized
+332
+modeling assumes a functional dependency between models, but unlike prior methods makes no assumption about the
+333
+form or complexity of this dependency. As such, contextualized models permit context-informed inference even when
+334
+contexts are sparsely sampled and high dimensional.
+335
+Data
+336
+Our dataset is constructed from The Cancer Genome Atlas2 (TCGA) and related studies, covering 7997 samples
+337
+from 7648 patients with 6397 samples for training and validation and 1600 as testing. For context, we use clinical
+338
+information, biopsy composition, SCNAs and cancer-driving SNVs (Appendix S2). Gene expression data was log-
+339
+transformed and compressed to a set of cancer driver genes, then transformed using PCA into 50 metagenes. Networks
+340
+were learned on the metagene expression data.
+341
+Code availability
+342
+All methods are available in ContextualizedML, an open-source PyTorch library for contextualized modeling. Con-
+343
+textualized graphical models, as well as contextualized regressors can be estimated using an intuitive sklearn-style
+344
+import-fit-predict workflow.
+345
+from contextualized.easy import ContextualizedCorrelationNetworks
+346
+model = ContextualizedCorrelationNetworks()
+347
+model.fit(C_train, X_train)
+348
+err = model.measure_mses(C_test, X_test)
+349
+r = model.predict_correlation(C)
+350
+We provide demos and tutorials for network inference at https://contextualized.ml. Our code for generat-
+351
+ing the figures in this manuscript is available at https://github.com/cnellington/CancerContextualized.
+352
+Data availability
+353
+The TCGA data used is public and available for download via the Genomic Data Commons Data Portal. Data pro-
+354
+cessing is detailed in Appendix S2.
+355
+2www.cancer.gov/tcga
+15
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+References
+356
+[1] Muzny, D. M. et al. Comprehensive molecular characterization of human colon and rectal cancer 487, 330–
+357
+337. URL https://www.nature.com/articles/nature11252. Number: 7407 Publisher: Nature
+358
+Publishing Group.
+359
+[2] Berger, A. C. et al. A comprehensive pan-cancer molecular study of gynecologic and breast cancers 33, 690–
+360
+705.e9.
+URL https://www.cell.com/cancer-cell/abstract/S1535-6108(18)30119-3.
+361
+Publisher: Elsevier.
+362
+[3] Lawrence, M. S. et al. Comprehensive genomic characterization of head and neck squamous cell carcinomas
+363
+517, 576–582. URL https://www.nature.com/articles/nature14129. Number: 7536 Publisher:
+364
+Nature Publishing Group.
+365
+[4] Comprehensive molecular characterization of papillary renal-cell carcinoma 374,
+135–145.
+URL
+366
+https://doi.org/10.1056/NEJMoa1505917.
+Publisher: Massachusetts Medical Society _eprint:
+367
+https://doi.org/10.1056/NEJMoa1505917.
+368
+[5] Collisson, E. A. et al. Comprehensive molecular profiling of lung adenocarcinoma 511, 543–550. URL https:
+369
+//www.nature.com/articles/nature13385. Number: 7511 Publisher: Nature Publishing Group.
+370
+[6] Creighton, C. J. et al. Comprehensive molecular characterization of clear cell renal cell carcinoma 499, 43–
+371
+49. URL https://www.nature.com/articles/nature12222. Number: 7456 Publisher: Nature
+372
+Publishing Group.
+373
+[7] Hammerman, P. S. et al. Comprehensive genomic characterization of squamous cell lung cancers 489, 519–
+374
+525. URL https://www.nature.com/articles/nature11404. Number: 7417 Publisher: Nature
+375
+Publishing Group.
+376
+[8] Robertson, A. G. et al. Comprehensive molecular characterization of muscle-invasive bladder cancer 171, 540–
+377
+556.e25. URL https://www.cell.com/cell/abstract/S0092-8674(17)31056-5. Publisher:
+378
+Elsevier.
+379
+[9] Ally,
+A. et al.
+Comprehensive and integrative genomic characterization of hepatocellular carci-
+380
+noma 169, 1327–1341.e23.
+URL https://www.sciencedirect.com/science/article/pii/
+381
+S0092867417306396.
+382
+[10] Cancer Genome Atlas Research Network. Comprehensive molecular characterization of gastric adenocarcinoma
+383
+513, 202–209.
+384
+[11] Network, T. C. G. A. R. Comprehensive, integrative genomic analysis of diffuse lower-grade gliomas 372, 2481–
+385
+2498.
+URL https://www.nejm.org/doi/10.1056/NEJMoa1402121.
+Publisher: Massachusetts
+386
+Medical Society.
+387
+[12] Farshidfar, F. et al. Integrative genomic analysis of cholangiocarcinoma identifies distinct IDH-mutant molec-
+388
+ular profiles 18, 2780–2794. URL https://www.sciencedirect.com/science/article/pii/
+389
+S2211124717302140.
+390
+[13] Cabassi, A. & Kirk, P. D. W. Multiple kernel learning for integrative consensus clustering of omic datasets 36,
+391
+4789–4796. URL https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7750932/.
+392
+[14] Robertson, A. G. et al. Integrative analysis identifies four molecular and clinical subsets in uveal melanoma
+393
+32, 204–220.e15.
+URL https://www.cell.com/cancer-cell/abstract/S1535-6108(17)
+394
+30295-7. Publisher: Elsevier.
+395
+16
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+[15] Raphael, B. J. et al. Integrated genomic characterization of pancreatic ductal adenocarcinoma 32, 185–203.e13.
+396
+URL https://www.cell.com/cancer-cell/abstract/S1535-6108(17)30299-4. Publisher:
+397
+Elsevier.
+398
+[16] Sohn, B. H. et al.
+Clinical significance of four molecular subtypes of gastric cancer identified by the can-
+399
+cer genome atlas project 23, 4441–4449. URL https://www.ncbi.nlm.nih.gov/pmc/articles/
+400
+PMC5785562/.
+401
+[17] Cherniack, A. D. et al. Integrated molecular characterization of uterine carcinosarcoma 31, 411–423. URL
+402
+https://www.cell.com/cancer-cell/abstract/S1535-6108(17)30053-3. Publisher: El-
+403
+sevier.
+404
+[18] Kim, J. et al. Integrated genomic characterization of oesophageal carcinoma 541, 169–175. URL https:
+405
+//www.nature.com/articles/nature20805. Number: 7636 Publisher: Nature Publishing Group.
+406
+[19] Ceccarelli, M. et al. Molecular profiling reveals biologically discrete subsets and pathways of progression in
+407
+diffuse glioma 164, 550–563. URL https://www.sciencedirect.com/science/article/pii/
+408
+S009286741501692X.
+409
+[20] The molecular taxonomy of primary prostate cancer 163, 1011–1025.
+URL https://www.ncbi.nlm.
+410
+nih.gov/pmc/articles/PMC4695400/.
+411
+[21] Davis, C. F. et al. The somatic genomic landscape of chromophobe renal cell carcinoma 26, 319–330. URL
+412
+https://www.sciencedirect.com/science/article/pii/S1535610814003043.
+413
+[22] Levine, D. A. Integrated genomic characterization of endometrial carcinoma 497, 67–73. URL https://
+414
+www.nature.com/articles/nature12113. Number: 7447 Publisher: Nature Publishing Group.
+415
+[23] Cohen, A., Holmen, S. & Colman, H. IDH1 and IDH2 mutations in gliomas 13, 345. URL https://www.
+416
+ncbi.nlm.nih.gov/pmc/articles/PMC4109985/.
+417
+[24] Ben-Hamo, R. et al. Predicting and affecting response to cancer therapy based on pathway-level biomarkers 11,
+418
+3296.
+419
+[25] Badia-i Mompel, P. et al.
+Gene regulatory network inference in the era of single-cell multi-omics 1–16.
+420
+URL https://www.nature.com/articles/s41576-023-00618-5. Publisher: Nature Publishing
+421
+Group.
+422
+[26] Stone, M. et al. Identifying strengths and weaknesses of methods for computational network inference from
+423
+single cell RNA-seq data.
+URL https://www.biorxiv.org/content/10.1101/2021.06.01.
+424
+446671v1. Publication Title: bioRxiv.
+425
+[27] Pratapa, A., Jalihal, A. P., Law, J. N., Bharadwaj, A. & Murali, T. M.
+Benchmarking algorithms for gene
+426
+regulatory network inference from single-cell transcriptomic data 17, 147–154.
+427
+[28] Thompson,
+D.,
+Regev,
+A.
+&
+Roy,
+S.
+Comparative
+analysis
+of
+gene
+regulatory
+networks:
+428
+from network reconstruction to evolution 31,
+399–428.
+URL http://dx.doi.org/10.1146/
+429
+annurev-cellbio-100913-012908.
+430
+[29] Aibar, S. et al. SCENIC: single-cell regulatory network inference and clustering 14, 1083–1086. URL https:
+431
+//www.nature.com/articles/nmeth.4463. Number: 11 Publisher: Nature Publishing Group.
+432
+[30] Kuijjer, M. L., Tung, M. G., Yuan, G., Quackenbush, J. & Glass, K. Estimating sample-specific regulatory
+433
+networks 14, 226–240. URL http://dx.doi.org/10.1016/j.isci.2019.03.021.
+434
+[31] Lazareva, O. et al.
+DysRegNet:
+Patient-specific and confounder-aware dysregulated network infer-
+435
+ence.
+URL https://www.biorxiv.org/content/10.1101/2022.04.29.490015v1.
+Pages:
+436
+2022.04.29.490015 Section: New Results.
+437
+17
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+[32] Ursu, O. et al.
+Massively parallel phenotyping of coding variants in cancer with perturb-seq 40, 896–905.
+438
+URL https://www.nature.com/articles/s41587-021-01160-7. Number: 6 Publisher: Nature
+439
+Publishing Group.
+440
+[33] Hoadley, K. A. et al.
+Cell-of-origin patterns dominate the molecular classification of 10,000 tumors from
+441
+33 types of cancer 173, 291–304.e6.
+URL https://www.ncbi.nlm.nih.gov/pmc/articles/
+442
+PMC5957518/.
+443
+[34] Ageenko, I. I., Doherty, K. A. & Cleave, A. P. V. Personalized lifetime financial planning tool. URL https:
+444
+//patents.google.com/patent/US20100161467/en.
+445
+[35] Buettner, F. et al. Computational analysis of cell-to-cell heterogeneity in single-cell RNA-sequencing data reveals
+446
+hidden subpopulations of cells 33, 155–160. URL https://www.nature.com/articles/nbt.3102.
+447
+Number: 2 Publisher: Nature Publishing Group.
+448
+[36] Fisher, A. J., Medaglia, J. D. & Jeronimus, B. F. Lack of group-to-individual generalizability is a threat to
+449
+human subjects research 115, E6106–E6115.
+URL https://www.pnas.org/doi/10.1073/pnas.
+450
+1711978115. Publisher: Proceedings of the National Academy of Sciences.
+451
+[37] Hart, S. Precision education initiative: Moving towards personalized education 10, 209–211. URL https:
+452
+//www.ncbi.nlm.nih.gov/pmc/articles/PMC5476312/.
+453
+[38] Ng, K., Sun, J., Hu, J. & Wang, F. Personalized predictive modeling and risk factor identification using patient
+454
+similarity 2015, 132–136.
+455
+[39] Lengerich, B., Ellington, C. N., Rubbi, A., Kellis, M. & Xing, E. P. Contextualized machine learning. URL
+456
+http://arxiv.org/abs/2310.11340. 2310.11340[cs,stat].
+457
+[40] Hastie, T. & Tibshirani, R. Varying-coefficient models 55, 757–796. URL https://www.jstor.org/
+458
+stable/2345993. Publisher: [Royal Statistical Society, Wiley].
+459
+[41] Al-Shedivat, M., Dubey, A. & Xing, E. Contextual explanation networks 21, 1–44. URL http://jmlr.org/
+460
+papers/v21/18-856.html.
+461
+[42] Lengerich, B. J. et al.
+Discriminative subtyping of lung cancers from histopathology images via
+462
+contextual deep learning URL https://www.medrxiv.org/content/10.1101/2020.06.25.
+463
+20140053v1.abstract. Publisher: Cold Spring Harbor Laboratory Press.
+464
+[43] Lengerich, B., Aragam, B. & Xing, E. P. Learning sample-specific models with low-rank personalized regression.
+465
+URL http://arxiv.org/abs/1910.06939. 1910.06939[cs,stat].
+466
+[44] Lengerich, B. J., Nunnally, M. E., Aphinyanaphongs, Y., Ellington, C. & Caruana, R. Automated interpretable
+467
+discovery of heterogeneous treatment effectiveness: A COVID-19 case study 104086. URL https://www.
+468
+sciencedirect.com/science/article/pii/S1532046422001022.
+469
+[45] Deuschel, J. et al. Contextualized policy recovery: Modeling and interpreting medical decisions with adaptive
+470
+imitation learning. URL http://arxiv.org/abs/2310.07918. 2310.07918[cs,stat].
+471
+[46] Lengerich, B., Ellington, C., Aragam, B., Xing, E. P. & Kellis, M. NOTMAD: Estimating bayesian networks with
+472
+sample-specific structures and parameters URL http://arxiv.org/abs/2111.01104. 2111.01104.
+473
+[47] Liu, Y. et al.
+Comparative molecular analysis of gastrointestinal adenocarcinomas 33, 721–735.e8.
+URL
+474
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5966039/.
+475
+[48] Vogelstein, B. et al. Cancer genome landscapes 339, 1546–1558.
+476
+18
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+[49] Kopetz, S. et al. Encorafenib, binimetinib, and cetuximab in BRAF v600e–mutated colorectal cancer 381, 1632–
+477
+1643. URL https://doi.org/10.1056/NEJMoa1908075. Publisher: Massachusetts Medical Society
+478
+_eprint: https://doi.org/10.1056/NEJMoa1908075.
+479
+[50] Burrell, R. A., McGranahan, N., Bartek, J. & Swanton, C. The causes and consequences of genetic heterogeneity
+480
+in cancer evolution 501, 338–345.
+481
+[51] Patel, J. P. et al. Prognostic relevance of integrated genetic profiling in acute myeloid leukemia 366, 1079–1089.
+482
+[52] Hanahan, D. Hallmarks of cancer: New dimensions 12, 31–46.
+483
+[53] Rubin, S. M., Sage, J. & Skotheim, J. M. Integrating old and new paradigms of g1/s control 80, 183–192.
+484
+[54] Meinshausen, N. & Bühlmann, P. High-dimensional graphs and variable selection with the lasso 34, 1436–
+485
+1462. URL https://projecteuclid.org/journals/annals-of-statistics/volume-34/
+486
+issue-3/High-dimensional-graphs-and-variable-selection-with-the-Lasso/10.
+487
+1214/009053606000000281.full. Publisher: Institute of Mathematical Statistics.
+488
+[55] Peng, J., Wang, P., Zhou, N. & Zhu, J. Partial correlation estimation by joint sparse regression models 104,
+489
+735–746. URL https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2770199/.
+490
+[56] Wang, Z. et al. Bayesian edge regression in undirected graphical models to characterize interpatient heterogeneity
+491
+in cancer 117, 533–546.
+492
+[57] Zack, T. I. et al. Pan-cancer patterns of somatic copy number alteration 45, 1134–1140.
+493
+[58] Calabrese, C. et al.
+Genomic basis for RNA alterations in cancer 578, 129–136.
+URL https://www.
+494
+nature.com/articles/s41586-020-1970-0. Number: 7793 Publisher: Nature Publishing Group.
+495
+[59] Van Loo, P. et al. Allele-specific copy number analysis of tumors 107, 16910–16915. URL https://www.
+496
+pnas.org/doi/full/10.1073/pnas.1009843107. Publisher: Proceedings of the National Academy
+497
+of Sciences.
+498
+[60] Drews, R. M. et al.
+A pan-cancer compendium of chromosomal instability 606, 976–983.
+URL https:
+499
+//www.nature.com/articles/s41586-022-04789-9. Number: 7916 Publisher: Nature Publishing
+500
+Group.
+501
+[61] Tokheim, C. & Karchin, R. CHASMplus reveals the scope of somatic missense mutations driving human cancers
+502
+9, 9–23.e8.
+503
+[62] Steele, C. D. et al. Signatures of copy number alterations in human cancer 606, 984–991. URL https:
+504
+//www.nature.com/articles/s41586-022-04738-6. Number: 7916 Publisher: Nature Publishing
+505
+Group.
+506
+[63] Sondka, Z. et al. The COSMIC cancer gene census: describing genetic dysfunction across all human cancers
+507
+18, 696–705. URL https://www.nature.com/articles/s41568-018-0060-1. Number: 11 Pub-
+508
+lisher: Nature Publishing Group.
+509
+[64] Liberzon, A. et al. The molecular signatures database (MSigDB) hallmark gene set collection 1, 417–425.
+510
+[65] Kim, E., Gheorge, V. & Hart, T. Dynamic rewiring of biological activity across genotype and lineage revealed
+511
+by context-dependent functional interactions. URL https://www.biorxiv.org/content/10.1101/
+512
+2021.06.25.450004v1. Publication Title: bioRxiv.
+513
+[66] Mohammadi, S., Davila-Velderrain, J. & Kellis, M. Reconstruction of cell-type-specific interactomes at single-
+514
+cell resolution 9, 559–568.e4. URL http://dx.doi.org/10.1016/j.cels.2019.10.007.
+515
+[67] Kolar, M., Song, L., Ahmed, A. & Xing, E. P. Estimating time-varying networks. URL http://arxiv.org/
+516
+abs/0812.5087. ISBN: 0812.5087 Publication Title: arXiv [stat.ML].
+517
+19
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Supplemental Information for:
+518
+Contextualized Networks Reveal Heterogeneous Transcriptomic Regulation in Tumors at Sample-Specific Resolution
+519
+S1
+Implementation
+520
+Our entire framework (Fig. 1) is implemented in PyTorch using the PyTorch Lightning framework within our open-
+521
+source software ContextualizedML. The context encoder, network archetypes, and contextualized network models are
+522
+learned simultaneously using end-to-end backpropagation of the network loss (defined in Methods).
+523
+Context Encoder & Training
+The context encoder is implemented as a multi-layer perceptron with 3 hidden layers,
+524
+each 100 neurons wide with ReLU activations. The context data views (S2.2) are concatenated sample-wise to create
+525
+a single context feature vector encompassing all views for each patient. We use a batch-size of 10 and our learning rate
+526
+is chosen automatically using PyTorch Lightning’s auto-lr-find with an initial state of 1e-3. Model weights are
+527
+initialized as Uniform[-0.01, 0.01]. We split our dataset into 80% training-validation and 20% testing. We
+528
+create 30 bootstraps of the training-validation set and finally split into 80% training and 20% validation, resulting in a
+529
+64-16-20 split for train-validation-test where the train and validation sets are bootstrapped to evaluate model variance.
+530
+We use early-stopping with a patience of 5 to end training when the minimum validation loss has not been improved
+531
+for 5 epochs. We retain only the model with the minimum validation loss for each bootstrap. In Table 1, we evaluate
+532
+these bootstraps individually to get error means and variances. Following this, we apply each of our bootstrapped
+533
+models to the non-bootstrapped training-validation set and average the outputs of each model to obtain a single graph
+534
+for each patient in this set, which we evaluate in-depth in Figures 4, 5, and 6, and for all disease types in Appendix S4.
+535
+The context encoder is a highly flexible component of our framework and a driving force for future work. This
+536
+attribute can be used to enforce assumptions about the relationships between contexts and models, between context
+537
+features, and about the archetype space. For instance, by using a neural additive model instead of a multi-layer
+538
+perceptron, we provide context-feature-specific archetype weights for interpretability. Similarly, we can augment
+539
+our context encoder with a convolutional base and include imaging modalities in our context views. At the context
+540
+encoder head, we currently use an unconstrained output, but applying a softmax activation would require all of the
+541
+sample-specific models to lie within a polytope defined by the archetypal networks.
+542
+S2
+Data
+543
+S2.1
+Data sources
+544
+The Cancer Genome Atlas3 (TCGA) is a publicly-available pan-cancer datasource containing genomic, transcriptomic,
+545
+and clinical profiling of tumors from dozens of landmark studies. We queried TCGA for samples with bulk RNA-
+546
+sequencing and merged this dataset with two follow-up studies on an overlapping set of patients.
+547
+Somatic copy number alterations (SCNAs)
+SCNAs affect a larger fraction of the genome than do any other type
+548
+of somatic genetic alteration [57] and are a major driver of expression variation in cancer [58]. We used copy number
+549
+profiles derived from TCGA samples using ASCAT [59] from a pan-cancer study of the role of allele-specific SCNAs
+550
+in cancer [60].
+551
+Driver single-nucleotide mutations (SNVs)
+SNVs can be classified into "driver" mutations thought to provide
+552
+selective growth advantage and "passenger" mutations thought to have little role in promoting cancer development.
+553
+We incorporated driver SNVs from the TCGA-derived CHASMplus dataset [61]
+554
+3www.cancer.gov/tcga
+S1
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+S2.2
+Context data views
+555
+Clinical information
+This data view incorporates sample tissue-of-origin, race, age at diagnosis, gender, year of
+556
+birth, and days to collection provided by TCGA.
+557
+Biopsy Composition
+This data view contains the sample’s percent tumor cells, percent normal cells, percent tumor
+558
+nuclei, percent monocyte infiltration, percent lymphocyte infiltration, and percent neutrophil infiltration provided by
+559
+TCGA. We also incorporate expression-derived estimates of the fraction of a sample consisting of tumor cells from
+560
+[60].
+561
+Copy Number Alterations
+From ASCAT [59], we gather whole genome doubling events as well as gain and loss
+562
+events for bp-specific regions of hg19 based on data from [62]. We transform these gain and loss events into both arm-
+563
+level and gene-level events, where arm-level events affect 85% of an entire arm in the same event, while genes-level
+564
+events affect a single gene. We transform these into number of major and number of minor chromosome arms, and
+565
+the number of major and minor alleles for the set of 295 genes that overlap between COSMIC [63] and MSigDB [64].
+566
+For both gene and arm-level events, we create a separate indicator for loss of heterozygosity on each gene.
+567
+Driver Mutations
+From CHASMplus [61] we gather the mutations on all COSMIC [63] oncogenes/tumor suppresor
+568
+genes and binarize the presence or absence of a mutation in each gene.
+569
+S2.3
+Transcriptomic data views
+570
+Transcriptomics
+We take the set of known oncogenes/tumor suppressor genes annotated in COSMIC [63] and
+571
+included in TCGA gene expression panels. We then calculate the variance of each gene in each tumor type and take a
+572
+weighted sum of these variances according to the total number of samples in each tumor type. We select the top 100
+573
+genes by this metric of “intra-disease variance”.
+574
+Baselines
+We are not aware of any other scalable meta-learning, deep learning, or varying-coefficient methods to
+575
+produce context-informed correlation, Markov, and Bayesian networks under a universal framework. As such, our
+576
+baselines apply the network estimators in S1 under several well-known and general paradigms for improving model
+577
+personalization, broadly relating to cluster analysis. Our population baseline provides no personalization, learning a
+578
+single model for the entire population of training samples. Our context-clustered baseline takes an unsupervised ap-
+579
+proach to personalization by first doing a k-means clustering with k=25 on the aggregated context views (S2) and then
+580
+inferring cluster-specific networks. Our disease-clustered baseline uses a personalization oracle, grouping samples by
+581
+tumor type and then inferring disease-specific networks.
+582
+S3
+Related work
+583
+State-of-the-art gene regulatory network estimators are limited to population, cohort, and cluster-based approaches
+584
+[26, 65, 66]. Other proposals to estimate networks as the difference between a population model and a sample-left-
+585
+out model lack statistical power [30]. Kolar et. al achieve sample-specific network estimation without sacrificing
+586
+statistical power by using an approach similar to classic varying-coefficient models that weighs samples by their
+587
+distance over context [67]. However, this approach inherently assumes smoothness of the parameters over a context,
+588
+which does not align with our understanding of the non-linear, switch-like changes in biological systems that lead
+589
+to disease. Contextual estimation networks (CENs) remove this smoothness assumption by inferring the relationship
+590
+between context and model parameters with a neural network, but the CEN framework is only proposed as an adaptive
+591
+learning approach for linear models [41]. Context-varying linear models have previously been applied to multi-omic
+592
+cancer data, where context-varying coefficients inform how epigenetic markers have patient-specific effects on clinical
+593
+outcomes [42]. Linear models do not inform us of the differential gene-gene interactions that explain changes in
+594
+cellular behavior. To understand regulatory and metabolic variation at per-sample resolution, we require network
+595
+models with context-varying structures and parameters.
+596
+S2
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+S4
+Extra Results
+597
+S3
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Disease Type
+TCGA Subtypes
+Expression Subtypes
+Network Subtypes
+BLCA
+0.411
+0.151
+0.713
+BRCA
+1.484
+0.616
+1.558
+CHOL
+–
+–
+–
+COAD
+0.016
+0.014
+1.219
+DLBC
+–
+–
+–
+ESCA
+0.044
+0.884
+0.049
+GBM
+1.644
+0.958
+0.101
+HNSC
+1.209
+0.312
+3.465
+KICH
+0.715
+13.802
+0.211
+KIRC
+5.042
+6.109
+13.741
+KIRP
+14.538
+10.582
+15.205
+LGG
+48.338
+33.438
+49.681
+LIHC
+0.009
+0.427
+0.827
+LUAD
+0.687
+1.172
+0.507
+LUSC
+0.123
+0.105
+0.249
+OV
+0.704
+0.684
+0.05
+PAAD
+0.439
+1.104
+1.494
+PRAD
+–
+–
+–
+READ
+0.221
+0.203
+0.117
+SKCM
+–
+–
+–
+STAD
+0.044
+1.117
+0.575
+THCA
+0.298
+0.164
+2.104
+UCEC
+6.937
+3.343
+7.07
+UCS
+0.319
+0.023
+0.048
+UVM
+4.838
+2.589
+3.565
+Table S1: Multivariate log-rank test comparison across different subtyping methods in terms of -log(p-value). Only
+samples shared between all datasets are used. – indicates no samples are shared, or subtypes do not exist for TCGA.
+S4
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+Disease Type
+TCGA Subtypes
+Expression Subtypes
+Network Subtypes
+BLCA
+1.059
+0.589
+0.949
+BRCA
+2.056
+1.13
+2.542
+CHOL
+–
+–
+–
+COAD
+0.162
+0.159
+2.026
+DLBC
+–
+–
+–
+ESCA
+0.323
+1.598
+0.284
+GBM
+1.631
+1.509
+0.63
+HNSC
+1.855
+0.853
+3.307
+KICH
+0.715
+13.802
+0.211
+KIRC
+5.61
+5.247
+14.82
+KIRP
+19.696
+9.241
+18.661
+LGG
+36.533
+25.894
+40.656
+LIHC
+0.105
+0.619
+1.263
+LUAD
+1.67
+2.29
+1.198
+LUSC
+0.614
+0.417
+0.625
+OV
+1.414
+1.325
+0.287
+PAAD
+0.937
+1.465
+2.18
+PRAD
+–
+–
+–
+READ
+0.431
+0.723
+0.474
+SKCM
+–
+–
+–
+STAD
+0.469
+1.777
+1.428
+THCA
+0.837
+0.831
+3.242
+UCEC
+5.555
+3.319
+7.42
+UCS
+0.319
+0.023
+0.048
+UVM
+5.076
+2.61
+4.536
+Table S2: Minimum pairwise log-rank test comparison across different subtyping methods in terms of -log(p-value).
+Only samples shared between all datasets are used. – indicates no samples are shared, or subtypes do not exist for
+TCGA.
+S5
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['BLCA'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.38824987924919613
+BLCA.1 (22/33)
+BLCA.2 (14/34)
+BLCA.3 (9/25)
+BLCA.4 (6/13)
+BLCA.1 (22/33)
+   At risk   33
+  Censored     0
+    Events     0
+BLCA.2 (14/34)
+   At risk   34
+  Censored     0
+    Events     0
+BLCA.3 (9/25)
+   At risk   25
+  Censored     0
+    Events     0
+BLCA.4 (6/13)
+   At risk   13
+  Censored     0
+    Events     0
+3
+19
+11
+6
+11
+17
+3
+7
+15
+4
+3
+6
+0
+22
+11
+2
+12
+20
+1
+8
+16
+2
+4
+7
+0
+22
+11
+1
+13
+20
+0
+9
+16
+2
+4
+7
+0
+22
+11
+0
+14
+20
+0
+9
+16
+1
+5
+7
+0
+22
+11
+0
+14
+20
+0
+9
+16
+0
+6
+7
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['BLCA'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.19355184031320571
+BLCA.Net.1 (6/7)
+BLCA.Net.2 (17/42)
+BLCA.Net.3 (4/14)
+BLCA.Net.4 (24/42)
+BLCA.Net.1 (6/7)
+   At risk     7
+  Censored     0
+    Events     0
+BLCA.Net.2 (17/42)
+   At risk   42
+  Censored     0
+    Events     0
+BLCA.Net.3 (4/14)
+   At risk   14
+  Censored     0
+    Events     0
+BLCA.Net.4 (24/42)
+   At risk   42
+  Censored     0
+    Events     0
+1
+5
+1
+6
+14
+22
+1
+3
+10
+8
+18
+16
+1
+5
+1
+0
+17
+25
+0
+4
+10
+4
+20
+18
+1
+5
+1
+0
+17
+25
+0
+4
+10
+2
+22
+18
+1
+5
+1
+0
+17
+25
+0
+4
+10
+0
+24
+18
+0
+6
+1
+0
+17
+25
+0
+4
+10
+0
+24
+18
+(b) Network subtypes survival function
+BLCA.1
+BLCA.2
+BLCA.3
+BLCA.4
+NA
+TCGA Subtype
+BLCA.Net.1
+BLCA.Net.2
+BLCA.Net.3
+BLCA.Net.4
+NA
+Network Subtype
+3
+0
+1
+3
+38
+16
+19
+5
+3
+87
+0
+1
+11
+2
+43
+14
+14
+8
+6
+93
+8
+8
+6
+1
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+SMAD4 Mutated (-log(p) = 4.3)
+MYH11 Gene Loss of Heterozygosity (-log(p) = 8.1)
+SOCS1 Gene Loss of Heterozygosity (-log(p) = 8.1)
+CIITA Gene Loss of Heterozygosity (-log(p) = 8.3)
+CDKN2A Gene Lost (-log(p) = 8.5)
+ERCC4 Gene Loss of Heterozygosity (-log(p) = 8.6)
+WRN Gene Loss of Heterozygosity (-log(p) = 11.9)
+PCM1 Gene Loss of Heterozygosity (-log(p) = 12.2)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 15.1)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 15.1)
+TP53 Gene Loss of Heterozygosity (-log(p) = 15.9)
+6p Major Arm Ampliﬁed (-log(p) = 4.5)
+3p Arm Loss of Heterozygosity (-log(p) = 5.0)
+9q Arm Loss of Heterozygosity (-log(p) = 5.2)
+10p Arm Loss of Heterozygosity (-log(p) = 5.5)
+4q Arm Loss of Heterozygosity (-log(p) = 6.3)
+16q Major Arm Ampliﬁed (-log(p) = 7.0)
+4p Arm Loss of Heterozygosity (-log(p) = 7.2)
+22q Arm Loss of Heterozygosity (-log(p) = 7.6)
+5p Major Arm Ampliﬁed (-log(p) = 7.8)
+16p Arm Loss of Heterozygosity (-log(p) = 8.4)
+Ploidy (-log(p) = 10.4)
+Purity (-log(p) = 15.0)
+Stage (-log(p) = 1.1)
+Age at Diagnosis (-log(p) = 3.4)
+Sex (-log(p) = 4.2)
+Race (-log(p) = 2.5)
+TCGA Subtype
+Network Subtype
+Network Subtype
+BLCA.Net.1
+BLCA.Net.2
+BLCA.Net.3
+BLCA.Net.4
+TCGA Subtype
+BLCA.1
+BLCA.2
+BLCA.3
+BLCA.4
+Race
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.4
+3.4
+5.5
+Ploidy
+0.2
+0.6
+1.0
+Purity
+34
+62
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+BLCA Oncoplot
+Figure S1: Exploration of network subtypes for Bladder Urothelial Carcinoma (BLCA), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S6
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+2000
+4000
+6000
+8000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['BRCA'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.03280258673234332
+BRCA.Basal (146/169)
+BRCA.Her2 (63/78)
+BRCA.LumA (432/491)
+BRCA.LumB (165/198)
+BRCA.Normal (32/38)
+BRCA.Basal (146/169)
+   At risk   166
+  Censored       3
+    Events       0
+BRCA.Her2 (63/78)
+   At risk     73
+  Censored       4
+    Events       1
+BRCA.LumA (432/491)
+   At risk   485
+  Censored       5
+    Events       1
+BRCA.LumB (165/198)
+   At risk   194
+  Censored       4
+    Events       0
+BRCA.Normal (32/38)
+   At risk     37
+  Censored       1
+    Events       0
+38
+112
+19
+14
+52
+12
+105
+350
+36
+34
+142
+22
+9
+24
+5
+6
+140
+23
+2
+62
+14
+17
+417
+57
+2
+163
+33
+1
+32
+5
+3
+143
+23
+1
+63
+14
+6
+427
+58
+0
+165
+33
+0
+32
+6
+1
+145
+23
+0
+63
+15
+3
+429
+59
+0
+165
+33
+0
+32
+6
+(a) Known subtypes survival function
+0
+2000
+4000
+6000
+8000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['BRCA'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.0276601731183892
+BRCA.Net.1 (102/119)
+BRCA.Net.2 (114/133)
+BRCA.Net.3 (224/252)
+BRCA.Net.4 (140/176)
+BRCA.Net.5 (258/294)
+BRCA.Net.1 (102/119)
+   At risk   118
+  Censored       1
+    Events       0
+BRCA.Net.2 (114/133)
+   At risk   130
+  Censored       3
+    Events       0
+BRCA.Net.3 (224/252)
+   At risk   246
+  Censored       5
+    Events       1
+BRCA.Net.4 (140/176)
+   At risk   173
+  Censored       3
+    Events       0
+BRCA.Net.5 (258/294)
+   At risk   288
+  Censored       5
+    Events       1
+27
+79
+13
+25
+93
+15
+53
+178
+21
+37
+112
+27
+58
+218
+18
+6
+96
+17
+0
+114
+19
+8
+217
+27
+6
+135
+35
+8
+252
+34
+3
+99
+17
+0
+114
+19
+3
+221
+28
+0
+140
+36
+4
+256
+34
+1
+101
+17
+0
+114
+19
+2
+222
+28
+0
+140
+36
+1
+257
+36
+(b) Network subtypes survival function
+BRCA.Basal
+BRCA.Her2
+BRCA.LumA
+BRCA.LumB
+BRCA.Normal
+TCGA Subtype
+BRCA.Net.1
+BRCA.Net.2
+BRCA.Net.3
+BRCA.Net.4
+BRCA.Net.5
+NA
+Network Subtype
+114
+2
+1
+2
+0
+43
+36
+11
+40
+3
+6
+1
+211
+11
+23
+0
+25
+65
+82
+4
+6
+14
+203
+63
+8
+24
+4
+90
+21
+105
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+PIK3CA Mutated (-log(p) = 8.7)
+TP53 Mutated (-log(p) = 12.0)
+SRSF2 Gene Loss of Heterozygosity (-log(p) = 54.2)
+CDK4 Gene Loss of Heterozygosity (-log(p) = 55.1)
+HIF1A Gene Loss of Heterozygosity (-log(p) = 57.0)
+ERBB3 Gene Loss of Heterozygosity (-log(p) = 57.0)
+NAB2 Gene Loss of Heterozygosity (-log(p) = 57.4)
+IL6ST Gene Loss of Heterozygosity (-log(p) = 57.4)
+TP53 Gene Loss of Heterozygosity (-log(p) = 60.9)
+ATF1 Gene Loss of Heterozygosity (-log(p) = 66.0)
+KMT2D Gene Loss of Heterozygosity (-log(p) = 66.2)
+APC Gene Loss of Heterozygosity (-log(p) = 66.3)
+3p Arm Loss of Heterozygosity (-log(p) = 18.8)
+4q Arm Loss of Heterozygosity (-log(p) = 22.1)
+15q Arm Loss of Heterozygosity (-log(p) = 24.3)
+4p Arm Loss of Heterozygosity (-log(p) = 25.6)
+16p Arm Loss of Heterozygosity (-log(p) = 27.8)
+17p Arm Loss of Heterozygosity (-log(p) = 31.8)
+12q Arm Loss of Heterozygosity (-log(p) = 32.9)
+5q Arm Loss of Heterozygosity (-log(p) = 37.4)
+14q Arm Loss of Heterozygosity (-log(p) = 51.6)
+17q Arm Loss of Heterozygosity (-log(p) = 58.2)
+percent_stromal_cells (-log(p) = 4.9)
+Ploidy (-log(p) = 26.0)
+Purity (-log(p) = 8.2)
+Stage (-log(p) = 2.7)
+Age at Diagnosis (-log(p) = 3.9)
+Sex (-log(p) = 1.3)
+Race (-log(p) = 12.6)
+TCGA Subtype
+Network Subtype
+Network Subtype
+BRCA.Net.1
+BRCA.Net.2
+BRCA.Net.3
+BRCA.Net.4
+BRCA.Net.5
+TCGA Subtype
+BRCA.Basal
+BRCA.Her2
+BRCA.LumA
+BRCA.LumB
+BRCA.Normal
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+0
+48
+95
+percent_stromal_cells
+1.4
+3.4
+5.4
+Ploidy
+0.2
+0.6
+1.0
+Purity
+26
+58
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+BRCA Oncoplot
+Figure S2: Exploration of network subtypes for Breast invasive carcinoma (BRCA), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S7
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+NA
+TCGA Subtype
+CHOL.Net.1
+CHOL.Net.2
+Network Subtype
+1
+22
+Subtype Cross-Tabulation by Patient Counts
+(a) Network subtypes crosstab-
+ulation with known subtype
+Ploidy (-log(p) = -0.0)
+Purity (-log(p) = -0.0)
+Stage (-log(p) = -0.0)
+Age at Diagnosis (-log(p) = -0.0)
+Sex (-log(p) = -0.0)
+Race (-log(p) = -0.0)
+Network Subtype
+Network Subtype
+CHOL.Net.1
+CHOL.Net.2
+Race
+asian
+black or african american
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.7
+2.8
+3.9
+Ploidy
+0.27
+0.64
+1.0
+Purity
+29
+55
+81
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+CHOL Oncoplot
+Figure S3: Exploration of network subtypes for Cholangiocarcinoma (CHOL), looking at correlated clinical informa-
+tion, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S8
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['COAD'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.9640812037197056
+GI.CIN (146/193)
+GI.GS (33/47)
+GI.HM-SNV (4/5)
+GI.MSI (42/55)
+GI.CIN (146/193)
+   At risk   189
+  Censored       4
+    Events       0
+GI.GS (33/47)
+   At risk     43
+  Censored       1
+    Events       3
+GI.HM-SNV (4/5)
+   At risk       4
+  Censored       1
+    Events       0
+GI.MSI (42/55)
+   At risk     51
+  Censored       3
+    Events       1
+52
+106
+35
+15
+21
+11
+2
+2
+1
+18
+28
+9
+12
+136
+45
+7
+27
+13
+0
+4
+1
+6
+38
+11
+6
+140
+47
+2
+31
+14
+0
+4
+1
+1
+41
+13
+2
+144
+47
+1
+32
+14
+0
+4
+1
+1
+41
+13
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['COAD'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.06034860137030934
+COAD.Net.1 (70/94)
+COAD.Net.2 (52/67)
+COAD.Net.3 (31/52)
+COAD.Net.4 (72/87)
+COAD.Net.1 (70/94)
+   At risk   85
+  Censored     5
+    Events     4
+COAD.Net.2 (52/67)
+   At risk   66
+  Censored     1
+    Events     0
+COAD.Net.3 (31/52)
+   At risk   51
+  Censored     1
+    Events     0
+COAD.Net.4 (72/87)
+   At risk   85
+  Censored     2
+    Events     0
+29
+46
+19
+18
+36
+13
+17
+21
+14
+23
+54
+10
+10
+62
+22
+7
+45
+15
+2
+30
+20
+6
+68
+13
+2
+68
+24
+2
+50
+15
+1
+30
+21
+4
+68
+15
+2
+68
+24
+1
+51
+15
+0
+31
+21
+1
+71
+15
+(b) Network subtypes survival function
+GI.CIN
+GI.GS
+GI.HM-SNV
+GI.MSI
+NA
+TCGA Subtype
+COAD.Net.1
+COAD.Net.2
+COAD.Net.3
+COAD.Net.4
+NA
+Network Subtype
+9
+29
+5
+51
+15
+59
+6
+0
+2
+5
+51
+1
+0
+0
+13
+74
+11
+0
+2
+21
+33
+2
+1
+5
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+TP53 Mutated (-log(p) = 9.9)
+NPM1 Gene Loss of Heterozygosity (-log(p) = 10.3)
+CD74 Gene Loss of Heterozygosity (-log(p) = 10.5)
+PDGFRB Gene Loss of Heterozygosity (-log(p) = 10.5)
+FLT4 Gene Loss of Heterozygosity (-log(p) = 10.6)
+WRN Gene Loss of Heterozygosity (-log(p) = 11.5)
+PCM1 Gene Loss of Heterozygosity (-log(p) = 12.6)
+BCL2 Gene Loss of Heterozygosity (-log(p) = 30.7)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 49.0)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 50.7)
+TP53 Gene Loss of Heterozygosity (-log(p) = 54.4)
+6q Arm Loss of Heterozygosity (-log(p) = 5.0)
+15q Arm Loss of Heterozygosity (-log(p) = 6.1)
+14q Arm Loss of Heterozygosity (-log(p) = 7.8)
+22q Arm Loss of Heterozygosity (-log(p) = 8.3)
+13q Major Arm Ampliﬁed (-log(p) = 8.4)
+17p Arm Loss of Heterozygosity (-log(p) = 8.4)
+17q Arm Loss of Heterozygosity (-log(p) = 9.6)
+18p Arm Loss of Heterozygosity (-log(p) = 14.2)
+20q Major Arm Ampliﬁed (-log(p) = 16.8)
+18q Arm Loss of Heterozygosity (-log(p) = 16.8)
+Ploidy (-log(p) = 14.7)
+Purity (-log(p) = 1.2)
+Stage (-log(p) = 3.5)
+Age at Diagnosis (-log(p) = 2.4)
+Sex (-log(p) = 0.8)
+Race (-log(p) = 4.2)
+TCGA Subtype
+Network Subtype
+Network Subtype
+COAD.Net.1
+COAD.Net.2
+COAD.Net.3
+COAD.Net.4
+TCGA Subtype
+GI.CIN
+GI.GS
+GI.HM-SNV
+GI.MSI
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.7
+3.6
+5.4
+Ploidy
+0.22 0.61
+1.0
+Purity
+31
+60
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+COAD Oncoplot
+Figure S4: Exploration of network subtypes for Colon adenocarcinoma (COAD), looking at correlated clinical infor-
+mation, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S9
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+500
+1000
+1500
+2000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['ESCA'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.9038587217461297
+GI.CIN (29/57)
+GI.ESCC (52/75)
+GI.HM-SNV (1/1)
+GI.MSI (1/2)
+GI.CIN (29/57)
+   At risk   57
+  Censored     0
+    Events     0
+GI.ESCC (52/75)
+   At risk   74
+  Censored     0
+    Events     1
+GI.HM-SNV (1/1)
+   At risk     1
+  Censored     0
+    Events     0
+GI.MSI (1/2)
+   At risk     2
+  Censored     0
+    Events     0
+26
+14
+17
+23
+39
+13
+0
+1
+0
+1
+0
+1
+11
+22
+24
+5
+49
+21
+0
+1
+0
+0
+1
+1
+4
+27
+26
+1
+51
+23
+0
+1
+0
+0
+1
+1
+1
+29
+27
+1
+51
+23
+0
+1
+0
+0
+1
+1
+(a) Known subtypes survival function
+0
+500
+1000
+1500
+2000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['ESCA'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.8931404269637138
+ESCA.Net.1 (8/10)
+ESCA.Net.2 (39/56)
+ESCA.Net.3 (5/10)
+ESCA.Net.4 (31/59)
+ESCA.Net.1 (8/10)
+   At risk   10
+  Censored     0
+    Events     0
+ESCA.Net.2 (39/56)
+   At risk   55
+  Censored     0
+    Events     1
+ESCA.Net.3 (5/10)
+   At risk   10
+  Censored     0
+    Events     0
+ESCA.Net.4 (31/59)
+   At risk   59
+  Censored     0
+    Events     0
+2
+6
+2
+17
+29
+10
+6
+3
+1
+25
+16
+18
+0
+8
+2
+4
+36
+16
+2
+5
+3
+10
+24
+25
+0
+8
+2
+1
+38
+17
+1
+5
+4
+3
+29
+27
+0
+8
+2
+1
+38
+17
+1
+5
+4
+0
+31
+28
+(b) Network subtypes survival function
+GI.CIN
+GI.ESCC
+GI.GS
+GI.HM-SNV GI.MSI
+NA
+TCGA Subtype
+ESCA.Net.1
+ESCA.Net.2
+ESCA.Net.3
+ESCA.Net.4
+NA
+Network Subtype
+1
+9
+0
+0
+0
+3
+0
+56
+0
+0
+0
+1
+1
+9
+0
+0
+0
+3
+55
+1
+0
+1
+2
+1
+17
+15
+1
+1
+0
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+NFE2L2 Mutated (-log(p) = 4.0)
+GNAS Mutated (-log(p) = 5.4)
+SMARCA4 Mutated (-log(p) = 5.8)
+VHL Gene Loss of Heterozygosity (-log(p) = 13.3)
+RHOA Gene Loss of Heterozygosity (-log(p) = 15.2)
+TGFBR2 Gene Loss of Heterozygosity (-log(p) = 15.5)
+CTNNB1 Gene Loss of Heterozygosity (-log(p) = 16.1)
+MYD88 Gene Loss of Heterozygosity (-log(p) = 16.1)
+PPARG Gene Loss of Heterozygosity (-log(p) = 16.1)
+MLH1 Gene Loss of Heterozygosity (-log(p) = 16.1)
+XPC Gene Loss of Heterozygosity (-log(p) = 16.1)
+FBLN2 Gene Loss of Heterozygosity (-log(p) = 16.1)
+RAF1 Gene Loss of Heterozygosity (-log(p) = 16.1)
+12p Minor Arm Ampliﬁed (-log(p) = 5.4)
+12q Major Arm Ampliﬁed (-log(p) = 5.4)
+13p Major Arm Ampliﬁed (-log(p) = 5.4)
+1q Major Arm Ampliﬁed (-log(p) = 5.4)
+14p Major Arm Ampliﬁed (-log(p) = 5.4)
+14p Minor Arm Ampliﬁed (-log(p) = 5.4)
+15p Major Arm Ampliﬁed (-log(p) = 5.4)
+3q Major Arm Ampliﬁed (-log(p) = 5.8)
+3p Arm Loss of Heterozygosity (-log(p) = 6.3)
+1p Major Arm Ampliﬁed (-log(p) = 8.2)
+Ploidy (-log(p) = 3.9)
+Purity (-log(p) = 1.0)
+Stage (-log(p) = 1.6)
+Age at Diagnosis (-log(p) = 5.0)
+Sex (-log(p) = 0.5)
+Race (-log(p) = 9.6)
+TCGA Subtype
+Network Subtype
+Network Subtype
+ESCA.Net.1
+ESCA.Net.2
+ESCA.Net.3
+ESCA.Net.4
+TCGA Subtype
+GI.CIN
+GI.ESCC
+GI.HM-SNV
+GI.MSI
+Race
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.5
+3.4
+5.2
+Ploidy
+0.2
+0.6
+1.0
+Purity
+27
+58
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+ESCA Oncoplot
+Figure S5: Exploration of network subtypes for Esophageal carcinoma (ESCA), looking at correlated clinical infor-
+mation, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S10
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+200
+400
+600
+800
+1000
+1200
+1400
+1600
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['GBM'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.02271970255194645
+GBM_LGG.Classic-like (8/35)
+GBM_LGG.G-CIMP-high (1/2)
+GBM_LGG.G-CIMP-low (2/4)
+GBM_LGG.LGm6-GBM (3/9)
+GBM_LGG.Mesenchymal-like (12/42)
+GBM_LGG.Classic-like (8/35)
+   At risk   35
+  Censored     0
+    Events     0
+GBM_LGG.G-CIMP-high (1/2)
+   At risk     2
+  Censored     0
+    Events     0
+GBM_LGG.G-CIMP-low (2/4)
+   At risk     4
+  Censored     0
+    Events     0
+GBM_LGG.LGm6-GBM (3/9)
+   At risk     9
+  Censored     0
+    Events     0
+GBM_LGG.Mesenchymal-like (12/42)
+   At risk   42
+  Censored     0
+    Events     0
+25
+2
+8
+2
+0
+0
+4
+0
+0
+4
+2
+3
+28
+5
+9
+20
+4
+11
+2
+0
+0
+4
+0
+0
+3
+2
+4
+12
+9
+21
+6
+6
+23
+2
+0
+0
+2
+1
+1
+1
+3
+5
+4
+10
+28
+2
+7
+26
+2
+0
+0
+1
+1
+2
+0
+3
+6
+2
+11
+29
+1
+8
+26
+1
+1
+0
+0
+2
+2
+0
+3
+6
+1
+12
+29
+0
+8
+27
+1
+1
+0
+0
+2
+2
+0
+3
+6
+1
+12
+29
+0
+8
+27
+1
+1
+0
+0
+2
+2
+0
+3
+6
+0
+12
+30
+0
+8
+27
+0
+1
+1
+0
+2
+2
+0
+3
+6
+0
+12
+30
+(a) Known subtypes survival function
+0
+200
+400
+600
+800
+1000
+1200
+1400
+1600
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['GBM'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.7916434214030975
+GBM.Net.1 (9/29)
+GBM.Net.2 (5/25)
+GBM.Net.3 (2/2)
+GBM.Net.4 (3/9)
+GBM.Net.5 (7/27)
+GBM.Net.1 (9/29)
+   At risk   29
+  Censored     0
+    Events     0
+GBM.Net.2 (5/25)
+   At risk   25
+  Censored     0
+    Events     0
+GBM.Net.3 (2/2)
+   At risk     2
+  Censored     0
+    Events     0
+GBM.Net.4 (3/9)
+   At risk     9
+  Censored     0
+    Events     0
+GBM.Net.5 (7/27)
+   At risk   27
+  Censored     0
+    Events     0
+22
+3
+4
+17
+1
+7
+0
+2
+0
+4
+1
+4
+20
+2
+5
+15
+5
+9
+11
+3
+11
+0
+2
+0
+4
+1
+4
+11
+4
+12
+6
+6
+17
+6
+3
+16
+0
+2
+0
+1
+3
+5
+2
+6
+19
+3
+7
+19
+3
+3
+19
+0
+2
+0
+0
+3
+6
+1
+7
+19
+1
+9
+19
+1
+5
+19
+0
+2
+0
+0
+3
+6
+1
+7
+19
+0
+9
+20
+1
+5
+19
+0
+2
+0
+0
+3
+6
+1
+7
+19
+0
+9
+20
+1
+5
+19
+0
+2
+0
+0
+3
+6
+0
+7
+20
+0
+9
+20
+0
+5
+20
+0
+2
+0
+0
+3
+6
+0
+7
+20
+(b) Network subtypes survival function
+GBM_LGG.Classic-like
+GBM_LGG.Codel
+GBM_LGG.G-CIMP-high
+GBM_LGG.G-CIMP-low
+GBM_LGG.LGm6-GBM
+GBM_LGG.Mesenchymal-like
+NA
+TCGA Subtype
+GBM.Net.1
+GBM.Net.2
+GBM.Net.3
+GBM.Net.4
+GBM.Net.5
+NA
+Network Subtype
+16
+0
+0
+0
+0
+13
+11
+5
+0
+2
+3
+4
+11
+5
+0
+0
+0
+0
+1
+1
+0
+5
+0
+0
+1
+2
+1
+1
+9
+0
+0
+0
+2
+16
+7
+90
+1
+13
+9
+32
+128
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+EGFR Mutated (-log(p) = 4.7)
+EGFR Major Allele Ampliﬁed (-log(p) = 5.5)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 6.1)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 6.3)
+TP53 Gene Loss of Heterozygosity (-log(p) = 6.6)
+17p Major Arm Ampliﬁed (-log(p) = 4.2)
+14q Arm Loss of Heterozygosity (-log(p) = 4.4)
+3q Arm Loss of Heterozygosity (-log(p) = 5.9)
+20p Arm Loss of Heterozygosity (-log(p) = 5.9)
+20q Arm Loss of Heterozygosity (-log(p) = 5.9)
+1p Arm Loss of Heterozygosity (-log(p) = 5.9)
+4q Arm Loss of Heterozygosity (-log(p) = 6.3)
+22q Major Arm Ampliﬁed (-log(p) = 7.7)
+Ploidy (-log(p) = 2.8)
+Purity (-log(p) = 0.8)
+Age at Diagnosis (-log(p) = 0.7)
+Sex (-log(p) = 0.3)
+Race (-log(p) = 1.8)
+TCGA Subtype
+Network Subtype
+Network Subtype
+GBM.Net.1
+GBM.Net.2
+GBM.Net.3
+GBM.Net.4
+GBM.Net.5
+TCGA Subtype
+GBM_LGG.Classic-like
+GBM_LGG.G-CIMP-high
+GBM_LGG.G-CIMP-low
+GBM_LGG.LGm6-GBM
+GBM_LGG.Mesenchymal-like
+Race
+asian
+black or african american
+white
+Sex
+female
+male
+1.7
+3.6
+5.4
+Ploidy
+0.2
+0.6
+1.0
+Purity
+21
+55
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+GBM Oncoplot
+Figure S6: Exploration of network subtypes for Glioblastoma multiforme (GBM), looking at correlated clinical infor-
+mation, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S11
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+6000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['HNSC'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.0618200068461725
+HNSC.Atypical (41/56)
+HNSC.Basal (42/66)
+HNSC.Classical (13/28)
+HNSC.Mesenchymal (27/57)
+HNSC.Atypical (41/56)
+   At risk   56
+  Censored     0
+    Events     0
+HNSC.Basal (42/66)
+   At risk   66
+  Censored     0
+    Events     0
+HNSC.Classical (13/28)
+   At risk   28
+  Censored     0
+    Events     0
+HNSC.Mesenchymal (27/57)
+   At risk   57
+  Censored     0
+    Events     0
+25
+23
+8
+28
+18
+20
+11
+3
+14
+18
+11
+28
+6
+36
+14
+5
+39
+22
+1
+12
+15
+5
+23
+29
+1
+40
+15
+1
+42
+23
+1
+12
+15
+3
+25
+29
+0
+41
+15
+1
+42
+23
+0
+13
+15
+3
+25
+29
+0
+41
+15
+0
+42
+24
+0
+13
+15
+2
+26
+29
+0
+41
+15
+0
+42
+24
+0
+13
+15
+1
+27
+29
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+6000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['HNSC'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.00034314982786761295
+HNSC.Net.1 (14/20)
+HNSC.Net.2 (41/92)
+HNSC.Net.3 (26/38)
+HNSC.Net.4 (42/57)
+HNSC.Net.1 (14/20)
+   At risk   20
+  Censored     0
+    Events     0
+HNSC.Net.2 (41/92)
+   At risk   92
+  Censored     0
+    Events     0
+HNSC.Net.3 (26/38)
+   At risk   38
+  Censored     0
+    Events     0
+HNSC.Net.4 (42/57)
+   At risk   57
+  Censored     0
+    Events     0
+10
+6
+4
+27
+19
+46
+17
+13
+8
+28
+17
+12
+3
+11
+6
+4
+37
+51
+4
+25
+9
+6
+37
+14
+0
+14
+6
+2
+39
+51
+2
+26
+10
+2
+40
+15
+0
+14
+6
+1
+40
+51
+2
+26
+10
+1
+41
+15
+0
+14
+6
+1
+40
+51
+1
+26
+11
+0
+42
+15
+0
+14
+6
+0
+41
+51
+1
+26
+11
+0
+42
+15
+(b) Network subtypes survival function
+HNSC.Atypical
+HNSC.Basal
+HNSC.Classical
+HNSC.Mesenchymal
+NA
+TCGA Subtype
+HNSC.Net.1
+HNSC.Net.2
+HNSC.Net.3
+HNSC.Net.4
+NA
+Network Subtype
+6
+10
+0
+4
+20
+20
+22
+26
+24
+76
+6
+14
+1
+17
+47
+24
+20
+1
+12
+67
+12
+21
+21
+18
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+CASP8 Mutated (-log(p) = 7.0)
+HRAS Mutated (-log(p) = 12.6)
+MLH1 Gene Loss of Heterozygosity (-log(p) = 25.6)
+PPARG Gene Loss of Heterozygosity (-log(p) = 26.0)
+XPC Gene Loss of Heterozygosity (-log(p) = 26.0)
+RAF1 Gene Loss of Heterozygosity (-log(p) = 26.0)
+VHL Gene Loss of Heterozygosity (-log(p) = 26.0)
+FBLN2 Gene Loss of Heterozygosity (-log(p) = 26.4)
+TGFBR2 Gene Loss of Heterozygosity (-log(p) = 26.4)
+MYD88 Gene Loss of Heterozygosity (-log(p) = 26.7)
+CTNNB1 Gene Loss of Heterozygosity (-log(p) = 27.1)
+RHOA Gene Loss of Heterozygosity (-log(p) = 29.1)
+3q Major Arm Ampliﬁed (-log(p) = 4.7)
+4q Arm Loss of Heterozygosity (-log(p) = 5.0)
+9q Arm Loss of Heterozygosity (-log(p) = 5.2)
+4p Arm Loss of Heterozygosity (-log(p) = 5.2)
+13q Arm Loss of Heterozygosity (-log(p) = 5.3)
+17p Arm Loss of Heterozygosity (-log(p) = 5.5)
+17q Arm Loss of Heterozygosity (-log(p) = 7.9)
+5q Arm Loss of Heterozygosity (-log(p) = 8.5)
+9p Arm Loss of Heterozygosity (-log(p) = 9.7)
+3p Arm Loss of Heterozygosity (-log(p) = 11.9)
+Ploidy (-log(p) = 9.5)
+Purity (-log(p) = 1.2)
+Stage (-log(p) = 1.6)
+Age at Diagnosis (-log(p) = 1.5)
+Sex (-log(p) = 5.3)
+Race (-log(p) = 2.3)
+TCGA Subtype
+Network Subtype
+Network Subtype
+HNSC.Net.1
+HNSC.Net.2
+HNSC.Net.3
+HNSC.Net.4
+TCGA Subtype
+HNSC.Atypical
+HNSC.Basal
+HNSC.Classical
+HNSC.Mesenchymal
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.5
+3.6
+5.6
+Ploidy
+0.2
+0.6
+1.0
+Purity
+19
+54
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+HNSC Oncoplot
+Figure S7: Exploration of network subtypes for Head and Neck squamous cell carcinoma (HNSC), looking at cor-
+related clinical information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide
+variations.
+S12
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['KICH'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.19262819361799877
+KICH.Eosin.0 (40/45)
+KICH.Eosin.1 (14/18)
+KICH.Eosin.0 (40/45)
+   At risk   45
+  Censored     0
+    Events     0
+KICH.Eosin.1 (14/18)
+   At risk   18
+  Censored     0
+    Events     0
+36
+5
+4
+11
+5
+2
+28
+12
+5
+7
+8
+3
+15
+25
+5
+5
+9
+4
+3
+37
+5
+0
+14
+4
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['KICH'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.6157922003085254
+KICH.Net.1 (10/11)
+KICH.Net.2 (44/52)
+KICH.Net.1 (10/11)
+   At risk   11
+  Censored     0
+    Events     0
+KICH.Net.2 (44/52)
+   At risk   52
+  Censored     0
+    Events     0
+7
+4
+0
+40
+6
+6
+6
+5
+0
+29
+15
+8
+4
+6
+1
+16
+28
+8
+1
+9
+1
+2
+42
+8
+(b) Network subtypes survival function
+KICH.Eosin.0
+KICH.Eosin.1
+TCGA Subtype
+KICH.Net.1
+KICH.Net.2
+NA
+Network Subtype
+3
+8
+43
+10
+1
+1
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+10p Arm Loss of Heterozygosity (-log(p) = 7.6)
+2p Arm Loss of Heterozygosity (-log(p) = 8.5)
+10q Arm Loss of Heterozygosity (-log(p) = 8.5)
+2q Arm Loss of Heterozygosity (-log(p) = 9.8)
+6p Arm Loss of Heterozygosity (-log(p) = 11.4)
+1q Arm Loss of Heterozygosity (-log(p) = 13.5)
+1p Arm Loss of Heterozygosity (-log(p) = 16.6)
+6q Arm Loss of Heterozygosity (-log(p) = 16.7)
+17p Arm Loss of Heterozygosity (-log(p) = 21.9)
+17q Arm Loss of Heterozygosity (-log(p) = 21.9)
+Ploidy (-log(p) = 0.2)
+Purity (-log(p) = 4.0)
+Stage (-log(p) = 0.5)
+Age at Diagnosis (-log(p) = 0.2)
+Sex (-log(p) = 0.5)
+Race (-log(p) = 0.7)
+TCGA Subtype
+Network Subtype
+Network Subtype
+KICH.Net.1
+KICH.Net.2
+TCGA Subtype
+KICH.Eosin.0
+KICH.Eosin.1
+Race
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.5
+3.5
+5.5
+Ploidy
+0.34
+0.62
+0.9
+Purity
+17
+52
+86
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+KICH Oncoplot
+Figure S8: Exploration of network subtypes for Kidney Chromophobe (KICH), looking at correlated clinical informa-
+tion, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S13
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['KIRC'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 9.0827300995197e-06
+KIRC.1 (95/122)
+KIRC.2 (36/73)
+KIRC.3 (39/83)
+KIRC.4 (46/75)
+KIRC.1 (95/122)
+   At risk   121
+  Censored       0
+    Events       1
+KIRC.2 (36/73)
+   At risk     73
+  Censored       0
+    Events       0
+KIRC.3 (39/83)
+   At risk     83
+  Censored       0
+    Events       0
+KIRC.4 (46/75)
+   At risk     75
+  Censored       0
+    Events       0
+82
+24
+16
+38
+11
+24
+49
+10
+24
+47
+7
+21
+39
+60
+23
+12
+26
+35
+13
+31
+39
+23
+25
+27
+14
+81
+27
+7
+30
+36
+4
+36
+43
+4
+42
+29
+2
+93
+27
+1
+35
+37
+0
+39
+44
+0
+46
+29
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['KIRC'] network_subtypes Survival Function
+plotting shared samples only
+p-value 1.8146025259138358e-14
+KIRC.Net.1 (8/10)
+KIRC.Net.2 (184/290)
+KIRC.Net.3 (24/50)
+KIRC.Net.4 (0/3)
+KIRC.Net.1 (8/10)
+   At risk     10
+  Censored       0
+    Events       0
+KIRC.Net.2 (184/290)
+   At risk   289
+  Censored       0
+    Events       1
+KIRC.Net.3 (24/50)
+   At risk     50
+  Censored       0
+    Events       0
+KIRC.Net.4 (0/3)
+   At risk       3
+  Censored       0
+    Events       0
+7
+2
+1
+182
+42
+66
+27
+8
+15
+0
+0
+3
+2
+6
+2
+75
+118
+97
+10
+18
+22
+0
+0
+3
+1
+7
+2
+27
+158
+105
+1
+24
+25
+0
+0
+3
+0
+8
+2
+3
+181
+106
+0
+24
+26
+0
+0
+3
+(b) Network subtypes survival function
+KIRC.1
+KIRC.2
+KIRC.3
+KIRC.4
+NA
+TCGA Subtype
+KIRC.Net.1
+KIRC.Net.2
+KIRC.Net.3
+KIRC.Net.4
+NA
+Network Subtype
+1
+0
+7
+2
+17
+119
+63
+54
+54
+49
+2
+10
+19
+19
+18
+0
+0
+3
+0
+11
+25
+17
+11
+11
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+TP53 Mutated (-log(p) = 4.1)
+CHD8 Mutated (-log(p) = 4.2)
+HRAS Mutated (-log(p) = 7.8)
+XPC Gene Loss of Heterozygosity (-log(p) = 64.2)
+FBLN2 Gene Loss of Heterozygosity (-log(p) = 64.2)
+RAF1 Gene Loss of Heterozygosity (-log(p) = 64.2)
+PPARG Gene Loss of Heterozygosity (-log(p) = 64.2)
+CTNNB1 Gene Loss of Heterozygosity (-log(p) = 66.2)
+MYD88 Gene Loss of Heterozygosity (-log(p) = 66.2)
+TGFBR2 Gene Loss of Heterozygosity (-log(p) = 66.2)
+VHL Gene Loss of Heterozygosity (-log(p) = 66.2)
+MLH1 Gene Loss of Heterozygosity (-log(p) = 66.2)
+RHOA Gene Loss of Heterozygosity (-log(p) = 68.3)
+5q Arm Loss of Heterozygosity (-log(p) = 17.2)
+13q Arm Loss of Heterozygosity (-log(p) = 17.8)
+6p Arm Loss of Heterozygosity (-log(p) = 19.3)
+10p Arm Loss of Heterozygosity (-log(p) = 25.4)
+1p Arm Loss of Heterozygosity (-log(p) = 27.7)
+17p Arm Loss of Heterozygosity (-log(p) = 38.8)
+1q Arm Loss of Heterozygosity (-log(p) = 50.5)
+17q Arm Loss of Heterozygosity (-log(p) = 55.9)
+2q Arm Loss of Heterozygosity (-log(p) = 58.4)
+2p Arm Loss of Heterozygosity (-log(p) = 86.5)
+Ploidy (-log(p) = 6.2)
+Purity (-log(p) = 16.3)
+Stage (-log(p) = 4.1)
+Age at Diagnosis (-log(p) = 1.8)
+Sex (-log(p) = 1.3)
+Race (-log(p) = 10.0)
+TCGA Subtype
+Network Subtype
+Network Subtype
+KIRC.Net.1
+KIRC.Net.2
+KIRC.Net.3
+KIRC.Net.4
+TCGA Subtype
+KIRC.1
+KIRC.2
+KIRC.3
+KIRC.4
+Race
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.5
+3.3
+5.2
+Ploidy
+0.2
+0.6
+1.0
+Purity
+26
+58
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+KIRC Oncoplot
+Figure S9: Exploration of network subtypes for Kidney renal clear cell carcinoma (KIRC), looking at correlated clin-
+ical information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S14
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['KIRP'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 2.899279279170795e-15
+KIRP.C1 (67/69)
+KIRP.C2a (26/30)
+KIRP.C2b (14/20)
+KIRP.C2c - CIMP (2/8)
+KIRP.C1 (67/69)
+   At risk   69
+  Censored     0
+    Events     0
+KIRP.C2a (26/30)
+   At risk   30
+  Censored     0
+    Events     0
+KIRP.C2b (14/20)
+   At risk   20
+  Censored     0
+    Events     0
+KIRP.C2c - CIMP (2/8)
+   At risk     8
+  Censored     0
+    Events     0
+47
+22
+0
+25
+4
+1
+8
+7
+5
+2
+2
+4
+23
+46
+0
+12
+16
+2
+4
+10
+6
+1
+2
+5
+14
+54
+1
+7
+19
+4
+4
+10
+6
+0
+2
+6
+9
+58
+2
+4
+22
+4
+3
+11
+6
+0
+2
+6
+5
+62
+2
+2
+24
+4
+3
+11
+6
+0
+2
+6
+1
+66
+2
+1
+25
+4
+1
+13
+6
+0
+2
+6
+1
+66
+2
+0
+26
+4
+1
+13
+6
+0
+2
+6
+0
+67
+2
+0
+26
+4
+0
+14
+6
+0
+2
+6
+(a) Known subtypes survival function
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['KIRP'] network_subtypes Survival Function
+plotting shared samples only
+p-value 6.2327202098523915e-16
+KIRP.Net.1 (13/13)
+KIRP.Net.2 (58/60)
+KIRP.Net.3 (3/9)
+KIRP.Net.4 (35/45)
+KIRP.Net.1 (13/13)
+   At risk   13
+  Censored     0
+    Events     0
+KIRP.Net.2 (58/60)
+   At risk   60
+  Censored     0
+    Events     0
+KIRP.Net.3 (3/9)
+   At risk     9
+  Censored     0
+    Events     0
+KIRP.Net.4 (35/45)
+   At risk   45
+  Censored     0
+    Events     0
+10
+3
+0
+41
+19
+0
+2
+3
+4
+29
+10
+6
+5
+8
+0
+21
+39
+0
+0
+3
+6
+14
+24
+7
+4
+9
+0
+11
+48
+1
+0
+3
+6
+10
+25
+10
+3
+10
+0
+5
+53
+2
+0
+3
+6
+8
+27
+10
+3
+10
+0
+3
+55
+2
+0
+3
+6
+4
+31
+10
+0
+13
+0
+1
+57
+2
+0
+3
+6
+2
+33
+10
+0
+13
+0
+1
+57
+2
+0
+3
+6
+1
+34
+10
+0
+13
+0
+0
+58
+2
+0
+3
+6
+0
+35
+10
+(b) Network subtypes survival function
+KIRP.C1
+KIRP.C2a
+KIRP.C2b
+KIRP.C2c - CIMP
+NA
+TCGA Subtype
+KIRP.Net.1
+KIRP.Net.2
+KIRP.Net.3
+KIRP.Net.4
+NA
+Network Subtype
+7
+6
+0
+0
+18
+56
+4
+0
+0
+58
+0
+0
+6
+3
+9
+7
+20
+14
+5
+25
+25
+5
+2
+1
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+FCGR2B Gene Loss of Heterozygosity (-log(p) = 10.6)
+PRRX1 Gene Loss of Heterozygosity (-log(p) = 10.6)
+MAML2 Gene Loss of Heterozygosity (-log(p) = 11.3)
+LMNA Gene Loss of Heterozygosity (-log(p) = 11.3)
+DDX10 Gene Loss of Heterozygosity (-log(p) = 11.5)
+SDHD Gene Loss of Heterozygosity (-log(p) = 12.2)
+PTPRC Gene Loss of Heterozygosity (-log(p) = 13.0)
+CBL Gene Loss of Heterozygosity (-log(p) = 13.8)
+ARHGEF12 Gene Loss of Heterozygosity (-log(p) = 13.8)
+NUMA1 Gene Loss of Heterozygosity (-log(p) = 16.8)
+14q Arm Loss of Heterozygosity (-log(p) = 12.3)
+1p Arm Loss of Heterozygosity (-log(p) = 13.1)
+11q Arm Loss of Heterozygosity (-log(p) = 13.2)
+11p Arm Loss of Heterozygosity (-log(p) = 14.1)
+9p Arm Loss of Heterozygosity (-log(p) = 16.5)
+9q Arm Loss of Heterozygosity (-log(p) = 17.7)
+4q Arm Loss of Heterozygosity (-log(p) = 22.0)
+13q Arm Loss of Heterozygosity (-log(p) = 25.9)
+4p Arm Loss of Heterozygosity (-log(p) = 28.7)
+15q Arm Loss of Heterozygosity (-log(p) = 35.6)
+Ploidy (-log(p) = 4.3)
+Purity (-log(p) = 11.0)
+Stage (-log(p) = 8.8)
+Age at Diagnosis (-log(p) = 2.6)
+Sex (-log(p) = 4.1)
+Race (-log(p) = 2.9)
+TCGA Subtype
+Network Subtype
+Network Subtype
+KIRP.Net.1
+KIRP.Net.2
+KIRP.Net.3
+KIRP.Net.4
+TCGA Subtype
+KIRP.C1
+KIRP.C2a
+KIRP.C2b
+KIRP.C2c - CIMP
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.6
+3.6
+5.6
+Ploidy
+0.22 0.61
+1.0
+Purity
+32
+60
+88
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+KIRP Oncoplot
+Figure S10: Exploration of network subtypes for Kidney renal papillary cell carcinoma (KIRP), looking at correlated
+clinical information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide varia-
+tions.
+S15
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LIHC'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.9803449383693396
+LIHC.iCluster:1 (28/52)
+LIHC.iCluster:2 (23/40)
+LIHC.iCluster:3 (30/54)
+LIHC.iCluster:1 (28/52)
+   At risk   51
+  Censored     1
+    Events     0
+LIHC.iCluster:2 (23/40)
+   At risk   40
+  Censored     0
+    Events     0
+LIHC.iCluster:3 (30/54)
+   At risk   53
+  Censored     1
+    Events     0
+20
+15
+17
+25
+8
+7
+31
+11
+12
+10
+21
+21
+3
+22
+15
+10
+24
+20
+9
+22
+21
+3
+22
+15
+4
+28
+22
+5
+25
+22
+2
+22
+16
+2
+29
+23
+2
+26
+24
+1
+22
+17
+1
+30
+23
+2
+26
+24
+0
+23
+17
+1
+30
+23
+0
+28
+24
+0
+23
+17
+0
+30
+24
+(a) Known subtypes survival function
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LIHC'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.14885325747756983
+LIHC.Net.1 (58/97)
+LIHC.Net.2 (3/4)
+LIHC.Net.3 (20/45)
+LIHC.Net.1 (58/97)
+   At risk   96
+  Censored     1
+    Events     0
+LIHC.Net.2 (3/4)
+   At risk     4
+  Censored     0
+    Events     0
+LIHC.Net.3 (20/45)
+   At risk   44
+  Censored     1
+    Events     0
+61
+21
+15
+0
+3
+1
+15
+10
+20
+15
+49
+33
+0
+3
+1
+8
+15
+22
+10
+53
+34
+0
+3
+1
+6
+16
+23
+6
+55
+36
+0
+3
+1
+3
+18
+24
+2
+57
+38
+0
+3
+1
+2
+18
+25
+2
+57
+38
+0
+3
+1
+1
+19
+25
+0
+58
+39
+0
+3
+1
+0
+20
+25
+(b) Network subtypes survival function
+LIHC.iCluster:1
+LIHC.iCluster:2
+LIHC.iCluster:3
+NA
+TCGA Subtype
+LIHC.Net.3 LIHC.Net.2 LIHC.Net.1
+NA
+Network Subtype
+27
+33
+37
+131
+3
+0
+1
+0
+22
+7
+16
+44
+13
+15
+9
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+TP53 Mutated (-log(p) = 4.5)
+KMT2C Mutated (-log(p) = 4.9)
+PSIP1 Gene Loss of Heterozygosity (-log(p) = 5.0)
+NFIB Gene Loss of Heterozygosity (-log(p) = 5.2)
+TPM4 Gene Loss of Heterozygosity (-log(p) = 5.2)
+TP53 Gene Loss of Heterozygosity (-log(p) = 5.5)
+CEBPA Major Allele Ampliﬁed (-log(p) = 5.7)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 6.4)
+CCNE1 Major Allele Ampliﬁed (-log(p) = 6.8)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 7.0)
+PICALM Gene Lost (-log(p) = 20.8)
+EED Gene Lost (-log(p) = 20.8)
+14q Arm Loss of Heterozygosity (-log(p) = 4.2)
+9q Arm Loss of Heterozygosity (-log(p) = 5.0)
+19q Major Arm Ampliﬁed (-log(p) = 7.5)
+Ploidy (-log(p) = 22.3)
+Purity (-log(p) = 3.0)
+Stage (-log(p) = 3.6)
+Age at Diagnosis (-log(p) = 0.4)
+Sex (-log(p) = 0.8)
+Race (-log(p) = 1.5)
+TCGA Subtype
+Network Subtype
+Network Subtype
+LIHC.Net.1
+LIHC.Net.2
+LIHC.Net.3
+TCGA Subtype
+LIHC.iCluster:1
+LIHC.iCluster:2
+LIHC.iCluster:3
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.7
+3.5
+5.4
+Ploidy
+0.2
+0.6
+1.0
+Purity
+16
+52
+87
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+LIHC Oncoplot
+Figure S11: Exploration of network subtypes for Liver hepatocellular carcinoma (LIHC), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S16
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+6000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LGG'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 4.586796886150151e-49
+GBM_LGG.Classic-like (7/21)
+GBM_LGG.Codel (144/162)
+GBM_LGG.G-CIMP-high (164/205)
+GBM_LGG.G-CIMP-low (4/10)
+GBM_LGG.Mesenchymal-like (15/44)
+GBM_LGG.PA-like (19/23)
+GBM_LGG.Classic-like (7/21)
+   At risk     21
+  Censored       0
+    Events       0
+GBM_LGG.Codel (144/162)
+   At risk   160
+  Censored       2
+    Events       0
+GBM_LGG.G-CIMP-high (164/205)
+   At risk   205
+  Censored       0
+    Events       0
+GBM_LGG.G-CIMP-low (4/10)
+   At risk       9
+  Censored       1
+    Events       0
+GBM_LGG.Mesenchymal-like (15/44)
+   At risk     44
+  Censored       0
+    Events       0
+GBM_LGG.PA-like (19/23)
+   At risk     23
+  Censored       0
+    Events       0
+2
+7
+12
+50
+102
+10
+85
+111
+9
+1
+4
+5
+1
+15
+28
+6
+13
+4
+0
+7
+14
+18
+132
+12
+26
+151
+28
+0
+4
+6
+0
+15
+29
+1
+18
+4
+0
+7
+14
+5
+142
+15
+11
+159
+35
+0
+4
+6
+0
+15
+29
+1
+18
+4
+0
+7
+14
+4
+143
+15
+5
+162
+38
+0
+4
+6
+0
+15
+29
+1
+18
+4
+0
+7
+14
+1
+144
+17
+1
+163
+41
+0
+4
+6
+0
+15
+29
+1
+18
+4
+0
+7
+14
+0
+144
+18
+0
+164
+41
+0
+4
+6
+0
+15
+29
+1
+18
+4
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+6000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LGG'] network_subtypes Survival Function
+plotting shared samples only
+p-value 2.0830760149809008e-50
+LGG.Net.1 (0/2)
+LGG.Net.2 (6/10)
+LGG.Net.3 (13/22)
+LGG.Net.4 (14/51)
+LGG.Net.5 (144/162)
+LGG.Net.6 (176/218)
+LGG.Net.1 (0/2)
+   At risk       2
+  Censored       0
+    Events       0
+LGG.Net.2 (6/10)
+   At risk     10
+  Censored       0
+    Events       0
+LGG.Net.3 (13/22)
+   At risk     22
+  Censored       0
+    Events       0
+LGG.Net.4 (14/51)
+   At risk     51
+  Censored       0
+    Events       0
+LGG.Net.5 (144/162)
+   At risk   160
+  Censored       2
+    Events       0
+LGG.Net.6 (176/218)
+   At risk   217
+  Censored       1
+    Events       0
+1
+0
+1
+1
+6
+3
+5
+11
+6
+1
+14
+36
+50
+102
+10
+87
+119
+12
+0
+0
+2
+0
+6
+4
+1
+12
+9
+0
+14
+37
+18
+132
+12
+26
+163
+29
+0
+0
+2
+0
+6
+4
+1
+12
+9
+0
+14
+37
+5
+142
+15
+11
+171
+36
+0
+0
+2
+0
+6
+4
+1
+12
+9
+0
+14
+37
+4
+143
+15
+5
+174
+39
+0
+0
+2
+0
+6
+4
+0
+13
+9
+0
+14
+37
+1
+144
+17
+2
+174
+42
+0
+0
+2
+0
+6
+4
+0
+13
+9
+0
+14
+37
+0
+144
+18
+1
+175
+42
+(b) Network subtypes survival function
+GBM_LGG.Classic-like
+GBM_LGG.Codel
+GBM_LGG.G-CIMP-high
+GBM_LGG.G-CIMP-low
+GBM_LGG.Mesenchymal-like
+GBM_LGG.PA-like
+NA
+TCGA Subtype
+LGG.Net.1
+LGG.Net.2
+LGG.Net.3
+LGG.Net.4
+LGG.Net.5
+LGG.Net.6
+NA
+Network Subtype
+1
+0
+0
+1
+0
+0
+0
+3
+0
+0
+2
+4
+1
+0
+0
+0
+10
+4
+3
+5
+1
+17
+0
+0
+1
+32
+1
+0
+0
+163
+0
+0
+0
+0
+0
+0
+0
+195
+2
+5
+16
+2
+2
+10
+29
+2
+1
+3
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+CREBBP Mutated (-log(p) = 4.4)
+PIK3CA Mutated (-log(p) = 4.6)
+IDH2 Mutated (-log(p) = 5.5)
+PTEN Mutated (-log(p) = 14.5)
+CIC Mutated (-log(p) = 23.8)
+EGFR Mutated (-log(p) = 24.1)
+TP53 Mutated (-log(p) = 47.6)
+IDH1 Mutated (-log(p) = 48.6)
+TP53 Major Allele Ampliﬁed (-log(p) = 15.6)
+RABEP1 Major Allele Ampliﬁed (-log(p) = 16.3)
+YWHAE Major Allele Ampliﬁed (-log(p) = 16.6)
+PDE4DIP Gene Loss of Heterozygosity (-log(p) = 23.3)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 41.1)
+TP53 Gene Loss of Heterozygosity (-log(p) = 41.7)
+CDKN2A Gene Lost (-log(p) = 42.8)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 42.8)
+HIF1A Major Allele Ampliﬁed (-log(p) = 71.4)
+PRDM1 Major Allele Ampliﬁed (-log(p) = 71.4)
+6p Arm Loss of Heterozygosity (-log(p) = 15.7)
+20q Arm Loss of Heterozygosity (-log(p) = 23.3)
+7q Major Arm Ampliﬁed (-log(p) = 26.1)
+8q Arm Loss of Heterozygosity (-log(p) = 36.7)
+8p Arm Loss of Heterozygosity (-log(p) = 36.7)
+7p Major Arm Ampliﬁed (-log(p) = 49.1)
+10p Arm Loss of Heterozygosity (-log(p) = 101.6)
+10q Arm Loss of Heterozygosity (-log(p) = 115.5)
+19q Arm Loss of Heterozygosity (-log(p) = 166.2)
+1p Arm Loss of Heterozygosity (-log(p) = inf)
+Ploidy (-log(p) = 3.6)
+Purity (-log(p) = 3.3)
+Age at Diagnosis (-log(p) = 17.4)
+Sex (-log(p) = 1.0)
+Race (-log(p) = 2.4)
+TCGA Subtype
+Network Subtype
+Network Subtype
+LGG.Net.1
+LGG.Net.2
+LGG.Net.3
+LGG.Net.4
+LGG.Net.5
+LGG.Net.6
+TCGA Subtype
+GBM_LGG.Classic-like
+GBM_LGG.Codel
+GBM_LGG.G-CIMP-high
+GBM_LGG.G-CIMP-low
+GBM_LGG.Mesenchymal-like
+GBM_LGG.PA-like
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+1.3
+3.4
+5.5
+Ploidy
+0.22 0.61
+1.0
+Purity
+14
+50
+86
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+LGG Oncoplot
+Figure S12: Exploration of network subtypes for Brain Lower Grade Glioma (LGG), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S17
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LUAD'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.2054002836953025
+LUAD.1 (8/18)
+LUAD.2 (14/26)
+LUAD.3 (17/37)
+LUAD.4 (13/24)
+LUAD.5 (28/42)
+LUAD.6 (12/27)
+LUAD.1 (8/18)
+   At risk   18
+  Censored     0
+    Events     0
+LUAD.2 (14/26)
+   At risk   26
+  Censored     0
+    Events     0
+LUAD.3 (17/37)
+   At risk   35
+  Censored     1
+    Events     1
+LUAD.4 (13/24)
+   At risk   24
+  Censored     0
+    Events     0
+LUAD.5 (28/42)
+   At risk   42
+  Censored     0
+    Events     0
+LUAD.6 (12/27)
+   At risk   27
+  Censored     0
+    Events     0
+9
+4
+5
+12
+5
+9
+10
+13
+14
+8
+9
+7
+19
+16
+7
+6
+7
+14
+4
+6
+8
+5
+9
+12
+3
+16
+18
+2
+11
+11
+5
+24
+13
+1
+11
+15
+2
+6
+10
+1
+13
+12
+1
+17
+19
+2
+11
+11
+2
+27
+13
+1
+11
+15
+1
+7
+10
+0
+14
+12
+1
+17
+19
+0
+13
+11
+0
+28
+14
+0
+12
+15
+1
+7
+10
+0
+14
+12
+0
+17
+20
+0
+13
+11
+0
+28
+14
+0
+12
+15
+1
+7
+10
+0
+14
+12
+0
+17
+20
+0
+13
+11
+0
+28
+14
+0
+12
+15
+1
+7
+10
+0
+14
+12
+0
+17
+20
+0
+13
+11
+0
+28
+14
+0
+12
+15
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LUAD'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.31098274637894413
+LUAD.Net.1 (7/10)
+LUAD.Net.2 (11/26)
+LUAD.Net.3 (24/39)
+LUAD.Net.4 (25/45)
+LUAD.Net.5 (17/33)
+LUAD.Net.6 (8/21)
+LUAD.Net.1 (7/10)
+   At risk   10
+  Censored     0
+    Events     0
+LUAD.Net.2 (11/26)
+   At risk   26
+  Censored     0
+    Events     0
+LUAD.Net.3 (24/39)
+   At risk   38
+  Censored     1
+    Events     0
+LUAD.Net.4 (25/45)
+   At risk   45
+  Censored     0
+    Events     0
+LUAD.Net.5 (17/33)
+   At risk   32
+  Censored     0
+    Events     1
+LUAD.Net.6 (8/21)
+   At risk   21
+  Censored     0
+    Events     0
+4
+4
+2
+11
+7
+8
+14
+16
+9
+15
+13
+17
+13
+10
+10
+7
+4
+10
+1
+6
+3
+3
+11
+12
+5
+20
+14
+6
+19
+20
+4
+14
+15
+1
+7
+13
+1
+6
+3
+1
+11
+14
+3
+22
+14
+2
+23
+20
+2
+15
+16
+0
+8
+13
+0
+7
+3
+0
+11
+15
+2
+23
+14
+0
+25
+20
+0
+17
+16
+0
+8
+13
+0
+7
+3
+0
+11
+15
+1
+23
+15
+0
+25
+20
+0
+17
+16
+0
+8
+13
+0
+7
+3
+0
+11
+15
+1
+23
+15
+0
+25
+20
+0
+17
+16
+0
+8
+13
+0
+7
+3
+0
+11
+15
+1
+23
+15
+0
+25
+20
+0
+17
+16
+0
+8
+13
+(b) Network subtypes survival function
+LUAD.1 LUAD.2 LUAD.3 LUAD.4 LUAD.5 LUAD.6
+NA
+TCGA Subtype
+LUAD.Net.1
+LUAD.Net.2
+LUAD.Net.3
+LUAD.Net.4
+LUAD.Net.5
+LUAD.Net.6
+NA
+Network Subtype
+0
+0
+0
+6
+2
+5
+21
+11
+0
+0
+9
+5
+1
+36
+2
+0
+7
+6
+17
+8
+55
+5
+12
+12
+1
+9
+7
+47
+0
+6
+13
+2
+8
+7
+32
+0
+10
+6
+1
+2
+3
+34
+4
+4
+13
+7
+9
+10
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+HRAS Mutated (-log(p) = 4.7)
+CREBBP Mutated (-log(p) = 6.4)
+FANCC Gene Loss of Heterozygosity (-log(p) = 7.0)
+PTCH1 Gene Loss of Heterozygosity (-log(p) = 7.1)
+PRKACA Gene Loss of Heterozygosity (-log(p) = 7.2)
+CALR Gene Loss of Heterozygosity (-log(p) = 7.3)
+SYK Gene Loss of Heterozygosity (-log(p) = 7.9)
+CD209 Gene Loss of Heterozygosity (-log(p) = 8.1)
+FSTL3 Gene Loss of Heterozygosity (-log(p) = 8.9)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 10.5)
+TP53 Gene Loss of Heterozygosity (-log(p) = 10.6)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 10.7)
+17q Major Arm Ampliﬁed (-log(p) = 4.0)
+1q Major Arm Ampliﬁed (-log(p) = 4.1)
+11p Major Arm Ampliﬁed (-log(p) = 4.1)
+6q Major Arm Ampliﬁed (-log(p) = 4.1)
+13q Arm Loss of Heterozygosity (-log(p) = 4.5)
+16p Major Arm Ampliﬁed (-log(p) = 4.7)
+19q Major Arm Ampliﬁed (-log(p) = 4.7)
+5p Major Arm Ampliﬁed (-log(p) = 6.2)
+7p Major Arm Ampliﬁed (-log(p) = 6.9)
+Ploidy (-log(p) = 10.1)
+Purity (-log(p) = 16.3)
+Stage (-log(p) = 1.4)
+Age at Diagnosis (-log(p) = 1.2)
+Sex (-log(p) = 1.6)
+Race (-log(p) = 1.8)
+TCGA Subtype
+Network Subtype
+Network Subtype
+LUAD.Net.1
+LUAD.Net.2
+LUAD.Net.3
+LUAD.Net.4
+LUAD.Net.5
+LUAD.Net.6
+TCGA Subtype
+LUAD.1
+LUAD.2
+LUAD.3
+LUAD.4
+LUAD.5
+LUAD.6
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.5
+3.5
+5.5
+Ploidy
+0.2
+0.6
+1.0
+Purity
+38
+63
+88
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+LUAD Oncoplot
+Figure S13: Exploration of network subtypes for Lung adenocarcinoma (LUAD), looking at correlated clinical infor-
+mation, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S18
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LUSC'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.753013730642901
+LUSC.basal (21/38)
+LUSC.classical (26/53)
+LUSC.primitive (9/21)
+LUSC.secretory (18/36)
+LUSC.basal (21/38)
+   At risk   38
+  Censored     0
+    Events     0
+LUSC.classical (26/53)
+   At risk   53
+  Censored     0
+    Events     0
+LUSC.primitive (9/21)
+   At risk   21
+  Censored     0
+    Events     0
+LUSC.secretory (18/36)
+   At risk   36
+  Censored     0
+    Events     0
+13
+11
+14
+26
+11
+16
+10
+4
+7
+13
+11
+12
+7
+14
+17
+11
+21
+21
+2
+8
+11
+5
+15
+16
+1
+20
+17
+7
+22
+24
+1
+8
+12
+2
+17
+17
+0
+21
+17
+2
+25
+26
+1
+8
+12
+1
+18
+17
+0
+21
+17
+0
+26
+27
+0
+9
+12
+1
+18
+17
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['LUSC'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.5631394814946469
+LUSC.Net.1 (1/2)
+LUSC.Net.2 (11/19)
+LUSC.Net.3 (34/71)
+LUSC.Net.4 (28/56)
+LUSC.Net.1 (1/2)
+   At risk     2
+  Censored     0
+    Events     0
+LUSC.Net.2 (11/19)
+   At risk   19
+  Censored     0
+    Events     0
+LUSC.Net.3 (34/71)
+   At risk   71
+  Censored     0
+    Events     0
+LUSC.Net.4 (28/56)
+   At risk   56
+  Censored     0
+    Events     0
+1
+0
+1
+9
+5
+5
+32
+17
+22
+20
+15
+21
+1
+0
+1
+5
+8
+6
+12
+27
+32
+7
+23
+26
+0
+1
+1
+4
+9
+6
+5
+31
+35
+2
+26
+28
+0
+1
+1
+2
+10
+7
+2
+33
+36
+0
+28
+28
+0
+1
+1
+1
+11
+7
+0
+34
+37
+0
+28
+28
+(b) Network subtypes survival function
+LUSC.basal
+LUSC.classical
+LUSC.primitive
+LUSC.secretory
+NA
+TCGA Subtype
+LUSC.Net.1
+LUSC.Net.2
+LUSC.Net.3
+LUSC.Net.4
+NA
+Network Subtype
+0
+0
+1
+1
+19
+1
+1
+8
+9
+34
+13
+43
+7
+10
+89
+24
+10
+5
+17
+114
+5
+11
+6
+6
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+KIT Mutated (-log(p) = 4.8)
+NF2 Mutated (-log(p) = 4.8)
+RUNX1 Mutated (-log(p) = 4.8)
+RAF1 Gene Loss of Heterozygosity (-log(p) = 30.7)
+PPARG Gene Loss of Heterozygosity (-log(p) = 30.7)
+MYD88 Gene Loss of Heterozygosity (-log(p) = 33.5)
+MLH1 Gene Loss of Heterozygosity (-log(p) = 33.5)
+TGFBR2 Gene Loss of Heterozygosity (-log(p) = 33.5)
+CTNNB1 Gene Loss of Heterozygosity (-log(p) = 34.3)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 35.1)
+RHOA Gene Loss of Heterozygosity (-log(p) = 35.6)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 35.9)
+TP53 Gene Loss of Heterozygosity (-log(p) = 35.9)
+13q Arm Loss of Heterozygosity (-log(p) = 4.4)
+1p Arm Loss of Heterozygosity (-log(p) = 4.5)
+19q Arm Loss of Heterozygosity (-log(p) = 4.5)
+3q Minor Arm Ampliﬁed (-log(p) = 4.8)
+9p Arm Loss of Heterozygosity (-log(p) = 5.2)
+19p Arm Loss of Heterozygosity (-log(p) = 5.2)
+3q Major Arm Ampliﬁed (-log(p) = 5.4)
+3p Arm Loss of Heterozygosity (-log(p) = 6.7)
+5p Major Arm Ampliﬁed (-log(p) = 7.1)
+5q Arm Loss of Heterozygosity (-log(p) = 7.6)
+Ploidy (-log(p) = 15.6)
+Purity (-log(p) = 32.1)
+Stage (-log(p) = 2.4)
+Age at Diagnosis (-log(p) = 2.0)
+Sex (-log(p) = 2.7)
+Race (-log(p) = 1.5)
+TCGA Subtype
+Network Subtype
+Network Subtype
+LUSC.Net.1
+LUSC.Net.2
+LUSC.Net.3
+LUSC.Net.4
+TCGA Subtype
+LUSC.basal
+LUSC.classical
+LUSC.primitive
+LUSC.secretory
+Race
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.5
+3.6
+5.7
+Ploidy
+0.2
+0.6
+1.0
+Purity
+39
+62
+84
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+LUSC Oncoplot
+Figure S14: Exploration of network subtypes for Lung squamous cell carcinoma (LUSC), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S19
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+NA
+TCGA Subtype
+DLBC.Net.1
+DLBC.Net.2
+Network Subtype
+40
+5
+Subtype Cross-Tabulation by Patient Counts
+(a) Network subtypes crosstab-
+ulation with known subtype
+TP53 Mutated (-log(p) = 8.7)
+TP53 Gene Loss of Heterozygosity (-log(p) = 4.4)
+BRCA1 Gene Loss of Heterozygosity (-log(p) = 5.1)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 5.4)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 5.4)
+Ploidy (-log(p) = 1.4)
+Purity (-log(p) = 0.3)
+Stage (-log(p) = 0.8)
+Age at Diagnosis (-log(p) = 1.0)
+Sex (-log(p) = 1.6)
+Race (-log(p) = 0.1)
+Network Subtype
+Network Subtype
+DLBC.Net.1
+DLBC.Net.2
+Race
+asian
+black or african american
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.8
+3.2
+4.7
+Ploidy
+0.2
+0.6
+1.0
+Purity
+23
+52
+82
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+DLBC Oncoplot
+Figure S15: Exploration of network subtypes for Lymphoid Neoplasm Diffuse Large B-cell Lymphoma (DLBC),
+looking at correlated clinical information, arm-level copy alterations, gene-level copy alterations, and gene-level single
+nucleotide variations.
+S20
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['OV'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.1977208187910573
+OVCA.Differentiated (29/85)
+OVCA.Immunoreactive (38/71)
+OVCA.Mesenchymal (25/76)
+OVCA.Proliferative (28/88)
+OVCA.Differentiated (29/85)
+   At risk   85
+  Censored     0
+    Events     0
+OVCA.Immunoreactive (38/71)
+   At risk   71
+  Censored     0
+    Events     0
+OVCA.Mesenchymal (25/76)
+   At risk   76
+  Censored     0
+    Events     0
+OVCA.Proliferative (28/88)
+   At risk   88
+  Censored     0
+    Events     0
+45
+20
+20
+33
+25
+13
+30
+16
+30
+47
+16
+25
+11
+26
+48
+10
+33
+28
+8
+19
+49
+16
+20
+52
+3
+28
+54
+2
+36
+33
+4
+22
+50
+7
+24
+57
+1
+28
+56
+0
+38
+33
+1
+24
+51
+1
+28
+59
+1
+28
+56
+0
+38
+33
+0
+25
+51
+0
+28
+60
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['OV'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.8914279672834287
+OV.Net.1 (23/48)
+OV.Net.2 (15/56)
+OV.Net.3 (38/81)
+OV.Net.4 (44/135)
+OV.Net.1 (23/48)
+   At risk     48
+  Censored       0
+    Events       0
+OV.Net.2 (15/56)
+   At risk     56
+  Censored       0
+    Events       0
+OV.Net.3 (38/81)
+   At risk     81
+  Censored       0
+    Events       0
+OV.Net.4 (44/135)
+   At risk   135
+  Censored       0
+    Events       0
+22
+15
+11
+30
+8
+18
+37
+30
+14
+66
+24
+45
+6
+19
+23
+10
+11
+35
+6
+35
+40
+23
+33
+79
+1
+23
+24
+6
+12
+38
+2
+36
+43
+7
+39
+89
+0
+23
+25
+1
+15
+40
+1
+37
+43
+1
+43
+91
+0
+23
+25
+0
+15
+41
+0
+38
+43
+1
+43
+91
+(b) Network subtypes survival function
+OVCA.Differentiated
+OVCA.Immunoreactive
+OVCA.Mesenchymal
+OVCA.Proliferative
+NA
+TCGA Subtype
+OV.Net.4OV.Net.3OV.Net.2OV.Net.1
+NA
+Network Subtype
+14
+12
+4
+18
+1
+7
+14
+15
+20
+2
+37
+14
+16
+15
+2
+27
+32
+41
+35
+2
+50
+35
+33
+50
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+BCL11B Major Allele Ampliﬁed (-log(p) = 5.2)
+MLLT10 Major Allele Ampliﬁed (-log(p) = 5.3)
+TNFAIP3 Gene Loss of Heterozygosity (-log(p) = 5.4)
+MTOR Gene Loss of Heterozygosity (-log(p) = 5.4)
+CCNE1 Major Allele Ampliﬁed (-log(p) = 5.8)
+CASP9 Gene Loss of Heterozygosity (-log(p) = 5.8)
+PRDM2 Gene Loss of Heterozygosity (-log(p) = 6.0)
+SKI Gene Loss of Heterozygosity (-log(p) = 6.1)
+HSP90AA1 Major Allele Ampliﬁed (-log(p) = 6.2)
+EZR Gene Loss of Heterozygosity (-log(p) = 6.9)
+Ploidy (-log(p) = 12.8)
+Purity (-log(p) = 4.4)
+Stage (-log(p) = 0.1)
+Age at Diagnosis (-log(p) = 6.0)
+Race (-log(p) = 1.6)
+TCGA Subtype
+Network Subtype
+Network Subtype
+OV.Net.1
+OV.Net.2
+OV.Net.3
+OV.Net.4
+TCGA Subtype
+OVCA.Diﬀerentiated
+OVCA.Immunoreactive
+OVCA.Mesenchymal
+OVCA.Proliferative
+Race
+american indian or alaska native
+asian
+black or african american
+native hawaiian or other paciﬁc islander
+not reported
+white
+Stage
+1.0
+2.0
+3.0
+4.0
+1.6
+3.5
+5.3
+Ploidy
+0.21 0.57 0.92
+Purity
+30
+58
+87
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+OV Oncoplot
+Figure S16: Exploration of network subtypes for Ovarian serous cystadenocarcinoma (OV), looking at correlated clin-
+ical information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S21
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+500
+1000
+1500
+2000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['PAAD'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.36372104750251555
+PAAD.ADEX (18/36)
+PAAD.immunogenic (17/26)
+PAAD.progenitor (17/48)
+PAAD.squamous (10/27)
+PAAD.ADEX (18/36)
+   At risk   35
+  Censored     1
+    Events     0
+PAAD.immunogenic (17/26)
+   At risk   26
+  Censored     0
+    Events     0
+PAAD.progenitor (17/48)
+   At risk   48
+  Censored     0
+    Events     0
+PAAD.squamous (10/27)
+   At risk   27
+  Censored     0
+    Events     0
+14
+10
+12
+9
+13
+4
+21
+6
+21
+10
+3
+14
+4
+14
+18
+3
+16
+7
+7
+13
+28
+2
+9
+16
+2
+16
+18
+1
+17
+8
+2
+16
+30
+1
+10
+16
+1
+17
+18
+0
+17
+9
+2
+16
+30
+1
+10
+16
+(a) Known subtypes survival function
+0
+500
+1000
+1500
+2000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['PAAD'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.03206620893995013
+PAAD.Net.1 (1/1)
+PAAD.Net.2 (10/29)
+PAAD.Net.3 (27/41)
+PAAD.Net.4 (24/66)
+PAAD.Net.1 (1/1)
+   At risk     1
+  Censored     0
+    Events     0
+PAAD.Net.2 (10/29)
+   At risk   29
+  Censored     0
+    Events     0
+PAAD.Net.3 (27/41)
+   At risk   41
+  Censored     0
+    Events     0
+PAAD.Net.4 (24/66)
+   At risk   65
+  Censored     1
+    Events     0
+0
+1
+0
+9
+4
+16
+17
+17
+7
+28
+10
+28
+0
+1
+0
+2
+9
+18
+5
+24
+12
+9
+18
+39
+0
+1
+0
+1
+10
+18
+2
+26
+13
+3
+22
+41
+0
+1
+0
+1
+10
+18
+1
+26
+14
+2
+23
+41
+(b) Network subtypes survival function
+PAAD.ADEX
+PAAD.immunogenic
+PAAD.progenitor
+PAAD.squamous
+NA
+TCGA Subtype
+PAAD.Net.1
+PAAD.Net.2
+PAAD.Net.3
+PAAD.Net.4
+NA
+Network Subtype
+1
+0
+0
+0
+6
+3
+1
+8
+17
+5
+20
+18
+1
+2
+10
+12
+7
+39
+8
+5
+2
+2
+5
+4
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+HRAS Mutated (-log(p) = 16.6)
+LMO2 Gene Loss of Heterozygosity (-log(p) = 19.1)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 19.1)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 19.1)
+PSIP1 Gene Loss of Heterozygosity (-log(p) = 19.9)
+PRRX1 Gene Loss of Heterozygosity (-log(p) = 20.4)
+TP53 Gene Loss of Heterozygosity (-log(p) = 20.4)
+NFIB Gene Loss of Heterozygosity (-log(p) = 21.2)
+BCL2 Gene Loss of Heterozygosity (-log(p) = 22.6)
+SMAD2 Gene Loss of Heterozygosity (-log(p) = 24.2)
+CDKN2A Gene Loss of Heterozygosity (-log(p) = 32.3)
+3p Arm Loss of Heterozygosity (-log(p) = 7.2)
+11p Arm Loss of Heterozygosity (-log(p) = 8.4)
+10q Arm Loss of Heterozygosity (-log(p) = 9.8)
+16p Arm Loss of Heterozygosity (-log(p) = 11.6)
+2p Arm Loss of Heterozygosity (-log(p) = 13.7)
+3q Arm Loss of Heterozygosity (-log(p) = 17.3)
+11q Arm Loss of Heterozygosity (-log(p) = 20.4)
+2q Arm Loss of Heterozygosity (-log(p) = 24.7)
+8q Arm Loss of Heterozygosity (-log(p) = 24.8)
+1q Arm Loss of Heterozygosity (-log(p) = 29.8)
+Ploidy (-log(p) = 13.8)
+Purity (-log(p) = 34.3)
+Stage (-log(p) = 2.4)
+Age at Diagnosis (-log(p) = 1.3)
+Sex (-log(p) = 1.8)
+Race (-log(p) = 1.1)
+TCGA Subtype
+Network Subtype
+Network Subtype
+PAAD.Net.1
+PAAD.Net.2
+PAAD.Net.3
+PAAD.Net.4
+TCGA Subtype
+PAAD.ADEX
+PAAD.immunogenic
+PAAD.progenitor
+PAAD.squamous
+Race
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.6
+2.8
+4.0
+Ploidy
+0.2
+0.6
+1.0
+Purity
+35
+60
+85
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+PAAD Oncoplot
+Figure S17: Exploration of network subtypes for Pancreatic adenocarcinoma (PAAD), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S22
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+PRAD.1-ERG
+PRAD.2-ETV1
+PRAD.3-ETV4
+PRAD.4-FLI1
+PRAD.5-SPOP
+PRAD.6-FOXA1
+PRAD.7-IDH1
+PRAD.8-other
+NA
+TCGA Subtype
+PRAD.Net.1
+PRAD.Net.2
+NA
+Network Subtype
+0
+0
+0
+0
+0
+0
+0
+0
+109
+0
+0
+0
+0
+0
+0
+0
+0
+293
+152
+28
+14
+4
+37
+9
+3
+86
+0
+Subtype Cross-Tabulation by Patient Counts
+(a) Network subtypes crosstab-
+ulation with known subtype
+CYLD Gene Loss of Heterozygosity (-log(p) = 9.3)
+HOOK3 Major Allele Ampliﬁed (-log(p) = 9.5)
+MAF Gene Loss of Heterozygosity (-log(p) = 9.6)
+IKBKB Major Allele Ampliﬁed (-log(p) = 9.6)
+LCP1 Gene Loss of Heterozygosity (-log(p) = 9.7)
+HERPUD1 Gene Loss of Heterozygosity (-log(p) = 9.7)
+RB1 Gene Loss of Heterozygosity (-log(p) = 9.8)
+CBFA2T3 Gene Loss of Heterozygosity (-log(p) = 10.8)
+PCM1 Gene Loss of Heterozygosity (-log(p) = 11.1)
+WRN Gene Loss of Heterozygosity (-log(p) = 11.7)
+16q Arm Loss of Heterozygosity (-log(p) = 4.0)
+8q Major Arm Ampliﬁed (-log(p) = 20.9)
+Ploidy (-log(p) = 13.1)
+Purity (-log(p) = 0.2)
+Age at Diagnosis (-log(p) = 1.9)
+Race (-log(p) = 1.1)
+Network Subtype
+Network Subtype
+PRAD.Net.1
+PRAD.Net.2
+Race
+asian
+black or african american
+not reported
+white
+1.8
+3.2
+4.7
+Ploidy
+0.2
+0.6
+1.0
+Purity
+41
+60
+78
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+PRAD Oncoplot
+Figure S18: Exploration of network subtypes for Prostate adenocarcinoma (PRAD), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S23
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['READ'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.6010105786043305
+GI.CIN (78/91)
+GI.GS (7/7)
+GI.HM-SNV (3/3)
+GI.MSI (3/3)
+GI.CIN (78/91)
+   At risk   86
+  Censored     5
+    Events     0
+GI.GS (7/7)
+   At risk     7
+  Censored     0
+    Events     0
+GI.HM-SNV (3/3)
+   At risk     3
+  Censored     0
+    Events     0
+GI.MSI (3/3)
+   At risk     3
+  Censored     0
+    Events     0
+59
+28
+4
+5
+2
+0
+2
+1
+0
+2
+1
+0
+28
+54
+9
+2
+5
+0
+1
+2
+0
+1
+2
+0
+7
+73
+11
+1
+6
+0
+0
+3
+0
+1
+2
+0
+4
+74
+13
+0
+7
+0
+0
+3
+0
+0
+3
+0
+2
+76
+13
+0
+7
+0
+0
+3
+0
+0
+3
+0
+1
+77
+13
+0
+7
+0
+0
+3
+0
+0
+3
+0
+1
+77
+13
+0
+7
+0
+0
+3
+0
+0
+3
+0
+0
+78
+13
+0
+7
+0
+0
+3
+0
+0
+3
+0
+(a) Known subtypes survival function
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['READ'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.7641760694526664
+READ.Net.1 (2/2)
+READ.Net.2 (22/27)
+READ.Net.3 (11/11)
+READ.Net.4 (56/64)
+READ.Net.1 (2/2)
+   At risk     2
+  Censored     0
+    Events     0
+READ.Net.2 (22/27)
+   At risk   25
+  Censored     2
+    Events     0
+READ.Net.3 (11/11)
+   At risk   11
+  Censored     0
+    Events     0
+READ.Net.4 (56/64)
+   At risk   61
+  Censored     3
+    Events     0
+1
+1
+0
+19
+7
+1
+7
+4
+0
+41
+20
+3
+1
+1
+0
+11
+13
+3
+2
+9
+0
+18
+40
+6
+0
+2
+0
+4
+19
+4
+0
+11
+0
+5
+52
+7
+0
+2
+0
+3
+19
+5
+0
+11
+0
+1
+55
+8
+0
+2
+0
+1
+21
+5
+0
+11
+0
+1
+55
+8
+0
+2
+0
+1
+21
+5
+0
+11
+0
+0
+56
+8
+0
+2
+0
+1
+21
+5
+0
+11
+0
+0
+56
+8
+0
+2
+0
+0
+22
+5
+0
+11
+0
+0
+56
+8
+(b) Network subtypes survival function
+GI.CIN
+GI.GS
+GI.HM-SNV
+GI.MSI
+NA
+TCGA Subtype
+READ.Net.1
+READ.Net.2
+READ.Net.3
+READ.Net.4
+NA
+Network Subtype
+2
+0
+0
+0
+2
+27
+0
+0
+0
+13
+2
+4
+3
+2
+3
+60
+3
+0
+1
+19
+11
+2
+1
+0
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+WRN Gene Loss of Heterozygosity (-log(p) = 4.5)
+PCM1 Gene Loss of Heterozygosity (-log(p) = 5.5)
+PIK3CB Minor Allele Ampliﬁed (-log(p) = 9.3)
+HEY1 Gene Lost (-log(p) = 9.3)
+SMAD2 Gene Loss of Heterozygosity (-log(p) = 10.0)
+BCL2 Gene Loss of Heterozygosity (-log(p) = 11.7)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 14.1)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 14.9)
+TP53 Gene Loss of Heterozygosity (-log(p) = 16.7)
+10q Arm Loss of Heterozygosity (-log(p) = 4.8)
+10p Arm Loss of Heterozygosity (-log(p) = 5.7)
+19q Major Arm Ampliﬁed (-log(p) = 9.3)
+Ploidy (-log(p) = 3.2)
+Purity (-log(p) = 0.9)
+Stage (-log(p) = 1.4)
+Age at Diagnosis (-log(p) = 1.7)
+Sex (-log(p) = 1.0)
+Race (-log(p) = 1.3)
+TCGA Subtype
+Network Subtype
+Network Subtype
+READ.Net.1
+READ.Net.2
+READ.Net.3
+READ.Net.4
+TCGA Subtype
+GI.CIN
+GI.GS
+GI.HM-SNV
+GI.MSI
+Race
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.7
+3.7
+5.7
+Ploidy
+0.27 0.57 0.87
+Purity
+31
+60
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+READ Oncoplot
+Figure S19: Exploration of network subtypes for Rectum adenocarcinoma (READ), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S24
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+SKCM.-
+SKCM.BRAF_Hotspot_Mutants
+SKCM.NF1_Any_Mutants
+SKCM.RAS_Hotspot_Mutants
+SKCM.Triple_WT
+NA
+TCGA Subtype
+SKCM.Net.1
+SKCM.Net.2
+NA
+Network Subtype
+0
+0
+0
+0
+0
+68
+0
+0
+0
+0
+0
+32
+17
+150
+28
+92
+46
+0
+Subtype Cross-Tabulation by Patient Counts
+(a) Network subtypes crosstab-
+ulation with known subtype
+Ploidy (-log(p) = 11.2)
+Purity (-log(p) = 1.3)
+Stage (-log(p) = 2.1)
+Age at Diagnosis (-log(p) = 0.2)
+Sex (-log(p) = 0.2)
+Race (-log(p) = 2.9)
+Network Subtype
+Network Subtype
+SKCM.Net.1
+SKCM.Net.2
+Race
+asian
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+1.6
+3.5
+5.4
+Ploidy
+0.22
+0.61
+1.0
+Purity
+24
+56
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+SKCM Oncoplot
+Figure S20: Exploration of network subtypes for Skin Cutaneous Melanoma (SKCM), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S25
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['STAD'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.9035648079075846
+GI.CIN (102/174)
+GI.EBV (15/24)
+GI.GS (22/38)
+GI.HM-SNV (4/6)
+GI.MSI (33/52)
+GI.CIN (102/174)
+   At risk   164
+  Censored     10
+    Events       0
+GI.EBV (15/24)
+   At risk     24
+  Censored       0
+    Events       0
+GI.GS (22/38)
+   At risk     36
+  Censored       1
+    Events       1
+GI.HM-SNV (4/6)
+   At risk       6
+  Censored       0
+    Events       0
+GI.MSI (33/52)
+   At risk     46
+  Censored       6
+    Events       0
+70
+55
+49
+13
+6
+5
+16
+9
+13
+1
+3
+2
+27
+14
+11
+27
+81
+66
+1
+14
+9
+7
+16
+15
+0
+4
+2
+8
+27
+17
+11
+93
+70
+0
+15
+9
+3
+20
+15
+0
+4
+2
+6
+28
+18
+5
+99
+70
+0
+15
+9
+2
+20
+16
+0
+4
+2
+3
+30
+19
+2
+100
+72
+0
+15
+9
+1
+21
+16
+0
+4
+2
+0
+33
+19
+2
+100
+72
+0
+15
+9
+1
+21
+16
+0
+4
+2
+0
+33
+19
+2
+100
+72
+0
+15
+9
+1
+21
+16
+0
+4
+2
+0
+33
+19
+(a) Known subtypes survival function
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['STAD'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.26607875529657427
+STAD.Net.1 (26/47)
+STAD.Net.2 (41/70)
+STAD.Net.3 (57/95)
+STAD.Net.4 (7/16)
+STAD.Net.5 (45/66)
+STAD.Net.1 (26/47)
+   At risk   46
+  Censored     1
+    Events     0
+STAD.Net.2 (41/70)
+   At risk   65
+  Censored     4
+    Events     1
+STAD.Net.3 (57/95)
+   At risk   90
+  Censored     5
+    Events     0
+STAD.Net.4 (7/16)
+   At risk   15
+  Censored     1
+    Events     0
+STAD.Net.5 (45/66)
+   At risk   60
+  Censored     6
+    Events     0
+22
+9
+16
+34
+17
+19
+40
+32
+23
+4
+5
+7
+27
+24
+15
+9
+19
+19
+4
+38
+28
+15
+46
+34
+2
+6
+8
+13
+33
+20
+6
+22
+19
+1
+40
+29
+7
+52
+36
+0
+7
+9
+6
+39
+21
+3
+23
+21
+1
+40
+29
+4
+55
+36
+0
+7
+9
+2
+43
+21
+1
+25
+21
+0
+41
+29
+1
+56
+38
+0
+7
+9
+1
+44
+21
+1
+25
+21
+0
+41
+29
+1
+56
+38
+0
+7
+9
+1
+44
+21
+1
+25
+21
+0
+41
+29
+1
+56
+38
+0
+7
+9
+1
+44
+21
+(b) Network subtypes survival function
+GI.CIN
+GI.EBV
+GI.GS
+GI.HM-SNV GI.MSI
+NA
+TCGA Subtype
+STAD.Net.1
+STAD.Net.2
+STAD.Net.3
+STAD.Net.4
+STAD.Net.5
+NA
+Network Subtype
+10
+2
+25
+0
+10
+3
+13
+16
+11
+2
+29
+3
+77
+5
+3
+3
+8
+5
+15
+1
+0
+0
+0
+2
+61
+0
+0
+1
+5
+7
+47
+6
+11
+1
+21
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+CHD4 Mutated (-log(p) = 4.3)
+SCAF4 Mutated (-log(p) = 4.4)
+RTF1 Mutated (-log(p) = 4.4)
+CDK12 Mutated (-log(p) = 4.4)
+RALB Mutated (-log(p) = 4.4)
+TP53 Mutated (-log(p) = 4.7)
+CCNE1 Major Allele Ampliﬁed (-log(p) = 7.0)
+POLD1 Gene Loss of Heterozygosity (-log(p) = 7.1)
+PSIP1 Gene Loss of Heterozygosity (-log(p) = 7.2)
+FSTL3 Gene Loss of Heterozygosity (-log(p) = 7.3)
+TSC2 Gene Loss of Heterozygosity (-log(p) = 7.4)
+CDKN2A Gene Loss of Heterozygosity (-log(p) = 7.4)
+NFIB Gene Loss of Heterozygosity (-log(p) = 7.5)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 16.3)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 16.8)
+TP53 Gene Loss of Heterozygosity (-log(p) = 17.0)
+7p Arm Loss of Heterozygosity (-log(p) = 4.9)
+17p Arm Loss of Heterozygosity (-log(p) = 6.2)
+1p Arm Loss of Heterozygosity (-log(p) = 6.4)
+percent_stromal_cells (-log(p) = 5.9)
+Ploidy (-log(p) = 9.6)
+Purity (-log(p) = 9.4)
+Stage (-log(p) = 0.7)
+Age at Diagnosis (-log(p) = 0.5)
+Sex (-log(p) = 0.6)
+Race (-log(p) = 1.8)
+TCGA Subtype
+Network Subtype
+Network Subtype
+STAD.Net.1
+STAD.Net.2
+STAD.Net.3
+STAD.Net.4
+STAD.Net.5
+TCGA Subtype
+GI.CIN
+GI.EBV
+GI.GS
+GI.HM-SNV
+GI.MSI
+Race
+asian
+black or african american
+native hawaiian or other paciﬁc islander
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+0
+42
+84
+percent_stromal_cells
+1.4
+3.4
+5.3
+Ploidy
+0.2
+0.6
+1.0
+Purity
+35
+62
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+STAD Oncoplot
+Figure S21: Exploration of network subtypes for Stomach adenocarcinoma (STAD), looking at correlated clinical
+information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S26
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+1.05
+['THCA'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.5030832438823083
+THCA.1 (113/118)
+THCA.2 (60/62)
+THCA.3 (72/73)
+THCA.4 (86/92)
+THCA.5 (80/82)
+THCA.1 (113/118)
+   At risk   118
+  Censored       0
+    Events       0
+THCA.2 (60/62)
+   At risk     62
+  Censored       0
+    Events       0
+THCA.3 (72/73)
+   At risk     72
+  Censored       1
+    Events       0
+THCA.4 (86/92)
+   At risk     92
+  Censored       0
+    Events       0
+THCA.5 (80/82)
+   At risk     82
+  Censored       0
+    Events       0
+45
+72
+1
+26
+34
+2
+33
+40
+0
+53
+35
+4
+47
+34
+1
+10
+103
+5
+5
+55
+2
+15
+57
+1
+24
+62
+6
+18
+62
+2
+4
+109
+5
+1
+59
+2
+5
+67
+1
+12
+74
+6
+10
+70
+2
+1
+112
+5
+1
+59
+2
+2
+70
+1
+7
+79
+6
+5
+75
+2
+1
+112
+5
+0
+60
+2
+0
+72
+1
+1
+85
+6
+1
+79
+2
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+timeline
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+1.05
+['THCA'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.007873347444784465
+THCA.Net.1 (11/13)
+THCA.Net.2 (48/48)
+THCA.Net.3 (16/16)
+THCA.Net.4 (175/178)
+THCA.Net.5 (161/172)
+THCA.Net.1 (11/13)
+   At risk     13
+  Censored       0
+    Events       0
+THCA.Net.2 (48/48)
+   At risk     47
+  Censored       1
+    Events       0
+THCA.Net.3 (16/16)
+   At risk     16
+  Censored       0
+    Events       0
+THCA.Net.4 (175/178)
+   At risk   178
+  Censored       0
+    Events       0
+THCA.Net.5 (161/172)
+   At risk   172
+  Censored       0
+    Events       0
+5
+7
+1
+11
+37
+0
+9
+7
+0
+91
+86
+1
+88
+78
+6
+2
+9
+2
+2
+46
+0
+4
+12
+0
+41
+134
+3
+23
+138
+11
+1
+10
+2
+1
+47
+0
+1
+15
+0
+21
+154
+3
+8
+153
+11
+0
+11
+2
+0
+48
+0
+0
+16
+0
+12
+163
+3
+4
+157
+11
+0
+11
+2
+0
+48
+0
+0
+16
+0
+3
+172
+3
+0
+161
+11
+(b) Network subtypes survival function
+THCA.1
+THCA.2
+THCA.3
+THCA.4
+THCA.5
+NA
+TCGA Subtype
+THCA.Net.1
+THCA.Net.2
+THCA.Net.3
+THCA.Net.4
+THCA.Net.5
+NA
+Network Subtype
+9
+0
+0
+3
+1
+0
+24
+1
+5
+6
+12
+1
+11
+0
+1
+4
+0
+1
+29
+35
+37
+39
+38
+8
+45
+26
+30
+40
+31
+10
+16
+5
+9
+14
+11
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+HRAS Mutated (-log(p) = 4.0)
+USP9X Mutated (-log(p) = 6.5)
+AR Gene Loss of Heterozygosity (-log(p) = 42.0)
+ATRX Gene Loss of Heterozygosity (-log(p) = 45.8)
+GPC3 Gene Loss of Heterozygosity (-log(p) = 46.1)
+ELF4 Gene Loss of Heterozygosity (-log(p) = 47.2)
+FOXO4 Gene Loss of Heterozygosity (-log(p) = 48.3)
+SMC1A Gene Loss of Heterozygosity (-log(p) = 48.3)
+ARAF Gene Loss of Heterozygosity (-log(p) = 48.3)
+EIF1AX Gene Loss of Heterozygosity (-log(p) = 48.3)
+WAS Gene Loss of Heterozygosity (-log(p) = 48.3)
+FLNA Gene Loss of Heterozygosity (-log(p) = 49.2)
+3q Arm Loss of Heterozygosity (-log(p) = 8.4)
+3p Arm Loss of Heterozygosity (-log(p) = 8.4)
+7q Major Arm Ampliﬁed (-log(p) = 8.4)
+22q Arm Loss of Heterozygosity (-log(p) = 9.1)
+1q Major Arm Ampliﬁed (-log(p) = 13.9)
+21q Arm Loss of Heterozygosity (-log(p) = 18.6)
+8p Arm Loss of Heterozygosity (-log(p) = 25.8)
+8q Arm Loss of Heterozygosity (-log(p) = 25.8)
+2q Arm Loss of Heterozygosity (-log(p) = 25.8)
+2p Arm Loss of Heterozygosity (-log(p) = 25.8)
+percent_stromal_cells (-log(p) = 4.3)
+percent_neutrophil_inﬁltration (-log(p) = 4.4)
+Ploidy (-log(p) = 34.3)
+Purity (-log(p) = 2.9)
+Stage (-log(p) = 9.5)
+Age at Diagnosis (-log(p) = 6.6)
+Sex (-log(p) = 51.8)
+Race (-log(p) = 81.7)
+TCGA Subtype
+Network Subtype
+Network Subtype
+THCA.Net.1
+THCA.Net.2
+THCA.Net.3
+THCA.Net.4
+THCA.Net.5
+TCGA Subtype
+THCA.1
+THCA.2
+THCA.3
+THCA.4
+THCA.5
+Race
+american indian or alaska native
+asian
+black or african american
+not reported
+white
+Sex
+female
+male
+Stage
+1.0
+2.0
+3.0
+4.0
+0
+45
+90
+percent_stromal_cells
+0.0
+3.0
+6.0
+percent_neutrophil_inﬁltration
+1.8
+3.1
+4.3
+Ploidy
+0.22 0.61
+1.0
+Purity
+15
+52
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+THCA Oncoplot
+Figure S22: Exploration of network subtypes for Thyroid carcinoma (THCA), looking at correlated clinical informa-
+tion, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S27
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['UCS'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 0.4799792507301407
+UCS.1 (4/17)
+UCS.2 (17/37)
+UCS.1 (4/17)
+   At risk   17
+  Censored     0
+    Events     0
+UCS.2 (17/37)
+   At risk   35
+  Censored     1
+    Events     1
+5
+2
+10
+8
+11
+18
+3
+3
+11
+4
+14
+19
+1
+4
+12
+1
+16
+20
+0
+4
+13
+1
+16
+20
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['UCS'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.8947288429500863
+UCS.Net.1 (2/5)
+UCS.Net.2 (19/49)
+UCS.Net.1 (2/5)
+   At risk     5
+  Censored     0
+    Events     0
+UCS.Net.2 (19/49)
+   At risk   47
+  Censored     1
+    Events     1
+0
+2
+3
+13
+11
+25
+0
+2
+3
+7
+15
+27
+0
+2
+3
+2
+18
+29
+0
+2
+3
+1
+18
+30
+(b) Network subtypes survival function
+UCS.1
+UCS.2
+TCGA Subtype
+UCS.Net.1
+UCS.Net.2
+NA
+Network Subtype
+0
+5
+17
+32
+0
+3
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 4.0)
+TP53 Gene Loss of Heterozygosity (-log(p) = 5.5)
+Ploidy (-log(p) = 1.0)
+Purity (-log(p) = 0.1)
+Stage (-log(p) = 0.6)
+Age at Diagnosis (-log(p) = 0.5)
+Race (-log(p) = 0.8)
+TCGA Subtype
+Network Subtype
+Network Subtype
+UCS.Net.1
+UCS.Net.2
+TCGA Subtype
+UCS.1
+UCS.2
+Race
+asian
+black or african american
+not reported
+white
+Stage
+1.0
+2.0
+3.0
+4.0
+1.7
+3.6
+5.4
+Ploidy
+0.41 0.71
+1.0
+Purity
+51
+70
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+UCS Oncoplot
+Figure S23: Exploration of network subtypes for Uterine Carcinosarcoma (UCS), looking at correlated clinical infor-
+mation, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S28
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['UCEC'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 1.1552321631982757e-07
+UCEC.CN_HIGH (101/144)
+UCEC.CN_LOW (121/131)
+UCEC.MSI (100/116)
+UCEC.POLE (67/72)
+UCEC.CN_HIGH (101/144)
+   At risk   144
+  Censored       0
+    Events       0
+UCEC.CN_LOW (121/131)
+   At risk   129
+  Censored       2
+    Events       0
+UCEC.MSI (100/116)
+   At risk   116
+  Censored       0
+    Events       0
+UCEC.POLE (67/72)
+   At risk     72
+  Censored       0
+    Events       0
+53
+59
+32
+62
+63
+6
+43
+59
+14
+42
+27
+3
+14
+89
+41
+22
+99
+10
+20
+80
+16
+18
+50
+4
+5
+97
+42
+2
+119
+10
+3
+97
+16
+4
+64
+4
+1
+100
+43
+1
+120
+10
+0
+100
+16
+1
+66
+5
+0
+101
+43
+1
+120
+10
+0
+100
+16
+1
+66
+5
+0
+101
+43
+0
+121
+10
+0
+100
+16
+1
+66
+5
+0
+101
+43
+0
+121
+10
+0
+100
+16
+0
+67
+5
+(a) Known subtypes survival function
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['UCEC'] network_subtypes Survival Function
+plotting shared samples only
+p-value 8.519727284672318e-08
+UCEC.Net.1 (74/104)
+UCEC.Net.2 (218/235)
+UCEC.Net.3 (56/65)
+UCEC.Net.4 (41/59)
+UCEC.Net.1 (74/104)
+   At risk   103
+  Censored       1
+    Events       0
+UCEC.Net.2 (218/235)
+   At risk   235
+  Censored       0
+    Events       0
+UCEC.Net.3 (56/65)
+   At risk     64
+  Censored       1
+    Events       0
+UCEC.Net.4 (41/59)
+   At risk     59
+  Censored       0
+    Events       0
+36
+43
+25
+109
+113
+13
+29
+29
+7
+26
+23
+10
+13
+63
+28
+41
+177
+17
+13
+44
+8
+7
+34
+18
+4
+71
+29
+5
+213
+17
+4
+53
+8
+1
+40
+18
+0
+74
+30
+1
+217
+17
+2
+54
+9
+0
+41
+18
+0
+74
+30
+1
+217
+17
+1
+55
+9
+0
+41
+18
+0
+74
+30
+0
+218
+17
+1
+55
+9
+0
+41
+18
+0
+74
+30
+0
+218
+17
+0
+56
+9
+0
+41
+18
+(b) Network subtypes survival function
+UCEC.CN_HIGH
+UCEC.CN_LOW
+UCEC.MSI
+UCEC.POLE
+NA
+TCGA Subtype
+UCEC.Net.1
+UCEC.Net.2
+UCEC.Net.3
+UCEC.Net.4
+NA
+Network Subtype
+99
+2
+1
+2
+10
+1
+89
+90
+55
+14
+3
+31
+20
+12
+1
+41
+9
+5
+4
+4
+16
+13
+8
+6
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+HRAS Mutated (-log(p) = 5.6)
+CTNNB1 Mutated (-log(p) = 6.2)
+FBXW7 Mutated (-log(p) = 6.5)
+PTEN Mutated (-log(p) = 6.9)
+PPP2R1A Mutated (-log(p) = 12.9)
+TP53 Mutated (-log(p) = 26.1)
+ERBB2 Gene Loss of Heterozygosity (-log(p) = 43.6)
+RARA Gene Loss of Heterozygosity (-log(p) = 45.8)
+ETV4 Gene Loss of Heterozygosity (-log(p) = 46.8)
+BRCA1 Gene Loss of Heterozygosity (-log(p) = 48.2)
+STAT3 Gene Loss of Heterozygosity (-log(p) = 50.5)
+PCM1 Gene Loss of Heterozygosity (-log(p) = 52.3)
+FSTL3 Gene Loss of Heterozygosity (-log(p) = 56.4)
+YWHAE Gene Loss of Heterozygosity (-log(p) = 79.5)
+RABEP1 Gene Loss of Heterozygosity (-log(p) = 82.3)
+TP53 Gene Loss of Heterozygosity (-log(p) = 83.5)
+16q Arm Loss of Heterozygosity (-log(p) = 7.8)
+8q Major Arm Ampliﬁed (-log(p) = 7.9)
+13q Arm Loss of Heterozygosity (-log(p) = 8.6)
+15q Arm Loss of Heterozygosity (-log(p) = 8.7)
+9q Arm Loss of Heterozygosity (-log(p) = 9.4)
+9p Arm Loss of Heterozygosity (-log(p) = 9.7)
+17q Arm Loss of Heterozygosity (-log(p) = 11.5)
+22q Arm Loss of Heterozygosity (-log(p) = 13.8)
+16p Arm Loss of Heterozygosity (-log(p) = 15.4)
+17p Arm Loss of Heterozygosity (-log(p) = 17.5)
+Ploidy (-log(p) = 40.6)
+Purity (-log(p) = 5.4)
+Stage (-log(p) = 11.1)
+Age at Diagnosis (-log(p) = 8.4)
+Race (-log(p) = 10.1)
+TCGA Subtype
+Network Subtype
+Network Subtype
+UCEC.Net.1
+UCEC.Net.2
+UCEC.Net.3
+UCEC.Net.4
+TCGA Subtype
+UCEC.CN_HIGH
+UCEC.CN_LOW
+UCEC.MSI
+UCEC.POLE
+Race
+american indian or alaska native
+asian
+black or african american
+native hawaiian or other paciﬁc islander
+not reported
+white
+Stage
+1.0
+2.0
+3.0
+4.0
+1.6
+3.4
+5.3
+Ploidy
+0.2
+0.6
+1.0
+Purity
+31
+60
+89
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+UCEC Oncoplot
+Figure S24: Exploration of network subtypes for Uterine Corpus Endometrial Carcinoma (UCEC), looking at cor-
+related clinical information, arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide
+variations.
+S29
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+0
+500
+1000
+1500
+2000
+2500
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['UVM'] Subtype_Selected Survival Function
+plotting shared samples only
+p-value 1.4508870411284358e-05
+UVM.SCNA1 (13/15)
+UVM.SCNA2 (18/18)
+UVM.SCNA3 (13/21)
+UVM.SCNA4 (8/20)
+UVM.SCNA1 (13/15)
+   At risk   15
+  Censored     0
+    Events     0
+UVM.SCNA2 (18/18)
+   At risk   18
+  Censored     0
+    Events     0
+UVM.SCNA3 (13/21)
+   At risk   21
+  Censored     0
+    Events     0
+UVM.SCNA4 (8/20)
+   At risk   20
+  Censored     0
+    Events     0
+11
+4
+0
+17
+1
+0
+14
+3
+4
+9
+5
+6
+4
+10
+1
+10
+8
+0
+8
+6
+7
+4
+8
+8
+2
+12
+1
+2
+16
+0
+2
+11
+8
+0
+8
+12
+1
+12
+2
+1
+17
+0
+0
+13
+8
+0
+8
+12
+1
+12
+2
+0
+18
+0
+0
+13
+8
+0
+8
+12
+(a) Known subtypes survival function
+0
+500
+1000
+1500
+2000
+2500
+timeline
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+['UVM'] network_subtypes Survival Function
+plotting shared samples only
+p-value 0.00027255776750782985
+UVM.Net.1 (31/33)
+UVM.Net.2 (1/4)
+UVM.Net.3 (5/11)
+UVM.Net.4 (15/26)
+UVM.Net.1 (31/33)
+   At risk   33
+  Censored     0
+    Events     0
+UVM.Net.2 (1/4)
+   At risk     4
+  Censored     0
+    Events     0
+UVM.Net.3 (5/11)
+   At risk   11
+  Censored     0
+    Events     0
+UVM.Net.4 (15/26)
+   At risk   26
+  Censored     0
+    Events     0
+28
+5
+0
+3
+0
+1
+8
+1
+2
+12
+7
+7
+14
+18
+1
+1
+1
+2
+1
+5
+5
+10
+8
+8
+4
+28
+1
+0
+1
+3
+0
+5
+6
+2
+13
+11
+2
+29
+2
+0
+1
+3
+0
+5
+6
+0
+15
+11
+1
+30
+2
+0
+1
+3
+0
+5
+6
+0
+15
+11
+(b) Network subtypes survival function
+UVM.SCNA1
+UVM.SCNA2
+UVM.SCNA3
+UVM.SCNA4
+TCGA Subtype
+UVM.Net.1
+UVM.Net.2
+UVM.Net.3
+UVM.Net.4
+NA
+Network Subtype
+15
+18
+0
+0
+0
+0
+3
+1
+0
+0
+2
+9
+0
+0
+16
+10
+0
+5
+1
+0
+Subtype Cross-Tabulation by Patient Counts
+(c) Network subtypes crosstab-
+ulation with known subtype
+NUMA1 Gene Loss of Heterozygosity (-log(p) = 5.0)
+PICALM Gene Loss of Heterozygosity (-log(p) = 5.0)
+EED Gene Loss of Heterozygosity (-log(p) = 5.0)
+MAML2 Gene Loss of Heterozygosity (-log(p) = 5.0)
+DEK Major Allele Ampliﬁed (-log(p) = 6.2)
+HLA-A Major Allele Ampliﬁed (-log(p) = 6.3)
+HMGA1 Major Allele Ampliﬁed (-log(p) = 6.3)
+SRSF3 Major Allele Ampliﬁed (-log(p) = 6.3)
+CDKN1A Major Allele Ampliﬁed (-log(p) = 6.3)
+PIM1 Major Allele Ampliﬁed (-log(p) = 6.3)
+18q Arm Loss of Heterozygosity (-log(p) = 5.0)
+9q Arm Loss of Heterozygosity (-log(p) = 5.0)
+8q Minor Arm Ampliﬁed (-log(p) = 5.0)
+18p Arm Loss of Heterozygosity (-log(p) = 5.0)
+12q Arm Loss of Heterozygosity (-log(p) = 5.0)
+8q Major Arm Ampliﬁed (-log(p) = 7.0)
+6q Arm Loss of Heterozygosity (-log(p) = 8.1)
+8p Arm Loss of Heterozygosity (-log(p) = 9.1)
+3p Arm Loss of Heterozygosity (-log(p) = 36.5)
+3q Arm Loss of Heterozygosity (-log(p) = inf)
+Ploidy (-log(p) = 5.0)
+Purity (-log(p) = 1.6)
+Stage (-log(p) = 1.8)
+Age at Diagnosis (-log(p) = 1.0)
+Sex (-log(p) = 0.3)
+Race (-log(p) = 0.9)
+TCGA Subtype
+Network Subtype
+Network Subtype
+UVM.Net.1
+UVM.Net.2
+UVM.Net.3
+UVM.Net.4
+TCGA Subtype
+UVM.SCNA1
+UVM.SCNA2
+UVM.SCNA3
+UVM.SCNA4
+Race
+not reported
+white
+Sex
+female
+male
+Stage
+2.0
+3.0
+4.0
+1.8
+3.0
+4.1
+Ploidy
+0.37 0.69
+1.0
+Purity
+35
+60
+86
+Age at Diagnosis
+−1
+−0.5
+0
+0.5
+1
+UVM Oncoplot
+Figure S25: Exploration of network subtypes for Uveal Melanoma (UVM), looking at correlated clinical information,
+arm-level copy alterations, gene-level copy alterations, and gene-level single nucleotide variations.
+S30
+available under aCC-BY 4.0 International license.
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+bioRxiv preprint doi: https://doi.org/10.1101/2023.12.01.569658; this version posted December 4, 2023. The copyright holder for this preprint
+

@@ -1,0 +1,663 @@
+Open Access
+© The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits 
+use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original 
+author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third 
+party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the mate-
+rial. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or 
+exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http:// 
+creat iveco mmons. org/ licen ses/ by/4. 0/. The Creative Commons Public Domain Dedication waiver (http:// creat iveco mmons. org/ publi 
+cdoma in/ zero/1. 0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+RESEARCH
+Li et al. Cancer Nanotechnology           (2023) 14:12  
+https://doi.org/10.1186/s12645-023-00167-w
+Cancer Nanotechnology
+Functional targeted therapy for glioma 
+based on platelet membrane-coated nanogels
+Qin Li1,2†, Jinglan Shen1,4†, Lingling Wu3†, Siyun Lei1, Yimin Yang1, Weide Xu1, Ke Hao1,4, Yi Zhang1,4, Fei Kong1, 
+Wei Yang5, Yaling Wang1,4, Lina Peng1,4, Kaiqiang Li1,4* and Zhen Wang1,4* 
+Abstract 
+Glioma treatment remains a challenge owing to unsatisfactory targeted chemotherapy, 
+where the blood–brain barrier (BBB) hinders the efficient uptake of therapeutics into 
+the brain. Vasculogenic mimicry (VM) formed by invasive glioma cells negatively affects 
+the treatment of glioma. Herein, we developed a targeted biomimetic drug delivery 
+system comprising a doxorubicin-loaded platelet membrane-coated nanogel (DOX@
+PNGs). The nanogels provide great redox/pH dual responsiveness, while the platelet 
+membrane (PLTM) promotes stability and circulation time. In vitro cellular uptake 
+and in vivo imaging experiments demonstrated that the DOX@PNGs delivery system 
+could penetrate the BBB, target gliomas, and destruct VM. DOX@PNGs increased drug 
+penetration and prolonged mouse survival time during the treatment of orthotopic 
+gliomas. These results indicate this biomimetic drug delivery system to be promising 
+for glioma treatment and may be clinically translated in the future.
+Keywords: Glioma, Blood–brain barrier, Biomimetic drug delivery system, 
+Vasculogenic mimicry, Platelet membrane, Nanogel
+Introduction
+Glioblastoma multiforme (GBM), the most malignant tumour of the central nervous 
+system (CNS), poses a major threat to human health owing to its late diagnosis, rapid 
+progression, and ease of recurrence (Chai et al. 2017; Xue et al. 2017). Currently, surgical 
+resection and postoperative chemoradiotherapy are used in the clinical setting (Kaynar 
+et al., 2021; Li et al. 2021b; Weller et al. 2021). The blood–brain barrier (BBB) presents a 
+major obstacle for therapeutic drugs targeting gliomas to overcome (Huang et al. 2021; 
+Shi et al. 2019; Xue et al. 2017). Furthermore, the excessive use of glioma-treating drugs 
+has been shown to result in systemic toxicity and drug resistance in oncological clinical 
+practice (Min et al. 2022). In addition, vasculogenic mimicry (VM), which is induced by 
+conditions such as hypoxia, is prevalent around solid tumours and can drive malignant 
+tumour invasion (Cai et al., 2020; El Hallani et al. 2010; Ge et al. 2018). Driven by these 
+circumstances, the most promising clinical strategy for improving GBM treatment is the 
+development of vectors capable of effectively crossing the BBB and delivering drugs to 
+block tumour angiogenesis (Weller et al. 2021).
+†Qin Li, Jinglan Shen and Lingling 
+Wu have contributed equally to 
+this work
+*Correspondence:   
+likaiqiang@hmc.edu.cn; 
+wangzhen@hmc.edu.cn
+1 Center for Laboratory Medicine, 
+Allergy Center, Department 
+of Transfusion Medicine, 
+Zhejiang Provincial People’s 
+Hospital People’s Hospital, 
+Affiliated People’s Hospital, 
+Hangzhou Medical College, 
+Hangzhou 310014, China
+2 Department of Clinical 
+Laboratory, Mianyang Central 
+Hospital, School of Medicine, 
+University of Electronic Science 
+and Technology of China, 
+Mianyang 621000, People’s 
+Republic of China
+3 Women’s Hospital, School Of 
+Medicine, Zhejiang University, 
+Hang Zhou 310014, People’s 
+Republic of China
+4 Key Laboratory of Biomarkers 
+and In Vitro Diagnosis 
+Translation of Zhejiang Province, 
+Hangzhou 310063, Zhejiang, 
+China
+5 Department of Biophysics, 
+and Department 
+of Neurosurgery of the First 
+Affiliated Hospital, Zhejiang 
+University School of Medicine, 
+Hangzhou 31058, China
+Page 2 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+The nanodrug delivery system (NDDS) has drawn researcher attention because of 
+its potential to improve the bioavailability of therapeutic drugs (Zhang et  al. 2022). 
+Nanotechnology addresses the pitfalls of standard medications in specifically targeting 
+tumour tissue, where nonspecific drug action results in considerable adverse effects (Sun 
+et al. 2014; Zhen et al. 2019). Nanogels are widely employed as drug carriers because 
+of their ability to wrap proteins, peptides, and hydrophilic drugs (Zhou et  al. 2021). 
+Many studies have reported a higher targeting efficacy by modifying peptides (Shem-
+etov et al. 2012), and some researchers have produced nanogels (NGs) to effectively treat 
+GBM models by integrin overexpression (Chen et al. 2017), as well as the rapid release 
+of encapsulated drugs by polyethene glycolysis nanographene oxide (NGO-SS-mPEG) 
+(Wen et al. 2012). However, nanomaterials are easily recognized by blood immune cells 
+and activate the immune system, which presents a major challenge (Fang et al. 2018; 
+Hatakeyama et al. 2011).
+Bio-nanoparticles can deliver targeted effects that are precise and can evade the 
+immune system through reciprocal recognition between cells (Gu et al. 2021) originat-
+ing from cancer cells (Chen et al., 2017; Pereira-Silva et al. 2020), red blood cells (Fang 
+et al. 2018; Lin et al. 2023), and platelets (Gu et al. 2021; Jiang et al. 2020; Li et al. 2021a). 
+Jiang et al. reported that bio-nanoparticles  (Fe3O4-SAS@PLT) could significantly boost 
+cancer cell clearance and immunogenicity, suggesting a strong potential for inhibition 
+of tumour metastasis (Jiang et al. 2020). Zhang et al. synthesized neutrophil membrane-
+encapsulated nanoparticles for the treatment of rheumatoid arthritis and showed that it 
+greatly reduced synovial inflammation and acted as a joint protector (Zhang et al. 2018).
+Platelets are derived from megakaryocytes, and following the appearance of a wound, 
+they congregate near the injured blood vessels, producing substances that aid in the pre-
+vention of bleeding (Koupenova et al. 2019). It has been verified that CD62P expressed 
+on the platelet membrane (PLTM) surface aids in targeting tumours, while another 
+important component, CD47, plays a vital role in preventing nanomaterials from being 
+removed by the innate immune system (Fang et al. 2018; Li et al. 2021a). Diana et al. ver-
+ified that CD47 on PLTM could assist nanoparticles in evading immune system attack 
+(Dehaini et al., 2017). In our previous study, we reported that platelets have a range of 
+adjuvant effects in anti-tumour therapy, especially in tumour targeting and immune 
+escape (Wu et al. 2021).
+In this study, we developed a strategy using doxorubicin (DOX)-loaded redox/pH 
+dual-responsive NG (DOX@PNGs) to target orthotopic glioblastoma and increase ther-
+apeutic efficacy of DOX. The functional drug delivery system was localized to glioma 
+sites via interactions with membrane surface proteins and quickly released DOX when 
+the tumour microenvironment was responsively stimulated. According to the in  vivo 
+tests, DOX@PNGs exhibited great targeting effects and increased survival time. This 
+method could be applied to a variety of disorders and is a promising strategy for future 
+clinical use.
+Materials and methods
+Materials
+The rat C6 cell line, mouse hippocampal neuronal cell line (HT22), and human mono-
+cytic leukaemia cell line (THP-1) were purchased from CAS Cell Bank; the PRP was 
+Page 3 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+obtained from the rats; and the BALB/c nude mice and rats were obtained from Shang-
+hai SLAC Laboratory Animal Co., Ltd. Doxorubicin hydrochloride, mannitol, sucrose, 
+tris-HCL,  MgCl2, KCL, paraformaldehyde, phosphate-buffered saline (PBS), 5-chloro-
+2-formylphenylboronic acid (2-FPBA), sodium alginate (SA), ethylene imine polymer 
+(PEI), acetone, Matrigel basement membrane matrix, and phorbol myristate acetate 
+(PMA) were all obtained from Sigma Aldrich. The protease inhibitor cocktail was pro-
+cured from Biomake, Shanghai. The BCA protein assay, CCK8 assay, JC-1 assay, and 
+Annexin V-FITC/PI apoptosis detection kits were supplied by Beyotime, China. Foetal 
+bovine serum (FBS) and penicillin–streptomycin were purchased from Gibco, USA. 
+Dulbecco’s Modified Eagle Medium (DMEM) and Roswell Park Memorial Institute 
+(RPMI 1640) were obtained from Hyclone, Shanghai. Cy5-NHS dye was obtained from 
+Solarbio, China. The rabbit anti-GAPDH, rabbit anti-MMP-2, rabbit anti-MMP-9, anti-
+CD47, and anti-CD62P antibodies were obtained from Hua Bio, China.
+Synthesis of DOX‑loaded NGs
+The NGs used in this study were synthesised as follows (Xu et al. 2021). First, 3.28 mg of 
+2-FPBA and 15.32 mg of PEI were dissolved in 1 mL of PBS overnight at 25 °C. There-
+after, 5.6 mL of n-hexane was added to a clean 10-mL glass sample bottle, followed by 
+the addition of 350 μL of Brij30 and an immediate 1 min vortex. Subsequently, 20 μL 
+of 0.5% wt SA, 100  μL of DOX (6  mg/mL), and 80  μL of 2-FPBA/PEI mixture were 
+added sequentially and swirled for 1 min after the addition of each reagent. The sample 
+was allowed to stand at room temperature for 1.5–2.0 h, after which 3 mL of acetone 
+was added slowly along the wall of the bottle. Red sediment appeared at the bottom as 
+DOX-loaded NGs, while bare NGs were white; in rapid sequence, the bottle was gen-
+tly inclined, and the supernatant was carefully absorbed. Finally, the sample bottle was 
+vacuumized for 2 h.
+Extraction of PLTM from PRP
+The PRP was obtained from rats, and the procedure was executed as described in a pre-
+vious study (Wu et al. 2021). Briefly, the PRP was transferred into a clean EP tube and 
+centrifuged at 100 xg for 10 min at 4 °C. The supernatant was carefully pipetted into 
+a clean EP tube. After centrifugation at 800 xg for 20 min at 4 °C, the precipitate was 
+retained and a cell lysate buffer (25 mM sucrose, 75 mM mannitol, 1 mM KCl, 10 mM 
+Tris/HCl, 1 mM  MgCl2) containing protease inhibitors (100 ×) was added; the solution 
+was kept on ice for 15 min to fully lyse the platelet cells. The cell lysate was repeatedly 
+freeze-thawed in liquid nitrogen and a 37 °C water bath five times, after which it was 
+broken by an ultrasonic probe for 5 s, which was repeated 5 times at 5 s intervals. The 
+entire process was carried out on ice to avoid high temperatures caused by the ultra-
+sound, which could damage the proteins on the cell membrane. The PLTM precipitate 
+was obtained by centrifugation at 21,000 xg for 10 min at 4 °C and stored in a − 20 °C 
+freezer.
+Preparation and characterization of PNGs
+We mixed 1 mg of NGs with 2 ×  108/L of PLTM sediment, and a liposome extruder was 
+used to extrude a 200 nm polycarbonate membrane five times; PLTM-coated NGs were 
+Page 4 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+then obtained. The size and zeta potential of the NGs, PLTMs, and PNGs were analysed 
+by dynamic light scattering (DLS; Malvern, Zetasizer Nano S90, Malvern, UK), and their 
+morphological characteristics were examined by 200 kV TEM.
+The surface protein distribution of PLTMs and PNGs was assessed using Coomas-
+sie Brilliant Blue (CBB) staining. Briefly, the prepared PLTMs and PNGs were fully 
+fragmented using an ultrasonic disruptor; then, the protein concentrations of the two 
+samples were determined using the BCA Protein Quantitation Kit, and the samples 
+containing SDS–PAGE loading buffer were boiled for 5 min at 95 °C. Next, 10 μL of 
+each sample was added to the prepared 4–12% gel wells. After electrophoresis, the pro-
+teins were stained with CBB staining solution for approximately 30 min and the gel was 
+washed with a highly concentrated decolourising solution until the gel became transpar-
+ent. Finally, photographs were taken and recorded. Similarly, the expression of PLTM 
+and PNGs surface membrane proteins (CD62P and CD47) was determined by western 
+blotting.
+In Vitro drug release
+DOX release from the drug-loaded NGs was examined using the dialysis method. First, 
+dialysis bags (MWCO = 3 kDa) with 6 mg of DOX@NGs were placed into 50 mL centri-
+fuge tubes containing 30 mL of different release media (GSH concentration of 1.0 and 
+10.0 mM; pH = 5.0, 6.0, or 7.4). The centrifuge tubes were shaken at 37 °C and 100 rpm, 
+and the liquid in the tubes was removed at specified times (0.5, 1, 2, 4, 6, 8, 10, 12, and 
+24 h) and replenished with the same volume of the corresponding media. Finally, the 
+absorbance of DOX was measured at 480 nm.
+In Vitro cellular uptake and immune escape
+The phagocytosis efficiency of nano-formulations in C6 cells and macrophages was 
+assessed by confocal microscopy and flow cytometry. C6 cells at a density of 1 ×  105 cells 
+per well were seeded onto 24-well plates containing cell slides and incubated for 24 h. 
+THP-1 cells in a culture medium containing 100 ng/PMA, which induces THP-1 mono-
+cyte differentiation into macrophages, were incubated on well plates in the same man-
+ner. The cell medium was then replaced with DOX, DOX@NGs, or DOX@PNGs at a 
+final DOX concentration of 5 μg/mL. After incubation for 4 h, the cells were digested 
+with trypsin into a single-cell suspension, and fluorescence was quantified by flow 
+cytometry (FC500, Beckman Coulter, USA). The cell slide was washed twice with PBS, 
+fixed in a 4% paraformaldehyde solution for 15 min, and washed three times with PBS. 
+Subsequently, the cells were stained with 0.5 μg/mL DAPI for 15 min and washed three 
+times with PBS. Finally, the slides were sealed with an anti-fluorescent bursting agent 
+and photographed by confocal laser scanning microscopy (CLSM; Leica, Germany).
+Apoptosis and JC‑1 assay
+Apoptosis and the JC-1 assay were measured using flow cytometry and fluorescence 
+microscopy to further detect the inhibition efficiency of the drug on C6 cells. Briefly, 
+C6 cells were seeded at a density of 5 ×  105 cells/well in 6-well plates. After incubation 
+for 24 h, the medium was replaced with DOX, DOX@NGs, DOX@PNGs, or DMEM 
+for another 24 h. Immediately, the cells were collected using trypsin and centrifuged at 
+Page 5 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+200 xg for 3 min. Subsequently, the cells were stained according to the Annexin V-FITC/
+PI apoptosis kit or JC-1 assay kit, and mitochondrial damage and apoptosis of C6 cells 
+were detected by flow cytometry, respectively (FC500, Beckman Coulter, USA). The data 
+were analysed using FlowJo 7.6 software. In addition, we captured a fluorescence graph 
+of JC-1 using microscopy.
+In Vitro BBB model assay
+We used the Transwell model to simulate the BBB in vitro. b End.3 cells were spread in 
+Transwell chambers at 1 ×  105 cells per well, incubated at 37 ℃ on a shaker at 50 rpm, 
+and protected from light; the fluorescence content of each group was then analysed by 
+confocal microscopy and flow cytometry 24 h after incubation.
+In Vitro destruction of VM
+Fifty microlitres of Matrigel was pre-capped in 96-well plates and incubated for 30 min 
+at 37 ℃. C6 cells (1 ×  104 cells per well) were suspended in an FBS-free medium contain-
+ing DOX, DOX@NGs, or DOX@PNGs at a DOX concentration of 5 μg/mL and seeded 
+into a well plate. After incubation for 8–10 h, photographs were captured by microscopy. 
+The percentage of tube formation was quantified using Image Pro Plus software version 
+6.0.
+Western blotting
+C6 cells were seeded in 6-well plates at a density of 5 ×  105 cells per well and allowed to 
+reach 60% confluence. The medium was then replaced with FBS-free DMEM containing 
+DOX@PNGs and control formulations. After 24 h of incubation, the plate was washed 
+three times with PBS after the liquid was removed. Cell lysate (RIPA:PMSF = 50:1) was 
+added to the wells and the plates were placed on ice for 20 min, after which they were 
+fully scraped using a spatula. The bicinchoninic acid (BCA) protein assay kit (Beyotime) 
+was used for quantitative detection. A 12% SDS–PAGE gel was loaded with 20 μg of pro-
+tein samples from each group; the protein was separated by electrophoresis at 80 V fol-
+lowed by 120 V and then transferred to a polyvinylidene difluoride (PVDF) membrane, 
+which was blocked in 5% skim milk for 1 h. The PVDF membrane was subsequently 
+washed with TBST (0.5% Tween-20 in Tris-buffered saline) and incubated with the 
+primary antibody according to its recommended dilution at 4 °C overnight. The mem-
+branes were washed three times with TBST and incubated with an HRP-labelled sec-
+ondary antibody for 1 h at room temperature. Finally, the membranes were imaged using 
+Immobilon Western HRP substrate (Millipore, USA) on a Bio-Rad Chemioc MP system 
+(Bio-Rad Laboratories, USA).
+In Vivo anti‑tumour efficacy
+C6 glioma-bearing mice were established as previously described. At 7 days after model 
+establishment, mice were randomly divided into four groups (saline, DOX, DOX@
+NGs, and DOX@PNGs) of 10 mice each; mice treated with saline were used as con-
+trols. Each of the above agents (at a dose of 2.5 mg DOX/kg) was injected every 3 days 
+for a total of five injections. Mice were injected intraperitoneally with 200 μL of lucif-
+erase at a concentration of 15 mg/mL and anaesthetised with isoflurane 10 min after 
+Page 6 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+injection. Subsequently, tumour volume changes were observed using the NIR fluo-
+rescence imaging system IVIS III (PerkinElmer, USA) at 7, 10, 13, 16, and 19 days after 
+modelling. Overall survival was managed, and the weight was recorded every other day. 
+At 1 day after the last dose, three mice were randomly selected from each group, and 
+blood was obtained from their eyes for analysis of blood biochemical parameters (ALT, 
+AST, CREA, and urea) using a fully automated biochemical analyser (AU5800, Beck-
+man Coulter). The brains and major organs were subjected to HE staining, IHC stain-
+ing (Ki67, Caspase 3, CD34-PAS double staining), and TUNEL. The survival time of the 
+remaining mice was observed until death.
+Statistical analysis
+GraphPad Prism 8 software (San Diego, CA, USA) was used for statistical analysis of 
+the experimental results. The diversity between groups was analysed using an unpaired 
+t test. The results of more than three independent repeated experiments were expressed 
+as the mean ± SD. The overall survival was compared using the log-rank (Mantel–Cox) 
+test. P < 0.05, 0.01, and 0.001 were considered statistically significant and are denoted as 
+*, **, and ***, respectively (Scheme 1). 
+Scheme 1 a schematic illustration of the DOX@PNGs preparation process. b Treatment of brain tumours 
+with DOX@PNGs
+Page 7 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+Results and discussion
+Preparation and characterization of DOX@PNGs
+Recently, bio-nanoparticles have received increasing attention due to their excellent 
+biological activity. Among the various membrane biomaterials, PLTMs, given their 
+multitude of interactions with other cell types, have attracted much attention due to 
+their significant tumour targeting and immune escape potential (Wang et al. 2023; Yu 
+et al. 2022). In this study, we aimed to leverage these unique abilities to design a pH/
+glutathione (GSH) dual-responsive bio-nanogel delivery system (Xu et  al. 2021). The 
+PLTM fragment was isolated from rats’ platelet rich plasma (PRP) through differential 
+centrifugation and freeze–thaw processes and then coated onto an NG core. The sizes of 
+the NGs, PLTMs, and PLTM-coated NGs (PNGs) were 92.07 ± 0.95 nm, 174.3 ± 2.7 nm, 
+and 119.1 ± 1.2 nm, respectively (Fig. 1A, B). The zeta potentials of the NGs, PLTMs, 
+Fig. 1 Characterization of NGs, PLTM, and PNGs. A Size distribution of NGs determined by DLS. B, C 
+Z-average size and surface zeta potential of the NGs, PLTM, and PNGs; n = 3. D Representative TEM images of 
+NGs and PNGs. E Expression of PLTM and PNGs surface proteins CD62P and CD47, respectively. F, G Particle 
+size variation of NGs under different GSH concentrations or different pH conditions. H, I DOX release from 
+biomimetic nanodrugs under different concentrations of GSH or different pH conditions. J CBB staining 
+patterns of the NGs and PNGs
+Page 8 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+and PNGs were 10.06 ± 0.04  mV, −  14.9 ± 0.6  mV, and −  16.5 ± 0.4  mV, respectively 
+(Fig. 1C). The NGs of PNGs was approximately 120 nm in size, which can easily be taken 
+up into glioma cells [30]. In the transmission electron microscopy (TEM) images, the 
+NGs appeared spherical and regularly sized in morphometric terms (Fig. 1D), while con-
+jugation with the PLTM increased the NG size and decreased the zeta potential.
+Sodium salt-–polyacrylamide gel electrophoresis (SDS–PAGE) was performed to 
+assess the protein expression of PNGs and PLTM. There was no significant change in 
+protein expression between PNGs and PLTMs (Fig. 1J), suggesting the PLTM was suc-
+cessfully coted on the NGs. CD62P and CD47 were expressed on the membrane sur-
+face of PNGs, as determined by western blotting (Fig. 1E), indicating that PLTM surface 
+protein was not affected throughout the production process. CD62P (P-selectin) has 
+been reported to closely interact with tumour cell membranes (Jiang et al. 2020; Li et al. 
+2021a). CD47 is responsible for binding to SIRPα on the surface of macrophages, which 
+protects nano-agents from immune system attack (Fang et al. 2018; Jiang et al. 2020). 
+In addition, the NGs remained stable in a 10% FBS medium for 1 week at 37 °C (Addi-
+tional file 1: Fig. S1). The size of the NGs did not change significantly over time. Finally, 
+we exposed the NGs to various GSH concentrations (1 mM and 10 mM) and pH values 
+(5.0 and 6.0). When the NGs were stimulated with high concentrations of GSH and low 
+pH, the particle size changed significantly (Fig. 1F, G), which was superior to the previ-
+ously described nano-delivery system with a single stimulus (Wu et al. 2022; Zheng et al. 
+2022). Moreover, the sustained-release behaviour of DOX from DOX@PNGs may pro-
+long drug action time and enhance antitumour efficacy (Fig. 1H, I).
+Evaluation of cellular uptake and immune escape
+The cellular uptake of different formulations in C6 cells was used to assess the ability 
+of nano-agents to be deposited around glioma cells and was assessed by fluorescence 
+microscopy and flow cytometry. The confocal findings showed that DOX@NGs and 
+DOX@PNGs had enhanced tumour cell uptake efficiency compared to the free drug 
+DOX (Fig. 2A, C) in a time-dependent manner (Additional file 1: Fig. S3). Furthermore, 
+DOX@PNGs showed the highest fluorescence intensity by flow cytometry (Fig.  2B). 
+Our results demonstrated that PLTMs enhanced the targeting ability of NGs in C6 cells. 
+Considering the enhanced immune escapability of PNGs with macrophages in vitro, we 
+co-incubated macrophages with different drugs (DOX, DOX@NGs, and DOX@PNGs) 
+for 4 h to detect the NGs’ ability to avoid immune cell clearance. Both confocal and 
+flow cytometry revealed that DOX@PNGs were better able to evade immune clearance 
+(Fig. 2D–F). These findings suggest that the PLTM has a protective effect in NGs via spe-
+cific surface proteins, which are homologous to blood cells (Jiang et al. 2020; Wu et al. 
+2021).
+in vitro killing efficacy of glioma cells
+We assessed the inhibitory effects of the different formulations on C6 cells using the 
+CCK8 assay. First, the tests showed that polymers with low toxicity retained more than 
+90% of live cells at doses of 20–100 μg/mL for both bare NGs and PNGs (Additional 
+file  1: Fig. S2A). We then co-incubated different preparations with C6 cells at a final 
+concentration of 5 μg/mL DOX for 24 h. Compared with the control group, the DOX@
+Page 9 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+PNGs group had much lower cell viability at all doses—particularly at 20 μg/mL, where 
+cell viability was less than 20%—indicating significantly improved antitumour activity 
+(Additional file 1: Fig. S2B). We further demonstrated the ability of different agents to 
+induce apoptosis using the Annexin V-FITC/PI double staining assay. The percentage 
+of early- and late-stage apoptosis in the DOX@PNGs group was 35.03%, whereas that 
+in the other groups was less than 10% (Fig. 3A, C). In addition, we used the JC-1 assay 
+to assess the capacity of each treatment group to cause mitochondrial damage. Normal 
+mitochondria emit intense red fluorescence; in contrast, unhealthy mitochondria fluo-
+resce green due to a decrease in membrane potential (Ruan et al. 2019). C6 cells treated 
+with DOX@PNGs showed significantly more green fluorescence signals (Fig.  3B, E). 
+There was a significant difference in the JC-1 monomer/polymer fluorescence ratio in 
+the DOX@PNGs group compared to the DOX and DOX@NGs groups (Fig. 3D). The 
+above experiments show that PLTM-modified drug-loaded NGs have stronger cytotoxic 
+effects.
+in vitro and in vivo BBB penetration
+The BBB greatly hinders the delivery of chemotherapeutic agents to brain tumours 
+in situ (Xue et al. 2017). To investigate the BBB penetration ability of different nano 
+Fig. 2 in vitro cellular uptake and endosomal escape of NPs measured by CLSM and flow cytometry. A The 
+confocal fluorescence images of C6 cells incubated with DOX, DOX@NGs, or DOX@PNGs with the same DOX 
+concentration of 5 μg/mL for 2 h; red = DOX, blue = nuclei; scale bars = 25 μm. B Flow cytometry analysis of 
+C6 cells incubated with DOX, DOX@NGs, or DOX@PNGs with the same DOX concentration of 5 μg/mL for 
+2 h. C Quantification of the mean fluorescence intensities of the C6 cells. Data represent the means ± SD, 
+**p < 0.01, ***p < 0.001. D The confocal fluorescence images of macrophage cells incubated with DOX, DOX@
+NGs, or DOX@PNGs with the same DOX concentration of 5 μg/mL for 2 h; red = DOX, blue = nuclei; scale 
+bars = 50 μm. E Flow cytometry analysis of macrophage cells incubated with DOX, DOX@NGs, or DOX@PNGs 
+with the same DOX concentration of 5 μg/mL for 2 h. F Quantification of the mean fluorescence intensities of 
+the macrophage cells. Data represent the means ± SD, **p < 0.01, ***p < 0.001
+Page 10 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+formulations, we constructed an in vitro BBB model using vascular endothelial cells. 
+Confocal images showed red fluorescence around C6 cells in the DOX@PNGs group, 
+while there was a low fluorescence intensity of free DOX; this further confirmed the 
+inability of DOX to cross the BBB (Fig. 4C, E). The flow cytometry results demon-
+strated that the BBB permeability of DOX@PNGs was 36.4%, which was significantly 
+higher than that of DOX (Fig. 4B). The fluorescence intensity of DOX@PNGs was also 
+significantly stronger than the DOX and the DOX@NGs, indicating its remarkable 
+BBB penetration ability.
+Furthermore, we used Cy5-stained NGs to demonstrate the in vivo BBB penetra-
+tion and targeting abilities of the PNGs using an in vivo imaging system (IVIS). By 
+tail vein injection of different agents (Cy5, Cy5-NGs, and Cy5-PNGs), we obtained 
+a fluorescence distribution photo at the expected time (Additional file 1: Fig. S4A). 
+Cy5-PNGs showed a strong fluorescent signal in the brain 1 h after injection, reach-
+ing a maximum at 6 h, while partial fluorescence could still be detected after 24 h. In 
+contrast, the fluorescence intensity of free Cy5 and Cy5-NGs reached its maximum 
+at 3 h post-injection, and both were lower than that of Cy5-PNGs, especially Cy5. We 
+hypothesized that CD62P on the PLTM could pass through the BBB, which allowed 
+the fluorescence intensity of Cy5-PNGs to reach its maximum 6 h after injection and 
+Fig. 3 in vitro tumour killing effect. After C6 cells were incubated with DOX, DOX@NGs, or DOX@PNGs 
+at the same DOX concentration of 5 μg/mL for 24 h, A the Annexin V-FITC/PI detection kit was used to 
+detect their ability to undergo apoptosis induced by various nano-preparations. B Fluorescence images 
+of the mitochondria of C6 cells damaged by NGs; red = normal mitochondria; scale bar = 100 μm. C Flow 
+cytometry quantitative analysis of the ability of different preparations to induce apoptosis in C6 cells; n = 3. D 
+Quantification of the mean fluorescence intensities of the C6 cells of the JC-1 aggregate calculated according 
+to B. E Flow cytometry analysis of the ratio of JC-1 monomer/polymer in the mitochondria of C6 cells; n = 3. 
+Error bars represent the means ± SD; n = 3; *p < 0.05, **p < 0.01, ***p < 0.001
+Page 11 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+then gradually decrease. The isolated organ fluorescence map showed that the flu-
+orescence intensity of Cy5-PNGs was 2.3 times that of Cy5 and 1.64 times that of 
+Cy5-NGs after 24 h (Fig. 4D, F), and fluorescence semi-quantitative analysis showed 
+a significant difference between the groups (Additional file 1: Figure S4B, C). in vitro 
+and in  vivo BBB penetrating assays revealed that the constructed biomimetic NGs 
+could target tumours effectively.
+Destruction of vasculogenic mimicry (VM)
+The aggressive nature of tumours is inextricably linked to the abundance of surrounding 
+blood supply. We used a previously reported stromal gel model to assess the ability of 
+DOX@PNGs to inhibit VM in C6 cells (Ruan et al. 2019). After 10 h, untreated C6 cells 
+quickly formed vascular-like channels at the bottom of the well plates. In contrast, the 
+cells treated with DOX@PNGs had only a small fraction of vascular-like channels, and 
+sometimes none (Fig. 5B, D). This indicates that DOX@PNGs can effectively inhibit VM 
+in glioma cells. To investigate the molecular mechanism of VM destruction, the expres-
+sion levels of VM-related indicators, such as matrix metalloproteinase-2 (MMP-2) and 
+matrix metalloproteinase-9 (MMP-9), were determined by western blotting (Fig. 5C). 
+After treatment with different formulations for 24 h, the expression levels of MMP-2 and 
+MMP-9 were downregulated in C6 cells compared to those in untreated cells. In particu-
+lar, C6 cells treated with DOX@PNGs showed the lowest indicator protein expression, 
+indicating that DOX@PNGs could efficiently downregulate indicator protein expression 
+Fig. 4 Evaluation of BBB penetration efficiency by in vitro and in vivo models. A In vitro blood–brain 
+barrier model. B Flow cytometry analysis of the fluorescence intensity of C6 cells in the in vitro BBB model. 
+C Confocal microscope map of C6 cells incubated with DOX, DOX@NGs, or DOX@PNGs with same DOX 
+concentration of 5 μg/mL for 24 h; scale bar = 20 μm. D IVIS image of the mouse brain 24 h after free Cy5, 
+Cy5-NGs, or Cy5-PNGs injection via the tail vein. E Fluorescence semi-quantitative analysis of C. F Flow 
+cytometry analysis of the relative fluorescence intensity of C6 cells in the in vivo BBB model. The error bars 
+represent the means ± SD; n = 3; *p < 0.05, **p < 0.01, ***p < 0.001
+Page 12 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+in C6 cells. However, the VM-destruction effect of DOX is probably due to its cyto-
+toxicity. These evidences indicate that our prepared biomimetic delivery system could 
+effectively inhibit the formation of glioma vasculogenic mimicry, which is significant for 
+enhancing chemotherapeutic effects.
+in vivo antitumour efficacy
+The in vivo antitumour efficacy of biomimetic NGs was evaluated in an orthotopic glioma-
+bearing mouse model. Haematoxylin and eosin (HE) staining (Fig. 6E) of the brain showed 
+that the tumour cells in the saline group were close, numerous, and tightly arranged, with 
+darkly stained nuclei. In addition, the tumour tissue treated with free DOX and DOX@
+NGs was loosely arranged, while the DOX@PNGs group had the most sparsely arranged 
+tumour cells, indicating that the DOX@PNGs possessed the highest inhibitory effect. We 
+also performed immunohistochemical (IHC) staining (Fig. 6E) of brain tissue to investigate 
+the expression of proliferation (Ki67) and apoptosis (caspase 3 and CC3) markers in differ-
+ent groups of glioma-bearing mice. The DOX@PNGs group exhibited the highest apoptosis 
+Fig. 5 in vitro matrix gel model inhibition and anti-vasculogenic mimicry evaluation. A Schematic diagram 
+of VM model. B The proportion of tubular channels in the control group. Error bars represent the means ± SD; 
+n = 3; ***p < 0.001. C Protein expression levels of MMP-2 and MMP-9 in C6 cells; I, II, III, and IV = control, DOX, 
+DOX@NGs, and DOX@PNGs, respectively. D Vasculogenic mimicry of C6 cells in vitro after co-culture with 
+control, DOX, DOX@NGs, or DOX@PNGs for 10 h; scale bar = 20 μm
+(See figure on next page.)
+Fig. 6 in vivo tumour suppression in orthotopic glioma model mice. A An orthotopic glioma model was 
+established with the C6 cell line in 4 to 6‐week‐old nude male mice. Control, DOX, DOX@NGs, and DOX@
+PNGs were intravenously injected 7 day post‐tumour implantation at the indicated days. The tumour tissues 
+were collected for analysing the blood gain and organs (HE and IHC staining) 1 day after the final injection. 
+B IVIS images of glioma growth in mice on the 7th, 10th, 13th, 16th, and 19th day after injection with 
+as-fabricated NPs; red = strong fluorescence signal. C Schematic map of mice brain anatomical specimen. D 
+Survival curve of mice in each group; n = 7; *p < 0.05, ***p < 0.001. E HE staining, IHC staining, and CD34-PAS 
+double staining of mouse brain tissue after different treatments. Scale bar = 50 μm
+Page 13 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+rate compared with the saline, free DOX, and DOX@NGs groups. In addition, Ki67 expres-
+sion in mice treated with DOX-PNGs was remarkably decreased. A glioma model was con-
+structed using Luc-C6 cells to image brain tumours using chemiluminescence (Fig. 6B). 
+Fig. 6 (See legend on previous page.)
+Page 14 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+Mice treated with DOX@PNGs had the smallest tumour volumes, revealing its valuable 
+antitumour effect. These results confirm the superiority and therapeutic efficacy of the 
+targeted modified biomimetic NGs. Finally, we performed transferase-mediated dUTP-
+biotin nick end labelling (TUNEL) to assess tumour tissue apoptosis, which showed that 
+the green fluorescence intensity was stronger in the DOX@PNG group than in the other 
+formulations (Fig. 6E), indicating significant apoptosis of glioma cells in mice treated with 
+DOX@PNGs. PAS-CD34 double staining illustrated the vigorous VM inhibition effect of 
+the DOX@PNGs group, which was consistent with the results of previous experiments. 
+Kaplan–Meier survival curves showed that DOX@PNGs significantly prolonged the lifes-
+pan of mice (Fig.  6D). The median survival time (MST) was significantly longer in the 
+DOX@PNGs group (34.5 days) than in the saline (23 days), DOX (27 days), and DOX@
+NGs (31 days) groups. These results suggested that DOX@PNGs had the best anti-glioma 
+activity, with significant tumour growth inhibition in all groups (Fig. 6C); this may be attrib-
+uted to BBB penetration resulting in drug aggregation at the tumour site. DOX@NGs also 
+showed slightly better tumour suppression than free DOX but were much less effective 
+than DOX@PNGs, suggesting a weak antitumour effect due to poor targeting ability. On 
+the other hand, the poor performance of free DOX was presumably due to its inability to 
+penetrate the BBB. Overall, the anti-tumour activity of DOX@PNGs was found to be out-
+standing through both in vitro and in vivo assessments.
+in vivo safety
+The biosafety of the nano-formulations was assessed by histopathology and blood analysis. 
+HE staining (Fig. 7A) showed no significant difference between tissues from mice treated 
+with DOX@PNGs and normal mice. In contrast, mice treated with DOX exhibited myocar-
+dial fibrous disruption, alveolar wall thickening, and inflammatory cell infiltration, which is 
+consistent with the side effects of DOX. In addition, the haematological parameters of mice 
+treated with DOX@PNGs were relatively stable compared with those of the other treat-
+ment groups. Blood levels of aspartate aminotransferase (AST), alanine aminotransferase 
+(ALT), creatinine (CR), and uric acid (UA) showed that DOX caused mild liver and nephro-
+toxicity (Fig. 7B–E). However, encapsulation with PLTMs ameliorated the hepatic and renal 
+toxicity induced by DOX, owing to the ability of DOX@PNGs to target glioma sites, release 
+the drug rapidly, and reduce the nonspecific aggregation of the drug in the organs in vivo. 
+We also found that DOX@NGs exhibited slightly higher hepatorenal toxicity than DOX@
+PNGs, which we speculate is due to the lack of PLTM modification, resulting in the inability 
+to specifically target the tumour site with the drug, leading to relatively more drug distri-
+bution to the liver and kidney tissues. Thus, these results confirm that DOX@PNGs have 
+relatively little effect on liver and kidney function in mice. Our study confirmed that DOX@
+PNGs have good biocompatibility in living organisms, do not cause side effects in normal 
+tissues, and can be safely applied in biological experiments.
+Conclusions
+In summary, we developed a biomimetic NG by leveraging PLTMs, which has 
+strong anti-glioma effects and could effectively cross the BBB and destruct VM in 
+glioma therapy. The enhanced tumour reaction of DOX@PNGs is mainly mediated 
+by CD62P–CD44 on the surface of PLTMs both in vitro and in vivo. This research 
+Page 15 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+presents a potential biomimetic drug delivery system for VM-based anti-tumour 
+drugs for glioma treatment.
+Supplementary Information
+The online version contains supplementary material available at https:// doi. org/ 10. 1186/ s12645- 023- 00167-w.
+Additional file 1: Figure S1. Stability of NGs and PNGs in 10% FBS for 7 days. Figure S2. Cell viability was measured 
+by the CCK8 assay. Figure S3. Flow cytometry quantitative analysis of the ability of different preparations to induce 
+apoptosis in C6 cells at the indicated timepoints (2, 4, and 24 h). Figure S4. Distribution of NPs in vivo.
+Acknowledgements
+We are deeply grateful to Professor Junjie Deng for his assistance in the preparation of doxorubicin-loaded platelet 
+membrane-coated nanogel.
+Author contributions
+QL: conceptualization, investigation, formal analysis, methodology, writing original draft. JS: investigation, methodology, 
+writing original draft. LW: investigation, formal analysis, methodology. SL: investigation. YY: investigation. WX: investiga-
+tion. KH: investigation. YZ: investigation. FK: investigation. WY: investigation. YW: investigation. LP: investigation. KL: 
+conceptualization, funding acquisition, investigation, methodology, supervision, writing—original draft, writing—review 
+and editing. ZW: conceptualization, funding acquisition, investigation, methodology, supervision, writing—original draft, 
+writing—review and editing. All authors read and approved the final manuscript.
+Funding
+This work was supported by the National Natural Science Foundation of China (8217082371); The Zhejiang Medical and 
+Health Science and Technology Project (2022KY529); Key projects jointly constructed by the Ministry and the province of 
+Zhejiang Medical and Health Science and Technology Project (WKJ-ZJ-2019). The Traditional Chinese Medicine Scientific 
+Research Project of Zhejiang Province (2023ZL010).
+Fig. 7 Biological safety of NPs in vivo. A Images of organ tissue sections after treatment with different 
+nanocarriers and drugs. Sections were subjected to HE staining; scale bar = 200 μm. B–E Test results for liver 
+and renal function. The error bars represent the means ± SD; n = 3; *p < 0.05, **p < 0.01, ***p < 0.001
+Page 16 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+Availability of data and materials
+All data generated or analyzed during this study are included in this published article and its supplementary information 
+file.
+Declarations
+Ethics approval and consent to participate
+All experimental procedures and protocols were reviewed and ethically approved by the Animal Care and Use Commit-
+tee of Zhejiang Provincial People’s Hospital and were in accordance with the Guide for the Use and Care of Laboratory 
+Animals.
+Consent for publication
+All authors have given approval to the final version of the manuscript.
+Competing interests
+The authors declare that they have no competing interests.
+Received: 23 November 2022   Accepted: 15 February 2023
+References
+Cai H, Liu W, Liu X, Li Z, Feng T, Xue Y et al (2020) Advances and Prospects of Vasculogenic Mimicry in Glioma: A Potential 
+New Therapeutic Target? OTT 13:4473–4483
+Chai Z, Hu X, Wei X, Zhan C, Lu L, Jiang K et al (2017) A facile approach to functionalizing cell membrane-coated nano-
+particles with neurotoxin-derived peptide for brain-targeted drug delivery. J Control Release 264:102–111
+Chen W, Zou Y, Zhong Z, Haag R (2017) Cyclo(RGD)-decorated reduction-responsive nanogels mediate targeted chemo-
+therapy of integrin overexpressing human glioblastoma in vivo. Small. https:// doi. org/ 10. 1002/ smll. 20160 1997
+Dehaini D, Wei X, Fang RH, Masson S, Angsantikul P, Luk BT et al (2017) Erythrocyte-platelet hybrid membrane coating for 
+enhanced nanoparticle functionalization. Adv Mater. https:// doi. org/ 10. 1002/ adma. 20160 6209
+El Hallani S, Boisselier B, Peglion F, Rousseau A, Colin C, Idbaih A et al (2010) A new alternative mechanism in glioblastoma 
+vascularization: tubular vasculogenic mimicry. Brain 133:973–982
+Fang RH, Kroll AV, Gao W, Zhang L (2018) Cell membrane coating nanotechnology. Adv Mater 30:e1706759
+Ge H, Luo H (2018) Overview of advances in vasculogenic mimicry—a potential target for tumor therapy. Research 
+10:2429–2437
+Gu X, Gao Y, Wang P, Wang L, Peng H, He Y et al (2021) Nano-delivery systems focused on tumor microenvironment regu-
+lation and biomimetic strategies for treatment of breast cancer metastasis. J Control Release 333:374–390
+Hatakeyama H, Akita H, Harashima H (2011) A multifunctional envelope type nano device (MEND) for gene delivery to 
+tumours based on the EPR effect: a strategy for overcoming the PEG dilemma. Adv Drug Deliv Rev 63:152–160
+Huang CW, Chuang CP, Chen YJ, Wang HY, Lin JJ, Huang CY et al (2021) Integrin alpha2beta1-targeting ferritin nanocarrier 
+traverses the blood-brain barrier for effective glioma chemotherapy. J Nanobiotechnology 19:180
+Jiang Q, Wang K, Zhang X, Ouyang B, Liu H, Pang Z et al (2020) Platelet membrane-camouflaged magnetic nanoparticles 
+for ferroptosis-enhanced cancer immunotherapy. Small 16:e2001704
+Kaynar A, Altay O, Li X, Zhang C, Turkez H, Uhlén M et al (2021) Systems biology approaches to decipher the underlying 
+molecular mechanisms of glioblastoma multiforme. IJMS. https:// doi. org/ 10. 3390/ ijms2 22413 213
+Koupenova M, Corkrey HA, Vitseva O, Manni G, Pang CJ, Clancy L et al (2019) The role of platelets in mediating a response 
+to human influenza infection. Nat Commun 10:1780
+Li B, Chu T, Wei J, Zhang Y, Qi F, Lu Z et al (2021a) Platelet-membrane-coated nanoparticles enable vascular disrupting 
+agent combining anti-angiogenic drug for improved tumor vessel impairment. Nano Lett 21:2588–2595
+Li Y, Ma Y, Wu Z, Xie R, Zeng F, Cai H et al (2021b) Advanced imaging techniques for differentiating pseudoprogression 
+and tumor recurrence after immunotherapy for glioblastoma. Front Immunol 12:790674
+Lin M, Li Y, Long H, Lin Y, Zhang Z, Zhan F, Li M, Wu C, Liu Z (2023) Cell membrane-camouflaged DOX-loaded β-glucan 
+nanoparticles for highly efficient cancer immunochemotherapy. Int J Biol Macromol 225:873–885
+Min X, Dingchao X, Xun Z, Cunzu W (2022) Preliminary study on relationship between Temozolomide chemotherapy-
+resistant cells and stem cells in gliomas. Turk Neurosurg 32:357–363
+Pereira-Silva M, Santos AC, Conde J, Hoskins C, Concheiro A, Alvarez-Lorenzo C et al (2020) Biomimetic cancer cell 
+membrane-coated nanosystems as next-generation cancer therapies. Expert Opin Drug Deliv 17:1515–1518
+Ruan S, Xie R, Qin L, Yu M, Xiao W, Hu C et al (2019) Aggregable nanoparticles-enabled chemotherapy and autophagy 
+inhibition combined with Anti-PD-L1 antibody for improved glioma treatment. Nano Lett 19:8318–8332
+Shemetov AA, Nabiev I, Sukhanova A (2012) Molecular interaction of proteins and peptides with nanoparticles. ACS 
+Nano 6:4585–4602
+Shi D, Mi G, Shen Y, Webster TJ (2019) Glioma-targeted dual functionalized thermosensitive Ferri-liposomes for drug deliv-
+ery through an in vitro blood-brain barrier. Nanoscale 11:15057–15071
+Sun T, Zhang YS, Pang B, Hyun DC, Yang M, Xia Y (2014) Engineered nanoparticles for drug delivery in cancer therapy. 
+Angew Chem Int Ed Engl 53:12320–12364
+Wang H, Wu C, Tong X, Chen S (2023) A biomimetic metal-organic framework nanosystem modulates immunosuppres-
+sive tumor microenvironment metabolism to amplify immunotherapy. J Control Release 353:727–737
+Weller M, van den Bent M, Preusser M, Le Rhun E, Tonn JC, Minniti G et al (2021) EANO guidelines on the diagnosis and 
+treatment of diffuse gliomas of adulthood. Nat Rev Clin Oncol 18:170–186
+Page 17 of 17
+Li et al. Cancer Nanotechnology           (2023) 14:12 
+ 
+•
+ 
+fast, convenient online submission
+ 
+•
+  
+thorough peer review by experienced researchers in your ﬁeld
+• 
+ 
+rapid publication on acceptance
+• 
+ 
+support for research data, including large and complex data types
+•
+  
+gold Open Access which fosters wider collaboration and increased citations 
+ 
+maximum visibility for your research: over 100M website views per year 
+•
+  
+At BMC, research is always in progress.
+Learn more biomedcentral.com/submissions
+Ready to submit your research
+Ready to submit your research ?  Choose BMC and benefit from: 
+?  Choose BMC and benefit from: 
+Wen H, Dong C, Dong H, Shen A, Xia W, Cai X et al (2012) Engineered redox-responsive PEG detachment mechanism in 
+PEGylated nano-graphene oxide for intracellular drug delivery. Small 8:760–769
+Wu L, Li Q, Deng J, Shen J, Xu W, Yang W et al (2021) Platelet-tumor cell hybrid membrane-camouflaged nanoparticles for 
+enhancing therapy efficacy in glioma. Int J Nanomed 16:8433–8446
+Wu T, Liu Y, Cao Y, Liu Z (2022) Engineering macrophage exosome disguised biodegradable nanoplatform for enhanced 
+sonodynamic therapy of glioblastoma. Adv Mater 34:e2110364
+Xu W, Wang J, Li Q, Wu C, Wu L, Li K et al (2021) Cancer cell membrane-coated nanogels as a redox/pH dual-responsive 
+drug carrier for tumor-targeted therapy. J Mater Chem B 9:8031–8037
+Xue J, Zhao Z, Zhang L, Xue L, Shen S, Wen Y et al (2017) Neutrophil-mediated anticancer drug delivery for suppression of 
+postoperative malignant glioma recurrence. Nat Nanotechnol 12:692–700
+Yu Y, Cheng Q, Ji X, Chen H, Zeng W, Zeng X, Zhao Y, Mei L (2022) Engineered drug-loaded cellular membrane nanovesi-
+cles for efficient treatment of postsurgical cancer recurrence and metastasis. Sci Adv 8(49):eadd3599
+Zhang Q, Dehaini D, Zhang Y, Zhou J, Chen X, Zhang L et al (2018) Neutrophil membrane-coated nanoparticles inhibit 
+synovial inflammation and alleviate joint damage in inflammatory arthritis. Nat Nanotechnol 13:1182–1190
+Zhang M, Xu N, Xu W, Ling G, Zhang P (2022) Potential therapies and diagnosis based on Golgi-targeted nano drug 
+delivery systems. Pharmacol Res 175:105861
+Zhen X, Cheng P, Pu K (2019) Recent advances in cell membrane-camouflaged nanoparticles for cancer phototherapy. 
+Small 15:e1804105
+Zheng T, Wang W, Mohammadniaei M, Ashley J, Zhang M, Zhou N et al (2022) Anti-MicroRNA-21 oligonucleotide loaded 
+spermine-modified acetalated dextran nanoparticles for b1 receptor-targeted gene therapy and antiangiogenesis 
+therapy. Adv Sci (weinh) 9:e2103812
+Zhou X, Smith QR, Liu X (2021) Brain penetrating peptides and peptide-drug conjugates to overcome the blood-brain 
+barrier and target CNS diseases. Wiley Interdiscip Rev Nanomed Nanobiotechnol 13:e1695
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+

@@ -1,0 +1,728 @@
+Retrieval-Enhanced Generative Model for
+Large-Scale Knowledge Graph Completion
+Donghan Yu
+Carnegie Mellon University
+Pittsburgh, PA, USA
+dyu2@cs.cmu.edu
+Yiming Yang
+Carnegie Mellon University
+Pittsburgh, PA, USA
+yiming@cs.cmu.edu
+ABSTRACT
+The task of knowledge graph completion (KGC) is of great im-
+portance. To achieve scalability when dealing with large-scale
+knowledge graphs, recent works formulate KGC as a sequence-to-
+sequence process, where the incomplete triplet (input) and the miss-
+ing entity (output) are both verbalized as text sequences. However,
+inference with these methods relies solely on the model parameters
+for implicit reasoning and neglects the use of KG itself, which limits
+the performance since the model lacks the capacity to memorize a
+vast number of triplets. To tackle this issue, we introduce ReSKGC,
+a Retrieval-enhanced Seq2seq KGC model, which selects semanti-
+cally relevant triplets from the KG and uses them as evidence to
+guide output generation with explicit reasoning. Our method has
+demonstrated state-of-the-art performance on benchmark datasets
+Wikidata5M and WikiKG90Mv2, which contain about 5M and 90M
+entities, respectively.
+CCS CONCEPTS
+• Computing methodologies → Knowledge representation
+and reasoning.
+KEYWORDS
+knowledge graph completion, neural network, information retrieval
+ACM Reference Format:
+Donghan Yu and Yiming Yang. 2023. Retrieval-Enhanced Generative Model
+for Large-Scale Knowledge Graph Completion. In Proceedings of the 46th
+International ACM SIGIR Conference on Research and Development in Infor-
+mation Retrieval (SIGIR ’23), July 23–27, 2023, Taipei, Taiwan. ACM, New
+York, NY, USA, 5 pages. https://doi.org/10.1145/3539618.3592052
+1
+INTRODUCTION
+Knowledge Graphs (KGs), which store factual information in the
+format of (head entity, relation, tail entity) triplets, have gained
+considerable attention in the field of machine learning due to their
+wide range of significant applications, including but not limited
+to information retrieval [14, 26], question answering [30, 31], rec-
+ommendation systems [28], and computer vision [15]. Knowledge
+Graph Completion (KGC), which aims to predict semantically valid
+but unobserved triplets based on the observed ones, has been a
+central focus of research in this field.
+This work is licensed under a Creative Commons Attribution
+International 4.0 License.
+SIGIR ’23, July 23–27, 2023, Taipei, Taiwan
+© 2023 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-9408-6/23/07.
+https://doi.org/10.1145/3539618.3592052
+(Q626490, P175, ?)
+Predict tail: Viva La Vida | 
+Performer
+verbalize
+Retriever
+Encoder-Decoder
+Coldplay
+map
+Q45188
+Fix You | followed by | Viva La Vida, 
+Fix You | Performer | Coldplay, ...
+KG
+Input Incomplet Triplet
+Output Entity
+Figure 1: Illustration of the proposed framework ReSKGC.
+Given an incomplete triplet with head entity ID and relation
+ID, we first verbalize it to a text sequence using their name
+labels (Q626490 → Viva La Vida, P175 → Performer), then a
+retriever is used to retrieve relevant information from the KG,
+followed by the application of a seq2seq model to generate
+the name label of the missing entity, which is mapped back
+into an entity ID (Coldplay → Q45188).
+Most studies in KGC have been focusing on relatively small
+knowledge graphs. For example, the two most common benchmarks
+namely FB15k-237 [20] and WN18RR [7] contain only 14k and 40k
+entities, respectively. On the other hand, large KGs in the real world
+such as Wikidata [23] and Freebase [1] contain millions of entities,
+which present a scalability challenge to many methods. Traditional
+KGC methods such as TransE [2] and DistMult [27] have the learn-
+able embedding parameters for each entity, which means that the
+number of parameters increases proportionally to the number of
+entities. Some methods [25, 29] tried to avoid this by employing
+pre-trained language models (PLM) to embed entities based on their
+names and/or descriptions. Those methods, however, still suffer
+from scalability issues at inference due to the need to traverse all the
+entities for prediction. This means that the inference computation
+of those methods is linear in the total number of entities.
+Recent studies [4, 18] utilize a sequence-to-sequence (seq2seq)
+generation methodology for knowledge graph completion, by ver-
+balizing each incomplete triplet as the input text sequence and then
+applying Transformer [22]-based models to predict each missing
+entity as the output sequence. Those methods are advantageous as
+the model parameters and inference computation are independent
+of the size of the knowledge graph. And furthermore, the training
+of such models does not require negative sampling.
+2334
+SIGIR ’23, July 23–27, 2023, Taipei, Taiwan
+Donghan Yu and Yiming Yang
+Despite the advantages of existing seq2seq KGC methods, they
+have one major weakness: That is, their inference only involves
+implicit reasoning with trained model parameters, neglecting the
+direct use of the KG itself. In other words, due to the occurrence of
+catastrophic forgetting during the training process, the models lack
+the capacity of memorizing all the triplets in large-scale KGs and
+directly utilizing the triplets for inference. This paper addresses
+such limitation by proposing a Retrieval-enhanced Seq2seq KG
+Completion model, namely ReSKGC. It firstly converts the triplets in
+the entire KG into text passages, secondly uses a free-text retrieval
+module (such as BM25 [17]) to find the relevant triplets for each
+incomplete triplet (the query), and thirdly uses the retrieved triplets
+to enhance the generation of the missing entity. Figure 1 illustrates
+such a process, with the example of predicting the performer for
+the song of Viva La Vida. Given the query, the retrieved triplets
+such as (Fix You, followed by, Viva La Vida) and (Fix You, Performer,
+Coldplay), can be used to enhance the likelihood of generating the
+correct answer.
+Our comparative evaluation shows that the proposed approach
+can significantly enhance the state-of-the-art performance on two
+large-scale datasets, Wikidata5M [25] and WikiKG90Mv2 [8], which
+contain 5M and 90M entities, respectively. Ablation tests were also
+conducted to analyze the effects of different settings in the retrieval
+module and for relations with different frequencies.
+2
+PRELIMINARIES
+Knowledge Graph Completion (KGC) In a Knowledge Graph
+KG = (E, R, T), we denote the set of entities, relations, and triplets
+as E, R, and T, respectively. A triplet is expressed in the domain
+E × R × E, usually written as (𝑒ℎ,𝑟,𝑒𝑡) containing the head entity
+𝑒ℎ ∈ E, relation 𝑟 ∈ R and tail entity 𝑒𝑡 ∈ E respectively. The
+completion task in a KG usually refers to, given an incomplete
+triplet (𝑒ℎ,𝑟, ?) or (?,𝑟,𝑒𝑡) where its head or tail entity is missing,
+the model is required to predict the missing entity.
+Sequence-to-Sequence KGC Given an incomplete triplet, it was
+first verbalized into a text query 𝑞:
+𝑞 =
+(
+concat(prefix𝑡, 𝐿(𝑒ℎ), 𝐿(𝑟))
+if 𝑒𝑡 is missing
+concat(prefixℎ, 𝐿(𝑟), 𝐿(𝑒𝑡))
+if 𝑒ℎ is missing
+(1)
+where 𝐿(·) maps the entity or relation into its name label. prefix𝑡
+(or prefixℎ) refers to a sequence of tokens that are added to the
+beginning of a query in order to inform the model which side,
+whether it be the head or tail entity, is the target for prediction. For
+example, as shown in Figure 1, (Q626490, P175, ?) is transformed
+to Predict tail: Viva La Vida | Performer. Similarly, (?, P175, Q45188)
+will be transformed to Predict head: Performer | Coldplay. Then the
+text query will be passed into an encoder-decoder language model
+such as T5 [16] to generate the output tokens:
+𝑇output = Decoder(Encoder(𝑞))
+(2)
+The aim is to produce the name label of the missing entity. The
+cross-entropy loss of token prediction is utilized during the train-
+ing of the generative model. During the process of making pre-
+dictions, the generated name label will be mapped to an entity
+ID ˆ𝑒𝑡 = 𝐿−1(𝑇output). To generate multiple prediction candidates,
+beam search can be employed, but invalid entity names will be
+discarded. Constrained decoding methods [4, 6] can be utilized to
+ensure the validity of the output.
+3
+METHOD
+Instead of directly passing the verbalized incomplete triplet into a
+seq2seq model for entity generation, we propose ReSKGC, which
+retrieves relevant information from the knowledge graph to guide
+the generation process.
+3.1
+KG to Text Passages
+To facilitate retrieval based on text semantics of entities and re-
+lations, we convert the entire knowledge base into text passages
+through a process of linearization. To prevent data leakage, we only
+transform the triplets in the training data. We begin by transform-
+ing each triplet into a sentence, accomplished by concatenating the
+name labels of entities and relations and incorporating a special
+symbol | to delimit the elements. For example, the triplet (Q1991309,
+P175, Q45188) will be transformed to the sentence Fix You | Performer
+| Coldplay. Subsequently, we group the sentence into passages if
+they share a common head entity, such as Fix You | Performer | Cold-
+play. Fix You | followed by | Viva La Vida.... Finally, each long passage
+would be separated into multiple non-overlapping passages, with
+each passage having a maximum of 100 words.
+3.2
+Retrieval
+After converting the knowledge graph into text passages, we pro-
+ceed to conduct retrieval given an incomplete triplet. To achieve
+this, we first verbalize the triplet using Equation 1. We then employ
+the widely-used retrieval method BM25 [17], which is based on
+TF-IDF scores of sparse word matches between input queries and
+passages. We have opted for sparse retrieval as opposed to dense
+retrieval [10], which involves computing passage embeddings and
+query embeddings using pre-trained language models. The reason
+for this is that we place value on the generalization and efficiency
+of sparse representation. Dense retrieval methods typically require
+additional model training and consume significant amounts of mem-
+ory in order to save the passage embeddings. Through retrieval,
+we are able to obtain 𝐾 passages [𝑝𝑖]𝑖=1,··· ,𝐾 that are potentially
+relevant to the input question.
+3.3
+Generation
+Ultimately, we employ a generation module that takes the query
+and retrieved passage as inputs and produces the desired output en-
+tity. One approach is to concatenate all the passages and the query
+as a single input sequence for the model. However, this can become
+inefficient when a large number of passages are retrieved due to
+the quadratic computational complexity in the self-attention mech-
+anism of the Transformer model. To achieve both cross-passage
+modeling and computation efficiency, we apply Fushion-in-Decoder
+(FiD) [9] based on T5 [16] as the generation module. FiD separately
+encodes the concatenation of the query and each passage but de-
+codes the output tokens jointly. Specifically, the encoding process
+for each passage 𝑝𝑖 is as follows:
+P𝑖 = Encoder(concat(𝑞, 𝑝𝑖)).
+(3)
+2335
+Retrieval-Enhanced Generative Model for
+Large-Scale Knowledge Graph Completion
+SIGIR ’23, July 23–27, 2023, Taipei, Taiwan
+Next, the token embeddings of all passages outputted from the en-
+coder are concatenated before being sent to the decoder to produce
+the output tokens 𝑇output:
+𝑇output = Decoder([P1; P2; · · · ; P𝐾]).
+(4)
+In this manner, the decoder can generate outputs based on joint
+modeling of multiple passages. Similar to vanilla seq2seq KGC, we
+utilize beam search to generate multiple candidates and constrained
+decoding as [4] to ensure validity. After generation, we simply map
+the name back to the corresponding entity.
+3.4
+Training Process
+The training of ReSKGC only involves optimizing the generation
+module, since the retrieval component (BM25) is unsupervised and
+does not require any model training. Similar to vanilla seq2seq KGC
+methods, we employ the cross-entropy loss of token prediction for
+training. However, there are two crucial considerations:
+Removing query triplet from retrieved passages: It is impor-
+tant to note that all of the training triplets are included within the
+linearized passages as mentioned in Section 3.1. Therefore, through-
+out the training process, it is necessary to ensure that the retrieved
+passages do not include the query triplet itself, as failure to do so
+would render the training task insignificant. As a result, we simply
+remove the linearized triplet from the retrieved passages if it is
+present in them.
+Sampling query triplets: Large-scale KGs may contain hundreds
+of millions of triplets, making it excessively costly to enumerate
+them all during training. In this study, we address this issue by
+randomly sampling a subset of triplets to generate training queries
+to optimize the model. We demonstrate in Section 4.3 that such sam-
+pling does not impair performance while keeping training highly
+efficient. It should be noted that we still utilize all the training
+triplets to construct the passages as mentioned in Section 3.1.
+4
+EXPERIMENT
+4.1
+Basic Setting
+We conduct experiments on the two large-scale KGC datasets: Wiki-
+data5M [25], and WikiKG90Mv2 [8], where the dataset statistics
+are shown in Table 1. We follow the conventional train/valid/test
+split setting according to the original paper of each dataset. For the
+training process, we use Adam [12] as the optimizer and set the
+learning rate as 0.0001. The number of training steps is 30,000 for
+all the datasets with the same batch size of 16. For Wikidata5M, we
+retrieve 10 passages per query and sampled 100k queries for train-
+ing. For WikiKG90Mv2, we retrieve 20 passages and sampled 200k
+queries. During inference, constrained decoding is utilized for the
+Wikidata5M dataset, while it is not used for WikiKG90Mv2 due to
+the dataset’s extensive number of entities, making the construction
+of a prefix tree excessively memory and time-consuming. For the
+generation module, we use T5-small and T5-base [16] with num-
+bers of parameters 60M and 220M, respectively. All experiments
+are carried out on NVIDIA 2080-Ti GPUs.
+For the evaluation metric, we use the filtered setting [2] for
+computing mean reciprocal rank (MRR) and hits at 1, 3, and 10
+(H@1, H@3, and H@10). Higher MRR and hits scores indicate
+better performance. For Wikidata5M, the metrics are computed for
+Table 1: Dataset Statistics
+Dataset
+#Entities
+#Relations
+#Triplets
+Wikidata5M
+4.8M
+828
+21M
+WikiKG90Mv2
+91M
+1,387
+601M
+head entity and tail entity prediction separately and then averaged.
+For WikiKG90Mv2, we follow the original paper to only compute
+metrics for tail entity prediction.
+4.2
+Main Results
+As demonstrated in Table 2, ReSKGC attains state-of-the-art results
+on Wikidata5M, exhibiting a significant enhancement of MRR by
+10.6% as compared to the most superior baseline technique. The
+first section of baselines comprises conventional KGC approaches,
+which demonstrate satisfactory performance but have a consider-
+ably larger number of parameters than the second section, compris-
+ing PLM-based techniques. It is noteworthy that SimKGC employs
+PLM to create embeddings for each entity. Despite having a rela-
+tively small number of parameters, it still necessitates substantial
+memory usage to store all entity embeddings, which is avoided by
+our proposed methodology. It is also noteworthy that our method
+outperforms the baselines significantly on Hits@1, with an improve-
+ment of 19.1%, but it performs slightly worse than the best baseline
+SimKGC on Hits@10. We posit that the generation-based approach
+utilized by our model may produce less diverse predicted answers
+in contrast to the matching-based approach. Thus, having more
+predictions through the matching approach can result in better
+improvement of answer coverage.
+Table 3 presents results on the extremely large-scale dataset
+WikiKG90Mv21, which contains 90 million entities. Our proposed
+method surpasses the current state-of-the-art technique2 by 13.2%,
+while utilizing only 1% of the parameters. Moreover, our method
+outperforms the seq2seq KGC baseline KGT5, even when both
+models have an equivalent number of parameters.
+4.3
+Ablation Study
+In this section, we aim to answer the following essential questions
+for a more comprehensive understanding of our proposed method.
+Q1. How does the number of retrieved passages affect the
+model performance?
+First, we demonstrate the efficacy of retrieval through the vari-
+ation in the number of passages retrieved, ranging from 0 to 20,
+where 0 implies the application of vanilla seq2seq KGC without
+retrieval. Figure 2 indicates that retrieval yields considerable advan-
+tages on both datasets. Notably, the retrieval of 10 passages can in-
+crease the MRR by 16.1% and 89.2% for the respective datasets when
+compared to non-retrieval. Furthermore, we note that enhancing
+the number of passages from 10 to 20 produces minimal perfor-
+mance enhancement, indicating that the information presented in
+later passages is overshadowed by noise. Therefore, an additional
+1We only show results obtained from the validation set since the test set is not publicly
+available.
+2We conduct a fair comparison by solely considering a single model, without any
+ensemble methods.
+2336
+SIGIR ’23, July 23–27, 2023, Taipei, Taiwan
+Donghan Yu and Yiming Yang
+Table 2: KG completion results on Wikidata5M. The best
+result in each column is marked in bold. The second best is
+marked in ∗. † results are from the best pre-trained models
+made available by Graphvite [33]. †† results are from [13].
+Other baseline results are from the corresponding papers.
+Model
+MRR
+H@1
+H@3
+H@10
+#Params
+TransE [2]†
+0.253
+0.170
+0.311
+0.392
+2.4B
+DistMult [27]†
+0.253
+0.209
+0.278
+0.334
+2.4B
+SimplE [11]†
+0.296
+0.252
+0.317
+0.377
+2.4B
+RotatE [19]†
+0.290
+0.234
+0.322
+0.390
+2.4B
+QuatE [32]†
+0.276
+0.227
+0.301
+0.359
+2.4B
+ComplEx [21]††
+0.308
+0.255
+-
+0.398
+614M
+KEPLER [25]
+0.210
+0.173
+0.224
+0.277
+125M
+MLMLM [5]
+0.223
+0.201
+0.232
+0.264
+355M
+KGT5 [18]
+0.300
+0.267
+0.318
+0.365
+60M
+SimKGC [24]
+0.358
+0.313
+0.376
+0.441
+220M
+ReSKGC (small)
+0.363∗
+0.334∗
+0.386∗
+0.416
+60M
+ReSKGC (base)
+0.396
+0.373
+0.413
+0.437∗
+220M
+Table 3: KG completion results on WikiKG90Mv2 (validation
+set). The best result is marked in bold. The second best is
+marked in ∗. All the baseline results are taken from the offi-
+cial leaderboard of [8] except that † results are from [18].
+Model
+MRR
+#Params
+TransE-Shallow-PIE [3]
+0.234∗
+18.2B
+TransE-Concat [8]
+0.206
+18.2B
+ComplEx-Concat [8]
+0.205
+18.2B
+ComplEx-MPNet [8]
+0.126
+307K
+ComplEx [21]
+0.115
+18.2B
+TransE-MPNet [8]
+0.113
+307K
+TransE [2]
+0.110
+18.2B
+KGT5 [18]†
+0.221
+60M
+ReSKGC (small)
+0.230
+60M
+ReSKGC (base)
+0.265
+220M
+01
+5
+10
+20
+#Passages
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+MRR
+Wikidata5M
+WikiKG90Mv2
+2050 100
+200
+400
+#Training Queries (k)
+0.24
+0.26
+0.28
+0.30
+0.32
+0.34
+0.36
+0.38
+MRR
+Wikidata5M
+WikiKG90Mv2
+Figure 2: The performance of ReSKGC (base) over the vali-
+dation sets based on different numbers of retrieval passages
+and sampled training queries.
+increase in the number of retrieved passages to the generation
+module will not lead to a significant improvement in performance.
+Q2. How does the sampling of training queries affect the
+final performance?
+<104
+(n=156)
+104~105
+(n=787)
+105~106
+(n=2347)
+> 106
+(n=1843)
+Relation Frequency
+0.0
+0.1
+0.2
+0.3
+0.4
+MRR
+w/o Retrieval
+w/ Retrieval
+Figure 3: The performance of ReSKGC (base) on the Wiki-
+data5M test set triplets, categorized according to their re-
+lation frequencies. 𝑛 represents the number of test triplets
+within that particular range of relation frequencies.
+As mentioned in Section 3.4, we randomly sample a subset of
+triplets as training queries. Figure 2 illustrates the performance of
+the model with varying numbers of triplets used as training queries.
+Our results indicate that for Wikidata5M, a mere 100K triplets are
+sufficient to achieve good performance, which represents less than
+0.5% of the total number of triplets. For WikiKG90Mv2, 200K triplets
+are sufficient, representing only 0.03% of the total triplets. These
+findings suggest that a retrieval-enhanced model can effectively
+learn patterns from a considerably smaller amount of training data.
+Q3. What’s the effect of retrieval on relations with differ-
+ent frequencies?
+In a knowledge graph, relations manifest in variable quantities
+of triplets. To classify relations by their frequency, we have grouped
+them into four categories based on the number of occurrences: less
+than 104, 104 to 105, 105 to 106, and more than 106. Figure 3 illus-
+trates that the incorporation of retrieval yields more pronounced
+gains for relations that occur less frequently. An illustrative ex-
+ample can be observed in the relations that occur less than 104
+times. In this scenario, the inclusion of retrieval results in a 59%
+MRR increment. In contrast, for relations that appear in more than
+106 triplets, the MRR increment is merely 2% when utilizing re-
+trieval. This finding is logical, as the generation module may lack
+adequate training data to comprehend relations that are less com-
+monly observed. Therefore, retrieval-enhanced explicit reasoning
+can facilitate performance improvement in such cases.
+5
+CONCLUSION
+This paper proposes a Retrieval-enhanced Seq2seq KG Comple-
+tion model, namely ReSKGC, which converts the triplets in the
+entire KG into text passages and uses a free-text retrieval mod-
+ule to find the relevant triplets for each incomplete triplet. The
+retrieved triplets are then used to enhance the generation of the
+missing entity. Comparative evaluations on two large-scale datasets,
+Wikidata5M and WikiKG90Mv2, demonstrate that the proposed
+approach significantly outperforms the state-of-the-art models by
+10.6% and 13.2% in terms of mean reciprocal rank. Additionally,
+we conducted ablation studies to explore the effects of the number
+of retrieved passages, training data, and relation frequencies. Our
+approach shows a promising direction for large-scale KG comple-
+tion, where further improvements can be achieved by research on
+improving the retrieval modules and generation modules.
+2337
+Retrieval-Enhanced Generative Model for
+Large-Scale Knowledge Graph Completion
+SIGIR ’23, July 23–27, 2023, Taipei, Taiwan
+REFERENCES
+[1] Kurt Bollacker, Colin Evans, Praveen Paritosh, Tim Sturge, and Jamie Taylor.
+2008. Freebase: a collaboratively created graph database for structuring human
+knowledge. In Proceedings of the 2008 ACM SIGMOD international conference on
+Management of data. 1247–1250.
+[2] Antoine Bordes, Nicolas Usunier, Alberto García-Durán, Jason Weston, and Ok-
+sana Yakhnenko. 2013. Translating Embeddings for Modeling Multi-relational
+Data. In Advances in Neural Information Processing Systems 26: 27th Annual
+Conference on Neural Information Processing Systems 2013. Proceedings of a
+meeting held December 5-8, 2013, Lake Tahoe, Nevada, United States, Christo-
+pher J. C. Burges, Léon Bottou, Zoubin Ghahramani, and Kilian Q. Wein-
+berger (Eds.). 2787–2795.
+https://proceedings.neurips.cc/paper/2013/hash/
+1cecc7a77928ca8133fa24680a88d2f9-Abstract.html
+[3] Linlin Chao, Taifeng Wang, and Wei Chu. 2022. PIE: a parameter and inference
+efficient solution for large scale knowledge graph embedding reasoning. ArXiv
+preprint abs/2204.13957 (2022). https://arxiv.org/abs/2204.13957
+[4] Chen Chen, Yufei Wang, Bing Li, and Kwok-Yan Lam. 2022. Knowledge Is Flat:
+A Seq2Seq Generative Framework for Various Knowledge Graph Completion.
+ArXiv preprint abs/2209.07299 (2022). https://arxiv.org/abs/2209.07299
+[5] Louis Clouatre, Philippe Trempe, Amal Zouaq, and Sarath Chandar. 2021.
+MLMLM: Link Prediction with Mean Likelihood Masked Language Model. In
+Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021. As-
+sociation for Computational Linguistics, Online, 4321–4331. https://doi.org/10.
+18653/v1/2021.findings-acl.378
+[6] Nicola De Cao, Gautier Izacard, Sebastian Riedel, and Fabio Petroni. 2020. Au-
+toregressive entity retrieval.
+ArXiv preprint abs/2010.00904 (2020).
+https:
+//arxiv.org/abs/2010.00904
+[7] Tim Dettmers, Pasquale Minervini, Pontus Stenetorp, and Sebastian Riedel. 2018.
+Convolutional 2D Knowledge Graph Embeddings. In Proceedings of the Thirty-
+Second AAAI Conference on Artificial Intelligence, (AAAI-18), the 30th innovative
+Applications of Artificial Intelligence (IAAI-18), and the 8th AAAI Symposium on
+Educational Advances in Artificial Intelligence (EAAI-18), New Orleans, Louisiana,
+USA, February 2-7, 2018, Sheila A. McIlraith and Kilian Q. Weinberger (Eds.).
+AAAI Press, 1811–1818. https://www.aaai.org/ocs/index.php/AAAI/AAAI18/
+paper/view/17366
+[8] Weihua Hu, Matthias Fey, Hongyu Ren, Maho Nakata, Yuxiao Dong, and Jure
+Leskovec. 2021. Ogb-lsc: A large-scale challenge for machine learning on graphs.
+ArXiv preprint abs/2103.09430 (2021). https://arxiv.org/abs/2103.09430
+[9] Gautier Izacard and Edouard Grave. 2021. Leveraging Passage Retrieval with
+Generative Models for Open Domain Question Answering. In Proceedings of the
+16th Conference of the European Chapter of the Association for Computational
+Linguistics: Main Volume. Association for Computational Linguistics, Online,
+874–880. https://aclanthology.org/2021.eacl-main.74
+[10] Vladimir Karpukhin, Barlas Oguz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey
+Edunov, Danqi Chen, and Wen-tau Yih. 2020. Dense Passage Retrieval for Open-
+Domain Question Answering. In Proceedings of the 2020 Conference on Empirical
+Methods in Natural Language Processing (EMNLP). Association for Computational
+Linguistics, Online, 6769–6781. https://doi.org/10.18653/v1/2020.emnlp-main.550
+[11] Seyed Mehran Kazemi and David Poole. 2018. SimplE Embedding for Link
+Prediction in Knowledge Graphs. In Advances in Neural Information Processing
+Systems 31: Annual Conference on Neural Information Processing Systems 2018,
+NeurIPS 2018, December 3-8, 2018, Montréal, Canada, Samy Bengio, Hanna M.
+Wallach, Hugo Larochelle, Kristen Grauman, Nicolò Cesa-Bianchi, and Roman
+Garnett (Eds.). 4289–4300.
+https://proceedings.neurips.cc/paper/2018/hash/
+b2ab001909a8a6f04b51920306046ce5-Abstract.html
+[12] Diederik P. Kingma and Jimmy Ba. 2015. Adam: A Method for Stochastic Opti-
+mization. In 3rd International Conference on Learning Representations, ICLR 2015,
+San Diego, CA, USA, May 7-9, 2015, Conference Track Proceedings, Yoshua Bengio
+and Yann LeCun (Eds.). http://arxiv.org/abs/1412.6980
+[13] Adrian Kochsiek and Rainer Gemulla. 2021. Parallel training of knowledge
+graph embedding models: a comparison of techniques. Proceedings of the VLDB
+Endowment 15, 3 (2021), 633–645.
+[14] Zhenghao Liu, Chenyan Xiong, Maosong Sun, and Zhiyuan Liu. 2018. Entity-
+Duet Neural Ranking: Understanding the Role of Knowledge Graph Semantics in
+Neural Information Retrieval. In Proceedings of the 56th Annual Meeting of the
+Association for Computational Linguistics (Volume 1: Long Papers). Association for
+Computational Linguistics, Melbourne, Australia, 2395–2405. https://doi.org/10.
+18653/v1/P18-1223
+[15] Sebastian Monka, Lavdim Halilaj, Stefan Schmid, and Achim Rettinger. 2021.
+Learning visual models using a knowledge graph as a trainer. In The Semantic
+Web–ISWC 2021: 20th International Semantic Web Conference, ISWC 2021, Virtual
+Event, October 24–28, 2021, Proceedings 20. Springer, 357–373.
+[16] Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang,
+Michael Matena, Yanqi Zhou, Wei Li, and Peter J Liu. 2020. Exploring the limits of
+transfer learning with a unified text-to-text transformer. The Journal of Machine
+Learning Research 21, 1 (2020), 5485–5551.
+[17] Stephen Robertson, Hugo Zaragoza, et al. 2009. The probabilistic relevance
+framework: BM25 and beyond. Foundations and Trends® in Information Retrieval
+3, 4 (2009), 333–389.
+[18] Apoorv Saxena, Adrian Kochsiek, and Rainer Gemulla. 2022.
+Sequence-to-
+sequence knowledge graph completion and question answering. ArXiv preprint
+abs/2203.10321 (2022). https://arxiv.org/abs/2203.10321
+[19] Zhiqing Sun, Zhi-Hong Deng, Jian-Yun Nie, and Jian Tang. 2019. RotatE: Knowl-
+edge Graph Embedding by Relational Rotation in Complex Space. In 7th Interna-
+tional Conference on Learning Representations, ICLR 2019, New Orleans, LA, USA,
+May 6-9, 2019. OpenReview.net. https://openreview.net/forum?id=HkgEQnRqYQ
+[20] Kristina Toutanova and Danqi Chen. 2015. Observed versus latent features for
+knowledge base and text inference. In Proceedings of the 3rd Workshop on Continu-
+ous Vector Space Models and their Compositionality. Association for Computational
+Linguistics, Beijing, China, 57–66. https://doi.org/10.18653/v1/W15-4007
+[21] Théo Trouillon, Johannes Welbl, Sebastian Riedel, Éric Gaussier, and Guillaume
+Bouchard. 2016. Complex Embeddings for Simple Link Prediction. In Proceedings
+of the 33nd International Conference on Machine Learning, ICML 2016, New York
+City, NY, USA, June 19-24, 2016 (JMLR Workshop and Conference Proceedings,
+Vol. 48), Maria-Florina Balcan and Kilian Q. Weinberger (Eds.). JMLR.org, 2071–
+2080. http://proceedings.mlr.press/v48/trouillon16.html
+[22] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
+Attention is
+All you Need. In Advances in Neural Information Processing Systems 30: An-
+nual Conference on Neural Information Processing Systems 2017, December 4-
+9, 2017, Long Beach, CA, USA, Isabelle Guyon, Ulrike von Luxburg, Samy
+Bengio, Hanna M. Wallach, Rob Fergus, S. V. N. Vishwanathan, and Roman
+Garnett (Eds.). 5998–6008.
+https://proceedings.neurips.cc/paper/2017/hash/
+3f5ee243547dee91fbd053c1c4a845aa-Abstract.html
+[23] Denny Vrandečić and Markus Krötzsch. 2014. Wikidata: a free collaborative
+knowledgebase. Commun. ACM 57, 10 (2014), 78–85.
+[24] Liang Wang, Wei Zhao, Zhuoyu Wei, and Jingming Liu. 2022. SimKGC: Simple
+contrastive knowledge graph completion with pre-trained language models.
+ArXiv preprint abs/2203.02167 (2022). https://arxiv.org/abs/2203.02167
+[25] Xiaozhi Wang, Tianyu Gao, Zhaocheng Zhu, Zhengyan Zhang, Zhiyuan Liu,
+Juanzi Li, and Jian Tang. 2021. KEPLER: A unified model for knowledge embed-
+ding and pre-trained language representation. Transactions of the Association for
+Computational Linguistics 9 (2021), 176–194.
+[26] Chenyan Xiong, Zhengzhong Liu, Jamie Callan, and Tie-Yan Liu. 2018. Towards
+Better Text Understanding and Retrieval through Kernel Entity Salience Modeling.
+In The 41st International ACM SIGIR Conference on Research & Development in
+Information Retrieval, SIGIR 2018, Ann Arbor, MI, USA, July 08-12, 2018, Kevyn
+Collins-Thompson, Qiaozhu Mei, Brian D. Davison, Yiqun Liu, and Emine Yilmaz
+(Eds.). ACM, 575–584. https://doi.org/10.1145/3209978.3209982
+[27] Bishan Yang, Wen-tau Yih, Xiaodong He, Jianfeng Gao, and Li Deng. 2015. Em-
+bedding Entities and Relations for Learning and Inference in Knowledge Bases.
+In 3rd International Conference on Learning Representations, ICLR 2015, San Diego,
+CA, USA, May 7-9, 2015, Conference Track Proceedings, Yoshua Bengio and Yann
+LeCun (Eds.). http://arxiv.org/abs/1412.6575
+[28] Yuhao Yang, Chao Huang, Lianghao Xia, and Chenliang Li. 2022. Knowledge
+graph contrastive learning for recommendation. In Proceedings of the 45th In-
+ternational ACM SIGIR Conference on Research and Development in Information
+Retrieval. 1434–1443.
+[29] Liang Yao, Chengsheng Mao, and Yuan Luo. 2019. KG-BERT: BERT for knowledge
+graph completion. ArXiv preprint abs/1909.03193 (2019). https://arxiv.org/abs/
+1909.03193
+[30] Donghan Yu, Sheng Zhang, Patrick Ng, Henghui Zhu, Alexander Hanbo Li, Jun
+Wang, Yiqun Hu, William Wang, Zhiguo Wang, and Bing Xiang. 2022. Decaf: Joint
+decoding of answers and logical forms for question answering over knowledge
+bases. ArXiv preprint abs/2210.00063 (2022). https://arxiv.org/abs/2210.00063
+[31] Donghan Yu, Chenguang Zhu, Yiming Yang, and Michael Zeng. 2022. Jaket: Joint
+pre-training of knowledge graph and language understanding. In Proceedings of
+the AAAI Conference on Artificial Intelligence, Vol. 36. 11630–11638.
+[32] Shuai Zhang, Yi Tay, Lina Yao, and Qi Liu. 2019.
+Quaternion Knowledge
+Graph Embeddings. In Advances in Neural Information Processing Systems 32:
+Annual Conference on Neural Information Processing Systems 2019, NeurIPS
+2019, December 8-14, 2019, Vancouver, BC, Canada, Hanna M. Wallach, Hugo
+Larochelle, Alina Beygelzimer, Florence d’Alché-Buc, Emily B. Fox, and Roman
+Garnett (Eds.). 2731–2741.
+https://proceedings.neurips.cc/paper/2019/hash/
+d961e9f236177d65d21100592edb0769-Abstract.html
+[33] Zhaocheng Zhu, Shizhen Xu, Jian Tang, and Meng Qu. 2019. GraphVite: A High-
+Performance CPU-GPU Hybrid System for Node Embedding. In The World Wide
+Web Conference, WWW 2019, San Francisco, CA, USA, May 13-17, 2019, Ling Liu,
+Ryen W. White, Amin Mantrach, Fabrizio Silvestri, Julian J. McAuley, Ricardo
+Baeza-Yates, and Leila Zia (Eds.). ACM, 2494–2504.
+https://doi.org/10.1145/
+3308558.3313508
+2338
+

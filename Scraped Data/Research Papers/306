@@ -1,0 +1,986 @@
+1
+Vol.:(0123456789)
+Scientific Reports |        (2023) 13:14438  
+| https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports
+Magnetic dynamics 
+and nonreciprocal excitation 
+in uniform hedgehog order 
+in icosahedral 1/1 approximant 
+crystal
+Shinji Watanabe 
+The hedgehog state in the icosahedral quasicrystal (QC) has attracted great interest as the theoretical 
+discovery of topological magnetic texture in aperiodic systems. The revealed magnetic dynamics 
+exhibits nonreciprocal excitation in the vast extent of the reciprocal lattice q-energy ω space, 
+whose emergence mechanism remains unresolved. Here, we analyze the dynamical as well as static 
+structure of the hedgehog order in the 1/1 approximant crystal (AC) composed of the cubic lattice with 
+spatial inversion symmetry. We find that the dispersion of the magnetic excitation energy exhibits 
+nonreciprocal feature along the N-P-Ŵ line in the q space. The dynamical structure factor exhibits 
+highly structured intensities where high intensities appear in the high-energy branches along the Ŵ -H 
+line and the P-Ŵ -N line in the q space. The nonreciprocity in the 1/1 AC and also in the QC is understood 
+to be ascribed to inversion symmetry breaking by the hedgehog ordering. The sharp contrast on the 
+emergence regime of nonreciprocal magnetic excitation between the QC and the 1/1 AC indicates that 
+the emergence in the vast q-ω regime in the QC is attributed to the QC lattice structure.
+Quasicrystal (QC) has no periodicity but possesses a unique rotational symmetry forbidden in periodic 
+ crystals1–3. In periodic crystals, the electric states can be understood on the basis of the Bloch’s theorem grounded 
+on the translational symmetry of the lattice. In contrast, in the QC, the Bloch’s theorem can no longer be applied. 
+This makes understanding of the electronic states and physical properties of the QC far from complete one and 
+hence their clarifications have attracted great interest as the frontier of the condensed matter physics as well as 
+the material science.
+One of the important remaining issues has been whether the magnetic long-range order is realized in the 
+QC. In the rare-earth based approximant crystals (AC)s which have the local atomic configuration common to 
+that in the QC with periodicity, the magnetic long-range order was observed  experimentally4. The 4f electrons 
+at the rare-earth atom are responsible for the magnetism. The antiferromagnetic (AFM) order was observed in 
+the 1/1 AC Cd6 R (R=Tb, Y, Pr, Nd, Sm, Gd, Tb, Dy, Ho, Er, Tm, Yb, and Lu)5–7, and Au–Al–R (R=Gd and Tb)8, 9. 
+The ferromagnetic (FM) order was observed in the 1/1 AC Au-SM-R (SM=Si, Ge, and Al; R=Gd, Tb, Dy, and 
+Ho)10–13. Recently, the FM long-range order has been discovered in the QC Au–Ga–Tb and Au–Ga–Gd, which 
+has brought about the  breakthrough14.
+Theoretically, lack of the microscopic theory of the crystalline electric field (CEF) at the rare-earth site in 
+the QC and AC has prevented us from understanding the strongly-correlated electron states, in particular, the 
+properties of the magnetism. Recently, general formulation of the CEF theory in the rare-earth based QC and AC 
+has been developed on the basis of the point charge  model15. This allows us to reveal that the magnetic anisotropy 
+arising from the CEF at the rare-earth site plays a crucial role in realizing unique magnetic  structures16, 17. Recent 
+theoretical analyses of the effective model taking into account the magnetic anisotropy in the QC Au–SM–Tb 
+have shown that the uniform FM state is stabilized, which provides a candidate for the magnetic structure 
+observed recently in the QC Au–Ga–Tb17. Moreover, interestingly enough, uniform hedgehog state has theo-
+retically been shown to be stabilized in the  QC16. The hedgehog state is the topological magnetic texture whose 
+OPEN
+Department of Basic Sciences, Kyushu Institute of Technology, Kitakyushu, Fukuoka 804-8550, Japan. email: swata@
+mns.kyutech.ac.jp
+2
+Vol:.(1234567890)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+magnetic moments located at the 12 vertices of the icosahedron (IC) are directed outward from the IC as shown 
+in Fig. 1A, which is characterized by the topological charge n = +116.
+Recently, the magnetic dynamics of the uniform hedgehog order in the QC has for the first time been studied 
+ theoretically18. It has been revealed that the nonreciprocal excitation appears in the vast extent of the reciprocal 
+lattice q-energy ω space. Namely, the dynamical structure factor has been shown to have different values for the 
+reciprocal lattice vector in the opposite direction, i.e., S(q, ω)  = S(−q, ω) . In this report, to get insight into the 
+nonreciprocal excitation, we analyze the dynamical as well as static structures of the uniform hedgehog order 
+in the 1/1 AC.
+It is remarked here that the dynamics of the topological magnetic  textures20 and the nonreciprocal mag-
+netic  excitation21 has attracted much attention nowadays in periodic  crystals22. In non-centrosymmetric sys-
+tems, the Dzyaloshinskii–Moriya interaction for the magnetic moments is known to cause the nonreciprocal 
+ excitations23–31. The nonreciprocal magnon was also shown to appear in centrosymmetric  systems32–36. Recently, 
+the nonreciprocal excitation has been found in the Skyrmion crystal on the centrosymmetric  lattice21, whose 
+mechanism has not been fully understood. Therefore, the present study contributes to the understanding of the 
+nonreciprocal excitations in the topological magnetic textures on centrosymmetric systems.
+Results
+Lattice structure of the IC and 1/1 AC. 
+We consider the lattice structure of the 1/1 AC identified experi-
+mentally in the Au70Si17Tb1313. The IC is located at the center and the corner of the body-center-cubic (bcc) unit 
+cell with the lattice constant a = 14.726 Å , as shown in Fig. 1B. The crystal structure is cubic (Space Group No. 
+204, Im¯3 , T5
+h ), which retains the spatial inversion symmetry.
+The hedgehog state in the IC is regarded as the superposition of the coplanar alignment in the three layers 
+orthogonal each other as shown as the purple, pink, and yellow rectangles in Fig. 1A. Each rectangle has the side 
+length d1a = 0.374a and d2a = 0.612a . As for the direction of the magnetic moments, we consider that each 
+moment is directed to the 5-fold axis (but not the pseudo 5-fold axis on the distorted IC) whose direction is 
+given by the vector passing through each vertex of the regular IC from the center. Namely, the magnetic moment 
+at each vertex of the rectangle in Fig. 1A is given by Si = S(±
+1
+√τ+2, ±
+τ
+√τ+2, 0) for the i = 1 , 3, 11, and 12th site 
+(purple rectangle), Si = S(±
+τ
+√τ+2, 0, ±
+1
+√τ+2) for the i = 5 , 6, 8, and 9th site (pink rectangle), and 
+Si = S(0, ±
+1
+√τ+2, ±
+τ
+√τ+2) for the i = 2 , 4, 7, and 10th site (yellow rectangle). Here, S is the magnitude of the 
+total angular momentum, which is referred to as “spin” hereafter, and τ is the golden mean τ = (1 +
+√
+5)/2.
+Minimal model for magnetism in rare earth based QC and AC. 
+We employ the minimal model for 
+the rare earth-based QC and AC introduced in Ref.19:
+B
+x
+y
+z
+O
+x
+y
+z
+C
+e1
+e2
+e3
+x
+y
+z
+a
+O
+A
+Figure 1.  (A) The hedgehog state in the IC, where the magnetic moments (red arrows) are directed outward 
+from the IC to the 5-fold axis direction. The rectangle in the IC is colored in purple, pink, and yellow (see text). 
+(B) Uniform hedgehog order at the center and corner of the bcc unit cell in the 1/1 AC. The box frame is the 
+cubic unit cell with the side length a. (C) Local coordinate at the Tb site with the orthogonal unit vectors ˆe1 , ˆe2 , 
+and ˆe3 where ˆe3 is directed to the magnetic easy axis arising from the CEF (see text). (This figure is created by 
+using Adobe Illustrator CS5 Version 15.1.0.).
+3
+Vol.:(0123456789)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+where Si is the “spin” operator at the ith Tb site with Si = 6 and Jij is the exchange interaction for the “spins” at 
+the ith and jth Tb sites. The second term represents the magnetic anisotropy arising from the CEF, where ˆei3 is 
+the unit vector along the magnetic easy axis arising from the CEF as shown in Fig. 1C (see Section “Methods” 
+for detail). This model is considered to be effective for broad range of the rare earth-based QC and AC, which is 
+not only restricted to the Tb-based system but also is applied to the other rare-earth-based QC and AC.
+The ground-state phase diagram of the model (1) applied to the single IC in the large-D limit was determined 
+by the numerical calculations for the ferromagnetic (FM)  interaction17 and the antiferromagnetic (AF) interac-
+tion Jij16, where J1 is the nearest neighbor (N.N.) interaction [5 bonds for each site with the bond length 0.374a 
+(1 bond) and 0.378a (4 bonds)] and J2 is the next nearest neighbor (N.N.N.) interaction [5 bonds for each site 
+with the bond length 0.610a (4 bonds) and 0.612a (1 bond)]. In both cases, the hedgehog state was shown to 
+be realized in the ground state phase diagram of J2/J1 . The model (1) was also applied to the 1/1 AC where the 
+nearest neighbor (N.N.) interaction and the next N.N. (N.N.N.) interaction not only for the intra IC but also for 
+the inter IC was considered in the large-D  limit16. The intra IC interaction is the same as noted above. As for the 
+inter IC interaction, the N.N. interaction is set to be J1 [5 bonds for each site with bond length 0.368a (4 bonds) 
+and 0.388a (1 bond)] and the N.N.N. interaction is set to be J2 [6 bonds for each site with bond length 0.528a (2 
+bonds) and 0.530a (4 bonds)]. It was shown in Ref.17 that this minimal model for the large-D limit explains the 
+magnetic structures of the FM order (ferrimagnet) observed in the 1/1 AC Au70Si17Tb1313 and the AFM order of 
+whirling-moment states in the 1/1 AC Au72Al14Tb1426.
+It was shown that for J2/J1 > 2 , the hedgehog state and anti-hedgehog state are realized at the center and 
+corner of the bcc unit cell in the ground  state16, 17. Within the linear spin-wave theory, we find that the uniform 
+hedgehog order is realized in the 1/1 AC as metastable state although the true ground state is alternated hedge-
+hog order as shown in Refs.16, 17. In this report, to get insight into the mechanism of the nonreciprocal magnetic 
+excitation in the uniform hedgehog order found in the QC, we analyze the magnetic excitation in the “uniform” 
+hedgehog state in the 1/1 AC by employing the metastable state (local minimum in the energy landscape) but 
+not the true ground state.
+Static structure factor of magnetism. 
+First, let us analyze the magnetic structure of the uniform hedge-
+hog ground state in the 1/1 AC. The static structure factor of magnetism is defined as
+where N is the total number of the Tb sites. Let us rewrite the position vector of the Tb site as ri = Rj + r0m , 
+where Rj denotes the position of the center of the IC and r0m denotes the position of the mth Tb site on the IC. 
+The position vector of the IC Ri is expressed as
+where ni is an integer and ai is the basic translation vector of the bcc lattice a1 = a
+2(−1, 1, 1) , a2 = a
+2(1, −1, 1) , 
+and a3 = a
+2(1, 1, −1) . Here, a is the lattice constant of the bcc unit cell (see Fig. 1B). The magnetic structure 
+factor (Eq. 2) is derived to be expressed in the convolution form as
+where the structure factor of the lattice FL(q) and the magnetic structure factor on a single IC SIC(q) are given by
+respectively. Here, NL = N3
+1 is the number of the primitive unit cell which contains the single IC i.e., 12 Tb sites 
+(note that the box frame drawn in Fig. 1B denotes the expanded unit cell which contains two ICs, i.e., 24 Tb sites) 
+and N = 12NL holds. The wave vector is given by
+where bi is the basic translation vector in the reciprocal lattice with b1 = 2π
+a (0, 1, 1) , b2 = 2π
+a (1, 0, 1) , and 
+b3 = 2π
+a (1, 1, 0).
+We consider the periodic boundary condition along ai for i = 1, 2, and 3. Then, ˜h , ˜k , and ˜l are given by ˜h = m1
+N1 , 
+˜k = m2
+N1 , and ˜l = m3
+N1 with integer mi (i = 1, 2, 3) . The structure factor of the bcc lattice of the 1/1 AC is calculated as
+(1)
+H =
+
+i,j
+JijSi · Sj − D
+
+i
+(Si · ˆei
+3)2,
+(2)
+Fs(q) =
+
+1
+N
+
+i
+Sieiq·ri
+
+2
+,
+(3)
+Ri = n1a1 + n2a2 + n3a3,
+(4)
+Fs(q) = FL(q)SIC(q),
+(5)
+FL(q) = 1
+N2
+L
+NL
+
+j=1
+NL
+
+j′=1
+eiq·(Rj−Rj′),
+(6)
+SIC(q) = 1
+122
+12
+
+m=1
+12
+
+m′=1
+Sm · Sm′eiq·(r0m−r0m′),
+(7)
+q = ˜hb1 + ˜kb2 + ˜lb3,
+4
+Vol:.(1234567890)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+For integer ˜h, ˜k, and ˜l , the vector q in Eq. (7) becomes the reciprocal lattice vector, i.e. q = Q˜h˜k˜l , where 
+Q˜h˜k˜l ≡ ˜hb1 + ˜kb2 + ˜lb3 with integer ˜h , ˜k , and ˜l . Then, we obtain FL(Q˜h˜k˜l) = 1 . As ˜h, ˜k , and ˜l deviate from the 
+integer values, FL(q) decays rapidly in the finite-size system. For the bulk limit, i.e., N1 → ∞ , FL(q) becomes 
+zero for non-integer ˜h , ˜k , and ˜l , which yields FL(q) = δq,Q˜h˜k˜l.
+Then, it tuns out that the convolution form in Eq. (4) indicates that the q vector giving Fs(q)  = 0 is restricted 
+to the integer values of ˜h , ˜k , and ˜l where FL(q) becomes non zero. We have calculated Fs(q) in N1 → ∞ 
+for q = 2π
+a (h, k, l) where h, k, and l are defined by h ≡ ˜k + ˜l , k ≡ ˜h + ˜l , and l ≡ ˜h + ˜k , respectively. For 
+(h, k, l) ∈ [−10, 10] , the maximum of Fs(q) is identified to be 0.215 at (h, k, l) = (±8, ±4, 0) , (0, ±8, ±4) , and 
+(±4, 0, ±8) . We plot Fs(q) for q = 2π
+a (h, k, 0) in the h-k plane in Fig. 2A. We have also calculated Fs(q) for 
+q = 2π
+a (h, 0, l) in the l-h plane at k = 0 and Fs(q) for q = 2π
+a (0, k, l) in the k-l plane at h = 0 . The results are the 
+same as those in Fig. 2A where h and k are replaced with l and h respectively and k and l respectively. It is noted 
+here that Eq. (4) is also applied to the QC, where FL(q) is the structure factor of the QC lattice.
+Here, to get insight into the magnetic structure on the IC, let us analyze SIC(q) in a single IC for gen-
+eral q . We have searched the maximum in SIC(q) for h, k, l ∈ [−10, 10] . Then, the maximum appears at 
+(h, k, l) = (±2.532, ±4.098, 0) , (0, ±2.532, ±4.098) , and (±4.098, 0, ±2.532) . Figure 2B shows SIC(q) in the h-k 
+plane at l = 0 . We note that the analytic form of SIC(q) for q = 2π
+a (h, k, 0) can be derived as
+We have also calculated SIC(q) for q = 2π
+a (h, 0, l) in the l-h plane at k = 0 and SIC(q) for q = 2π
+a (0, k, l) in the 
+k-l plane at h = 0 . The results are the same as those where h and k in Fig. 2B are replaced with l and h respectively 
+and k and l respectively. These are understandable from the symmetry of the hedgehog shown in Fig. 1A. Namely, 
+the alignment of the magnetic moments on the IC is invariant under the permutation of the x, y, and z axes so 
+that the same results of SIC(q) are obtained by replacing (qx, qy, qz) with (qz, qx, qy) and also with (qy, qz, qx)18.
+Dispersion of magnetic excitation from the hedgehog ground state. 
+ To clarify the property of 
+the magnetic excitation in the uniform hedgehog order in the 1/1 AC, we employ the linear spin-wave theory (see 
+Section “Methods”). Namely, we apply the Holstein-Primakoff  transformation37 to H, the “spin” operators are 
+transformed to the boson operators as Si · ˆei
+3 = S − ni with ni ≡ a†
+i ai , S−
+i = a†
+i
+√2S − ni , and S+
+i = √2S − niai , 
+where S+
+i (S−
+i ) is the raising (lowering) “spin” operator and a†
+i (ai) is a creation (annihilation) operator of the 
+boson at the ith Tb site. We retain the quadratic terms of the boson operators since the higher order terms are 
+irrelevant at least for the ground state. By taking the primitive unit cell under the periodic boundary condition, 
+(8)
+FL(q) = 1
+N2
+L
+sin2(π ˜hN1)
+sin2(π ˜h)
+sin2(π ˜kN1)
+sin2(π ˜k)
+sin2(π˜lN1)
+sin2(π˜l)
+.
+(9)
+SIC(q) = 1
+36
+
+1 +
+τ
+τ + 2
+
+{1 − cos(4πhd2)} + 1
+36
+
+1 −
+τ
+τ + 2
+
+{1 − cos(4πkd1)}
++ 1
+36
+
+1 − cos(4πhd1) cos(4πkd2) +
+τ
+τ + 2{cos(4πhd1) − cos(4πkd2)}
+
++ 2
+9
+τ
+τ + 2{sin(2πhd1) sin(2πhd2) cos(2πkd2) + cos(2πhd1) sin(2πkd1) sin(2πkd2)}.
+A
+0.000
+0.285
+0.028
+0.057
+0.085
+0.114
+0.142
+0.171
+0.199
+0.228
+0.256
+-10
+10
+0
+0
+10
+-10
+h
+k
+-10
+10
+0
+0
+10
+-10
+h
+k
+B
+Figure 2.  (A) The magnetic structure factor of the 1/1 AC Fs(q) for q = 2π
+a (h, k, 0) in the h-k plane. (B) The 
+magnetic structure factor of the IC SIC(q) for q = 2π
+a (h, k, 0) in the h-k plane. The color scale is common to that 
+in (A). (This figure is created by using Adobe Illustrator CS5 Version 15.1.0.).
+5
+Vol.:(0123456789)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+we have performed the numerical calculations in the systems with N1 = 8, 64, and 256, and show the results in 
+N1 = 256.
+The excitation energy ωm′(q) is obtained by diagonalizing the spin-wave Hamiltonian under the assumption 
+that the uniform arrangement of the hedgehog state in the 1/1 AC. The result of ωm′(q) for q (solid line) along 
+the symmetry line illustrated in the inset is shown in Fig. 3. We have confirmed that by assuming the uniform 
+hedgehog ground state, all the excitation energies are positive ωm′(q) > 0 for J1 = 1.0 , J2 = 2.3 , and D = 50.0 
+as shown in Fig. 3. Positive excitation energies indicate that the assumed ground state is stable at least as a local 
+minimum in the energy landscape. Although the AFM interaction between the ICs conflicts with uniform 
+arrangement of the hedgehog state, the strong uniaxial anisotropy D = 50.0 as well as the strong N.N.N. AFM 
+interaction J2 inside the IC gives rise to the metastable state within the linear spin-wave theory. It should be noted 
+here that the true ground state is the hedgehog-anti-hedgehog ordered state as shown in Ref.16 and the uniform 
+hedgehog order is the metastable state with the higher energy. In this report, the results for J1 = 1.0 , J2 = 2.3 , 
+and D = 50.0 are presented as the representative case of the uniform hedgehog order. Figure 3 shows ωm′(q) for 
+q (solid line) along the symmetry line illustrated in the inset. Because of the uniaxial anisotropy due to the CEF, 
+the energy dispersion emerges beyond the excitation gap.
+We also plot ωm′(−q) (dashed line) for q along the same symmetry line for the ωm′(q) in Fig. 3. It is remark-
+able that clear deviation from the solid line emerges along the N-P-Ŵ line, indicating ωm′(q) = ωm′(−q) . Namely, 
+nonreciprocal excitation appears in the uniform hedgehog order in the 1/1 AC. We have calculated the magnon 
+dispersion in the collinear FM order in the 1/1 AC and have confirmed that the nonreciprocal dispersion does 
+not appear (Supplementary information, Fig. S1). Since the lattice structure of the 1/1 AC has the inversion sym-
+metry (see Fig. 1B), the emergence of the nonreciprocal dispersion is ascribed to the alignment of the magnetic 
+moments in the hedgehog state (see Fig. 1A). This point will be discussed in detail in the section of analysis of 
+nonreciprocal excitation below.
+Magnetic dynamical structure factor. Next, we calculate the magnetic dynamical structure factor defined by
+where |GS is the ground state with the energy E0 and Sqα is the Fourier transformation of the “spin” operator 
+defined by Sqα =
+1
+√
+N
+N
+i=1 e−iq·riSiα . We set η = 10−3 . The intensity of inelastic neutron scattering is expressed 
+by the dynamical structure factor
+where q is the incident wavevector and ˆqα ≡ qα/|q|38. The results of S⊥(q, ω) for q along the symmetry line in the 
+bcc unit cell illustrated in the inset of Fig. 3 are shown in Fig. 4A. Notable is that the high intensities appear in 
+the high-energy branches, especially along the Ŵ -H line and the P-Ŵ -N line. In the upper branches, the relatively 
+high and moderate intensities appear.
+This is in sharp contrast to the case in the collinear FM order in the 1/1 AC where high intensity in Sxx(q, ω) 
+and Syy(q, ω) appears continuously from the Ŵ point in the magnon branch with the lowest excitation energy 
+(Supplementary information, Fig. S3). In Fig. 4, the remarkable intensity appears for q along the N-P-Ŵ line where 
+the nonreciprocal dispersion ωm′(q) = ωm′(−q) appears (see Fig. 3).
+In the QC, the dynamical structure factor was calculated in Ref.18 where the high intensity appears around 
+the Ŵ point in the high energy region. The high intensities of S⊥(q, ω) around the Ŵ point, i.e., along the Ŵ -H line 
+as well as the P-Ŵ -N line shown in Fig. 4A capture this feature. Figure 4B shows the intensity plots of S⊥(−q, ω) 
+for the same q presented in Fig. 4A. By comparing Fig. 4B with Fig. 4A, we see that the nonreciprocity can be 
+detected as the differences in the intensities of S⊥(−q, ω) and S⊥(q, ω) for q along the N-P-Ŵ line. Namely, the 
+nonreciprocal dispersion is remarkable by the intensity differences of the dynamical structure factors in the 
+upper and lower branches.
+(10)
+Sαβ(q, ω) = − 1
+π ImGS|Sqα
+1
+ω + E0 − H + iη S−qβ|GS,
+(11)
+S⊥(q, ω) =
+
+α,β=x,y,z
+(δαβ − ˆqα ˆqβ)Sαβ(q, ω),
+100
+105
+110
+(q)/(SJ1)
+ q
+ -q
+qy
+qx
+qz
+P
+N
+H
+H
+N
+P
+N
+Figure 3.  The excitation energy ωm′(q) (solid line) and ωm′(−q) (dashed line) for q along the symmetry line 
+in the bcc unit cell illustrated in the inset. The inset shows the unit cell of the bcc lattice of the 1/1 AC in the 
+reciprocal lattice space. (This figure is created by using Adobe Illustrator CS5 Version 15.1.0.).
+6
+Vol:.(1234567890)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+Analysis of nonreciprocal excitation. To analyze the mechanism of the emergence of the nonreciprocal 
+excitation, let us consider how the excitation from the hedgehog ground state propagates in the 1/1 AC.
+First, for comparison, let us consider the collinear FM ordered state in one dimensional lattice shown in 
+Fig. 5A where the magnetic moment with the total angular momentum J = 6 is aligned to the z direction and 
+the lattice is formed along the transverse direction, which is set as the x axis. Namely, |J = 6, Jz = 6 is realized at 
+each site, which is denoted as |Jzi , i.e., |6i hereafter. Then, let us consider the excited state created at the ith site, 
+H
+N
+P
+N
+H
+N
+P
+N
+B
+A
+0
+578.8
+520.9
+463.0
+405.2
+347.3
+289.4
+231.5
+173.6
+115.8
+57.88
+/(SJ1)
+/(SJ1)
+Figure 4.  Intensity plots of the dynamical structure factors (A) S⊥(q, ω) and (B) S⊥(−q, ω) along the symmetry 
+line in the unit cell of the bcc lattice illustrated in the inset of Fig. 3. In (B), the color scale is common to that in 
+(A). (This figure is created by using Adobe Illustrator CS5 Version 15.1.0.).
+x
+z
+6 i
+6 i
++1
+6 i
+-1
+6 i
+-2
+6 i
++2
+A
+x
+z
+5 i
+6 i
++1
+6 i
+-1
+6 i
+-2
+6 i
++2
+B
+x
+z
+y
+x
+z
+y
+C
+D
+1
+12
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+Figure 5.  (A) The collinear FM order in the x chain. Each magnetic moment is aligned along the z direction 
+with Jz = 6 . (B) The excited state with Jz = 5 shows precession at the ith site. (C) The excited state with Jz = 5 
+showing precession of the magnetic moment at the 1st site (blue arrow) on the IC. The propagation of the 
+precession to the 2nd site is illustrated by the yellow arrow. (D) The excited state with Jz = 5 showing precession 
+of the magnetic moment at the 12nd site (blue arrow) on the IC. The propagation of the precession to the 10th 
+site is illustrated by the yellow arrow. (This figure is created by using Adobe Illustrator CS5 Version 15.1.0.).
+7
+Vol.:(0123456789)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+i.e., |5i illustrated in Fig. 5B. This excited state describes the precession around the ordered moment direction, 
+i.e., z axis, which propagates to neighboring sites via the exchange interaction J1(SixSjx + SiySjy) . Namely, the 
+excited state at the ith site propagates to the jth site as
+Here, the relation of Six = (S+
+i + S−
+i )/2 and Siy = (S+
+i − S−
+i )/(2i) and S+
+i |5 =
+√
+12|6 and S−
+i |6 =
+√
+12|5 
+are used. Hence, for the right neighbor site j = i + 1 , the excitation is expressed as the plane wave 
+6J1 exp{iq · (ri − ri+1)} = 6J1 exp(−iqxa) where a is the lattice constant. For the left neighbor site j = i − 1 , 
+the excitation is expressed as the plane wave 6J1 exp{iq · (ri − ri−1)} = 6J1 exp(iqxa) . The superposition of these 
+yields the excitation energy ε(q) of the magnon
+Since the right moving wave and left moving wave both have the same matrix element 6J1 as Eq. (12), the excita-
+tion has the reciprocal energy with respect to the transverse wavevector to the ordered moment direction, i.e., 
+ε(−qx) = ε(qx) . It is noted that we have confirmed that the reciprocal magnon dispersion appears in the collinear 
+FM order in the 1/1 AC (Supplementary information, Fig. S2).
+Next, let us consider the excitation from the uniform hedgehog ordered state in the 1/1 AC composed of 
+the regular IC. Suppose that among 12 vertices of the regular IC with the |J = 6, Jz = 6 states, an excited state 
+|J = 6, Jz = 5 is created at a single site, e.g., the ith site. This excited state can propagate to the neighboring sites 
+via the interaction J1Si · Sj . Since the |J, Jz state is defined at each site with the local coordinate, hereafter we 
+denote the state at the ith site as |Jzi . The neighboring |Jz = 5i ⊗ |Jz = 6j state is exchanged as
+where Ri
+nn′ is the rotation matrix at the ith site defined in Eq. (20) (see Section “Methods”). Note that as expressed 
+by the n = 3 component in the right hand side (r.h.s.) of Eq. (14), Sz
+i Sz
+j also contributes to the exchange of |5i|6j 
+and |6i|5j because of the non-collinear alignment of the magnetic moments. The excitation energy ε(q) is 
+obtained by diagonalizing the matrix describing the propagation of |5i among the |6j states on all the j( = i) th 
+sites
+where i and j denote the Tb sites inside the primitive unit cell of the bcc lattice.
+Let us focus on the excited state at the i = 1 st site |51 illustrated as the precession of the blue arrow in Fig. 5C. 
+This state propagates to the neighboring j = 2 nd site (see the yellow arrow in Fig. 5C), which is expressed by 
+the matrix element
+Here, r1 = d(1, τ, 0) and r2 = d(0, 1, τ) are used. On the other hand, the matrix element between the spatially 
+inverted sites i = 12 and j = 10 (see the yellow arrow in Fig. 5D) is calculated by Eq. (14) as
+Here, r12 = d(−1, −τ, 0) and r10 = d(0, −1, −τ) are used. The sign in the iτ term in Eqs. (16) and (17) are oppo-
+site, which signals the nonreciprocal excitation. This can be understood by taking the superposition of Eq. (16) 
+and its spatially inverted term Eq. (17) as done in Eq. (13)
+The cos term is even function in terms of q , while the sin term is odd function giving rise to the nonreciprocal 
+contribution. Namely, the sign change occurs when q is replaced with −q in the sin term, which is in sharp con-
+trast to the collinear FM case in Eq. (13). The sin term also emerges for the other N.N. sites of j = 4, 5 , and 6 to the 
+i = 1 st site and their spatially inverted sites except for the j = 3 rd site (Supplementary information, Section IV).
+By diagonalizing Hi,j(q) in Eq. (15), the excitation energy εm′(q) is obtained. Figure 6A shows the lowest exci-
+tation energy ε1(q) in the h-k plane at l = 0 for q = 2π
+a (h, k, l) . The result shows ε1(qx, qy, 0) = ε1(−qx, −qy, 0) 
+indicating that the reciprocal excitation appears in the qx-qy plane at qz = 0 . This explains the result shown in 
+Fig. 3 where ωm′(q) = ωm′(−q) holds along the Ŵ-H-N line and the Ŵ -N line. We have also calculated ε1(q) in 
+the k-l plane at h = 0 and in the l-h plane at k = 0 . The result is the same as Fig. 6A with h and k being replaced 
+with k and l respectively in the former case and also with h and k being replaced with l and h respectively in the 
+latter case. These results show that ε1(qx, 0, qz) = ε1(−qx, 0, −qz) and ε1(0, qy, qz) = ε1(0, −qy, −qz).
+(12)
+J1(SixSjx + SiySjy)|5i|6j =J1
+2 (S+
+i S−
+j + S−
+i S+
+j )|5i|6j
+=6J1|6i|5j.
+(13)
+ε(q) = 6J1(eiqxa + e−iqxa) = 12J1 cos(qxa).
+(14)
+J1Si · Sj|5i|6j = 3J1
+3
+
+n=1
+(Ri
+n1 − iRi
+n2)(Rj
+n1 + iRj
+n2)|6i|5j
+(15)
+Hi,j(q) = 3J1
+3
+
+n=1
+(Ri
+n1 − iRi
+n2)(Rj
+n1 + iRj
+n2)eiq·(ri−rj),
+(16)
+H1,2(q) = 3J1
+1
+√τ + 2(1 + τ − iτ)ei{qx+qy(τ−1)−τqz}d.
+(17)
+H12,10(q) = 3J1
+1
+√τ + 2(1 + τ + iτ)e−i{qx+qy(τ−1)−τqz}d.
+(18)
+6J1
+1 + τ
+√τ + 2 cos[{qx + qy(τ − 1) − τqz}d] + 6J1
+τ
+√τ + 2 sin[{qx + qy(τ − 1) − τqz}d].
+8
+Vol:.(1234567890)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+Next, we plot ε1(q) in the h-l plane for q = 2π
+a (h, h, l) in Fig.  6B. The result shows that 
+ε1(qx, qx, qz)  = ε1(−qx, −qx, −qz) , namely, nonreciprocal excitation appears, which is most prominent at 
+(h, k, l) = (1/2, 1/2, 1/2) . This indicates that the point P and P’ in the reciprocal lattice space (see inset in Fig. 6C) 
+are not equivalent. This explains the result shown in Fig. 3 where the nonreciprocal excitation ωm′(q) = −ωm′(q) 
+appears along the N-P-Ŵ line.
+We show εm′(q) for m′ = 1, 2, . . . , 12 for q along the symmetry line displayed in the inset of Fig. 6C. We note 
+that ε1(−q) (blue dashed line) at the P point in Fig. 6C is equivalent to the energy at P’ in Fig. 6B. As discussed 
+in Fig. 6B, the nonreciprocal excitation is remarkable along the N-P-Ŵ line not only for the first excited state, i.e., 
+m′ = 1 , but also for m′ > 1 as shown in Fig. 6C. These behaviors are consistent with the nonreciprocal feature 
+emerging prominently along the N-P-Ŵ line in Fig. 3. It is noted that to demonstrate the emergence of the analytic 
+form of the sin function [see Eq. (18)], here we discuss the energy dispersion εm′(q) for the N.N. interaction J1 
+in Fig. 6C. Since the energy dispersion ωm′(q) is plotted in Fig. 3 after subtraction of the ground state energy 
+[see the denominator in r.h.s. of Eq. (10)] for not only the N.N. interaction but also the N.N.N. interaction and 
+uniaxial anisotropy, the energy dispersions in Figs. 3 and 6C are different. However, the nonreciprocal disper-
+sions appear remarkably along the N-P-Ŵ line in both cases.
+The origin of the nonreciprocity can be understood as follows: When the magnetic moment at each Tb site 
+located at the position r is spatially inverted by operating −r with each moment direction being kept (see Fig. 1A), 
+the hedgehog state on the IC is transformed to the anti-hedgehog state. The anti-hedgehog state is defined as the 
+state where the magnetic moment directions are all inverted from those shown in Fig. 1A. The same is applied 
+to the 1/1 AC (see Fig. 1B). Since the magnetic state changes by the space inversion, the inversion symmetry is 
+broken by the hedgehog ordering. Hence, the nonreciprocal dispersion is considered to appear in the excitation 
+from the uniform hedgehog order in the 1/1 AC.
+As for the uniform hedgehog order in the QC, the nonreciprocal excitation was reported in Ref.18. Since the 
+infinite limit of the unit cell size of a series of ACs (1/1, 2/1, 3/2, . . . ACs) corresponds to the QC, the infinite 
+folding of the energy dispersion of magnon is expected to occur in the QC. This tendency was indeed confirmed 
+by theoretical calculations in one-dimensional  system39 and two-dimensional  system40. This is considered to 
+be reflected in the fine structures of the intensities in the dynamical structure factor for the wide q-ω plane in 
+A
+1.0
+0.5
+0.0
+-0.5
+-1.0
+- 0.1
+- 5.0
+0.0
+5.0
+0.1
+1.0
+0.5
+0.0
+-0.5
+-1.0
+- 0.1
+- 5.0
+0.0
+5.0
+0.1
+B
+-7.658
+-8.400
+-9.142
+-9.883
+-10.62
+-11.37
+-12.11
+-12.85
+-13.59
+-14.33
+-15.07
+h
+k
+h
+l
+P
+P’
+H
+H
+N
+N
+P
+C
+qy
+qx
+qz
+P
+N
+H
+P’
+-10
+0
+10
+20
+( )
+ q
+-q
+q
+Figure 6.  (A) ε1(q) for q = 2π
+a (h, k, 0) in the h-k plane. (B) ε1(q) for q = 2π
+a (h, h, l) in the h-l plane. The color 
+scale is the same as that in (A). (C) εm′(q) for q along the symmetry line shown in the inset. (This figure is 
+created by using Adobe Illustrator CS5 Version 15.1.0.).
+9
+Vol.:(0123456789)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+the icosahedral QC as if they are continuum shown in Ref.18 where the recursive structure, i.e., the self-similar 
+structure, appears in the intensities. These results suggest that the hedgehog ordering which breaks the spatial 
+inversion symmetry is the origin of the nonreciprocity in the  QC18.
+Summary and discussion
+We have clarified the dynamical as well as static magnetic structure in the uniform hedgehog order in the 1/1 
+AC. We have shown that the static structure factor of magnetism in the 1/1 AC is generally expressed as the 
+convolution form Fs(q) = FL(q)SIC(q) where FL(q) is the lattice structure factor and SIC(q) is the magnetic 
+structure factor of the IC. We have revealed the static structure factor in the uniform hedgehog order by deriving 
+the analytic forms of FL(q) and SIC(q) as well as by calculating them numerically.
+We have discovered that the nonreciprocal dispersion of the excitation energy appears prominently along 
+the N-P-Ŵ line in the reciprocal lattice q space. The dynamical structure factor of the magnetic excitation in the 
+hedgehog state exhibits the high intensities in the high-energy branches along the Ŵ -H line and the P-Ŵ -N line. 
+The nonreciprocity S(q, ω)  = S(−q, ω) is remarkable in the high-energy branches for q along the N-P-Ŵ line. The 
+nonreciprocity is clarified to be ascribed to inversion symmetry breaking by the hedgehog ordering whose micro-
+scopic source is the strong uniaxial anisotropy D as well as the strong N.N.N. AFM interaction J2 inside the IC. 
+In the ferrimagnetic order in the 1/1 AC, the reciprocal dispersion of the magnetic excitation ωm′(q) = ωm′(−q) 
+ appears19. Since the spatial inversion symmetry is not broken by the ferrimagnetic order in the 1/1 AC, the above 
+statement is consistent with this case. As for the ferrimagnetic order in the QC discussed in Ref.19, spatial inver-
+sion symmetry is not broken. The intensities of the dynamical structure factors S(q, ω) and S(−q, ω) are almost 
+the same but there exist slight differences in the intensities at some (q, ω)  points19 [see S⊥(q, ω) and S⊥(−q, ω) 
+in Fig. S5 in Supplementary Information]. The clarification of this origin is left for future study.
+In the hedgehog order in the QC, the nonreciprocal excitation in the hedgehog state appears in the vast 
+extent of the q-ω plane where the dynamical structure factor exhibits S(q, ω)  = S(−q, ω) with considerable 
+ intensities18. It is noted that we have confirmed on this point for S⊥(q, ω) , i.e., S⊥(q, ω) = S⊥(−q, ω) . Namely, 
+|S⊥(q, ω) − S⊥(−q, ω)| exhibits considerable intensities (Supplementary Information, Fig. S6B). In the 1/1 AC, 
+the dynamical structure factor shows remarkable difference between the intensities of S(q, ω) and S(−q, ω) for 
+q along the N-P-Ŵ line where the nonreciprocal dispersion ωm′(q) = ωm′(−q) appears.
+These results indicate that the emergence of considerable intensity peaks in S(q, ω) with different values 
+between q and −q in the wide q-ω plane is attributed to the QC lattice structure.
+The present study has pointed out that the inversion symmetry breaking by the uniform hedgehog ordering 
+causes the nonreciprocity S(q, ω)  = S(−q, ω) . There exists a series of the ACs such as 1/1 AC, 2/1 AC, 3/2 AC, 
+. . . , where the n → ∞ limit in the Fn−1/Fn−2 ACs corresponds to the QC with Fn being the Fibonacci number. 
+Hence, as n increases, the size of the unit cell in the Fn−1/Fn−2 AC expands, where the nonreciprocal dispersion 
+of the excitation energy giving rise to S(q, ω)  = S(−q, ω) is considered to appear when the uniform hedgehog 
+ordering occurs because of the inversion symmetry breaking. Then, in the n → ∞ limit corresponding to the 
+infinite limit of the unit-cell size of the AC, the nonreciprocity S(q, ω)  = S(−q, ω) is considered to appear in the 
+uniform hedgehog order in the QC. Hence, the symmetry argument clarified in this study is useful for under-
+standing the nonreciprocal magnetic excitation emerging in the QC.
+Thus far, the dynamical structure factor of the icosahedral QC and AC has not been observed experimentally. 
+Hence, the present study is expected to stimulate future experiments to search for unique magnetic states such 
+as the hedgehog and also to observe the dynamical as well as static structure factor of the magnetism.
+Methods
+Linear spin-wave theory for hedgehog state. 
+To analyze the dynamical structure factor for the hedge-
+hog state in the 1/1 AC, the linear spin-wave theory is used in this study. Since the hedgehog state is non-col-
+linear magnetic state, it is convenient to introduce the local orthogonal coordinate at the ith Tb site spanned by 
+the unit vectors ˆei
+β (β = 1, 2 , and 3) (see Fig. 1C) where ˆei
+3 is directed to the magnetic easy axis of the hedgehog 
+state, i.e., the 5-fold axis direction of the regular  IC16. The relation between the unit vector ˆrα in the global coor-
+dinate (ˆr1 ≡ ˆx, ˆr2 ≡ ˆy , and ˆr3 ≡ ˆz) and ˆei
+β is given by
+where the direction of ˆei
+3 is expressed by the polar angles (θi, φi) and Ri is the rotation matrix given  by42,
+Then, the interaction of “spins” between the ith and jth sites described by the first term in Eq. (1) is expressed as
+By employing the relation Si · ˆei
+1 = (S+
+i + S−
+i )/2 and Si · ˆei
+2 = (S+
+i − S−
+i )/(2i) where S+
+i  and S−
+i  are raising and 
+lowering “spin” operators, respectively, we apply the Holstein-Primakoff  transformation37 to H. Namely, “spin” 
+operators are transformed to the boson operators as S+
+i = √2S − niai , S−
+i = a†
+i
+√2S − ni and Si · ˆei
+3 = S − ni 
+with ni ≡ a†
+i ai where a†
+i (ai) is the creation (annihilation) operator of the boson at the ith site. We retain the 
+(19)
+ˆrα = Ri
+αβ ˆei
+β,
+(20)
+Ri =
+cos θi cos φi
+− sin φi
+sin θi cos φi
+cos θi sin φi
+cos φi
+sin θi sin φi
+− sin θi
+0
+cos θi
+
+.
+(21)
+
+i,j
+Ji,j(Si · ei
+α)(Sj · ej
+β)
+
+γ
+Ri
+α,γ Rj
+γ ,β.
+10
+Vol:.(1234567890)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+quadratic terms with respect to a†
+i and ai , which are considered to be at least valid for the ground state. Since the 
+hedgehog state has non-collinear magnetic structure, the anomalous terms such as a†
+i a†
+j and aiaj in addition to 
+the normal terms aia†
+j and a†
+i aj appear. The position of the ith site is expressed as ri = Rj + r0m where Rj denotes 
+the position of the center of the IC and r0m denotes the position of the mth Tb site on the IC. Hence, by perform-
+ing the Fourie transformations a†
+i = a†
+j,m =
+1
+√NL
+
+q e−iq·(Rj+r0m)a†
+q,m and ai = aj,m =
+1
+√NL
+
+q eiq·(Rj+r0m)aq,m 
+with q being the wave vector, the spin-wave Hamiltonian is expressed by a†
+q,m and aq,m . Then, by performing the 
+Bogoliubov transformation, i.e., the para-unitary  transformation41, the spin-wave Hamiltonian is diagonalized 
+as
+Here, ωm′(q)(> 0) is the energy of the m′ th spin wave and b†
+q,m′ (bq,m′) is the creation (annihilation) operator of 
+the boson which is given by the linear combination of the boson operators of a†
+q,m and aq,m.
+Data availability
+All the data supporting the findings are available from the corresponding author upon reasonable request.
+Received: 26 July 2023; Accepted: 24 August 2023
+References
+ 1. Shechtman, D., Blech, I., Gratias, D. & Cahn, J. W. Metallic phase with long-range orientational order and no translational sym-
+metry. Phys. Rev. Lett. 53, 1951 (1984).
+ 2. Tsai, A. P., Guo, J. Q., Abe, E., Takakura, H. & Sato, T. J. A stable binary quasicrystal. Nature 408, 537 (2000).
+ 3. Takakura, H., Gómez, C. P., Yamamoto, A., De Boissieu, M. & Tsai, A. P. Atomic structure of the binary icosahedral Yb-Cd qua-
+sicrystal. Nat. Mater. 6, 58 (2007).
+ 4. Suzuki, S. et al. Magnetism of Tsai-type quasicrystal approximants. Mater. Trans. 62, 298–306 (2021).
+ 5. Tamura, R., Muro, Y., Hiroto, T., Nishimoto, K. & Takabatake, T. Long-range magnetic order in the quasicrystalline approximant 
+Cd6Tb. Phys. Rev. B 82, 220201(R) (2010).
+ 6. Mori, A. et al. Electrical and magnetic properties of quasicrystal approximants RCd6 (R: Rare Earth). J. Phys. Soc. Jpn. 81, 024720 
+(2012).
+ 7. Das, P. et al. Crystal electric field excitations in the quasicrystal approximant TbCd6 studied by inelastic neutron scattering. Phys. 
+Rev. B 95, 054408 (2017).
+ 8. Ishikawa, A. et al. Antiferromagnetic order is possible in ternary quasicrystal approximants. Phys. Rev. B 98, 220403R (2018).
+ 9. Sato, T. J. et al. Whirling spin order in the quasicrystal approximant Au72Al14Tb14 . Phys. Rev. B 100, 054417 (2019).
+ 10. Hiroto, T. et al. Ferromagnetism and re-entrant spin-glass transition in quasicrystal approximants Au-SM-Gd (SM = Si, Ge). J. 
+Phys. Condens. Matter. 25, 216004 (2013).
+ 11. Hiroto, T., Tokiwa, K. & Tamura, R. Sign of canted ferromagnetism in the quasicrystal approximants Au-SM-R (SM = Si, Ge and 
+Sn/R = Tb, Dy and Ho). J. Phys. Condens. Matter. 26, 216004 (2014).
+ 12. Ishikawa, A. et al. Composition-driven spin glass to ferromagnetic transition in the quasicrystal approximant Au-Al-Gd. Phys. 
+Rev. B 93, 024416 (2016).
+ 13. Hiroto, T. et al. Noncoplanar ferrimagnetism and local crystalline-electric-field anisotropy in the quasicrystal approximant Au70
+Si17Tb13 . J. Phys. Condens. Matter 32, 415802 (2020).
+ 14. Tamura, R. et al. Experimental observation of long-range magnetic order in icosahedral quasicrystals. J. Am. Chem. Soc. 143(47), 
+19938 (2021).
+ 15. Watanabe, S. & Kawamoto, M. Crystalline electronic field in rare-earth based quasicrystal and approximant: Analysis of quantum 
+critical Au–Al–Yb quasicrystal and approximant. J. Phys. Soc. Jpn. 90, 063701 (2021).
+ 16. Watanabe, S. Magnetism and topology in Tb-based icosahedral quasicrystal. Sci. Rep. 11, 17679 (2021).
+ 17. Watanabe, S. Topological magnetic textures and long-range orders in Terbium-based quasicrystal and approximant. Proc. Natl. 
+Acad. Sci. USA 118(43), e2112202118 (2021).
+ 18. Watanabe, S. Magnetic dynamics of hedgehog in icosahedral quasicrystal. Sci. Rep. 12, 15514 (2022).
+ 19. Watanabe, S. Magnetic dynamics of ferromagnetic long range order in icosahedral quasicrystal. Sci. Rep. 12, 10792 (2022).
+ 20. Kato, Y., Hayami, S. & Motome, Y. Spin excitation spectra in helimagnetic states: Proper-screw, cycloid, vortex-crystal, and hedge-
+hog lattices. Phys. Rev. B 104, 224405 (2021).
+ 21. Eto, R., Pohle, R. & Mochizuki, M. Low-energy excitations of skyrmion crystals in a centrosymmetric Kondo-lattice magnet: 
+Decoupled spin-charge excitations and nonreciprocity. Phys. Rev. Lett. 129, 017201 (2022).
+ 22. Tokura, Y. & Kanazawa, N. Magnetic skyrmion materials. Chem. Rev. 121, 2857 (2021).
+ 23. Iguchi, Y., Uemura, S., Ueno, K. & Onose, Y. Nonreciprocal magnon propagation in a noncentrosymmetric ferromagnet LiFe5O8 . 
+Phys. Rev. B 92, 184419 (2015).
+ 24. Gitgeatpong, G. et al. Nonreciprocal magnons and symmetry-breaking in the noncentrosymmetric antiferromagnet. Phys. Rev. 
+Lett. 119, 047201 (2017).
+ 25. Tokura, Y. & Nagaosa, N. Nonreciprocal responses from non-centrosymmetric quantum materials. Nat. Commun. 9, 3740 (2018).
+ 26. Sato, T. J. & Matan, K. Nonreciprocal magnons in noncentrosymmetric magnets. J. Phys. Soc. Jpn. 88, 081007 (2019).
+ 27. Kravchuk, V. P., Röβler, U. K., Brink, J. van den & Garst, M., Solitary wave excitations of skyrmion strings in chiral magnets. Phys. 
+Rev. B 102, 220408(R) (2020).
+ 28. Seki, S. et al. Propagation dynamics of spin excitations along skyrmion strings. Nat. Commun. 11, 256 (2020).
+ 29. Ogawa, N. et al. Nonreciprocity of spin waves in the conical helix state. Proc. Natl. Acad. Sci. USA 118(8), e2022927118 (2021).
+ 30. Matsumoto, T. & Hayami, S. Nonreciprocal magnon excitations by the Dzyaloshinskii–Moriya interaction on the basis of bond 
+magnetic toroidal multipoles. Phys. Rev. B 104, 134420 (2021).
+ 31. Ishibashi, M. et al. Spin wave resonance in perpendicularly magnetized synthetic antiferromagnets. Sci. Adv. 6(17), eaaz6931 
+(2021).
+ 32. Nikuni, T. & Shiba, H. Quantum fluctuations and magnetic structures of CsCuCl3 in high magnetic field. J. Phys. Soc. Jpn. 62, 3268 
+(1993).
+(22)
+H =
+
+q
+12
+
+m′=1
+ωm′(q)b†
+q,m′bq,m′.
+11
+Vol.:(0123456789)
+Scientific Reports |        (2023) 13:14438  | 
+https://doi.org/10.1038/s41598-023-41292-1
+www.nature.com/scientificreports/
+ 33. Zhitomirsky, M. E. & Zaliznyak, I. A. Static properties of a quasi-one-dimensional antiferromagnet in a magnetic field. Phys. Rev. 
+B 53, 3428 (1996).
+ 34. Miyahara, S. & Furukawa, N. Nonreciprocal directional dichroism and toroidalmagnons in helical magnets. J. Phys. Soc. Jpn. 81, 
+023712 (2012).
+ 35. Matsumoto, T. & Hayami, S. Nonreciprocal magnons due to symmetric anisotropic exchange interaction in honeycomb antifer-
+romagnets. Phys. Rev. B 101, 224419 (2020).
+ 36. Matsumoto, M., Hayashida, S. & Masuda, T. Analysis of field-induced nonreciprocal magnon in noncollinear magnet and applica-
+tion to S = 1 triangular antiferromagnet CsFeCl3 . J. Phys. Soc. Jpn. 89, 034710 (2020).
+ 37. Holstein, T. & Primakoff, H. Field dependence of the intrinsic domain magnetization of a ferromagnet. Phys. Rev. 58, 1098 (1940).
+ 38. Squires, G. L. Introduction to the Theory of Thermal Neutron Scattering 3rd edn. (Cambridge University Press, 2012).
+ 39. Ashraff, J. A. & Stinchcombe, R. B. Dynamic structure factor for the Fibonacci-chain quasicrystal. Phys. Rev. B 39, 2670 (1989).
+ 40. Wessel, S. & Milat, I. Quantum fluctuations and excitations in antiferromagnetic quasicrystals. Phys. Rev. B 71, 104427 (2005).
+ 41. Colpa, J. H. P. Diagonalization of the quadratic boson Hamiltonian. Physica A 93, 327 (1978).
+ 42. Haraldsen, J. T. & Fishman, R. S. Spin rotation technique for non-collinear magnetic systems: Application to the generalized Villain 
+model. J. Phys. Condens. Matter. 21, 216001 (2009).
+Acknowledgements
+The author thanks H. Harima and T. Ishimasa for valuable discussion. This work was supported by JSPS KAK-
+ENHI Grant Numbers JP18K03542, JP19H00648, JP22H0459, JP22H01170, and JP23K17672.
+Author contributions
+S.W. conceived the study and led the project. Theoretical calculation was performed by S.W. The manuscript 
+was written by S.W.
+Competing interests 
+The author declares no competing interests.
+Additional information
+Supplementary Information The online version contains supplementary material available at https:// doi. org/ 
+10. 1038/ s41598- 023- 41292-1.
+Correspondence and requests for materials should be addressed to S.W.
+Reprints and permissions information is available at www.nature.com/reprints.
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+Open Access  This article is licensed under a Creative Commons Attribution 4.0 International 
+License, which permits use, sharing, adaptation, distribution and reproduction in any medium or 
+format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the 
+Creative Commons licence, and indicate if changes were made. The images or other third party material in this 
+article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the 
+material. If material is not included in the article’s Creative Commons licence and your intended use is not 
+permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from 
+the copyright holder. To view a copy of this licence, visit http:// creat iveco mmons. org/ licen ses/ by/4. 0/.
+© The Author(s) 2023
+

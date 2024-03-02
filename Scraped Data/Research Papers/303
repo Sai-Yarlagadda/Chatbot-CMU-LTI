@@ -1,0 +1,1264 @@
+UNIVERSLU: UNIVERSAL SPOKEN LANGUAGE UNDERSTANDING FOR DIVERSE
+CLASSIFICATION AND SEQUENCE GENERATION TASKS WITH A SINGLE NETWORK
+Siddhant Arora1, Hayato Futami2, Jee-weon Jung1, Yifan Peng1,
+Roshan Sharma1, Yosuke Kashiwagi2, Emiru Tsunoo2, Shinji Watanabe1
+1Carnegie Mellon University
+2Sony Group Corporation
+ABSTRACT
+Recent studies have demonstrated promising outcomes by
+employing large language models with multi-tasking capabil-
+ities. They utilize prompts to guide the model’s behavior and
+surpass performance of task-specific models. Motivated by
+this, we ask: can we build a single model that jointly perform
+various spoken language understanding (SLU) tasks?
+To
+address this, we utilize pre-trained automatic speech recog-
+nition (ASR) models and employ various task and dataset
+specifiers as discrete prompts. We demonstrate efficacy of
+our single multi-task learning (MTL) model “UniverSLU”
+for 12 different speech classification and sequence genera-
+tion tasks across 17 datasets and 9 languages. Results show
+that UniverSLU achieves competitive performance and even
+surpasses task-specific models.
+We also conduct prelimi-
+nary investigations into enabling human-interpretable natural
+phrases instead of task specifiers as discrete prompts and test
+the model’s generalization capabilities to new paraphrases.
+Index Terms— SLU, multi-tasking, pre-trained models
+1. INTRODUCTION
+Multi-task learning (MTL) [1, 2] concurrently trains a model
+with multiple tasks, allowing the model to learn generaliz-
+able features instead of task-specific ones. The use of MTL
+approaches in natural language processing (NLP) [1, 3] and
+speech processing [4, 5] has garnered significant interest.
+This approach offers cost-efficiency by eliminating the need
+for separate models for each task. Further it has been hypoth-
+esised [2] that tasks can have synergy when being learned
+together. Previous studies [6, 7] have shown that MTL can
+even surpass task-specific models in certain scenarios, espe-
+cially for tasks with limited labeled data.
+MTL has been extensively explored in various NLP set-
+tings [8–15], ranging from similar tasks [16–19] to the same
+task across multiple domains and languages [20]. Similar in-
+vestigations have been conducted in speech processing such
+as adding auxiliary tasks [21–29] in automatic speech recog-
+nition (ASR) formulation. Multi-lingual ASR models [4, 30]
+have also been proposed to create a universal model for multi-
+ple languages. MTL has been employed beyond ASR across
+various tasks [31–36], primarily aiming to improve the per-
+formance of tasks with limited labeled data, such as spoken
+language understanding (SLU) or speech translation (ST) us-
+ing an auxiliary ASR objective. Another work [37] explores
+MTL for spoken language tasks by jointly training a shared
+ASR and NLP model using the reinforce framework.
+The rise of large language models (LLMs) like GPT-
+2 [38, 39] has sparked interest in MTL, where the selection
+of appropriate “prompts” [40] enables manipulation of the
+model’s behavior to perform specific tasks without additional
+task-specific parameters. LLMs are capable of handling di-
+verse prompts [41] unlike traditional MTL models that cannot
+adapt to variations in input format. Building upon LLM’s suc-
+cess in solving various NLP tasks, there is growing interest in
+leveraging the “pre-train, prompt, and predict” [40] paradigm.
+In this paradigm, a prompting function converts the input into
+the desired format for solving downstream tasks. Two main
+formats of prompts exist: discrete prompts [42, 43], which in-
+volve human-interpretable natural language phrases, and con-
+tinuous prompts [44], which prompt directly in the model’s
+embedding space. Efforts have been made to explore similar
+prompt-based paradigms for speech processing tasks [45–49].
+SpeechPrompt [48, 49] utilize continuous prompts, employ-
+ing trainable task-specific prompt vectors for prompt tuning
+on Generative Spoken Language Models (GSLMs) [50].
+Experimental results demonstrate the ability to construct a
+parameter-efficient model capable of performing multiple
+speech classification tasks.
+However, this model still lags
+behind task-specific baselines in most speech classification
+tasks and particularly struggles on sequence generation tasks.
+Motivated by the potential of prompt-based MTL, there
+has been interest in building “universal” speech models [4,
+51] that can perform ASR and ST across many languages.
+We extend this work by building a “universal” SLU model
+that can match or even surpass the performance of state-of-
+the-art (SOTA) task-specific models in SLU. We leverage the
+recently released Whisper [5] model, which has been pre-
+trained on labeled data for ASR and ST tasks using task and
+language specifiers as additional tokens. Prior works [52, 53]
+have experimented with different approaches for finetuning
+Whisper on new SLU tasks. In this work, we generalize the
+arXiv:2310.02973v1  [cs.CL]  4 Oct 2023
+Language Tag
+SCR
+Start of Transcript
+IC
+NER
+FSD
+SP
+ER
+Accent_Rec
+SCD
+GID
+AuC
+Dataset 
+Tag
+SLU Class 
+OR 
+SLU Sequence
+<latexit sha1_base64="DzYDhPmLt/912TPlY2z
+k+gJpBwM=">AB8nicbVBNS8NAEJ3Ur1q/qh69LBbBU0mKqMdSLx4r2A9IQtlsN+nSzSbsboQS+jO8eF
+DEq7/Gm/GTZuDtj4YeLw3w8y8IOVMadv+tiobm1vbO9Xd2t7+weFR/fikr5JMEtojCU/kMCKciZoTzP
+N6TCVFMcBp4Ngelf4gycqFUvEo56l1I9xJFjICNZGcr0OiyKJvBzVRvWG3bQXQOvEKUkDSnRH9S9vnJAs
+pkITjpVyHTvVfo6lZoTec3LFE0xmeKIuoYKHFPl54uT5+jCKGMUJtKU0Gih/p7IcazULA5MZ4z1RK16h
+fif52Y6vPVzJtJMU0GWi8KMI52g4n80ZpISzWeGYCKZuRWRCZaYaJNSEYKz+vI6beaznWz9XDVaHfKOK
+pwBudwCQ7cQBvuoQs9IJDAM7zCm6WtF+vd+li2Vqxy5hT+wPr8AeEwkFc=</latexit>(
+Language 
+Identification
+<latexit sha1_base64=
+"DzYDhPmLt/912TPlY2zk+gJpBwM=">AB8nicb
+VBNS8NAEJ3Ur1q/qh69LBbBU0mKqMdSLx4r2A9IQt
+lsN+nSzSbsboQS+jO8eFDEq7/Gm/GTZuDtj4YeL
+w3w8y8IOVMadv+tiobm1vbO9Xd2t7+weFR/fikr5J
+MEtojCU/kMCKciZoTzPN6TCVFMcBp4Ngelf4gyc
+qFUvEo56l1I9xJFjICNZGcr0OiyKJvBzVRvWG3bQX
+QOvEKUkDSnRH9S9vnJAspkITjpVyHTvVfo6lZoT
+ec3LFE0xmeKIuoYKHFPl54uT5+jCKGMUJtKU0Gih/
+p7IcazULA5MZ4z1RK16hfif52Y6vPVzJtJMU0GWi
+8KMI52g4n80ZpISzWeGYCKZuRWRCZaYaJNSEYKz+v
+I6beaznWz9XDVaHfKOKpwBudwCQ7cQBvuoQs9IJ
+DAM7zCm6WtF+vd+li2Vqxy5hT+wPr8AeEwkFc=</l
+atexit>(
+SLU Task Specifier
+<latexit sha1_b
+ase64="DzYDhPmLt/912TPlY2zk+gJ
+pBwM=">AB8nicbVBNS8NAEJ3Ur1q
+/qh69LBbBU0mKqMdSLx4r2A9IQtls
+N+nSzSbsboQS+jO8eFDEq7/Gm/GTZ
+uDtj4YeLw3w8y8IOVMadv+tiobm1vb
+O9Xd2t7+weFR/fikr5JMEtojCU/kM
+CKciZoTzPN6TCVFMcBp4Ngelf4gyc
+qFUvEo56l1I9xJFjICNZGcr0OiyKJv
+BzVRvWG3bQXQOvEKUkDSnRH9S9vnJA
+spkITjpVyHTvVfo6lZoTec3LFE0x
+meKIuoYKHFPl54uT5+jCKGMUJtKU0G
+ih/p7IcazULA5MZ4z1RK16hfif52Y6
+vPVzJtJMU0GWi8KMI52g4n80ZpISzW
+eGYCKZuRWRCZaYaJNSEYKz+vI6be
+aznWz9XDVaHfKOKpwBudwCQ7cQBvuo
+Qs9IJDAM7zCm6WtF+vd+li2Vqxy5hT
++wPr8AeEwkFc=</latexit>(
+Tokens predicted by Whisper Decoder
+No 
+Timestamps
+No Speech
+<latexit sha1_base64="DzYDhPmLt/912TPlY2z
+k+gJpBwM=">AB8nicbVBNS8NAEJ3Ur1q/qh69LBbBU0mKqMdSLx4r2A9IQtlsN+nSzSbsboQS+jO8eF
+DEq7/Gm/GTZuDtj4YeLw3w8y8IOVMadv+tiobm1vbO9Xd2t7+weFR/fikr5JMEtojCU/kMCKciZoTzP
+N6TCVFMcBp4Ngelf4gycqFUvEo56l1I9xJFjICNZGcr0OiyKJvBzVRvWG3bQXQOvEKUkDSnRH9S9vnJAs
+pkITjpVyHTvVfo6lZoTec3LFE0xmeKIuoYKHFPl54uT5+jCKGMUJtKU0Gih/p7IcazULA5MZ4z1RK16h
+fif52Y6vPVzJtJMU0GWi8KMI52g4n80ZpISzWeGYCKZuRWRCZaYaJNSEYKz+vI6beaznWz9XDVaHfKOK
+pwBudwCQ7cQBvuoQs9IJDAM7zCm6WtF+vd+li2Vqxy5hT+wPr8AeEwkFc=</latexit>(
+Voice Activity Detection
+Example Prompt: 
+<|en|> <|scr|> <|google_scr|> <|notimestamps|> down 
+<|lt|> <|scr|> <|lt_scr|> <|notimestamps|> iki 
+<|en|> <|fsd|> <|asvspoof|> <|notimestamps|> 
+class:spoof
+Example Prompt using Natural Phrases: 
+<|en|> Understanding spoken instructions  
+<|notimestamps|> down 
+<|en|> Recognizing voice commands  
+<|notimestamps|> down
+Fig. 1: Schematics of our discrete prompt-based MTL formulation
+Whisper model to a wide range of SLU tasks by utilizing
+discrete prompts in the form of task, dataset, and language
+specifiers.
+We aim to improve over prior speech prompt-
+ing approaches [48, 49] by finetuning the entire pre-trained
+ASR model, rather than relying solely on it for generating
+discrete tokens, which helps improve our MTL performance.
+Furthermore, by using discrete prompts instead of contin-
+uous prompts, we can extend our approach to use natural
+language phrases such as “Understanding spoken instruc-
+tions” (as shown in Fig. 1) instead of task specifiers like
+“⟨|scr|⟩”, making our approach more attractive for human
+consumption [40]. Our experiments encompass 10 speech
+classification tasks and 2 sequence generation tasks, covering
+17 datasets and 9 languages. Results indicate that our pro-
+posed approach significantly advances the SOTA in 11 speech
+classification datasets and achieves competitive performance
+compared to task-specific baselines in sequence generation
+tasks. Additionally, we make our source code and models
+publicly available, aiming to facilitate further research in
+prompt-based MTL for speech processing tasks.
+The key contributions of our work are summarised below.
+• We leverage Whisper [5] for predicting a variety of
+SLU tasks using discrete prompts in the form of lan-
+guage, task, and dataset specifiers.
+• To the best of our knowledge, this is the first work
+to build a single MTL model capable of achieving
+competitive performance or even outperforming SOTA
+task-specific models across as many as 17 benchmarks.
+• We introduce a novel paradigm of using human-
+interpretable natural language phrases generated by
+ChatGPT [54] as prompts to accomplish the SLU tasks.
+We show that our method can generalize to new para-
+phrases not seen during training.
+2. PROBLEM FORMULATION
+In this study, our objective is to propose a prompt-based
+MTL framework capable of performing various speech clas-
+sification and sequence generation tasks. Our model takes
+a sequence of speech features, denoted as X = {xt|t =
+1, . . . , T}, as input for all downstream tasks. Here, T repre-
+sents the length of the input sequence. For a specific down-
+stream task r, our aim is to predict the corresponding label
+sequence Y r = {yr
+o ∈ Lr|o = 1, . . . , Or}, where Lr repre-
+sents the label set and Or is the length of the output sequence
+for that particular task. It is worth noting that we also con-
+sider classification tasks where Or = 1. To achieve this, the
+prompting paradigm introduces a task-specific prompt Sr.
+Based on the maximum a posteriori (MAP) decision theory,
+the MTL model estimates ˆY r as:
+ˆY r = argmax P(Y r|X, Sr)
+(1)
+Prior studies [48, 49] have modelled the prompting for-
+mulation using GSLMs. They first encode the input speech
+sequence X into a sequence of discrete tokens U = {ut|t =
+1, . . . , T} using Self-supervised learning (SSL) speech model
+and a K-means quantizer. Subsequently, these discrete tokens
+are passed through an embedding layer Emb(·) and prepended
+with continuous task-specific vectors P r. These continuous
+prompt vectors are learned for each task by maximizing the
+posterior distribution P(Y r|Emb(U), P r).
+In our approach, instead of relying on the SSL model
+solely for generating discrete tokens, we finetune the entire
+pre-trained model for each individual task. To manipulate the
+model to perform the desired task, we explore the use of dis-
+crete prompts corresponding to sequences of tokens. We draw
+inspiration from the Whisper formulation, which utilizes only
+two task specifiers, namely ⟨|transcribe|⟩ and ⟨|translate|⟩, to
+facilitate MTL across ASR and ST tasks, respectively.
+In
+this study, we propose the use of a single token as specifier
+Stask for each task, Slang for each language, and Sdata for each
+dataset as explained in detail later in Section 3. As a result,
+we modify Eq. (1) as shown below:
+ˆY r = argmax P(Y r|X, Slang, Stask, Sdata)
+(2)
+Unlike prior studies [48, 49], we finetune entire model which
+can improve performance of our MTL model and outperform
+Table 1: Example prompts for different tasks, dataset, and languages
+Stask
+Sdata
+Slang
+Example Label
+Generated Prompt
+SCR
+Google SC v1
+En
+down
+⟨|en|⟩ ⟨|scr|⟩ ⟨|google scr|⟩ ⟨|notimestamps|⟩ down
+Lithuanian SC
+Lt
+iki
+⟨|lt|⟩ ⟨|scr|⟩ ⟨|lt scr|⟩ ⟨|notimestamps|⟩ iki
+LID
+Voxforge
+En, Es, Fr,
+Ru
+⟨|ru|⟩
+De, Ru, It
+FSD
+ASVspoof
+En
+spoof
+⟨|en|⟩ ⟨|fsd|⟩ ⟨|asvspoof|⟩ ⟨|notimestamps|⟩ class:spoof
+AcC
+AccentDB
+En
+telugu
+⟨|en|⟩
+⟨|accent rec|⟩
+⟨|accentdb|⟩
+⟨|notimestamps|⟩
+ac-
+cent:telugu
+VAD
+Google SC v2 + Freesound
+✗
+background
+⟨|nospeech|⟩
+AuC
+ESC-50
+✗
+audio class:17
+⟨|audio|⟩ ⟨|auc|⟩ ⟨|esc50|⟩ ⟨|notimestamps|⟩ audio class:17
+SP
+STOP
+En
+[in:create alarm [sl:date time seven
+pm tomorrow ] ]
+⟨|en|⟩
+⟨|sp|⟩
+⟨|STOP|⟩
+⟨|notimestamps|⟩
+[in:create alarm
+[sl:date time seven pm tomorrow ] ]
+task-specific baselines as validated empirically in section 5.
+Additionally, by using discrete instead of continuous prompts,
+we can use our approach to incorporate human interpretable
+natural phrases, such as “Recognizing voice commands”, in-
+stead of single token task specifiers Stask, as discussed in sec-
+tion 3.1. This approach enhances the attractiveness of our
+model for human interaction, as it allows for potential gener-
+alization to various paraphrases that specify the same task.
+3. PROMPT BASED MULTI-TASKING
+To achieve the formulation described in Eq. (2), this work
+proposes a discrete prompt-based MTL training format, as il-
+lustrated in Figure 1. The input speech X is passed through
+encoder (Encoder(·)) to produce acoustic embeddings (caco):
+caco = Encoder(X)
+(3)
+In encoder–decoder architectures, the decoder maps acoustic
+embeddings and the preceding tokens generated by the de-
+coder to hidden representations. In this work, we prepend
+task specifiers to the preceding tokens generated by the de-
+coder. This modification allows the decoder to condition its
+output on these discrete “prompts”, resulting in task-specific
+hidden representations hr
+o, which are computed as:
+hr
+o = Decoder(caco, Slang, Stask, Sdata, yr
+1:o−1)
+(4)
+where Slang, Stask, Sdata are discrete prompts specifying
+the language, task and dataset respectively, introduced in
+Eq (2).
+The likelihood of the entire label sequence i.e.
+P(Y r|X, Slang, Stask, Sdata) of Eq. (2) can be computed as:
+P(Y r|X, Slang, Stask, Sdata) =
+Or
+Y
+o=1
+Softmax(Out(hr
+o))
+(5)
+where Out(·) denotes a linear layer that maps decoder out-
+put hr
+o to vocabulary V followed by softmax function. The
+vocabulary V is the union of label sets Lr for all the tasks.
+We provide example prompts for some sample tasks and
+datasets in Table 1. For our experiments, we finetune the
+Whisper model [5]. Every decoded text sequence must be-
+gin with a ⟨|startoftranscript|⟩ token, which we omit from
+the example prompts for brevity. The model then performs
+language identification using Slang similar to its pre-training
+setup [5]. In addition to the 99 languages already considered
+during Whisper pre-training, we propose to add another lan-
+guage tag, “⟨|audio|⟩”, to enable audio-related tasks such as
+audio classification. If there is no speech in the audio seg-
+ment and the model is not prompted using “⟨|audio|⟩” tag,
+the model has been pre-trained to predict “⟨|nospeech|⟩” and
+finish decoding, which we finetune for Voice Activity Detec-
+tion. The next token is the task specifier Stask, and we add a
+new token to the vocabulary of the pre-trained model for each
+SLU task. Following the task specifier, we propose to add
+a new token Sdata for each dataset since the annotation man-
+ner can vary among different datasets such as in case of in-
+tent classification datasets [55, 56] which use different labels
+(deactivate lights none in [55] vs switchlightoff in [56]) to
+annotate the same intent. Finally, we specify that the model
+should not predict time stamps to simplify fine-tuning. The
+model then uses discrete prompts to predict the SLU class or
+label sequence for the given SLU task.
+3.1. Using Natural language Phrases as prompts
+We conduct initial experiments using natural language phrases
+instead of task specifiers as discrete prompts. For each task,
+we query ChatGPT [54] to obtain different ways of expressing
+the given task such as “Understanding spoken instructions”.
+We identify 15 natural phrases as prompts for training and
+2 phrases for testing our models. Table 5 in Supplementary
+material contains the list of natural language phrases used
+for training and testing.
+To use natural language phrases
+as prompts, we simply replace the task specifiers with the
+corresponding natural language phrase, such as: “⟨|en|⟩ Un-
+derstanding spoken instructions ⟨|notimestamps|⟩ down”.
+4. EXPERIMENTS
+4.1. Datasets
+To demonstrate the effectiveness of our MTL model, we con-
+duct experiments on 17 publicly available SLU datasets span-
+ning 12 tasks and 9 languages. Below, we provide a brief de-
+scription of each task and dataset. We will make all our data
+preparation and platform publicly available to provide further
+details about our data preparation setup.
+Intent Classification (IC) aims to recognize the intent
+from a user’s command in order to take appropriate action.
+We leverage 2 publicly available corpora, i.e., SNIPS and
+FSC. The SNIPS corpus [56] consists of 1,660 conversations
+with in-house voice assistant. For our experiments, we utilize
+a random split following the approach outlined in [57]. The
+Fluent Speech Commands (FSC) dataset [55] benchmarks
+IC performance with 30,043 commands spoken to an intelli-
+gent home assistant.
+Named Entity Recognition (NER) refers to the task of
+labeling the spoken tokens in a user’s command with associ-
+ated entities and recognizing mentions of these entities. It is
+a sequence generation task. The SLURP corpus [58] is an
+open source NER corpus consisting of 57.4 hours of single-
+turn conversations with a home assistant, making it relevant
+to commercial SLU applications. To augment our training set,
+we incorporate synthetic data, following prior work [31].
+Semantic Parsing (SP) is a sequence generation task
+that focuses on converting a spoken utterance into a semantic
+parse sequence, enabling the voice assistant to execute tasks
+effectively. The STOP dataset [59] is the largest semantic
+parsing dataset. It comprises over 200,000 audio files from
+more than 800 speakers across 8 different domains.
+Speech Command Recognition (SCR) refers to the task
+of detecting when a keyword has been spoken in an utter-
+ance. The Google Speech Commands dataset [60] consists
+of nearly 100,000 utterances of spoken keywords. The Grabo
+dataset [61] comprises English and Dutch spoken commands
+given to a robot for navigation. The dataset includes record-
+ings from 11 speakers issuing 36 different commands, each
+repeated 15 times. The Lithuanian SC dataset [62] consists
+of recordings of 28 individuals uttering 20 Lithuanian words
+using a mobile phone. The Arabic SC database [63] consists
+of 1,600 speech recordings from 40 speakers in Arabic, cov-
+ering 6 control words and the digits 0 through 9.
+Language Identification (LID) aims to recognize the
+language of a spoken utterance. VoxForge [64] is an open-
+source dataset established to collect transcribed multilingual
+speech using open-source engines. We utilize this dataset to
+train a language classification system for several European
+languages, including English, Spanish, French, German, Rus-
+sian, and Italian. Consistent with previous work [49], we use
+random split with 1200 audio samples in the training, 300 in
+the validation, and 300 in the test set for each language.
+Fake Speech Detection (FSD) aims to detect fake or
+spoofed speech generated by Text-to-Speech and Voice Con-
+version systems from real speech in order to prevent adver-
+sarial attacks. ASVSpoof [65] is a benchmark designed for
+building fake speech detection systems. In our experiments,
+we utilize the Logical Access (LA) portion of the ASVspoof
+2019 dataset, which includes both bonafide and spoofed
+speech. The dataset consists of a total of 121,461 utterances
+with real speech collected from 107 English speakers.
+Emotion Recognition (ER) aims to understand the emo-
+tion or sentiment conveyed in a utterance. IEMOCAP [66] is
+a dataset consisting of approximately 12 hours of speech data
+with four emotion classes: neutral, happy, sad, and angry. We
+use Sessions 1-4 as training and Session 5 as a test set.
+Accent Classification (AcC) aims to classify speech
+from speakers with different accents within the same lan-
+guage. Accent DB [67] dataset contains approximately 20
+hours of English speech data, encompassing 4 non-native
+accents, 1 metropolitan Indian accent, and 4 native accents.
+Sarcasm Detection (SD) aims to identify whether a given
+utterance is sarcastic or not, based on verbal and non-verbal
+cues. The MUStARD [68] dataset is a multimodal sarcasm
+detection dataset consisting of 1,991 utterances compiled
+from popular TV shows and annotated with sarcasm labels.
+The MUStARD++ [69] dataset is an enhanced version of
+MUStARD dataset. It includes original MUStARD dataset
+and features enhanced annotations. Additionally, the dataset
+has been doubled in size, comprising 2,695 utterances.
+Gender Identification (GID) aims to determine the gen-
+der of a speaker based on their speech. For gender identifi-
+cation, we utilize the VoxCeleb1 [75] dataset. It contains ap-
+proximately 148,000 training and 5,000 test utterances. The
+gender labels are extracted from the speaker metadata.
+Voice Activity Detection (VAD) systems aim to deter-
+mine whether a given audio contains human speech or back-
+ground noise. We leverage the Google Speech Commands
+v2 [60] dataset as speech data and Freesound [79] dataset as
+background noise to train these systems.
+Audio Classification (AuC) is a multi-class single-label
+classification task that aims to correctly classify the audio
+present in the environment. ESC-50 [79] is a labeled set of
+2000 environment recording with 50 audio classes.
+4.2. Baseline
+We compare our approach with SOTA task-specific baselines
+proposed in prior work [31, 67–77] by reporting the perfor-
+mance from the original papers. Since most of these base-
+lines do not incorporate Whisper, we train task-specific base-
+lines (see Table 3) by finetuning Whisper on selected datasets,
+following the approach in [78], to better understand the effi-
+cacy of training multiple tasks simultaneously. We also report
+the performance achieved by SpeechPrompt v2 [49] to quan-
+tify the impact of our proposed modifications to prior speech
+prompting approaches, as discussed in Section 2.
+4.3. Experimental Setups
+Our models are implemented in PyTorch [80], and exper-
+iments are conducted with ESPNet-SLU toolkit [31].
+We
+adopt the metrics used in prior work [31, 67–77].
+Task-specific baselines: We finetune the Whisper medium
+model with more frequent saving of checkpoints (i.e., after
+Table 2: Results presenting performance of our prompt based MTL model “UniverSLU” on speech classification and sequence
+generation tasks comparing with both SOTA performance and speech prompting methodology SpeechPrompt v2 [49]
+Task
+Metric
+Dataset
+Language
+#Class
+SOTA
+SpeechPrompt v2
+Prompt based MTL
+UniverSLU-14
+UniverSLU-17
+SCR
+Acc ↑
+Google SC v1
+En
+12
+98.6 [70]
+94.7
+99.1
+99.1
+Grabo SC
+Du
+36
+98.9 [71]
+92.7
+99.7
+99.7
+Lithuanian SC
+Lt
+15
+91.8 [72]
+95.5
+100.0
+98.9
+Arabic SC
+Ar
+16
+98.9 [72]
+100.0
+95.9
+100.0
+IC
+Acc ↑
+Fluent SC
+En
+24
+99.7 [73]
+98.2
+99.8
+99.8
+F1 ↑
+SNIPS
+En
+6
+96.3 [ 3]
+✗
+✗
+92.3
+Acc ↑
+SLURP
+En
+69
+89.6 [ 3]
+✗
+✗
+90.3
+LID
+Acc ↑
+Voxforge
+En, Es, Fr, De, Ru, It
+6
+99.8 [74]
+94.2
+99.9
+99.9
+FSD
+EER ↓
+ASVspoof
+En
+2
+2.5 [74]
+13.1
+1.0
+2.0
+ER
+Acc ↑
+IEMOCAP
+En
+4
+79.2 [74]
+50.2
+73.4
+74.7
+AcC
+Acc ↑
+AccentDB
+En
+9
+99.5 [67]
+87.1
+100.0
+99.9
+SD
+F1 ↑
+MUStARD
+En
+2
+64.6 [68]
+78.7
+73.2
+73.5
+MUStARD++
+En
+2
+65.2 [69]
+75.2
+67.4
+73.6
+GID
+F1 ↑
+VoxCeleb1
+En
+2
+98.8 [75]
+91.6
+99.9
+99.9
+VAD
+Acc ↑
+Google SC v2 + Freesound
+En
+2
+98.8 [76]
+98.3
+99.0
+98.8
+AuC
+Acc ↑
+ESC-50
+✗
+50
+97.0 [77]
+37.5
+39.5
+73.0
+NER
+SLU F1 ↑
+SLURP
+En
+55
+79.7 [ 3]
+✗
+✗
+79.5
+SP
+EM ↑
+STOP
+En
+162
+78.8 [78]
+✗
+✗
+78.4
+Table 3: Results showing performance of our prompt based
+MTL model “UniverSLU-3” on selected datasets.
+Model
+SNIPS
+SLURP
+STOP
+IC
+IC
+NER
+SP
+F1 ↑
+Acc ↑
+SLU F1 ↑
+EM ↑
+Task-specific baselines (models tuned for each task)
+ESPnet-SLU
+91.7
+87.4
+77.7
+73.3
+Whisper task-specific
+96.3
+89.6
+79.7
+78.8
+UniverSLU-3 (single model covers all tasks)
+w/ Task Prompt
+93.9
+90.5
+80.5
+78.4
+w/ Data Prompt
+92.7
+90.4
+80.4
+78.3
+every 1,000 iterations instead of after each epoch) following
+the approach in [78]. We train for 100 epochs with a learning
+rate of 1e-5 and 500 warmup steps. Early stopping is per-
+formed if the validation accuracy saturates. Additionally, we
+add special tokens to the vocabulary of the Whisper model
+for SLU labels, such as slot and intent tags. Similar to prior
+work [31], we use an auxiliary ASR objective to train our
+SLU models when we have access to transcripts.
+MTL models: Similar training setup is followed for training
+our multitasking model. We first train our proposed prompt
+based MTL model (Section 3) on selected speech classifica-
+tion and sequence generation tasks, namely IC, NER, and SP
+tasks using three SLU datasets: SNIPS, SLURP, and STOP
+(“UniverSLU-3”).
+In addition to SLU tags, we also add
+Stask, Sdata, and “⟨|audio|⟩” tokens to the Whisper vocabu-
+lary, which are used as prompts for the model, as discussed
+in Section 3. We additionally investigate training the MTL
+model using only Stask (i.e., “⟨|en|⟩ ⟨|scr|⟩ ⟨|notimestamps|⟩
+down”) and both the Stask and Sdata prompts (i.e., “⟨|en|⟩
+⟨|scr|⟩ ⟨|google scr|⟩ ⟨|notimestamps|⟩ down”). In this exper-
+iment, we do not perform any upsampling of the datasets.
+We then multitask on the same 14 speech classification
+datasets as SpeechPrompt v2 [49] without upsampling for fair
+comparison. We call this model as “UniverSLU-14”. Next,
+we expand our MTL formulation by incorporating sequence
+generation tasks such as named entity recognition and seman-
+tic parsing. This enhanced MTL model, trained on a total of
+17 datasets, is referred to as “UniverSLU-17”. We initialize
+the “UniverSLU-17” model with weights obtained from the
+MTL model “UniverSLU-14”. We upsample Lithuanian and
+Arabic speech commands datasets, ESC-50, SNIPS, sarcasm
+detection, and emotion recognition datasets to boost the per-
+formance on low-resource and para-linguistic datasets. We
+further increase the number of iterations per epoch to 3,000
+and train for 100 epochs, since training data becomes larger
+due to the combination. Finally, as a proof of concept, we
+train another MTL model using natural language phrases (see
+Section 3.1) as prompts on three tasks (IC, ER, and SCR) us-
+ing the FSC, IEMOCAP, and Google SC v1 datasets.
+The combined parameter size for all our MTL and
+task-specific models is approximately 762.3M. We apply
+SpecAugment [81] and use dropout [82] and label smoothing
+[83] techniques. The models are trained using 4 NVIDIA A40
+(40GB) GPUs. All model, training, and inference parameters
+are selected based on validation performance1.
+5. RESULTS AND DISCUSSION
+5.1. Comparison to Task-Specific Baseline
+Table 3 presents the results of task-specific baselines and the
+MTL model on selected speech classification and sequence
+generation tasks, namely IC, NER, and SP tasks as discussed
+1Full details regarding models, configuration files, and data preparation
+setup will be made publicly available prior to publication.
+Table 4: Results (acc, %) presenting performance of MTL
+model trained using natural language phrases as prompts and
+tested on unseen natural phrases
+Model
+FSC
+IEMOCAP
+Google SC v1
+IC
+ER
+SCR
+SOTA (models trained for each task)
+99.7
+79.2
+98.6
+UniverSLU-17
+99.8
+74.7
+99.1
+Natural Phrase as Prompt
+99.7
+61.7
+99.0
+in section 4.3. We start by comparing the task-specific base-
+line, which involves finetuning the Whisper model, with end-
+to-end SLU models in ESPnet-SLU [31] (rows 1 and 2). Re-
+sults show that finetuning Whisper is beneficial for SLU tasks
+and yields strong baselines.
+Our proposed MTL framework “UniverSLU-3” achieves
+competitive performance to the task-specific baselines2. We
+observe similar performance with and without using the
+dataset specifier as an additional prompt.
+Based on these
+findings, we conclude that unlike prior speech prompting ap-
+proaches [48], our model achieves comparable performance
+to task-specific baselines for both classification and sequence
+generation tasks. Our approach also significantly reduces the
+number of trainable parameters since we have a single MTL
+model instead of multiple models, making it cost efficient.
+5.2. More tasks: UniverSLU-14 and UniverSLU-17
+To facilitate a comparison with prior speech prompting ap-
+proaches, we train a MTL model “UniverSLU-14” on vari-
+ous speech classification tasks following a similar setup as
+in [49]. We present the performance of our “UniverSLU-
+14”, SpeechPrompt v2, and the SOTA models on these bench-
+marks in Table 2. Our results demonstrate that “UniverSLU-
+14” outperforms prior speech prompting methods on 11 out of
+14 benchmarks and improves the SOTA on 9 out of 14 bench-
+marks. However, we observe challenges in Arabic speech
+command recognition due to it being a low-resource dataset
+and belonging to a different domain than the other bench-
+marks, which primarily focus on European languages. More-
+over, our model shows lower performance compared to SOTA
+models on paralinguistic tasks such as emotion recognition
+and sarcasm detection, as Whisper has not been pre-trained
+for these specific tasks. Similarly, for the audio classification
+task, our model performs worse than SOTA models as Whis-
+per has not been trained on any audio-related tasks.
+Finally, our “UniverSLU-17” model, trained on a combi-
+nation of speech classification and sequence generation tasks,
+demonstrates comparable or superior performance compared
+to the SOTA on 11 benchmark datasets.
+It also achieves
+competitive performance compared to task-specific base-
+lines on sequence generation tasks, in contrast to previous
+approaches [48] that face challenges in handling sequence
+2Except for the SNIPS dataset where the results appear to be slightly un-
+stable due to the limited size of the test set. It includes only 166 utterances.
+generation tasks. We observe that our upsampling approach
+proves to be highly effective, significantly improving the
+performance on low-resource datasets such as Arabic speech
+command recognition and ESC-50. Additionally, it enhances
+the performance on emotion recognition and sarcasm detec-
+tion datasets. In conclusion, our MTL approach exhibits sub-
+stantial advancements over previous MTL and task-specific
+models. We anticipate that our finding will help motivate fu-
+ture work on building single model based on large pre-trained
+models capable of solving a wide array of SLU and other
+speech processing tasks.
+5.3. Using Natural Language Phrases as Prompts
+Table 4 presents the performance of our MTL model trained
+with natural language phrases instead of task specifier as
+discrete prompts.
+It is important to note that we test the
+model on natural language phrases that were not included in
+training3. We average the results obtained from 2 unseen nat-
+ural language phrases. Our findings indicate that the model
+generalizes well to unseen natural language phrases, with
+performance very close to that achieved by “UniverSLU-17”
+using task specifiers, except for ER task. This initial investi-
+gation demonstrates the potential of using natural language
+phrases as prompts, making the model adaptable to vari-
+ous paraphrases. These results motivate our use of discrete
+prompts, as opposed to continuous prompts used in prior
+work [49], as it enables a more user-friendly model capable
+of handling different paraphrases for audio or speech process-
+ing tasks. We will further explore developing a foundation
+model where end users can write or speak in natural language
+to perform various tasks even in zero-shot manner.
+6. CONCLUSION
+We present a discrete-prompt-based approach for training a
+single MTL model capable of handling various SLU datasets,
+encompassing both classification and sequence generation
+tasks. Our results demonstrate that our MTL model, named
+“UniverSLU”, not only offers cost efficiency but also achieves
+competitive performance compared to task-specific baselines.
+Furthermore, it outperforms the SOTA models on several
+SLU benchmarks. Additionally, our initial experiments on
+a novel concept which utilizes natural language phrases as
+discrete prompts, sheds light on the model’s capability to
+generalize across diverse expressions of the same task. Con-
+sidering the robust outcomes achieved through our formulated
+approaches, we are confident that our findings will offer valu-
+able insights to speech researchers seeking to incorporate
+new tasks into Whisper’s modeling framework.
+We plan to release all our source code and models to the
+public, aiming to foster future research in developing a sin-
+3Therefore, the upper-bound performance for the “Natural Phrase as
+Prompt” approach would be that achieved with the “UniverSLU-17”
+gle MTL model to solve various speech processing tasks. We
+will expand this work to single foundation model, where natu-
+ral language prompts are used to control the model’s behavior
+to perform various speech processing tasks including more
+complex sequence generation tasks like speech summariza-
+tion and spoken question answering.
+7. REFERENCES
+[1]
+S. Chen, Y. Zhang, and Q. Yang, Multi-task learning in natural lan-
+guage processing: An overview, 2021.
+[2]
+R. Caruana, “Multitask learning,” Machine Learning, vol. 28, 1997.
+[3]
+Y. Zhang and Q. Yang, “A survey on multi-task learning,” CoRR,
+vol. abs/1707.08114, 2017.
+[4]
+Y. Zhang et al., “Google USM: scaling automatic speech recognition
+beyond 100 languages,” CoRR, vol. abs/2303.01037, 2023.
+[5]
+A. Radford, J. W. Kim, T. Xu, G. Brockman, C. McLeavey, and I.
+Sutskever, “Robust speech recognition via large-scale weak supervi-
+sion,” CoRR, vol. abs/2212.04356, 2022.
+[6]
+K. Clark, M. Luong, U. Khandelwal, C. D. Manning, and Q. V. Le,
+“Bam! born-again multi-task networks for natural language under-
+standing,” in Proc. ACL, 2019, pp. 5931–5937.
+[7]
+W. Chan, D. S. Park, C. A. Lee, Y. Zhang, Q. V. Le, and M. Norouzi,
+“Speechstew: Simply mix all available speech recognition data to
+train one large neural network,” CoRR, vol. abs/2104.02133, 2021.
+[8]
+L. Wu, Y. Rao, H. Jin, A. Nazir, and L. Sun, “Different absorption
+from the same sharing: Sifted multi-task learning for fake news de-
+tection,” in Proc. EMNLP, 2019, pp. 4643–4652.
+[9]
+H. Zhang, L. Xiao, Y. Wang, and Y. Jin, “A generalized recurrent
+neural architecture for text classification with multi-task learning,” in
+IJCAI, 2017.
+[10]
+S. Zhao, T. Liu, S. Zhao, and F. Wang, “A neural multi-task learn-
+ing framework to jointly model medical named entity recognition and
+normalization,” in AAAI, 2019, pp. 817–824.
+[11]
+J. Wang et al., “Sentiment classification in customer service dialogue
+with topic-aware multi-task learning,” in AAAI, 2020, pp. 9177–9184.
+[12]
+J. Zhuang and Y. Liu, “Pintext: A multitask text embedding system in
+pinterest,” in KDD, 2019, pp. 2653–2661.
+[13]
+S. Yadav, A. Ekbal, S. Saha, and P. Bhattacharyya, “A unified multi-
+task adversarial learning framework for pharmacovigilance mining,”
+in Proc. ACL, 2019, pp. 5234–5245.
+[14]
+J. Pfeiffer, I. Vulic, I. Gurevych, and S. Ruder, “MAD-X: an adapter-
+based framework for multi-task cross-lingual transfer,” in Proc.
+EMNLP, 2020, pp. 7654–7673.
+[15]
+A. C. Stickland and I. Murray, “BERT and pals: Projected atten-
+tion layers for efficient adaptation in multi-task learning,” in Proc.
+ICML, ser. Proceedings of Machine Learning Research, vol. 97, 2019,
+pp. 5986–5995.
+[16]
+R. Collobert and J. Weston, “A unified architecture for natural lan-
+guage processing: Deep neural networks with multitask learning,” in
+Proc. ICML, ser. ACM International Conference Proceeding Series,
+vol. 307, 2008, pp. 160–167.
+[17]
+J. G. C. de Souza, M. Negri, E. Ricci, and M. Turchi, “Online mul-
+titask learning for machine translation quality estimation,” in Proc.
+ACL, 2015, pp. 219–228.
+[18]
+P. Gupta, H. Sch¨utze, and B. Andrassy, “Table filling multi-task recur-
+rent neural network for joint entity and relation extraction,” in Proc.
+COLING, 2016, pp. 2537–2547.
+[19]
+M. Lan, J. Wang, Y. Wu, Z. Niu, and H. Wang, “Multi-task attention-
+based neural networks for implicit discourse relationship representa-
+tion and identification,” in Proc. EMNLP, 2017, pp. 1299–1308.
+[20]
+Y. Yang and T. M. Hospedales, “A unified perspective on multi-
+domain and multi-task learning,” in Proc. ICLR, 2015.
+[21]
+R. Prabhavalkar, T. Hori, T. N. Sainath, R. Schl¨uter, and S. Watanabe,
+“End-to-end speech recognition: A survey,” CoRR, vol. abs/2303.03329,
+2023.
+[22]
+S. Kim, T. Hori, and S. Watanabe, “Joint CTC-attention based end-to-
+end speech recognition using multi-task learning,” in Proc. ICASSP,
+2017, pp. 4835–4839.
+[23]
+Y. Shinohara, “Adversarial multi-task learning of deep neural net-
+works for robust speech recognition,” in Proc. Interspeech, 2016,
+pp. 2369–2372.
+[24]
+A. Tripathi, A. Mohan, S. Anand, and M. Singh, “Adversarial learning
+of raw speech features for domain invariant speech recognition,” in
+Proc. ICASSP, 2018, pp. 5959–5963.
+[25]
+G. Saon et al., “English conversational telephone speech recognition
+by humans and machines,” in Proc. Interspeech, 2017, pp. 132–136.
+[26]
+Z. Meng et al., “Speaker-invariant training via adversarial learning,”
+in Proc. ICASSP, 2018, pp. 5969–5973.
+[27]
+S. Sun, C. Yeh, M. Hwang, M. Ostendorf, and L. Xie, “Domain ad-
+versarial training for accented speech recognition,” in Proc. ICASSP,
+2018, pp. 4854–4858.
+[28]
+Y. Tang, J. M. Pino, C. Wang, X. Ma, and D. Genzel, “A general
+multi-task learning framework to leverage text data for speech to text
+tasks,” in Proc. ICASSP, 2021, pp. 6209–6213.
+[29]
+G. Pironkov, S. Dupont, and T. Dutoit, “Multi-task learning for speech
+recognition: An overview,” in ESANN, 2016.
+[30]
+A. Babu et al., “XLS-R: self-supervised cross-lingual speech repre-
+sentation learning at scale,” in Proc. Interspeech, 2022, pp. 2278–
+2282.
+[31]
+S. Arora et al., “ESPnet-SLU: Advancing spoken language under-
+standing through espnet,” in Proc. ICASSP, 2022, pp. 7167–7171.
+[32]
+S. Arora, S. Dalmia, B. Yan, F. Metze, A. W. Black, and S. Watanabe,
+“Token-level sequence labeling for slu using compositional end-to-
+end models,” in EMNLP 2022, 2022.
+[33]
+A. Anastasopoulos and D. Chiang, “Tied multitask learning for neural
+speech translation,” in Proc. NAACL, 2018, pp. 82–91.
+[34]
+X. Zheng, C. Zhang, and P. C. Woodland, “Tandem multitask training
+of speaker diarisation and speech recognition for meeting transcrip-
+tion,” in Proc. Interspeech, 2022, pp. 3844–3848.
+[35]
+X. Cai, J. Yuan, R. Zheng, L. Huang, and K. Church, “Speech emo-
+tion recognition with multi-task learning,” in Proc. Interspeech, 2021,
+pp. 4508–4512.
+[36]
+S. Sigtia, E. Marchi, S. Kajarekar, D. Naik, and J. Bridle, “Multi-task
+learning for speaker verification and voice trigger detection,” in Proc.
+ICASSP, 2020, pp. 6844–6848.
+[37]
+Z. Huang, M. Rao, A. Raju, Z. Zhang, B. Bui, and C. Lee, “MTL-
+SLT: Multi-task learning for spoken language tasks,” in Proceedings
+of the 4th Workshop on NLP for Conversational AI, 2022, pp. 120–
+130.
+[38]
+A. Radford, J. Wu, R. Child, D. Luan, D. Amodei, and I. Sutskever,
+“Language models are unsupervised multitask learners,” 2019.
+[39]
+S. Zhang et al., “OPT: open pre-trained transformer language mod-
+els,” CoRR, vol. abs/2205.01068, 2022.
+[40]
+P. Liu, W. Yuan, J. Fu, Z. Jiang, H. Hayashi, and G. Neubig, “Pre-
+train, prompt, and predict: A systematic survey of prompting methods
+in natural language processing,” ACM Comput. Surv., vol. 55, no. 9,
+195:1–195:35, 2023.
+[41]
+K. Zhu et al., “Promptbench: Towards evaluating the robustness of
+large language models on adversarial prompts,” CoRR, vol. abs/2306.04528,
+2023.
+[42]
+Z. Jiang, F. F. Xu, J. Araki, and G. Neubig, “How can we know what
+language models know,” Trans. Assoc. Comput. Linguistics, vol. 8,
+pp. 423–438, 2020.
+[43]
+A. Haviv, J. Berant, and A. Globerson, “Bertese: Learning to speak to
+BERT,” in Proc. ACL, 2021, pp. 3618–3623.
+[44]
+X. L. Li and P. Liang, “Prefix-tuning: Optimizing continuous prompts
+for generation,” in Proc. ACL, 2021, pp. 4582–4597.
+[45]
+H. Gao, J. Ni, K. Qian, Y. Zhang, S. Chang, and M. Hasegawa-
+Johnson, “Wavprompt: Towards few-shot spoken language under-
+standing with frozen language models,” in Proc. Interspeech, 2022,
+pp. 2738–2742.
+[46]
+C. H. Yang, Y. Tsai, and P. Chen, “Voice2series: Reprogramming
+acoustic models for time series classification,” in Proc. ICML,
+ser. Proceedings of Machine Learning Research, vol. 139, 2021,
+pp. 11 808–11 819.
+[47]
+H. Yen et al., “A study of low-resource speech commands recognition
+based on adversarial reprogramming,” CoRR, vol. abs/2110.03894,
+2021.
+[48]
+K. Chang, W. Tseng, S. Li, and H. Lee, “SpeechPrompt: An explo-
+ration of prompt tuning on generative spoken language model for
+speech processing tasks,” in Proc. Interspeech, 2022, pp. 5005–5009.
+[49]
+K. Chang et al., “SpeechPrompt v2: Prompt tuning for speech classi-
+fication tasks,” CoRR, vol. abs/2303.00733, 2023.
+[50]
+K. Lakhotia et al., “Generative spoken language modeling from raw
+audio,” CoRR, vol. abs/2102.01192, 2021.
+[51]
+B. Li et al., “Scaling end-to-end models for large-scale multilingual
+asr,” in Proc. ASRU, 2021, pp. 1011–1018.
+[52]
+S. Arora et al., “A study on the integration of pipeline and E2E SLU
+systems toward STOP quality challenge,” CoRR, 2023.
+[53]
+M. Wang et al., “WhiSLU: End-to-End Spoken Language Under-
+standing with Whisper,” in Proc. INTERSPEECH 2023, 2023.
+[54]
+OpenAI ChatGPT description, https://chat.openai.com/,
+Accessed: 2023-07-01.
+[55]
+L. Lugosch, M. Ravanelli, P. Ignoto, V. S. Tomar, and Y. Bengio,
+“Speech model pre-training for end-to-end SLU,” in Proc. Inter-
+speech, 2019.
+[56]
+A. Saade et al., “Spoken language understanding on the edge,”
+vol. abs/1810.12735, 2018.
+[57]
+B. Agrawal, M. M¨uller, M. Radfar, S. Choudhary, A. Mouchtaris,
+and S. Kunzmann, “Tie your embeddings down: Cross-modal latent
+spaces for end-to-end spoken language understanding,” arXiv preprint
+arXiv:2011.09044, 2020.
+[58]
+E. Bastianelli, A. Vanzo, P. Swietojanski, and V. Rieser, “SLURP: A
+spoken language understanding resource package,” in Proc. EMNLP,
+2020.
+[59]
+P. Tomasello et al., “STOP: A dataset for Spoken Task Oriented Se-
+mantic Parsing,” in CoRR.
+[60]
+P. Warden, “Speech commands: A dataset for limited-vocabulary
+speech recognition,” CoRR, vol. abs/1804.03209, 2018.
+[61]
+V. Renkens, S. Janssens, B. Ons, J. F. Gemmeke, and H. V. hamme,
+“Acquisition of ordinal words using weakly supervised NMF,” in
+Proc. SLT, 2014, pp. 30–35.
+[62]
+A. Kolesau and D. ˇSeˇsok, “Unsupervised pre-training for voice acti-
+vation,” Applied Sciences, vol. 10, no. 23, 2020.
+[63]
+L. Benamer and O. Alkishriwo, “Database for arabic speech com-
+mands recognition,” 2020.
+[64]
+K. MacLean, Voxforge, http://www.voxforge.org/home,
+2018.
+[65]
+A. Nautsch et al., “Asvspoof 2019: Spoofing countermeasures for
+the detection of synthesized, converted and replayed speech,” IEEE
+Trans. Biom. Behav. Identity Sci., vol. 3, no. 2, pp. 252–265, 2021.
+[66]
+C. Busso et al., “IEMOCAP: interactive emotional dyadic motion
+capture database,” Lang. Resour. Evaluation, vol. 42, no. 4, pp. 335–
+359, 2008.
+[67]
+A. Ahamad, A. Anand, and P. Bhargava, “Accentdb: A database of
+non-native english accents to assist neural speech recognition,” in
+LREC, 2020, pp. 5351–5358.
+[68]
+S. Castro, D. Hazarika, V. P´erez-Rosas, R. Zimmermann, R. Mi-
+halcea, and S. Poria, “Towards multimodal sarcasm detection (an
+obviously perfect paper),” in Proc. ACL, 2019, pp. 4619–4629.
+[69]
+A. Ray, S. Mishra, A. Nunna, and P. Bhattacharyya, “A multimodal
+corpus for emotion recognition in sarcasm,” in LREC, 2022, pp. 6992–
+7003.
+[70]
+R. Vygon and N. Mikhaylovskiy, “Learning efficient representations
+for keyword spotting with triplet loss,” in SPECOM, ser. Lecture
+Notes in Computer Science, vol. 12997, 2021, pp. 773–785.
+[71]
+Y. Tian and P. J. Gorinski, “Improving end-to-end speech-to-intent
+classification with reptile,” in Proc. Interspeech, 2020, pp. 891–895.
+[72]
+H. Yen et al., “A study of low-resource speech commands recognition
+based on adversarial reprogramming,” CoRR, vol. abs/2110.03894,
+2021.
+[73]
+D. Bermuth, A. Poeppel, and W. Reif, “Finstreder: Simple and fast
+spoken language understanding with finite state transducers using
+modern speech-to-text models,” CoRR, vol. abs/2206.14589, 2022.
+[74]
+J. Shor, A. Jansen, W. Han, D. S. Park, and Y. Zhang, “Universal par-
+alinguistic speech representations using self-supervised conformers,”
+in Proc. ICASSP, 2022, pp. 3169–3173.
+[75]
+K. Hechmi, T. N. Trong, V. Hautam¨aki, and T. Kinnunen, “Voxceleb
+enrichment for age and gender recognition,” in Proc. ASRU, 2021,
+pp. 687–693.
+[76]
+F. Jia, S. Majumdar, and B. Ginsburg, “Marblenet: Deep 1d time-
+channel separable convolutional neural network for voice activity de-
+tection,” in Proc. ICASSP, 2021, pp. 6818–6822.
+[77]
+K. Chen, X. Du, B. Zhu, Z. Ma, T. Berg-Kirkpatrick, and S. Dubnov,
+“HTS-AT: A hierarchical token-semantic audio transformer for sound
+classification and detection,” in Proc. ICASSP, 2022, pp. 646–650.
+[78]
+S. Arora et al., “A study on the integration of pipeline and E2E SLU
+systems for spoken semantic parsing toward STOP quality challenge,”
+CoRR, vol. abs/2305.01620, 2023.
+[79]
+E. Fonseca et al., “Freesound datasets: A platform for the creation of
+open audio datasets,” in ISMIR, 2017, pp. 486–493.
+[80]
+A. Paszke et al., “Pytorch: An imperative style, high-performance
+deep learning library,” Proc. NeurIPS, vol. 32, 2019.
+[81]
+D. S. Park et al., “Specaugment: A simple data augmentation
+method for automatic speech recognition,” in Proc. Interspeech,
+2019, pp. 2613–2617.
+[82]
+N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R.
+Salakhutdinov, “Dropout: A simple way to prevent neural networks
+from overfitting,” The journal of machine learning research, vol. 15,
+no. 1, pp. 1929–1958, 2014.
+[83]
+R. M¨uller, S. Kornblith, and G. E. Hinton, “When does label smooth-
+ing help?” Advances in neural information processing systems,
+vol. 32, 2019.
+Table 5: Detail of Natural Language Phrases used as Prompts to train our MTL model
+Task
+Split
+Example Prompt using Natural Language Phrase
+IC
+Train/Dev
+⟨|en|⟩ Assessing and categorizing the meaning behind spoken utterances ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Uncovering the intent behind verbal communication ⟨|notimestamps|⟩ in:activate music none SEP resume music
+⟨|en|⟩ Sorting and classifying the purpose of spoken statements ⟨|notimestamps|⟩ in:activate music none SEP resume music
+⟨|en|⟩ Decoding and categorizing the intention behind spoken language ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Understanding and labeling the intent in spoken expressions ⟨|notimestamps|⟩ in:activate music none SEP resume mu-
+sic
+⟨|en|⟩ Organizing and categorizing the meaning of spoken utterances ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Interpreting and classifying the purpose of verbalized intentions ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Assigning labels to classify the intent of spoken communication ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Analyzing and categorizing the underlying purpose of spoken words ⟨|notimestamps|⟩ in:activate music none SEP
+resume music
+⟨|en|⟩ Grouping and identifying the intention behind spoken utterances ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Differentiating and classifying the intent expressed through speech ⟨|notimestamps|⟩ in:activate music none SEP re-
+sume music
+⟨|en|⟩ Extracting and labeling the classification of spoken intentions ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Segregating and classifying the purpose of verbalized expressions ⟨|notimestamps|⟩ in:activate music none SEP resume
+music
+⟨|en|⟩ Unraveling and categorizing the intended meaning of spoken statements ⟨|notimestamps|⟩ in:activate music none SEP
+resume music
+⟨|en|⟩ Intent classification of spoken utterance ⟨|notimestamps|⟩ in:activate music none SEP resume music
+Test
+⟨|en|⟩ Classifying the purpose of verbal expression ⟨|notimestamps|⟩ in:activate music none SEP resume music
+⟨|en|⟩ Identifying the intent conveyed through speech ⟨|notimestamps|⟩ in:activate music none SEP resume music
+SCR
+Train/Dev
+⟨|en|⟩ Recognizing speech command ⟨|notimestamps|⟩ down
+⟨|en|⟩ Decoding oral requests ⟨|notimestamps|⟩ down
+⟨|en|⟩ Grasping speech guidance ⟨|notimestamps|⟩ down
+⟨|en|⟩ Discerning spoken triggers ⟨|notimestamps|⟩ down
+⟨|en|⟩ Acknowledging vocal commands ⟨|notimestamps|⟩ down
+⟨|en|⟩ Comprehending voiced instructions ⟨|notimestamps|⟩ down
+⟨|en|⟩ Interpreting verbalized prompts ⟨|notimestamps|⟩ down
+⟨|en|⟩ Detecting spoken signals ⟨|notimestamps|⟩ down
+⟨|en|⟩ Capturing voice-activated orders ⟨|notimestamps|⟩ down
+⟨|en|⟩ Classifying speech-based commands ⟨|notimestamps|⟩ down
+⟨|en|⟩ Inferring uttered guidance ⟨|notimestamps|⟩ down
+⟨|en|⟩ Analyzing vocal instructions ⟨|notimestamps|⟩ down
+⟨|en|⟩ Differentiating voiced prompts ⟨|notimestamps|⟩ down
+⟨|en|⟩ Sorting vocalized guidance ⟨|notimestamps|⟩ down
+⟨|en|⟩ Parsing spoken directives⟨|notimestamps|⟩ down
+Test
+⟨|en|⟩ Understanding spoken instructions ⟨|notimestamps|⟩ down
+⟨|en|⟩ Identifying uttered directives ⟨|notimestamps|⟩ down
+ER
+Train/Dev
+⟨|en|⟩ Emotion recognition of spoken utterance ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Understanding the emotional content of spoken utterance ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Interpreting and categorizing emotions in verbal communication ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Decoding the emotional aspect of spoken expressions ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Discerning and recognizing emotions in spoken language ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Assessing and labeling the emotional state of spoken utterances ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Grasping the emotional intent behind spoken words ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Uncovering and categorizing the emotional response in speech ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Extracting and identifying the emotions conveyed through spoken utterances ⟨|notimestamps|⟩ em:ang SEP it’s ridicu-
+lous
+⟨|en|⟩ Emotionally analyzing and categorizing spoken expressions ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Capturing and recognizing emotional cues in spoken utterance ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Processing and discerning emotions in verbalized communication ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Differentiating and classifying the emotional tone of spoken utterances ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Unraveling and categorizing the intended emotional expression of spoken statements ⟨|notimestamps|⟩ em:ang SEP it’s
+ridiculous
+⟨|en|⟩ Inferring and organizing the classification of emotions in spoken language ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+Test
+⟨|en|⟩ Detecting emotional content in spoken utterance ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+⟨|en|⟩ Identifying emotions conveyed through speech ⟨|notimestamps|⟩ em:ang SEP it’s ridiculous
+
