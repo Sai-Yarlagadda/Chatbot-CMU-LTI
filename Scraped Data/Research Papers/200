@@ -1,0 +1,566 @@
+IMPORTANCE OF NEGATIVE SAMPLING IN WEAK LABEL LEARNING
+Ankit Shah, Fuyu Tang, Zelin Ye, Rita Singh, Bhiksha Raj
+Carnegie Mellon University
+5000 Forbes Ave, Pittsburgh, PA 15213
+ABSTRACT
+Weak-label learning is a challenging task that requires learning
+from data “bags” containing positive and negative instances, but only
+the bag labels are known. The pool of negative instances is usually
+larger than positive instances, thus making selecting the most infor-
+mative negative instance critical for performance. Such a selection
+strategy for negative instances from each bag is an open problem that
+has not been well studied for weak-label learning. In this paper, we
+study several sampling strategies that can measure the usefulness of
+negative instances for weak-label learning and select them accord-
+ingly. We test our method on CIFAR-10 and AudioSet datasets and
+show that it improves the weak-label classification performance and
+reduces the computational cost compared to random sampling meth-
+ods. Our work reveals that negative instances are not all equally
+irrelevant, and selecting them wisely can benefit weak-label learn-
+ing.
+Index Terms— Weak label learning, Negative sampling, Audio
+classification, Image classification
+1. INTRODUCTION
+Machine learning models typically need large, labeled datasets to
+achieve state-of-the-art performance. This presents a bottleneck: su-
+pervised learning approaches do not scale well in real-world scenar-
+ios due to a lack of labeled data. Labeling large datasets accurately
+requires a significant investment of time and money. Furthermore,
+skilled annotators with domain expertise are required for the task,
+and their judgment and biases limit the accuracy and completeness
+with which they can label data. The approach of learning from weak
+labels has gained popularity in recent research [1, 2, 3] due to its
+lower annotation costs, scalability, real-world applicability, speed,
+and robustness, etc. to name a few.
+Weakly-labeled learning is a subset of supervised learning where
+the training data is imperfectly labeled. In the ideal case of super-
+vised learning, each data point is paired with a precise label that in-
+dicates the desired output. Weak labels, though imperfectly labeled,
+are more potent as such data is available at a large scale on the web.
+These labels may be noisy, incomplete, or come in a form that pro-
+vides only partial information about the true label. An example of
+the curation of the labels is via scraping data from the web to collect
+the weak information for the labels. In most cases, the weak label
+implies the knowledge of the presence/absence of an event in a data
+bag, e.g., an image bag with several pictures or an audio clip, rather
+than the exact location compared to the strong labels. To gather the
+weak labels, there is no need to find the exact timestamp of a dog
+bark’s segment in one audio clip or specific class labels for every
+image in a bag. Without the demand for strongly labeled data, one
+can easily acquire many weak labels for data samples from external
+sources/the web. It is worth noting that this is an efficient way to cir-
+cumvent the annotator’s subjective bias when tagging a data sample
+since reaching a consensus in a weak label setting is not difficult.
+In the realm of machine learning with weak labels, it’s not un-
+common to encounter an imbalance between positive and negative
+instances. For weak label classification tasks, we categorize the data
+or ”bags” into two primary types Positive and Negative. Bags con-
+taining instances from a specific class such as music - are labeled
+positive, while those devoid of music are considered negative. Posi-
+tive examples are often sparse, while negative examples are abundant
+but often irrelevant to the target class. For instance, in training an au-
+dio classifier for e.g. crash sounds with weakly labelled recordings
+collected from the web, it is fairly challenging to find recordings
+tagged with the presence of this event. In contrast, enormous num-
+bers of recordings not tagged with it can easily be found. The pre-
+ponderance of negative instances leads to challenges during training,
+which can unduly influence the classifier’s decision-making process.
+The makes the choice of training samples, particularly the negative
+instances, is crucial and a decision often made through particular
+sampling strategies. The need for improved sampling strategies to
+select the most distinguishing negative examples from positive ones
+is evident, especially since this topic has been extensively researched
+in the context of strongly labeled data but remains underexplored
+for weak labels. Our research investigates novel sampling methods
+that modify the treatment of negative instances in scenarios involv-
+ing weak labels. Utilizing active sampling mechanisms, we focus
+on choosing negative sets that offer both diversity and informational
+value, leading to a more equitable and effective training regimen.
+This research marks a significant departure from traditional prac-
+tices which often utilizes the random sampling approach, extending
+the utility of weak label learning in various applications such as au-
+dio and image recognition. We show that these new sampling tech-
+niques not only surpass conventional random sampling in weak-label
+scenarios but also enhance performance across a range of categories.
+In this paper, we address the problem of selecting optimal sets of
+negative bags for training with weak labels. Concretely, we address
+the question on how to optimally select negative bags that contribute
+meaningfully to training an effective weak classifier? To mitigate
+this issue, the concept of Negative Sampling becomes pivotal. We
+propose strategies such as Gradient embedding, entropy-based ap-
+proach, SVM-based margin strategy as well as BADGE strategy for
+the sampling of negatives. We explore ways to deploy these sam-
+pling strategies without meaningful slowdown to the training time
+while enhancing the model to converge faster through an early stop-
+ping mechanism due to a better selection of negative samples. We
+demonstrate the applicability of sampling strategy for image and au-
+dio classification tasks. The remainder of this paper is organized as
+follows: Section 2 reviews related work, Section 3 introduces the no-
+tation used, Section 4 details our proposed sampling strategies, and
+Section 5 presents our experimental setup and results.
+arXiv:2309.13227v1  [cs.LG]  23 Sep 2023
+2. RELATED WORK
+2.1. Weak Label Learning
+Weak label learning, or the problem of learning from weakly labelled
+data, has been the subject of considerable research in recent times [2,
+4]. While [4] consider the vanilla weak-label problem in the context
+of audio, more relevant to this paper [2] studied how characteristics
+such as label density, i.e. the fraction of weakly-labelled training
+instances that must be positive, and label corruption, i.e. noise in the
+weak labels, influence training. They also proposed a CNN-based
+weak-label learning model for large-scale AED. [5] introduced semi-
+weak labels as weak labels with count information and developed
+a two-stage framework for semi-weak label learning. Since weak
+labels are generally applied to collections (or “bags”) of instances,
+it not only learns classification at bag level but can also be extended
+to learning instance-level classifiers with counts assigned to bags.
+However, semi-weak labels are rarely available, especially for audio
+or video data.
+2.2. Negative Sampling
+Negative sampling has been studied in context of strongly labeled
+data. Knowledge graph embedding is a technique used in machine
+learning to represent structured knowledge in a knowledge graph
+into continuous vector representations.
+In [6] introduces an ap-
+proach to knowledge graph embedding that leverages caching to
+efficiently sample and update negative triplets thereby improving
+training performance compared to methods using generative ad-
+versarial networks (GANs). [7] studied the influence of negative
+sampling on objective and risk of embedding learning, and proposed
+a negative sampling strategy MCNS based on their theory, which
+approximates the positive distribution with self-contrast approxima-
+tion and accelerated by Metropolis-Hastings. [8] incorporates the
+richness of graph structure and designed a structure-aware sampling
+strategy to sample semantically meaningful negative samples.
+2.3. Active Learning
+Active learning strategies often aim to identify the most uncertain
+or informative samples for labeling. For instance, Ghasemi et al.
+[9] proposed an uncertainty-based approach that leverages Bayes
+rules for positive and unlabelled data, where the probability den-
+sity function measures the informativeness of samples to select the
+most uncertain sample. Ma et al. [10] extended this by introducing a
+gradient-based uncertainty measure for contrastive learning, inspired
+by Ash et al. [11] solution for the diversity of samples.
+Chen et al.
+[12] devised a strategy that uses a multi-model
+committee to assess data’s uncertainty and informativeness. Their
+method gives preference to low-variance minority classes during
+sampling, aiming to counteract class imbalance in the training set.
+[13] proposed a Kernel machine Committee-based model that inte-
+grates Bayesian (RVM) and discriminative (SVM) kernel machines
+for multi-class data sampling. It fits the overall data well and can
+capture the decision boundaries, thus effectively sampling informa-
+tive data for multi-class training.
+Learning-based methods that can help with sampling have also
+been studied. [14] proposed a learning-based active learning frame-
+work, where a sampling model and a boosting model mutually learn
+from each other iteratively to improve performance. Their sampling
+model incorporates uncertainty sampling and diversity sampling into
+a unified process for optimization to actively select the most repre-
+sentative and informative samples.
+3. NOTATION AND SETTING
+We consider the weak label classification problem. Denote by X
+the instance set, including X + and X − which represent positive
+and negative data instances respectively. Denote by B the bag set,
+including B+ and B− which represent positive and negative data
+bags respectively. Denote by DX the instance distribution, includ-
+ing DX + representing the positive and DX − representing the neg-
+ative. Denote by DB the bag distribution from which our data bags
+are drawn, including DB+ representing the positive bag distribution
+and DB− representing the negative. Let K be the number of classes,
+NB be the number of instances in the bag and N be the number
+of bags. Define by Y the label space and [K] := {1, 2, · · · , K}.
+In a multiclass weak classification problem, Y = [K].
+We de-
+fine a set S of bags {(b0, y0), (b1, y1), · · · , (bN, yN)}, where each
+bi ∼ DB represents a data bag containing a group of instances
+n
+x0
+i , x1
+i , · · · , xNB
+i
+o
+, xj
+i ∼ DX and yi represents the label for this
+bag bi. Let’s consider the binary weak classification case first, which
+will also be our focus in this paper: K = 2 and Y = [2]. In this sce-
+nario,
+yi =
+(
+1,
+∃ xj
+i ∈ bi,
+xj
+i ∼ DX +
+0,
+∀ xj
+i ∈ bi,
+xj
+i ∼ DX −
+(1)
+denoting the bag bi as positive or negative (bi ∼ DB+ or bi ∼
+DB−). We consider the negative sampling in weak label learning
+setup, where the model receives a set of weakly labeled set S mixed
+up with all the positive set S+ and selected negative set S− where
+each b ∈ S− is picked from a negative dataset N sampled according
+to DB−.
+Given a weak classifier h : B → Y, which maps bags to weak
+labels, we denote the 0/1 error of h on (b, y) as ℓ01(h(b), y) =
+I(h(x) ̸= y). The performance of a weak classifier h could be sim-
+ply measured by its expected 0/1 error, i.e., EDB[ℓ01(h(b), y)] =
+Pr(b,y)∼DB(h(b) ̸= y). In the context of weak label learning, the
+objective of negative sampling is to devise a sampling strategy that
+produces an appropriate set S− aimed at minimizing the model’s
+expected 0/1 error on the dataset.
+4. SAMPLING STRATEGIES
+In this section, we present several widely used sampling strategies
+applicable for weak labels. We only sample bags from the pool of
+the negative, meaning bi ∼ DB−. The strategies are as follows:-
+1. Random: Randomly select k bags with uniform distribution at
+each epoch. Each negative bag has an equal chance of being se-
+lected. This strategy is the baseline for all the sampling strategies.
+2. Margin: An uncertainty-based strategy that samples k bags with
+the lowest margin, which is defined as the difference between
+positive probability and negative probability in each output result.
+S−
+M = argmin
+bi∈DB−
+|Pθ(ˆypositive|bi) − Pθ(ˆynegative|bi)|
+(2)
+3. Entropy: An uncertainty-based strategy that samples k bags with
+the highest entropy scores. The entropy score is computed as the
+entropy of the predicted positive-negative distribution.
+S−
+E = argmax
+bi∈DB−
+−
+X
+Pθ(ˆyc|bi) log(Pθ(ˆyc|bi))
+(3)
+4. Gradient Embedding: An uncertainty-based strategy that se-
+lects k bags that generates the largest gradient in terms of L2
+norm, which is a simplified version of BADGE [11] without K-
+MEANS++[15].
+gb =
+∂
+∂θout Loss(f(x; θ), ˆy(bi))
+(4)
+S−
+G = argmax
+bi∈DB−
+∥gb∥2
+(5)
+5. BADGE: The strategy combines uncertainty and diversity by
+picking bags according to gradient embedding as centers of k
+clusters in the pool. Bag with the largest gradient embedding
+are selected and K-MEANS++ helps incorporate more diverse
+samples [11].
+5. EXPERIMENTS AND RESULTS
+We first implement random sampling on negative data as a base-
+line for comparison with every other sampling strategy. We exper-
+imented with image ”bag” level and weak audio level classification
+to validate our sampling strategies.
+5.1. Image Bag Classification
+5.1.1. Dataset
+To create a robust negative sampling strategy for weakly-labeled
+data, we generate image bags from randomly selected images of
+CIFAR-10 [16] such that instances in the same bag can be irrele-
+vant. CIFAR-10 Dataset contains 60,000 images. We generate bags
+with fixed size of 5 and uniformly distribute the label density, which
+denotes the proportion of positive data in positive bags among all
+the bags. To alleviate the influence caused by the single image be-
+ing learned unevenly multiple times in a single epoch, each image
+only occurs in one bag. Although the full dataset is unbalanced for
+a single class, its coverage and size are essential to the robustness of
+training. Any subset sampled from the original dataset will likely be
+at a disadvantage. Therefore, results on a full, weakly labeled dataset
+naturally become the ideal benchmark we intend to surpass.
+5.1.2. Network Architecture
+Under the weak label setting, we lack individual image labels and
+only have bag level labels.
+To solve this problem, we designed
+a simple yet effective model structure. First, we use a traditional
+CNN-based model to classify each image. Given a bag of images
+{x0, x1, · · · , xBN −1} ∈ R32×32×3, the preliminary classification
+score Pi ∈ RK is predicted for each image. Note that the scores
+here are only an expected distribution for each image in the bag
+without any strong labels. Then we use an aggregation layer, e.g.,
+mean-pooling or max-pooling following or followed by a Softmax
+layer, to produce the final classification score in bag level PB ∈ RK
+aggregating all the scores above.
+For the downstream classification problem, we first choose
+a Simple CNN model (2 Convolution layers followed by 3 Fully-
+connected layers) and ResNet18[17] to examine strategies’ effective-
+ness on different models. Due to overfitting issues with ResNet18,
+we proceeded with the Simple CNN for all subsequent experiments.
+In terms of aggregation layers, we explored three configurations:
+Softmax followed by MeanPooling, MeanPooling followed by Soft-
+max, and Softmax followed by MaxPooling. Our findings indicate
+that the sequence of MeanPooling followed by Softmax consistently
+yielded the best performance. This effectiveness is likely attributed
+to Softmax outputs being bounded between 0 and 1, which, when
+mean-pooled, enhances the model’s ability to discern events within
+a bag. Conversely, the underperformance of MaxPooling can be
+ascribed to its sensitivity to noise, causing the model to erroneously
+assign positive labels based on high scores, irrespective of the true
+nature of the bag.
+5.1.3. Experiment Setting
+Our experimental setup for image bag classification uses Python ver-
+sion 3.8.11, PyTorch v1.9.0, and CUDA v11.1, running on NVIDIA
+GeForce GTX 1070 GPU. We investigated the impact of resampling
+frequency on model performance, specifically contrasting resam-
+pling at each epoch against resampling every three epochs. Our find-
+ings revealed no significant differences, leading us to opt for epoch-
+wise resampling in subsequent tests. To comprehensively evaluate
+the robustness and effectiveness of our proposed sampling strate-
+gies, we employed a range of techniques as outlined in Section 4.
+These methods primarily focus on selecting from the available neg-
+ative bags to curate a truncated training dataset. Evaluation metrics
+include Average Precision (AP) and Receiver Operating Character-
+istic Area Under the Curve (ROC-AUC). By comparing these scores
+with those from a random sampling baseline, we aim to substantiate
+the merits of our approach.
+5.1.4. Experiment Result
+Table 1 shows the results of 2 classes in the CIFAR dataset. In
+the experiments, the KL-Divergence method is implemented in two
+ways: one computes KLD based on the embedding extracted from
+the model, and the other uses output probability distribution. As we
+can see, Random i.e. our baseline sampling strategy, performs rela-
+tively well for test data. The performance with other negative sam-
+pling strategies like Gradient Embedding is not consistently as good
+as the baseline. However, strategies like BADGE, SVM-Margin, and
+KL-prob can beat random sampling most of the time and achieve AP
+and AUC asymptotical to the Full dataset.
+Table 1. Comparison between CNN model using different sampling
+strategies
+Sampling strategy
+Class 0 AP
+Class 0 AUC
+Class 1 AP
+Class 1 AUC
+Full Set (No filtering)
+0.88
+0.95
+0.93
+0.97
+Random
+0.82
+0.93
+0.87
+0.95
+Least Confidence
+0.81
+0.92
+0.82
+0.93
+BADGE
+0.85
+0.94
+0.87
+0.95
+Entropy
+0.81
+0.92
+0.82
+0.93
+KL embedding
+0.83
+0.93
+0.89
+0.95
+Grad embedding
+0.83
+0.93
+0.84
+0.94
+SVM-Margin
+0.87
+0.95
+0.87
+0.95
+5.2. Audio Classification
+5.2.1. Experiment Setting
+We use AudioSet[18], a large, weakly labeled and multi-class dataset
+comprising 527 classes of sound events. The dataset consists of 3
+subsets: a balanced training set, an unbalanced training set, and an
+evaluation set. Due to computational limitations, we use the bal-
+anced set as the training set and evaluation set for testing. The bal-
+anced training set contains 22k samples, and the evaluation set con-
+tains 20k samples. The audio recordings were obtained at a sampling
+rate of 44.1 kHz. For preprocessing, the audio clips are padded or
+Fig. 1. Comparing different negative sampling strategies for weak label learning on AudioSet
+truncated into 10-second recordings. Then, we convert them into
+log Mel spectrograms, the acoustic features of the audio recordings.
+Hence, each feature input of X ∈ R1056×128 corresponds to the log
+Mel representation of a recording segment with different lengths.
+For training, we designate samples containing specific event
+classes as positive and those lacking them as negative. For the ex-
+periment study, negative audio bags were sampled using different
+sampling strategies based on a specified Positive-Negative ratio in
+each training epoch. We focus on a subset of 40 classes over the
+entire AudioSet, a subset extracted from the original Audioset. The
+difference is that AudioSet40 only contains audio recordings with
+the top 40 classes of events that appear most frequently in real life.
+Based on this smaller dataset, it would be more efficient for us to
+implement strategies and compare results. We choose PSLA [19],
+one of the state-of-the-art methods used in audio classification, as
+the classification model for the following experiments. Our imple-
+mentation is based on the PyTorch framework. Hyper-parameters
+are tuned on our dataset according to PSLA experiments in [19].
+5.2.2. Data Augmentation
+We applied the same data augmentation as [19]: MixUp [20] and
+Time and Frequency masking [21] to improve the performance of
+the classification on audio. The input spectrogram has the shape of
+(1056, 128). Frequency masking is applied to the frequency domain.
+The mask window is sampled from f ∼ uniform(0, F) and the
+start frequency for masking is drawn from f0 ∼ uniform(0, 128−
+f). Time masking is applied to the time domain so that spectrogram
+in [t0, t0 + t] frames are masked, where t uniform(0, T) and t0 ∼
+uniform(0, 1056 − t). We use the same parameter F = 48 and
+T = 192 as [19].
+Mixup augmentation combines the waveform of two different
+training audio recordings xi and xj and their labels yi and yj. The
+combined waveforms and labels are given by:
+x = λxi + (1 − λ)xj
+(6)
+y = λyi + (1 − λ)yj
+(7)
+Where λ is drawn from a beta distribution:
+Beta(α, α) : p(x; α, α) = xα−1(1 − x)α−1
+B(α, α)
+(8)
+We set α = 10 and a mix-up rate 0.5 to achieve better classifica-
+tion performance. We run experiments using Python v3.8.8, Pytorch
+v1.10.0, and CUDA v11.4 on NVIDIA GeForce RTX 2080Ti. By
+comparing the results of multiple experiments, we decided to use
+the following parameters and training strategy: Most of the samples
+have a length of 10 seconds so we pad or truncate the other audio
+clips to 10 seconds. We use a batch size of 32. We sample the neg-
+ative with the sampling strategies and keep all the positive samples
+in a batch. Weighted batch sampling can improve the performance
+of classes with a small number of associated samples [22]. Then,
+we perform data augmentation on those samples and shuffle them.
+All the parameters are randomly initialized. Adam optimizer is used
+with learning rate as 1e−3 for 30 epochs. Weight decay of 5e−7 is
+added to our model to alleviate overfitting. We fix the P-N ratio to
+0.5 and run experiments for all Top 40 classes.
+5.2.3. Experiment Result
+Our results are in Figure 1 as above. Among the sampling strategies
+experimented with, the gradient embedding method works the best,
+improving the performance of 28 classes from the random sampling
+baseline. BADGE takes uncertainty and diversity of the negative
+bags simultaneously, outperforming random in 26 classes. Gradient-
+based methods select negative bags that can construct a more ef-
+ficacious decision boundary. The trade-off between efficiency and
+efficacy is the main limitation of the gradient-based methods. On
+average, our code takes about 4 hours to run 30 epochs per class.
+6. CONCLUSION
+In this paper, we study the importance of sampling negatives in a
+weak-label learning setting and have experimented with a number of
+sampling strategies on the CIFAR10 and AudioSet. We find that
+gradient embedding and BADGE sampling strategies consistently
+outperform random, margin, and entropy-based sampling strategies.
+These gradient-based strategies quantify the similarity of the positive
+bags and the negative ones allowing it to select more informative
+samples, which leads to improvement in weak label classification.
+All the proposed sampling strategies have improved in at least 40%
+of the classes for AudioSet.
+7. REFERENCES
+[1] Yu-Yin Sun, Yin Zhang, and Zhi-Hua Zhou,
+“Multi-label
+learning with weak label,” in Twenty-fourth AAAI conference
+on artificial intelligence, 2010.
+[2] Ankit Shah, Anurag Kumar, Alexander G Hauptmann, and
+Bhiksha Raj, “A closer look at weak label learning for audio
+events,” arXiv preprint arXiv:1804.09288, 2018.
+[3] Qian-Wei Wang, Liang Yang, and Yu-Feng Li, “Learning from
+weak-label data: A deep forest expedition,” in Proceedings of
+the AAAI Conference on Artificial Intelligence, 2020, vol. 34,
+pp. 6251–6258.
+[4] Anurag Kumar and Bhiksha Raj, “Audio event detection using
+weakly labeled data,” in Proceedings of the 24th ACM Interna-
+tional Conference on Multimedia, New York, NY, USA, 2016,
+MM ’16, p. 1038–1047, Association for Computing Machin-
+ery.
+[5] Anxiang Zhang, Ankit Shah, and Bhiksha Raj, “Training im-
+age classifiers using semi-weak label data,”
+arXiv preprint
+arXiv:2103.10608, 2021.
+[6] Yongqi Zhang, Quanming Yao, Yingxia Shao, and Lei Chen,
+“Nscaching: simple and efficient negative sampling for knowl-
+edge graph embedding,” in 2019 IEEE 35th International Con-
+ference on Data Engineering (ICDE). IEEE, 2019, pp. 614–
+625.
+[7] Zhen Yang, Ming Ding, Chang Zhou, Hongxia Yang, Jingren
+Zhou, and Jie Tang,
+“Understanding negative sampling in
+graph representation learning,”
+in Proceedings of the 26th
+ACM SIGKDD International Conference on Knowledge Dis-
+covery & Data Mining, 2020, pp. 1666–1676.
+[8] Kian Ahrabian, Aarash Feizi, Yasmin Salehi, William L
+Hamilton, and Avishek Joey Bose,
+“Structure aware neg-
+ative sampling in knowledge graphs,”
+arXiv preprint
+arXiv:2009.11355, 2020.
+[9] Alireza Ghasemi, Hamid R Rabiee, Mohsen Fadaee, Moham-
+mad T Manzuri, and Mohammad H Rohban, “Active learning
+from positive and unlabeled data,” in 2011 IEEE 11th Inter-
+national Conference on Data Mining Workshops. IEEE, 2011,
+pp. 244–250.
+[10] Shuang Ma, Zhaoyang Zeng, Daniel McDuff, and Yale Song,
+“Active contrastive learning of audio-visual video representa-
+tions,” arXiv preprint arXiv:2009.09805, 2020.
+[11] Jordan T Ash, Chicheng Zhang, Akshay Krishnamurthy, John
+Langford, and Alekh Agarwal, “Deep batch active learning
+by diverse, uncertain gradient lower bounds,” arXiv preprint
+arXiv:1906.03671, 2019.
+[12] Yukun Chen and Subramani Mani, “Active learning for unbal-
+anced data in the challenge with multiple models and biasing,”
+in Active Learning and Experimental Design workshop In con-
+junction with AISTATS 2010. JMLR Workshop and Conference
+Proceedings, 2011, pp. 113–126.
+[13] Weishi Shi and Qi Yu, “Integrating bayesian and discriminative
+sparse kernel machines for multi-class active learning,” Ad-
+vances in neural information processing systems, 2019.
+[14] Jingyu Shao, Qing Wang, and Fangbing Liu,
+“Learning to
+sample: an active learning framework,” in 2019 IEEE Inter-
+national Conference on Data Mining (ICDM). IEEE, 2019, pp.
+538–547.
+[15] David Arthur and Sergei Vassilvitskii, “k-means++: the ad-
+vantages of careful seeding,” in SODA ’07: Proceedings of
+the eighteenth annual ACM-SIAM symposium on Discrete al-
+gorithms, Philadelphia, PA, USA, 2007, pp. 1027–1035, Soci-
+ety for Industrial and Applied Mathematics.
+[16] Alex Krizhevsky, “Learning multiple layers of features from
+tiny images,” pp. 32–33, 2009.
+[17] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun,
+“Deep residual learning for image recognition,” CoRR, vol.
+abs/1512.03385, 2015.
+[18] Jort F Gemmeke, Daniel PW Ellis, Dylan Freedman, Aren
+Jansen, Wade Lawrence, R Channing Moore, Manoj Plakal,
+and Marvin Ritter, “Audio set: An ontology and human-labeled
+dataset for audio events,” in 2017 IEEE International Confer-
+ence on Acoustics, Speech and Signal Processing (ICASSP).
+IEEE, 2017, pp. 776–780.
+[19] Yuan Gong, Yu-An Chung, and James Glass, “Psla: Improving
+audio event classification with pretraining, sampling, labeling,
+and aggregation,” arXiv preprint arXiv:2102.01243, 2021.
+[20] Yuji Tokozume, Yoshitaka Ushiku, and Tatsuya Harada,
+“Learning from between-class examples for deep sound recog-
+nition,” CoRR, vol. abs/1711.10282, 2017.
+[21] Daniel S. Park, William Chan, Yu Zhang, Chung-Cheng Chiu,
+Barret Zoph, Ekin D. Cubuk, and Quoc V. Le,
+“SpecAug-
+ment: A Simple Data Augmentation Method for Automatic
+Speech Recognition,”
+in Proc. Interspeech 2019, 2019, pp.
+2613–2617.
+[22] Ankit Singh Rawat, Aditya Krishna Menon, Wittawat Jitkrit-
+tum, Sadeep Jayasumana, Felix X. Yu, Sashank J. Reddi, and
+Sanjiv Kumar, “Disentangling sampling and labeling bias for
+learning in large-output spaces,” CoRR, vol. abs/2105.05736,
+2021.
+

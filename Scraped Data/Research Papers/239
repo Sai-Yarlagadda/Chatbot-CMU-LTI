@@ -1,0 +1,738 @@
+arXiv:2307.11633v1  [cond-mat.str-el]  21 Jul 2023
+Crystalline Electronic Field and Magnetic Anisotropy in Dy-based Icosahedral
+Quasicrystal and Approximant
+Shinji Watanabe∗ and Tatsuya Iwasaki2
+Department of Basic Sciences, Kyushu Institute of Technology, Kitakyushu, Fukuoka 804-8550, Japan
+2Department of Applied Chemistry, Kyushu Institute of Technology, Kitakyushu, Fukuoka 804-8550, Japan
+(Dated: July 24, 2023)
+The lack of the theory of the crystalline electric ﬁeld (CEF) in rare-earth based quasicrystal (QC)
+and approximant crystal (AC) has prevented us from understanding the electronic states. Recent
+success of the formulation of the CEF theory on the basis of the point charge model has made it
+possible to analyze the CEF microscopically. Here, by applying this formulation to the QC Au-SM-
+Dy (SM=Si, Ge, Al, and Ga) and AC, we theoretically analyze the CEF. In the Dy3+ ion with 4f 9
+conﬁguration, the CEF Hamiltonian is diagonalized by the basis set for the total angular momentum
+J = 15/2. The ratio of the valences of the screened ligand ions α = ZSM/ZAu plays an important
+role in characterizing the CEF ground state. For 0 ≤ α < 0.30, the magnetic easy axis for the CEF
+ground state is shown to be perpendicular to the mirror plane. On the other hand, for α > 0.30, the
+magnetic easy axis is shown to be lying in the mirror plane and as α increases, the easy axis rotates
+to the clockwise direction in the mirror plane at the Dy site and tends to approach the pseudo 5
+fold axis. Possible relevance of these results to experiments is discussed.
+I.
+INTRODUCTION
+The quasicrystal (QC) discovered by D. Shechtman in
+1984 has no translation periodicity and thus may exhibit
+an orientational rotational symmetry forbidden in peri-
+odic crystal [1]. Clariﬁcation of the electric states and the
+physical properties has been interesting and challenging
+problem as the frontier of the condensed matter physics
+because the Bloch theorem based on the periodicity can
+no longer be applied. Recent discoveries of the quantum
+critical phenomena in the QC Au51Al34Yb15 [2, 3] and
+superconductivity Al14.9Mg44.1Zn41.0 [4] have attracted
+great interest [5].
+Since the discovery of the QC, it has been a long-
+standing issue whether the magnetic long-range order is
+realized in the QC. Experimental eﬀorts to ﬁnd it have
+been devoted extensively [6]. There exists periodic crys-
+tal with the local atomic conﬁguration common to that
+in the QC, which is referred to the approximant crys-
+tal (AC). In the rare-earth based 1/1 AC Cd6R (R=Pr,
+Nd, Sm, Gd, Tb, Dy, Ho, Eu, Tm)[7–9] and 1/1 AC
+Au-SM-R (SM=Si, Al, Ge, Sn; R=Gd, Tb, Dy, Ho)[10–
+14], magnetic long-range orders have been observed [15].
+Recently, ferromagnetic (FM) long-range order has been
+discovered in the QC Au65Ga20R15 (R=Gd, Tb) [16].
+These intriguing phenomena such as the magnetic
+long-range orders and the quantum critical phenomena
+take place in the rare-earth based QC and AC Au-SM-R
+where the 4f electrons at the rare-earth atoms are respon-
+sible for the appearance mechanism. The QCs and ACs
+are composed of the Tsai-type cluster which consists of
+multiple shell structures of atoms. In the 1/1 AC, the
+Tsai-type cluster is located at the center and corner of
+the body-centered cubic (bcc) lattice. As a typical ex-
+ample of Au-SM-R, the Tsai-type cluster in the 1/1 AC
+Au70Si17Tb13 [14] is shown in Fig. 1(a)-(e). The Tsai-
+type cluster consists of (a) cluster center, (b) dodecahe-
+dron, (c) icosahedron (IC), (d) icosidodecahedron, and
+(e) defect rhombic triacontahedron. At the 12 vertices
+of the IC in Fig. 1(c), the rare earth atom R (gray) is
+occupied. The local conﬁguration of atoms around the
+rare-earth atom R in the Tsai-type cluster is shown in
+Fig. 2(a).
+To understand the 4f electronic state in the rare-
+earth compounds, it has been well known that the crys-
+talline electric ﬁeld (CEF) is important in periodic crys-
+tals [17, 18]. It is also expected to be true in the QC.
+Thus far, experimental studies on the CEF were reported
+in Tm- and Tb-based 1/1 ACs. By the speciﬁc-heat and
+magnetization measurements in Zn85.5Sc11Tm3.5, the
+CEF energy levels and the eigenstate were discussed [19].
+By the inelastic neutron measurements in Cd6Tb [12] and
+Au70Si17Tb13 [14], the CEF energy levels and the eigen-
+states were analyzed. In ref. [14], the neutron data were
+analyzed by the point charge model in detail taking into
+account the eﬀect of the Au/Si mixed sites.
+Theoretically, the lack of the theory of the CEF pre-
+vented us from understanding the 4f-electron state in the
+rare-earth based QC and AC. Recently, the theory of the
+CEF in the rare-earth based QC and AC has been formu-
+lated by the operator equivalence method on the basis of
+the point charge model [20]. Then, the CEF in the QC
+Au51Al34Yb15 and 1/1 AC has been analyzed theoreti-
+cally taking into account the eﬀect of the Au/Al mixed
+site [20].
+Recent theoretical analysis of the CEF in the QC
+Au-SM-Tb and AC has revealed that the CEF ground
+state shows the unique magnetic anisotropy [21, 22].
+The magnetic anisotropy plays a crucial role in realiz-
+ing unique magnetic structure on the IC such as the
+hedgehog, the whirling-moment state, and the ferrimag-
+netic state [21, 22].
+The theoretical calculation based
+on the magnetic model taking into account the magnetic
+anisotropy has been performed in the 1/1 AC and the
+Cd5.7Yb-type QC. Then, it has succeeded in explaining
+the magnetic structures of not only the measured FM or-
+2
+(c)
+(a)
+(b)
+(d)
+(e)
+FIG. 1. (Color online) Tsai-type cluster consists of (a) cluster center, (b) dodecahedron, (c) icosahedron (IC), (d) icosidodeca-
+hedron, and (e) defect rhombic triacontahedron with Au (yellow), SM (blue), and R (gray). The frame is the unit cell of the
+bcc lattice of the 1/1 AC.
+der of the ferrimagnetic state in the 1/1 AC Au70Si17Tb13
+and AFM order of the whirling-antiwhirling states in the
+1/1 AC Au72Al14Tb14, but also the FM order of ferri-
+magnetic state in the QC, which oﬀers a candidate for
+the measured FM order in the QC Au65Ga20Tb15 [21].
+Very recently, the FM long-range order has been ob-
+served in the QC Au-Ga-Dy [23]. Hence, it is important
+to clarify the CEF in the QC Au-Ga-Dy. In this study,
+by applying the formulation developed in ref. [20] to the
+QC Au-SM-Dy, we analyze the CEF at the Dy site in the
+Tsai-type cluster on the basis of the point charge model.
+We reveal the magnetic easy axis in the CEF ground
+state, which is indispensable for clarifying the magnetic
+structure of the magnetically ordered phase observed in
+the Dy-based QC as well as AC.
+II.
+ANALYSIS OF CEF IN QC AU-SM-DY AND
+AC
+A.
+Lattice structure
+Let us start with the lattice structure. Since the atomic
+coordinate of the QC Au-Ga-Dy and the AC has not
+been solved experimentally, we employ that in the 1/1
+AC Au70Si17Tb13 [14] shown in Fig. 1 with Tb being
+replaced with Dy. In Fig. 2(a), the vector from the center
+of the IC passing through the Dy site is set to be the z
+axis. Namely, the z axis is the pseudo 5 fold axis, as
+clearly seen in the top view shown in Fig. 2(b). We set
+the Dy site as the origin. Then, the y axis is set so as
+the mirror plane to be the yz plane. Finally, the x axis
+is set so as perpendicular to both the z and y axes.
+In the ternary compounds of the QC Au-SM-Dy and
+AC, there exists the Au/SM mixed site. Namely, non-
+rare earth atom Au or SM atom exists at the speciﬁc site
+with some existence probability. For example, in the 1/1
+AC Au70Si17Tb13, the i = 1, 3, 4, and 16th sites are the
+Au/Si mixed sites with Au/Si: 63%/37% for the i = 1, 3,
+and 4th sites and Au/Si: 19%/81% for the i = 16th site
+in Fig. 2(a) [14]. In the QC Au-Al-Yb and 1/1 AC, the
+analysis of the CEF was performed by assuming that the
+Au/Al mixed site is 100% occupied by Al and the result
+x
+y
+z
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+(a)
+(b)
+x
+y
+z
+FIG. 2.
+(Color online) (a) Local conﬁguration of atoms
+around the rare-earth R atom (gray).
+The number labels
+surrounding Au (yellow) and SM (blue) (see text). (b) Top
+view of (a).
+was compared by the calculation taking into account the
+eﬀect of the Au/Al mixed site [20]. The result shows that
+the former approach describes at least qualitative feature
+of the CEF. The same conclusion was also reported in the
+QC Au-SM-Tb and AC [21, 22]. Hence, here we assume
+that the Au/SM mixed sites are 100% occupied by SM
+as a ﬁrst step of analysis.
+B.
+Point charge model for Dy3+ ion
+The Dy3+ ion has 4f 9 electron conﬁguration. Since the
+4f shell becomes closed shell with 4f 14 electron conﬁgu-
+ration, the Dy3+ ion is regarded to have 4f 5 hole conﬁg-
+uration. Then, the electrostatic interaction between the
+4f 5 hole and surrounding ligand ions are expressed as the
+CEF Hamiltonian
+HCEF = 5|e|Vcry(r),
+(1)
+where the Coulomb potential is given by
+Vcry(r) =
+16
+X
+i=1
+qi
+|Ri − r|.
+(2)
+Here, Ri is the position vector of the Au or SM ions
+labeled by i = 1 ∼ 16 surrounding the Dy3+ ion in
+Fig. 2(a). The charge of the ligand ion qi is given by
+3
+qi = ZSM|e| for i = 1, 3, 4 and 16 and qi = ZAu|e| other-
+wise, where ZSM and ZAu are the valences of the SM ion
+and the Au ion, respectively. Since the existence prob-
+ability of the cluster center shown in Fig. 1(a) is very
+small [14], here we neglect it for simplicity.
+By applying the Wigner-Eckart theorem [24] to HCEF,
+we obtain [20]
+HCEF =
+X
+ℓ=2,4,6
+"
+B0
+ℓ (c)O0
+ℓ(c) +
+X
+η=c,s
+ℓ
+X
+m=1
+Bm
+ℓ (η)Om
+ℓ (η)
+#
+,
+(3)
+where Om
+ℓ (c) and Om
+ℓ (s) are the Stevens operators which
+consist of the total angular momentum operators Jz,
+J+ ≡ (Jx + Jy)/2, and J− ≡ (Jx − Jy)/(2i) [17, 18].
+The explicit forms of Om
+ℓ (c) and Om
+ℓ (s) can be found
+in supplementary material of ref. [20]. The coeﬃcients
+Bm
+ℓ (η) are deﬁned by
+Bm
+2 = 5|e|Cm
+2 ⟨r2⟩αJhm
+2 ,
+(4)
+Bm
+4 = 5|e|Cm
+4 ⟨r4⟩βJhm
+4 ,
+(5)
+Bm
+6 = 5|e|Cm
+6 ⟨r6⟩γJhm
+6 ,
+(6)
+where Cm
+ℓ
+is given by C0
+2 =
+p
+π/5, C1
+2 = 2
+p
+6π/5,
+C2
+2 =
+p
+6π/5, C0
+4 = √π/12, C1
+4 =
+√
+5π/3, C2
+4 =
+√
+10π/6,
+C3
+4 =
+√
+140π/6, C4
+4 =
+√
+70π/12, C0
+6 =
+√
+13π/104, C1
+6 =
+√
+546π/52, C2
+6 = 4
+√
+5460π/832, C3
+6 =
+√
+5460π/104,
+C4
+6
+= 3
+√
+182π/104, C5
+6
+=
+√
+9009π/52, and C6
+6
+=
+√
+12012π/208.
+For the expectation values of r2n by
+the radial part, we employ the results of the Dirac-
+Fock calculation for the Dy3+ ion ⟨r2⟩ = 0.2188 ˚A
+2,
+⟨r4⟩ = 0.1180 ˚A
+4, and ⟨r6⟩ = 0.1328 ˚A
+6 [25] .
+The
+Stevens factors for the Dy3+ ion are given by αJ =
+−2/(32 · 5 · 7), βJ
+= −23/(33 · 5 · 7 · 11 · 13), and
+γJ = 22/(33 · 7 · 112 · 132) [17, 18].
+In Eqs (4), (5), and (6), hm
+ℓ is deﬁned by
+hm
+ℓ = Re
+" 16
+X
+i=1
+qi
+Rℓ+1
+i
+(−1)mY m
+ℓ (θi, ϕi)
+#
+.
+(7)
+In Eq. (3), Bm
+ℓ (s) is obtained by inputting hm
+ℓ (s) into
+Bm
+ℓ
+instead of hm
+ℓ , where hm
+ℓ (s) is deﬁned by
+hm
+ℓ (s) = Im
+" 16
+X
+i=1
+qi
+Rℓ+1
+i
+(−1)mY m
+ℓ (θi, ϕi)
+#
+.
+(8)
+For the Dy3+ ion, the total angular momentum is
+L = 5 and the total spin is S = 5/2. Since the 4f 9 con-
+ﬁguration has more than half number of electrons in the
+closed shell, the Hund’s rule tells us that the total angu-
+lar momentum J = L+S = 15/2 gives the lowest energy
+state. Then we calculate HCEF in Eq. (3) in terms of the
+basis |J = 15/2, Jz⟩ for Jz = 15/2, 13/2, · · · , −15/2. By
+diagonalizing the 16 × 16 matrix of HCEF, we obtain the
+CEF energy En (n = 0, 1, 2, · · · , 7) and the eigenstate
+|ψn+⟩ =
+15/2
+X
+Jz=−15/2
+an,Jz
+J = 15
+2 , Jz
+
+,
+(9)
+|ψn−⟩ =
+15/2
+X
+Jz=−15/2
+(−1)
+2Jz +1
+2
+a∗
+n,−Jz
+J = 15
+2 , Jz
+
+,(10)
+where an,Jz is the coeﬃcient satisfying the normaliza-
+tion condition P15/2
+Jz=−15/2 |an,Jz|2 = 1. Here, ± denotes
+the Kramers states.
+Since the Dy3+ ion has the odd-
+number of electrons (holes), the Kramers degeneracy ex-
+ists, where the Kramers pair satisﬁes the orthogonality
+condition ⟨ψn+|ψn−⟩ = 0.
+The QC Au-SM-Dy and the AC are metallic crystals.
+The nominal valences of the Au ion and for example Ga
+ion are known to be +1 and +3 respectively [15, 26].
+However, in reality, these values are considered to be re-
+duced by the eﬀect of the screening of electrons. Hence,
+we consider the valences of the screened ligand ions ZAu
+and ZSM. In the present study, as a typical value, we set
+ZAu = 0.223 which was identiﬁed by the inelastic neu-
+tron measurement in the 1/1 AC Au70Si17Tb13 [14] and
+analyze the CEF by changing the ratio α = ZSM/ZAu as
+a parameter. It is noted here that if the value of ZAu is
+changed, the CEF energy En is changed with En being
+multiplied by a constant factor but the eigenstate does
+not change as far as α is the same. This point will be
+discussed again in §IV B.
+III.
+RESULTS
+A.
+CEF energy levels
+The α dependence of the CEF energy En is shown in
+Fig. 3(a). Energy levels are split into 8 levels where each
+level has the Kramers degeneracy. Around α = 1, the
+split width E7 − E0 is small, where the charge distribu-
+tion around the Dy site is regarded as uniform one. In
+Fig. 3(b), the enlargement for 0 ≤ α ≤ 1 is shown, where
+the split width of the energy levels is smallest at α ≈ 0.8.
+At α = 0.3035 ≡ αc indicated by the vertical dashed line,
+the CEF ground energy E0 and the ﬁrst excited energy
+E1 get close. Namely, the gap ∆ = E1± − E0± becomes
+minimum ∆ = 22.6 K for α = 0.304. Figure 3(b) shows
+that ∆ is typically larger than 10 ∼ 100 K. Hence, the
+CEF ground state is expected to dominate over the lower
+temperature region.
+B.
+Magnetic easy axis in the CEF ground state
+To clarify the magnetic anisotropy arising from the
+CEF, we calculate Mξν ≡ ⟨ψ0η| ˆJξ ˆJν|ψ0η⟩ (ξ, ν = x, y,
+and z).
+By diagonalizing 3 × 3 matrix M, we obtain
+the normalized eigenvector J of the largest eigenvalue,
+4
+0
+1
+2
+3
+4
+-2
+-1
+0
+1
+2
+[ 103]
+a
+E [K]
+0
+0.2
+0.4
+0.6
+0.8
+1
+-400
+0
+400
+a
+E [K]
+(a)
+(b)
+FIG. 3. (Color online) The α dependence of the CEF energy
+level En for n = 0, 1, 2, · · · , 7 at ZAu = 0.223. (a) 0 ≤ α ≤ 4,
+(b) 0 ≤ α ≤ 1. In (b), the vertical dashed line is plotted at
+α = 0.3035.
+0
+1
+2
+3
+4
+0
+0.5
+1
+a
+Jz
+-1
+0
+1
+Jx
+-1
+-0.5
+0
+Jy
+1
+2
+3
+4
+0
+20
+40
+60
+80
+a
+q (  )
+(a)
+(b)
+-1
+1
+y
+z
+q
+J
+O
+FIG. 4.
+(Color online) (a) The α dependence of J for
+ZAu = 0.223. Top panel: Jx vs. α. Middle panel: Jy vs.
+α. Bottom panel: Jz vs. α. The vertical dashed line is plot-
+ted at α = 0.3035. (b) The α dependence of θ deﬁned by the
+angle between J and the z axis for α > 0.3035. The horizon-
+tal dashed line is plotted at θ = 90◦.
+which gives the largest magnetic moment direction in the
+CEF ground state. The result is shown in Fig. 4(a). For
+α < αc, the result shows J = (1, 0, 0), which is perpen-
+dicular to the mirror (yz) plane. Figure 5 illustrates the
+magnetic easy axis perpendicular to the mirror (yz) plane
+in the local conﬁguration of atoms surrounding the Dy
+site where the local coordinate is set in the same way as
+Fig. 2(a).
+On the other hand, for α > αc, the results in Fig. 4(a)
+x
+y
+z
+FIG. 5. (Color online) The magnetic easy axis in the CEF
+ground state for 0 ≤ α < 0.3035. The red arrow indicates the
+J vector (see text). The local coordinate with Au (yellow)
+and SM (blue) surrounding Dy (gray) is set in the same way
+as Fig. 2(a).
+show J = (0, Jy, Jz), which indicates that the magnetic
+easy axis is lying in the mirror (yz) plane. In Fig. 4(b),
+we plot the α dependence of the angle θ deﬁned as the
+angle between J and the pseudo 5 fold axis, i.e., z axis
+[see inset in Fig. 4(b)]. In the bottom panel of Fig. 4(a),
+for α >
+∼ 0.30, Jz is slightly negative and becomes positive
+as α increases. The negative Jz is not an artifact of the
+calculation but reﬂects the fact that the magnetic easy
+axis J points to the θ > 90◦ direction from the 5 fold axis.
+At α = 0.31, the anisotropy angle is θ = 96.7◦ and at
+α = 0.56 the easy axis J is perpendicular to the pseudo 5
+fold axis, i.e., θ = 90◦. Namely, for 0.30 < α < 0.56, Jz in
+the bottom panel of Fig. 4(a) is negative. As α increases,
+J rotates to the clockwise direction in the mirror (yz)
+plane and tends to approach the pseudo 5 fold axis.
+Figures 6(a)-(d) illustrate the α dependence of the J
+vector, i.e., the magnetic easy axis, in the local conﬁgu-
+ration of atoms surrounding the Dy site. At α = 0.31,
+the magnetic easy axis is directed to the nearly perpen-
+dicular direction to the pseudo 5 fold axis in the mirror
+plane, i.e., θ = 96.7◦, as shown in Fig. 6(a). At α = 0.8,
+θ = 74.2◦ [see Fig. 6(b)] and hence for 0.31 ≤ α ≤ 0.8 [see
+Fig. 3(b)], the magnetic easy axis remains nearly perpen-
+dicular to the mirror plane. At α = 1.0, θ = 52.3◦ [see
+Fig. 6(c)]. At α = 2.0, θ = 24.5◦ [see Fig. 6(d)].
+IV.
+DISCUSSION
+A.
+Comparison with Au-SM-Tb
+The overall feature of the α dependence of the mag-
+netic easy axis shown in Figs. 4(a) and 4(b) is similar to
+that obtained for the CEF analysis of the QC Au-SM-Tb
+where the Au/SM mixed site was assumed to be 100% oc-
+cupied by SM [21]. Although Tb3+ ion has 4f 8 electron
+conﬁguration giving non-Kramers system and the ground
+total angular momentum is J = 6, the CEF ground state
+was shown to be doubly degenerate. The magnetic easy
+axis is perpendicular to the mirror plane for small α and
+is lying in the mirror plane for large α as similar to Fig. 5
+5
+(a) a=0.31
+(b) a=0.8
+(c) a=1.0
+(d) a=2.0
+x
+y
+z
+x
+y
+z
+x
+y
+z
+x
+y
+z
+FIG. 6. (Color online) The magnetic easy axis in the CEF
+ground state for (a) α = 0.31, (b) α = 0.8, (c) α = 1.0,
+and (d) α = 2.0. The red arrow indicates the J vector (see
+text). The local coordinate with Au (yellow) and SM (blue)
+surrounding Dy (gray) is set in the same way as Fig. 2(a).
+and Fig. 6.
+The magnetic model taking into account the uniaxial
+anisotropy shown in Fig. 4(b)
+H = −
+X
+⟨i,j⟩
+Jij ˆ
+Ji · ˆ
+Jj
+(11)
+was introduced on the IC, 1/1 AC, and the QC [21, 22].
+Here,
+ˆ
+J is the unit vector operator whose direction is
+restricted to either parallel or antiparallel to the moment
+direction shown in Fig. 4(b). Hence, the phase diagram
+of the model (11) is also applied to the QC Au-SM-Dy
+and the 1/1 AC. For FM interaction Jij, the magnetic
+states on the IC, 1/1 AC, and Cd5.7Yb-type QC was
+shown in ref. [21]. For antiferromagnetic interaction, Jij,
+the magnetic states on the IC, 1/1 AC, and Cd5.7Yb-type
+QC was shown in ref. [22]. Present study has revealed
+that the minimal model for the QC Au-SM-Dy and the
+AC is the model (11), which is also the model for the QC
+Au-SM-Tb and the AC.
+It is also noted that the magnetic anisotropy shown in
+Fig. 5 has neither been observed experimentally in Au-
+SM-Dy nor Au-SM-Tb to date. The magnetic structure
+of the model (11) applied to the IC was discussed in sup-
+plementary information in ref. [21]. The observation of
+this state is left for interesting future experiments.
+B.
+Comparison with experiments
+The results shown in Fig. 3 and Fig. 4 indicate that the
+ratio of the screened ligand ions α plays an important role
+in characterizing the CEF ground state. Experimentally,
+by performing the inelastic neutron measurement, the
+valences of the screened ligand ions are expected to be
+determined in the following way. First, by comparing the
+ratio of each diﬀerence of the energy levels En+1 − En
+for 0 ≤ n ≤ 6 with Fig. 3, the parameter α is identiﬁed.
+Next, to reproduce the absolute value of each energy level
+En, a constant factor is multiplied to each En. Then,
+the valence of the screened Au ion ZAu is identiﬁed by
+multiplying ZAu by the factor. In this way, ZSM as well
+as ZAu can be determined experimentally.
+V.
+SUMMARY
+The CEF of the 4f electrons at the Dy site inside the
+Tsai-type cluster in the QC Au-SM-Dy and AC is ana-
+lyzed theoretically on the basis of the point charge model.
+The ratio of the valences of the screened ligand ions
+α = ZSM/ZAu plays an important role in characterizing
+the CEF ground state. For 0 ≤ α < 0.30, the magnetic
+easy axis for the CEF ground state is perpendicular to
+the mirror plane. On the other hand, for α > 0.30, the
+magnetic easy axis is lying in the mirror plane and as α
+increases, the easy axis rotates to the clockwise direction
+in the mirror plane at the Dy site and tends to approach
+the pseudo 5 fold axis. These overall features are similar
+to those obtained in the CEF analysis in the QC Au-SM-
+Tb and AC in ref. [21] and hence the magnetic model
+(11) taking into account the uniaxial magnetic anisotropy
+arising from the CEF introduced in refs. [21, 22] is con-
+sidered to be also relevant to the QC Au-SM-Dy and AC.
+Experimental identiﬁcation of α as well as ZAu is im-
+portant for clariﬁcation of the uniaxial anisotropy of the
+4f magnetic moment toward the understanding of the
+magnetic structure of the FM long-range order in the QC
+Au-Ga-Dy.
+The experimental search for the magnetic
+structure with uniaxial anisotropy perpendicular to the
+mirror plane, which is predicted to exist in the present
+study, is also interesting future subject.
+ACKNOWLEDGMENTS
+S.W. thanks R. Tamura, F. Labib, and S. Suzuki for in-
+forming him of experimental data with enlightening dis-
+cussions. This work was supported by JSPS KAKENHI
+Grants Numbers JP19H00648, JP22H0459, JP22H01170,
+and JP23K17672.
+[1] D. Shechtman, I. Blech, D. Gratias, and J. W. Cahn,
+Phys. Rev. Lett. 53, 1951 (1984).
+[2] K. Deguchi, S. Matsukawa, N. K. Sato, T. Hattori, K.
+6
+Ishida, H. Takakura, and T. Ishimasa, Nat. Mater. 11,
+1013 (2012).
+[3] T. Watanuki, S. Kashimoto, D. Kawana, T. Yamazaki,
+A. Machida, Y. Tanaka, and T. J. Sato, Phys. Rev. B
+86, 094201 (2012).
+[4] K. Kamiya, T. Takeuchi, N. Kabeya, N. Wada, T. Ishi-
+masa, A. Ochiai, K. Deguchi, K. Imura, and N. K. Sato,
+Nat. Commun. 9, 154 (2018).
+[5] N. K. Sato, T. Ishimasa, K. Deguchi, and K. Imura, J.
+Phys. Soc. Jpn. 91, 072001 (2022).
+[6] A. I. Goldman, T. Kong, A. Kreyssig, A. Jesche, M. Ra-
+mazanoglu, K. W. Dennis, S. L. Bud’ko and P. C. Can-
+ﬁeld, Nat. Mater. 12, 714 (2013).
+[7] R. Tamura, Y. Muro, T. Hiroto, K. Nishimoto, and T.
+Takabatake, Phys. Rev. B 82, 220201(R) (2010).
+[8] A. Mori, H. Ota, S. Yoshiuchi, K. Iwakawa, Y. Taga, Y.
+Hirose, T. Takeuchi, E. Yamamoto, Y. Haga, F. Honda,
+R. Settai, and Y. ¯Onuki, J. Phys. Soc. Jpn. 81, 024720
+(2012).
+[9] R. Tamura, Y. Muro, T. Hiroto, H. Yaguchi, G. Beutier,
+and T. Takabatake, Phys. Rev. B 85, 014203 (2012).
+[10] T. Hiroto, G. H. Gebresenbut, C. Pay G´omez, Y. Muro,
+M. Isobe, Y. Ueda, K. Tokiwa, and R. Tamura, J. Phys.:
+Condens. Matter 25, 216004 (2013).
+[11] T. Hiroto, K Tokiwa, and R Tamura, J. Phys.: Condens.
+Matter 26, 216004 (2014).
+[12] P. Das, P.-F. Lory, R. Flint, T. Kong, T. Hiroto, S. L.
+Bud’ko, P. C. Canﬁeld, M. de Boissieu, A. Kreyssig, and
+A. I. Goldman, Phys. Rev. B 95, 054408 (2017).
+[13] T. J. Sato, A. Ishikawa, A. Sakurai, M. Hattori, M.
+Avdeev, and R. Tamura, Phys. Rev. B 100, 054417
+(2019).
+[14] T. Hiroto, T. J . Sato, H. Cao, T. Hawai, T. Yokoo,
+S. Itoh, and R. Tamura, J. Phys.: Condens. Matter 32,
+415802 (2020).
+[15] S. Suzuki, A. Ishikawa, T. Yamada, T. Sugimoto, A.
+Sakurai, and R. Tamura, Mater. Trans. 62, 298 (2021).
+[16] R. Tamura, A. Ishikawa, S. Suzuki, A. Kotajima, Y.
+Tanaka, T. Seki, N. Shibata, T. Yamada, T. Fujii, C.-
+W. Wang, M. Avdeev, K. Nawa, D. Okuyama, and T. J.
+Sato, J. Am. Chem. Soc. 143(47), 19938 (2021).
+[17] K. W. H. Stevens, Proc. Phys. Soc. A 65, 209 (1952).
+[18] M. T. Hutchings, Solid State Phys. 16, 227 (1964).
+[19] S. Jazbec, S. Kashimoto, P. Koˇzelj, S. Vrtnik, M. Jagodiˇc,
+Z. Jagliˇci´c, and J. Dolinˇsek, Phys. Rev. B 93, 054208
+(2016).
+[20] S. Watanabe and M. Kawamoto, J. Phys. Soc. Jpn. 90,
+063701 (2021).
+[21] S. Watanabe, Proc. Natl. Acad. Sci. USA. 118(43),
+e2112202118 (2021).
+[22] S. Watanabe, Sci. Rep. 11, 17679 (2021).
+[23] R. Takeuchi, F. Labib, T. Tsugawa, Y. Akai, A. Ishikawa,
+S. Suzuki, T. Fujii, and R. Tamura, Phys. Rev. Lett. 130,
+176701 (2023).
+[24] E. P. Wigner, Group Theory and its Application to the
+Quantum Mechanics of Atomic Spectra (New York, Aca-
+demic Press, 1959).
+[25] A. J. Freeman and J. P. Desclaux, J. Magn. Magn. Mater.
+12, 11 (1979).
+[26] W. B. Pearson, The Crystal Chemistry and Physics of
+Metals and Alloys (Wiley-Interscience, John Wiley &
+Sons, Inc., New York-London-Sydney-Toronto, 1972).
+

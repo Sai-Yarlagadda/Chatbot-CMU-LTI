@@ -1,0 +1,720 @@
+TRAINING AUDIO CAPTIONING MODELS WITHOUT AUDIO
+Soham Deshmukh1, Benjamin Elizalde1, Dimitra Emmanouilidou1, Bhiksha Raj2, Rita Singh2, Huaming Wang1
+1Microsoft, 2Carnegie Mellon University
+{sdeshmukh, benjaminm, diemmano, huawang}@microsoft.com, {bhiksha, rsingh}@cs.cmu.edu
+ABSTRACT
+Automated Audio Captioning (AAC) is the task of generating
+natural language descriptions given an audio stream. A typ-
+ical AAC system requires manually curated training data of
+audio segments and corresponding text caption annotations.
+The creation of these audio-caption pairs is costly, resulting
+in general data scarcity for the task. In this work, we address
+this major limitation and propose an approach to train AAC
+systems using only text. Our approach leverages the multi-
+modal space of contrastively trained audio-text models, such
+as CLAP. During training, a decoder generates captions con-
+ditioned on the pretrained CLAP text encoder. During infer-
+ence, the text encoder is replaced with the pretrained CLAP
+audio encoder. To bridge the modality gap between text and
+audio embeddings, we propose the use of noise injection or
+a learnable adapter, during training. We find that the pro-
+posed text-only framework performs competitively with state-
+of-the-art models trained with paired audio, showing that effi-
+cient text-to-audio transfer is possible. Finally, we showcase
+both stylized audio captioning and caption enrichment while
+training without audio or human-created text captions.
+Index Terms— automated audio captioning, text-only
+training, prefix tuning, contrastive learning
+1. INTRODUCTION
+Automated Audio Captioning (AAC) task involves describ-
+ing the content of an audio stream in natural language. This
+involves describing the audio in terms of audio events, acous-
+tic scenes, temporal relationships between events, actions, in-
+teractions between objects, and the environment. The typi-
+cal AAC model uses an encoder-decoder architecture [1] that
+can be semantically divided into two components: an audio
+understanding component and a language generation compo-
+nent. The audio understanding component is an audio en-
+coder that extracts audio features.
+Examples of audio en-
+coders are the pretrained sound event models like PANN [2],
+AST [3], HTSAT [4]. The language generation component is
+a decoder like BART [5] which generates a natural language
+description conditioned on the audio features. To improve the
+language generation component, recent approaches use Large
+Language Models (LLM) with encyclopedic knowledge like
+GPT2 as the choice of decoder [6, 7, 8]. However, the gener-
+ated captions still suffer from short or repetitive text descrip-
+tions, of limited vocabulary and diversity [9, 10].
+Large audio-text corpora can improve AAC systems.
+However, collecting annotated training data for audio cap-
+tioning is a challenging task: it requires human annotators
+to listen to each audio recording and then describe what was
+heard. This process is time-consuming, expensive, and intro-
+duces biases [11, 10]. Recent works try to solve this problem
+from either a modeling or data-driven perspective. From the
+modeling side, researchers leverage Sound Event Detection
+(SED) datasets [12, 13, 14], contrastive losses [15, 16] and
+use training procedures that increase the diversity of captions
+[17]. The data-driven approaches include scaling the audio
+captioning dataset by sourcing data from the web or gener-
+ating data from LLM. The challenge of sourcing data from
+the web is the sparsity of audio-text pairs that are aligned
+and also human-readable. On the other hand, with LLMs,
+one can generate audio captions with metadata and keywords
+[18]. However, the audio file corresponding to the generated
+caption is still required to train the AAC system. Therefore,
+we ask the question: “Can we train AAC systems using only
+text?”. This way, the requirement for audio segments paired
+with text descriptions can be lifted during AAC training.
+In this paper, we propose a method to train an AAC sys-
+tem using only text.
+Our method is based on the key in-
+sight that multimodal contrastive learning models like CLAP
+[19, 20] force the audio and text embeddings in a common
+space. First, we train a text decoder to generate captions con-
+ditioned on the pretrained CLAP text encoder. Then, dur-
+ing inference, we replace the text encoder with the pretrained
+CLAP audio encoder. To bridge any modality gap [21], we
+explore different lightweight approaches during training. We
+evaluate our method on two AAC datasets and show that our
+approach achieves competitive results with the state-of-the-
+art models trained on paired audio-text. We perform multiple
+ablation studies including LLM-generated text and stylized
+captions to verify the effectiveness of text-only training.
+2. APPROACH
+CLAP [19] jointly trains an audio and text encoder using con-
+trastive learning. After training, the audio and text encoder
+can be used in zero-shot setup for classification, retrieval
+[19, 22, 23] and supervised downstream tasks [18, 24, 25, 8].
+Our approach leverages this multimodal space to enable text-
+to-audio transfer.
+An AAC model learns P(O|Ea) where
+Ea is the audio embedding and O is the output caption. In
+our setup, Ea is the pretrained CLAP audio embedding. As
+arXiv:2309.07372v1  [eess.AS]  14 Sep 2023
+Fig. 1: The first panel depicts the modality gap between CLAP pretrained audio and pretrained text embeddings in the joint audio-text
+space. The second panel shows the proposed method of text-only training for Automated Audio Captioning. At inference, the text encoder is
+swapped with the audio encoder and a caption is produced for the input audio. Only mapping network m is trainable, while modules with ^
+are frozen. The Prefix is the output of m. Singular arrows depict embedding vectors while multiple arrows indicate a sequence of vectors.
+CLAP learns a joint multimodal space between audio and
+text, P(Ea) = P(Et) where Et is the pretrained CLAP
+text embedding. Therefore, for AAC, we can instead learn
+P(O|Et) = P(O|Ea). This has two implications. First, we
+can use a text encoder during training and then swap it with an
+audio encoder during inference. Second, this enables training
+on text-only data without requiring aligned audio-text pairs
+or corresponding audio of generated caption.
+2.1. Modality Gap
+In practice, P(Ea) ̸= P(Et) but instead P(Ea) ≈ P(Et).
+This prevents swapping audio and text encoders as the distri-
+bution of audio and text embeddings do not exactly coincide.
+This effect is known as Modality Gap [21] and is shown in Fig
+1. It was initially observed in image-text models like CLIP but
+applies to all multimodal contrastive learning models includ-
+ing CLAP. To bridge the gap in visual models, recent works
+have explored adding offsets and learning adapters [26, 27].
+In this work, we explore two methods to bridge the modal-
+ity gap. First, we add zero-mean Gaussian noise to CLAP’s
+text embeddings during training. The noise helps in spreading
+out the text embeddings and intersecting them with the audio
+embeddings. The Standard Deviation ϵ of the Gaussian noise
+determines the robustness of the model- to the variations in
+embeddings and the shift caused by the modality switch. Sec-
+ond, we train a lightweight linear adapter to transform text
+embeddings into audio embeddings. We study the choice of
+adaptation and performance in Section 4.
+2.2. Training
+The text-only training approach and AAC model architecture
+are shown in Fig 1. Let the training data in text-to-text format
+be referred to as {ti,ci} where ti and ci are the ith input and
+ith output text caption respectively. Text encoder gψ encodes
+the input text ti into an embedding. We inject random Gaus-
+sian noise µ ∼ N(0, ϵ) with a standard deviation of ϵ to the
+text embedding.
+v = gψ(ti) + µ
+(1)
+To create a prefix pi, the embedding v is projected to a se-
+quence of k embeddings. The prefix pi is used to prompt the
+pretrained frozen language model fθ.
+pi = pi
+1, ..., pi
+k = m(v)
+(2)
+The language model fθ is fed with the prefix-caption con-
+catenation of all {zi}N
+i=1, where zi is:
+zi = pi
+1, ..., pi
+k, ci
+1, ..., ci
+l
+(3)
+The model is trained as a standard captioning system, where it
+learns to predict a caption (text tokens) ci conditioned on the
+prefix in an autoregressive fashion. We used Cross-Entropy
+as the loss function:
+L = −
+N
+X
+i=1
+l
+X
+j=1
+log pγ(ci
+j|pi
+1, ..., pi
+k, ci
+1, ..., ci
+j−1)
+(4)
+where γ denotes the model’s trainable parameters, contained
+only within the mapping network m (Figure 1). We use a
+model based on prefix-tuning architecture [7, 8]. However, in
+principle, the text-only training can be applied to any encoder-
+decoder AAC model. The text encoder and GPT2 are frozen.
+2.3. Inference
+At inference time, we swap the text encoder gψ with the au-
+dio encoder hϕ. We do not inject Gaussian noise or perform
+any modality adaptation. The audio encoder gϕ and the map-
+ping network m project the test audio xi into a sequence of k
+embeddings.
+pi = pi
+1, ..., pi
+k = m(hϕ(xi))
+(5)
+The causal language model fθ generates the next token se-
+quentially conditioned on the prefix pi. The language model
+Model
+Eval. dataset
+BLUE1
+BLUE2
+BLUE3
+BLUE4
+METEOR
+ROUGEL
+CIDEr
+SPICE
+SPIDEr
+Chen et al.
+AudioCaps
+0.489
+0.292
+0.178
+0.106
+0.152
+0.346
+0.265
+0.093
+0.179
+Gontier et al.
+AudioCaps
+0.635
+0.461
+0.322
+0.219
+0.208
+0.450
+0.612
+0.153
+0.383
+Mei et al.
+AudioCaps
+0.682
+0.507
+0.369
+0.266
+0.238
+0.488
+0.701
+0.166
+0.434
+Kim et al.
+AudioCaps
+0.708
+0.547
+0.402
+0.283
+0.238
+0.499
+0.710
+0.167
+0.438
+Text-only (proposed)
+AudioCaps
+0.645
+0.481
+0.338
+0.227
+0.220
+0.458
+0.697
+0.178
+0.437
+Audio-text (proposed)
+AudioCaps
+0.647
+0.480
+0.337
+0.223
+0.223
+0.462
+0.729
+0.181
+0.455
+Chen et al.
+Clotho
+0.516
+0.325
+0.215
+0.141
+0.153
+0.350
+0.314
+0.102
+0.208
+Gontier et al.
+Clotho
+0.461
+0.282
+0.182
+0.117
+0.136
+0.318
+0.251
+0.083
+0.167
+Mei et al.
+Clotho
+0.516
+0.318
+0.204
+0.127
+0.157
+0.351
+0.313
+0.105
+0.209
+Kim et al.
+Clotho
+0.539
+0.346
+0.227
+0.142
+0.159
+0.366
+0.319
+0.111
+0.215
+Text-only (proposed)
+Clotho
+0.524
+0.339
+0.222
+0.136
+0.173
+0.371
+0.379
+0.132
+0.256
+Audio-text (proposed)
+Clotho
+0.574
+0.375
+0.250
+0.155
+0.173
+0.381
+0.398
+0.123
+0.261
+Table 1: The proposed text-only method performs comparably with the best Audio Captioning models in the literature, which were trained on
+audio-text pairs. All models use AudioCaps and Clotho datasets in training. Higher is better for all metrics. The last two gray rows indicate
+model performance when audio-text pairs are used in training.
+assigns probabilities to all vocabulary tokens at each predic-
+tion, which are used to determine the next token depending
+on the choice of decoding. We use beam search with size 5.
+3. EXPERIMENTS
+Datasets. We use text data from Clotho [28] and AudioCaps
+[29] for the text-only audio captioning training. In all, we
+use 65,002 captions for training, 24,420 captions from Clotho
+train set and 40,582 from AudioCaps train set. For bench-
+marking, we use the audios files from the test set of Clotho
+and test set of AudioCaps. In Section 5.1 we use WavCaps
+dataset [18] to simulate text data generated by LLMs.
+Encoders.
+We use the audio encoder and text encoder
+from CLAP [20]: the audio encoder is audio transformer
+HTSAT[4] and the text encoder is GPT2. Audio is sampled at
+44.1 kHz and converted to 64-bin log Mel spectrograms, with
+a 1024 secs window in 50-8000 Hz, and 320 secs hop size.
+Mapper and decoder. The mapping network m shown in
+Figure 1 consists of a linear layer, an 8-layer transformer, and
+a learnable constant. The prefix length is set to be 40. For
+the decoder, we use GPT2, specifically GPT2-base (124M pa-
+rameters). The decoder is frozen through all the experiments.
+Training. We use Adam Optimiser for 30 epochs with a linear
+schedule with 2000 warmup steps and a base learning rate of
+1e-4. The batch size is 128 and trained on 4 V100 GPUs.
+4. RESULTS AND DISCUSSION
+SPIDEr is used as the primary evaluation metric in line with
+the IEEE DCASE 2022 competition. The experiments in this
+section are designed to understand the utility of the text-only
+method (section 4.1), and adapter choices (sections 4.2 4.3).
+4.1. Text-only training
+Table 1 shows results of various models trained on both Au-
+dioCaps and Clotho. Models in rows 1-4 use both audio and
+text in training. The proposed text-only model (row 5) uses
+only text data and random Gaussian noise with a std of 0.015.
+It achieves comparable performance with the best audio cap-
+tioning models in the literature and obtains a SPIDEr score of
+0.256 on Clotho and 0.455 on AudioCaps, higher than 0.215
+and 0.437 reported by Kim et. al[7].
+Text-only training is a valid alternative to training and/or
+initializing audio captioning systems. We also train our model
+architecture made for text-only training with audio-text pairs.
+The architecture is similar to Fig 1, where during training we
+use audio files with an audio encoder instead of text with a
+text encoder and Gaussian noise. This is the last and grayed
+row in Table 1. The difference in SPIDEr score between the
+audio-text and the text-only training is small: +0.02 on Au-
+dioCaps and +0.01 on Clotho. This indicates that our text-
+only training can achieve comparable results without audio
+data. The main benefit of text-only training is training on un-
+paired openly available text. We explore this in Section 5.1),
+whereby using LLM-generated text, we show that text-only
+training can improve over the audio-text training.
+4.2. Gaussian Noise Injection
+The choice and magnitude of noise used has a significant ef-
+fect on text-only training. To determine the value of variance,
+we take the infinity norm between the audio and text embed-
+dings of randomly chosen 30 examples. The variance value
+obtained is ∼ 0.015. We also verify this empirically. We
+change the value of Gaussian noise variance from 0.0 to 1.0
+and train a text-only model for each value. The SPIDEr score
+on AudioCaps and Clotho with respect to variance is shown
+in Figure 2. The experimental result of ∼ 0.015 confirms that
+with only 30 examples we can approximate the noise variance
+required for text-only training.
+4.3. Learnable Adapter
+Random Gaussian noise is used as the default adapter in our
+experiments. However, with access to audio-text pairs, an
+adapter can be trained to bridge the modality gap. We con-
+sider learning a linear adapter to bridge the modality gap. If
+f(a) is a pretrained audio encoder and g(t) is a pretrained
+text encoder from CLAP. The linear adapter h is applied on
+top of pretrained text encoder g(t). The loss function is MSE
+between f(t) and h(g(t)). We use AudioCaps and Clotho
+train-set for training the linear adapter h.
+Model
+Eval. dataset
+BLUE1
+BLUE2
+BLUE3
+BLUE4
+METEOR
+ROUGEL
+CIDEr
+SPICE
+SPIDEr
+Text-only
+AudioCaps
+0.645
+0.481
+0.338
+0.227
+0.220
+0.458
+0.696
+0.178
+0.437
+Text-only†
+AudioCaps
+0.653
+0.484
+0.342
+0.232
+0.226
+0.459
+0.697
+0.179
+0.438
+Text-only
+Clotho
+0.524
+0.339
+0.222
+0.136
+0.173
+0.371
+0.379
+0.132
+0.256
+Text-only†
+Clotho
+0.530
+0.342
+0.224
+0.143
+0.164
+0.367
+0.377
+0.117
+0.247
+Table 2: Text-only uses AudioCaps and Clotho datasets in training. Symbol † indicates LLM generated text [18] is added to training data.
+Model
+Adapter
+Eval. dataset
+BLUE1
+BLUE2
+BLUE3
+BLUE4
+METEOR
+ROUGEL
+CIDEr
+SPICE
+SPIDEr
+Text-only
+Gaussian
+AudioCaps
+0.645
+0.481
+0.338
+0.227
+0.220
+0.458
+0.696
+0.178
+0.437
+Text-only
+Linear1
+AudioCaps
+0.609
+0.423
+0.286
+0.181
+0.204
+0.429
+0.602
+0.174
+0.388
+Text-only
+Gaussian
+Clotho
+0.524
+0.339
+0.222
+0.136
+0.173
+0.371
+0.379
+0.132
+0.256
+Text-only
+Linear1
+Clotho
+0.568
+0.375
+0.251
+0.158
+0.172
+0.378
+0.394
+0.127
+0.261
+Table 3: All models use AudioCaps and Clotho datasets in training. Symbol † indicates that LLM-generated text [18] is added in training.
+Fig. 2: Effect of random Gaussian noise variance.
+Once h is trained, we perform the same text-only train-
+ing shown in Figure 1 with an additional linear adapter ap-
+plied before the Gaussian Noise. The performance with linear
+adapter is shown in Table 3. There is performance improve-
+ment achieved on Clotho dataset but the performance drops
+on the AudioCaps dataset. A potential solution is to train
+an adapter on 4.3M audio-text pairs used in CLAP training.
+However, this deviates from our work’s theme of lightweight
+adaptation and hence left for future work.
+5. ENRICHING AND STYLIZING CAPTIONS
+Results above show that efficient text-to-audio transfer is at-
+tainable. And if text-only data can sufficiently train an AAC
+system, this has an important practical significance: addi-
+tional sources of text can be used for training, including exist-
+ing datasets and web data, and “unlimited” text from LLMs.
+Moreover, domain adaption can be less laborious, allowing
+for stylizing captions with no or limited human curation.
+5.1. Training on LLM generated text
+In this section, we invoke WavCaps [18] to simulate LLM-
+generated text. WavCaps is a publicly available dataset with
+text captions generated by OpenAI’s ChatGPT, after utilizing
+human-curated metadata. We augment the training of the text-
+only model with the WavCaps text data, on top of AudioCaps’
+and Clotho’s training sets. Results, marked with † in Table 2,
+show performance improvements on N-gram and text match-
+ing metrics (BLUEi) for both datasets. This finding illustrates
+the efficient utilization of augmented text-only training data,
+which could also help improve vocabulary diversity.
+5.2. Stylized Audio Captioning
+An additional consideration for text or caption descriptions is
+that various sources of text may also contain diverse styles. In
+this section we demonstrate the ability of the proposed text-
+only training framework to produce accurate and stylistically
+correct audio captions. We use Clotho and convert the origi-
+nal human-curated captions to a different style, “humorous”,
+by invoking OpenAI’s GPT-4, and prompting the model to
+stay close to the acoustic descriptions of the original captions.
+For example, the original caption “Sand is being shoveled and
+dumped on the ground”, was transformed to “Sand relocation
+program: from shovel to ground, it’s a gritty story”. Ideally,
+one can adapt the model to any snippet of text from the web.
+In Table 4, we show that training the text-only AAC on styl-
+ized captions is possible, and useful for model adaptation to
+different domains. The captions will be released1.
+Train Dataset
+Eval. dataset
+BLUE1
+BLUE2
+SPIDEr
+Original Clotho
+Humor Clotho
+0.370
+0.162
+0.092
+Humor Clotho
+Humor Clotho
+0.410
+0.214
+0.102
+Table 4: Text-only AAC model trained with the original or humorous
+stylized captions and evaluated on the humorous styled captions.
+6. CONCLUSION
+We introduce a method to train an AAC system on text-only
+data, without the need for paired audio samples. Our method
+uses the insight that contrastive models like CLAP force the
+audio and text embeddings in a common space, with some
+modality gap. To bridge the modality gap, we explore dif-
+ferent light-weight approaches that can be used during train-
+ing. We evaluate the proposed method on two AAC datasets
+and show that our text-only approach achieves competitive re-
+sults with state-of-the-art audio captioning models trained on
+audio-text data, while it effectively allows for straightforward
+text-data augmentation and for stylized generated outputs.
+1https://github.com/microsoft/NoAudioCaptioning
+7. REFERENCES
+[1] I. Sutskever, O. Vinyals, and Q. V. Le, “Sequence to
+sequence learning with neural networks,” Advances in
+neural information processing systems, vol. 27, 2014.
+[2] Q. Kong, Y. Cao, T. Iqbal, Y. Wang, et al., “Panns:
+Large-scale pretrained audio neural networks for audio
+pattern recognition,” IEEE/ACM Trans. Audio, Speech
+and Lang. Proc., 2020.
+[3] Y. Gong, C.-I. J. Lai, Y.-A. Chung, and J. Glass, “Ssast:
+Self-supervised audio spectrogram transformer,” arXiv
+preprint arXiv:2110.09784, 2021.
+[4] K. Chen, X. Du, B. Zhu, Z. Ma, T. Berg-Kirkpatrick,
+and S. Dubnov, “Hts-at: A hierarchical token-semantic
+audio transformer for sound classification and detec-
+tion,” in IEEE International Conference on Acoustics,
+Speech and Signal Processing (ICASSP).
+IEEE, 2022.
+[5] M. Lewis, Y. Liu, N. Goyal, and et. al., “BART: Denois-
+ing sequence-to-sequence pre-training for natural lan-
+guage generation, translation, and comprehension,” in
+Proceedings of the 58th Annual Meeting of the Associa-
+tion for Computational Linguistics.
+ACL, July 2020.
+[6] Y. Koizumi, Y. Ohishi, D. Niizumi, et al., “Audio cap-
+tioning using pre-trained large-scale language model
+guided by audio-based similar caption retrieval,” arXiv
+preprint arXiv:2012.07331, 2020.
+[7] M. Kim, K. Sung-Bin, and T.-H. Oh, “Prefix tuning
+for automated audio captioning,” in IEEE International
+Conference on Acoustics, Speech and Signal Processing
+(ICASSP), 2023.
+[8] S. Deshmukh, B. Elizalde, R. Singh, and H. Wang,
+“Pengi: An audio language model for audio tasks,”
+arXiv preprint arXiv:2305.11834, 2023.
+[9] I. Martin Morato and A. Mesaros, “Diversity and bias in
+audio captioning datasets,” 2021.
+[10] S. Kothinti and D. Emmanouilidou, “Investigations in
+audio captioning: Addressing vocabulary imbalance and
+evaluating suitability of language-centric performance
+metrics,” arXiv preprint arXiv:2211.06547, 2023.
+[11] I. Mart´ın-Morat´o and A. Mesaros, “What is the ground
+truth? reliability of multi-annotator data for audio tag-
+ging,” in 2021 29th European Signal Processing Con-
+ference (EUSIPCO), 2021.
+[12] A. O. Eren and M. Sert, “Audio captioning using sound
+event detection,” DCASE2021 Challenge, Tech. Rep.,
+Jun. 2021.
+[13] Z. Ye, H. Wang, D. Yang, and Y. Zou, “Improving the
+performance of automated audio captioning via integrat-
+ing the acoustic and semantic information,” in Workshop
+on Detection and Classification of Acoustic Scenes and
+Events, 2021.
+[14] L. M. Heller, B. Elizalde, B. Raj, and S. Desh-
+muk,
+“Synergy between human and machine ap-
+proaches to sound/scene recognition and processing:
+An overview of icassp special session,” arXiv preprint
+arXiv:2302.09719, 2023.
+[15] X. Liu, Q. Huang, X. Mei, T. Ko, H. L. Tang, M. D.
+Plumbley, and W. Wang, “Cl4ac: A contrastive loss
+for audio captioning,” Proceedings of the Detection
+and Classification of Acoustic Scenes and Events 2021
+Workshop (DCASE 2021), 2021.
+[16] B. M. Elizalde, “Never-ending learning of sounds,”
+Ph.D. dissertation, CMU Pittsburgh, PA, 2020.
+[17] X. Mei, X. Liu, J. Sun, M. D. Plumbley, and W. Wang,
+“Diverse audio captioning via adversarial training,” in
+ICASSP 2022 - 2022 IEEE International Conference
+on Acoustics, Speech and Signal Processing (ICASSP),
+2022, pp. 8882–8886.
+[18] X. Mei, C. Meng, H. Liu, Q. Kong, T. Ko, C. Zhao,
+M. D. Plumbley, Y. Zou, and W. Wang, “Wavcaps:
+A chatgpt-assisted weakly-labelled audio captioning
+dataset for audio-language multimodal research,” arXiv
+preprint arXiv:2303.17395, 2023.
+[19] B. Elizalde, S. Deshmukh, M. A. Ismail, and H. Wang,
+“Clap learning audio concepts from natural language su-
+pervision,” in IEEE International Conference on Acous-
+tics, Speech and Signal Processing (ICASSP), 2023.
+[20] B. Elizalde, S. Deshmukh, and H. Wang, “Natural lan-
+guage supervision for general-purpose audio represen-
+tations,” submitted to IEEE International Conference
+on Acoustics, Speech and Signal Processing (ICASSP),
+2024.
+[21] W. Liang, Y. Zhang, Y. Kwon, S. Yeung, and J. Zou,
+“Mind the gap:
+Understanding the modality gap in
+multi-modal contrastive representation learning,” in Ad-
+vances in Neural Information Processing Systems, A. H.
+Oh, A. Agarwal, D. Belgrave, and K. Cho, Eds., 2022.
+[22] Y. Wu, K. Chen, T. Zhang, Y. Hui, T. Berg-Kirkpatrick,
+and S. Dubnov, “Large-scale contrastive language-audio
+pretraining with feature fusion and keyword-to-caption
+augmentation,” in IEEE International Conference on
+Acoustics, Speech and Signal Processing (ICASSP),
+2023.
+[23] S. Deshmukh, B. Elizalde, and H. Wang, “Audio Re-
+trieval with WavText5K and CLAP Training,” in Proc.
+INTERSPEECH 2023, 2023.
+[24] R. Huang, J. Huang, D. Yang, et al., “Make-an-audio:
+Text-to-audio generation with prompt-enhanced diffu-
+sion models,” arXiv preprint arXiv:2301.12661, 2023.
+[25] H. Liu, Z. Chen, Y. Yuan, X. Mei, et al., “Audioldm:
+Text-to-audio generation with latent diffusion models,”
+arXiv preprint arXiv:2301.12503, 2023.
+[26] D. Nukrai, R. Mokady, and A. Globerson, “Text-only
+training for image captioning using noise-injected clip,”
+in Findings of the Association for Computational Lin-
+guistics: EMNLP 2022, 2022.
+[27] S. Gu, C. Clark, and A. Kembhavi, “I can’t believe
+there’s no images! learning visual tasks using only lan-
+guage data,” arXiv preprint arXiv:2211.09778, 2023.
+[28] K. Drossos, S. Lipping, and T. Virtanen, “Clotho: an
+audio captioning dataset,” in IEEE International Con-
+ference on Acoustics, Speech and Signal Processing
+(ICASSP), 2020.
+[29] C. D. Kim, B. Kim, H. Lee, and G. Kim, “Audio-
+Caps: Generating Captions for Audios in The Wild,” in
+NAACL-HLT, 2019.
+

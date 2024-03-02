@@ -1,0 +1,1391 @@
+Completing Visual Objects via Bridging Generation and Segmentation
+Xiang Li 1 Yinpeng Chen 2 Chung-Ching Lin 2 Hao Chen 1 Kai Hu 1 Rita Singh 1 Bhiksha Raj 1
+Lijuan Wang 2 Zicheng Liu 2
+1Carnegie Mellon University 2Microsoft
+MaskComp
+Masked
+Image
+Layered 
+Image
+Partial Objects
+Complete Objects
+Partial Objects
+Complete Objects
+Figure 1. Given an image with mutual-occluded objects, MaskComp effectively completes occluded objects achieving a layered image.
+Abstract
+This paper presents a novel approach to object
+completion, with the primary goal of reconstruct-
+ing a complete object from its partially visible
+components. Our method, named MaskComp,
+delineates the completion process through itera-
+tive stages of generation and segmentation. In
+each iteration, the object mask is provided as an
+additional condition to boost image generation,
+and, in return, the generated images can lead to a
+more accurate mask by fusing the segmentation
+of images. We demonstrate that the combination
+of one generation and one segmentation stage ef-
+fectively functions as a mask denoiser. Through
+alternation between the generation and segmen-
+tation stages, the partial object mask is progres-
+sively refined, providing precise shape guidance
+and yielding superior object completion results.
+Our experiments demonstrate the superiority of
+MaskComp over existing approaches, e.g., Con-
+trolNet and Stable Diffusion, establishing it as an
+effective solution for object completion.
+1. Introduction
+In recent years, creative image editing has attracted substan-
+tial attention and seen significant advancements. Recent
+breakthroughs in image generation techniques have deliv-
+ered impressive results across various image editing tasks,
+including image inpainting (Xie et al., 2023), composition
+(Yang et al., 2023a) and colorization (Chang et al., 2023).
+However, another intriguing challenge lies in the domain of
+object completion (Fig. 1). This task involves the restoration
+of partially occluded objects within an image, representing
+the image as a layered stack of objects and background,
+which can potentially enable a number of more complicated
+editing tasks such as object layer switching. Unlike other
+conditional generation tasks, e.g., image inpainting, which
+only generates and integrates complete objects into images,
+object completion requires seamless alignment between the
+generated content and the given partial object, which im-
+poses more challenges to recover realistic and comprehen-
+sive object shapes.
+To guide the generative model in producing images accord-
+ing to a specific shape, additional conditions can be incor-
+porated (Koley et al., 2023; Yang et al., 2023b). Image
+segmentation has been shown to be a critical technique for
+enhancing the realism and stability of generative models by
+providing pixel-level guidance during the synthesis process.
+Recent research, as exemplified in the latest study by Zhang
+et al. (Zhang et al., 2023), showcases that, by supplying
+object segmentations as additional high-quality masks for
+shaping the objects, it becomes possible to generate complex
+images of remarkable fidelity.
+In this paper, we present MaskComp, a novel approach that
+bridges image generation and segmentation for effective
+1
+arXiv:2310.00808v2  [cs.CV]  2 Feb 2024
+Completing Visual Objects via Bridging Generation and Segmentation
+Generate
+Generate
+Segment
+Partial Obj.
+Partial Mask
+⋯
+ ⋯
+ ⋯
+Vote
+Generate
+Mask Denoiser
+Complete Obj.
+Bring Forward
+Segment
+Complete Mask
+Mask Denoising
+Original Img.
+Edited Img.
+Figure 2. Illustration of iterative mask denoising (IMD). Starting from an initial partial object and its corresponding mask, IMD utilizes
+alternating generation and segmentation stages to progressively refine the partial mask until it converges to the complete mask. With the
+complete mask as the condition, the final complete object can be seamlessly generated.
+object completion. MaskComp is rooted in a fundamental
+observation: the quality of the resulting image in the mask-
+conditioned generation is directly influenced by the quality
+of the conditioned mask (Zhang et al., 2023). That says
+the more detailed the conditioned mask, the more realistic
+the generated image. Based on this observation, unlike
+prior object completion methods that solely rely on partially
+visible objects for generating complete objects, MaskComp
+introduces an additional mask condition combined with
+an iterative mask denoising (IMD) process, progressively
+refining the incomplete mask to provide comprehensive
+shape guidance to object completion.
+Our approach formulates the partial mask as a noisy form of
+the complete mask and the IMD process is designed to itera-
+tively denoise this noisy partial mask, eventually leading to
+the attainment of the complete mask. As illustrated in Fig. 2,
+each IMD step comprises two crucial stages: generation
+and segmentation. The generation stage’s objective is to
+produce complete object images conditioning on the visible
+portion of the target object and an object mask. Meanwhile,
+the segmentation stage is geared towards segmenting the
+object mask within the generated images and aggregating
+these segmented masks to obtain a superior mask that serves
+as the condition for the subsequent IMD step. By seam-
+lessly integrating the generation and segmentation stages,
+we demonstrate that each IMD step effectively operates as
+a mask-denoising mechanism, taking a partially observed
+mask as input and yielding a progressively more complete
+mask as output. Consequently, through this iterative mask
+denoising process, the originally incomplete mask evolves
+into a satisfactory complete object mask, enabling the gen-
+eration of complete objects guided by this refined mask.
+The effectiveness of MaskComp is demonstrated by its ca-
+pacity to address scenarios involving heavily occluded ob-
+jects and its ability to generate realistic object representa-
+tions through the utilization of mask guidance. In contrast
+to recent progress in the field of image generation research,
+our contributions can be succinctly outlined as follows:
+• We explore and unveil the benefits of incorporating ob-
+ject masks into the object completion task. A novel ap-
+proach, MaskComp, is proposed to seamlessly bridge
+the generation and segmentation.
+• We formulate the partial mask as a form of noisy com-
+plete mask and introduce an iterative mask denoising
+(IMD) process, consisting of alternating generation and
+segmentation stages, to refine the object mask and thus
+improve the object completion.
+• We conduct extensive experiments for analysis and
+comparison, the results of which indicate the strength
+and robustness of MaskComp against previous meth-
+ods, e.g., Stable Diffusion.
+2. Related Works
+Conditional image generation. Conditional image gener-
+ation (Lee et al., 2022; Gafni et al., 2022; Li et al., 2023f)
+involves the process of creating images based on specific
+conditions. These conditions can take various forms, such
+as layout (Li et al., 2020; Sun & Wu, 2019; Zhao et al.,
+2019), sketch (Koley et al., 2023), or semantic masks (Gu
+et al., 2019). For instance, Cascaded Diffusion Models
+(Ho et al., 2022) utilize ImageNet class labels as condi-
+tions, employing a two-stage pipeline of multiple diffusion
+models to generate high-resolution images. Meanwhile, in
+the work by (Sehwag et al., 2022), diffusion models are
+guided to produce novel images from low-density regions
+within the data manifold. Another noteworthy approach is
+CLIP (Radford et al., 2021), which has gained widespread
+adoption in guiding image generation in GANs using text
+prompts (Galatolo et al., 2021; Gal et al., 2022; Zhou et al.,
+2021b). In the realm of diffusion models, Semantic Diffu-
+sion Guidance (Liu et al., 2023) explores a unified frame-
+work for diffusion-based image generation with language,
+2
+Completing Visual Objects via Bridging Generation and Segmentation
+image, or multi-modal conditions. Dhariwal et al. (Dhari-
+wal & Nichol, 2021) employ an ablated diffusion model that
+utilizes the gradients of a classifier to guide the diffusion
+process, balancing diversity and fidelity. Furthermore, Ho
+et al. (Ho & Salimans, 2022) introduce classifier-free guid-
+ance in conditional diffusion models, incorporating score
+estimates from both a conditional diffusion model and a
+jointly trained unconditional diffusion model.
+Object segmentation. In the realm of segmentation, tra-
+ditional approaches have traditionally leaned on domain-
+specific network architectures to tackle various segmen-
+tation tasks, including semantic, instance, and panoptic
+segmentation (Long et al., 2015; Chen et al., 2015; He
+et al., 2017; Neven et al., 2019; Newell et al., 2017; Wang
+et al., 2020; Cheng et al., 2020; Wang et al., 2021; Li
+et al., 2023d;a;c;e;b; 2022c;b). However, recent strides
+in transformer-based methodologies, have highlighted the
+effectiveness of treating these tasks as mask classification
+challenges (Cheng et al., 2021; Zhang et al., 2021; Cheng
+et al., 2022; Carion et al., 2020). MaskFormer (Cheng et al.,
+2021) and its enhanced variant (Cheng et al., 2022) have
+introduced transformer-based architectures, coupling each
+mask prediction with a learnable query. Unlike prior tech-
+niques that learn semantic labels at the pixel level, they
+directly link semantic labels with mask predictions through
+query-based prediction. Notably, the Segment Anything
+Model (SAM) (Kirillov et al., 2023) represents a cutting-
+edge segmentation model that accommodates diverse visual
+and textual cues for zero-shot object segmentation. Simi-
+larly, SEEM (Zou et al., 2023) is another universal segmen-
+tation model that extends its capabilities to include object
+referencing through audio and scribble inputs. By leverag-
+ing those foundation segmentation models, e.g., SAM and
+SEEM, a number of downstream tasks can be boosted (Ma
+& Wang, 2023; Cen et al., 2023; Yu et al., 2023).
+3. MaskComp
+3.1. Problem Definition and Key Insight
+We address the object completion task, wherein the objective
+is to predict the image of a complete object Ic ∈ R3×H×W ,
+based on its visible (non-occluded) part Ip ∈ R3×H×W .
+We first discuss the high-level idea of the proposed Iterative
+Mask Denoising (IMD) and then illustrate the module de-
+tails in Section 3.3 and Section 3.4. The core of IMD is
+based on an essential observation: In the mask-conditioned
+generation, the quality of the generated object is intricately
+tied to the quality of the conditioned mask. As shown in
+Fig. 3, we visualize the completion result of the same par-
+tial object but with different conditioning masks. We no-
+tice a more complete object mask condition will result in
+a more complete and realistic object image. Based on this
+Partial 
+Object
+Complete 
+Object
+Generated 
+Image
+Conditioned 
+Mask
+Partial
+Complete
+Figure 3. Object completion with different mask conditions.
+observation, high-quality occluded object completion can
+be achieved by providing a complete object mask as the
+condition.
+3.2. Iterative Mask Denoising
+However, in real-world scenarios, the complete object mask
+is not available. To address this problem, we propose the
+IMD process which leverages intertwined generation and
+segmentation processes to approach the partial mask to the
+complete mask gradually. Given a partially visible object
+Ip and its corresponding partial mask Mp, the conventional
+object completion task aims to find a generative model G
+such that Ic ← G(Ip), where Ic is the complete object. Here,
+we additionally add the partial mask Mp to the condition
+Ic ← G(Ip, Mp), where Mp can be assumed as an addition
+of the complete mask and a noise Mp = Mc + ∆. By
+introducing a segmentation model S, we can find a mask
+denoiser S ◦ G from the object completion model:
+Mc ← S ◦ G(Ip, Mc + ∆)
+(1)
+where Mc = S(Ic). Starting from the visible mask M0 =
+Mp, as shown in Fig. 2, we repeatedly apply the mask
+denoiser S ◦ G to gradually approach the visible mask Mp
+to complete mask Mc. In each step, the input mask is
+denoised with a stack of generation and segmentation stages.
+Specifically, as the S ◦ G(·) includes a generative process,
+we can obtain a set of estimations of denoised mask {M (k)
+t
+}.
+Here, we utilize a function V(·) to find a more complete and
+reasonable mask from the N sampled masks and leverage
+it as the input mask for the next iteration to further denoise.
+The updating rule can be written as:
+M (k)
+t
+= S ◦ G(Ip, ˆ
+Mt−1),
+ˆ
+Mt = V(M (1)
+t
+, · · · , M (N)
+t
+)
+(2)
+where N is the number of sampled images in each itera-
+tion. With a satisfactory complete mask ˆ
+MT after T itera-
+tions, the object completion can be achieved accordingly by
+G(Ip, ˆ
+MT ). The mathematical explanation of the process
+will be discussed in Section 3.5.
+3
+Completing Visual Objects via Bridging Generation and Segmentation
+𝑥!
+Diffusion U-Net
+𝑥"
+𝒟
+Object 
+Encoder
+Complete Mask 𝑀#
+Complete Token 𝑐#
+Denoising Step
+ℰ
+Forward 
+Process
+Predicted Obj.
+ℰ
+VAE Encoder
+𝒟
+VAE Decoder
+Occ.
+Partial Mask 𝑀$
+𝐼$
+𝑀
+Interpolate
+Complete Obj. 𝐼#
+Time Embed.
+Gate
+ControlNet
+Mask 
+Decoder
+Partial Token 𝑐$
+Pre-diffusion Mask 𝑀$%&
+Training Only
+Figure 4. Illustration of CompNet (generation stage of MaskComp). The CompNet aims to recover the complete object Ic from the
+partial object Ip and a mask M. An object encoder is utilized to extract partial token cp which is gated and fed to the ControlNet to form
+the complete token cc. The complete token cc serves as the condition to the diffusion U-Net to guide the conditional denoising process. In
+addition, a pre-diffusion mask is predicted from the partial token to encourage the object encoder to capture shape information.
+Method
+Objective
+Objective with Segm.
+Object Comp.
+ControlNet
+Ip ← G(Ip, Mp)
+Mp ← S ◦ G(Ip, Mp)
+%
+CompNet
+Ic ← G(Ip, Mp)
+Mc ← S ◦ G(Ip, Mp)
+!
+Table 1. Objective difference with ControlNet.
+3.3. Generation Stage
+We introduce CompNet as the generative model G which
+aims to recover complete objects based on partial conditions.
+We build CompNet based on popular ControlNet (Zhang
+et al., 2023) while making fundamental modifications to
+enable object completion. As shown in Table 1, the target
+of ControlNet is to generate images strictly based on the
+given conditions, i.e., Ip ← G(Ip, Mp), making it unable
+to complete object. Differently, CompNet is designed to
+recover the object. With a segmentation network, it can
+act as a mask denoiser to refine the conditioned mask, i.e.,
+Mc ← S ◦ G(Ip, Mp).
+Mask condition. As illustrated on the left side of Fig. 4,
+we begin with a complete object Ic and its corresponding
+mask Mc. Our approach commences by occluding the com-
+plete object, retaining only the partially visible portion as
+Ip. Recall that the mask-denoising procedure initiates with
+the partial mask Mp and culminates with the complete mask
+Mc. To facilitate this iterative denoising, the model must
+effectively handle any mask that falls within the interpola-
+tion between the initial partial mask and the target complete
+mask. Consequently, we introduce a mask M with an occlu-
+sion rate positioned between the partial and complete masks
+as a conditioning factor for the generative model. During
+training, we conduct the random occlusion process (detailed
+in Appendix C) twice for each complete mask Mc. The
+partial mask Mp is achieved by considering the occluded
+areas in both occlusion processes. The interpolated mask
+M is generated by using one of the occlusions.
+Diffusion model. Diffusion models have achieved notable
+progress in synthesizing unprecedented image quality and
+have been successfully applied to many text-based image
+generation works (Rombach et al., 2022; Zhang et al., 2023).
+For our object completion task, the complete object can be
+generated by leveraging the diffusion process.
+Specifically, the diffusion model generates image latent
+x by gradually reversing a Markov forward process. As
+shown in Figure 4, starting from x0 = E(Ic), the for-
+ward process yields a sequence of increasing noisy tokens
+{xτ|τ ∈ [1, TG]}, where xτ = √ ¯
+ατy0 +√1 − ¯
+ατϵ, ϵ is the
+Gaussian noise, and ατ decreases with the timestep τ. For
+the denoising process, the diffusion model progressively de-
+noises a noisy token from the last step given the conditions
+c = (Ip, M, E) by minimizing the following loss function:
+L = Eτ,x0,ϵ∥ϵθ(xτ, c, τ) − ϵ∥2
+2. Ip, M, and E are the par-
+tial object, conditioned mask, and text prompt respectively.
+CompNet architecture. Previous work (Zhang et al., 2023)
+has demonstrated an effective way to add additional control
+to generative diffusion models. We follow this architecture
+and make necessary modifications to adapt the architecture
+to object completion. As shown in Fig. 4, given the visible
+object Ip and the conditioning mask M, we first concatenate
+them and extract the partial token cp with an object encoder.
+Different from ControlNet (Zhang et al., 2023) assuming
+the condition is accurate, the object completion task relies
+on incomplete conditions. Specifically, in the early diffusion
+steps, the condition information is vital to complete the ob-
+ject. Nevertheless, in the later steps, inaccurate information
+in the condition can degrade the generated object. To tackle
+this problem, we introduce a time-variant gating operation
+to adjust the importance of conditions in the diffusion steps.
+We learn a linear transform f : RC → R1 upon the time
+4
+Completing Visual Objects via Bridging Generation and Segmentation
+⋮
+𝒮(∙)
+{𝐼𝑡
+(𝑘)}
+⋮
+{𝑀𝑡
+(𝑘)}
+𝒱(∙)
+𝐼𝑝
+෡𝑀𝑡
+(a) Illustration of the segmentation stage
+Left leg
+Right leg
+(b) Visualization of the mask probability map
+Figure 5. We calculate the mask probability map by averaging and normalizing the masks of sampled images. We show a cross-section of
+the lower leg to better visualize (shown as yellow).
+embedding et ∈ RC and then apply it to the partial token
+as f(et) · cp before feeding it to the ControlNet. In this
+way, the importance of visible features can be adjusted as
+the diffusion steps forward. The time embedding used for
+the gating operation is shared with the time embedding for
+encoding the diffusion step in the stable diffusion.
+To encourage the object encoder to capture shape informa-
+tion, we introduce an auxiliary path to predict the complete
+object mask from the partial token cp. Specifically, a feature
+pyramid network (Lin et al., 2017) is leveraged as the mask
+decoder which takes cp and the multi-scale features from
+the object encoder as input and outputs a pre-diffusion mask
+Mpre. We encourage mask completion with supervision as
+Lmask = Ldice(Mc, Mpre) + λceLce(Mc, Mpre)
+(3)
+where Ldice and Lce are Dice loss (Li et al., 2019) and BCE
+loss respectively. λce is a constant.
+3.4. Segmentation Stage
+In the segmentation stage, illustrated in Fig. 5 (a), our
+approach initiates by sampling N images denoted as
+{I(k)
+t
+}N
+k=1 from the generative model, where t is the IMD
+step. Subsequently, we employ an off-the-shelf object seg-
+mentation model denoted as S(·) to obtain the shapes (object
+masks) {M (k)
+t
+} from these sampled images.
+To derive an improved mask for the subsequent IMD step,
+we seek a function V(·) that can produce a high-quality mask
+prediction from the set of N generated masks. Interestingly,
+though the distribution of sampled images is complex, we
+notice the distribution of masks has good properties. In
+Fig. 5 (b), we provide a visualization of the probability map
+associated with a set of object masks with the same condi-
+tions, which is computed by taking the normalized average
+of the masks. To enhance the visualization of this proba-
+bility distribution, we focus on a specific cross-section of
+the fully occluded portion in image Ip (the lower leg, repre-
+sented as a yellow section) and visualize the probability as a
+function of the horizontal coordinate which demonstrates an
+obvious unimodal and symmetric property. Leveraging this
+observation, we can find an improved mask by taking the
+Complete Mask
+Partial Mask
+Complete 
+Object
+Partial 
+Object
+𝑀
+𝐼
+Segmentation Stage
+Generation Stage
+Figure 6. Mutual-benificial sampling.
+high-probability region. The updating can be achieved by
+conducting a voting process across the N estimated masks,
+as defined by the following equation:
+ˆ
+Mt[i, j] =
+(
+1,
+if
+PN
+k=1 M (k)
+t
+[i,j]
+N
+≥ τ
+0,
+otherwise
+(4)
+where [i, j] denotes the coordinate, and τ is the threshold
+employed for the mask voting process.
+3.5. Discussion
+In this section, we will omit the conditioned partial image
+Ip for simplicity.
+Joint modeling of mask and object.
+In practical sce-
+narios where the complete object mask Mc is unavailable,
+modeling object completion through a marginal probability
+p(Ic|Mc) becomes infeasible. Instead, it necessitates the
+more challenging joint modeling of objects and masks, de-
+noted as p(I, M), where the images and masks can range
+from partial to complete. Let us understand the joint distribu-
+tion by exploring its marginals. Since the relation between
+mask and image is one-to-many (each object image only
+has one mask while the same mask can be segmented from
+multiple images), the p(M|I) is actually a Dirac delta dis-
+tribution δ and only the p(I|M) is a real distribution. This
+way, the joint distribution of mask and image is discrete
+and complex, making the modeling difficult. To address
+this issue, we introduce a slack condition to the joint dis-
+tribution p(I, M) that the mask and image can follow a
+5
+Completing Visual Objects via Bridging Generation and Segmentation
+Method
+AHP (Zhou et al., 2021a)
+DYCE (Ehsani et al., 2018)
+FID-G ↓
+FID-S ↓
+Rank ↓
+Best ↑
+FID-G ↓
+FID-S ↓
+Rank ↓
+Best ↑
+ControlNet
+40.2
+45.4
+3.4
+0.10
+42.4
+49.4
+3.4
+0.08
+Kandinsky 2.1
+43.9
+39.2
+3.2
+0.11
+44.3
+47.7
+3.4
+0.06
+Stable Diffusion 1.5
+35.7
+41.4
+3.2
+0.12
+31.2
+43.4
+3.4
+0.11
+Stable Diffusion 2.1
+30.8
+39.9
+3.1
+0.14
+30.0
+41.1
+3.0
+0.12
+MaskComp (Ours)
+16.9
+21.3
+2.1
+0.53
+20.0
+25.4
+1.9
+0.63
+Table 2. Quantitative evaluation on object completion task. The computing of FID-G and FID-S only considers the object areas within
+ground truth and foreground regions segmented by SAM, respectively, to eliminate the influence of the generated background. The Rank
+denotes the average ranking in the user study. The Best denotes the percentage of samples that are ranked as the best. ↓ and ↑ denote the
+smaller the better and the larger the better respectively.
+many-to-many relation, which makes its marginal p(M|I) a
+real distribution and permits p(I|M) to predict image I that
+has a different shape as the conditioned M and vice versa.
+Mutual-beneficial sampling. After discussing the joint dis-
+tribution that we are targeting, we introduce the mathemati-
+cal explanation of MaskComp. MaskComp introduces the
+alternating modeling of two marginal distributions p(I|M)
+(generation stage) and p(M|I) (segmentation stage), which
+is actually a Markov Chain Monte Carlo-like (MCMC-like)
+process and more specifically Gibbs sampling-like. It sam-
+ples the joint distribution p(I, M) by iterative sampling
+from the marginal distributions. Two core insights are incor-
+porated in MaskComp: (1) providing a mask as a condition
+can effectively enhance object generation and (2) fusing
+the mask of generated object images can result in a more
+accurate and complete object mask. Based on these in-
+sights, we train CompNet to maximize p(I|M) and leverage
+mask voting to maximize the p(M|I). As shown in Fig. 6,
+MaskComp develops a mutual-beneficial sampling process
+from the joint distribution p(I, M), where the object mask
+is provided to boost the image generation and, in return,
+the generated images can lead to a more accurate mask by
+fusing the segmentation of images. Through alternating
+sampling from the marginal distributions, we can effectively
+address the object completion task.
+4. Experiment
+4.1. Experimental Settings
+Dataset. We evaluate MaskComp on two popular datasets:
+AHP (Zhou et al., 2021a) and DYCE (Ehsani et al., 2018).
+AHP is an amodal human perception dataset with 56,302
+images with annotations of integrated humans. DYCE is a
+synthetic dataset with photo-realistic images and the natural
+configuration of objects in indoor scenes. For both datasets,
+the non-occluded object and its corresponding mask for each
+object are available. We train MaskComp on the AHP and a
+filtered subset of OpenImage v6 (Kuznetsova et al., 2020).
+OpenImage is a large-scale dataset offering heterogeneous
+annotations. We select a subset of OpenImage that contains
+429,358 objects as a training set of MaskComp.
+Evaluation metrics. In accordance with previous methods
+(Zhou et al., 2021a), we evaluate image generation qual-
+ity Fr´echet Inception Distance (FID). The background is
+removed with object masks before evaluation. As the FID
+score cannot reflect the object completeness, we further con-
+duct a user study, leveraging human assessment to compare
+the quality and completeness of images. During the assess-
+ment, given a partial object, the participants are required to
+rank the generated object from different methods based on
+their completeness and quality. We calculate the averaged
+ranking and the percentage of the image being ranked as the
+first place as the metrics (details available in the Appendix).
+Implementation details. For the generation stage, we train
+the CompNet with frozen Stable Diffusion (Rombach et al.,
+2022) on the AHP dataset for 50 epochs. The learning rate
+is set for 1e-5. We adopt batchsize = 8 and an Adam
+(Loshchilov & Hutter, 2017) optimizer. The image is re-
+sized to 512 × 512 for both training and inference. The
+object is cropped and resized to have the longest side 360
+before sticking on the image. For a more generalized set-
+ting, we train the CompNet on a subset of the OpenImage
+(Kuznetsova et al., 2020) dataset for 36 epochs. We generate
+text prompts using BLIP (Li et al., 2022a) for all experi-
+ments (prompts are necessary to train ControlNet). For the
+segmentation stage, we leverage SAM (Kirillov et al., 2023)
+as S(·). We vote mask with a threshold of τ = 0.5. During
+inference, if no other specification, we conduct the IMD
+process for 5 steps with N = 5 images for each step. We
+give the class label as the text prompt to facilitate the Comp-
+Net to effectively generate objects. All baseline methods are
+given the same text prompts during the experiments. More
+implementation details are available in the appendix. The
+code will be made publicly available.
+4.2. Main Results
+Quantitative results. We compare the MaskComp with
+state-of-the-art methods, ControlNet (Zhang et al., 2023),
+Kandinsky 2.1 (Shakhmatov et al., 2023), Stable Diffusion
+1.5 (Rombach et al., 2022) and Stable Diffusion 2.1 (Rom-
+bach et al., 2022) on AHP (Zhou et al., 2021a) and DYCE
+(Ehsani et al., 2018) dataset. The results in Table 2 indicate
+6
+Completing Visual Objects via Bridging Generation and Segmentation
+MaskComp (Ours)
+SD 2.1
+SD 1.5
+Partial Object
+GT Object
+ControlNet
+Kandinsky
+Figure 7. Qualitative comparison against ControlNet, Kandinsky and Stable Diffusion. The background is filtered out for better
+visualization. More results are available in the Appendix.
+Mask Partial Intermed. Complete
+FID
+16.9
+15.3
+12.7
+(a) Conditioned mask.
+Occ. 20% 40 % 60 % 80%
+FID 13.4 15.7 17.2 29.9
+(b) Occlusion rate.
+Comp. Gen. Segm. Total
+Second 14.3
+1.2
+15.5
+(c) Inference time.
+Model Baseline MaskComp
+FID
+29.4
+16.9
+(d) Amodal baseline.
+Table 3. Ablation of MaskComp on AHP dataset. We ablate (a) the different conditioning masks during inference, (b) the occlusion rate
+during inference, (c) the inference time of each component in an IMD step, and (d) the performance compared with the amodal baseline.
+that MaskComp consistently outperforms other methods, as
+evidenced by its notably lower FID scores, signifying the
+superior quality of its generated content. We conducted a
+user study to evaluate object completeness in which par-
+ticipants ranked images generated by different approaches.
+MaskComp achieved an impressive average ranking of 2.1
+and 1.9 on the AHP and DYCE datasets respectively. Fur-
+thermore, MaskComp also generates the highest number of
+images ranked as the most complete and realistic compared
+to previous methods. We consider the introduced mask
+condition and the proposed IMD process benefits the per-
+formance of MaskComp, where the additional conditioned
+mask provides robust shape guidance to the generation pro-
+cess and the proposed iterative mask denoising process re-
+fines the initial conditioned mask to a more complete shape,
+further enhancing the generated image quality.
+Qualitative results. We present visual comparisons among
+ControlNet, Kandinsky 2.1, Stable Diffusion 1.5, and Sta-
+ble Diffusion 2.1, illustrated in Fig. 7. Our visualizations
+showcase MaskComp’s ability to produce realistic and com-
+plete object images given partial images as the condition,
+whereas previous approaches exhibit noticeable artifacts and
+struggle to achieve realistic object completion. In addition,
+without mask guidance, it is common for previous methods
+to generate images that fail to align with the partial object.
+4.3. Analysis
+In this section, we provide an experimental analysis of
+MaskComp. All the results are evaluated with GT masks to
+filter out the background, i.e., FID-G.
+Performance with different mask conditions. We evalu-
+ated the quality of generated images when conditioned on
+the same partial images along with three distinct types of
+masks: (1) partial mask (mask of the partial image), (2) inter-
+mediate mask (less occlusion than partial), and (3) complete
+mask. As shown in Table 3a, the model achieves its highest
+performance when it is conditioned with complete object
+masks, whereas relying solely on partial masks yields less
+optimal results. These results provide strong evidence that
+the quality of the conditioned mask significantly influences
+the quality of the generated images.
+Performance with different occlusion rates. We perform
+ablation studies to assess the resilience of MaskComp under
+varying occlusion levels. As presented in Table 3b, we eval-
+uate MaskComp at different occlusion levels (proportion of
+the obscured area relative to the complete object) ranging
+from 20% to 80%, and the results indicate that its perfor-
+mance does not degrade significantly up to 60% occlusion.
+Inference time. Table 3c reports the inference time of each
+component in IMD (with a single NVIDIA V100 GPU).
+Although MaskComp’s throughput is reduced due to the
+inclusion of multiple diffusion processes in each IMD step,
+it is capable of attaining a higher degree of accuracy in
+visual object completion. Based on our empirical experi-
+ments, reducing the number of diffusion steps during the
+first few IMD steps can increase model speed without sacri-
+ficing much performance. With this idea incorporated into
+MaskComp, the average running time could be reduced to
+2/3 of the original time with FID slightly increasing by 0.50.
+While beyond the scope of this study, we expect more ad-
+vanced techniques could be explored to optimize the tradeoff
+between model speed and performance.
+Comparison to amodal segmentation baseline. Amodal
+segmentation has a similar objective to the proposed IMD
+7
+Completing Visual Objects via Bridging Generation and Segmentation
+Occluded 
+Obj
+GT Obj.
+Pred. 
+Obj.
+Pred. 
+Mask
+Step 1
+Step 2
+Step 3
+Step 4
+Step 5
+Figure 8. Visualization of the IMD process. For each step, we randomly demonstrate one generated image and the averaged mask for all
+generated images. We omit the input mask which has the same shape as the input occluded object.
+Model CLIPSeg SEEM SAM
+FID
+19.9
+18.1
+16.9
+(a) Segmentation model.
+T
+1
+3
+5
+7
+FID 24.7 19.4 16.9 16.1
+(b) IMD step number.
+N
+4
+5
+6
+FID 17.4 16.9 16.8
+(c) # of sampled images.
+Gating !
+%
+FID
+16.9 18.2
+(d) Condition gating.
+Table 4. Design choices for IMD on AHP dataset. We ablate (a) the impact of different segmentation networks, (b) IMD step number,
+(c) the number of sampled images in the segmentation stage, and (d) the gating operation in the CompNet.
+Noise degree
+Iter. 1
+Iter. 3
+Iter. 5
+Iter. 7
+Iter. 9
+15% area
+28.4
+22.7
+18.9
+17.2
+16.5
+10% area
+26.4
+21.4
+18.1
+17.0
+16.4
+5% area
+24.9
+19.6
+17.0
+16.2
+16.0
+No noise
+24.7
+19.4
+16.9
+16.1
+15.9
+Table 5. Performance against segmentation errors on AHP dataset.
+process. To demonstrate the effectiveness of MaskComp, we
+construct an amodal baseline that generates amodal masks
+from the SOTA amodal segmentation method (Tran et al.,
+2022) and then utilize ControlNet to generate images based
+on the amodal masks. s shown in Table 3d, we notice that
+our method outperforms the amodal baseline by a consider-
+able margin, which could be attributed to the strong mask
+completion capability of the proposed IMD process.
+Impact of different segmentation networks. We adopt
+SAM to obtain object masks at the segmentation stage.
+To study the impacts of different segmenters, we replace
+SAM with two smaller segmentation networks, CLIPSeg
+(L¨uddecke & Ecker, 2022) and SEEM (Zou et al., 2023).
+Table 4a shows that the FID score with CLIPSeg (19.9) is
+slightly higher than with SAM (16.9), but remains com-
+petitive against other state-of-the-art methods, e.g., Stable
+Diffusion 2.1 (30.8 reported in Table 2). MaskComp is an
+iterative mask denoising (IMD) process that progressively
+refines a partial object mask to boost image generation. The
+results support our hypothesis that the impact of the seg-
+menter is modest.
+Design choices in IMD. We conduct experiments to ablate
+the design choices in IMD and their impacts on the com-
+pletion performance. We first study the effect of IMD step
+number. With a larger step number, IMD can better advance
+the partial mask to the complete mask. As shown in Table 4b,
+we notice that the image quality keeps increasing and slows
+down at a step number of 5. In this way, we choose 5 as
+our IMD step number. After that, we ablate the number of
+sampled images in the segmentation stage in Table 4c. We
+notice more sampled images generally leading to a better
+performance. We leverage an image number of 5 with the
+efficiency consideration. As we leverage the diffusion-based
+method for image generation, we ablate the iterations for
+the diffusion process. As shown in Table 4d, we notice the
+gating operation improves the generation quality by 1.3 FID,
+indicating the necessity of conditional gating.
+Robustness to segmentation errors. We conduct experi-
+ments to manually add random errors to masks. As shown
+in Table 5, we ablate on the number of iterations and the
+degree of segmentation error. We observe that segmentation
+errors will increase the convergence iteration number while
+not affecting the final performance significantly. As IMD
+is a reciprocal process intended to provide effective control
+for later-generated masks to be refined based on adaptive
+feedback, mask errors are mitigated and not propagated.
+Visualization of iterative mask denoising. To provide a
+clearer depiction of the IMD process, as depicted in Fig. 8,
+we present visualizations of the generated image and the
+averaged mask for each step. In the initial step, we observe
+the emergence of artifacts alongside the object. As we
+progress through the steps, both the image and mask quality
+exhibit continuous improvement.
+5. Conclusion
+In this paper, we introduce MaskComp, a novel approach for
+object completion. MaskComp addresses the object comple-
+tion task by seamlessly integrating conditional generation
+8
+Completing Visual Objects via Bridging Generation and Segmentation
+and segmentation, capitalizing on the crucial observation
+that the quality of generated objects is intricately tied to the
+quality of the conditioned masks. We augment the object
+completion process with an additional mask condition and
+propose an iterative mask denoising (IMD) process. This
+iterative approach gradually refines the partial object mask,
+ultimately leading to the generation of satisfactory objects
+by leveraging the complete mask as a guiding condition.
+Our extensive experiments demonstrate the robustness and
+effectiveness of MaskComp, particularly in challenging sce-
+narios involving heavily occluded objects.
+Impact Statement
+This paper presents work whose goal is to advance the field
+of Machine Learning. There are many potential societal
+consequences of our work, none of which we feel must be
+specifically highlighted here.
+References
+Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov,
+A., and Zagoruyko, S. End-to-end object detection with
+transformers. In ECCV, 2020. 3
+Cen, J., Zhou, Z., Fang, J., Shen, W., Xie, L., Zhang, X.,
+and Tian, Q. Segment anything in 3d with nerfs. arXiv
+preprint arXiv:2304.12308, 2023. 3
+Chang, Z., Weng, S., Zhang, P., Li, Y., Li, S., and Shi,
+B. L-coins: Language-based colorization with instance
+awareness. In Proceedings of the IEEE/CVF Conference
+on Computer Vision and Pattern Recognition (CVPR), pp.
+19221–19230, June 2023. 1
+Chen, L.-C., Papandreou, G., Kokkinos, I., Murphy, K., and
+Yuille, A. L. Semantic image segmentation with deep
+convolutional nets and fully connected crfs. In ICLR,
+2015. 3
+Cheng, B., Collins, M. D., Zhu, Y., Liu, T., Huang, T. S.,
+Adam, H., and Chen, L.-C. Panoptic-deeplab: A simple,
+strong, and fast baseline for bottom-up panoptic segmen-
+tation. In CVPR, 2020. 3
+Cheng, B., Schwing, A. G., and Kirillov, A. Per-pixel clas-
+sification is not all you need for semantic segmentation.
+In NeurIPS, 2021. 3
+Cheng, B., Misra, I., Schwing, A. G., Kirillov, A., and Gird-
+har, R. Masked-attention mask transformer for universal
+image segmentation. In CVPR, 2022. 3
+Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei,
+L. Imagenet: A large-scale hierarchical image database.
+In 2009 IEEE conference on computer vision and pattern
+recognition, pp. 248–255. Ieee, 2009. 15
+Dhariwal, P. and Nichol, A. Diffusion models beat gans
+on image synthesis. Advances in Neural Information
+Processing Systems, 34:8780–8794, 2021. 3
+Ehsani, K., Mottaghi, R., and Farhadi, A. Segan: Segment-
+ing and generating the invisible. In CVPR, 2018. 6
+Gafni, O., Polyak, A., Ashual, O., Sheynin, S., Parikh,
+D., and Taigman, Y. Make-a-scene: Scene-based text-
+to-image generation with human priors. In European
+Conference on Computer Vision, pp. 89–106. Springer,
+2022. 2
+Gal, R., Patashnik, O., Maron, H., Bermano, A. H., Chechik,
+G., and Cohen-Or, D. Stylegan-nada: Clip-guided domain
+adaptation of image generators. ACM Transactions on
+Graphics (TOG), 41(4):1–13, 2022. 2
+Galatolo, F. A., Cimino, M. G., and Vaglini, G.
+Gen-
+erating images from caption and vice versa via clip-
+guided generative latent space search. arXiv preprint
+arXiv:2102.01645, 2021. 2
+Gu, S., Bao, J., Yang, H., Chen, D., Wen, F., and Yuan, L.
+Mask-guided portrait editing with conditional gans. In
+Proceedings of the IEEE/CVF conference on computer
+vision and pattern recognition, pp. 3436–3445, 2019. 2
+He, K., Gkioxari, G., Doll´ar, P., and Girshick, R. Mask
+r-cnn. In ICCV, 2017. 3
+Ho, J. and Salimans, T. Classifier-free diffusion guidance.
+arXiv preprint arXiv:2207.12598, 2022. 3
+Ho, J., Saharia, C., Chan, W., Fleet, D. J., Norouzi, M., and
+Salimans, T. Cascaded diffusion models for high fidelity
+image generation. J. Mach. Learn. Res., 23(47):1–33,
+2022. 2
+Kirillov, A., Mintun, E., Ravi, N., Mao, H., Rolland, C.,
+Gustafson, L., Xiao, T., Whitehead, S., Berg, A. C.,
+Lo, W.-Y., et al.
+Segment anything.
+arXiv preprint
+arXiv:2304.02643, 2023. 3, 6
+Koley, S., Bhunia, A. K., Sain, A., Chowdhury, P. N., Xiang,
+T., and Song, Y.-Z. Picture that sketch: Photorealistic
+image generation from abstract sketches. In Proceedings
+of the IEEE/CVF Conference on Computer Vision and
+Pattern Recognition (CVPR), pp. 6850–6861, June 2023.
+1, 2
+Kuznetsova, A., Rom, H., Alldrin, N., Uijlings, J., Krasin,
+I., Pont-Tuset, J., Kamali, S., Popov, S., Malloci, M.,
+Kolesnikov, A., et al. The open images dataset v4: Uni-
+fied image classification, object detection, and visual re-
+lationship detection at scale. International Journal of
+Computer Vision, 128(7):1956–1981, 2020. 6
+9
+Completing Visual Objects via Bridging Generation and Segmentation
+Lee, D., Kim, C., Kim, S., Cho, M., and Han, W.-S. Autore-
+gressive image generation using residual quantization. In
+Proceedings of the IEEE/CVF Conference on Computer
+Vision and Pattern Recognition, pp. 11523–11532, 2022.
+2
+Li, J., Li, D., Xiong, C., and Hoi, S. Blip: Bootstrapping
+language-image pre-training for unified vision-language
+understanding and generation. In ICML, 2022a. 6
+Li, X., Sun, X., Meng, Y., Liang, J., Wu, F., and Li, J.
+Dice loss for data-imbalanced nlp tasks. arXiv preprint
+arXiv:1911.02855, 2019. 5
+Li, X., Wang, J., Li, X., and Lu, Y. Hybrid instance-aware
+temporal fusion for online video instance segmentation.
+In Proceedings of the AAAI Conference on Artificial In-
+telligence, volume 36, pp. 1429–1437, 2022b. 3
+Li, X., Wang, J., Li, X., and Lu, Y. Video instance segmen-
+tation by instance flow assembly. IEEE Transactions on
+Multimedia, 2022c. 3
+Li, X., Cao, H., Zhao, S., Li, J., Zhang, L., and Raj, B.
+Panoramic video salient object detection with ambisonic
+audio guidance. In Proceedings of the AAAI Conference
+on Artificial Intelligence, volume 37, pp. 1424–1432,
+2023a. 3
+Li, X., Lin, C.-C., Chen, Y., Liu, Z., Wang, J., and Raj, B.
+Paintseg: Training-free segmentation via painting. arXiv
+preprint arXiv:2305.19406, 2023b. 3
+Li, X., Wang, J., Xu, X., Li, X., Raj, B., and Lu, Y. Robust
+referring video object segmentation with cyclic structural
+consensus. In Proceedings of the IEEE/CVF Interna-
+tional Conference on Computer Vision, pp. 22236–22245,
+2023c. 3
+Li, X., Wang, J., Xu, X., Yang, M., Yang, F., Zhao, Y.,
+Singh, R., and Raj, B. Towards noise-tolerant speech-
+referring video object segmentation: Bridging speech
+and text.
+In Proceedings of the 2023 Conference on
+Empirical Methods in Natural Language Processing, pp.
+2283–2296, 2023d. 3
+Li, X., Wen, Y., Yang, M., Wang, J., Singh, R., and Raj,
+B. Rethinking voice-face correlation: A geometry view.
+arXiv preprint arXiv:2307.13948, 2023e. 3
+Li, Y., Cheng, Y., Gan, Z., Yu, L., Wang, L., and Liu, J.
+Bachgan: High-resolution image synthesis from salient
+object layout. In Proceedings of the IEEE/CVF Confer-
+ence on Computer Vision and Pattern Recognition, pp.
+8365–8374, 2020. 2
+Li, Y., Liu, H., Wu, Q., Mu, F., Yang, J., Gao, J., Li, C.,
+and Lee, Y. J. Gligen: Open-set grounded text-to-image
+generation. In Proceedings of the IEEE/CVF Conference
+on Computer Vision and Pattern Recognition, pp. 22511–
+22521, 2023f. 2
+Lin, T.-Y., Doll´ar, P., Girshick, R., He, K., Hariharan, B.,
+and Belongie, S. Feature pyramid networks for object
+detection. In Proceedings of the IEEE conference on
+computer vision and pattern recognition, pp. 2117–2125,
+2017. 5
+Liu, X., Park, D. H., Azadi, S., Zhang, G., Chopikyan, A.,
+Hu, Y., Shi, H., Rohrbach, A., and Darrell, T. More con-
+trol for free! image synthesis with semantic diffusion
+guidance. In Proceedings of the IEEE/CVF Winter Con-
+ference on Applications of Computer Vision, pp. 289–299,
+2023. 2
+Liu, Z., Lin, Y., Cao, Y., Hu, H., Wei, Y., Zhang, Z., Lin,
+S., and Guo, B. Swin transformer: Hierarchical vision
+transformer using shifted windows. In Proceedings of the
+IEEE/CVF international conference on computer vision,
+pp. 10012–10022, 2021. 15
+Long, J., Shelhamer, E., and Darrell, T. Fully convolutional
+networks for semantic segmentation. In CVPR, 2015. 3
+Loshchilov, I. and Hutter, F. Decoupled weight decay regu-
+larization. arXiv preprint arXiv:1711.05101, 2017. 6
+L¨uddecke, T. and Ecker, A. Image segmentation using text
+and image prompts. In Proceedings of the IEEE/CVF
+Conference on Computer Vision and Pattern Recognition,
+pp. 7086–7096, 2022. 8
+Ma, J. and Wang, B. Segment anything in medical images.
+arXiv preprint arXiv:2304.12306, 2023. 3
+Neven, D., De Brabandere, B., Proesmans, M., and
+Van Gool, L. Instance segmentation by jointly optimizing
+spatial embeddings and clustering bandwidth. In CVPR,
+2019. 3
+Newell, A., Huang, Z., and Deng, J. Associative embedding:
+End-to-end learning for joint detection and grouping. In
+NeurIPS, 2017. 3
+Radford, A., Kim, J. W., Hallacy, C., Ramesh, A., Goh, G.,
+Agarwal, S., Sastry, G., Askell, A., Mishkin, P., Clark, J.,
+et al. Learning transferable visual models from natural
+language supervision. arXiv preprint arXiv:2103.00020,
+2021. 2
+Rombach, R., Blattmann, A., Lorenz, D., Esser, P., and
+Ommer, B. High-resolution image synthesis with latent
+diffusion models. In Proceedings of the IEEE/CVF con-
+ference on computer vision and pattern recognition, pp.
+10684–10695, 2022. 4, 6, 14, 15, 16
+10
+Completing Visual Objects via Bridging Generation and Segmentation
+Sehwag, V., Hazirbas, C., Gordo, A., Ozgenel, F., and Can-
+ton, C. Generating high fidelity data from low-density
+regions using diffusion models. In Proceedings of the
+IEEE/CVF Conference on Computer Vision and Pattern
+Recognition, pp. 11492–11501, 2022. 2
+Shakhmatov, A., Razzhigaev, A., Nikolich, A., Arkhipkin,
+V., Pavlov, I., Kuznetsov, A., and Dimitrov, D. kandinsky
+2.1, 2023. 6
+Sun, W. and Wu, T. Image synthesis from reconfigurable
+layout and style. In Proceedings of the IEEE/CVF Interna-
+tional Conference on Computer Vision, pp. 10531–10540,
+2019. 2
+Tran, M., Vo, K., Yamazaki, K., Fernandes, A., Kidd, M.,
+and Le, N. Aisformer: Amodal instance segmentation
+with transformer. arXiv preprint arXiv:2210.06323, 2022.
+8
+Wang, H., Zhu, Y., Adam, H., Yuille, A., and Chen, L.-C.
+MaX-DeepLab: End-to-end panoptic segmentation with
+mask transformers. In CVPR, 2021. 3
+Wang, X., Kong, T., Shen, C., Jiang, Y., and Li, L. SOLO:
+Segmenting objects by locations. In ECCV, 2020. 3
+Xie, S., Zhang, Z., Lin, Z., Hinz, T., and Zhang, K. Smart-
+brush: Text and shape guided object inpainting with diffu-
+sion model. In Proceedings of the IEEE/CVF Conference
+on Computer Vision and Pattern Recognition (CVPR), pp.
+22428–22437, June 2023. 1
+Yang, B., Gu, S., Zhang, B., Zhang, T., Chen, X., Sun, X.,
+Chen, D., and Wen, F. Paint by example: Exemplar-based
+image editing with diffusion models. In Proceedings
+of the IEEE/CVF Conference on Computer Vision and
+Pattern Recognition, pp. 18381–18391, 2023a. 1
+Yang, Z., Wang, J., Gan, Z., Li, L., Lin, K., Wu, C., Duan,
+N., Liu, Z., Liu, C., Zeng, M., and Wang, L.
+Reco:
+Region-controlled text-to-image generation. In Proceed-
+ings of the IEEE/CVF Conference on Computer Vision
+and Pattern Recognition (CVPR), pp. 14246–14255, June
+2023b. 1
+Yu, T., Feng, R., Feng, R., Liu, J., Jin, X., Zeng, W., and
+Chen, Z. Inpaint anything: Segment anything meets
+image inpainting. arXiv preprint arXiv:2304.06790, 2023.
+3
+Zhang, L., Rao, A., and Agrawala, M. Adding conditional
+control to text-to-image diffusion models, 2023. 1, 2, 4, 6
+Zhang, W., Pang, J., Chen, K., and Loy, C. C. K-Net:
+Towards unified image segmentation. In NeurIPS, 2021.
+3
+Zhao, B., Meng, L., Yin, W., and Sigal, L. Image generation
+from layout. In Proceedings of the IEEE/CVF Conference
+on Computer Vision and Pattern Recognition, pp. 8584–
+8593, 2019. 2
+Zhou, Q., Wang, S., Wang, Y., Huang, Z., and Wang, X.
+Human de-occlusion: Invisible perception and recovery
+for humans. In Proceedings of the IEEE/CVF Conference
+on Computer Vision and Pattern Recognition, pp. 3691–
+3701, 2021a. 6
+Zhou, Y., Zhang, R., Chen, C., Li, C., Tensmeyer, C., Yu,
+T., Gu, J., Xu, J., and Sun, T. Lafite: Towards language-
+free training for text-to-image generation. arXiv preprint
+arXiv:2111.13792, 2021b. 2
+Zou, X., Yang, J., Zhang, H., Li, F., Li, L., Gao, J., and Lee,
+Y. J. Segment everything everywhere all at once. arXiv
+preprint arXiv:2304.06718, 2023. 3, 8
+11
+Completing Visual Objects via Bridging Generation and Segmentation
+A. More Experiments
+In this section, we provide more ablation experiments and analysis of MaskComp. We conducted ablation experiments to
+determine the design choice in the segmentation stage.
+Iter
+20
+40
+50
+FID 16.9 15.7 15.1
+(a) Iteration for diffusion.
+Occ. Rectangle Oval Object
+FID
+15.3
+15.1
+16.9
+(b) Occlusion type.
+Comp. !
+%
+FID
+16.9 19.4
+(c) Availablility of complete object.
+Strategy Logits (V) Logits (M) Mask (V) Mask (M)
+FID
+16.9
+17.2
+17.6
+17.0
+(d) Voting strategies.
+Lmask
+!
+%
+FID
+16.9 17.7
+(e) Mask loss.
+Table 6. More ablation of MaskComp. We report the performance with the AHP dataset. (a) We ablate the iteration number of the
+diffusion model. (b) We report the performance with different types of occlusion. (c) We report the performance of MaskComp trained
+with or without the complete objects. (d) We ablate voting strategies. V: voting. M: Mean. (e) We ablate the effectiveness of adding
+intermediate supervision to predict the complete mask.
+Iteration for diffusion model.
+Since the number of diffusion steps has a large impact on the inference speed, we conduct
+the ablation studies about iteration steps for the diffusion process in Table 6a. We notice a larger diffusion step will lead to a
+better performance. After the number of diffusion steps is larger than 40, the performance improvement becomes slow.
+Occlusion type
+To understand the influence of occlusion type, we conduct an ablation study as shown in Table 6b. Three
+types of occlusion types are employed. Specifically, the occlusions are randomly generated by controlling the size and
+location. For object occlusion, we occlude the object by the mask of itself. We notice that the occlusion with a more
+complicated object shape will impose more challenges on the proposed model.
+Availability of complete objects during training
+Occlusion is a prevalent occurrence in images, posing a significant
+challenge for object completion, primarily due to the unavailability of ground-truth complete objects. This motivates us to
+investigate the performance of MaskComp without ground-truth complete objects during training. As MaskComp relies
+on a mask denoising process that does not necessarily request the complete objects during training, it is possible to adapt
+MaskComp to the scenarios without complete objects available during training. As shown in Table 6c, we report the
+performance on AHP dataset with the models trained on AHP (with complete objects) and OpenImage (without complete
+objects) respectively. We notice that the performance of MaskComp trained on OpenImage is just slightly lower than that
+trained with AHP dataset, indicating that MaskComp has the potential to be adapted to the scenarios without ground-truth
+complete objects. More qualitative comparisons are available in the Section B.
+Voting strategies.
+To investigate the impact of different voting strategies in the segmentation stage, we conduct experiments
+to evaluate different voting approaches as shown in Table 6d. We notice voting with logits achieves the best performance.
+The current design choice of using SAM and voting with logits is based on the ablation results.
+Mask loss.
+We leverage auxiliary mask prediction from the partial token cp to encourage the object encoder to capture
+object shape information. As shown in Table 6e, we ablate the effectiveness of adding additional mask supervision. The
+results indicate that the incorporation of mask prediction can benefit the final object completion performance.
+B. More Discussion
+Image diffusion v.s. Mask denoising.
+During the training of the image diffusion model, Gaussian noise is introduced to
+the original image. A denoising U-Net is then trained to predict this noise and subsequently recover the image to its clean
+state during inference.
+12
+Completing Visual Objects via Bridging Generation and Segmentation
+Type
+Noise
+Network
+Target
+Image diffusion
+Gaussion
+UNet
+Predict added noise
+Mask denoising
+Occlusion
+Mask denoiser S ◦ G(·)
+Predict denoised mask
+Table 7. Analogy between image diffusion and mask denoising.
+Similarly, in the context of the proposed iterative mask denoising (IMD) process, we manually occlude the complete object
+(which can be assumed as adding noise) and train a generative model to recover the complete object. During inference,
+as shown in Eq. (1), we employ an iterative approach that combines the segmentation and generation model S ◦ G(·)
+functioning as a denoiser. This denoiser progressively denoises the partial mask to achieve a complete mask, following a
+similar principle to the denoising diffusion process. By drawing parallels between image diffusion and mask denoising, we
+establish an analogy, as depicted in Table 7. We can notice that the mask-denoising process shares the spirits of the image
+diffusion process and the only difference is that mask denoising does not explicitly calculate the added noise but directly
+predicts the denoised mask. In this way, MaskComp can be assumed as a double-loop denoising process with an inner loop
+for image denoising and an outer loop for mask denoising.
+Image
+Mask
+Input
+Step 1
+Step 2
+Step 3
+Step 4
+Step 5
+Figure 9. Visualization of IMD process with model trained without complete objects. To better visualize the iterative mask denoising
+process, we denote the overlapping masked area from the last iteration as orange. We can notice that the object shape is gradually refined
+and converged to a complete shape.
+Training without complete object.
+In the context of image diffusion, though multiple forward steps are involved to
+add noise to the image, the network only learns to predict the noise added in a single step during training. Therefore, if
+we possess a set of noisy images generated through forward steps, the original image is not required during the training.
+This motivates us to explore the feasibility of training MaskComp without relying on the complete mask. Similar to image
+diffusion, given a partial mask, we can further occlude it and learn to predict the partial mask before further occlusion.
+In this way, MaskComp can be leveraged in a more generic scenario without the strict demand for complete objects. We
+have discussed the quantitative results in Section 4.3. Here, we visualize the IMD process with a model trained without
+complete objects (on OpenImage). To better visualize the object shape updating, we denote the overlapping masked area
+from the last step as orange. We can notice that the object shape gradually refines and converges to the complete shape as
+the IMD process forwards. Interestingly, the IMD process can learn to complete the object even if only a small portion of
+the complete object was available in the dataset during the training. We consider this property to make it possible to further
+generalize MaskComp to the scenarios in which a complete object is not available.
+What will the marginal distribution p(I|M) and p(M|I) be like without the slack condition?
+The relation between
+mask and object image is one-to-many. The p(I|M) models a filling color operation that paints the color within the given
+mask area. And as each object image only corresponds to one mask, the p(M|I) is a deterministic process that can be
+modeled by a delta function δ. Previous methods generally leverage the unslacked setting. For example, the ControlNet
+assumes the given mask condition can accurately reflect the object shape and therefore, it can learn to fill colors to the
+masked regions.
+13
+Completing Visual Objects via Bridging Generation and Segmentation
+Original Image
+Segm.
+Partial Object
+Edited Image
+Complete Object
+MaskComp
+Editing & 
+Composing
+Figure 12. Illustation of potential application.
+𝐼!
+𝑝(𝐼"|𝐼!)
+𝔼[𝐼"] 
+(Unrealistic)
+𝐼!
+𝑝(𝒮(𝐼")|𝐼!)
+𝔼[𝒮(𝐼")] 
+(Realistic)
+Segmentation 𝒮())
+(a) Distribution of Generated Images
+(b) Distribution of Masks of Generated Images
+Figure 10. Distribution of image and mask.
+Analysis of the aggregation among masks.
+Given a
+partial object Ip, the generation model samples from a
+distribution that contains both realistic and unrealistic
+images. As shown in Fig. 10, the image distribution is
+typically complex and the expectation cannot represent
+a realistic image. However, when we consider the
+shape of the generated images, we are excited to find
+that the expectation leads to a more realistic shape. We
+consider this observation interesting as, for most of the
+other generation tasks (non-conditioned), averaging the object shape will just yield an unrealistic random shape. This
+observation serves as one of our core observations to build the IMD process. Here, SAM serves as the tool to extract the
+object shape and voting is a way to binarize the expectation of object shapes to a binary mask.
+Potential applications.
+Object completion is a fundamental technique that can boost a number of applications. For
+example, a straightforward application is the image editing. With the object completion, we can modify the layer of the
+objects in an image as we modify the components in the PowerPoint. It is possible to bring forward and edit objects as
+shown in Fig. 12. In addition, object completion is also an important technique for data augmentation. We hope MaskComp
+can shed light on more applications leveraging object completion.
+Figure 11. BG objects.
+Background objects in the generated images.
+The training of CompNet aims to learn
+an intra-object correlation. We leverage a black background to eliminate the influence of
+background objects. However, we notice that even if we train the network with the black
+background as ground truth, it is still possible to generate irrelevant objects in the background.
+As shown in Fig. 11, we visualize an image that generates a leather bag near the women. We
+consider the generated background object can result from the learned inter-object correlation
+from the frozen Stable Diffusion model (Rombach et al., 2022). As the generated background
+object typically will not be segmented in the segmentation stage, it will not influence the
+performance of MaskComp.
+C. More Experiments
+Complete Object
+Partial Object
+MaskComp
+Figure 14. Failure case.
+Failure case analysis.
+We present a failure case in Fig. 14,
+where MaskComp exhibits a misunderstanding of the pose
+of a person bending over, resulting in the generation of a hat
+at the waist. We attribute this generation of an unrealistic
+image to the uncommon pose of the partial human. Given that
+the majority of individuals in the AHP training set have their
+heads up and feet down, MaskComp may have a tendency
+to generate images in this typical position. We consider that
+with a more diverse dataset, including images of individuals in unusual poses, MaskComp could potentially yield superior
+results in handling similar cases.
+14
+Completing Visual Objects via Bridging Generation and Segmentation
+Condition
+Generated Image
+SAM Mask
+Figure 15. Visualization of the intermediate stage in IMD.
+Impact of segmentation errors in intermediate stages.
+Despite the robust capabilities of the CompNet and SAM
+models, they can still generate low-quality images and in-
+accurate segmentation results. In Fig. 15, we show a case
+where the intermediate stage of IMD produces a human with
+an extra right arm. To address this, we implement three key
+strategies: (1) Error Mitigation during Segmentation with
+SAM: As shown in Fig. 15, SAM effectively filters out in-
+correctly predicted components, such as a misidentified right
+arm, resulting in a more coherent shape for subsequent iterations. SAM’s robust instance understanding capability extends to
+not only accurately segmenting objects with regular shapes but also filtering out irrelevant parts when additional objects/parts
+are generated. (2) Error Suppression through Mask Voting: In cases where only a few generated images exhibit errors,
+the impact of these errors can be mitigated through mask voting. The generated images are converted to masks, and if only a
+minority displays errors, their influence is diminished through the voting operation. (3) Error Tolerance in IMD Iteration:
+We train the CompNet to handle a wide range of occluded masks. Consequently, if the conditioned mask undergoes minimal
+improvement or degradation due to the noises in a given iteration, it can still be improved in the subsequent iteration. While
+this may slightly extend the convergence time, it is not anticipated to have a significant impact on the ultimate image quality.
+More implementation details.
+We leverage two types of occlusion strategies during the training of CompNet. First, we
+randomly sample a point on the object region, and then randomly occlude a rectangle area with the sampled point as the
+centroid. The width and height of the rectangle are determined by the width and height of the bounding box of the ground
+truth object. We uniformly sample a ratio within [0.2, 0.9] and apply it to the ground truth width and height to occlude the
+object. Second, we randomly occlude the object by shifting its mask. Specifically, we randomly shift its mask by a range of
+[0.17, 0.25] and occluded the region within the shifted mask. We equally leverage these two occlusion strategies during
+training. For the object encoder to extract partial token cp in the CompNet, we utilize a Swin-Transformer (Liu et al., 2021)
+pre-trained on ImageNet (Deng et al., 2009) with an additional convolution layer to accept the concatenation of mask and
+image as input. We initialize the CompNet with the pre-trained weight of ControlNet with additional mask conditions. To
+segment objects in the segmentation stage, we give a mix of box and point prompts to the Segment Anything Model (SAM).
+Specifically, we uniformly sample three points from the partial object as the point prompts and we leverage an extended
+bounding box of the partial object as the box prompts. We also add negative point prompts at the corners of the box to
+further improve the segmentation quality.
+More visualization.
+As shown in Fig. 13, we provide more qualitative comparisons with Stable Diffusion (Rombach
+et al., 2022). We notice that Stable Diffusion tends to complete irrelevant objects to the complete parts and thus leads to an
+unrealism of objects. Instead, MaskComp is guided by a mask shape and successfully captures the correct object shape thus
+achieving superior results.
+Details of user study.
+There are 16 participants in the user study. All participants have relevant knowledge to understand
+the task. During the assessment, each participant is provided with instructions and an example to understand the task. We
+show an example of the images presented during the user study as Fig. 16 and Fig. 17. We list the instructions as follows.
+Task: Given the partial object (lower left), generate the complete object (upper left).
+Instruction:
+• Ranking images 1-5, put the best on the left and the worst on the right.
+• Please focus on the foreground object and ignore the difference presented in the background.
+• Original image is provided as a good example.
+• The criteria for ranking are founded on object quality, encompassing aspects such as completeness, realism, sharpness,
+and more.
+• It must be strictly ordered (no tie).
+• Please rank the image in the following form: 1;2;3;4;5 or 5;4;3;2;1 (Use a colon to separate, no space at the beginning)
+15
+Completing Visual Objects via Bridging Generation and Segmentation
+Stable Diffusion 1.5 Stable Diffusion 2.1 MaskComp (Ours)
+Partial Object
+Complete Object (GT)
+Figure 13. More qualitative comparison with Stable Diffusion (Rombach et al., 2022).
+16
+Completing Visual Objects via Bridging Generation and Segmentation
+Figure 16. Examples presented during the user study.
+17
+Completing Visual Objects via Bridging Generation and Segmentation
+Figure 17. Examples presented during the user study.
+18
+

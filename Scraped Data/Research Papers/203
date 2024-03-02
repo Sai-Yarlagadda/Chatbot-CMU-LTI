@@ -1,0 +1,642 @@
+PROMPTING AUDIOS USING ACOUSTIC PROPERTIES FOR EMOTION
+REPRESENTATION
+Hira Dhamyal1, Benjamin Elizalde2, Soham Deshmukh2, Huaming Wang2 , Bhiksha Raj1,3, Rita Singh1
+1 Carnegie Mellon University, 2Microsoft, 3Mohammed bin Zayed University of AI
+ABSTRACT
+Emotions lie on a continuum, but current models treat emotions
+as a finite valued discrete variable. This representation does not
+capture the diversity in the expression of emotion. To better rep-
+resent emotions we propose the use of natural language descrip-
+tions (or prompts). In this work, we address the challenge of au-
+tomatically generating these prompts and training a model to better
+learn emotion representations from audio and prompt pairs. We use
+acoustic properties that are correlated to emotion like pitch, intensity,
+speech rate, and articulation rate to automatically generate prompts
+i.e. ‘acoustic prompts’. We use a contrastive learning objective to
+map speech to their respective acoustic prompts. We evaluate our
+model on Emotion Audio Retrieval and Speech Emotion Recogni-
+tion. Our results show that the acoustic prompts significantly im-
+prove the model’s performance in EAR, in various Precision@K
+metrics. In SER, we observe a 3.8% relative accuracy improvement
+on the Ravdess dataset.
+Index Terms— Emotion Audio Retrieval, EAR, Speech Emo-
+tion Recognition, SER, contrastive language-audio pre-training,
+acoustic properties, prompt generation, prompt augmentation
+1. INTRODUCTION
+Emotions are usually described using discrete labels like ’angry’,
+or ’happy’ following psychological models like the Plutchik wheel
+of emotion [1] or Ekman’s model of emotion [2]. Although these
+frameworks are extremely popular and provide ease of modeling,
+they do not fully capture the diversity in emotion expression. This
+makes using such discrete representations sub-optimal for down-
+stream tasks.
+Understanding the source of diversity in emotion expression is
+the key to formulating more accurate emotion representations. There
+are many sources of diversity in emotion, like the speaker, culture,
+and context, among other factors [3, 4]. Labeling two instances of
+emotion with the same label of say ‘anger’, ignores the intricacies
+of the expression of anger. Therefore, we believe it is important to
+represent the fine-grained characteristics of emotion.
+These fine-grained characteristics of emotions can be better cap-
+tured by the flexibility that natural language provides. In general,
+such descriptions can describe the low-level information in the au-
+dio like the acoustic properties or they can describe the high-level
+information like who is expressing the emotion and what the con-
+text is. Humans often use affective language to casually describe
+emotion in speech, for example, ‘An angry man shouting loudly’.
+In this example ‘loudness’ has a direct acoustic correlate ‘intensity’
+which can be used to form a description e.g. ‘this is the sound of
+high-intensity anger’.
+This work was done when the first author was an intern at Microsoft
+The choice of natural language description affects the high di-
+mensional representation learned from the text, hence it is very im-
+portant to choose the right description for the emotion. This leads to
+the question:
+How do we describe an emotion using natural language and how
+can a model learn it?
+In this work, we propose a method to describe the emotion in
+audio by using the low-level information in the audio. Previous re-
+search shows that there are numerous acoustic correlates of emo-
+tion [5–7]. These acoustic correlates include measurements like the
+average pitch, intensity, speech rate, and articulation rate. We ex-
+tract these correlates from each utterance and use them to form the
+description in an automatic and scalable way. We call descriptions
+generated in this manner ‘acoustic prompts’.
+Given these acoustic prompts, we train models that associate
+them with corresponding audio by fine-tuning the Contrastive
+Language-Audio Pretraining (CLAP) model [8, 9].
+CLAP uses
+contrastive learning to associate the audio and their descriptions
+and yields state-of-the-art performance in learning audio concepts
+with natural language descriptions. We then evaluate this fine-tuned
+model on downstream tasks.
+We evaluate on Emotion Audio Retrieval (EAR) and Speech
+Emotion Recognition (SER). SER is a well-known task defined as
+given a speech utterance, determine the emotion present in the utter-
+ance [4, 10]. The task of EAR is not a commonly performed task.
+There are tangential works e.g. [11, 12] which examine retrieval of
+music audios, however, this task has not been explored for speech
+emotion. We believe that EAR is an important task to address since
+it can be useful in speech forensics, recommendation systems, search
+engines, social media, etc. Since emotions are also indicators of cer-
+tain events, EAR methods can help in retrieving hate speech, and
+violence from audio. We show that the acoustic prompts improve
+the model’s performance in EAR significantly; Precision@K is con-
+sistently better for various values of K. We also find that in SER,
+the model performance improves. Specifically, recognition perfor-
+mance improves 3.8% relative on Ravdess dataset. In a fine-tuning
+classification setup, we observe 3.7% improvement on Ravdess.
+In summary, the contributions of this paper are as follows:
+1. In this work, we propose a unified framework to train emotion
+representation model through audio-text contrastive learning.
+We explore ways to generate emotion prompts for speech,
+grounded in acoustic properties of pitch, intensity, speech
+rate, and articulation rate.
+2. We introduce the task of text-based audio retrieval for emo-
+tion (not done before as far as we know) and show that our
+proposed prompts significantly improve performance on this
+task.
+3. We show improvements in two tasks; SER and EAR on a
+model trained on multiple emotion datasets.
+arXiv:2310.02298v3  [cs.SD]  7 Dec 2023
+Fig. 1: The left part of the image shows model training. Given a batch of N audio-text pairs, the model trains the audio and text encoders to learn their
+(dis)similarity using contrastive learning. On the right side is shown an evaluation scenario. Given an audio of unknown emotion, trained audio and text
+encoders are used to extract representations from the audio and the descriptions. The prediction is made based on the cosine similarity between the two
+representations.
+2. BACKGROUND
+Fig. 1 shows the Contrastive Language-Audio Pretraining (CLAP)
+model - the backbone architecture used in this paper. The audio-text
+pairs are passed through an audio encoder and a text encoder respec-
+tively. Let fa(.) represent the audio encoder and ft(.) represent the
+text encoder. For a batch of N:
+ˆ
+Xa = fa(Xa); ˆ
+Xt = ft(Xt)
+(1)
+where ˆ
+Xa ∈ RN×V are the audio representations of dimensionality
+V , and ˆ
+Xt ∈ RN×U are the text representations of dimensionality
+U.
+We brought audio and text representations into a joint multi-
+modal space of dimension d by using a projection layer:
+Ea = La( ˆ
+Xa); Et = Lt( ˆ
+Xt)
+(2)
+where Ea ∈ RN×d, Et ∈ RN×d, La and Lt are the linear projec-
+tions for audio and text respectively.
+Now that the audio and text embeddings (Ea, Et) are compara-
+ble, we can measure similarity:
+C = τ ∗ (Et · E⊤
+a )
+(3)
+where τ is a temperature parameter to scale the range of logits. The
+similarity matrix C ∈ RN×N has N correct pairs in the diagonal
+and N 2 − N incorrect pairs in the off-diagonal. The loss can be
+calculated as:
+L = 0.5 ∗ (ℓtext(C) + ℓaudio(C))
+(4)
+where ℓk =
+1
+N
+PN
+i=0 log diag(softmax(C)) along text and audio
+axis respectively. We used this symmetric cross-entropy loss (L)
+over the similarity matrix to jointly train the audio and text encoders
+along with their linear projections.
+In this paper, we chose this architecture because it yields SoTA
+performance in learning audio concepts with natural language de-
+scriptions. We use log Mel spectrograms from the audios, sampled
+at 44K Hz, as input to the audio encoder - CNN14 [13], which is pre-
+trained on 2M audio clips from AudioSet. The text encoder is BERT
+uncased. The audio encodings are of 1024 dimensional from the
+HuggingFace library [14], whereas text encodings are 768 dimen-
+sional. Both encodings are then projected into a joint multimodal
+space of dimension 1024. Both audio and text encoders are frozen
+in our experiments, but the projection layers are learnable. We use
+Table 1: Details of the 6 emotion datasets used in this paper.
+Dataset
+Files
+Class
+Emotions
+CMU-MOSEI [19]
+23K
+9
+ang, exc, fear, sad
+frus, neu, sur, hap, dis
+IEMOCAP [20]
+10K
+9
+hap, fear, sad, sur, exc,
+ang, neu, disappoint, frus
+MELD [21]
+10K
+7
+neu, sur, fear, sad,
+joy, disgust, ang
+CREMA-D [22]
+7K
+6
+ang, dis, fear, hap,
+neu, sad
+RAVDESS [23]
+2.5K
+8
+neu, calm, hap, sad,
+ang, fear, disgust, sur
+CMU-MOSI [19]
+2.2K
+3
+neu, positive, negative
+PyTorch to implement the model architecture. The model is trained
+with 0.0001 learning rate, batch size of 128, for 30 epochs using
+Adam optimizer.
+3. PROPOSED WORK
+3.1. Datasets
+We use 6 Emotion Datasets (ED) in this setup, see Table 1. The lit-
+erature using these many datasets for emotion tasks are rare. The
+original CLAP model is trained with audio-text pairs sourced from
+three audio captioning datasets: ClothoV2 [15], AudioCaps [16],
+MACS [17], and one sound event dataset: FSD50K [18]. Altogether
+they are referred to as 4D henceforth. All the datasets used are pub-
+licly available.
+3.2. Prompt Generation
+For all the emotion datasets being used, we only have the discrete
+class labels no associated descriptions. Therefore, we devise a scal-
+able and automatic prompting method that is based on the acoustic
+properties of the speech audios. There are numerous acoustic corre-
+lates of emotion therefore, we hypothesize that including this infor-
+mation in the prompts would benefit downstream emotion tasks. We
+construct the prompts in the manner described below:
+Class label Prompt The simplest description for each audio can be
+the class label, i.e. audio with the discrete true label of ‘anger’ will
+be labeled as ‘anger’. We use this as the baseline prompt to compare
+against the proposed prompts.
+Pitch Prompt Pitch is known to be affected by emotion, lower pitch
+is related to negative emotions like fear and high pitch is related
+to positive emotions like happiness or surprise [6]. We bin pitch
+into four bins, since pitch is naturally sex-specific i.e. low-male
+pitch (< 132.5 Hz), high-male pitch (> 132.5 Hz, < 180 Hz),
+low-female pitch (> 180 Hz, < 210 Hz) and high-female pitch
+(> 210 Hz) However, we also experiment with binning into two
+classes, based on a cutoff of 170 Hz. The cutoffs are obtained from
+the average numbers for vocal pitch reported in the literature [24].
+The prompt is set as ‘bin-class emotion-class’, an example of which
+is ‘low pitch anger’ (without sex information) or ‘low male pitch
+anger’ (otherwise).
+Intensity Prompt Intensity is known to be affected by emotion, low
+intensity is linked with negative emotions like sadness or melan-
+choly and high intensity is linked with joy or excitement [6]. We bin
+the average intensity over the audio clip in two bins, low and high
+intensity at 60 dB [25]. The cutoffs are based on average intensity
+numbers reported for human speech in literature. The same rule as
+pitch prompt is followed to form the intensity prompt, an example
+of which is ‘high intensity anger’.
+Speech-rate Prompt It has been observed that faster-spoken speech
+is linked with highly potent emotions such as anger and happiness
+whilst slower speech is linked with sadness, disgust, and bore-
+dom [5].
+Speech rate is calculated by extracting the number of
+syllables spoken divided by the total duration of the audio clip. We
+use 3.12 syllables/sec as the cutoff to bin the speech rate into two
+bins, low and high speech rate [26]. An example of a speech-rate
+prompt is ‘high speech rate anger’.
+Articulation-rate Prompt Similarly to speech rate, fast articulation
+rate is linked with emotions of interest, fear, or happiness; whereas
+slow articulation rate is indicative of sadness and disgust [5]. The
+articulation rate is calculated as the total number of syllables divided
+by the total phonation time. We bin the audio into low and high
+articulation rate at the cutoff of 4 syllables/sec [26]. An example of
+articulation-rate prompt is ‘high articulation rate anger’.
+Even though speech and articulation rate are similar concepts,
+speech rate captures speaker-specific information in the form of the
+number of pauses and hesitation whereas articulation rate ignores
+such information.
+Prompt Augmentation To combine all 5 prompts, we pair an audio
+clip independently with each acoustic prompt. Thus, one audio clip
+will result in 5 pairs used for training our model. Note: we also tried
+making one prompt with all the acoustic properties combined to-
+gether. However, this does not perform as well as when the prompts
+are paired separately with a given audio.
+Table 2 shows all the acoustic prompts that are used in this work.
+We calculate the pitch and intensity using Librosa [27] and we cal-
+culate speech rate and articulation rate using Praat [28]. Note: Other
+methods to select thresholds (used in prompt creation) like dataset-
+specific thresholds showed little effect on the final results, therefore
+we choose to use the literature-inspired thresholds.
+4. EXPERIMENTS AND RESULTS
+4.1. Emotion Audio Retrieval
+We evaluate our trained models for the task of emotion audio re-
+trieval (EAR). With the increasing sizes of audio databases, being
+able to search such databases for specific types of audio is important.
+Table 2: Given audio of class label {emotion}, the prompts generated will
+be one among the following.
+Property
+Prompt
+Class label (CL)
+• {emotion}
+Pitch
+• high female pitch {emotion}
+• low female pitch {emotion}
+• high male pitch {emotion}
+• low male pitch {emotion}
+Intensity
+• high intensity {emotion}
+• low intensity {emotion}
+Speech rate
+• high speech rate {emotion}
+• low speech rate {emotion}
+Articulation rate
+• high articulation rate {emotion}
+• low articulation rate {emotion}
+We compare (1) the baseline CLAP model, (2) the model where the
+prompts used for training are the emotion class labels of the audio,
+and (3) the model trained with our acoustic prompting method using
+prompt augmentation.
+The first three columns in Table 3 show the results when the
+queries are among the four emotion classes, i.e. happy, sad, angry,
+and neutral and the collection consists of IEMOCAP dataset. Row 1
+model is trained on only 4 audio captioning datasets. Rows 2 and 3
+models are trained on 5 emotion datasets, not including IEMOCAP.
+For a given query, the model outputs top K audios whose audio em-
+beddings have the highest cosine similarity to the text embedding of
+the query.
+We observe that the model trained on acoustic prompts performs
+significantly better for all the precision@K metrics. This shows
+that training the model with acoustic prompts is resulting in better-
+learned emotion representations.
+Furthermore, we also access whether the trained model learns
+associations between the acoustic properties and the speech emotion.
+We test this in a similar framework as in the last experiment. The
+queries are made similar to the prompts as shown in Table 2.
+The rest of the columns in Table 3 show the results of audio
+retrieval when queries are from the acoustic prompts. We calcu-
+late precision@K for each acoustic prompt shown on the columns.
+From the results, we observe that the model trained on the pro-
+posed acoustic prompting method performs best in all cases. The
+takeaway here is that our model is able to retrieve audio signifi-
+cantly better when trained using acoustic prompt augmentation. The
+precision@K numbers are comparable to numbers observed in au-
+dio retrieval tasks [29]. The results suggest that we can introduce
+even more elaborate descriptions for each audio at training time and
+the model will learn associations and be able to retrieve audios with
+those descriptions.
+4.2. Speech Emotion Recognition
+To evaluate how the acoustic prompts would help in SER, we per-
+form the following two experiments. The first is a zero-shot like
+setup where we leave one dataset out, which is used during the test-
+ing stage. The second is a fine-tuning setup where the model from
+the first setup is fine-tuned on the left-out dataset.
+4.2.1. Leave one out
+This setup evaluates how well a model trained on a pre-defined set
+of classes generalizes to a new dataset, which might have same or
+different sets of classes. Out of the 6 emotion datasets, we leave one
+out for testing and train the model on the other 5 emotion datasets.
+Table 3: Precision@K achieved under different training conditions and prompt settings. The rows show three different models. The first row is the baseline
+CLAP model. The second and third rows are models trained on 5 emotion datasets, not including the IEMOCAP dataset. The second row is when the prompts
+used for training are the emotion class labels (CL) of the audios and the third row is when the prompts are acoustic prompts. PA refers to Prompt-Augmentation
+The queries here are the acoustic prompts also shown in Table 2. The model trained with acoustic prompt augmentation (PA) is consistently better.
+Class Label Queries
+Pitch Queries
+Intensity Queries
+Speech Rate Queries
+Articulation Rate Queries
+P@1
+P@5
+P@10
+P@1
+P@5
+P@10
+P1
+P@5
+P@10
+P@1
+P@5
+P@10
+P@1
+P@5
+P@10
+4D
+0.50
+0.35
+0.35
+0.07
+0.12
+0.10
+0.13
+0.18
+0.19
+0.25
+0.20
+0.15
+0.13
+0.10
+0.14
+4D + [5 ED - CL]
+0.50
+0.40
+0.35
+0.00
+0.04
+0.05
+0.25
+0.13
+0.15
+0.13
+0.18
+0.19
+0.13
+0.13
+0.13
+4D + [5 ED - PA]
+0.75
+0.45
+0.38
+0.20
+0.13
+0.15
+0.25
+0.20
+0.20
+0.38
+0.25
+0.23
+0.38
+0.23
+0.21
+Table 4: Accuracy % on Ravdess when the model is trained under different
+settings. The second column shows when Ravdess is not in the training sets.
+The third column shows when the model is finetuned on Ravdess. The second
+row shows the CLAP Baseline trained on 4 audio captioning datasets (4D).
+Third row is when the model is trained using only 5 Emotion Datasets (5
+ED). The following rows include 4D and 5ED in training and for the ED,
+the prompts during training are either the class labels (CL) or the acoustic
+prompt augmentation (PA) respectively.
+Training dataset
+Leave one out
+Finetune
+Random
+12.50
+12.50
+4D
+15.99
+68.50
+5 ED - CL
+22.88
+68.50
+4D + [5ED - CL]
+38.46
+68.69
+4D + [5ED - PA]
+27.88
+72.46
+SoTA
+-
+81.82 [30]
+Therefore the training and testing datasets are completely different.
+In the case where Ravdess is the testing dataset, ‘calm’ class is not
+represented in any of the other training datasets and is a zero-shot
+classification result.
+We train 5 different models shown in the rows of Table 4. There
+are two main takeaways from this experiment. Firstly adding Emo-
+tion datasets in the training stage helps the performance on the left-
+out emotion dataset. This can be observed in the second column
+where the performance improves from 15.99% to 22.88%.
+Secondly using acoustic prompt augmentation (PA) is not help-
+ing in the fine-tuning setup. We believe this is because there is a dis-
+tribution shift in the training and testing datasets, which effects the
+acoustics and hence the acoustic prompts. For example, ‘high inten-
+sity anger’ prompt might not be prevalent in the training datasets but
+is present in the testing dataset. This harms the transferability of the
+learned acoustic prompts to a completely new dataset. Note that the
+SoTA performance for this evaluation setup is not found in literature
+because the general evaluation setup is when the dataset is present in
+both training and testing sets.
+4.2.2. Finetune
+In this experiment, we fine-tune the model from the previous stage
+on the left-out dataset.
+The results for SER are shown in the last column of Table 4.
+We observe that when using acoustic prompt augmentation, we get
+the best accuracy metric. We see improvement in performance by
+absolute 3.77%, from 68.69% to 72.46%.
+4.3. Prompt Analysis
+To evaluate which of the proposed acoustic prompts is better, we ap-
+ply the trained model on SER with a smaller setup as in the last ex-
+periment, where the testing dataset is present in the training dataset.
+The model is trained 6 different times, where each time the descrip-
+tion associated with emotion audios are varied. Among the 6, 1 uses
+the class label prompt and 4 uses the acoustic prompts as described
+in Section 3.2, and 1 uses the prompt augmentation - which com-
+bines all the acoustic prompts.
+Fig. 2: Accuracy achieved using different acoustic prompts on Ravdess.
+C=Class label, P=Pitch prompt, I=Intensity prompt, SR=Speech-Rate
+prompt, AR=Articulation-Rate prompt, PA=Prompt Augmentation.
+We train the model on 4 audio captioning datasets and 1 emotion
+dataset. The left part of Figure 2 shows the performance achieved
+when the model is trained on the training set (including 4D and
+Ravdess) and tested on the testing set of Ravdess. We observe that
+among the 4 acoustic prompts, the pitch prompt gives the best per-
+formance. The second-best performance is achieved by the intensity
+prompt, followed by speech rate and then articulation rate. Secondly,
+we observe that overall acoustic prompt augmentation is giving the
+best performance in both datasets.
+5. LIMITATIONS AND CONCLUSION
+There are certain limitations to our work. Firstly, we use only four
+acoustic properties, however, there are other acoustic properties that
+are effected by emotion and should be explored. Secondly for each
+prompt, we create 2 or 4 bins per acoustic property, while these bins
+could be more fine-grained. Our future study will include work in al-
+leviating the need for thresholding and relying on data-centric meth-
+ods of binning the prompts.
+This work performs SER and EAR using the audios and their au-
+tomatically generated descriptions. We use the acoustics of emotions
+to prompt the audios, in fact, there can be more complicated descrip-
+tions, invoking the semantics, environment, and context among other
+factors. We envision that as methods of describing emotions be-
+come more complicated, our ability to model emotions will become
+better. The acoustic properties we extract include pitch, intensity,
+speech rate, and articulation rate extracted from the audio. We find
+that among the acoustic prompts, pitch prompt is the best perform-
+ing. Overall for EAR when we do acoustic prompt augmentation, we
+achieve consistently better Precision@K metric. For SER, we also
+achieve an improvement in performance in Ravdess by 3.8% in the
+finetuning setup.
+6. REFERENCES
+[1] Robert Plutchik, The emotions, University Press of America,
+1991.
+[2] Paul Ekman, Are there basic emotions?, American Psycholog-
+ical Association, 1992.
+[3] Shahan Ali Memon, Hira Dhamyal, Oren Wright, Daniel Jus-
+tice, Vijaykumar Palat, William Boler, Bhiksha Raj, and Rita
+Singh, “Detecting gender differences in perception of emo-
+tion in crowdsourced data,” arXiv preprint arXiv:1910.11386,
+2019.
+[4] Hira Dhamyal, Shahan Ali Memon, Bhiksha Raj, and Rita
+Singh, “The phonetic bases of vocal expressed emotion: Nat-
+ural versus acted,”
+Proc. Interspeech 2020, pp. 3451–3455,
+2020.
+[5] Robert W Frick,
+“Communicating emotion:
+The role of
+prosodic features.,” Psychological bulletin, vol. 97, no. 3, pp.
+412, 1985.
+[6] Klaus R Scherer, “Acoustic concomitants of emotional dimen-
+sions: Judging affect from synthesized tone sequences.,” 1972.
+[7] Aneta Pavlenko, Emotions and multilingualism., Cambridge
+University Press, 2005.
+[8] Benjamin Elizalde, Soham Deshmukh, Mahmoud Al Ismail,
+and Huaming Wang, “Clap: Learning audio concepts from nat-
+ural language supervision,” arXiv preprint arXiv:2206.04769,
+2022.
+[9] Soham Deshmukh, Benjamin Elizalde, and Huaming Wang,
+“Audio retrieval with wavtext5k and clap training,”
+arXiv
+preprint arXiv:2209.14275, 2022.
+[10] Hira Dhamyal, Bhiksha Raj, and Rita Singh, “Positional en-
+coding for capturing modality specific cadence for emotion de-
+tection,” Proc. Interspeech 2022, pp. 166–170, 2022.
+[11] Weixing Wang, Qianqian Li, Jingwen Xie, Ningfeng Hu, Ziao
+Wang, and Ning Zhang, “Research on emotional semantic re-
+trieval of attention mechanism oriented to audio-visual synes-
+thesia,” Neurocomputing, vol. 519, pp. 194–204, 2023.
+[12] Ha Thi Phuong Thao, Gemma Roig, and Dorien Herre-
+mans, “Emomv: Affective music-video correspondence learn-
+ing datasets for classification and retrieval,” Information Fu-
+sion, vol. 91, pp. 64–79, 2023.
+[13] Qiuqiang Kong, Yin Cao, Turab Iqbal, Yuxuan Wang, Wenwu
+Wang, and Mark D Plumbley,
+“Panns:
+Large-scale pre-
+trained audio neural networks for audio pattern recognition,”
+IEEE/ACM Transactions on Audio, Speech, and Language
+Processing, vol. 28, pp. 2880–2894, 2020.
+[14] Thomas Wolf, Lysandre Debut, Victor Sanh, Julien Chaumond,
+Clement Delangue, Anthony Moi, Pierric Cistac, Tim Rault,
+R´emi Louf, Morgan Funtowicz, et al., “Huggingface’s trans-
+formers: State-of-the-art natural language processing,” arXiv
+preprint arXiv:1910.03771, 2019.
+[15] Konstantinos Drossos, Samuel Lipping, and Tuomas Virta-
+nen, “Clotho: an audio captioning dataset,” in IEEE Interna-
+tional Conference on Acoustics, Speech and Signal Processing
+(ICASSP), 2020.
+[16] Chris Dongjoo Kim, Byeongchang Kim, Hyunmin Lee, and
+Gunhee Kim, “AudioCaps: Generating Captions for Audios in
+The Wild,” in NAACL-HLT, 2019.
+[17] Irene Mart´ın-Morat´o and Annamaria Mesaros, “What is the
+ground truth? reliability of multi-annotator data for audio tag-
+ging,” in 2021 29th European Signal Processing Conference
+(EUSIPCO). IEEE, 2021, pp. 76–80.
+[18] Eduardo Fonseca, Xavier Favory, Jordi Pons, Frederic Font,
+and Xavier Serra, “Fsd50k: An open dataset of human-labeled
+sound events,” IEEE/ACM Transactions on Audio, Speech, and
+Language Processing, 2022.
+[19] AmirAli Bagher Zadeh, Paul Pu Liang, Soujanya Poria, Erik
+Cambria, and Louis-Philippe Morency, “Multimodal language
+analysis in the wild: Cmu-mosei dataset and interpretable dy-
+namic fusion graph,” in Proceedings of the 56th Annual Meet-
+ing of the Association for Computational Linguistics (Volume
+1: Long Papers), 2018, pp. 2236–2246.
+[20] Carlos
+Busso,
+Murtaza
+Bulut,
+Chi-Chun
+Lee,
+Abe
+Kazemzadeh,
+Emily Mower,
+Samuel Kim,
+Jeannette N
+Chang, Sungbok Lee, and Shrikanth S Narayanan, “Iemocap:
+Interactive emotional dyadic motion capture database,” Lan-
+guage resources and evaluation, vol. 42, no. 4, pp. 335–359,
+2008.
+[21] Soujanya Poria, Devamanyu Hazarika, Navonil Majumder,
+Gautam Naik, Erik Cambria, and Rada Mihalcea, “Meld: A
+multimodal multi-party dataset for emotion recognition in con-
+versations,” arXiv preprint arXiv:1810.02508, 2018.
+[22] Houwei Cao, David G Cooper, Michael K Keutmann, Ruben C
+Gur, Ani Nenkova, and Ragini Verma,
+“Crema-d: Crowd-
+sourced emotional multimodal actors dataset,” IEEE transac-
+tions on affective computing, vol. 5, no. 4, pp. 377–390, 2014.
+[23] Steven R Livingstone and Frank A Russo, “The ryerson audio-
+visual database of emotional speech and song (ravdess): A dy-
+namic, multimodal set of facial and vocal expressions in north
+american english,”
+PloS one, vol. 13, no. 5, pp. e0196391,
+2018.
+[24] Hartmut Traunm¨uller and Anders Eriksson, “The frequency
+range of the voice fundamental in the speech of male and fe-
+male adults,” Unpublished manuscript, vol. 11, 1995.
+[25] Hettie Roebuck, Kun Guo, and Patrick Bourke, “Attending at
+a low intensity increases impulsivity in an auditory sustained
+attention to response task,”
+Perception, vol. 44, no. 12, pp.
+1371–1382, 2015.
+[26] F Mart´ınez-S´anchez,
+JJG Meil´an,
+J Carro,
+C G´omez
+´I˜niguez, L Millian-Morell, IM Pujante Valverde, T L´opez-
+Alburquerque, and DE L´opez, “Speech rate in parkinson’s dis-
+ease: A controlled study,” Neurolog´ıa (English Edition), vol.
+31, no. 7, pp. 466–472, 2016.
+[27] Brian McFee, Colin Raffel, Dawen Liang, Daniel P Ellis, Matt
+McVicar, Eric Battenberg, and Oriol Nieto, “librosa: Audio
+and music signal analysis in python,” in Proceedings of the
+14th python in science conference, 2015, vol. 8, pp. 18–25.
+[28] “Praat,” https://www.fon.hum.uva.nl/praat.
+[29] Bongjun Kim and Bryan Pardo, “Improving content-based au-
+dio retrieval by vocal imitation feedback,” in ICASSP 2019-
+2019 IEEE International Conference on Acoustics, Speech and
+Signal Processing (ICASSP). IEEE, 2019, pp. 4100–4104.
+[30] Cristina Luna-Jim´enez, Ricardo Kleinlein, David Griol, Zo-
+raida Callejas, Juan M Montero, and Fernando Fern´andez-
+Mart´ınez,
+“A proposal for multimodal emotion recognition
+using aural transformers and action units on ravdess dataset,”
+Applied Sciences, vol. 12, no. 1, pp. 327, 2021.
+
