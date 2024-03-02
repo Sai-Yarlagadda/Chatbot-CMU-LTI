@@ -1,0 +1,848 @@
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1123 
+Research on Comprehensive Performance Optimization 
+Method of Explosives and Propellants Oriented to the Whole 
+Process 
+Lin Zhang1, *, Yiming Yang1, Tongqing Liu1 and Rui Yan2 
+1Information Center of China North Industries Group Corporation, Beijing, China 
+2Xi'an Modern Chemistry Research Institute, Xi'an, China  
+*Corresponding author: researchlinzh@outlook.com 
+Abstract. Explosives and propellants are common basic energy for weapons and equipment to 
+achieve delivery, damage, and control, and are an important manifestation of national defense power. 
+However, due to the wide variety of products and complex performance, the traditional serial design 
+optimization mode can no longer meet the requirements of product diversification and rapid 
+development. In this paper, the design process of explosives is deeply studied, and a method for 
+optimizing the comprehensive performance of explosives and propellants oriented to the whole 
+process is proposed. The method uses a comprehensive performance optimization engine to 
+numerically model different design links in a unified parameter space, connects different links 
+horizontally, and adopts a multi-objective optimization algorithm to comprehensively consider the 
+optimization objectives of different links, realizing the automatic execution of the optimization process 
+according to the design process. In order to verify the effectiveness of the method, this paper 
+optimizes the formula of explosives and propellants based on two different types of explosives, gun 
+propellant and rocket propellant. Experimental results show that this method improves the design 
+efficiency and improves product quality under the premise of ensuring safety and manufacturability. 
+Keywords: Explosives and propellants; Optimization engine; Multi-objective optimization; parameter 
+optimization. 
+1. Introduction 
+Explosives and propellants are generally composite energetic materials composed of oxidizers, 
+combustion agents, high-energy explosives, and functional materials. They are the main energy 
+sources for land, sea, and air weapons. They play an irreplaceable and important role in the fields of 
+national defense and aviation. Due to the toxic reagents involved in the synthesis and production 
+process and the products are flammable and explosive, the current design and development cycle of 
+explosives and propellant is long and inefficient, which greatly limits the iterative update of explosive 
+and propellant products. With the vigorous development of computer software and hardware 
+technology, especially the aided design, the use of numerical simulation technology to carry out the 
+proportion design, power calculation and damage effect analysis of explosives and propellants has 
+gradually become a research hotspot in the field of explosives and propellants. 
+Foreign countries started early in the research of explosives and propellants. In terms of theoretical 
+research, military powers such as the United States and Europe took the lead in adopting the research 
+and development principle of " No experiment, Calculation first ". Since the 1970s, they have used 
+advanced computer technology and combined structural chemistry, organic chemistry, quantum 
+chemistry, physical chemistry, chemical informatics and other disciplines have carried out structural 
+design, performance prediction, and virtual synthesis of explosives and propellants, effectively 
+guiding synthesis experiments and greatly shortening the development cycle of new products, 
+significantly reducing costs. In terms of simple energetic materials, the United States reduced the 
+synthesis steps from four to three by calculating the synthesis mechanism of CL-20, so that the yield 
+reached 92% and the purity was close to 100% [1]. Russia has done a lot of basic research work such 
+as molecular design and route design on the furazan series of energetic materials, designed many 
+energetic materials with excellent performance, and obtained the 3,4-bis. The new atom-economical 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1124 
+synthesis method of aminoglyoxime has become a new starting point for the synthesis of furan-like 
+energetic materials. It is the first to synthesize bridged furan and furan-nitro compounds. The 
+calculated detonation velocity of many compounds is close to 10000m /s [2]. In terms of mixed 
+explosives and charges, a large number of researchers in the United States have been engaged in the 
+research on the formulation and performance of explosives for a long time, and have established many 
+effective theoretical models, such as the detonation model C-J model [3] and ZND model [4], and the 
+non-ideal detonation model Wood-kirkwood model [5], BKW equation[6] and JWL equation[7] used 
+to describe the state of detonation products, theoretical and empirical formulas used to estimate 
+detonation parameters such as explosion pressure and detonation velocity[8], and the Forest Fire 
+model [9], Lee-Tarver ignition growth model [10], JTF model [11], etc. used to simulate the shock 
+safety of explosives, and the Cole and Zamyshlyayev empirical formulas used to calculate the 
+explosion shock wave parameters of explosives in water, etc. [12], these Theoretical models and 
+formulas are still used by explosives researchers all over the world and have played a huge role. 
+Theoretical models are the basis for numerical simulations. 
+While using computer technology to improve design strategies and calculation methods, military 
+developed countries have successively developed a variety of molecular design software for energetic 
+materials [13]. For example, the LOTUSES software developed in India can realize the prediction of 
+the detonation performance and thermodynamic properties of energetic materials, such as density, 
+detonation velocity, detonation pressure, detonation heat, decomposition products, etc. The 
+GenMolTM software developed in France uses structural parameters as descriptors to predict the 
+impact and friction sensitivity of energetic materials. MATEO software can carry out the molecular 
+design of energetic materials, and can realize the estimation of density, enthalpy of formation, 
+detonation performance, etc. The thermochemical calculation software EXPLO5 developed in the 
+Czech Republic can predict the density, enthalpy of formation, and detonation performance of 
+energetic materials, and is also applicable to the prediction of combustion performance of metal 
+composite energetic materials. The CHEETAH software for predicting the detonation performance 
+of energetic materials developed in the United States has a rich database and is highly recognized in 
+the industry. The RMG software predicts the reaction mechanism through molecular structure coding, 
+combined with resources such as chemical databases, reaction rules, and online computational 
+chemistry. Virtualization design has also been basically realized in the aspect of mixed explosive 
+formula and charge design. For example, the United States already has a series of simulation design 
+programs, which can simulate and predict the performance of certain formulations and charges in 
+terms of energy, safety, and vulnerability. This means that the performance of the charge has been 
+mastered before the range test is carried out, and the range test is only used as a final verification 
+method. 
+Compared with developed military countries such as the United States, domestic theoretical 
+research on explosives is still relatively weak, and basically stays in the analysis based on mature 
+foreign theories, mainly focusing on the research on different attributes of explosives, focusing on 
+the relationship between different attributes, there are few theoretical models and experimental 
+methods independently proposed. For example, Wang Yawei [14] analyzed the influence of the 
+relative content of components on the stability and safety of high-energy and low-sensitivity 
+propellants. Zou Fengjuan [15] analyzed the extrusion time, extrusion temperature and extrusion die 
+structure through numerical simulation to analyze the quality of the propellant. Zhao Liang [16] 
+studied the effects of different sizes of ammunition on the cook-off response characteristics of 
+explosives. Cheng Yuteng [17] studied the detonation shock wave characteristics of thermobaric 
+explosives with different formulations in different environments through four methods: theoretical 
+analysis, numerical simulation, open space static explosion test, and limited space static explosion 
+test. 
+In terms of simulation programs, there are not many simulation calculation programs of explosives 
+and propellants independently developed in China. Individual research teams use some software 
+internally, such as flame sensitivity calculation, and tool software such as mechanical properties and 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1125 
+comprehensive sensitivity developed based on general commercial software. Although the software 
+has been applied in the development of related products, there are still some problems: such as the 
+independence of various objects, algorithm databases, etc., the lack of unified specifications, and the 
+lack of unified calling; the software performance is unstable, poor compatibility, Complicated 
+operations etc. 
+The performance of explosives and propellantsproducts is complex, and a large number of 
+simulations and tests are involved in the design and development process. Although certain 
+simulation technologies have been used in China, due to the particularity of the industry, many foreign 
+software have blocked our country, resulting in the development of explosives is still mainly based 
+on a large number of trial production tests, supplemented by simulation calculations. This research 
+and development model relies heavily on experiments, resulting in high research and development 
+time and economic costs; secondly, the existing model adopts the collaborative model of serial 
+feedback and cannot meet the requirements of diversified and rapid product development. In order to 
+meet the refined research and development under the new situation, it is necessary to carry out 
+research on the comprehensive performance optimization of explosives and propellants, shorten the 
+research and development cycle, and reduce the research and development cost. This paper studies 
+the comprehensive performance optimization method of explosives and propellants, and proposes a 
+comprehensive performance optimization method for explosives and propellants oriented to the 
+whole process. 
+2. Comprehensive Performance Optimization of Explosives and Propellants 
+2.1. Design of comprehensive performance optimization engine  
+The development process of explosive and propellant products usually includes formula design, 
+charge design, process design, quality design and other links, each link is closely related to the 
+comprehensive performance of the product. At present, the traditional optimization idea is to decouple 
+the research and development process, and to optimize the involved links or a single attribute, but the 
+factors related to the performance of explosives are complex, and the whole process involves dozens 
+of design and simulation analysis tool software, hundreds of items of manual and mechanical 
+processes. The optimization process requires repeated iterations to carry out experimental verification. 
+In this paper, a comprehensive performance optimization engine is used to unify a large amount of 
+structured and unstructured data generated in the whole process of product development into the same 
+parameter space, and carry out multi-objective optimization for the whole process to improve the 
+comprehensive performance of explosives. 
+The optimization engine uses digital technology to carry out numerical modeling of each link in 
+the development process, parameterizes the properties related to the performance of explosives, and 
+solidifies the designer's experience knowledge and business rules into a model for rapid iteration. At 
+the same time, the optimization engine learns the relationship between different links, opens up the 
+data flow between different links, realizes process-based data linkage, greatly improves design 
+efficiency, and achieves the purpose of automatic and full-process analysis. 
+Due to the particularity of explosives and propellants, it is necessary to coordinate and optimize 
+performance indicators in different aspects under the control conditions of product safety and 
+manufacturability constraints when carrying out comprehensive performance optimization and 
+improvement. In this paper, machine learning methods are used to obtain performance evaluation 
+models for different aspects of the product. Based on the comprehensive performance optimization 
+algorithm library, a constrained multi-objective optimization method is used to build a comprehensive 
+performance optimization engine for explosives and propellants that is oriented to the entire process. 
+Based on the automatic intelligent analysis of the design process, the engine can assist designers to 
+fully understand the design space of explosive and propellant products, and find the optimal solution 
+according to the optimization goal. The overall framework is shown in Figure 1 below. 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1126 
+ 
+Fig. 1 The overall framework of comprehensive performance optimization engine 
+2.2. Multi-objective comprehensive optimization 
+As we all know, the purpose of optimization is to obtain a solution with the minimum cost from a 
+problem that may have a large number of solutions, and avoid being trapped in a local optimum. 
+Multi-objective optimization with constraints is usually a nonlinear problem, and simulated annealing 
+algorithm is the most typical parameter optimization algorithm for finding the global optimal value 
+in nonlinear problems. 
+The simulated annealing algorithm comes from the process of crystal cooling. In the world of 
+molecules and atoms, the greater the energy, the less stable the molecules and atoms are. When the 
+energy is lower, the atoms are more stable. If the solid is not in the lowest energy state, the solid is 
+heated and then cooled. As the temperature drops slowly, the atoms in the solid are arranged in a 
+certain shape to form a high-density, low-energy regular crystal, which corresponds to the global 
+optimal solution in the algorithm. And if the temperature drops too fast, it may cause the atoms to 
+lack enough time to arrange into a crystalline structure, resulting in an amorphous with higher energy, 
+which is the local optimal solution. Therefore, according to the annealing process, the temperature of 
+the object can be increased, and then cooled, and increasing energy can help jump out of the local 
+optimal solution. 
+The simulated annealing algorithm is actually a greedy algorithm, but it introduces random factors 
+in the search process. The simulated annealing algorithm accepts a solution that is worse than the 
+current solution with a certain probability, so it is possible to jump out of the local optimum and reach 
+the global optimum. The algorithm includes two parts, namely Metropolis algorithm and annealing 
+process. In 1953, Metropolis proposed the importance sampling method, that is, to accept the new 
+state by probability rather than using completely determined rules, which is called the Metropolis 
+criterion, and the calculation amount is low. Metropolis algorithm is the basis of annealing to avoid 
+the result falling into local optimum. 
+According to the Metropolis criterion, assuming the previous state is x(n), the system changes to 
+x(n + 1) according to a certain indicator state. Accordingly, the energy of the system changes from 
+E(n) to E(n + 1), and the acceptance probability P of the system changes from x(n) to x(n + 1) 
+is defined as: 
+P = {
+1,                       𝐸(𝑛 + 1) < 𝐸(𝑛)
+𝑒−𝐸(𝑛+1)−𝐸(𝑛)
+𝑇
+ , 𝐸(𝑛 + 1) ≥ 𝐸(𝑛)
+                          (1) 
+Where T represents the temperature. From the above formula, we can see that if the energy 
+decreases, the transfer will be accepted. If the energy increases, it means that the system deviates 
+farther from the global optimal value. At this time, the algorithm will not immediately abandon it, but 
+carry out probability operation, where P determines the size of probability P by the amount of 
+energy change and T, so this value is dynamic. 
+However, direct use of Metropolis algorithm may lead to too slow optimization speed. In order to 
+ensure convergence in a limited time, it is necessary to set parameters to control the convergence of 
+the algorithm. In the above formula, the parameter T can be adjusted. If the value of T is large, the 
+annealing speed will be accelerated, and the iteration will end when the local optimal value is reached. 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1127 
+If the value is small, the calculation time will increase. Generally, the larger value of T is used at the 
+initial stage of annealing, and will gradually decrease as the annealing proceeds. The formula is as 
+follows: 
+                            𝑇(𝑛 + 1) = 𝜆𝑇(𝑛)                                  (2) 
+Where, T(n) represents the temperature at the nth round, n = 1,2,3 ⋯, where λ is a positive 
+number less than 1, and the value is generally between 0.8 and 0.99. 
+3. Experiments 
+On the basis of in-depth research on the comprehensive performance optimization of explosives 
+and propellants, with the help of rapid packaging and integration technology, this paper constructs a 
+comprehensive performance optimization engine that covers the input and output of standardized 
+parameters and is oriented to the entire process of explosives and propellants. In order to verify the 
+optimized engine performance, experiments were carried out based on two types of explosive and 
+propellant. 
+3.1. Experimental setup 
+There are many types of explosives, and different product development and design processes are 
+different, resulting in differences in optimization steps. Comprehensive performance optimization 
+needs to design different processes for different types of explosives and propellants, then 
+parameterize each link, and finally carry out optimization under a unified framework. 
+3.1.1 Process creation 
+The comprehensive optimization engine includes all possible links in the design of explosives and 
+propellants, achieving full coverage of the research and development process of explosives and 
+propellants. A process template can contain several process nodes. The logical sequence relationship 
+between nodes can be automatically generated with the help of big data analysis technology and 
+supports custom modification. The input and output data of nodes and node trigger conditions can be 
+adjusted as needed, as shown in Figure 2 shown. 
+ 
+Fig. 2 Examples of processes created in the optimization engine 
+3.1.2 Model parameterization  
+The optimization engine uses big data analysis technology to analyze the impact of various factors 
+on the comprehensive performance, mines the correlation between data, and automatically builds the 
+correlation between the input and output parameters of different modules, so as to realize the 
+automatic iterative optimization of the optimization process according to the business process. 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1128 
+ 
+Fig. 3 An example of the relationship between the inputs and outputs of different modules in the 
+optimization engine 
+3.1.3 Optimization process  
+On the premise of the safety and manufacturability of explosives and propellants, the optimization 
+engine optimizes the composition ratio to improve product performance according to the different 
+design requirements of gun propellants and rocket propellants. 
+In the experiment, the component distribution ratio is used as input data, and the upper and lower 
+limits of the component distribution ratio are used as the key factors affecting the safety and 
+manufacturability of explosives and propellants, and the optimal solution is obtained from a large 
+number of possible solutions at the minimum cost. 
+In the experiment, the group allocation ratio is taken as the input data, and the upper and lower 
+limit of the group allocation ratio is taken as the key factor affecting the safety and manufacturability 
+of explosives, and the optimal solution is obtained from a large number of possible solutions at the 
+minimum cost. The optimization process takes the explosion temperature value of the gun propellant 
+and the specific impulse of the rocket propellant as constraints, and optimizes the composition ratio 
+so that the gunpowder power of the gun propellant and the temperature of the rocket propellant are 
+close to the expected target. In order to avoid falling into a local optimum, the simulated annealing 
+optimization algorithm in the optimization algorithm library was selected for optimization in the 
+experiment. 
+3.2. Experimental results 
+The maximum temperature parameter of the simulated annealing algorithm is set to 1000, the 
+minimum temperature is 100, the annealing rate is 0.8, the number of iterations in each round is 30, 
+the probability coefficient is 100, and the retrieval step is 3. In the optimization process, the Energy 
+software is used to calculate the energy by using the calculation method of constant energy and 
+constant volume. The composition ratio in the formulation design of explosives and propellants is 
+used as the input parameter of the optimization engine, and the upper and lower limits corresponding 
+to different parameters are shown in Table 1 below. 
+Table 1. The upper and lower limits of different components in the formulation design of 
+propellants 
+Numble 
+Component 
+Name 
+Parameter 
+Name 
+Component Upper 
+Limit 
+Component Lower 
+Limit 
+1 
+Ingredient1 
+A1 
+10 
+0 
+2 
+Ingredient2 
+A2 
+25 
+0 
+3 
+Ingredient3 
+A3 
+25 
+0 
+4 
+Ingredient4 
+A4 
+25 
+0 
+5 
+Ingredient5 
+A5 
+100 
+0 
+ 
+In the gun propellant experiment, the detonation temperature value is a constraint condition, 
+represented by Y1,, set to 3500k, the deviation must not exceed 20%, that is, the temperature results 
+between 2800k~4200k meet the requirements, the number of cycle constraints is 100, and the 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1129 
+maximum cycle time for 10 seconds. The gunpowder power is the optimization target variable, and 
+the expected target value is 1350J/Kg, denoted as M1. 
+In the rocket propellant experiment, the specific impulse value is used as a constraint condition, 
+represented by Y2, which is set to 2600s, and the deviation must not exceed 20%, that is, the result 
+of the specific impulse between 2470s and 2730s meets the requirements. The target variable of 
+propellant detonation temperature optimization is denoted by M2, and the expected target value is 
+3500k. 
+Observing the optimization process of the comprehensive performance optimization engine, it can 
+be found that in the gun propellant experiment, the value of the propellant power gradually converges 
+to around 1260, as shown in Figure 4; when the component ratio is set to 5:15:1:21:58, the gunpowder 
+power of the gun propellant is closest to the expected value of 1350, as shown in Table 2 below. At 
+this time, the gunpowder power value is 1260.71, and the explosion temperature is 3353.15. In the 
+rocket propellant experiment, the detonation temperature gradually converges to around 3380, as 
+shown in Figure 5; when the component ratio is 4:8:0:2:86, the detonation temperature is closest to 
+the expected value of 3500, as shown in Table 3 below Show, At this time, the explosion temperature 
+value is 3384.47, and the specific impulse is 2631. The experimental results show that the 
+comprehensive performance optimization engine can optimize the ratio design of explosives and 
+propellants, quickly find out the optimal design scheme, improve the efficiency and product quality 
+of explosive and propellant development, and prove the effectiveness of the method in this paper. 
+ 
+Fig. 4 The change process of gun propellant force value in optimization process 
+ 
+Fig. 5 The change process of rocket propellant detonation temperature in optimization process 
+ 
+ 
+1080
+1100
+1120
+1140
+1160
+1180
+1200
+1220
+1240
+1260
+1280
+0
+5
+10
+15
+20
+25
+30
+Gunpowder power
+Number of iterations
+3100
+3150
+3200
+3250
+3300
+3350
+3400
+0
+5
+10
+15
+20
+25
+30
+Explosion temperature
+Number of iterations
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1130 
+Table 2. Experimental results of gun propellant 
+DesignID A1 A2 A3 A4 A5 
+Y1 
+M1 
+1 
+4 
+2 
+12 
+8 
+74 3231.38 1185.29 
+2 
+1 
+5 
+5 
+5 
+84 3609.62 
+1196.3 
+3 
+6 
+4 
+8 
+0 
+82 3572.57 1189.57 
+4 
+6 
+2 
+4 
+2 
+86 3617.81 1153.71 
+5 
+4 
+4 
+0 
+0 
+92 3609.83 1099.35 
+6 
+2 
+8 
+0 
+4 
+86 3668.84 1162.94 
+7 
+6 
+4 
+6 
+2 
+82 3599.31 1186.17 
+8 
+2 
+6 
+4 
+0 
+88 3637.19 1162.66 
+9 
+0 
+8 
+0 
+0 
+92 3642.99 1125.27 
+10 
+6 
+6 
+0 
+10 
+78 3658.25 1197.76 
+11 
+1 
+7 
+1 
+7 
+84 3662.13 1187.25 
+12 
+7 
+1 
+3 
+5 
+84 3619.31 1158.73 
+13 
+3 
+9 
+1 
+15 
+72 3586.92 1242.88 
+14 
+8 
+6 
+2 
+18 
+66 3467.62 1233.99 
+15 
+8 
+12 
+0 
+20 
+60 3459.62 1259.12 
+16 
+3 
+15 
+3 
+21 
+58 3230.08 1243.45 
+17 
+5 
+15 
+3 
+21 
+56 3207.00 1239.33 
+18 
+3 
+13 
+3 
+19 
+62 3332.20 1248.99 
+19 
+11 
+15 
+1 
+23 
+50 3215.27 1241.66 
+20 
+9 
+17 
+1 
+21 
+52 3279.80 1256.78 
+21 
+5 
+15 
+1 
+21 
+58 3353.15 1260.71 
+22 
+0 
+10 
+6 
+16 
+68 3300.83 1231.52 
+23 
+8 
+10 
+6 
+20 
+56 3056.64 1194.95 
+24 
+6 
+12 
+2 
+18 
+62 3414.25 1252.81 
+25 
+2 
+10 
+2 
+16 
+70 3522.35 1249.89 
+26 
+6 
+12 
+6 
+18 
+58 3126.86 1212.59 
+27 
+2 
+10 
+4 
+16 
+68 3412.18 1243.38 
+28 
+10 
+12 
+0 
+16 
+62 3545.03 1257.34 
+29 
+8 
+10 
+0 
+16 
+66 3574.05 1249.14 
+30 
+4 
+12 
+6 
+16 
+62 3226.52 
+1227.2 
+ 
+Table 3. Experimental results of rocket propellant 
+DesignID A1 A2 A3 A4 A5 
+Y2 
+M2 
+1 
+3 
+3 
+3 
+3 
+88 2607.1 3338.83 
+2 
+1 
+1 
+1 
+1 
+96 2582.3 3325.71 
+3 
+3 
+3 
+1 
+1 
+92 2602.9 
+3348.7 
+4 
+0 
+0 
+0 
+2 
+98 2562.9 3309.21 
+5 
+0 
+2 
+2 
+0 
+96 2593.6 
+3333 
+6 
+6 
+4 
+2 
+4 
+84 2609.6 3345.43 
+7 
+2 
+6 
+2 
+4 
+86 2617.7 3353.13 
+8 
+5 
+5 
+5 
+1 
+84 
+2596 
+3308.57 
+9 
+3 
+5 
+3 
+5 
+84 2601.7 3321.84 
+10 
+5 
+7 
+1 
+5 
+82 2619.9 3358.43 
+11 
+8 
+8 
+4 
+8 
+72 2547.7 3159.43 
+12 
+4 
+4 
+0 
+4 
+88 2616.4 3365.21 
+13 
+3 
+7 
+3 
+5 
+82 2601.9 3314.51 
+14 
+5 
+5 
+1 
+3 
+86 2619.3 3364.57 
+15 
+1 
+7 
+1 
+5 
+86 2624.8 3365.47 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1131 
+16 
+4 
+8 
+4 
+4 
+80 
+2592 
+3285.17 
+17 
+4 
+6 
+4 
+2 
+84 2604.3 3323.76 
+18 
+2 
+8 
+4 
+8 
+78 2565.6 3209.56 
+19 
+0 
+10 
+4 
+8 
+78 2568.1 3201.73 
+20 
+4 
+4 
+4 
+6 
+82 2580.7 3276.46 
+21 
+2 
+6 
+4 
+4 
+84 2597.3 
+3306.1 
+22 
+4 
+8 
+4 
+4 
+80 
+2592 
+3285.17 
+23 
+4 
+10 
+4 
+2 
+80 2604.4 3306.77 
+24 
+0 
+4 
+4 
+4 
+88 2600.6 3319.15 
+25 
+4 
+6 
+4 
+6 
+80 2579.1 3261.93 
+26 
+0 
+8 
+4 
+8 
+80 2571.3 3224.71 
+27 
+4 
+8 
+0 
+2 
+86 
+2631 
+3384.47 
+28 
+5 
+9 
+1 
+1 
+84 2632.7 3381.43 
+29 
+7 
+5 
+1 
+3 
+84 2618.4 3363.76 
+30 
+3 
+7 
+1 
+1 
+88 2625.8 3374.28 
+4. Summary 
+As the basis of energetic materials, explosives and propellants have complex manufacturing 
+processes and product properties. The traditional serialization optimization method is to optimize 
+each link in the design process separately, the optimization efficiency is low, and the operation is 
+cumbersome. This paper deeply analyzes the design process of explosives and propellants, and 
+proposes a comprehensive performance optimization method for explosives and propellants oriented 
+to the whole process. The method uses a comprehensive performance optimization engine to 
+numerically model the different design links of explosives and propellants, open up the data links 
+between different links, unify the design of explosives and propellants into the same parameter space, 
+and then optimize the results based on multi-objective optimization. In order to verify the 
+effectiveness of the method, this paper carried out formula optimization experiments based on two 
+different types of explosives and propellants. The results show that the comprehensive optimization 
+engine can improve the design efficiency and quality of explosives and propellants on the premise of 
+satisfying the safety and manufacturability, and achieve the goal of reducing the test cost and shorting 
+development cycle. 
+Acknowledgements 
+The encouraging comments of reviewers that greatly improved this article are gratefully 
+acknowledged. 
+References 
+[1] Bayat Y, Zeynali V. Preparation and characterization of nano-CL-20 explosive. Journal of Energetic 
+Materials, 2011, 29(4): 281-291.  
+[2] Wang R, Guo Y, Zeng Z, et al. Furazan‐Functionalized Tetrazolate‐Based Salts: A New Family of 
+Insensitive Energetic Materials. Chemistry–A European Journal, 2009, 15(11): 2625-2634. 
+[3] Deal W E. Measurement of Chapman‐Jouguet pressure for explosives. The Journal of Chemical Physics, 
+1957, 27(3): 796-800. 
+[4] Von Neuman J. Theory of detonation waves. Institute for Advanced Study Princeton NJ, 1942. 
+[5] Glaesemann K R, Fried L E. Improved wood–kirkwood detonation chemical kinetics. Theoretical 
+Chemistry Accounts, 2008, 120: 37-43. 
+[6] Suceska M, Ang H G, Serene Chan H Y. Study of the effect of covolumes in BKW equation of state on 
+detonation properties of CHNO explosives. Propellants, Explosives, Pyrotechnics, 2013, 38(1): 103-112. 
+Highlights in Science, Engineering and Technology 
+TPCEE 2022 
+Volume 38 (2023) 
+ 
+ 
+1132 
+[7] Zhao Z, Tao G, Du C X. Application research on JWL equation of state of detonation products. Chinese 
+Journal of High Pressure Physics, 2009, 23(4): 277-282. 
+[8] Xiong W. A simole method for calculating detonation parameters of explosives. Journal of energetic 
+materials, 1985, 3(4): 263-277. 
+[9] Menikoff R, Shaw M S. Review of the Forest fire model for high explosives. Combustion Theory and 
+Modelling, 2008, 12(3): 569-604. 
+[10] Li Y, Yang X, Wen Y, et al. Determination of Lee‐Tarver Model Parameters of JO‐11C Explosive. 
+Propellants, Explosives, Pyrotechnics, 2018, 43(10): 1032-1040. 
+[11] Akiki M, Menon S. A model for hot spot formation in shocked energetic materials[J]. Combustion and 
+Flame, 2015, 162(5): 1759-1771. 
+[12] Xin C, Xu G, Liu K. Numerical simulation of underwater explosion loads. Transactions of Tianjin 
+University, 2008, 14: 519-522. 
+[13] Liu M B, Liu G R, Zong Z, et al. Computer simulation of high explosive explosion using smoothed particle 
+hydrodynamics methodology. Computers & Fluids, 2003, 32(3): 305-322. 
+[14] Wang Yawei. Study on Stability and Safety of High Energy and Low Sensitive Gun Propellant. North 
+Central University, 2018. 
+[15] Zou Fengjuan. Analysis of Extrusion Process of Porous Propellant and Design of Die Improvement. 
+Nanjing University of Science and Technology, 2019. 
+[16] Zhao Liang. Research on the Effect of Size Effect on the Flaming Characteristics of Explosives. North 
+Central University, 2018. 
+[17] Cheng Yuteng. Simulation and Experimental Study on the Explosion Shock Wave of Thermobaric 
+Explosives in Different Environment. Nanjing University of Science and Technology, 2017. 
+ 
+ 
+
