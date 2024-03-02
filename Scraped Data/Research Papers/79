@@ -1,0 +1,966 @@
+Frontiers in Public Health
+01
+frontiersin.org
+The effects of pharmaceutical 
+interventions on potentially 
+inappropriate medications in older 
+patients: a systematic review and 
+meta-analysis
+Shuang Zhou 1,2†, Rui Li 2,3†, Xiaolin Zhang 4, Yutong Zong 1, Lili Lei 1, 
+Zhenhui Tao 5, Minxue Sun 1,6, Hua Liu 3, Ying Zhou 1 and 
+Yimin Cui 1,2,7*
+1 Department of Pharmacy, Peking University First Hospital, Beijing, China, 2 Department of 
+Pharmaceutical Administration and Clinical Pharmacy, School of Pharmaceutical Science, Peking 
+University, Beijing, China, 3 Department of Pharmacy, Aerospace Center Hospital, Beijing, China, 
+4 Department of Geriatrics, Peking University First Hospital, Beijing, China, 5 Department of Nursing, 
+Peking University First Hospital, Beijing, China, 6 School of Basic Medicine and Clinical Pharmacy, China 
+Pharmaceutical University, Jiangsu, China, 7 Institute of Clinical Pharmacology, Peking University, 
+Beijing, China
+Introduction: Potentially inappropriate medications (PIMs) is a particular concern 
+in older patients and is associated with negative health outcomes. As various 
+interventions have been developed to manage it, we  performed a systematic 
+review and meta-analysis to evaluate the effect of pharmaceutical interventions 
+on outcomes of PIMs in older patients.
+Methods: Meta-analysis of eligible randomized controlled trials (RCTs) was 
+conducted to report the outcomes of pharmaceutical interventions in older 
+patients searching from the databases of Cochrane Library, PubMed, Embase, 
+Web of Science, Clinicaltrials.gov, SinoMed and Chinese Clinical Trial Registry 
+(ChiCTR). The PRISMA guidelines were followed and the protocol was registered 
+in PROSPERO (CRD42019134754). Cochrane bias risk assessment tool and the 
+modified Jadad scale were used to assess the risk bias. RevMan software was used 
+for data processing, analysis and graphical plotting.
+Results: Sixty-five thousand, nine hundred seventy-one patients in 14 RCTs 
+were included. Of the primary outcomes, pharmaceutical interventions could 
+significantly reduce the incidence of PIMs in older patients (OR = 0.51, 95% CI: 
+0.42, 0.62; p < 0.001), and the number of PIMs per person (MD = -0.41, 95%CI: 
+−0.51, −0.31; p < 0.001), accompanying by a low heterogeneity. Subgroup analysis 
+showed that the application of computer-based clinical decision support for 
+pharmacological interventions could remarkably decrease the incidence of PIMs 
+and two assessment tools were more effective. Of the secondary outcomes, 
+the meta-analysis showed that pharmacological interventions could reduce the 
+number of drugs used per person (MD = -0.94, 95%CI: −1.51, −0.36; p = 0.001) and 
+30-day readmission rate (OR = 0.58, 95%CI: 0.36, 0.92; p = 0.02), accompanying by 
+a low heterogeneity. However, the pharmaceutical interventions demonstrated 
+no significant improvement on all-cause mortality and the number of falls.
+Conclusion: Our findings supported the efficacy of pharmaceutical interventions 
+to optimize the use and management of drugs in older patients.
+Systematic review registration: https://clinicaltrials.gov/, CRD42019134754.
+OPEN ACCESS
+EDITED BY
+Brijesh Sathian,  
+Hamad Medical Corporation, Qatar
+REVIEWED BY
+Hsuei-Chen Lee,  
+National Yang Ming Chiao Tung University, 
+Taiwan  
+Carlotta Lunghi,  
+Université du Québec à Rimouski, Canada
+*CORRESPONDENCE
+Yimin Cui  
+ cui.pharm@pkufh.com
+†These authors have contributed equally to this 
+work
+RECEIVED 30 January 2023
+ACCEPTED 21 June 2023
+PUBLISHED 11 July 2023
+CITATION
+Zhou S, Li R, Zhang X, Zong Y, Lei L, Tao Z, 
+Sun M, Liu H, Zhou Y and Cui Y (2023) The 
+effects of pharmaceutical interventions on 
+potentially inappropriate medications in older 
+patients: a systematic review and 
+meta-analysis.
+Front. Public Health 11:1154048.
+doi: 10.3389/fpubh.2023.1154048
+COPYRIGHT
+© 2023 Zhou, Li, Zhang, Zong, Lei, Tao, Sun, 
+Liu, Zhou and Cui. This is an open-access 
+article distributed under the terms of the 
+Creative Commons Attribution License (CC BY). 
+The use, distribution or reproduction in other 
+forums is permitted, provided the original 
+author(s) and the copyright owner(s) are 
+credited and that the original publication in this 
+journal is cited, in accordance with accepted 
+academic practice. No use, distribution or 
+reproduction is permitted which does not 
+comply with these terms.
+TYPE Systematic Review
+PUBLISHED 11 July 2023
+DOI 10.3389/fpubh.2023.1154048
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+02
+frontiersin.org
+KEYWORDS
+rational use of drugs, pharmaceutical interventions, older patients, potentially 
+inappropriate medications, meta-analysis
+Introduction
+The social and economic implications of older population are 
+becoming increasingly apparent worldwide. The World Health 
+Organization (WHO) has estimated that more than one in five 
+individuals will be aged over 60 years by 2050, accounting for a total 
+of 2 billion people in the world (1). Due to the prevalence of diverse 
+diseases among older people, medications are commonly used to 
+control the progression of diseases (2). In addition, the majority of 
+older patients are treated by different therapeutic strategies. Therefore, 
+concurrent treatment with polypharmacy is common among older 
+people (3).
+With the degradation of organs and physiological functions in 
+older people, the pharmacokinetics and pharmacodynamics in the 
+system could also change, thus, the risks of adverse drug reaction 
+(ADR) and adverse drug event (ADE) could be elevated (4, 5), as well 
+as increasing the rate of mortality (6) and the incidence of potentially 
+inappropriate medications (PIMs). PIMs comprise a number of 
+suboptimal prescribing practices, including inappropriate dose or 
+duration of medication, drug–drug interaction, and drug-disease 
+interaction (4). PIMs in older people are highly prevalent across a 
+variety of healthcare settings, and are associated with the increased 
+risk of ADEs, morbidity, mortality, health expenditure, healthcare 
+utilization and frequent falling (7–10). It was estimated that 20–30% 
+of all hospital admissions were related to prescription of drugs (11, 
+12), and up to 10% of all ADEs could be life-threatening or fatal (13).
+Pharmaceutical intervention is the combination of modern 
+pharmacology and clinical medicine, aiming to optimize the 
+individualized drug therapy, improve the therapeutic effects of drugs, 
+reduce the risk of the drug therapy, and ensure the safety and cost-
+effectiveness of the drug therapy (14). Pharmaceutical interventions 
+could be performed specifically according to the epidemiology of 
+PIMs and strategies, including specific health education and targeted 
+interventions, which could substantially reduce the incidence of PIMs 
+in older people (15).
+However, current evidences vary substantially, and there are still 
+debates on the influences of pharmaceutical interventions on 
+outcomes of PIMs in older patients. Previous Cochrane systematic 
+reviews (15, 16) could not draw robust conclusions from the evidences 
+due to variability in design, interventions, outcomes and results. The 
+most recent systematic review (17), which included all types of studies, 
+suggests that PIM-setting-directed interventions should be developed 
+to promote the wellbeing of the older patients through PIM reduction. 
+However, it only reviewed and compared different interventions and 
+outcomes, and did not conduct a meta-analysis. Therefore, 
+we performed a systematic review and meta-analysis base on high-
+quality RCTs to evaluate and provide more reliable evidence of 
+pharmaceutical interventions on PIMs in older patients.
+Methods
+This systematic review and meta-analysis was conducted and 
+reported in accordance with the Preferred Reporting Items for 
+Systematic Reviews and Meta-Analysis (PRISMA) statement (18). It 
+has been registered in the International Prospective Register of 
+Systematic Reviews (CRD42019134754).
+Search strategy
+The systematic search was undertaken in February 17, 2021, using 
+the defined PICOS statement (population, intervention, comparison, 
+outcomes, study type) to identify all relevant articles: Cochrane 
+Library, PubMed, Embase, Web of Science, Clinicaltrials.gov, SinoMed 
+and Chinese Clinical Trial Registry (ChiCTR) databases. Population 
+was defined as older patients, which included the patients older than 
+65 years old or the studies clearly defined older patients. For the 
+intervention, we focused on the pharmaceutical interventions on 
+potentially inappropriate medications, including all kinds of strategies 
+and tools/criterions. For outcome, we included studies reporting the 
+rationally of medication use (incidence of PIMs, the number of drugs 
+used and so on) and the prognosis of patients (mortality，falls and so 
+on). RCT followed our PICOs framework was included. The terms 
+used in the searching process included “aged” and “inappropriate 
+medications” for English databases, and the corresponding Chinese 
+terms were used in the Chinese databases. The references of the 
+included studies were also reviewed to reduce the rate of missing data. 
+The Appendix Table 1 listed as example of full search strings applicable 
+to PubMed.
+Inclusion and exclusion criteria
+The inclusion criteria were as follows: (1) RCTs; (2) subjects who 
+aged ≥65 years old; (3) involvement of pharmaceutical intervention in 
+the study group, and routine diagnosis and treatment in the control 
+group; (4) outcome included the occurrence of PIMs.
+The exclusion criteria were as follows: (1) unclear study design; (2) 
+unclear interventions; (3) unclear outcomes; (4) duplicate publication; 
+(5) unpublished studies; and (6) full-text could not be retrieved.
+Compared with the protocol registered (CRD42019134754) in 
+PROSPERO, since few studies reported the number of drugs used, it 
+is difficult to determine polypharmacy, and the non-hospitalized 
+patients such as outpatient and emergency department could not 
+be ignored, the included population was expanded to all older patients 
+over 65 years old. At the same time, intervention was usually not 
+performed and completed by pharmacists independently, and it is 
+impossible to evaluate the effect of pharmacist interventions alone, so 
+it is expanded to all pharmaceutical interventions.
+Data extraction and quality assessment
+Data were extracted using the predefined data extraction form by 
+two investigators independently and cross-check was also performed. 
+The disagreements were resolved by making discussion between the 
+two investigators or involved the third investigator. The extracted data 
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+03
+frontiersin.org
+included: (1) general characteristics and data of the included studies, 
+involving the first authors’ full-name, year of publication, country, 
+study type, subjects’ age, and sample size; (2) indicators of study 
+quality, such as the methods of randomization, allocation concealment, 
+blinding, drop out, and loss to follow-up; (3) detailed measurement of 
+intervention; and (4) indicators of clinical outcomes (PIMs-related 
+clinical and economic outcomes, as well as humanistic outcomes, for 
+example, health-related quality of life, patient satisfaction, medication 
+adherence and so on).
+Cochrane bias risk assessment tool (19) and the modified Jadad 
+scale (20) were utilized for the assessment of the included studies. The 
+Cochrane bias risk assessment tool covered the following 7 aspects: 
+(1) randomization; (2) allocation concealment; (3) blinding to subjects 
+and investigators; (4) blinding to evaluators; (5) completeness of 
+outcome data; (6) selective report of data; and (7) other sources of 
+bias. The modified Jadad scale evaluated the quality of the included 
+studies from 4 aspects, such as randomization, allocation concealment, 
+blinding, and drop out, and the assessment results were classified as 
+“appropriate,” “unclear,” and “inappropriate,” with the corresponding 
+scores of 2, 1, and 0, respectively. Studies with the total score of 4–7 
+points were considered as high-quality, and studies with the total score 
+of 1–3 points were considered as low-quality.
+Statistical analysis
+Review Manager 5.4 software was used for data processing. 
+Heterogeneity was assessed by the I2 index and Q test (21). I2 ≤ 50% 
+indicate low heterogeneity, and the fixed-effects model was used to 
+pool the results. Otherwise, I2>50% represent substantial or 
+considerable heterogeneity, and the random-effects model was 
+utilized (22). For the pooled analysis of binary variables, odds ratio 
+(OR) and corresponding 95% confidence interval (CI) were 
+estimated. For the pooled analysis of continuous variables, mean 
+difference (MD) and 95% CI were estimated. For outcome indicators 
+that could not be  analyzed by the meta-analysis, the descriptive 
+analysis was applied.
+Results
+Search strategy
+Totally, 48,345 studies were retrieved by the initial screening. After 
+further screening according to the inclusion and exclusion criteria, 14 
+RCTs were finally included in review 8 RCTs included in meta-
+analysis. The study flowchart is shown in Figure 1.
+General characteristics of the included 
+studies
+The detailed general characteristics of 14 RCTs are presented in 
+Table 1.
+The included studies were, respectively, performed in 7 countries, 
+including 1 in Ireland (23), 1 in Spain (24), 1 in Israel (25), 2 in 
+Belgium (26, 27), 3 in Canada (28–30), 3 in the United States (31–33), 
+and 3 in Sweden (34–36).
+6 of the 14 RCTs included the old patients from nursing home (24, 
+25, 29, 34) or community-dwelling (28, 30, 34), which is the main 
+facility for long-term medication treatment of older patients. The 
+subjects were veterans in 1 study (31), cancer patients in 1 study (32), 
+and patients with dementia or cognitive dysfunctions in 1 study (36). 
+Finally, 65,971 subjects, including 32,941 in the study group and 
+33,030  in the control group, were involved in the present 
+meta-analysis.
+Pharmaceutical intervention strategies are diverse and distinctive, 
+with assessment and management of medication being the most 
+common intervention.12 (23, 25–27, 29–40) of the 14 studies 
+implemented similar interventions, for example, a team to provide 
+strict surveillance and feedback for all medications. Interventions in 
+8 studies (23, 25, 30, 32–36) was to optimize medication use through 
+clinical pharmacist-physician discussion in meetings, face-to-face, 
+telephone call, e-mail communication. Regarding interventions for 
+patients, medication education is provided through paper materials 
+or online videos (28, 35) and face-to-face communication (32).
+The tools for assessing PIM, included Beers’ criteria, screening 
+tool of older person’s potentially inappropriate prescription (STOPP)/
+screening tool to alert doctors to the right treatment (START) criteria, 
+and PIM list designed by the pharmaceutical council. In addition, 12 
+studies (23–25, 27, 28, 30–36) used one assessment tool, 2 studies (26, 
+29) utilized 2 assessment tools, 5 studies (26, 28, 29, 31, 32) employed 
+the Beers’ criteria, 5 studies (24–26, 29, 35) used the STOPP/START 
+criteria, and 6 studies (23, 27, 30, 33, 34, 36) utilized the PIM list 
+designed by the pharmaceutical council.
+From the 14 RCTs included in the study, a total of 13 outcomes 
+were reported (the outcome column of Table 1), of which PIMs was 
+the most widely evaluated and considered as the primary outcomes. 
+All the 14 studies (23–36) evaluated PIMs, 4 studies (23, 28, 29, 34) 
+reported all-cause mortality, 3 studies (24, 29, 36) reported all-cause 
+emergent admission rate, 3 studies (24, 25, 30) reported the number 
+of drugs used, 2 studies (24, 29) reported length of stay in hospital, 2 
+studies (29, 36) reported readmissions rate within 30 days of hospital 
+discharge, 2 studies (24, 25) reported the number of falling events, 1 
+study (31) reported incidence of ADR, 1 study (25) reported cost of 
+drugs, 1 study (24) reported the number of delirium episodes events 
+and the number of visits to physician or nurse. Besides, 4 studies (26, 
+28, 29, 33) utilized the computer-based clinical decision support 
+(CCDS) for intervention.
+Quality assessment
+Quality assessment was performed for the methodology of 
+included studies Appendix Figure  1 shows the results of quality 
+assessment by Cochrane bias risk assessment tool, in which “+” 
+indicates meeting the requirements, “-” represents no satisfaction of 
+the requirements, and “?” denotes an unclear status. There were 2 
+studies (31, 34), in which all the items met the requirements. 
+Appendix Figure 2 illustrates the percentage of each item for quality 
+assessment of the included studies. All the 14 included studies (23–36) 
+used randomization, without selective reporting of data. Allocation 
+concealment was applied in 10 studies (23, 24, 28–32, 34–36), double-
+blinding in 6 studies (24, 31, 33–36), blinding to evaluators in 9 studies 
+(23, 24, 28, 30, 31, 33–36), complete data in 2 studies (31, 34), and 
+other sources of bias in 3 studies (23, 25, 36).
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+04
+frontiersin.org
+Base on the modified Jadad scale, 10 studies (23, 24, 28, 29, 31–36) 
+had the quality score of 4–7 points, indicating that the risk of bias was 
+low and the quality of studies was high. Moreover, 4 studies (25–27, 
+30) were found with the quality score of 1–3 points, demonstrating 
+that the quality of studies was relatively low (Appendix Table 2).
+Primary outcomes
+Incidence of PIMs
+PIMs were reported in 14 studies, in which 6 studies (24–26, 29, 
+30, 36) that enrolled 1933 subjects (989 in the study group and 944 in 
+the control group) reported the incidence of PIMs. The heterogeneity 
+test showed a low heterogeneity among studies (I2 = 0%, p = 0.50), and 
+thus, the fixed-effects model was used for the pooled analysis. The 
+findings revealed that pharmaceutical intervention could significantly 
+reduce the incidence of PIMs (OR = 0.51, 95%CI: 0.42, 0.62; p < 0.001; 
+Figure 2A). Subgroup analysis was performed based on the application 
+of CCDS, selection of assessment tools, and interventional strategies.
+Of the 6 studies that reported the incidence of PIMs, 2 studies 
+(26, 29) used the CCDS. The CCDS could automatically acquire the 
+basic characteristics of patients, such as age, gender, body weight, 
+comorbidities, medications, and examination results. In addition, the 
+CCDS could send alerts when the medication changes, assisting the 
+mediation assessment and pharmaceutical interventions. The 
+comparison of the incidence of PIMs between the study group and 
+control group that employed the CCDS showed that the difference 
+was statistically significant (OR = 0.41, 95%CI: 0.29, 0.57; p < 0.001). 
+The comparison of the incidence of PIMs between these two groups 
+that did not employ the CCDS indicated that the difference was also 
+statistically significant (OR = 0.57, 95%CI: 0.45, 0.73; p < 0.001). 
+Although both subgroup comparisons achieved statistical 
+significance, the pooled intervention effects of trials employing 
+CCDS were superior to those without employing CCDS in terms of 
+the magnitude of effect size (Appendix Figure 2A).
+Of the 6 studies that reported the incidence of PIMs, 2 studies (26, 
+29) used the Beers’ criteria, 4 studies (24–26, 29) utilized the STOPP/
+START criteria, and the other studies employed the PIM list designed 
+FIGURE 1
+Process of study selection for RCTs.
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+05
+frontiersin.org
+TABLE 1 Characteristics of included trials.
+First author, 
+published 
+year
+Country
+Patients
+Age 
+(year)
+Sample size
+Organization 
+of intervention
+Strategies of 
+intervention
+Tools for 
+assessing 
+PIM
+CDSS
+Outcomes
+Follow-up 
+(months)
+Intervention
+control
+Schmader et al. 
+(31)
+America
+Veterans
+≥65
+430
+404
+Multidisciplinary team
+A, B
+a,b
+No
+1,2,5
+12
+Ryan 2019 (32)
+America
+Patients with cancer
+≥65
+29
+31
+Pharmacists led
+A, C, D, E
+b
+No
+1,4
+2
+Martin et al. (28)
+Canada
+Community patients
+≥65
+248
+241
+Pharmacists led
+F, G
+b
+Yes
+1,6
+6
+Goedele 2019 
+(26)
+Belgium
+Nursing home patient
+≥65
+847
+957
+Multidisciplinary team
+A, B
+b,c
+Yes
+1
+15
+Cossette et al. 
+(29)
+Canada
+Hospitalized patients
+≥65
+126
+128
+Multidisciplinary team
+A, B
+b,c
+Yes
+1,6,7,10,11,13
+2.5
+Veronica 2013 
+(34)
+Sweden
+Nursing home or 
+community patients
+≥75
+182
+187
+Multidisciplinary team
+A, D, E
+d
+No
+1,6
+2
+Ulrika 2013 (35)
+Sweden
+Older patients
+≥80
+182
+186
+Multidisciplinary team
+A, E, G
+a,c
+No
+1,2
+12
+Van der Linden 
+et al. (27)
+Belgium
+Hospitalized patients
+≥65
+32
+29
+Pharmacists led
+A, B
+d
+No
+1
+2
+Maria 2018 (36)
+Sweden
+Dementia or cognitive 
+impairment patients
+≥65
+212
+217
+Multidisciplinary team
+A, E
+d
+No
+1,7,11,13
+6
+Dvora 2017 (25)
+Israel
+Nursing home patient
+≥65
+160
+146
+Pharmacists led
+A, E
+c
+No
+1,3,8,12
+12
+García et al. (24)
+Spain
+Nursing home patient
+≥65
+344
+372
+Pharmacists led
+F, H
+c
+No
+1,3,7,8,9,10
+6
+Patterson et al. 
+(23)
+Ireland
+Nursing home patient
+≥65
+173
+162
+Pharmacists led
+A, D, E
+d
+No
+1,6
+12
+Allard et al. (30)
+Canada
+Community patients
+>75
+136
+130
+Multidisciplinary team
+A, E
+d
+No
+1,3
+12
+Marsha 2007 (33)
+America
+Older patients
+≥65
+29,840
+29,840
+Multidisciplinary team
+A, E
+d
+Yes
+1
+12
+Strategies of intervention: A, medication assessment; B, medication management; C, face-to-face communication with patients; D, recording of medications; E, communication of pharmacologists with doctors on medication strategy through discussion in meetings, 
+face-to-face communication, telephone call, e-mail, and fax; F, dispatching materials of education to medical staff; G, providing health education for patients through paper materials or online videos; and H, providing training for medical staff. Tools for assessing PIM: 
+a. MAI index, b. Beers criterion, c. STOPP/START criterion, d. the list of potentially inappropriate medications prepared by the Drug Commission. Outcomes:1. potentially inappropriate medications (PIMs), 2. MAI index, 3. the number of drugs used, 4. Vaccination 
+coverage rates, 5. Incidence of adverse reactions, 6. Mortality rate, 7. Emergency attendance rate, 8. Average number of falls, 9. Average number of deliriums, 10. Length of stay, 11. Readmission rate, 12. Cost of medicines, 13. Readmission time.
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+06
+frontiersin.org
+by the pharmaceutical council. Besides, 2 studies (26, 29) of the 6 
+studies used two assessment tools.
+The comparison of the incidence of PIMs between the two groups 
+that used one assessment tool revealed that the difference was 
+statistically significant (OR = 0.57, 95%CI: 0.45, 0.73; p < 0.001). The 
+comparison of the incidence of PIMs between the two groups that 
+used two assessment tools showed that the difference was also 
+statistically significant (OR = 0.41, 95%CI: 0.29, 0.57; p < 0.001). 
+Although both subgroup comparisons achieved statistical significance, 
+the pooled intervention effects of trials using two assessment tools 
+were superior to those using single assessment tool in terms of the 
+magnitude of effect size (Appendix Figure 2B).
+Potentially inappropriate medications per person
+Of the 14 studies that reported the incidence of PIMs, 2 studies (24, 
+35) reported PIMs per person, which totally included 752 subjects (393 in 
+the study group and 359 in the control group). The heterogeneity test 
+showed a low heterogeneity among the included studies (I2 = 0%, p = 0.60), 
+and thus, the fixed-effects model was used for the pooled analysis. The 
+findings demonstrated that pharmaceutical intervention could 
+significantly reduce the incidence of PIMs per person in older people 
+(MD = -0.41, 95%CI: −0.51, −0.31; p < 0.001; Figure 2B).
+Secondary outcomes
+The number of drugs used per person
+Among 3 studies that reported the number of drugs used, 2 
+studies (24, 25) that enrolled 637 patients (311 in the study group and 
+326 in the control group) reported the number of drugs used per 
+person. The heterogeneity test showed a low heterogeneity among the 
+included studies (I2 = 0%, p = 0.79), and the fixed-effects model was 
+used for the pooled analysis. The results showed that pharmaceutical 
+intervention could significantly reduce the number of drugs used per 
+person in older people (MD = -0.94, 95%CI: −1.51, −0.36, p = 0.001; 
+Figure 3A).
+30-day readmission rate
+In 2 studies (29, 36) that reported the 30-day readmission 
+rate, 683 subjects were enrolled, including 338 in the study group 
+and 345 in the control group. Heterogeneity test showed a low 
+heterogeneity among the eligible studies (I2 = 0%, p = 0.48), and 
+the fixed-effects model was used for the pooled analysis. The 
+findings revealed that the pharmaceutical intervention could 
+significantly reduce the 30-day readmission rate (OR = 0.58, 
+95%CI: 0.36, 0.92; p = 0.02; Figure 3B).
+All-cause mortality
+There were 4 studies (23, 28, 29, 34) that reported the all-cause 
+mortality and enrolled 1,446 subjects, of whom 729 and 717 subjects 
+were in the study group and control group, respectively. Heterogeneity 
+test showed a low heterogeneity among the included studies (I2 = 0%, 
+p = 0.58), and the fixed-effects model was used for the pooled analysis. 
+The results revealed that the effects of pharmaceutical intervention on 
+the all-cause mortality were not significantly different between the two 
+groups (OR = 0.93, 95%CI: 0.64, 1.37; p = 0.73; Figure 3C).
+Falls
+In 2 studies (24, 25) that reported the average number of falls, 968 
+subjects were enrolled, including 470 and 498 subjects in the study 
+group and control group, respectively. Heterogeneity test showed a 
+moderate heterogeneity among the eligible studies (I2 = 55%, p = 0.14), 
+and the random-effects model was used for the pooled analysis. The 
+findings showed that the effects of pharmaceutical intervention on the 
+average number of falls were not significantly different between the 
+two groups (MD = -0.23, 95%CI: −0.57, 0.12; p = 0.21; Figure 3D).
+Discussion
+The present study systematically reviewed 14 RCTs to compare the 
+effects of pharmaceutical interventions on older people. The results 
+indicated that the incidence of PIMs, the number of PIMs per person, 
+FIGURE 2
+Forest plot for PIMs of eligible RCTs comparing pharmaceutical intervention with usual care (A) PIMs, (B) PIMs per person.
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+07
+frontiersin.org
+the number of drugs used, and 30-day readmission rate were 
+significantly lower in the pharmaceutical intervention group, and the 
+subgroup analysis showed that the application of the CCDS and 
+assessment tools, such as Beers’ and STOPP criteria, could markedly 
+reduce the incidence of PIMs. It is noteworthy that the current study 
+further comprehensively evaluated the effect of pharmaceutical 
+intervention on potentially inappropriate medications in older 
+patients by including high-quality RCTs and integrating intervention 
+effects through meta-analysis.
+PIMs are associated with risks that are greater than their potential 
+benefits, and older patients are at a greater risk of ADEs from PIMs. 
+Reducing the incidence of PIMs will be  significant to reduce the 
+incidence of ADEs and improve the prognosis of older patients. There 
+are a variety of intervention strategies and methods that can effectively 
+reduce the incidence of the PIMs. Subgroup analysis showed that the 
+application of CCDS could reduce the incidence of the PIMs, which is 
+consistent with the result of a previous study (37). The advantage of 
+CDSS is not only associated with the efficient and accurate identification 
+and reduction of PIMs, but also with the ability to change the prescribing 
+behavior of physicians (38). In the present study, further subgroup 
+analysis suggested that using single assessment tool may not 
+be comprehensive in assessing PIMs, and the multiple assessment tools 
+achieved a more desirable intervention result. This finding is consistent 
+with the conclusion of Kurczewska-Michalak et al. (41) that no “gold 
+standard” is identifiable and advisable, and the complexity, applicability 
+and usability of tools needs to be considered. The complementarity of the 
+different tools was also confirmed by Lisowska et al. (42), the PILA tool 
+that included STOPP/START v.2 and Amsterdam tool identified the 
+highest number of PIMs and achieved the most comprehensive 
+assessment of pharmacotherapy appropriateness in geriatric patients. 
+Overall, CDSS combining different prescription indicators should 
+be considered as an important tool to optimize drug prescription for 
+older patients.
+Pharmaceutical interventions could significantly reduce the number 
+of drugs used per person and 30-day readmission rate. Deprescribing is 
+the process of systematically reviewing a patient’s medications and 
+discontinuing drugs in instances, in which existing or potential harms 
+outweigh existing or potential benefits within the context of an individual 
+patient’s care goals, current level of functioning, life expectancy, values, 
+and preferences (39, 40). A growing body of evidence related to the 
+adverse effects of polypharmacy on older patients supported the need for 
+deprescribing (43), and the number of drugs that a patient is taking is the 
+most important predictor of ADEs (44). Therefore, the number of drugs 
+used per person and 30-day readmission rate reflect the efficacy and safety 
+FIGURE 3
+Forest plot for outcomes of eligible RCTs comparing pharmaceutical intervention with usual care (A) number of drugs used, (B) 30-days readmission, 
+(C) all-cause mortality, (D) falling.
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+08
+frontiersin.org
+of drug therapy, as well as being important indicators for testing the effects 
+of pharmaceutical interventions. Additionally, regarding the economic 
+endpoint, although only one study (25) reported the cost of drugs, 
+pharmaceutical interventions could effectively reduce the cost of drugs in 
+the study group compared with that in the control group. Economic 
+systematic reviews (45) focusing on polypharmacy have expressed the 
+same view, with interventions generally associated with a reduction in 
+medication expenditure. Available evidence suggests that the potential 
+benefits of interventions to optimize medication use outweigh the costs 
+of their implementation, and the results of the included cost–benefit 
+analysis studies (46–48) showed a net benefit that was null or positive.
+The all-cause mortality and average number of falls were both lower 
+in the study group than those in the control group, however, the 
+differences were not statistically significant. The mortality rates were 
+consistent with those reported previously (15). This can be related to 
+contribution of other factors affecting mortality, of which disease 
+progression is noteworthy. However, there are still some drug-related 
+factors that require clinicians’ attention (49–51). Several studies (52, 53) 
+have shown that targeted pharmacological interventions for fall risk, 
+including withdrawal of potential fall-risk-increasing drugs (FRIDs), 
+pharmacist-conducted clinical medication review, and computerized 
+drug alerts, were effective in reducing fall risk. However, tools for 
+assessing PIM, such as Beers’ and STOPP criteria, do not concentrate 
+on FRIDs. Therefore, in the comprehensive pharmacological 
+intervention, the management of FRIDs still needs to be improved, and 
+it is suggested to reduce the fall risk in older patients with polypharmacy.
+Because no “gold standard” has been identified, multiple interventions 
+toward PIMs are advised, so the diversity of interventions included and 
+analyzes in our meta-analysis is critical. Compared with the a scoping 
+review of available interventions published in 2012 (41), relevant 
+interventions, including prescription deprescribing, CDSS, medication 
+therapy management (MTM) and so on, were all included in this meta-
+analysis. Regarding the setting and supporter of pharmaceutical 
+interventions, the most common setting is primary healthcare team. 
+Additionally, some interventions were provided at community or hospital 
+pharmacies, in the form of pharmacists alone or in cooperation with a 
+physician or nurse. In summary, the following steps involved pharmacists 
+are the key to appropriate medications in older patients: patients’ 
+evaluation and data collection, medication review, being agree with 
+patients on treatment objectives, prescription decision, communication 
+and obtaining patient agreement, medication dispensing, medication 
+usage, monitoring and assessment (41, 54).
+Totally, 14 eligible RCTs were involved in the present study, which 
+were mainly accompanied by a relatively high-quality. However, the 
+limitations of this study were summarized as follows: (1) outcomes in the 
+included studies varied, and only relatively few studies reported the same 
+outcomes; (2) the data of the included studies were reported inconsistently, 
+and thus, some outcomes could not be pooled; (3) only one study reported 
+the cost of drugs; (4) difference in ethnicity, language, educational level, 
+places for interventions and follow-up time among the subjects and 
+studies all might influence the outcomes. (5) the possibility of missing 
+studies not included in the databases we used and the articles published 
+in other langue not being included in our analysis, (6) the risk of bias 
+cannot be excluded, although most heterogeneity is acceptable. Therefore, 
+more rigorously designed multi-center RCTs with larger sample size and 
+longer follow-up with high-quality are needed to further validate the 
+findings of the present study.
+Conclusion
+In summary, pharmaceutical interventions may improve the 
+prognosis of older patients via reducing the incidence of PIMs, the 
+number of PIMs per person, the number of drugs used, and 30-day 
+readmission rate. Our findings supported the efficacy of pharmaceutical 
+interventions to optimize the use and management of drugs for 
+older patients.
+Data availability statement
+The original contributions presented in the study are included in 
+the article/Supplementary material, further inquiries can be directed 
+to the corresponding author.
+Author contributions
+CY and ZhY: literature search. LR, ZoY, and LL: screening of the 
+search results. ZS, LR, and ZhY: risk of bias assessment. LR and LL: 
+interpretation of the results. ZS, ZX, TZ, and ZoY: drafting and revising 
+the article. ZS, LR, ZX, and LH: final approval of the version to 
+be published. All authors contributed to the article and approved the 
+submitted version.
+Funding
+This study was supported by National Key R&D Program of China 
+(2020YFC2008804) and grants National High-Level Hospital Clinical 
+Research Funding (Scientific Research Seed Fund of Peking University 
+First Hospital, no.2022SF87).
+Conflict of interest
+The authors declare that the research was conducted in the 
+absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest.
+Publisher’s note
+All claims expressed in this article are solely those of the 
+authors and do not necessarily represent those of their affiliated 
+organizations, or those of the publisher, the editors and the 
+reviewers. Any product that may be evaluated in this article, or 
+claim that may be made by its manufacturer, is not guaranteed or 
+endorsed by the publisher.
+Supplementary material
+The Supplementary material for this article can be found online 
+at: https://www.frontiersin.org/articles/10.3389/fpubh.2023.1154048/
+full#supplementary-material
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+09
+frontiersin.org
+References
+ 1. WHO. Global strategy and action plan on ageing and health. Geneva: World Health 
+Organization. (2017). Available at: http://www.who.int/ageing/WHO-GSAP-2017.
+pdf?ua=1.
+ 2. Wickop B, Langebrake C. Good prescribing practice in the elderly. Ther Umsch. 
+(2014) 71:366–73. doi: 10.1024/0040-5930/a000524
+ 3. Brager R, Sloand E. The spectrum of polypharmacy. Nurse Pract. (2005) 30:44–50. 
+doi: 10.1097/00006205-200506000-00008
+ 4. O'Mahony D, Gallagher PF. Inappropriate prescribing in the older population: need 
+for new criteria. Age Ageing. (2008) 37:138–41. doi: 10.1093/ageing/afm189
+ 5. Hedna K, Hakkarainen KM, Gyllensten H, Jönsson AK, Petzold M, Hägg S. 
+Potentially inappropriate prescribing and adverse drug reactions in the elderly: a 
+population-based study. Eur J Clin Pharmacol. (2015) 71:1525–33. doi: 10.1007/
+s00228-015-1950-8
+ 6. Leelakanok N, Holcombe AL, Lund BC, Gu X, Schweizer ML. Association between 
+polypharmacy and death: a systematic review and meta-analysis. J Am Pharm Assoc. 
+(2017) 57:729–738.e10. doi: 10.1016/j.japh.2017.06.002
+ 7. Reinhild Haerig T, Krause D, Klaassen-Mielke R, Rudolf H, Trampisch HJ, 
+Thuermann P. Potentially inappropriate medication including drug-drug interaction and 
+the risk of frequent falling, hospital admission, and death in older adults - results of a 
+large cohort study (getABI). Front Pharmacol. (2023) 14:1062290. doi: 10.3389/
+fphar.2023.1062290
+ 8. Hazen ACM, de Bont AA, Boelman L, Zwart DLM, De Gier JJ, De Wit NJ, et al. The 
+degree of integration of non-dispensing pharmacists in primary care practice and the 
+impact on health outcomes: a systematic review. Res Soc Adm Pharm. (2018) 14:228–40. 
+doi: 10.1016/j.sapharm.2017.04.014
+ 9. Spinewine A, Schmader KE, Barber N, Hughes C, Lapane KL, Swine C, et al. 
+Appropriate prescribing in elderly people: how well can it be measured and optimised? 
+Lancet (London, England). (2007) 370:173–84. doi: 10.1016/S0140-6736(07)61091-5
+ 10. Hill-Taylor B, Sketris I, Hayden J, Byrne S, O'Sullivan D, Christie R. Application 
+of the STOPP/START criteria: a systematic review of the prevalence of potentially 
+inappropriate prescribing in older adults, and evidence of clinical, humanistic and 
+economic impact. J Clin Pharm Ther. (2013) 38:360–72. doi: 10.1111/jcpt.12059
+ 11. Pirmohamed M, James S, Meakin S, Green C, Scott AK, Walley TJ, et al. Adverse 
+drug reactions as cause of admission to hospital: prospective analysis of 18 820 patients. 
+BMJ. (2004) 329:15–9. doi: 10.1136/bmj.329.7456.15
+ 12. Chan M, Nicklason F, Vial JH. Adverse drug events as a cause of hospital admission 
+in the elderly. Intern Med J. (2001) 31:199–205. doi: 10.1046/j.1445-5994.2001.00044.x
+ 13. Gurwitz JH, Field TS, Harrold LR, Rothschild J, Debellis K, Seger AC, et al. 
+Incidence and preventability of adverse drug events among older persons in the 
+ambulatory setting. JAMA. (2003) 289:1107–16. doi: 10.1001/jama.289.9.1107
+ 14. Maher RL, Hanlon J, Hajjar ER. Clinical consequences of polypharmacy in elderly. 
+Expert Opin Drug Saf. (2014) 13:57–65. doi: 10.1517/14740338.2013.827660
+ 15. Alldred DP, Kennedy MC, Hughes C, Chen TF, Miller P. Interventions to optimise 
+prescribing for older people in care homes. Cochrane Database Syst Rev. (2016) 
+2016:CD009095. doi: 10.1002/14651858.CD009095.pub3
+ 16. Rankin A, Cadogan CA, Patterson SM, Kerse N, Cardwell CR, Mc B, et al. 
+Interventions to improve the appropriate use of polypharmacy for older people. 
+Cochrane Database Syst Rev. (2018) 9:CD008165. doi: 10.1002/14651858.CD008165.
+pub4
+ 17. Rodrigues DA, Plácido AI, Mateos-Campos R, Figueiras A, Herdeiro MT, Roque 
+F. Effectiveness of interventions to reduce potentially inappropriate medication in older 
+patients: a systematic review. Front Pharmacol. (2021) 12:777655. doi: 10.3389/
+fphar.2021.777655
+ 18. Page MJ, McKenzie JE, Bossuyt PM, Boutron I, Hoffmann TC, Mulrow CD, et al. 
+The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. 
+BMJ. (2021) 372:n71. doi: 10.1136/bmj.n71
+ 19. Jüni P, Altman DG, Egger M. Systematic reviews in health care: assessing the 
+quality of controlled clinical trials. BMJ. (2001) 323:42–6. doi: 10.1136/bmj.323.7303.42
+ 20. Clark HD, Wells GA, Huët C, McAlister FA, Salmi LR, Fergusson D, et al. 
+Assessing the quality of randomized trials: reliability of the Jadad scale (1999) 20:448–52. 
+doi: 10.1016/s0197-2456(99)00026-4,
+ 21. Lin L. Comparison of four heterogeneity measures for meta-analysis. J Eval Clin 
+Pract. (2020) 26:376–84. doi: 10.1111/jep.13159
+ 22. Cochrane. Cochrane handbook for systematic reviews of interventions version 6.3. 
+(2022). Available at: www.training.cochrane.org/handbook. (Accessed February 2022).
+ 23. Patterson SM, Hughes CM, Crealey G, Cardwell C, Lapane KL. An evaluation of 
+an adapted U.S. model of pharmaceutical care to improve psychoactive prescribing for 
+nursing home residents in Northern Ireland (fleetwood Northern Ireland study). J 
+Am Geriatr Soc. (2010) 58:44–53. doi: 10.1111/j.1532-5415.2009.02617.x
+ 24. García-Gollarte F, Baleriola-Júlvez J, Ferrero-López I, Cuenllas-Díaz Á, Cruz-
+Jentoft AJ. An educational intervention on drug use in nursing homes improves health 
+outcomes resource utilization and reduces inappropriate drug prescription. J Am Med 
+Dir Assoc. (2014) 15:885–91. doi: 10.1016/j.jamda.2014.04.010
+ 25. Frankenthal D, Israeli A, Caraco Y, Lerman Y, Kalendaryev E, Zandman-Goddard 
+G, et al. Long-term outcomes of medication intervention using the screening tool of 
+older persons potentially inappropriate prescriptions screening tool to alert doctors to 
+right treatment criteria. J Am Geriatr Soc. (2017) 65:e33–8. doi: 10.1111/jgs.14570
+ 26. Strauven G, Anrys P, Vandael E, Henrard S, De Lepeleire J, Spinewine A, et al. 
+Cluster-controlled trial of an intervention to improve prescribing in nursing homes 
+study. J Am Med Dir Assoc. (2019) 20:1404–11. doi: 10.1016/j.jamda.2019.06.006
+ 27. Van der Linden L, Decoutere L, Beerten L, Delva T, Spriet I, Flamaing J, et al. 
+External validation of a clinical pharmacy intervention in geriatric inpatients: a 
+controlled study. Int J Clin Pharm. (2019) 41:853–8. doi: 10.1007/s11096-019-00846-y
+ 28. Martin P, Tamblyn R, Benedetti A, Ahmed S, Tannenbaum C. Effect of a 
+pharmacist-led educational intervention on inappropriate medication prescriptions in 
+older adults: the D-PRESCRIBE randomized clinical trial. JAMA. (2018) 320:1889–98. 
+doi: 10.1001/jama.2018.16131
+ 29. Cossette B, Éthier JF, Joly-Mischlich T, Bergeron J, Ricard G, Brazeau S, et al. 
+Reduction in targeted potentially inappropriate medication use in elderly inpatients: a 
+pragmatic randomized controlled trial. Eur J Clin Pharmacol. (2017) 73:1237–45. doi: 
+10.1007/s00228-017-2293-4
+ 30. Allard J, Hébert R, Rioux M, Asselin J, Voyer L. Efficacy of a clinical medication 
+review on the number of potentially inappropriate prescriptions prescribed for 
+community-dwelling elderly people. CMAJ. (2001) 164:1291–6.
+ 31. Schmader KE, Hanlon JT, Pieper CF, Sloane R, Ruby CM, Twersky J, et al. Effects 
+of geriatric evaluation and management on adverse drug reactions and suboptimal 
+prescribing in the frail elderly. Am J Med. (2004) 116:394–401. doi: 10.1016/j.
+amjmed.2003.10.031
+ 32. Nipp RD, Ruddy M, Fuh CX, Zangardi ML, Chio C, Kim EB, et al. Pilot 
+randomized trial of a pharmacy intervention for older adults with Cancer. Oncologist. 
+(2019) 24:211–8. doi: 10.1634/theoncologist.2018-0408
+ 33. Raebel MA, Charles J, Dugan J, Carroll NM, Korner EJ, Brand DW, et al. 
+Randomized trial to improve prescribing safety in ambulatory elderly patients. J 
+Am Geriatr Soc. (2007) 55:977–85. doi: 10.1111/j.1532-5415.2007.01202.x
+ 34. Milos V, Rekman E, Bondesson Å, Eriksson T, Jakobsson U, Westerlund T, et al. 
+Improving the quality of pharmacotherapy in elderly primary care patients through 
+medication reviews: a randomised controlled study. Drugs Aging. (2013) 30:235–46. doi: 
+10.1007/s40266-013-0057-0
+ 35. Gillespie U, Alassaad A, Hammarlund-Udenaes M, Mörlin C, Henrohn D, 
+Bertilsson M, et al. Effects of pharmacists' interventions on appropriateness of 
+prescribing and evaluation of the instruments' (MAI, STOPP and STARTs') ability to 
+predict hospitalization--analyses from a randomized controlled trial. PLoS One. (2013) 
+8:e62401. doi: 10.1371/journal.pone.0062401
+ 36. Gustafsson M, Sjölander M, Pfister B, Schneede J, Lövheim H. Effects of 
+Pharmacists' interventions on inappropriate drug use and drug-related readmissions in 
+people with dementia-a secondary analysis of a randomized controlled trial. Pharmacy 
+(Basel). (2018) 6:7. doi: 10.3390/pharmacy6010007
+ 37. Dalton K, O'Brien G, O'Mahony D, Byrne S. Computerised interventions designed 
+to reduce potentially inappropriate prescribing in hospitalised older adults: a systematic 
+review and meta-analysis. Age Ageing. (2018) 47:670–8. doi: 10.1093/ageing/afy086
+ 38. Prasert V, Shono A, Chanjaruporn F, Ploylearmsang C, Boonnan K, Khampetdee 
+A, et al. Effect of a computerized decision support system on potentially inappropriate 
+medication prescriptions for elderly patients in Thailand. J Eval Clin Pract. (2019) 
+25:514–20. doi: 10.1111/jep.13065
+ 39. Scott IA, Hilmer SN, Reeve E, Potter K, Le Couteur D, Rigby D, et al. Reducing 
+inappropriate polypharmacy: the process of Deprescribing. JAMA Intern Med. (2015) 
+175:827–34. doi: 10.1001/jamainternmed.2015.0324
+ 40. Armistead LT, Sanders KA, Larson CK, Busby-Whitehead J, Ferreri SP. A-TAPER: 
+a framework for Deprescribing medications effectively. Res Soc Adm Pharmacy. (2021) 
+18:3358–61. doi: 10.1016/j.sapharm.2021.11.013
+ 41. Kurczewska-Michalak M, Lewek P, Jankowska-Polańska B, Giardini A, Granata N, 
+Maffoni M, et al. Polypharmacy Management in the Older Adults: a scoping review of 
+available interventions. Front Pharmacol. (2021) 12:734045. doi: 10.3389/
+fphar.2021.734045
+ 42. Lisowska A, Czepielewska E, Rydz M, Dworakowska A, Makarewicz-Wujec M, 
+Kozłowska-Wojciechowska M. Applicability of tools to identify potentially inappropriate 
+prescribing in elderly during medication review: comparison of STOPP/START version 
+2, beers 2019, EU(7)-PIM list, PRISCUS list, and Amsterdam tool-a pilot study. PLoS 
+One. (2022) 17:e0275456. doi: 10.1371/journal.pone.0275456
+ 43. Bennett A, Gnjidic D, Gillett M, Carroll P, Matthews S, Johnell K, et al. Prevalence 
+and impact of fall-risk-increasing drugs, polypharmacy, and drug-drug interactions in 
+robust versus frail hospitalised falls patients: a prospective cohort study. Drugs Aging. 
+(2014) 31:225–32. doi: 10.1007/s40266-013-0151-3
+ 44. Steinman MA, Miao Y, Boscardin WJ, Komaiko KD, Schwartz JB. Prescribing 
+quality in older veterans: a multifocal approach. J Gen Intern Med. (2014) 29:1379–86. 
+doi: 10.1007/s11606-014-2924-8
+ 45. Laberge M, Sirois C, Lunghi C, Gaudreault M, Nakamura Y, Bolduc C, et al. 
+Economic evaluations of interventions to optimize medication use in older adults with 
+Shuang et al. 
+10.3389/fpubh.2023.1154048
+Frontiers in Public Health
+10
+frontiersin.org
+polypharmacy and multimorbidity: a systematic review. Clin Interv Aging. (2021) 
+16:767–79. doi: 10.2147/CIA.S304074
+ 46. Campins L, Serra-Prat M, Palomera E, Bolibar I, Martínez M, Gallo P. Reduction 
+of pharmaceutical expenditure by a drug appropriateness intervention in polymedicated 
+elderly subjects in Catalonia (Spain). Gac Sanit. (2019) 33:106–11. doi: 10.1016/j.
+gaceta.2017.09.002
+ 47. Denneboom W, Dautzenberg MG, Grol R, De Smet PA. Treatment reviews of older 
+people on polypharmacy in primary care: cluster controlled trial comparing two 
+approaches. Br J Gen Pract. (2007) 57:723–31.
+ 48. Malet-Larrea A, Goyenechea E, Gastelurrutia MA, Calvo B, García-Cárdenas V, 
+Cabases JM, et al. Cost analysis and cost-benefit analysis of a medication review with 
+follow-up service in aged polypharmacy patients. Eur J Health Econ. (2017) 18:1069–78. 
+doi: 10.1007/s10198-016-0853-7
+ 49. Seppala LJ, Wermelink A, de Vries M, Ploegmakers KJ, van de Glind EMM, Daams 
+JG, et al. Fall-risk-increasing drugs: a systematic review and Meta-analysis: II. 
+Psychotropics. J Am  Med Dir Assoc. (2018) 19:371.e11–7. doi: 10.1016/j.
+jamda.2017.12.098
+ 50. Seppala LJ, van de Glind EMM, Daams JG, Ploegmakers KJ, de Vries M, 
+Wermelink A, et al. Fall-risk-increasing drugs: a systematic review and Meta-analysis: 
+III. Others. J Am Med Dir Assoc. (2018) 19:372.e1–8. doi: 10.1016/j.jamda.2017.12.099
+ 51. de Vries M, Seppala LJ, Daams JG, van de Glind EMM, Masud T, van der Velde N. 
+Fall-risk-increasing drugs: a systematic review and Meta-analysis: I. cardiovascular 
+drugs. J Am  Med Dir Assoc. (2018) 19:371.e1–9. doi: 10.1016/j.jamda.2017. 
+12.013
+ 52. Chen Y, Zhu LL, Zhou Q. Effects of drug pharmacokinetic/pharmacodynamic 
+properties, characteristics of medication use, and relevant pharmacological interventions 
+on fall risk in elderly patients. Ther Clin Risk Manag. (2014) 10:437–48. doi: 10.2147/
+TCRM.S63756
+ 53. Ming Y, Zecevic AA, Hunter SW, Miao W, Tirona RG. Medication review in 
+preventing older Adults' fall-related injury: a systematic review and meta-analysis. Can 
+Geriatr J. (2021) 24:237–50. doi: 10.5770/cgj.24.478
+ 54. Bergert FW, Braun M, Ehrenthal K, Feßler J, Gross J, Hüttner U, et al. 
+Recommendations for treating adult and geriatric patients on multimedication. Int J Clin 
+Pharmacol Ther. (2014) 52:1–64. doi: 10.5414/CPP52S001
+

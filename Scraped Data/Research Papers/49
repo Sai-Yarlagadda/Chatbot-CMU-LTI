@@ -1,0 +1,865 @@
+UCSF
+UC San Francisco Previously Published Works
+Title
+Monitoring lesion activity on primary teeth with CP‐OCT and SWIR reflectance imaging
+Permalink
+https://escholarship.org/uc/item/24z290zt
+Journal
+Lasers in Surgery and Medicine, 55(6)
+ISSN
+0196-8092
+Authors
+Zhu, Yihua
+Kim, Jungsoo
+Lin, Brent
+et al.
+Publication Date
+2023-08-01
+DOI
+10.1002/lsm.23677
+ 
+Peer reviewed
+eScholarship.org
+Powered by the California Digital Library
+University of California
+Accepted: 3 May 2023
+DOI: 10.1002/lsm.23677
+B A S I C S C I E N C E A R T I C L E
+Monitoring lesion activity on primary teeth with CP‐OCT and
+SWIR reﬂectance imaging
+Yihua Zhu MS
+|
+Jungsoo Kim DDS, MS
+|
+Brent Lin DMD
+|
+Daniel Fried MS, PhD
+School of Dentistry, University of California
+San Francisco, San Francisco, California, USA
+Correspondence
+Daniel Fried, MS, PhD, School of Dentistry,
+University of California San Francisco, 707
+Parnassus Ave, CA 94143‐0758, USA.
+Email: daniel.fried@ucsf.edu
+Abstract
+Objective: The purpose of this study was to use cross polarization optical
+coherence tomography (CP‐OCT) and short wavelength infrared imaging (SWIR)
+reﬂectance imaging to monitor changes in the structure and activity of early
+occlusal caries on primary teeth over a period of 6 months during intervention
+with ﬂuoride.
+Methods: Participants (n = 29) aged 6−10 each with two suspected active occlusal
+lesions on primary teeth completed the study. Fluoride varnish was applied to
+tooth surfaces every 3‐months and participants were instructed to brush twice
+daily with a ﬂuoride toothpaste. Images were acquired using CP‐OCT every
+3 months for 6 months. SWIR reﬂectance images were acquired during forced
+air‐drying of the lesions for 30 s at 0 and 6‐months.
+Results: Most of the 42 lesions appeared initially active at baseline. Only 6 lesions
+appeared arrested at baseline based on the presence of a highly mineralized
+transparent surface layer (TSL) in CP‐OCT images. At 6 months, 14 of the lesions
+appeared arrested including the 6 initially arrested lesions and the TSL thickness
+increased signiﬁcantly (p < 0.0001). The mean lesion depth (Ld) and the
+integrated
+reﬂectivity
+over
+the
+lesion
+depth
+(ΔR)
+increased
+signiﬁcantly
+(p < 0.05) after 6 months for the 42 lesions analyzed. SWIR reﬂectance images
+showed that there was a signiﬁcantly higher (p < 0.05) delay before changes in
+intensity were measured for active lesions versus arrested lesions during lesion
+drying.
+Conclusion: CP‐OCT was able to monitor changes in lesion structure and activity
+including the formation of a highly mineralized TSL indicative of lesion arrest
+during nonsurgical intervention. Time‐resolved SWIR reﬂectance imaging also
+shows that there are differences in the dehydration kinetics between active and
+arrested lesions. This study demonstrates two independent imaging methods that
+can be used to monitor changes in lesion activity over time.
+K E Y W O R D S
+caries detection, caries diagnosis, dental caries, lesion activity, optical coherence tomography, SWIR
+imaging
+INTRODUCTION
+The accurate assessment of lesion activity is essential for
+the effective clinical management of caries lesions. Caries
+lesions are arrested by the preferential deposition of
+mineral at the lesion surface that forms an outer layer of
+higher mineral content that serves as a barrier to the
+further diffusion of ﬂuids into the body of the porous
+lesion.1–3 The highly mineralized outer surface zone or
+transparent surface layer (TSL) can be detected using
+transverse microradiography and polarized light micros-
+copy that require destruction of the tooth, or in the case
+of microcomputed tomography cannot be used in vivo.
+Early occlusal caries is diagnosed by visual‐tactile
+Lasers Surg Med. 2023;1–9.
+wileyonlinelibrary.com/journal/lsm
+© 2023 Wiley Periodicals LLC.
+|
+1
+Yihua Zhu and Jungsoo Kim shared ﬁrst authorship.
+methods. Radiographs are not effective for early caries
+lesions that have not penetrated deep into the underlying
+dentin due to the overlapping topography of the crown.
+For pit and ﬁssure caries, the tactile method via probing
+with an explorer showed low sensitivity and has been
+found to be unreliable in its diagnosis.4 The occlusal pits
+and ﬁssures are often heavily stained obscuring early
+demineralization, often leading to false positives via
+visual diagnosis.5–7
+New non‐destructive diagnostic tools are needed that
+can assess lesion activity in a single visit and monitor
+changes in the activity of the lesions over time during
+nonsurgical intervention. Several studies have shown that
+short wavelength infrared (SWIR) imaging methods such
+as optical coherence tomography (OCT) at 1310 nm and
+time‐resolved reﬂectance imaging at wavelengths greater
+than 1400 nm can be used to assess remineralization and
+lesion activity.8–12 The purpose of this study is to test the
+hypothesis that both of these SWIR imaging methods
+can detect changes in lesion activity over time in vivo.
+When lesions become arrested by mineral deposition
+in the outer layers of the lesion forming a highly
+mineralized surface zone, the diffusion of ﬂuids into the
+lesion is inhibited. Therefore, the rate of water loss and the
+evaporation dynamics can be related to changes in lesion
+structure and porosity. Changes in ﬂuorescence loss,13–15
+thermal emission, and SWIR reﬂectance10,11,16–20 have
+been investigated as methods for assessing lesion severity
+and activity. Normal enamel is transparent at SWIR
+wavelengths,
+whereas
+early
+demineralization
+causes
+increased SWIR reﬂectance due to scattering.21 Water in
+the pores at the surface of the lesion absorbs the incident
+SWIR light, particularly at wavelengths greater than
+1400 nm, reducing surface scattering and lesion con-
+trast.22,23 Loss of that water due to evaporation produces
+a marked increase in reﬂectivity and lesion contrast. In
+vivo studies have been reported utilizing the ﬂuorescence
+loss of white spot lesions on coronal surfaces15 and
+thermal imaging to assess root caries during dehydra-
+tion.24 This study is the ﬁrst clinical study to employ
+SWIR reﬂectance imaging during lesion dehydration to
+assess lesion activity.
+OCT can provide high resolution cross‐sectional
+images of lesion structure noninvasively.25,26 Polarization‐
+sensitive OCT (PS‐OCT) and cross polarization OCT
+(CP‐OCT) utilize the polarization properties of back‐
+reﬂected light to obtain additional contrast in OCT
+images and reduce the interference of the strong reﬂec-
+tions that occur at tooth surfaces.27–30 In vivo studies
+using CP‐OCT were able to accurately detect both early
+and severe occlusal lesions that were not visible on
+radiographs.31,32
+Several studies have demonstrated that CP‐OCT is
+able to monitor remineralization on tooth surfaces by
+detecting the formation of the highly mineralized TSL
+on the lesion surface and a decrease in the integrated
+reﬂectivity over the lesion depth (ΔR) after exposure to
+a remineralization solution.8,9,33 In vitro studies have
+shown that the presence of even a thin TSL of less than
+20 µm
+in
+CP‐OCT
+images
+reduces
+lesion
+activity
+signiﬁcantly.34 Removing the TSL on the lesions of
+extracted teeth in turn produces a corresponding rise in
+the permeability providing further conﬁrmation of the
+role of the TSL in arresting lesions.35 Methods have
+been developed to automatically measure the thickness
+of the TSL and ΔR from CP‐OCT images.36,37 In a
+previous in vivo study, CP‐OCT was used to monitor
+changes in the activity of smooth surface enamel lesions
+on permanent teeth.12 Even though the test subjects
+recruited were required to have active lesions based on
+conventional visual/tactile assessment, CP‐OCT imag-
+ing indicated that most of the lesions (62/63) had TSLs
+at baseline suggesting they were already arrested. CP‐
+OCT images indicated there was no signiﬁcant increase
+in lesion severity (ΔR) for those lesions measured after
+30 weeks providing further conﬁrmation they were
+indeed arrested. Primary teeth were chosen for this
+study to ensure that a higher percentage of the lesions
+would
+be
+initially
+active
+rather
+than
+arrested
+to
+demonstrate that changes in lesion severity and activity
+can be successfully monitored. In addition, lesions
+progress more rapidly in primary teeth than in perma-
+nent teeth due to the thinner layer of enamel requiring
+more frequent monitoring.
+MATERIALS AND METHODS
+Participant recruitment and procedures
+Study participants (n = 30 with 60 primary molars) aged
+6−10 were recruited from the UCSF Pediatric Dentistry
+clinic by the study investigators (UCSF IRB 18‐25927).
+One participant was lost to follow‐up after the ﬁrst visit
+and was excluded from the study. A total of 29
+participants (n = 29 with 58 primary molars) completed
+the study. Participants were required to have at least two
+primary teeth with suspected pit and ﬁssure caries.
+Lesions with obvious cavitation, existing restorations
+covering the pits and ﬁssures or severe enough to require
+restorative treatment were rejected.
+All 58 lesions were visually scored as a 1 in severity
+according to the International Caries Detection and
+Assessment System (ICDAS).38 CP‐OCT and SWIR
+imaging showed that 6 of the lesions were likely false
+positives since no demineralization was observed in the
+images at any of the three time‐points. Color images of
+each tooth were acquired at the initial visit and at month‐
+6 using a FocusDent MD740 1280 × 960‐pixel intraoral
+camera. Fluoride varnish was applied to all lesions at
+3‐month intervals over a period of 6‐months to promote
+remineralization. In addition, the participants were given
+a ﬂuoride toothpaste with 0.76% monoﬂuorophosphate
+and instructed to brush twice a day.
+2
+|
+ASSESSING LESION ACTIVITY WITH SWIR IMAGING
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Time‐resolved SWIR reﬂectance imaging at
+1400−1750 nm
+An image of the fully assembled SWIR reﬂectance
+imaging device is shown in Figure 1A along with
+diagrams of the 3D printed probe and it's components.
+The reﬂectance probe was designed in Fusion 360 from
+Autodesk and 3D printed using a Form 3 printer from
+Formlabs. The reﬂectance probe body consists of a
+right‐angle aluminum mirror to collect light from the
+occlusal surface and an attachment for the reﬂectance
+ﬁber.39 A low‐OH optical ﬁber of 1 mm diameter ﬁber is
+inserted into a cylindrical Teﬂon plug (3.2 × 40 mm).
+Light exiting the plug is directed toward the tooth
+occlusal surface. There is an air nozzle attached to the
+reﬂectance body near the mirror to prevent fogging of
+the mirror and dehydrate the lesion surface to assess
+lesion activity.10,11,20 The SWIR reﬂectance images were
+captured using a 640 × 480‐pixel micro‐SWIR camera
+(SU640CSX)
+measuring
+only
+32 x 32 x 28 mm
+from
+Sensors Unlimited. Two planoconvex antireﬂection
+coated lenses of 60 and 100 mm focal length along with
+an adjustable aperture were placed between the hand-
+piece and the InGaAs camera to provide a ﬁeld of view
+of 11 mm2 at the focus plane. SWIR light from a
+compact tungsten halogen lamp Model SLS201 from
+Thorlabs with a 1400 nm long‐pass ﬁlter illuminated the
+occlusal surfaces.
+Images were recorded at 4 Hz for the 30 s time
+window at 0 and 6‐months and imported into MATLAB
+for further analysis. Proﬁles of intensity versus time were
+extracted from the mean intensity of a 5 × 5‐pixel region
+of interest that was manually selected. Lesions were
+designated as active or arrested based on the presence of
+a transparent surface zone (TSL) from the corresponding
+CP‐OCT images. Unpaired t‐tests were used to compare
+SWIR data between suspected arrested and active
+lesions.
+CP‐OCT
+The CP‐OCT system used for this study was the Model
+IVS‐3000‐CP purchased from Santec. It operates at a
+wavelength of 1321 nm with a bandwidth of 111 nm
+(11.4 µm axial‐resolution) and it is capable of acquiring
+complete tomographic images 6 x 6 x 7 mm in approxi-
+mately 3 s. Images of the CP‐OCT handpiece are shown
+in Figure 1B. It has been used for multiple in vivo caries
+imaging studies.12,30,32
+An appliance made of autoclavable Dental SG resin
+printed using a 3D printer, Formlabs 2 was placed on
+the distal end of the OCT scanning handpiece and the
+handpiece was covered with polyethylene ﬁlm for
+infection control. Air at 10 psi was connected to the
+FIGURE 1
+(A) Image of the fully assembled SWIR imaging
+handpiece that consists of three 3D printed autoclavable attachments, a
+1 mm in diameter optical ﬁber for delivery of the SWIR light, an air
+nozzle, an assembly of two lenses, and an adjustable iris that is attached
+to the miniature InGaAs camera. Labeled diagrams of the probe body
+and two additional 3D printed components are also shown, where (1) is
+a 3D attachment that snaps into the probe body and holds the optical
+ﬁber and the Teﬂon pug that is inserted into the opening at (2), air
+enters the nozzle at (3), and exits at (4). The mirror attaches at (5) and
+another 3D printed component ﬁts over the end of the probe body and
+makes contact with the tooth surface and functions as a bite block (6).
+Images of the CP‐OCT handpiece are shown in (B) with an attached 3D
+printed autoclavable appliance with air nozzle. CP‐OCT, cross
+polarization optical coherence tomography; SWIR, short wavelength
+infrared imaging.
+ZHU ET AL.
+|
+3
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+appliance to prevent fogging of the imaging window.
+Images were imported into Dragonﬂy from ORS soft-
+ware for coregistration and analysis. A 3D Median ﬁlter
+was applied to reduce speckle noise in the images
+followed by 3D image registration to superimpose the
+lesion areas for all three visits. Images from the same
+sample at different visits also went through intensity
+normalization before quantitative measurement. The
+integrated reﬂectivity over the lesion depth (ΔR) which
+best represents the lesion severity was calculated by
+positioning a box within the lesion dimensions, calcu-
+lating the mean pixel intensity in the box and multi-
+plying by the lesion depth. Lesion depth (Ld) was
+measured on the registered lesion areas at the position
+of the maximum depth of the lesion. Lesion activity was
+evaluated as binary (arrested or active) based on
+detection of a TSL after image‐processing. The TSL
+was measured along a ruler drawn at the center of the
+lesion orthogonal to the surface. All arrested lesions
+have TSLs measured as the distance between two
+adjacent intensity peaks (surface reﬂection from top of
+TSL to lesion underneath) measured after ﬁltering.
+Statistical comparisons between suspected active and
+arrested lesion areas were performed in GraphPad
+Prism. RM‐ANOVA with Tukey−Kramer multiple
+comparisons test was used to compare the CP‐OCT
+data at 0, 3, & 6‐months.
+RESULTS
+Out of the 30 test subjects recruited, 29 test subjects
+completed the study. Suspected lesions on 2 teeth were
+monitored on each test subject. Six of the remaining 58
+lesions were determined to be sound since no lesions were
+visible in the CP‐OCT images at any time points. A
+further 10 lesions were disqualiﬁed due to the inability to
+coregister the CP‐OCT lesions at all three time‐points
+yielding an CP‐OCT sample size of 42 lesions. Visual
+monitoring indicated no changes in ICDAS scores for
+any of the lesions after 6‐months.
+Color
+and
+CP‐OCT
+images
+extracted
+from
+2
+suspected active lesions, one that remained active and
+progressed further in depth and severity and a second
+lesion that became arrested are shown in Figure 2. The
+ﬁrst lesion shows an increase in Ld and ΔR over 6
+months with no TSL visible at the surface. CP‐OCT
+images show a continual advance of the lesion in depth
+and area over time. In the second lesion example, a TSL
+is clearly visible at 3‐months and after 6‐months and the
+depth of the lesion has not appeared to increase
+signiﬁcantly suggesting that it progressed from an active
+to arrested state (became arrested). The color images in
+Figure 2 show no changes in appearance between 0 and
+6‐months for either lesion.
+Three parameters were calculated for each of the 42
+lesions at each of the three time points from the CP‐OCT
+data. The lesion depth in microns (Ld), the lesion
+reﬂectivity integrated over the lesion depth (ΔR), and
+the thickness of the transparent surface zone (TSL) in
+microns. The mean ± SD for each measurement are
+plotted in Figure 3. There were signiﬁcant increases
+(p < 0.05) in the mean Ld and ΔR over the 6‐month
+period for the 42 lesions. This suggests that most of the
+42 lesions remained active and progressed in severity
+over the 6‐month period. There were large increases in
+the mean TSL thickness for each 3‐month period
+indicating that several of the lesions did indeed become
+arrested or remained arrested. At 6‐months 14 of the 42
+lesions manifested a distinct TSL indicating they were
+arrested. Six of the lesions had a TSL at month‐0 and all
+6 retained it over 6‐months. The mean TSL thickness
+increased from 21 ± 25 (baseline month‐0) to 115 ± 51
+(month‐6). Eight additional lesions formed new TSL's
+over 6‐months and the TSL thickness increased signiﬁ-
+cantly for the 6 arrested lesions from 49 ± 12 (month‐0)
+to 150 ± 43 (month‐6). Of the 14 lesions that had
+measurable TSLs at 6‐months all 14 showed decreases
+in lesion severity (ΔR) from 0 to 6‐months.
+Analysis of the SWIR reﬂectance images at 0 and
+6‐months was more difﬁcult than anticipated and only 48
+of
+the
+116
+acquired
+videos
+were
+processed.
+Two
+parameters were calculated from the acquired time
+versus intensity curves, the change in intensity with
+drying (ΔI) and the initial delay before the rise in
+reﬂectivity (DEL). The 48 SWIR videos were separated
+into two groups deﬁned as active and arrested based on
+the absence or presence of a TSL on the lesion. Due to
+the low number of lesions with TSLs, month‐0 and 6
+SWIR reﬂectance images were pooled together to yield 8
+arrested videos and 40 active videos. There was a large
+and signiﬁcant difference (p < 0.05) in the mean +/− SD
+for (DEL) 16 ± 8.9 versus 4.3 ± 5.1 s for active versus
+arrested lesions. For active lesions (ΔI) was higher,
+18 ± 11 versus 13 ± 11 for active versus arrested lesions
+but the difference was not signiﬁcant, (p > 0.05).
+Figure 4A shows time‐sequenced SWIR images of
+matched areas of the occlusal surface recorded during
+the 30 s of drying at 0 and 6‐months. There is a very
+small lesion in the occlusal pit that was active at
+baseline and arrested at month‐6 that can be seen in the
+CP‐OCT images shown in Figure 4B along with color
+pictures of the area imaged in the SWIR. Proﬁles of the
+SWIR reﬂectance intensity are shown in Figure 4C
+extracted from the lesion area and a peripheral sound
+area during drying. The “active” lesion (month 0) shows
+a large delay of more than 20 s before a rapid rise in
+reﬂectivity as expected for an active lesion. The arrested
+lesion (month‐0) manifests almost no delay before a
+more gradual rise in reﬂectivity as expected for an
+arrested lesion. However, since the rise in reﬂectivity
+occurs very late for the month‐0 curve it is unclear
+whether all the changes in that curve were captured in
+the 30 s that were recorded.
+4
+|
+ASSESSING LESION ACTIVITY WITH SWIR IMAGING
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+DISCUSSION
+This study was successful in recruiting a majority of test
+subjects with active lesions by choosing recently erupted
+primary teeth. Even though only a small number of those
+lesions that were initially active became arrested after 6
+months with “lesion arrest” deﬁned as the formation of a
+TSL
+measurable
+using
+CP‐OCT,
+the
+number
+was
+sufﬁcient to show a statistically signiﬁcant increase
+(p < 0.0001) in the TSL thickness over time. Comparison
+of this study consisting of mainly “active” lesions in
+which no TSL was present at baseline (36/42) with a
+previous study on permanent teeth where most lesions
+(62/63) had TSLs at baseline and there were no
+signiﬁcant changes in lesion severity over 30‐weeks12
+provides further conﬁrmation that the TSL thickness is a
+key objective indicator of lesion activity. Furthermore,
+the TSL thickness provides a measure of the lesion
+activity that can be made at a single time‐point. The
+mean TSL thickness for the 63 lesions at month‐6 from
+the previous study was 184 ± 56 compared to 115 ± 51 for
+this
+study.
+The
+thickness
+was
+signiﬁcantly
+higher
+FIGURE 2
+(A) Color and raw CP‐OCT images of a suspected active lesion at 0, 3, and 6‐months that remains active and progresses in severity.
+The position of the lesion in the color images is indicated by the yellow boxes. The lesion (L) is indicated in the CP‐OCT b‐scans at each time‐point
+and the white bar represents a distance of 500 μm. No TSL was detected for this lesion. (B) Color and CP‐OCT images of a suspected active lesion at
+0, 3, and 6‐months that appears to become arrested with the formation of a TSL at 3‐months. CP‐OCT, cross polarization optical coherence
+tomography; TSL, transparent surface layer.
+ZHU ET AL.
+|
+5
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+(p < 0.0001, unpaired t‐test) for the lesions on the
+permanent teeth in the previous study as would be
+expected for lesions that had a greater time to undergo
+remineralization. This is consistent with previous studies
+of age‐related differences in lesion structure based on
+histopathology.3
+These two studies also show the poor reliability of
+visual/tactile indicators of lesion activity and severity
+such as color and texture. Active lesions were a
+recruitment criterion for both studies and out of the
+111 primary and permanent teeth recruited for the two
+clinical studies only 37 were active according to CP‐OCT
+imaging, 6 were sound and 69 were arrested and those 76
+sites manifested no further change increase in severity
+over 6‐months while the other suspected active lesions
+either progressed in severity (n = 28) or became arrested
+(n = 7).
+Moreover,
+visual
+monitoring
+with
+ICDAS
+indicated
+no
+changes
+in
+any
+of
+the
+lesions
+over
+6‐months for either study further conﬁrming the low
+sensitivity of conventional visual monitoring.
+In this study, there was a signiﬁcant increase of the
+lesion depth (Ld) and the integrated reﬂectivity (ΔR)
+over the 6‐month period suggesting that most of the
+lesions did not become arrested and actually progressed
+in severity. In vitro studies suggest that ΔR should
+decrease if all of the lesions become arrested and undergo
+major remineralization.8,9,33 As mineral is deposited into
+the lesion due to remineralization the overall reﬂectivity
+of the lesion decreases yielding a net decrease in ΔR.
+However, we observed TSL's in only 14 of the 42 lesions
+at 6‐months indicating that only 1/3 of the lesions
+underwent enough remineralization to appear arrested.
+Therefore, the increases in ΔR and Ld are consistent with
+the majority of lesions remaining active during the
+duration of the study.
+This was the ﬁrst clinical study in which SWIR
+reﬂectance imaging was employed to assess lesion activity.
+Based on in vitro studies it was anticipated that (ΔI) the
+overall change in intensity would be signiﬁcantly higher
+for active lesions versus arrested lesions.10,34,40,41 How-
+ever, the time required for drying was much higher than
+encountered for in vitro studies and many of the active
+lesions did not sufﬁciently dry in 30 s.41 This inﬂuenced
+the ability to observe the full change in intensity for
+accurate calculation of (ΔI). For example, in Figure 4C
+the rise in intensity did not occur until after 20 s so it is
+unlikely that the ΔI calculated from that curve is reliable.
+The dehydration curves were also much noisier than
+expected making curve ﬁtting difﬁcult. These problems
+can be addressed in future studies by further increasing the
+air pressure and by further optimization of the air ﬂow
+geometry in the probe to better penetrate the occlusal ﬁts
+and ﬁssures. The delay in the onset of the intensity change
+(DEL) appeared to be a better indicator of lesion activity
+than ΔI for this study. This onset delay (DEL) was
+ignored in early in vitro studies and was only recently
+discovered to be an indicator of lesion activity.10,34,40,41
+For active lesions there are exposed pores in the outer
+layer of the lesion, when those pores are ﬁlled with ﬂuid
+they absorb the SWIR light lowering the reﬂectivity from
+the lesion. When the ﬂuid is removed from the pores
+FIGURE 3
+Plots of the measured mean ± SD of the lesion depth (Ld)
+in microns, integrated reﬂectivity over the lesion depth (ΔR) in arbitrary
+units (n = 42) and the transparent surface zone thickness (TSL) in microns
+(n = 14) at 0, 3, and 6‐months. Only the 14 lesions that had TSLs at 6‐
+months are included for the TSL thickness. Bars containing the same color
+in each plot are statistically similar, RM‐ANOVA with Tukey−Kramer
+multiple comparison test with (p > 0.05). TSL, transparent surface layer.
+6
+|
+ASSESSING LESION ACTIVITY WITH SWIR IMAGING
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+during drying the reﬂectivity rises. Arrested lesions have
+an outer highly mineralized TSL of low porosity with
+minimal ﬂuid present between the lesion body and the
+surface so there is minimal delay before there is a rise in
+reﬂectivity during drying.41 It appears that this onset delay
+(DEL) is a good indicator of lesion activity that can be
+easily measured in vivo. It is desirable to be able to extract
+multiple indicators of lesion activity from the SWIR
+reﬂectivity versus time curves during drying as has been
+possible in in vitro studies where the curves were ﬁt to
+extract additional information about the rate of increase
+in the reﬂectivity,41 not just DEL and ΔI as was done in
+this study and we plan on further development of the
+SWIR reﬂectance imaging handpiece for more rapid
+dehydration of the lesions.
+Both OCT and SWIR imaging were done in contact
+with the tooth surface to minimize motion artifacts. Even
+so, several scans had to be repeated due to excessive
+movement during scanning for both OCT and SWIR
+reﬂectance imaging. In the case of SWIR imaging many
+of the image frames had to be corrected due to slight
+movement during the 30 s.
+This study was not intended to be a clinical trial of
+ﬂuoride varnish, therefore a non‐ﬂuoride varnish control
+group was not used. Fluoride varnish was applied
+because it was the standard of care for patients of high
+caries risk and it was likely to increase the probability
+that more active lesions would undergo remineralization
+and become arrested.
+CONCLUSION
+This was the ﬁrst clinical study to monitor changes in
+lesion structure and activity in primary teeth over time in
+vivo using CP‐OCT and SWIR Imaging. The formation
+of a TSL at the surface of active lesions indicative of
+lesion arrest was observed using CP‐OCT on multiple
+lesions. In addition, this was the ﬁrst clinical study to use
+SWIR reﬂectance imaging to show differences in the
+dehydration
+dynamics
+between
+active
+and
+arrested
+lesions.
+ACKNOWLEDGMENTS
+The authors would like to acknowledge the support of
+NIDCR/NIH grant R01‐DE027335 and the contribu-
+tions of Cynthia Darling, Jacob Simon, Nai‐Yuan
+Chang, and Donald Curtis.
+FIGURE 4
+SWIR reﬂectance and CP‐OCT images of another suspected active lesion that appears to become arrested at 6‐months. (A) Time‐
+sequence SWIR images of the lesion area from 0 to 30 s at 0 and 6‐months are shown during drying. Lesion area is in yellow box and sound area is in
+the blue box. (B) CP‐OCT scans at 0 and 6‐months show a small pit and ﬁssure lesion (L), the white bar represents 500 μm. Color images of the
+occlusal surface at 0 and 6‐months are inset in each image and the lesion area monitored by SWIR is indicated by the yellow box. (C) The SWIR
+reﬂectance intensity is plotted between with time at 0 and 6‐months at the lesion position shown by the small yellow boxes inset in the SWIR images
+at 30 s (yellow) and for adjacent sound areas (blue). CP‐OCT, cross polarization optical coherence tomography; SWIR, short wavelength infrared
+imaging.
+ZHU ET AL.
+|
+7
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+CONFLICT OF INTEREST STATEMENT
+The authors declare no conﬂict of interest.
+ORCID
+Daniel Fried
+https://orcid.org/0000-0002-5327-2558
+REFERENCES
+1.
+Fejerskov O, Nyvad B, Kidd E, editors. Dental Caries: the
+Disease and its Clinical Management. Wiley Blackwell; 2015.
+2.
+ten Cate JM, Arends J. Remmeralization of artiﬁcial enamel
+lesions in vitro. Caries Res. 1977;11(5):277–86.
+3.
+Kidd EA. The histopathology of enamel caries in young and old
+permanent teeth. Br Dent J. 1983;155(6):196–8.
+4.
+Penning C, van Amerongen JP, Seef RE, ten Cate JM. Validity of
+probing for ﬁssure caries diagnosis. Caries Res. 1992;26:445–449.
+5.
+Angmar‐Mansson B, al‐Khateeb S, Tranaeus S. Caries diagnosis.
+AADS Proc. 1998;62(10):771–80.
+6.
+Hume WR. Need for change in dental caries diagnosis. In:
+Stookey GK, editor. Early Detection of Dental Caries, Annual
+Indiana Conference; Early Detection of Dental Caries. Indiana
+University Press; 1996. p. 1–10.
+7.
+Kidd EAM, Ricketts DNJ, Pitts NB. Occlusal caries diagnosis: a
+changing challenge for clinicians and epidemiologists. J Dent.
+1993;21:323–31.
+8.
+Jones RS, Fried D. Remineralization of enamel caries can
+decrease optical reﬂectivity. J Dent Res. 2006;85(9):804–8.
+9.
+Kang H, Darling CL, Fried D. Nondestructive monitoring of the
+repair of enamel artiﬁcial lesions by an acidic remineralization
+model using polarization‐sensitive optical coherence tomography.
+Dent Mater. 2012;28(5):488–94.
+10.
+Lee RC, Darling CL, Fried D. Assessment of remineralization via
+measurement of dehydration rates with thermal and near‐IR
+reﬂectance imaging. J Dent. 2015;43:1032–42.
+11.
+Lee RC, Staninec M, Le O, Fried D. Infrared methods for
+assessment of the activity of natural enamel caries lesions. IEEE J
+selected top quant. Electronics. 2014;22(3):6803609.
+12.
+Chan KH, Tom H, Lee RC, Kang H, Simon JC, Staninec M, et al.
+Clinical monitoring of smooth surface enamel lesions using CP‐
+OCT
+during
+nonsurgical
+intervention.
+Lasers
+Surg
+Med.
+2016;48(10):915–23.
+13.
+Stookey GK. Quantitative light ﬂuorescence: a technology for
+early monitoring of the caries process. Dent Clin North Am.
+2005;49(4):753–70.
+14.
+Ando M, Stookey GK, Zero DT. Ability of quantitative light‐
+induced ﬂuorescence (QLF) to assess the activity of white spot
+lesions during dehydration. Am J Dent. 2006;19(1):15–8.
+15.
+Ando
+M,
+Ferreira‐Zandoná
+AG,
+Eckert
+GJ,
+Zero
+DT,
+Stookey GK. Pilot clinical study to assess caries lesion activity
+using quantitative light‐induced ﬂuorescence during dehydration.
+J Biomed Opt. 2017;22(3):035005.
+16.
+Kaneko K, Matsuyama K, Nakashima S. Quantiﬁcation of early
+carious
+enamel
+lesions
+by
+using
+an
+infrared
+camera.
+In:
+Stookey GK, editor. Annual Indiana Conference, Early detection
+of Dental Caries II. Indiana University; 1999. p. 83–99.
+17.
+Zakian CM, Taylor AM, Ellwood RP, Pretty IA. Occlusal caries
+detection by using thermal imaging. J Dent. 2010;38(10):788–95.
+18.
+Usenik P, Bürmen M, Fidler A, Pernuš F, Likar B. Near‐infrared
+hyperspectral imaging of water evaporation dynamics for early
+detection of incipient caries. J Dent. 2014;42(10):1242–7.
+19.
+Lee C, Lee D, Darling CL, Fried D. Nondestructive assessment of
+the severity of occlusal caries lesions with near‐infrared imaging at
+1310 nm. J Biomed Opt. 2010;15(4):047011.
+20.
+Lee RC, Darling CL, Fried D. Activity assessment of root caries
+lesions
+with
+thermal
+and
+near‐infrared
+imaging
+methods.
+J Biophotonics. 2016;10(3):433–45.
+21.
+Darling CL, Huynh GD, Fried D. Light scattering properties of
+natural and artiﬁcially demineralized dental enamel at 1310‐nm.
+J Biomed Opt. 2006;11(3):034023.
+22.
+Chung S, Fried D, Staninec M, Darling CL. Multispectral near‐
+IR reﬂectance and transillumination imaging of teeth. Biomed
+Opt Express. 2011;2(10):2804–14.
+23.
+Simon JC, Chan KH, Darling CL, Fried D. Multispectral near‐IR
+reﬂectance imaging of simulated early occlusal lesions: variation
+of lesion contrast with lesion depth and severity. Lasers Surg Med.
+2014;46(3):203–15.
+24.
+Yang V, Zhu Y, Curtis D, Le O, Chang NYN, Fried WA, et al.
+Thermal imaging of root caries in vivo. J Dent Res. 2020;99(13):
+1502–8.
+25.
+Colston BW, Everett MJ, Da Silva LB, Otis LL, Stroeve P,
+Nathel H. Imaging of hard and soft tissue structure in the oral
+cavity by optical coherence tomography. Appl Opt. 1998;37(19):
+3582–5.
+26.
+Feldchtein FI, Gelikonov GV, Gelikonov VM, Iksanov RR,
+Kuranov RV, Sergeev AM, et al. In vivo OCT imaging of hard
+and soft tissue of the oral cavity. Opt Express. 1998;3(3):
+239–51.
+27.
+Jones RS, Darling CL, Featherstone JDB, Fried D. Imaging
+artiﬁcial caries on the occlusal surfaces with polarization‐sensitive
+optical coherence tomography. Caries Res. 2006;40(2):81–9.
+28.
+Fried D, Xie J, Shaﬁ S, Featherstone JDB, Breunig TM, Le C.
+Imaging caries lesions and lesion progression with polarization
+sensitive optical coherence tomography. J Biomed Opt. 2002;7(4):
+618–27.
+29.
+Louie T, Lee C, Hsu D, Hirasuna K, Manesh S, Staninec M, et al.
+Clinical assessment of early tooth demineralization using polar-
+ization sensitive optical coherence tomography. Lasers Surg Med.
+2010;42:898–905.
+30.
+Nee A, Chan K, Kang H, Staninec M, Darling CL, Fried D.
+Longitudinal
+monitoring
+of
+demineralization
+peripheral
+to
+orthodontic brackets using cross polarization optical coherence
+tomography. J Dent. 2014;42(5):547–55.
+31.
+Staninec M, Douglas SM, Darling CL, Chan K, Kang H, Lee RC,
+et al. Nondestructive clinical assessment of occlusal caries lesions
+using near‐IR imaging methods. Lasers Surg Med. 2011;43(10):
+951–9.
+32.
+Simon JC, Kang H, Staninec M, Jang AT, Chan KH, Darling CL,
+et al. Near‐IR and CP‐OCT imaging of suspected occlusal caries
+lesions. Lasers Surg Med. 2017;49(3):215–24.
+33.
+Jones RS, Darling CL, Featherstone JDB, Fried D. Reminer-
+alization of in vitro dental caries assessed with polarization‐
+sensitive
+optical
+coherence
+tomography.
+J
+Biomed
+Opt.
+2006;11(1):014016.
+34.
+Chang NN, Jew JM, Fried D. Lesion dehydration rate changes
+with the surface layer thickness during enamel remineralization.
+Proc SPIE Int Soc Opt Eng. 2018;10473:1–7.
+35.
+Liu H, Chang NY, Gao W, Fried D. Infrared imaging conﬁrms
+the role of the transparent surface zone in arresting dental caries.
+Proc SPIE Int Soc Opt Eng. 2021;11627:1–10.
+36.
+Le MH, Darling CL, Fried D. Automated analysis of lesion depth
+and
+integrated
+reﬂectivity
+in
+PS‐OCT
+scans
+of
+tooth
+demineralization. Lasers Surg Med. 2010;42(1):62–8.
+37.
+Chan KH, Chan AC, Fried WA, Simon JC, Darling CL,
+Fried D. Use of 2D images of depth and integrated reﬂectivity to
+represent the severity of demineralization in cross‐polarization
+optical coherence tomography. J Biophotonics. 2015;8(1‐2):
+36–45.
+38.
+Pitts N. “ICDAS”—an international system for caries detection
+and assessment being developed to facilitate caries epidemiology,
+research and appropriate clinical management. Community Dent
+Health. 2004;21(3):193–8.
+39.
+Fried WA, Zhu Y, Yang V, Chang NY, Fried DA. SWIR imaging
+handpiece for the clinical assessment of lesion activity via
+8
+|
+ASSESSING LESION ACTIVITY WITH SWIR IMAGING
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+dehydration. Preclinical assessment. Proc SPIE Int Soc Opt Eng.
+2020;11217:1–7.
+40.
+Lee RC, Kang H, Darling CL, Fried D. Automated assessment of
+the remineralization of artiﬁcial enamel lesions with polarization‐
+sensitive optical coherence tomography. Biomed Opt Express.
+2014;5(9):2950–62.
+41.
+Tressel J, Abdelaziz M, Fried D. Dynamic SWIR imaging near
+the 190 nm water absorption band for caries lesion diagnosis.
+J Biomedical Opt. 2021;26(5):056006.
+How to cite this article: Zhu Y, Kim J, Lin B, Fried
+D. Monitoring lesion activity on primary teeth
+with CP‐OCT and SWIR reﬂectance imaging.
+Lasers Surg Med. 2023;1–9.
+https://doi.org/10.1002/lsm.23677
+ZHU ET AL.
+|
+9
+ 10969101, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/lsm.23677 by University Of California, San, Wiley Online Library on [29/05/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+

@@ -1,0 +1,1015 @@
+Amortizing Pragmatic Program Synthesis with Rankings
+Yewen Pu1, Saujas Vaduguru2, Priyan Vaithilingam3, Elena Glassman3, Daniel Fried2
+1 Autodesk Research, 2 Carnegie Mellon University, 3 Harvard University
+yewen.pu@autodesk.com, svadugur@cs.cmu.edu, pvaithilingam@g.harvard.edu
+glassman@seas.harvard.edu, dfried@andrew.cmu.edu
+Abstract
+In program synthesis, an intelligent system takes in a set of
+user-generated examples and returns a program that is logi-
+cally consistent with these examples. The usage of Rational
+Speech Acts (RSA) framework has been successful in build-
+ing pragmatic program synthesizers that return programs
+which – in addition to being logically consistent – account
+for the fact that a user chooses their examples informatively.
+However, the computational burden of running the RSA al-
+gorithm has restricted the application of pragmatic program
+synthesis to domains with a small number of possible pro-
+grams. This work presents a novel method of amortizing the
+RSA algorithm by leveraging a global pragmatic ranking –
+a single, total ordering of all the hypotheses. We prove that
+for a pragmatic synthesizer that uses a single demonstration,
+our global ranking method exactly replicates RSA’s ranked
+responses. We further empirically show that global rankings
+effectively approximate the full pragmatic synthesizer in an
+online, multi-demonstration setting. Experiments on two pro-
+gram synthesis domains using our pragmatic ranking method
+resulted in orders of magnitudes of speed ups compared to
+the RSA synthesizer, while outperforming the standard, non-
+pragmatic synthesizer.
+Introduction
+For intelligent systems to be accessible to end users, it is im-
+portant that they can infer the user’s intent under ambiguity.
+Imagine a person asking an AI assistant to generate a regular
+expression that matches the string (123)456-7890. It would
+be unhelpful if the AI assistant simply returned the regular
+expression Σ∗ – the expression that matches all strings –
+although it is technically correct. The rational speech acts
+model (RSA) of pragmatics (Frank and Goodman 2012)
+gives an algorithm for resolving ambiguities by modeling
+the user as choosing examples that are informative to the
+system, by using recursive Bayesian reasoning. Given sev-
+eral competing responses, for instance regex1 = 3.3.-4. and
+regex2 = Σ∗, RSA would reason that it is more likely that an
+informative user would use the utterance “(123)456-7890”
+to describe regex1 over regex2, allowing it to prefer the in-
+tended regex. Recent works (Pu et al. 2020; Vaithilingam,
+Pu, and Glassman 2023) have leveraged the RSA algorithm
+to build pragmatic program synthesizers – interactive sys-
+tems that take in user given examples (e.g. strings) and re-
+turn programs (e.g. regexes) that are both logically consis-
+Figure 1: Rather than using the RSA algorithm directly in a
+synthesizer (left), our approach uses the RSA algorithm to
+generate a simulated communication dataset of partial rank-
+ings. We then distill the dataset of partial rankings into a
+global pragmatic ranking – a single, total ordering of all pro-
+grams. This global ranking is then used to build a fast prag-
+matic synthesizer, which is both effective at communicating
+with end-users and faster than the RSA synthesizer.
+tent and take into account that the users tend to select infor-
+mative examples.
+A known limitation of the RSA algorithm is its inference
+speed – exact inference in RSA needs to marginalize across
+all possible examples (e.g. all strings) and hypotheses (e.g.
+all regexes) multiple times – making it difficult to scale to
+domains with a large number of utterances and hypotheses.
+This drawback is significant in building interactive systems,
+in which the users expect the system to respond in real-
+time. Prior works in scaling up RSA computation (Monroe
+et al. 2017; Andreas and Klein 2016) have largely focused
+on sampling and re-ranking, curbing RSA’s computation to
+a small subset of hypotheses and utterances. In this work,
+we show a simple yet effective way of amortizing RSA via
+a global ranking – a total ordering of hypotheses that is held
+constant across every possible set of examples. At training
+time, the expensive RSA algorithm is used to generate train-
+ing data in the form of partial rankings, and the global rank-
+ing is fitted to be consistent with this partial ranking as much
+as possible, and cached for use at interaction time (Figure 1).
+Then, at testing / interaction time, the global ranking is used
+arXiv:2309.03225v1  [cs.PL]  1 Sep 2023
+to disambiguate different hypotheses, without the expensive
+RSA overhead. For instance, the regex Σ∗ would be ranked
+very low in the global ranking, making it unlikely to be er-
+roneously chosen compared to other hypotheses.
+This work makes the following contributions. First, we
+prove that in the case of single demonstration RSA with
+boolean lexicons, studied in works such as (Mukherjee,
+Hawkins, and Fan 2019; Vogel et al. 2013; Monroe and Potts
+2015; Smith, Goodman, and Frank 2013), there always ex-
+ists a single global ranking that perfectly models the RSA
+algorithm. Second, we show that in the case of interactive
+RSA – where the user provides examples one after another
+– studied in (Cohn-Gordon, Goodman, and Potts 2018b;
+Pu et al. 2020; Vaithilingam, Pu, and Glassman 2023), a
+global ranking gives a close approximation for the RSA al-
+gorithm in practice. We show that ranking enables scaling
+(Vaithilingam, Pu, and Glassman 2023) to a larger regex do-
+main, and we conduct a small user study which confirms
+that end-users can interact effectively with a ranking based
+program synthesizer. Further, we conduct a simulated user
+study by replaying the human interactive synthesis data from
+(Pu et al. 2020) and (Vaithilingam, Pu, and Glassman 2023),
+finding that our pragmatic ranking method resulted in orders
+of magnitudes of speed ups compared to the RSA synthe-
+sizer, while outperforming the non-pragmatic synthesizer.
+Background and Motivation
+In this section, we provide background on a reference game
+framework of program synthesis, which affords building a
+pragmatic synthesizer that can infer a user’s intended pro-
+gram from few examples (Pu et al. 2020). We illustrate this
+framework using a toy example from a small version of the
+regular expression domain of this work. We then give an in-
+formal overview of how one can use a global pragmatic or-
+der, the contribution of this paper, to make pragmatic synthe-
+sis scalable to more complex domains, such as unrestricted
+regular expressions.
+Figure 2: A boolean lexicon for a small reference game of
+regular expressions. The rows are the utterances (strings)
+and the columns are hypotheses (regexes), and each entry
+denotes if a string is consistent with a regex.
+Synthesis as a Reference Game
+Consider the problem where a user gives a few example
+strings to a synthesis system, and asks the synthesizer to find
+a regular expression that can match them. This process can
+be modeled as a reference game, where a speaker (the user)
+chooses a few utterances (strings) to give to the listener (the
+synthesizer), with the intention that the listener can infer the
+correct hypothesis (regular expression). This reference game
+is characterized by the lexicon M, a boolean matrix of 1s
+and 0s (Figure 2). In M, each row corresponds to an ut-
+terance and each column corresponds to a hypothesis, and
+1s indicating consistency of its corresponding utterance and
+a hypothesis: whether the regular expression matches the
+string. As we can see, a given utterance (such as 001) may
+be consistent with multiple hypotheses (0+{1}, 0{2}1+, and
+0+1*).
+A Literal Program Synthesizer
+Figure 3: Given the utterance 01, a naive synthesizer L0 will
+predict 0+1{1} and 0+1* as equally probable
+How might we build a system that takes an utterance (say
+01) and produces the intended hypothesis 0+1{1}? As 01
+is consistent with multiple hypotheses (0+1{1} and 0+1*), a
+naive strategy is to treat these two as equally likely. A syn-
+thesizer built this way is a literal listener L0 (Bergen, Levy,
+and Goodman 2016), which we can construct by normal-
+izing the rows of the matrix M, resulting in a probability
+distribution over hypotheses W given utterances u.
+L0(w|u) =
+M[u, w]
+P
+w′ M[u, w′]
+The result of this normalization is shown in Figure 3.1 As we
+can see, given the utterance 01, this listener predicts an equal
+probability of 0+1{1} and 0+1* being the intended program.
+However, as Pu et al. (2020) find, end users do not com-
+municate effectively with L0, requiring longer interactions
+compared to a model that reasons about how users choose
+utterances informatively.
+A Pragmatic Program Synthesizer
+A key insight to improving on the literal synthesizer is
+to consider that a user is cooperatively choosing an utter-
+ance to be informative about the intended program to the
+1Note that in synthesizers for more complex domains, we can-
+not explicitly enumerate the entire lexicon M, which may be ex-
+tremely large or infinite, and have to generate and score programs
+dynamically.
+Figure 4: The RSA framework performs alternating normal-
+ization of the literal listener (L0) distribution in Figure 3 to
+first derive a pragmatic speaker, S1, which models how a
+user chooses utterances informatively, and then a pragmatic
+listener, L1, which models how the synthesizer should infer
+programs assuming an informative user. Given the string 01,
+L1 identifies 0+1{1} as the most probable intended program.
+synthesizer. The Rational Speech Acts (RSA) framework
+models this informative choice of utterances using recur-
+sive Bayesian reasoning (Frank and Goodman 2012). By
+reasoning about why a speaker(user) might have chosen a
+particular utterance(examples), rather than possible alterna-
+tives, the listener(synthesizer) can disambiguate the hypoth-
+esis(program) to which the speaker was referring. Formally,
+the RSA framework produces a chain of alternating listen-
+ers and speakers beginning with the L0 model above, each
+of which reasons about the previous agent in the chain.
+S1(u|w) =
+L0(w|u)
+P
+u′ L0(w|u′)
+L1(w|u) =
+S1(u|w)
+P
+w′ S1(u|w′)
+Applying this framework amounts to normalizing the
+columns of the L0 matrix to obtain S1, the normalize the
+rows of S1 to obtain a pragmatic listener (synthesizer), L1.
+The result is shown in Figure 4. As we can see, given the ut-
+terance 01, this listener prefers 0+1{1} over 0+1*, reflecting
+the reasoning that if the user wanted to refer to 0+1*, they
+might have provided an example that highlights the possibil-
+ity of no 1s in the string.
+Reference Games with Multiple Utterances
+So far, we have considered the problem of inferring a hy-
+pothesis based on the speaker producing a single utter-
+ance. However, in complex domains such as regular ex-
+pressions, the users will have to clarify their intent interac-
+tively, by giving a sequence of utterances in multiple turns
+u = u1, u2, . . . , un. The synthesizer must infer the intended
+program after every turn. This is an instance of incremen-
+tal RSA (Cohn-Gordon, Goodman, and Potts 2018b), which
+0
+1
+0.5
+0.5
+0
+1
+0+1{1}
+0+1*
+0
+001
+00
+0 × 0
+0.4 × 0.21
+1 × 0.4
+0.2 × 0.14
+0 × 0
+0.4 × 0.43
+0+1{1}
+0+1*
+0
+001
+00
+0
+1
+0.93
+0.07
+0
+1
+0+1{1}
+0+1*
+0
+001
+00
+Figure 5: An incremental pragmatic listener that identifies
+0+1{1} as the most probable intended program given a sec-
+ond utterance 001. The S1 distribution for this utterance
+builds on the distribution computed in Figure 4. The utter-
+ances inconsistent with the first utterance are omitted.
+models the informative speaker S1 as follows:
+S1(u|w) = S1(u1, u2, . . . , un|w)
+=
+n
+Y
+i=1
+S1(ui|w, u1, . . . , ui−1)
+=
+n
+Y
+i=1
+L0(w|u1, . . . , ui)
+P
+w′ L0(w′|u1, . . . , ui)
+The synthesizer L1(w|u) is defined recursively on top of S1
+in the same manner as its single-utterance case. The result of
+the RSA computation is shown in figure 5. As we can see,
+providing an additional utterance 001 after the first utter-
+ance 01 makes the incremental L1 listener prefer the correct
+hypothesis 0+1{1} even more.
+The Issue: RSA is Slow
+In computing L1 using RSA, it needs at worst case O(|W|)
+calls to S1. Each call to compute S1 requires O(|U|) calls to
+L0, which in turn requires O(|W|) operations to determine
+a set of consistent programs. In small domains, the results
+of each computation – L0, S1, L1 – can be stored explic-
+itly in matrix form, as we’ve shown in Figure 3 and Figure
+4. However, in incremental domains with a large number of
+hypotheses and utterances, it becomes infeasible to cache all
+the computation results explicitly, forcing the L1 listener to
+recompute from scratch. In practice, the pragmatic synthe-
+sizer L1 runs in O(|W|2|U|) time. In the incremental RSA
+setting with multiple (say l) utterances, the run-time of L1 is
+O(|W|2|U|l). As the number of hypotheses and utterances
+becomes large in a program synthesis domain, it becomes
+infeasible to compute L1 at a speed required for end-user
+interactions. For instance, Vaithilingam, Pu, and Glassman
+(2023) were only able to build a pragmatic synthesizer for
+the regex domain consisting of 350 regular expressions.
+This Work: Pragmatic Synthesis using Rankings
+We are now in a position to explain our work – using a global
+pragmatic ranking to amortizing the RSA inference. Imag-
+ine we had a pre-computed, global ranking of programs, we
+would simply need to find consistent programs and rank
+them, which requires only O(|W|) steps. Consider the ex-
+ample from earlier where a speaker provides the utterance
+01. If we had determined that the global ordering of pro-
+grams was 0{1} ≻ 0+1{1} ≻ 0{2}1+ ≻ 0+1*, we could
+identify 0+1{1} as the most preferred program that was con-
+sistent by progressing through the list, and checking consis-
+tency. Even after providing a second utterance 001, the out-
+come of this remains unchanged and still correct. In the rest
+of this paper, we describe how, for the case of single utter-
+ance (the user can only provide 1 string, e.g. 001), such a
+ranking provably exists. And for the case of multiple utter-
+ances (the user provides multiple strings incrementally, e.g.
+001,01), even though we may not have guarantees, we em-
+pirically verify that we can compute and use such a ranking
+to make pragmatic program synthesis much more efficient.
+Global Pragmatic Ranking
+We formally define a global pragmatic ranking, and show
+how it can be used to construct a rank-based listener.
+Global pragmatic ranking
+A global pragmatic ranking
+σL for a listener L is an ordering of hypotheses such that:
+∀w, w′, u. if L(w|u) > 0 ∧ L(w′|u) > 0.
+then L(w|u) > L(w′|u) ⇐⇒ σL[w] ≻ σL[w′]
+(1)
+Which is to say, for any two competing hypotheses w, w′
+given utterance u, if both have non-zero probabilities under
+L(·|u), then both σL and L(·|u) will sort these two hypothe-
+ses in the same order.
+A global ranking is utterance agnostic
+The most salient
+feature of a ranking σ is that it is utterance agnostic: the
+same ranking is used to order all the hypotheses irrespective
+of the utterance given. This is counter-intuitive, because one
+might expect that given different utterances u, u′, it is pos-
+sible for a listener L to give different rankings for w and w′,
+even if both hypotheses are consistent with both utterances:
+L(w|u) > L(w′|u) > 0 ∧ L(w′|u′) > L(w|u′) > 0 (2)
+However, we will show that – in the case of boolean lex-
+icons with a single utterance and an RSA listener as de-
+scribed in the previous section – a global pragmatic ranking
+σL consistent with L must exist, and in the case of multiple
+utterances, a global ranking ˜
+σL can well approximate the
+true L ranking empirically.
+Rank-based listeners
+Given any ranking σ, one can use it
+to construct a rank based listener Lσ : U ⇒ W ∗, that takes
+in an utterance u and returns a sorted list of all satisfying hy-
+potheses by progressing through the list of ranked hypothe-
+ses in σ and filtering for consistency with u. As we can see,
+both the time and space complexity of Lσ are O(|W|).
+Existence of Ranking for Single Utterance
+We prove that in the case of boolean lexicons, a global prag-
+matic ranking must exist for any listeners L0, L1, . . . 2.
+2one can derive the same result for pragmatic ranking of speak-
+ers by taking a transpose of M
+Theorem:
+For a sequence of listeners in the RSA algo-
+rithm L0, L1, . . . over a boolean-valued lexicon M, there
+exists a sequence of global pragmatic rankings σL0, σL1, . . .
+such that:
+∀w, w′, u. if Li(w|u) > 0 ∧ Li(w′|u) > 0.
+then Li(w|u) > Li(w′|u) ⇐⇒ σLi[w] ≻ σLi[w′]
+(3)
+Let M be a boolean lexicon of size m rows and n columns.
+Let r0 = r1
+0 . . . rm
+0 be the row-normalizing vector such that
+rj
+0 = (P M[j, :])−1, which is to say, each element rj
+0 is the
+normalization term for row j of L0. Let *↔ denotes row-
+wise multiplication:
+L0 = M *↔ r0
+Which is to say, starting from M, L0 can be obtained by
+scaling each row j by their respective normalization constant
+rj
+0. Let c1 = c1
+1 . . . cn
+1 be the col-normalizing vector such
+that cj
+1 = (P L0[:, j])−1, which is to say, each element cj
+1 is
+the normalization term for column j of S1. Similarly, let *↕
+denotes column-wise multiplication
+S1 = L0 *↕ c1 = M *↔ r0 *↕ c1
+Computing Li under RSA amounts to applying row and col-
+umn normalization alternatively multiple times:
+Li = M *↔ r0 *↕ c1 . . . *↕ ci−1 *↔ ri
+Let ∗ be element-wise multiplication, let ⊗ be outer-product,
+we can rearrange the terms:
+Li =M ∗ ((r0 ∗ · · · ∗ ri) ⊗ (c1 ∗ · · · ∗ ci−1))
+=M ∗ (r0...i ⊗ c1...i−1)
+(4)
+Here, r0...i = r0 ∗ · · · ∗ ri is a vector of size m, and
+c1...i−1 = c1 ∗ · · · ∗ ci−1 is a vector of size n. As we can
+see, following the RSA algorithm, Li can be decomposed to
+to multiplication of 2 parts: the lexicon M, and a matrix that
+is formed by the outer product r0...i ⊗ c1...i−1.
+Claim: The ordered indexes of c1...i−1 is the global prag-
+matic ranking σLi:
+σLi[w] ≻ σLi[w′] ⇐⇒ c1...i−1[w] > c1...i−1[w′]
+Proof: We show both sides of the ⇐⇒ in 3. Suppose
+that for some w, w′, u, both Li(w|u) > 0 and Li(w′|u) > 0
+(i.e. M[u, w] = M[u, w′] = 1).
+(1) Show ⇒: Suppose Li(w|u) > Li(w′|u). We have
+Li(w|u) = Li[u, w] = r0...i[u] ∗ c1...i−1[w]
+Li(w′|u) = Li[u, w′] = r0...i[u] ∗ c1...i−1[w′]
+As r0...i[u] is a constant, we have
+Li(w|u) > Li(w′|u) ⇒ c1...i−1[w] > c1...i−1[w′] □.
+(2) Show ⇐: Suppose c1...i−1[w] > c1...i−1[w′].
+c1...i−1[w] > c1...i−1[w′]
+M[u, w] ∗ r0...i[u] ∗ c1...i−1[w] >
+M[u, w′]∗r0...i[u] ∗ c1...i−1[w′]
+Li[u, w] > Li[u, w′]
+Li(w|u) > Li(w′|u) □.
+Thus, c1...i−1 is the global ranking σLi as claimed
+■.
+S → RP | S RP
+RP → ‘[01]’ OP | ‘0’ OP | ‘1’ OP
+OP → ‘*’ | ‘+’ | ‘{1}’ | ‘{2}’
+Figure 6: Grammar for the regex domain
+Approximate Ranking for Multiple Utterances
+In the case of multiple utterances given incrementally, the
+orderings of hypotheses are utterance dependent: for some
+hypotheses, their orderings can swap depending on utter-
+ances (Equation 2). In this section, we give a simple approx-
+imation algorithm that attempts to find a global ordering that
+is maximally consistent with the ordering given by an RSA
+listener L, consisting of first obtaining a communication
+dataset D consisting of orderings, then annealing a global
+ordering to be as close to the orderings in D as possible.
+This ordering is obtained offline during training, and cached
+for interaction with users. We sample a dataset of interac-
+tions between a speaker and a listener by unrolling the inter-
+action and having the speaker select each utterance greed-
+ily based on the utterances given up to that point. We then
+obtain a ranking over programs using the listener probabil-
+ities given the utterances. This is detailed in Algorithm 1.
+We then use the dataset of interactions we collect to anneal
+a global ranking, as shown in Algorithm 2.
+Algorithm 1: Algorithm to obtain a dataset of simulated in-
+teractions between a speaker S and listener L. For each turn
+of each interaction, a ranking of programs is obtained.
+Require: Set of programs P
+Require: Length of specification to generate N
+Require: Speaker model S(u|w, u)
+Require: Listener model L(w|u)
+Require: Function MAKERANKING that ranks samples
+from a distribution based on the probability
+D ← {}
+for p in P do
+u ← [ ]
+for i = 1 to N do
+unext ← arg maxu S(u|p, u)
+u ← u + [unext]
+˜σ ← MAKERANKING(L(·|u))
+D ← D ∪ {(p, ˜σ, u)}
+end for
+end for
+return D
+Experiments
+To validate the usefulness and efficiency of an approximate
+ranking listener Lσ, we perform the following two sets of
+experiments. First, we conduct a small (n = 8) human ex-
+periment by building a ranking based synthesizer in a reg-
+ular expression synthesis domain, a domain where it is in-
+feasible to run the vanilla RSA algorithm L1 at interaction
+time. Second, we conduct two replay studies taking the hu-
+Algorithm 2: Algorithm to infer a global order σ based on a
+dataset of simulated interactions
+Require: Dataset of simulated interactions D
+Require: Validation frequency V
+Require: Patience t
+Require: Convergence threshold T
+D ← {}
+σ ← randomly initialized ranking
+converged ← FALSE
+Nswaps ← [ ]
+nswaps ← 0
+i ← 0
+while not converged do
+(p, ˜σ, u) ∼ D
+Sample programs p1, p2 in ˜σ
+if ˜σ [p1] ≻ ˜σ [p2] and σ [p1] ≺ σ [p2] then
+Swap σ [p1] , σ [p2]
+nswaps ← nswaps + 1
+end if
+i ← i + 1
+if i ≡ 0 mod V then
+Nswaps ← Nswaps + [nswaps]
+nswaps ← 0
+if max Nswaps [−t :] − min Nswaps [−t :] < T then
+converged ← TRUE
+end if
+end if
+end while
+return σ
+man interaction data from Vaithilingam, Pu, and Glassman
+(2023) and Pu et al. (2020). We seek to answer the follow-
+ing two research questions. Q1: is Lσ performant, in terms
+of communication accuracy when communicating with hu-
+mans, compared to the naive synthesizer L0 and the vanilla
+RSA synthesizer L1? Q2: is Lσ efficient, in terms of infer-
+ence time, compared to L0 and L1?
+Human Experiment
+To validate the efficacy of the ranking-based listener in inter-
+action with users, we conducted a user study where people
+interacted with the ranking-based Lσ and literal synthesizers
+L0 on the domain of regular expression synthesis.
+The Regex Domain
+The regex domain is a scaled up ver-
+sion of Vaithilingam, Pu, and Glassman (2023), where they
+considered a total of 350 regular expressions from their
+grammar (Figure 6; this subset forms the hypothesis space
+W). They built L1 and L0 models based on RSA, and found
+in their experiments that L1 is better. For this study, we ex-
+panded the space of programs to 3500 regular expressions
+from the same grammar – a setting that would make live
+interaction infeasible with the L1 synthesizer they propose
+based on RSA.
+Participants
+We recruited 8 participants from our institu-
+tion, with 7 males and 1 female. 6 participants reported they
+had 2–5 years of experience with regular expressions, and
+1
+2
+3
+4
+5
+6
+7
+8
+9
+turn
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+success
+speaker
+H0
+H
+listener
+L0
+L
+Figure 7: Success rate of the literal and ranking-based syn-
+thesizers in the human experiments. The ranking-based syn-
+thesizer achieves a success rate of 93.75%, while the literal
+synthesizer achieves only 65.63%. The ranking-based syn-
+thesizer also achieves higher success with fewer utterances.
+2 participants reported less than a year of experience using
+regular expressions. Each received a $20 gift certificate.
+Procedure
+Each participant was given a short tutorial on
+how to use the interface, then completes a total of 4 com-
+munication tasks. For each task, the participant was asked
+to communicate a target regex using examples to both the
+literal L0 and the ranking Lσ synthesizer, anonymized as
+simply a “green robot” and a “blue robot”, one after another
+in a randomized order. For each regex, the participants can
+take any numbers of turns (each turn consists of providing an
+additional example string) until the regex is recovered by the
+synthesizer, or give up early. The communication is interac-
+tive: When the participant adds a new example, they are im-
+mediately shown the current top-1 guess of the synthesizer,
+which allows them to adjust the next example accordingly.
+Results
+Figure 7 shows the communication success rate
+over turns for both the literal and ranking-based synthesiz-
+ers. As we can see, not only does the ranking-based synthe-
+sizer eventually succeed more often than the literal synthe-
+sizer (with the user successfully communicating about X%
+of targets to the ranking-based synthesizer as opposed to Y%
+to the literal synthesizer), but it also achieves a higher suc-
+cess rate for smaller numbers of turns, allowing the user to
+successfully communicate at a lower cost. We conclude that
+Lσ performs better than L0 for the regex domain (Q1).
+Replay Studies
+We also compare Lσ vs L1 and L0 by replaying the inter-
+action data collected from (Vaithilingam, Pu, and Glassman
+2023) and (Pu et al. 2020) – small pragmatic program syn-
+thesis domains where it is feasible to use the vanilla RSA
+synthesizer L1.
+Replay Data
+During the human studies of (Vaithilingam,
+Pu, and Glassman 2023) and (Pu et al. 2020), a human H
+is given a target hypothesis w, and attempt to get the syn-
+thesizer (L0 or L1) to infer the target using a sequence of
+examples u = u1, u2, . . . . Thus, two sets of data are gen-
+erated, one where the human is interacting with the literal
+synthesizer L0, which we term H0, and one where the hu-
+man is interacting with the pragmatic synthesizer L1, which
+5
+10
+15
+turn
+0.0
+0.5
+success
+speaker = H0
+5
+10
+15
+turn
+speaker = H1
+listener
+L0
+L
+L1
+Figure 8: Results for the animals replay experiment. On H0
+data, Lσ (71.65%) outperforms L0 (63.78%) and almost
+matches L1 (74.80%). However, on H1 data, the gaps are
+more start with Lσ (49.82%) beating L0 (15.46%) by a large
+margin, but still trailing L1 (91.75%).
+1
+5
+9
+13
+17
+turn
+10
+2
+100
+102
+time (s)
+(a) Animals
+1
+3
+5
+7
+9
+turn
+0
+1
+2
+3
+time (s)
+listener
+L0
+L
+L1
+speaker
+H0
+H1
+(b) Regular expressions
+Figure 9: The wall clock time for each synthesizer given se-
+quences of utterances of varying lengths (t utterances at turn
+t). We see that L1 is consistently much slower than either
+Lσ or L0 in both domains. Note that time is on a logarith-
+mic scale for the animals domain.
+we term H1. Specifically, from each domain we extract the
+following dataset {(w, uj
+i)|w ∈ Ws, j ∈ P, i ∈ {0, 1}}.
+Here, Ws are the set of hypotheses used for the human study
+(the stimuli), P is the set of participants, and i indicates if
+the participant is communicating with L0 or L1.
+Experiment Setup
+We can simulate an user interaction
+by using the replay data. Given a datapoint w, u, we cre-
+ate a simulated user that iteratively gives the utterances
+u1, u2, . . . in multiple turns to communicate a given tar-
+get hypothesis w. At every turn, the synthesizer returns the
+top-1 responses, Ltop-1(u1), Ltop-1(u1, u2), . . . , and we can
+check if any of them matches the target hypothesis w. If
+they do, we mark the communication as successful and stop
+early. Otherwise, we keep adding utterances until the u runs
+out, and we mark the communication as unsuccessful. Note
+that our evaluation cannot account for a user adapting their
+choice of examples to L, as the simulated user can only give
+scripted utterances according to the replay data.
+Domain 1: Animals
+Pu et al. (2020) uses a domain of
+grid patterns generated by an underlying domain-specific
+language (see Appendix for the grammar of the DSL and
+semantics). The space contains 17,976 semantically distinct
+programs and 343 possible examples, where a user uses
+a sequence of multiple examples to communicate a target
+program. They conducted a study with 48 human subjects,
+1
+3
+5
+7
+9
+turn
+0.0
+0.5
+success
+speaker = H0
+1
+3
+5
+7
+9
+turn
+speaker = H1
+listener
+L0
+L
+L1
+Figure 10: Results for the regex replay experiment. On H0
+data, Lσ almost matches L1, achieving a success rate of
+81.67% vs L1’s 88.33%. On H1 data, the gap is slightly
+larger with Lσ achieving 68.33% vs L1’s 81.67%. How-
+ever, in both cases, Lσ performs substantially better than L0
+(28.33% on H0 and 13.33% on H1).
+collecting data for 10 programs (10 distinct grid patters).
+The data includes interactions between humans and both a
+literal synthesizer (H0 − L0) and a pragmatic synthesizer
+(H1 − L1). In total, there are 254 interactions from H0 − L0
+and 291 interactions from from H1−L1, where each interac-
+tion consists of multiple turns until either the target program
+is successfully communicated or the user gives up.
+Results
+The results are shown in Figure 8, as we can see,
+the ranking synthesizer Lσ outperforms the literal listener
+L0 (Q1), and is close to the L1 listener if the speaker is H0.
+The gaps of performance is greater for H1 as a speaker when
+compared to H0. We attribute the smaller gaps between lis-
+teners on H0 to the utterances being informative even to a lit-
+eral listener. These utterances narrow down the space of con-
+sistent programs aggressively, making any ranking more ef-
+fective. In another word, the random rankings induced from
+L0, the pragmatic ranking from L1, and the approximated
+ranking from Lσ make little difference under H0. On the
+other hand, H1 expressly rely on a particular ranking for the
+listener (namely, L1) and the performance highly depends
+on whether the ranking closely resembles that of L1 (which
+Lσ does a better job at than L0). Figure 9a shows that the
+ranking-based synthesizer requires approximately the same
+time as L0, and far less time than L1 (Q2).
+Domain 2: Regular expressions
+Vaithilingam, Pu, and Glassman (2023) study the usability
+of pragmatic program synthesizers in the domain of binary
+regular expressions. The space contains 350 distinct regular
+expressions. A sample of 2000 strings was used to compute
+the S1 and L1 distributions. Their study included 30 partici-
+pants interacting with both L0 and L1 models. In total, there
+are 60 interactions from H0 − L0 and 60 interactions from
+from H1 − L1, where each consisting of multiple turns.
+Results
+Fig 10 shows that the global pragmatic ranking
+performs very similarly to the original pragmatic synthesizer
+(L1), and does much better than the L0 model. In Figure 9b,
+we see that the ranking-based synthesizer is much faster than
+L1, requiring approximately the same time as L0.
+In Conclusion
+In the human study, end users are more
+successful at interacting with the ranking based synthesizer
+compared to the non pragmatic synthesizer (Q1). In the re-
+play experiment, for both domains, the ranking based syn-
+thesizer Lσ significantly out performs the non-pragmatic
+synthesizer L0, while being orders of magnitudes faster than
+the exact inference L1 synthesizer (Q1, Q2).
+Related Work
+Rational Speech Acts (RSA)
+The RSA framework (Frank
+and Goodman 2012) models human cognition as coopera-
+tive Bayesian inference, and has been successfully applied
+to model a variety of human communicative and linguis-
+tic behaviour (Goodman and Frank 2016; Kao, Bergen, and
+Goodman 2014; Kao et al. 2014; Wang et al. 2020).
+The closest work to ours is a pragmatic approach to pro-
+gram synthesis developed by Pu et al. (2020). Their work,
+however, is limited to a domain that affords simple programs
+and demonstrations which are efficiently enumerable. We
+show that our ranking-based approach also produces prag-
+matic behavior on this domain (Animals), but also allows us
+to scale to the more realistic regular expressions domain.
+RSA has also been applied to improve the performance
+of language interfaces in a variety of other domains, such as
+image description (Andreas and Klein 2016; Cohn-Gordon,
+Goodman, and Potts 2018a,b), instruction generation and in-
+terpretation (Fried, Andreas, and Klein 2018; Fried et al.
+2018), and grounded interaction (Fried, Chiu, and Klein
+2021; Lin et al. 2022). As exact RSA inference in these do-
+mains, like in our synthesis domain, is intractable due to a
+large space of utterances and hypotheses, these approaches
+all use approximations which normalize over a smaller set of
+utterances or hypotheses, which are sampled from a proposal
+model trained on data from people (Monroe et al. 2017). Our
+approach, in contrast, requires no human-produced data. On
+the other hand, sampling a subset of utterances and hypothe-
+ses can be easily adopted into our framework during the gen-
+eration of interaction data, in case the full RSA algorithm is
+too slow even for generating training data.
+Ranking Functions in Synthesis
+Prior works on resolv-
+ing ambiguity in program synthesis typically fall into two
+categories: using a human crafted ranking function and
+learning from human generated data. Works such as Singh
+and Gulwani (2015); Polozov and Gulwani (2015) use scor-
+ing functions to penalize certain properties of programs (e.g.
+discouraging the use of constants), effectively inducing a
+global ranking over all programs; Ellis and Gulwani (2017)
+uses a set of hand-crafted features to learn a naturalistic
+ranking from data. Synthesis algorithms that use a large neu-
+ral code model to sample a large number of programs (Chen
+et al. 2021) implicitly rank the programs based on their nat-
+uralistic distributions in its training data. Our work is unique
+in that (1) the learned ranking is rooted in efficient commu-
+nication rather than hand-crafted and (2) our approach does
+not require human annotated training data.
+References
+Andreas, J.; and Klein, D. 2016.
+Reasoning about prag-
+matics with neural listeners and speakers.
+arXiv preprint
+arXiv:1604.00562.
+Bergen, L.; Levy, R.; and Goodman, N. 2016. Pragmatic
+reasoning through semantic inference. Semantics and Prag-
+matics, 9: ACCESS–ACCESS.
+Chen, M.; Tworek, J.; Jun, H.; Yuan, Q.; de Oliveira Pinto,
+H. P.; Kaplan, J.; Edwards, H.; Burda, Y.; Joseph, N.; Brock-
+man, G.; Ray, A.; Puri, R.; Krueger, G.; Petrov, M.; Khlaaf,
+H.; Sastry, G.; Mishkin, P.; Chan, B.; Gray, S.; Ryder, N.;
+Pavlov, M.; Power, A.; Kaiser, L.; Bavarian, M.; Winter, C.;
+Tillet, P.; Such, F. P.; Cummings, D.; Plappert, M.; Chantzis,
+F.; Barnes, E.; Herbert-Voss, A.; Guss, W. H.; Nichol, A.;
+Paino, A.; Tezak, N.; Tang, J.; Babuschkin, I.; Balaji, S.;
+Jain, S.; Saunders, W.; Hesse, C.; Carr, A. N.; Leike, J.;
+Achiam, J.; Misra, V.; Morikawa, E.; Radford, A.; Knight,
+M.; Brundage, M.; Murati, M.; Mayer, K.; Welinder, P.; Mc-
+Grew, B.; Amodei, D.; McCandlish, S.; Sutskever, I.; and
+Zaremba, W. 2021.
+Evaluating Large Language Models
+Trained on Code. arXiv:2107.03374.
+Cohn-Gordon, R.; Goodman, N.; and Potts, C. 2018a. Prag-
+matically informative image captioning with character-level
+inference. arXiv preprint arXiv:1804.05417.
+Cohn-Gordon, R.; Goodman, N. D.; and Potts, C. 2018b. An
+incremental iterated response model of pragmatics. arXiv
+preprint arXiv:1810.00367.
+Ellis, K.; and Gulwani, S. 2017. Learning to Learn Programs
+from Examples: Going Beyond Program Structure. IJCAI.
+Frank, M. C.; and Goodman, N. D. 2012. Predicting prag-
+matic reasoning in language games.
+Science, 336(6084):
+998–998.
+Franke, M.; and Degen, J. 2016.
+Reasoning in reference
+games: Individual-vs. population-level probabilistic model-
+ing. PloS one, 11(5): e0154854.
+Fried, D.; Andreas, J.; and Klein, D. 2018. Unified Prag-
+matic Models for Generating and Following Instructions. In
+Proceedings of North American Chapter of the Association
+for Computational Linguistics.
+Fried, D.; Chiu, J. T.; and Klein, D. 2021. Reference-centric
+models for grounded collaborative dialogue. arXiv preprint
+arXiv:2109.05042.
+Fried, D.; Hu, R.; Cirik, V.; Rohrbach, A.; Andreas, J.;
+Morency, L.-P.; Berg-Kirkpatrick, T.; Saenko, K.; Klein, D.;
+and Darrell, T. 2018. Speaker-follower models for vision-
+and-language navigation. Advances in Neural Information
+Processing Systems, 31.
+Goodman, N. D.; and Frank, M. C. 2016. Pragmatic lan-
+guage interpretation as probabilistic inference.
+Trends in
+cognitive sciences, 20(11): 818–829.
+Kao, J.; Bergen, L.; and Goodman, N. 2014. Formalizing
+the pragmatics of metaphor understanding. In Proceedings
+of the annual meeting of the Cognitive Science Society, vol-
+ume 36.
+Kao, J. T.; Wu, J. Y.; Bergen, L.; and Goodman, N. D. 2014.
+Nonliteral understanding of number words. Proceedings of
+the National Academy of Sciences, 111(33): 12002–12007.
+Lin, J.; Fried, D.; Klein, D.; and Dragan, A. 2022.
+In-
+ferring rewards from language in context. arXiv preprint
+arXiv:2204.02515.
+Monroe, W.; Hawkins, R. X.; Goodman, N. D.; and Potts,
+C. 2017. Colors in context: A pragmatic neural model for
+grounded language understanding. Transactions of the As-
+sociation for Computational Linguistics, 5: 325–338.
+Monroe, W.; and Potts, C. 2015. Learning in the rational
+speech acts model. arXiv preprint arXiv:1510.06807.
+Mukherjee, K.; Hawkins, R. D.; and Fan, J. W. 2019. Com-
+municating semantic part information in drawings. In Pro-
+ceedings of the Annual Meeting of the Cognitive Science So-
+ciety, 2413–2419.
+Polozov, O.; and Gulwani, S. 2015. FlashMeta: A frame-
+work for inductive program synthesis. ACM SIGPLAN No-
+tices, 50(10): 107–126.
+Pu, Y.; Ellis, K.; Kryven, M.; Tenenbaum, J.; and Solar-
+Lezama, A. 2020. Program synthesis with pragmatic com-
+munication.
+Advances in Neural Information Processing
+Systems, 33: 13249–13259.
+Singh, R.; and Gulwani, S. 2015.
+Predicting a correct
+program in programming by example. In CAV, 398–414.
+Springer.
+Smith, N. J.; Goodman, N.; and Frank, M. 2013. Learning
+and using language via recursive pragmatic reasoning about
+other agents.
+Advances in neural information processing
+systems, 26.
+Vaduguru, S.; Ellis, K.; and Pu, Y. 2022.
+Efficient Prag-
+matic Program Synthesis with Informative Specifications.
+arXiv:2204.02495.
+Vaithilingam, P.; Pu, Y.; and Glassman, E. L. 2023. The Us-
+ability of Pragmatic Communication in Regular Expression
+Synthesis. arXiv:2308.06656.
+Vogel, A.; Bodoia, M.; Potts, C.; and Jurafsky, D. 2013.
+Emergence of Gricean maxims from multi-agent decision
+theory. In Proceedings of the 2013 conference of the north
+american chapter of the association for computational lin-
+guistics: Human language technologies, 1072–1081.
+Wang, P.; Wang, J.; Paranamana, P.; and Shafto, P. 2020.
+A mathematical theory of cooperative communication. In
+Larochelle, H.; Ranzato, M.; Hadsell, R.; Balcan, M.; and
+Lin, H., eds., Advances in Neural Information Processing
+Systems, volume 33, 17582–17593. Curran Associates, Inc.
+Appendix
+Code
+Code for this work can be found at https://github.com/
+evanthebouncy/pragmatic synthesis ranking
+Simulated Studies
+Ranking Always Exists
+We empirically validate that in the case of single utterances,
+a ranking can always be found. See simulation/single utter/
+exp exists orders.py
+Stability of Ranks Across RSA Iterations
+We’ve shown that for every L0, L1, . . . , there exists a cor-
+responding global, utterance agnostic ranking σL0, σL1, . . . .
+We now explore the relationship between these rankings as
+a function of the RSA iteration i. Specifically, how stable is
+the relative ranks of w and w′ once it is formed?
+Stable Order
+A pair-wise order between w and w′ is sta-
+ble from iteration i onward if:
+stable(i, w ≻ w′) ⇐⇒
+^
+j∈i,i+1,...,∞
+σLj[w] ≻ σLj[w′]
+Which means the relative ranking of σLi[w] ≻ σLi[w′]
+holds true for every subsequent iterations until σL∞. Let the
+minimal-index of a stable pair-wise ordering be the first iter-
+ation i such that w ≻ w′ becomes stable:
+imin(w ≻ w′) = argminjstable(j, w ≻ w)
+(5)
+As σL1 is the first time any ranking can exist (L0 is a
+uniform distribution over valid hypotheses, i.e. no rankings),
+we explore the following: For a lexicon M, what fraction of
+stable orderings have a minimal-index of 1?
+frac-stableL1(M) =
+|{w ≻ w′ | imin(w ≻ w′) = 1}|
+|{w ≻ w′ | ∃i. stable(i, w ≻ w′)}|
+(6)
+Simulation
+We measure stableL1(M) on a population of
+sampled random boolean lexicons. We sample square lexi-
+cons of size lexicon size ∈ 2 × 2 . . . 100 × 100. Each lex-
+icon is sampled with Ptrue ∈ {0.1, 0.2, 0.5}, where larger
+value of Ptrue makes the lexicon have more 1s. We make
+sure each sampled lexicon is valid in the following sense: (1)
+all rows are unique – every utterance must communicate a
+unique subset of valid hypotheses (2) all columns are unique
+– every hypothesis has a unique set of utterances that can re-
+fer to it. For every combination of (Ptrue, lexicon size)
+we randomly sample 100 lexicons. As it is infeasible to run
+RSA until iteration ∞, we run RSA for 100 iterations for
+each lexicon (i.e. L100 ≈ L∞). We measure stableL1 for
+each sampled lexicon. The result is shown in 11. As we
+can see, of all the stable pair-wise orderings, a large fraction
+(> 0.8) are formed during σL1, this is increasingly true as
+we (1) increase Ptrue, making the boolean lexicons having
+more number of 1s – i.e. the lexicon is more ambiguous for
+a literal speaker and listener and (2) increase lexicon size.
+Figure 11: Fraction of stable orders that were formed in σL1
+as a function of increasing lexicon size. Points are raw sam-
+ples (n=100 per lexicon size and Ptrue), bars are 95% boot-
+strapped CI (nboot = 1000). Overall, increasing Ptrue and
+lexicon size increases the fraction of stable orders that were
+formed in σL1
+We suspect this is due to faster “mixing time” of the RSA
+algorithm under these conditions, but this is just a guess.
+Takeaway This study may provide an alternative expla-
+nation as to why humans do not perform RSA for more
+than few iterations (Franke and Degen 2016). In addition
+to it being computationally expensive, it is also not neces-
+sary as the majority of top-k orderings becomes available at
+σL1, and remains stable for all subsequent iterations of the
+RSA algorithm. In another word, Ltop−k
+1
+∼= Ltop−k
+i>1
+. Code
+in simulation/single utter
+Animals domain
+In the Animals domain, a program is a pattern on a grid
+formed from a set of objects. These objects may be a colour-
+less pebble, or a chicken or pig that may be red, green or
+blue. An utterance reveals one square on the grid, and the
+speaker has to communicate the pattern by choosing which
+square to reveal. The pattern is formed according to rules
+specified in the domain-specific language in Figure 12. Ex-
+amples of programs shown in Figure 13. The description of
+the domain-specific language and the examples are due to
+Vaduguru, Ellis, and Pu (2022).
+Human study interface
+The interface for the human study on regular expression pro-
+grams is shown in Figure 14.
+Program → ⟨Shape, Colour⟩
+Shape → Box(Left, Right, Top, Bottom, Thickness, Outside, Inside)
+Left → 0 | 1 | 2 | 3 | ... | 6
+Right → 0 | 1 | 2 | 3 | ... | 6
+Top → 0 | 1 | 2 | 3 | ... | 6
+Bottom → 0 | 1 | 2 | 3 | ... | 6
+Thickness → 1 | 2 | 3
+O → chicken | pig
+I → chicken | pig | pebble
+Colour → [red , green , blue][A2(A1)]
+A1 → x | y | x + y
+A2 → λz:0|λz:1|λz:2|λz:z%2|λz:z%2+1|λz:2*(z%2)
+Figure 12: Grammar of the DSL
+(a) [·, ·, 1 , 5, 1, 6, 2, chicken , pebble, ·, x , λz:z%2]
+(b) [·, ·, 0 , 5, 1, 6, 2, pig , pebble, ·, y , λz:z%2]
+Figure 13: Two patterns in our layout domain and their corresponding programs, represented as a sequence of production rules:
+[Program, Shape, Left, Right, Top, Bottom, Thickness, O, I, Colour, A1, A2]. The symbol · indicates rules which only have
+1 choice of expansion (Program, Shape, and Colour). The rules where these two programs differ are marked with a box .
+Figure 14: User interface for the regex domain
+

@@ -1,0 +1,1686 @@
+Citation: Guerreschi, A.;
+Díaz López, F.J. A Bibliometric
+Analysis on Cooperatives in Circular
+Economy and Eco-Innovation
+Studies. Sustainability 2023, 15, 15595.
+https://doi.org/10.3390/su152115595
+Academic Editors: Davide
+Settembre-Blundo and Giovanni
+De Feo
+Received: 30 June 2023
+Revised: 25 October 2023
+Accepted: 30 October 2023
+Published: 3 November 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+sustainability
+Article
+A Bibliometric Analysis on Cooperatives in Circular Economy
+and Eco-Innovation Studies
+Asia Guerreschi 1,2,3,*
+and Fernando J. Díaz López 3,4,5
+1
+Department of Economics & Management, University of Ferrara, 44121 Ferrara, Italy
+2
+Department of Humanities, University of Ferrara, 44121 Ferrara, Italy
+3
+SEEDS, University of Ferrara, 44121 Ferrara, Italy; fernando.diaz-lopez@climate-kic.org
+4
+Transitions Hub, EIT Climate KIC, 75013 Paris, France
+5
+Department of Industrial Engineering, Stellenbosch University, Stellenbosch 7602, South Africa
+*
+Correspondence: grrsai@unife.it
+Abstract: Cooperatives address societal challenges embracing values beyond mere proﬁt-oriented
+production. Considering the ongoing shift to achieve efﬁcient use of resources and increased circular-
+ity, cooperatives should be better equipped to incorporate circular economy (CE) and eco-innovation
+(EI) into their strategies (compared to regular enterprises). This paper reviews the scholarly literature
+focusing on the application of CE and EI within cooperative studies with the aim to understand the
+relationships between these topics, identify the existing scholarly communities, and to observe salient
+research themes. This study reﬁned the method of van den Hoven and Rubalcaba (2016) to conduct
+a two-step bibliographic review of documents: a thematic analysis of citation data from Scopus
+(including a manual review of 16 papers) was followed by a bibliometric analysis of 101 documents
+from Web of Science (using R-Studio’s Biblioshiny). Our results identiﬁed three intellectual clusters
+of cooperative studies focusing on the downstream of CE: (1) industrial ecology; (2) recycling; and
+(3) waste management. Our study also revealed an emerging scholarly ﬁeld focused on cooperatives
+and CE, and with little attention to EI. These ﬁndings aim at catalyzing the integration of cooperatives
+more effectively into scholarly discussions, suggesting that environmental sustainability should be
+recognized as an additional principle of the cooperative identity—providing a wider perspective that
+enhances interest in the research of these topics and their interconnections.
+Keywords: cooperatives; cooperative enterprise; circular economy; eco-innovation; environmental
+sustainability; new economy; social and solidarity economy
+1. Introduction
+Cooperative enterprises play an important role towards a just society, born to tackle the
+struggles of governments and markets [1]. Their objective is meant to close the gap on
+untackled spaces that derive in society from economic, social, and cultural differences, yet
+considered a utopian undertaking or a futile once underappreciated by many [2].
+This type of enterprise is inserted within the “Third Sector” or in the “Social and Soli-
+darity Economy” that the European Union (EU) identiﬁes as a set of institutions of the eco-
+nomic system that act as a third form of production either of goods and/or services between
+the State and the private market [3] (For instance, the deﬁnitions associated to these terms
+in the “social economy” gateway of the European Commission: https://social-economy-
+gateway.ec.europa.eu/about-social-economy/social-economy-deﬁnitions-and-glossary_en
+(accessed on 15 October 2023). Similar notions and deﬁnitions are used by the OECD So-
+cial Economy programme, see: https://www.oecd.org/cfe/leed/social-economy/social-
+economy.htm (accessed on 15 October 2023)). The above is a deﬁnition that was developed
+after the crisis of the welfare state of the 1990s [3] and viewed as central to a “...healthy
+democratic society” [4]. This same society is now being challenged by resource deple-
+tion. The sixth assessment report from the Intergovernmental Panel on Climate Change
+Sustainability 2023, 15, 15595. https://doi.org/10.3390/su152115595
+https://www.mdpi.com/journal/sustainability
+Sustainability 2023, 15, 15595
+2 of 27
+(IPCC) [5] has underscored an urgent need for a paradigm shift. Human activities leading
+to climate change has in turn affected the availability of our natural resources. This empha-
+sizes the growing imperative to adopt methods and approaches focused on sustainability
+and resilience [6]. The last decades have demonstrated the need to divide economic growth
+from resource exploitation and waste accumulation [7]. Hence, it is supposed that coop-
+eratives as business entities have a role, such as any non-cooperative enterprise, to shift
+towards environmental sustainability by rethinking how we produce and consume.
+The concept of the circular economy (CE) has been signposted as the solution to face
+unsustainable economic trends needing to go beyond the linear model where consumption
+and disposal are carried out by closing the production loops [8]. The latter is a newer
+concept compared to eco-innovation (EI) and they have been viewed as key elements
+to support the creation, use, and diffusion of solutions that improve the environmental
+performance of products (goods and services), technologies, processes and organizations
+compared to existing alternatives [9,10]. To this point, cooperative enterprises, “. . . can play
+a very important role in introducing the ideas and practice of resilience to our national and
+global communities” [11] (p. 131).
+In 2021, the EU established a new action plan for the social economy including collab-
+oration and funding opportunities between stakeholders, including cooperatives, where
+“...social enterprises [...] which designs a sector different from the traditional public
+‘general interest serving’ and the private market [. . . ] can play a unique role in identifying
+unmet needs and in developing new types of service” [12]. Without explicitly mentioning
+cooperatives, the European Commission (EC)’s CE Action Plan (CEAP) and the upcoming
+revision to the Ecodesign Directive and the Sustainable Products Regulation address sev-
+eral aspects related to the lively sustainability impacts of enterprises: ensuring less waste,
+making sustainable products the norm, empowering consumers to make more sustainable
+choices, increasing resource efﬁciency in key economic sectors, improving the durability
+and repairability of goods and services, promoting the wide spread of circular business
+models (including those in the solidarity and sharing economy) and a just and fair transi-
+tion for all economic actors [13] and, years prior, the EU’s EI Action Plan (EcoAP) aiming
+to deliver smart, sustainable, inclusive growth via a greener economy [14]. It is a shared
+observation with the Organisation for Economic Co-operation and Development (OECD)
+about the positive and impactful role played by social economy to promote CES and its
+social impacts. The relevance of these European policies derives from an acknowledgement
+that public policy can contribute to the transition of society and the economy towards sus-
+tainability [15] necessary also for cooperatives to implement, but a deeper understanding
+of how this is carried out is needed.
+This paper attempts to contribute to the literature of cooperative enterprises by pro-
+viding an initial exploratory review of documents focusing on cooperatives, CE and EI. The
+results of this study may suggest that while the overall thematic ﬁeld is unexplored, CE
+appears to be discussed within the context of cooperatives more strongly comparted to
+EI—despite the latter being a scholarly ﬁeld studied for a much longer period. Addition-
+ally, the (inter)connection between EI and CE remains also unexplored, when speaking of
+cooperatives, and the main cluster themes focus downstream the supply chain (e.g., around
+waste management and recycling). Hence, suggests that there is a strong need to tackle CE
+and EI in relation to cooperatives, observing in detail their barriers and drivers—how their
+management skills and diversiﬁed business structure provide positive outlet—towards
+environmental sustainability and what it means for their identity and deﬁnition of their
+corporate values and sustainable products and services. The latter can provide an input to
+the additional debates on the role of (eco)innovation and CE in the business sphere and
+environmental attention.
+The remaining of this article is organized as follows: section two offers an introductory
+exploration of the literature about cooperative enterprises within the context of environ-
+mental and social sustainability. Following on, section three includes the method used
+in this study, followed by a fourth section with the results of the thematic analysis of a
+Sustainability 2023, 15, 15595
+3 of 27
+Scopus data set and the in-depth bibliometric analysis with results from Web of Science
+(WoS). Next, section four presents the results of our analysis of the two different datasets.
+It unveils topical relationships, scholarly communities, and themes of research about co-
+operative enterprises, CE and EI. A concluding section provides a discussion about the
+main conclusions, key insights, potential limitations and suggesting avenues for further
+scholarly investigation.
+2. Cooperative Enterprises and Environmental Sustainability
+Cooperatives are integrated into the emerging discourse of the “new economy”, char-
+acterized by the integration of ecological and social elements. In contrast to the “traditional”
+economy, cooperatives embody a collective and collaborative mindset that should empha-
+size the harmonious integration of ecological and social (and solidarity) elements. They
+symbolize a new way of thinking where rather than proposing the elimination of the market
+as such, its rationale works for a different form of institutionalization of the market where
+in cooperative undertakings, “...people (the members) rather than the capital, constitute
+the focus on productive activity” [2] (p. 195). The International Cooperative Alliance (ICA)
+wants cooperatives to show the world how: “. . . human-centred business models, inspired
+by the cooperative values, are building a better world” [16]. It has also been suggested that
+cooperatives may represent a contradiction as organizations, “...whose objective was to
+counterpose entrepreneurs with the workers’ solidarity and instead cooperatives have set
+themselves as new competitors” [17].
+The role that business enterprises and single industries play in the much-needed
+ecological transition to reduce emissions, reduce pollution, and reduce overall the impact
+of human activity is well known and proven. Cooperatives are quite relevant and present
+in resource intensive and extractive sectors; for instance, farmers’ cooperatives in the
+European Union and in North America account for 30–70% of the market in their respective
+world regions [18,19]. One way to the ecological transition is to redeﬁne how we produce
+and consume products, making it clear that all stakeholders, including consumers, play a
+role in this mission. Some researchers believe this means revisiting economic processes and
+business values through innovative measures.
+The Web of Science (WoS) repository can be used as a reference to note the growing
+interest of the scholarly community to study cooperative enterprises, where it is possible to
+identify over 2200 documents published in the period between 1970 and 2023 (A search
+in WoS with the keyword “co-operative enterprises” OR “cooperative enterprises” in the
+TOPIC ﬁeld resulted in 2209 documents including articles, review articles and editorial
+materials only (search conducted on 08.10.23). The results of a similar search increases
+to 2600 documents when adding the following additional keywords suggested by WoS:
+“cooperative enterprise”, “workers cooperatives”, “cooperative production” and “social
+cooperatives”). Recent studies have suggested that cooperative enterprises not only pro-
+mote the implementation of Circular Economy Strategies (CES) [10] but also play a role
+in fostering the adoption of eco-friendly production technologies [20]. In this context,
+the signiﬁcance of EI is emphasized, as it encompasses a range of environmentally ben-
+eﬁcial innovations aimed at mitigating our ecological footprint [21]. Consequently, the
+exploration of diverse management approaches and business models becomes essential in
+understanding the execution of such innovative practices across different types of organiza-
+tions, including cooperatives. The latter is alongside the acknowledgement that innovation
+application by enterprises is not carried out on its own, rather it enables the progression of
+a greener economy, however supported by the application of policies and resulting from
+feedback of international “pressures” such as the United Nation’s Sustainable Goals (SDGs)
+(Figure 1) that in turn can impact policies. In analyzing where cooperatives stand in the
+application of CES and EI, the latter should be kept in mind.
+Sustainability 2023, 15, 15595
+4 of 27
+Sustainability 2023, 15, x FOR PEER REVIEW 
+4 of 28 
+ 
+Sustainable Goals (SDGs) (Figure 1) that in turn can impact policies. In analyzing where 
+cooperatives stand in the application of CES and EI, the latter should be kept in mind. 
+ 
+Figure 1. Green Innovation and Economic Restructuring to Achieve the SDGs (Based from [15]). 
+As a catalyst for CE, EI refers to “...new technologies that improve economic and 
+environmental performance but also some deﬁnitions include organizational and social 
+changes for improving competitiveness and sustainability and its social, economic and 
+environmental pillars” [22]. Within EI studies, it has been observed that the application of 
+this form of innovation helps increase a ﬁrm’s economic sustainability and employment 
+[23]. From the deﬁnition of EI in the above, it is possible to suggest that EI is a form of 
+innovation that takes into consideration other business values. Thus, we wonder if 
+cooperatives could be better equipped to facilitate the implementation and uptake of eco-
+innovation processes and solutions. While there are some concerns regarding the concept 
+of EI related to its eﬀectiveness and overall impact on the environmental and social 
+sustainability of enterprises [24], (Some authors such as Kemp (2010) [25] and Ekins (2010) 
+[26] have long argued that eco-innovation (EI) is a relative concept; a green or social 
+solution is considered an EI when it constitutes a better environmental alternative than 
+existing solutions—but without fully quantifying, up-front, those possible rebound or 
+future negative eﬀects at the micro (e.g., through LCAs, social-life cycle costing, etc.) or at 
+the macro-economic level (e.g., through environmentally-extended input-output 
+analyses). An EI can be purposively designed or used to meet environmental targets or to 
+achieve green performance gains (e.g., a green technology such as air pollution ﬁlter), but 
+it can also be the consequence of unintended actions or regular production-related 
+activities of enterprises (e.g., quality or operational eﬃciency gains that lead to 
+environmental improvements at the facility level, for instance, from implementing energy 
+eﬃciency measures, a total quality management plan, or an integral process automation 
+that ultimately minimizes the use of raw materials and waste). This view of EI is yet 
+debated by authors, such as Pansera (2011) [24]. It is worth noting that other terms are 
+used as synonyms to EI, such as “environmental innovation”, “green innovation”, 
+“sustainable innovation”, among others. Nonetheless, in this study we only used the core 
+term EI as it is better established in the literature, particularly in the ﬁeld of economics 
+and management (for a recent review of terms and ongoing research needs, refer to [27])) 
+we acknowledge the scholarly view that social and institutional EI requires educated 
+Figure 1. Green Innovation and Economic Restructuring to Achieve the SDGs (Based from [15]).
+As a catalyst for CE, EI refers to “...new technologies that improve economic and
+environmental performance but also some deﬁnitions include organizational and social
+changes for improving competitiveness and sustainability and its social, economic and
+environmental pillars” [22]. Within EI studies, it has been observed that the application of
+this form of innovation helps increase a ﬁrm’s economic sustainability and employment [23].
+From the deﬁnition of EI in the above, it is possible to suggest that EI is a form of innovation
+that takes into consideration other business values. Thus, we wonder if cooperatives
+could be better equipped to facilitate the implementation and uptake of eco-innovation
+processes and solutions. While there are some concerns regarding the concept of EI related
+to its effectiveness and overall impact on the environmental and social sustainability of
+enterprises [24], (Some authors such as Kemp (2010) [25] and Ekins (2010) [26] have long
+argued that eco-innovation (EI) is a relative concept; a green or social solution is considered
+an EI when it constitutes a better environmental alternative than existing solutions—but
+without fully quantifying, up-front, those possible rebound or future negative effects at
+the micro (e.g., through LCAs, social-life cycle costing, etc.) or at the macro-economic level
+(e.g., through environmentally-extended input-output analyses). An EI can be purposively
+designed or used to meet environmental targets or to achieve green performance gains
+(e.g., a green technology such as air pollution ﬁlter), but it can also be the consequence of
+unintended actions or regular production-related activities of enterprises (e.g., quality or
+operational efﬁciency gains that lead to environmental improvements at the facility level,
+for instance, from implementing energy efﬁciency measures, a total quality management
+plan, or an integral process automation that ultimately minimizes the use of raw materials
+and waste). This view of EI is yet debated by authors, such as Pansera (2011) [24]. It is worth
+noting that other terms are used as synonyms to EI, such as “environmental innovation”,
+“green innovation”, “sustainable innovation”, among others. Nonetheless, in this study
+we only used the core term EI as it is better established in the literature, particularly in the
+ﬁeld of economics and management (for a recent review of terms and ongoing research
+needs, refer to [27])) we acknowledge the scholarly view that social and institutional EI
+requires educated citizens, cultural and institutional diversity, involvement of local actors,
+and communication and investment in social capital [24]. Moreover, recent studies go one
+step further to suggests the term ‘exnovation’ as a form of phasing out processes, technology
+or solutions to truly create, meet or achieve environmental sustainability or policies (e.g.,
+phasing out and elimination of coal-based technologies) [28].
+Sustainability 2023, 15, 15595
+5 of 27
+In recent years, CE has been promoted as an approach to minimize the burden on the
+environment, while stimulating the economy [29]. The exact deﬁnition of CE is ambiguous,
+and the attempt at a single deﬁnition is merely unachievable [30] leaving out also matters
+of justice, gender, or effects on labor [31]. In fact, the deﬁnition of CE remains a subject of
+ongoing debate, considered unchallenged [32], with increasing criticism directed at current
+proposals, resulting in a longer version as follows:
+“[CE] is a multi-level resource use system that stipulates the complete closure of all
+resource loops. Recycling and other means that optimize the scale and direction of resource
+ﬂows, contribute to the circular economy as supporting practices and activities. In its
+conceptual perfect form, all resource loops will be fully closed. In its realistic imperfect
+form, some use of virgin resources is inevitable” [33].
+While EI can be more efﬁciently implemented through cooperation not only within
+companies, but also in strengthening the relationship between different business enterprises,
+academia, and governments—who at the same time can implement public policies that
+promote the application of the same—limited research has been conducted with a speciﬁc
+focus on cooperatives or forms of cooperative governance (as it will be highlighted by the
+results of this study presented in Section 4). Furthermore, in view that cooperatives are not
+proﬁt-oriented, but as EI is expressed through terms of capitalization, the former authors
+expand on where this might position cooperatives not only in competing in the market
+but be able to implement EI to achieve environmental sustainability at the speed required
+against bigger and alternative ﬁrms [34].
+Cooperatives’ business model is also known to increase employment, especially in
+more challenged countries. There is research highlighting behavioral aspects of employees
+as drivers to EI [35–37] and some recent work is about cooperation and open EI [38], but
+until recently the focus has not been on the organizational mode of cooperatives as an
+element analyzed for EI generation, adoption, or diffusion. Additionally, there is an overall
+absence on identifying how managerial environmental awareness and external resource
+acquisition could affect corporate EI activities [34]. Thus, in the case where workers are
+potentially also members making managerial decisions, their level of knowledge can impact
+potentially the application of EI.
+The Rochdale Society of Equitable Pioneers, a cooperative established in 1844 in the
+United Kingdom (UK) by twenty-eight impoverished weavers, was successful in deﬁning
+the principles for cooperatives of the future [39]. They were suffering from the results of the
+Industrial Revolution with low pay, unhealthy cities, and dangerous workplaces resulting
+in a cooperative existing through mutual self-help. A sense of mutual help has been
+observed also in other countries, such as Italy, where according to the Law 59 (1992) [40] all
+cooperatives must transfer to the mutual funds 3% of their proﬁts through an important
+ﬁnancing tool that is the solidarity funds (Fondi Mutualistici in Italian). These funds are then
+collected to reinvest into the creation of new cooperatives and similar projects, a possibility
+absent for other forms of enterprises. Hence, there is a sense of economic (and social)
+sustainability required.
+It should be noted that while not directly inherent to this paper, the narrative that
+cooperatives exist, potentially only, to resolve a social task may be undermining the expecta-
+tions (and barriers) to their achievement of environmental sustainability. Cooperatives are
+described as a “genuine two-faced Janus [combining] two distinct if not conﬂicting dimen-
+sions: the economic dimension of an enterprise that operates within the market and accepts
+its logic; and the social dimension of an institution that pursues meta-economics aims and
+produces positive externalities for other agenda and for the community. This dual nature is
+what makes the cooperative so difﬁcult to explain and so hard to govern” [41] (p. 1).
+Economists have criticized cooperatives for their business form, in view of their ability
+to thrive in competitive markets regardless of the challenges [42]. Their efﬁciency has been
+questioned when compared against investor-owned ﬁrms. According to some theoretical
+arguments, it is not uncommon for cooperatives to be considered as being less efﬁcient (but
+the contrary is also possible) [43].
+Sustainability 2023, 15, 15595
+6 of 27
+It becomes essential to incorporate mutualistic principles within democratic business
+frameworks to address the gaps in social equity [44]. Cooperatives are described as
+acquiring an important role in establishing different forms of organizational network [45]. It
+was Charles Fourier in 1808 who initially idealized a world where people could live together
+in harmony based on commonly agreed rules and cooperation [46] (p. 14). He was followed
+by William Thomson considered the “fathers” not only of cooperativism, but also unions,
+as “...instrumental tools against capitalism” [46] where production cooperatives, due to
+their capitalist nature, or towards consumerism, could be better managed by cooperatives
+enterprises since “workers are their own entrepreneurs” [46] (p. 15). Thus, we observe a
+discourse of cooperatives working together for a collective good that should go beyond
+personal or industrial greed. A relevant matter in terms of cooperatives when speaking of
+EI and CE, as it framed around the role of innovation (technological or other) and nature,
+therefore their relationship and implications [24].
+Workers in production co-op are viewed as those more likely to make better economic
+decisions for everyone’s beneﬁt than single managers [47] (p. 331). Instead, production
+co-ops stand out for a speciﬁc reason: they rely on single managers to make rapid and
+essential economic decisions. The Mondragon Corporation, the largest global cooperative
+complex, exempliﬁes this approach, where workers’ involvement in decision-making is
+limited due to the pressures of a globalized market. This evolution has given rise to a
+new perspective known as neo-cooperativism, which blends elements of the traditional
+cooperative framework with new approaches [48]. Thus, there is an overall understanding
+that only cooperatives operate within a speciﬁc, and unique, framework where additional
+values are embedded, but also could be providing alternative ways of operating in society
+and the business world. How does this affect their ability to remain competitive, innovate,
+and implement measures to achieve environmental sustainability?
+While not using the term EI, the paper by Osti (2012) [49] remains particularly rel-
+evant for our study: it focuses on four distinctive environmental sustainability-oriented
+(operational and business) models of (green) social cooperatives (Table 1). The author
+identiﬁed key characteristics deﬁning the relationship between social enterprises and the
+environment, and further explored if these features could be combined to form a typol-
+ogy that assists in guiding empirical research. Osti proposes that relatively simple green
+products and highly technical green services can be considered as logical objectives for
+green business enterprises. Attention is also paid by this author to the local community,
+and production and habitation are pursued as valuable goals. Therefore, activities for the
+protection and maintenance of the environment begin as a local matter before becoming of
+bigger attention and cooperatives could be more aware of local needs than larger and more
+distributed private enterprises.
+Table 1. Aim and type of green social enterprises (GSE) in regard to the value set on the environment
+[49].
+Value Set on the
+Environment
+Aim of the Social Enterprise
+Produce
+Produce and Inhabit
+Instrumental
+A—Simple environmental
+services (e.g., urban cleansing)
+SIMPLE GSE
+B—Territorial promotion services
+(e.g., environmental education)
+TERRITORIAL GSE
+Final
+C—Services with high
+technical-innovative content
+(e.g., solar energy plants)
+INNOVATIVE GSE
+D—Services incorporating
+lifestyles (e.g., residences with
+self-contained consumption)
+COMMUNITARIAN GSE
+Osti also proposes that social cooperatives centered on work and reciprocity are not
+sufﬁcient to cope with goods exhaustion that profoundly undermines the possibility of
+working and living together. To understand these limits and the impact of environmental
+Sustainability 2023, 15, 15595
+7 of 27
+problems, knowledge is required about the impacts of man-made (production) activities
+and resource use. The latter requires expertise and skills that generally cooperatives may
+not have at hand, considering the complexity of the topic and the ﬁeld of work that requires
+specialized services, such as waste recycling or clean energy supplies.
+It is Manfred Max Neef (2014) [50] who wrote about the crisis caused by the expo-
+nential human-induced climate change affecting globally due, among many reasons, to a
+disregard of planetary limits and promotion of consumerism (p. 16). He proceeds deﬁning
+cooperative alongside solidarity and compassion, as the solutions to the above postulating
+a new economy where there the introduction of local co-operation to avoid monopolies
+and requires a greater democratic commitment to ensure effectiveness and equity in the
+transition to local economies. A new economy that [51] Neva Goodwin (2014, p. 39) dis-
+cusses as a way to refocus economic activity, including systems of production, towards an
+enhancement of wellbeing. The latter not only when we speak of environmental considera-
+tion in our economic equation, rather in our view of employment and work, where in a
+decreased market demand it can be supported by job-sharing achieved through growth in
+cooperatives. It is debated on our current consumption of resources and how economically
+that is impactful with ﬂuctuating prices as the demand increases. Furthermore, they under-
+line that a new economy would consider its ecological and social context [51] (p. 45). A
+social context that takes into consideration a new form of work vision where it can generate
+valuable goods and services, while providing meaning to the worker [51] (p. 50) and where
+the way societies organize should include also unpaid work for social causes, frequently
+carried by cooperatives.
+Cooperatives ﬁnd themselves in an ambiguous position within the economic discourse.
+The traditional neoclassical approach tends to overlook their environmental impact, fo-
+cusing solely on ﬁnancial gains [42]. When redeﬁning our economy through alternative
+management and business structures, we seek to understand if cooperatives can contribute
+to positive change and transformation on this issue [42] (p. 10). Thus, this study aims to
+explore in the scholarly works the interconnection between cooperatives, regardless of their
+type, in the EI and CE context.
+In their research on solidarity funds and comparative comparing scenarios from
+Italy, United Kingdom, and France, Bernardi et al. (2022) [40] highlighted a crucial policy
+implication. They identiﬁed the necessity to establish dedicated institutions in countries
+where cooperatives are lagging behind. Traditional institutions may struggle to ﬁnance
+cooperatives due to their existing property rights regime. Therefore, research should
+investigate those institutions that manage natural resource and supports ﬁnancing CE and
+EI actions. Especially considering the difference in business structure, governance, and
+ﬁnancial availability that cooperatives are exposed to compared to other forms of legal
+business structures.
+To this point in relation to the Just Transition, the EU has looked to provide appropriate
+labor market and skills policies within the European Social Fund Plus (ESF+) considering
+that a rise in fossil fuel will have a signiﬁcant social and disproportional impact to the most
+vulnerable. In this scenario, the role of cooperatives is described as “anti-capitalistic” and
+the present contradiction of this enterprise’s role within the private economic paradigm [17]
+(p. 20). It is debated that either cooperatives are meant to pursue a small space within the
+economic framework where those who pursue proﬁt obtain the largest space and—hence
+the mutualistic approach has the strongest value—or the cooperatives choose to compete
+yet push forward self-interest (towards proﬁt).
+In summarizing the discussion offered in the precedent paragraphs, which delve into
+the connection between cooperatives and the environment, Figure 2 illustrates key themes
+that emerge from our discussion about how sustainable production and consumption
+can be conceptualized in cooperative enterprises studies (e.g., by focusing on CE and
+EI). Consequently, it becomes clear that these considerations, as well as co-operatives
+themselves, could play a pivotal role in shaping economic processes and decisions.
+Sustainability 2023, 15, 15595
+8 of 27
+Sustainability 2023, 15, x FOR PEER REVIEW 
+8 of 28 
+ 
+Consequently, it becomes clear that these considerations, as well as co-operatives 
+themselves, could play a pivotal role in shaping economic processes and decisions. 
+ 
+Figure 2. Summary diagram on the basic concepts of economy, social, and environment developed 
+in the introductory part of this paper (own production). 
+3. Methodology 
+This paper follows an application of the method developed by van der Have and 
+Rubalcaba (2016) in Research Policy [52] conducting a bibliometric analysis of the existing 
+body of knowledge on social innovation in the period 1986–2013. These authors curated 
+and analyzed a data set of 172 publications using citation data obtained from the WoS and 
+Scopus (Speciﬁcally, van den Have and Rubalcaba’s method was as follows: the authors 
+ﬁrst retrieved citation data included in the Social Sciences Index of Web of Science. They 
+further used Scopus to identify missing and relevant journals in the ﬁeld of social 
+innovation, resulting in the manual addition of 14 citation records from three additional 
+journals. Following on, they searched both databases for the tern “social innov” in the 
+abstract, title or keyword ﬁelds of both knowledge repositories, resulting in an integrated 
+data set of 172 unique documents that contained 6500 references and 400 diﬀerent 
+keywords. Their results excluded results from publications not written in English, book 
+reviews, and editorial articles. For the analysis of the data, they used Sci2 [53] and applied 
+techniques based on algorithmic community detection’ and bibliometric coupling’ to 
+conduct a scientiﬁc mapping of documents to identify the co-occurrence of keywords and 
+citations, the frequency of publications over time, and the burst detection algorithm 
+method). van der Have and Rubalcaba used Sci2 to identify four distinctive clusters of the 
+literature (based on citation data), and several bibliographic metrics (inter-cluster 
+bibliographic coupling and a temporal bar graph with burst analysis). In their study, the 
+abovementioned authors [52] acknowledged salient limitations of the selected approach 
+that remain valid for our study, most notably: the possible biases and caveats from only 
+Figure 2. Summary diagram on the basic concepts of economy, social, and environment developed in
+the introductory part of this paper (own production).
+3. Methodology
+This paper follows an application of the method developed by van der Have and
+Rubalcaba (2016) in Research Policy [52] conducting a bibliometric analysis of the existing
+body of knowledge on social innovation in the period 1986–2013. These authors curated
+and analyzed a data set of 172 publications using citation data obtained from the WoS
+and Scopus (Speciﬁcally, van den Have and Rubalcaba’s method was as follows: the
+authors ﬁrst retrieved citation data included in the Social Sciences Index of Web of Science.
+They further used Scopus to identify missing and relevant journals in the ﬁeld of social
+innovation, resulting in the manual addition of 14 citation records from three additional
+journals. Following on, they searched both databases for the tern “social innov” in the
+abstract, title or keyword ﬁelds of both knowledge repositories, resulting in an integrated
+data set of 172 unique documents that contained 6500 references and 400 different keywords.
+Their results excluded results from publications not written in English, book reviews, and
+editorial articles. For the analysis of the data, they used Sci2 [53] and applied techniques
+based on ‘algorithmic community detection’ and ‘bibliometric coupling’ to conduct a
+scientiﬁc mapping of documents to identify the co-occurrence of keywords and citations,
+the frequency of publications over time, and the burst detection algorithm method). van der
+Have and Rubalcaba used Sci2 to identify four distinctive clusters of the literature (based on
+citation data), and several bibliographic metrics (inter-cluster bibliographic coupling and a
+temporal bar graph with burst analysis). In their study, the abovementioned authors [52]
+acknowledged salient limitations of the selected approach that remain valid for our study,
+most notably: the possible biases and caveats from only using English speaking documents,
+and the use of other similar key words. These are expressed and further detailed in the
+limitation’s section of this paper.
+As shown in the PRISMA diagram below (Figure 3), in this study we reﬁned van
+den Hove and Rubalcaba’s original bibliographic analysis method to follow a two-step
+Sustainability 2023, 15, 15595
+9 of 27
+review process of the literature. Initially, we conducted a thematic analysis of the literature
+focusing on keywords related to cooperatives, CE and/or EI using the Scopus database.
+This ﬁrst step had the objective to provide a ‘bird-eye’ view of the connection between CE
+and EI within the cooperative’s literature (total number of publications and an overview of
+salient topics in a sub-sample of papers). As a second step, and to better understand the
+discourse and epistemic communities surrounding these topics in the scholarly literature, a
+more robust bibliometric analysis was conducted using a data set of 101 papers obtained
+from the WoS. The methodological novelty of our approach may seem minor at ﬁrst
+glance [54]. However, a two-step approach adds some foundational elements commonly
+used in meta-analyses and systematic literature reviews [55]. Moreover, it was considered a
+more adequate approach for the analysis of documents in a rather scattered and emerging
+area of knowledge—and where the exclusive use of citation data could have led to misled
+interpretations of the results (e.g., by including documents from non-relevant Journals
+or by focusing on papers with a superﬁcial focus on the topics of interest (The two-step
+method for the bibliographic analysis ultimately used in this paper has some similarities
+with the bibliographic review approach employed in [56] and [57], combining thematic
+analyses and computer-aided content analysis (using Nvivo [58]) and topic modelling
+of documents, respectively). (The data sets with the full list of documents used for the
+thematic analysis study (n = 16) and bibliometric analysis (n = 101) have been included as
+Supplementary Materials).
+ 
+using English speaking documents, and the use of other similar key words. These are 
+expressed and further detailed in the limitation’s section of this paper. 
+As shown in the PRISMA diagram below (Figure 3), in this study we reﬁned van den 
+Hove and Rubalcaba’s original bibliographic analysis method to follow a two-step review 
+process of the literature. Initially, we conducted a thematic analysis of the literature 
+focusing on keywords related to cooperatives, CE and/or EI using the Scopus database. 
+This ﬁrst step had the objective to provide a bird-eye’ view of the connection between CE 
+and EI within the cooperative’s literature (total number of publications and an overview 
+of salient topics in a sub-sample of papers). As a second step, and to better understand the 
+discourse and epistemic communities surrounding these topics in the scholarly literature, 
+a more robust bibliometric analysis was conducted using a data set of 101 papers obtained 
+from the WoS. The methodological novelty of our approach may seem minor at ﬁrst 
+glance [54]. However, a two-step approach adds some foundational elements commonly 
+used in meta-analyses and systematic literature reviews [55]. Moreover, it was considered 
+a more adequate approach for the analysis of documents in a rather scattered and 
+emerging area of knowledge—and where the exclusive use of citation data could have led 
+to misled interpretations of the results (e.g., by including documents from non-relevant 
+Journals or by focusing on papers with a superﬁcial focus on the topics of interest (The 
+two-step method for the bibliographic analysis ultimately used in this paper has some 
+similarities with the bibliographic review approach employed in [56] and [57], combining 
+thematic analyses and computer-aided content analysis (using Nvivo [58]) and topic 
+modelling of documents, respectively). (The data sets with the full list of documents used 
+for the thematic analysis study (n = 16) and bibliometric analysis (n = 101) have been 
+included as Supplementary Materials). 
+ 
+Figure 3. PRIMA ﬂow diagram (based on Page et al. (2022) [59]) illustrating the methodology 
+employed in this study to integrate the data sets with the relevant articles for analysis (own 
+production) (The search for results from Scopus was carried out in October 2022 and the search for 
+WoS was carried out in May 2023). 
+Figure 3. PRIMA ﬂow diagram (based on Page et al. (2022) [59]) illustrating the methodology em-
+ployed in this study to integrate the data sets with the relevant articles for analysis (own production)
+(The search for results from Scopus was carried out in October 2022 and the search for WoS was
+carried out in May 2023).
+3.1. Thematic Analysis Using Scopus and Manual Review
+The preliminary thematic review of cooperative studies was conducted in the Scopus
+database using the terms ‘co-operativ’ OR ‘co operativ’ in the ﬁelds TITLE, ABSTRACT
+and KEYWORDS (also deﬁned as TOPIC by search engines).
+Sustainability 2023, 15, 15595
+10 of 27
+As a ﬁrst step, a logical approach was employed to exclude articles from non-relevant
+Journals, such as those in the medical domain yielding 739 documents (using the excluding
+criteria in the automated ﬁlters of Scopus, as shown in Figure 3). This bulk dataset was used
+to produce a frequency count of documents published over time (in the period 1988–2023).
+Next, the resulting documents were further narrowed by focusing only on documents
+containing the authors’ keywords “circular economy” OR “ecoinnovation”. The documents
+included in the ﬁnal dataset comprised 16 papers published in the period 2017–2021, which
+were manually reviewed to ensure they did indeed pertain to studies about cooperative
+enterprises. The data set only included peer-reviewed articles, excluding any other type
+of documents.
+3.2. Bibliometric Analysis Using WoS and Biblioshiny
+This paper also modiﬁed the method of van den Hoven and Rubalcaba (2016) by
+employing WoS in conjunction with the Bibliometrix Tool Biblioshiny [60] (implemented
+using R Studio [61]). WoS was chosen as the data source, due to its compatibility and
+integration with the latter R Studio library tool that was used for the bibliometric analysis.
+This methodological expansion enables a more comprehensive and nuanced analysis,
+yielding a deeper understanding of the interplay between the examined papers and the
+advancement of cooperatives-related themes when discussing EI and CE (The Biblioshiny
+software is a tool that has been designed to be used with WoS. This software has the
+limitation of being unable to conduct analysis of ‘merged’ datasets that include WoS and
+Scopus records. According to the developers, Scopus uses a different method to codify
+bibliographic metadata compared to WoS, which prevents Biblioshiny from conducting
+citation and co-citation analyses of merged data (See https://www.bibliometrix.org/home/
+index.php/faq, accessed on 15 October 2023). This was an important technical limitation
+that motivated the authors to test and implement our reﬁned two-step method).
+The TOPIC ﬁeld in WoS was used to conduct two searches using different terms of
+‘cooperatives’ and ‘circular economy’ or ‘ecoinnovation’ (see the complete list of terms
+and criteria in the right-hand side of Figure 3). The research results identiﬁed a total of
+142 results; however, after manually removing duplicates from the two separate searches
+and excluding non-article publications, a ﬁnal dataset of 101 documents was retained
+and used for our analysis (published between the years 2012 and 2023). Biblioshiny
+produced results of the inputted data for: citation metrics, three-fold plots, a thematic map,
+and cluster metrics (co-occurrence network, clustered thematic map, and factorial map)
+(Refer to [60] for a description of the methods used in Biblioshiny with R Studio and their
+theoretical/empirical foundations).
+4. Results
+4.1. Thematic Analysis
+This section presents basic citation counts for all documents identiﬁed in Scopus
+addressing both cooperatives and the CE or EI. In each sub-section, we present citation
+counts for the total number of documents identiﬁed in Scopus for each theme: CE (N = 739)
+or EI (N = 67). The number of documents in a sub-sample of the same theme are denoted
+with the word ‘n’ (e.g. n = 2).
+4.1.1. Cooperatives and CE
+In this sub-section, we ﬁrst present the frequency count of the number of articles focus-
+ing on CE identiﬁed in Scopus (N = 739). Considering the increased signiﬁcance in the topic
+of sustainability, Figure 4 shows the rising number of papers focusing on environmental
+sustainability, and related topics conﬁrm the interest of the scholarly community in the
+connection between cooperatives and CE.
+Sustainability 2023, 15, 15595
+11 of 27
+Sustainability 2023, 15, x FOR PEER REVIEW 
+11 of 28 
+ 
+the topic of sustainability, Figure 4 shows the rising number of papers focusing on 
+environmental sustainability, and related topics conﬁrm the interest of the scholarly 
+community in the connection between cooperatives and CE. 
+ 
+Figure 4. Final count per year of publications 1988–2022 with speciﬁc separate count for keywords 
+“Sustainability”, “Green”, “Environmental”, and “Circular Economy”, N = 739 (own production). 
+When looking at the papers ultimately retained for manual analysis in this section 
+that focused on CE (n = 14), it was observable that the majority focused on downstream 
+processes: CE as tool for emissions reduction [62], and cooperatives as a legal enterprise 
+facilitating the application of CES [63] providing further support towards an economy that 
+through employment can support reducing inequalities. Values such as co-operation, or 
+even solidary-focus economy business models, provide the space to provide and oﬀer 
+decent work to eliminate inequalities and poverty [63]. As the objective of CE is to lower 
+material input and reduce waste production [64], speciﬁc CES can help preserve products, 
+their parts, the used materials [65] promoting ways that can go beyond product 
+preservation with direct and indirect impact on the economy [64]. 
+A salient message from our review was that eﬃcient CE can be achieved through 
+eﬃcient cooperation, which is a key element already embedded in cooperatives. It was 
+deemed that it should be, through cooperative eﬀorts, researchers, policymakers, and 
+other involved stakeholders’ responsibility to provide the infrastructure to facilitate the 
+transition to eﬀective circular business by using realistic CE labelling system, which can 
+aﬀect the willingness to pay (WTP) [66]. While labelling products as more circular can 
+impact consumer’s WTP, it should not be confused with products that have implemented 
+only a partial CE strategy (e.g., using recycled materials without completing the loop 
+misleads consumers about CE practices implemented by the company). 
+When observing the integration of a speciﬁc type of labor into the market 
+contributing to CE, the reviewed literature suggested that cooperatives can act as a bridge 
+between the municipality and informal workers, such as waste pickers in developing 
+countries. Informal workers who now through a cooperative can also be given the legal 
+support needed and social status leading to the creation of a network [67,68]. Thus, as 
+cooperatives can support the implementation of CES, the same CE oriented activities can 
+push via indirect feedback that a business model should be cooperative in order for CES 
+to be more eﬃciently implemented. 
+An additional message from the papers in the dataset was related to waste 
+management being a crucial aspect when speaking of CES, and that cooperatives are 
+successful in providing a market space for selling waste as secondary resource [69] similar 
+Figure 4. Final count per year of publications 1988–2022 with speciﬁc separate count for keywords
+“Sustainability”, “Green”, “Environmental”, and “Circular Economy”, N = 739 (own production).
+When looking at the papers ultimately retained for manual analysis in this section
+that focused on CE (n = 14), it was observable that the majority focused on downstream
+processes: CE as tool for emissions reduction [62], and cooperatives as a legal enterprise
+facilitating the application of CES [63] providing further support towards an economy
+that through employment can support reducing inequalities. Values such as co-operation,
+or even solidary-focus economy business models, provide the space to provide and offer
+decent work to eliminate inequalities and poverty [63]. As the objective of CE is to lower
+material input and reduce waste production [64], speciﬁc CES can help preserve products,
+their parts, the used materials [65] promoting ways that can go beyond product preservation
+with direct and indirect impact on the economy [64].
+A salient message from our review was that efﬁcient CE can be achieved through
+efﬁcient cooperation, which is a key element already embedded in cooperatives. It was
+deemed that it should be, through cooperative efforts, researchers, policymakers, and
+other involved stakeholders’ responsibility to provide the infrastructure to facilitate the
+transition to effective circular business by using realistic CE labelling system, which can
+affect the willingness to pay (WTP) [66]. While labelling products as more circular can
+impact consumer’s WTP, it should not be confused with products that have implemented
+only a partial CE strategy (e.g., using recycled materials without completing the loop
+misleads consumers about CE practices implemented by the company).
+When observing the integration of a speciﬁc type of labor into the market contributing
+to CE, the reviewed literature suggested that cooperatives can act as a bridge between
+the municipality and informal workers, such as waste pickers in developing countries.
+Informal workers who now through a cooperative can also be given the legal support
+needed and social status leading to the creation of a network [67,68]. Thus, as cooperatives
+can support the implementation of CES, the same CE oriented activities can push via
+indirect feedback that a business model should be cooperative in order for CES to be more
+efﬁciently implemented.
+An additional message from the papers in the dataset was related to waste manage-
+ment being a crucial aspect when speaking of CES, and that cooperatives are successful
+in providing a market space for selling waste as secondary resource [69] similar to the
+process of industrial symbiosis as a means to increase environmental, social, and economic
+beneﬁts [70] and a mechanism capable of maximizing resource potential [71]. Moreover,
+waste management processes require strong, clear, and efﬁcient cooperative models that co-
+operatives can provide [72] that can help reduce costs of waste exchange, avoid competition,
+leading to a fairer market that is also economically beneﬁcial on the long-term [73–76].
+Sustainability 2023, 15, 15595
+12 of 27
+A speciﬁc case discussed in a study was the application of CE strategies for a solar
+power park for an Olympic village [77]. In order to also achieve some form of decarboniza-
+tion, energy cooperatives were identiﬁed as the model that could render successful the
+application of these strategies in this context [77].
+Barriers when implementing CES for non-cooperative and cooperatives appear to be
+similar, such as, lack of information, awareness, and ineffective recycling policies towards
+CE [78]. However, in the latter study, there was a clear acknowledgement that cooperative
+enterprises could provide additional value to tackle these barriers. In the case of EI, there is
+no similar paper to observe whether barriers or drivers remain similar. Additionally, the dis-
+course remains downstream the CE chain and focused on cooperativism as the key element
+that embedded in cooperatives, however without providing insights to other corporate
+elements that potentially make this enterprise-form efﬁcient for CES implementation.
+4.1.2. Cooperatives and EI
+A similar analysis was undertaken for the documents focusing on EI in cooperatives
+in the bulk dataset obtained from Scopus (N = 67). While only one result referred to
+cooperative enterprises, an additional EI study was added for stronger analysis that related
+to cooperativism in a broader sense but was yet relevant for the research at hand resulting
+in two used for this analysis.
+Considering the limited number of results, we wondered how innovation in the
+traditional and overall sense was studied in cooperative studies to provide an initial
+comparison with other forms of innovation (While not necessary for the thematic analysis
+nor the bibliometric analysis, to complete Figure 5, a Scopus search for papers focusing
+on authors’ keywords (“cooperatives” AND “innovation”) was completed on 23.10.22
+(n = 707). Considering it useful only for this ﬁgure and discussion it was excluded from the
+PRISMA graph representation).
+to the process of industrial symbiosis as a means to increase environmental, social, and 
+economic beneﬁts [70] and a mechanism capable of maximizing resource potential [71]. 
+Moreover, waste management processes require strong, clear, and eﬃcient cooperative 
+models that cooperatives can provide [72] that can help reduce costs of waste exchange, 
+avoid competition, leading to a fairer market that is also economically beneﬁcial on the 
+long-term [73–76]. 
+A speciﬁc case discussed in a study was the application of CE strategies for a solar 
+power park for an Olympic village [77]. In order to also achieve some form of 
+decarbonization, energy cooperatives were identiﬁed as the model that could render 
+successful the application of these strategies in this context [77]. 
+Barriers when implementing CES for non-cooperative and cooperatives appear to be 
+similar, such as, lack of information, awareness, and ineﬀective recycling policies towards 
+CE [78]. However, in the latter study, there was a clear acknowledgement that cooperative 
+enterprises could provide additional value to tackle these barriers. In the case of EI, there 
+is no similar paper to observe whether barriers or drivers remain similar. Additionally, 
+the discourse remains downstream the CE chain and focused on cooperativism as the key 
+element that embedded in cooperatives, however without providing insights to other 
+corporate elements that potentially make this enterprise-form eﬃcient for CES 
+implementation. 
+4.1.2. Cooperatives and EI 
+A similar analysis was undertaken for the documents focusing on EI in cooperatives 
+in the bulk dataset obtained from Scopus (N = 67). While only one result referred to 
+cooperative enterprises, an additional EI study was added for stronger analysis that 
+related to cooperativism in a broader sense but was yet relevant for the research at hand 
+resulting in two used for this analysis. 
+Considering the limited number of results, we wondered how innovation in the 
+traditional and overall sense was studied in cooperative studies to provide an initial 
+comparison with other forms of innovation (While not necessary for the thematic analysis 
+nor the bibliometric analysis, to complete Figure 5, a Scopus search for papers focusing on 
+authors’ keywords ( “cooperatives” AND “innovation” ) was completed on 23.10.22 (n = 
+707). Considering it useful only for this ﬁgure and discussion it was excluded from the 
+PRISMA graph representation). 
+ 
+Figure 5. Count papers published with keywords “innovation” and “eco innovation” published 
+between 1980 and 2022 focusing those that also include the keyword “cooperative” and those 
+without (only) (own production). The right Y axis shows the count only for “innovation (ONLY)”. 
+Figure 5. Count papers published with keywords “innovation” and “eco innovation” published
+between 1980 and 2022 focusing those that also include the keyword “cooperative” and those without
+(only) (own production). The right Y axis shows the count only for “innovation (ONLY)”.
+Observing the publication trends over time (Figure 5), by comparing articles con-
+taining the keywords “innovation” (intended traditionally), “eco-innovation” only, and
+those encompassing the latter and former keywords in conjunction with “cooperatives” it
+becomes immediately apparent that the number of publications speciﬁcally exploring the
+intersection of EI and cooperatives remains comparatively limited.
+When analyzing innovation more traditionally it is shown that cooperatives with
+more committed memberships display higher levels of capitalization and that the latter
+factor positively relates with innovation levels, also conﬁrmed to enhance cooperatives’
+Sustainability 2023, 15, 15595
+13 of 27
+performance [79]. Instead, when setting a focus is on EI, it is understood that cooperative
+models support the achievement of EI regardless of a ﬁrm business enterprise choice [80,81].
+The manual review of documents proved to be challenging due to the reduced number
+of papers retained for review (n = 2). The only article that focused on EI in coopera-
+tive enterprises, showed no signiﬁcant differences between cooperatives and other ﬁrms
+concerning their environmental behavior [13]. Although EI is a ﬁeld with a longer his-
+tory than CE (e.g., the ﬁrst EI papers can be tracked to the 1970s and early 2000s (see
+e.g., [82,83]), attention to cooperatives related to this form of innovation is near to absent in
+the identiﬁed documents.
+However, since in the analyzed documents there seems to be an apparent behav-
+ioral contrast between differing enterprises, we wondered about how the ﬁrm reasons
+and approaches proﬁt could differ and if it instead impacted by management decisions.
+Rabadán et al. (2019) [81] examine the capacity of companies to enhance their environ-
+mental sustainability as a means to remain competitive in the market. They explore how
+increased research and development (R&D) investment, and the advancement of technolog-
+ical EI can contribute to this goal. However, since proﬁtability is not the main cooperatives’
+goal, how can it compete within the market so that it achieves the ability to have a margin
+for R&D spending and technological advancement?
+The two papers in our study did not provide speciﬁc evidence to the question above.
+Nonetheless, there is attention drawn to SMEs and debate that while innovation provides
+the ability to compete, cooperation however could support the creation of an eco-innovative
+business model, which does not directly relate to strategies [84]. Especially, with attention
+to bringing closer members of the industrial, research, and educational sector [85].
+Since cooperatives provide already a business model that takes into account sustain-
+ability in other factors, social and economic, they could be more deﬁned to efﬁciently
+implement eco-innovative strategies or build EI-oriented business models. Moreover,
+an additional concern, and point of study, would be their ability to compete against
+bigger companies.
+4.2. Bibliometric Analysis (WoS Data Set and Biblioshiny with R Studio; N = 101)
+As noted in Section 3.2, citation data from 101 documents obtained from WoS were
+used to conduct a bibliographic analysis using the software Biblioshiny with R Studio.
+Considering the relatively young age of the topic of sustainable development, and business
+sustainability more generally, it is somehow expected that the research and scholarly
+attention on cooperatives enterprises would be less developed as observed in the thematic
+analysis. In fact, prior to 2012 there appears to be no publication on CE and EI in the
+cooperative literature (Figure 6).
+Sustainability 2023, 15, x FOR PEER REVIEW 
+14 of 28 
+ 
+ 
+Figure 6. Annual distribution of articles published per all years focusing on cooperatives and CE or 
+EI (created using Biblioshiny; own production). 
+The average citations per year (Figure 7) serves as a vital reference metric for authors 
+and journals [60] providing insights into how articles are being cited and shared, reﬂecting 
+the topic’s integration into various ﬁelds, fostering interdisciplinary and multi-
+methodological approaches. The citations per year have remained stable within the last 
+ten years. Thus, while the decrease may be attributed to the possibility that some research 
+i
+till a
+aiti
+ubli atio
+it ould be i di ati e that the i te e t i
+thi ﬁeld i
+till lo
+Figure 6. Annual distribution of articles published per all years focusing on cooperatives and CE or
+EI (created using Biblioshiny; own production).
+Sustainability 2023, 15, 15595
+14 of 27
+The average citations per year (Figure 7) serves as a vital reference metric for au-
+thors and journals [60] providing insights into how articles are being cited and shared,
+reﬂecting the topic’s integration into various ﬁelds, fostering interdisciplinary and multi-
+methodological approaches. The citations per year have remained stable within the last ten
+years. Thus, while the decrease may be attributed to the possibility that some research is
+still awaiting publication, it could be indicative that the interest in this ﬁeld is still low.
+ 
+Figure 6. Annual distribution of articles published per all years focusing on cooperatives and CE or 
+EI (created using Biblioshiny; own production). 
+The average citations per year (Figure 7) serves as a vital reference metric for authors 
+and journals [60] providing insights into how articles are being cited and shared, reﬂecting 
+the topic’s integration into various ﬁelds, fostering interdisciplinary and multi-
+methodological approaches. The citations per year have remained stable within the last 
+ten years. Thus, while the decrease may be attributed to the possibility that some research 
+is still awaiting publication, it could be indicative that the interest in this ﬁeld is still low. 
+ 
+Figure 7. Average Citations per Year for all articles (created using Biblioshiny; own production). 
+It could be hypothesized that articles authored by a limited number of researchers 
+may not receive signiﬁcant citations, which could conﬁne them to their respective ﬁelds, 
+excluding interdisciplinary engagement. This underscores the importance of further 
+research to prevent the exclusion of cooperatives as a subject in social and economic 
+sciences, given their relevance as stakeholders in sustainable development. However, 
+integrating cooperatives into interdisciplinary ﬁelds should be carried out cautiously, as 
+research suggests they diﬀer from conventional enterprises in their functioning and 
+impact. The risk is placing cooperatives as enterprises similar to others or that act just as 
+with other types, which as research demonstrates this is not the case. 
+The number of publications per year in key Journals (Figure 8) have also remained 
+relatively low within the last ten years—being Sustainability and the Journal of Cleaner 
+Production the most used outlets for academic publications in the past four years. 
+Figure 7. Average Citations per Year for all articles (created using Biblioshiny; own production).
+It could be hypothesized that articles authored by a limited number of researchers
+may not receive signiﬁcant citations, which could conﬁne them to their respective ﬁelds, ex-
+cluding interdisciplinary engagement. This underscores the importance of further research
+to prevent the exclusion of cooperatives as a subject in social and economic sciences, given
+their relevance as stakeholders in sustainable development. However, integrating coopera-
+tives into interdisciplinary ﬁelds should be carried out cautiously, as research suggests they
+differ from conventional enterprises in their functioning and impact. The risk is placing
+cooperatives as enterprises similar to others or that act just as with other types, which as
+research demonstrates this is not the case.
+The number of publications per year in key Journals (Figure 8) have also remained
+relatively low within the last ten years—being Sustainability and the Journal of Cleaner
+Production the most used outlets for academic publications in the past four years. However,
+since this study excluded articles in press, it is not possible to know if an upsurge of
+publications is coming.
+Sustainability 2023, 15, x FOR PEER REVIEW 
+15 of 28 
+ 
+However, since this study excluded articles in press, it is not possible to know if an 
+upsurge of publications is coming. 
+ 
+Figure 8. Sources’ Production Over Time per Journal (created using Biblioshiny; own production). 
+The originality of this study is further underscored by the analysis of Figures 9 and 
+10. The country that published the most is China (Figure 9), which is also expected 
+considering that the concept of CE was ﬁrst introduced in the latter country [86]. The 
+presence of Brazil is also not unexpected, since this country’s social context has played a 
+signiﬁcant role in fostering the development of cooperatives. Subsequent governmental 
+initiatives have further enhanced the understanding and support for cooperatives [87]. 
+Figure 8. Sources’ Production Over Time per Journal (created using Biblioshiny; own production).
+The originality of this study is further underscored by the analysis of Figures 9 and 10.
+The country that published the most is China (Figure 9), which is also expected considering
+Sustainability 2023, 15, 15595
+15 of 27
+that the concept of CE was ﬁrst introduced in the latter country [86]. The presence of Brazil
+is also not unexpected, since this country’s social context has played a signiﬁcant role
+in fostering the development of cooperatives. Subsequent governmental initiatives have
+further enhanced the understanding and support for cooperatives [87].
+ 
+Figure 8. Sources’ Production Over Time per Journal (created using Biblioshiny; own production). 
+The originality of this study is further underscored by the analysis of Figures 9 and 
+10. The country that published the most is China (Figure 9), which is also expected 
+considering that the concept of CE was ﬁrst introduced in the latter country [86]. The 
+presence of Brazil is also not unexpected, since this country’s social context has played a 
+signiﬁcant role in fostering the development of cooperatives. Subsequent governmental 
+initiatives have further enhanced the understanding and support for cooperatives [87]. 
+ 
+Figure 9. Sources’ Production Over Time (created using Biblioshiny; own production). 
+While these ﬁgures reveal that publications primarily concentrated within the past 
+decade, in particular the interest in the subject matter experienced a signiﬁcant surge in 
+the most recent four years. This notable upsurge could potentially be attributed to the 
+impact of key events such as the Paris Agreement [88] and the ﬁrst European Circular 
+Economy Action Plan of 2015 [12] raising awareness and interest in environmental and 
+resource eﬃciency issues. Additionally, the declaration by the United Nations designating 
+the International Day for cooperatives in 2020 with a specific focus on their contribution to 
+combating climate change [89] may have further contributed to the increased attention in 
+this area. It should also be understood that while ways to diminish the impact of climate 
+Figure 9. Sources’ Production Over Time (created using Biblioshiny; own production).
+Sustainability 2023, 15, x FOR PEER REVIEW 
+16 of 28 
+ 
+change is through forms of innovation, such as CES and EI, it is crucial to mention that the 
+ways are many as the barriers and drivers. Therefore, CE and EI do require specific focus. 
+Upon examining the keywords associated with the corresponding authors’ countries 
+and those predominantly found within the abstracts, a noteworthy observation emerges. 
+While CE emerges as a prominent keyword, the occurrence of “cooperatives” (or similar 
+variations) and EI appears to be comparatively lower. This disparity becomes more 
+apparent when investigating the prevailing themes within these articles, which are 
+currently driving the literature or have done so in the past. The keywords observed also 
+in the abstract (Figure 10; left column) appear to be indicating additional similarity to the 
+CE thematic analysis where the focus remains downstream (e.g., recycling). 
+ 
+Figure 10. Three-Fold Plot using Abstract Keyterms (AB_TM; Left), Authors’ Countries (AU_CO; 
+Middle), and Authors’ Keywords (DE; Right) (created using Biblioshiny; own production). 
+It can be inferred that the literature is more focused on the concept of CE, which 
+garners greater attention and emphasis, while paradoxically the deﬁnition yet remains to 
+be clariﬁed. On the other hand, the presence of cooperatives and EI-related themes may 
+be relatively less prominent or inﬂuential in shaping the current discourse. This 
+observation highlights the existing trends and priorities within the literature, indicating 
+that the CE theme (within the cooperatives arena) (in the 4th ﬁgure in section 4.4) may 
+have taken precedence over EI in terms of driving research and scholarly discussions in 
+the ﬁeld. 
+During the examination of common and emerging themes in the study three motor 
+primary themes have been identiﬁed (as depicted in Figure 11; top right). To determine 
+the subthemes that drive the exploration of cooperatives within the contexts of EI and CE, 
+the analysis focuses on the authors’ keywords by excluding other keywords that could 
+inﬂuence the results but are deemed irrelevant (e.g., “results”). This allows for a more 
+targeted understanding of the speciﬁc subthemes that propel the direction of research in 
+the latter ﬁeld. 
+Figure 10. Three-Fold Plot using Abstract Keyterms (AB_TM; Left), Authors’ Countries (AU_CO;
+Middle), and Authors’ Keywords (DE; Right) (created using Biblioshiny; own production).
+While these ﬁgures reveal that publications primarily concentrated within the past
+decade, in particular the interest in the subject matter experienced a signiﬁcant surge in
+the most recent four years. This notable upsurge could potentially be attributed to the
+impact of key events such as the Paris Agreement [88] and the ﬁrst European Circular
+Economy Action Plan of 2015 [12] raising awareness and interest in environmental and
+resource efﬁciency issues. Additionally, the declaration by the United Nations designating
+the International Day for cooperatives in 2020 with a speciﬁc focus on their contribution to
+combating climate change [89] may have further contributed to the increased attention in
+this area. It should also be understood that while ways to diminish the impact of climate
+change is through forms of innovation, such as CES and EI, it is crucial to mention that the
+ways are many as the barriers and drivers. Therefore, CE and EI do require speciﬁc focus.
+Sustainability 2023, 15, 15595
+16 of 27
+Upon examining the keywords associated with the corresponding authors’ countries
+and those predominantly found within the abstracts, a noteworthy observation emerges.
+While CE emerges as a prominent keyword, the occurrence of “cooperatives” (or similar
+variations) and EI appears to be comparatively lower. This disparity becomes more ap-
+parent when investigating the prevailing themes within these articles, which are currently
+driving the literature or have done so in the past. The keywords observed also in the
+abstract (Figure 10; left column) appear to be indicating additional similarity to the CE
+thematic analysis where the focus remains downstream (e.g., recycling).
+It can be inferred that the literature is more focused on the concept of CE, which
+garners greater attention and emphasis, while paradoxically the deﬁnition yet remains to
+be clariﬁed. On the other hand, the presence of cooperatives and EI-related themes may be
+relatively less prominent or inﬂuential in shaping the current discourse. This observation
+highlights the existing trends and priorities within the literature, indicating that the CE
+theme (within the cooperatives arena) (in the 4th ﬁgure in Section 4.4) may have taken
+precedence over EI in terms of driving research and scholarly discussions in the ﬁeld.
+During the examination of common and emerging themes in the study three motor
+primary themes have been identiﬁed (as depicted in Figure 11; top right). To determine
+the subthemes that drive the exploration of cooperatives within the contexts of EI and CE,
+the analysis focuses on the authors’ keywords by excluding other keywords that could
+inﬂuence the results but are deemed irrelevant (e.g., “results”). This allows for a more
+targeted understanding of the speciﬁc subthemes that propel the direction of research in
+the latter ﬁeld.
+Sustainability 2023, 15, x FOR PEER REVIEW 
+17 of 28 
+ 
+ 
+Figure 11. Thematic Map with authors’ keywords (created using Biblioshiny; own production. The 
+following keywords were excluded to provide a deeper understanding of the subtopics: “circular 
+economy; cooperative; eco innovation; eco-innovation; cooperatives; paper; results; data; textual 
+analysis; to-”). 
+The motor themes in Figure 11, provide insight to those repeated keywords by the 
+authors and are meant to give insight to the direction where the research is headed for the 
+topics chosen for this paper. The following section presents the main ﬁndings of these 
+clusters, also referred below as to motor themes. 
+4.3. Motor Themes (Clusters) of Cooperatives Research Focusing on CE and EI 
+4.3.1. CE Principles (Brown Cluster): Industrial Ecology & Cradle-to-Cradle 
+Industrial ecology, including concepts such as cradle-to-cradle, predates the more 
+recent theories of CE and EI. It encompasses approaches aimed at optimizing the entire 
+materials cycle, from the use of virgin materials to the production of ﬁnished goods and 
+their eventual disposal [90] The theory of industrial ecology was already addressing the
+Figure 11. Thematic Map with authors’ keywords (created using Biblioshiny; own production. The
+following keywords were excluded to provide a deeper understanding of the subtopics: “circular
+economy; cooperative; eco innovation; eco-innovation; cooperatives; paper; results; data; textual
+analysis; to-”).
+The motor themes in Figure 11, provide insight to those repeated keywords by the
+authors and are meant to give insight to the direction where the research is headed for
+the topics chosen for this paper. The following section presents the main ﬁndings of these
+clusters, also referred below as to ‘motor themes’.
+Sustainability 2023, 15, 15595
+17 of 27
+4.3. Motor Themes (Clusters) of Cooperatives Research Focusing on CE and EI
+4.3.1. CE Principles (Brown Cluster): Industrial Ecology & Cradle-to-Cradle
+Industrial ecology, including concepts such as cradle-to-cradle, predates the more
+recent theories of CE and EI. It encompasses approaches aimed at optimizing the entire
+materials cycle, from the use of virgin materials to the production of ﬁnished goods and
+their eventual disposal [90]. The theory of industrial ecology was already addressing the
+need to revise our production and consumption patterns, even before the 21st century, as a
+response to the unsustainable exploitation of the Earth’s natural resources. In both cases,
+we can assume that the presence of these subtopics is expected being the foundation of EI
+and CE studies.
+EI seeks to reduce resource consumption resulting from either environmental issues
+or the market’s response to high resource prices, which necessitates new or improved
+products and practices that have the desired environmental impact [91]. In this context, it
+can be speculated that industrial ecology was originally conceived with similar objectives
+in mind.
+Overall, industrial ecology and its principles were developed as a means to address
+resource overuse and promote more sustainable production and consumption patterns,
+aligning with the underlying goals of EI and CE, which are now terms most commonly
+used and we would suppose them being intertwined. However, the analysis shows that in
+the case cooperative, this may not be the case.
+4.3.2. Material Recovery (Pink Cluster): Recycling, Waste Pickers, and by Products
+Following the ﬁrst cluster, the pink one focuses on the end of the supply chain and what
+can be done with products once it reaches the End-Of-Life and/or End-Of-Use. Two sub-
+concepts are also commonly observed and described in CE and EI. As an example of EI, the
+former are relevant since not only do they tackle a branch of research material opportunities
+from waste (e.g., material science), but the behavior behind product consumption, such as
+product-as-a-service where a product is rather rented and returned, rather than disposed of.
+In the particular case of waste pickers, as previously underlined in the thematic analysis,
+they are mostly discussed as a form of employment in developing countries. In this case,
+cooperative enterprises are described as those who can efﬁciently manage and act as
+connectors between the government (or other private enterprises) and local people who
+are hired as pickers.
+4.3.3. Material Management (Green Cluster): Waste Management, Governance, and
+Municipal Solid Waste
+The last cluster regards how governance and management can matter in terms of waste
+management. Discard studies [92] have shed light on the multifaceted nature of waste,
+transcending its perception as a mere by-product of human desires or a technical challenge
+within the domain of sanitation experts. Regarding the intricacies of waste management
+processes, scholars have illuminated its central role in discussions concerning materiality,
+ontology, labor dynamics, environmental justice movements, and critical examinations
+of modernity and imperial constructs [93]. Especially if investigating the relationship
+between waste and non-human entities, due to its profound implications for the future of
+the planetary ecosystem.
+4.4. Relationship between Clusters
+Although it appears that the three clusters are naturally interconnected, this is not
+visible in the analysis (Figure 11). The three thematic clusters remain connected mostly
+more to the theme of CE, rather than EI, which instead remains also isolated and yet to be
+discussed in regard to cooperative enterprises. An assumption potentially observed from
+the thematic analysis, is that the role of the cooperative requires further exploration and
+consideration without it being limited and framed either in the waste management arena
+potentially making a distinction between EI and CE or better clarifying its interconnected-
+Sustainability 2023, 15, 15595
+18 of 27
+ness. However, since CE appears to a ﬁeld that yet requires more detailed deﬁnition, the
+focus applied to co-operatives could begin from EI studies where impacting factors and
+elements—as barriers and drivers—are more deﬁned.
+Figure 12 shows the co-occurrence network (A keyword co-occurrence network (KCN)
+is centered on comprehending the elements and organization of knowledge within a
+scientiﬁc or technical domain, achieved by studying the connections between keywords
+in the body of literature [94]) analysis suggesting the presence of four distinct clusters,
+comprising a total of 34 keywords. These clusters are visualized through graphs, where
+keyword connections are represented by nodes and links.
+Sustainability 2023, 15, x FOR PEER REVIEW 
+19 of 28 
+ 
+ 
+Figure 12. Co-occurence network with authors’ keywords (created using Biblioshiny; own 
+production. The following keywords were excluded for deeper understanding of the subtopics: 
+“circular economy; cooperative; eco-innovation; cooperatives; paper; results; data; textual analysis; 
+to-; eco innovation”). 
+In Figure 12, each node represents a speciﬁc keyword, and its size corresponds to the 
+frequency of appearance within the analyzed documents. Consequently, a larger node 
+size indicates a higher frequency of occurrence, while a smaller node size indicates a lower 
+frequency. By examining the network and its clusters, it becomes possible to discern the 
+relationships and patterns among the keywords. Thus, this analysis oﬀers insights into 
+the interconnectedness and thematic associations within the literature, aiding in 
+identifying the central themes and their respective prominence based on the frequency of 
+appearance. 
+As shown in Figure 12, there is no clear node connection between keywords related 
+to EI and those for CE. As expected the larger node remains CE (Figure 13) with greater 
+connections. This may indicate not only an absence of deeper research on the deﬁned 
+relationship between EI and CE, but also a larger interest in CES rather than EI. 
+ 
+Figure 12. Co-occurence network with authors’ keywords (created using Biblioshiny; own production.
+The following keywords were excluded for deeper understanding of the subtopics: “circular economy;
+cooperative; eco-innovation; cooperatives; paper; results; data; textual analysis; to-; eco innovation”).
+In Figure 12, each node represents a speciﬁc keyword, and its size corresponds to the
+frequency of appearance within the analyzed documents. Consequently, a larger node size
+indicates a higher frequency of occurrence, while a smaller node size indicates a lower
+frequency. By examining the network and its clusters, it becomes possible to discern the
+relationships and patterns among the keywords. Thus, this analysis offers insights into the
+interconnectedness and thematic associations within the literature, aiding in identifying
+the central themes and their respective prominence based on the frequency of appearance.
+As shown in Figure 12, there is no clear node connection between keywords related
+to EI and those for CE. As expected the larger node remains CE (Figure 13) with greater
+connections. This may indicate not only an absence of deeper research on the deﬁned
+relationship between EI and CE, but also a larger interest in CES rather than EI.
+The use of clustered thematic maps is to highlight the way the subtopics of this
+scholarly literature analysis are interconnected. Figure 14 provides an in-depth view
+by looking at subtopics when the main keywords, used in the ﬁrst keyword search, are
+excluded in order to observe how keywords are subsequently interacting. Figure 14
+shows the results of four main groups: industrial symbiosis/industrial ecology, waste
+management, recycling, and sustainable development. Other themes such as innovation
+or cooperation are less discovered and interconnected. As shown in Figure 15, even when
+all keywords are included, the latter still appears to be valid. Thus, while these two latter
+ﬁgures may not provide further information, they do provide further conﬁrmation of what
+has been already identiﬁed.
+Sustainability 2023, 15, 15595
+19 of 27
+the interconnectedness and thematic associations within the literature, aiding in 
+identifying the central themes and their respective prominence based on the frequency of 
+appearance. 
+As shown in Figure 12, there is no clear node connection between keywords related 
+to EI and those for CE. As expected the larger node remains CE (Figure 13) with greater 
+connections. This may indicate not only an absence of deeper research on the deﬁned 
+relationship between EI and CE, but also a larger interest in CES rather than EI. 
+ 
+Figure 13. Co-occurrence network with authors’ keywords (created using Biblioshiny; own 
+production. All keywords were included.). 
+The use of clustered thematic maps is to highlight the way the subtopics of this 
+scholarly literature analysis are interconnected. Figure 14 provides an in-depth view by 
+looking at subtopics when the main keywords, used in the ﬁrst keyword search, are 
+Figure 13. Co-occurrence network with authors’ keywords (created using Biblioshiny; own produc-
+tion. All keywords were included).
+Sustainability 2023, 15, x FOR PEER REVIEW 
+20 of 28 
+ 
+excluded in order to observe how keywords are subsequently interacting. Figure 14 shows 
+the results of four main groups: industrial symbiosis/industrial ecology, waste 
+management, recycling, and sustainable development. Other themes such as innovation 
+or cooperation are less discovered and interconnected. As shown in Figure 15, even when 
+all keywords are included, the latter still appears to be valid. Thus, while these two latter 
+ﬁgures may not provide further information, they do provide further conﬁrmation of 
+what has been already identiﬁed. 
+ 
+Figure 14. Clustered Thematic Map using authors’ keywords (created using Biblioshiny; own 
+production. The following keywords were excluded for deeper understanding: “circular economy; 
+cooperative; eco-innovation; cooperatives; paper; results; data; textual analysis; to-; eco 
+innovation”). 
+Figure 14. Clustered Thematic Map using authors’ keywords (created using Biblioshiny; own
+production. The following keywords were excluded for deeper understanding: “circular economy;
+cooperative; eco-innovation; cooperatives; paper; results; data; textual analysis; to-; eco innovation”).
+To ﬁnally investigate if the references ideally are treated and chosen similarly among
+the papers selected for analysis, a conceptual structure map using the Multiple Correspond-
+ing Analysis (MCA) (Figure 16) and Keywords Plus was carried out. Keywords Plus is
+used in WoS to identify words or phrases that frequently appear in the titles of an article’s
+references, but do not appear in the title of the article itself [95].
+In the MCA conceptual structure map (Figure 16), concepts are visually represented
+based on their relationships and importance. The x-axis shows similarity or thematic
+connections, while the y-axis represents signiﬁcance or weight. Consequently, the analysis
+reveals that the references cited in the analyzed articles exhibit similar keywords grouped
+into two main clusters. Among these clusters, EI emerges as a prominent theme, although
+it is less connected to other concepts or investigated compared to CE when discussing
+cooperatives. Additionally, the secondary cluster is more inclusive, and tackles more
+secondary themes altogether. Hence, the references utilized by the same articles used for
+this paper’s research demonstrated a similar clustering pattern.
+Sustainability 2023, 15, 15595
+20 of 27
+ 
+Figure 14. Clustered Thematic Map using authors’ keywords (created using Biblioshiny; own 
+production. The following keywords were excluded for deeper understanding: “circular economy; 
+cooperative; eco-innovation; cooperatives; paper; results; data; textual analysis; to-; eco 
+innovation”). 
+ 
+Figure 15. Clustered Thematic Map using authors’ keywords (created using Biblioshiny; own
+production. All keywords were included).
+nability 2023, 15, x FOR PEER REVIEW 
+21 of 28 
+Figure 15. Clustered Thematic Map using authors’ keywords (created using Biblioshiny; own 
+production. All keywords were included.). 
+To ﬁnally investigate if the references ideally are treated and chosen similarly among 
+the papers selected for analysis, a conceptual structure map using the Multiple 
+Corresponding Analysis (MCA) (Figure 16) and Keywords Plus was carried out. Keywords 
+Plus is used in WoS to identify words or phrases that frequently appear in the titles of an 
+article’s references, but do not appear in the title of the article itself [95]. 
+ 
+Figure 16. Factorial Map of Keywords’ Plus (Two Clusters) (created using Biblioshiny; own 
+production. All keywords were included) The authors’ keywords were not used in this analysis 
+since they did not provide enough indicative information. 
+In the MCA conceptual structure map (Figure 16), concepts are visually represented 
+based on their relationships and importance. The x-axis shows similarity or thematic 
+connections, while the y-axis represents signiﬁcance or weight. Consequently, the analysis 
+reveals that the references cited in the analyzed articles exhibit similar keywords grouped 
+into two main clusters. Among these clusters, EI emerges as a prominent theme, although 
+it is less connected to other concepts or investigated compared to CE when discussing 
+cooperatives. Additionally, the secondary cluster is more inclusive, and tackles more 
+secondary themes altogether. Hence, the references utilized by the same articles used for 
+this paper’s research demonstrated a similar clustering pattern. 
+This outcome may not appear surprising, but the additional information that it 
+provides is that not only do CE and EI not interconnect, but the references used by 
+Figure 16. Factorial Map of Keywords’ Plus (Two Clusters) (created using Biblioshiny; own produc-
+tion. All keywords were included). The authors’ keywords were not used in this analysis since they
+did not provide enough indicative information.
+This outcome may not appear surprising, but the additional information that it pro-
+vides is that not only do CE and EI not interconnect, but the references used by academic in
+each relative ﬁeld is also similar without providing stronger interdisciplinarity. The latter
+remains a large limitation, since as scholars acknowledge a ﬁeld and establish it within
+academic authority structures, it paves the way for enhanced knowledge development [96].
+Thus, in the case of cooperative studies, the abilities, drivers, and barriers of cooperatives
+Sustainability 2023, 15, 15595
+21 of 27
+to achieve environmental sustainability and innovation need to be researched to acquire a
+stronger knowledge foundation.
+5. Conclusions
+Discussion and Value Creation
+This document addressed the question of better understanding the existing connection
+between the topics of CE and EI and cooperative enterprises in scholarly literature. As the
+urgency for environmental sustainability increases, it is necessary to include all stakeholders
+into the scholarly research. For this reason, this paper aimed at understanding how CE and
+EI as thematic ﬁelds were integrated within the cooperative studies. To achieve this aim,
+we looked to carry out a preliminary thematic analysis using citation data and a manual
+review of a sample of documents from Scopus, followed by a robust bibliometric analysis
+from WoS citation data using R Studio’s Bibliometrix (Biblioshiny) package.
+The outcomes of this paper reveal the presence of distinct research clusters centered
+around three overarching themes. However, these thematic domains exhibit insufﬁcient
+interconnection, as indicated by the thematic maps, revealing certain critical associations
+are overlooked considering the critiqued deﬁnitions of EI and CE and how those are then
+implemented within the cooperative enterprise. Speciﬁcally, while the exploration of co-
+operatives’ adoption of CE strategies has gained reasonable attention, the same level of
+scrutiny is not extended to the study of EI in the context of cooperative studies. Con-
+sequently, the scholarly discourse not only lacks a robust linkage between CE and EI in
+academic literature but also this connection is further attenuated by the inadequate fo-
+cus on the upstream dimensions (e.g., resource management versus waste handling) and
+(democratic or other) governance that inﬂuence the implementation of eco-conscious forms
+of innovation like EI.
+This disjointed knowledge representation might foster assumptions about coopera-
+tives that do not furnish a holistic grasp of their speciﬁc attributes. For instance, without
+delving into diverse managerial approaches, such as more participatory and inclusive
+methods, cooperatives often become subjects of analysis within the same conceptual frame-
+work as other enterprise types. This, however, falls short of capturing the distinctive
+potential of cooperatives as efﬁcacious models for attaining sustainable development or
+fully uncovering the reasons behind their potential success (or even failure). These gaps
+in the literature obstruct the exploration of how distinct enterprise forms, cooperatives
+included, can contribute to sustainable business practices and streamlined operational
+modes. Therefore, this analysis puts forth three pivotal ﬁndings.
+Firstly, a more comprehensive and interconnected investigation is required when
+examining cooperatives, particularly to comprehend the intricate interplay between EI and
+CE (and the industrial sector and elements). The precise nature of this interrelation and its
+consequential implications remain ambiguous. Secondly, the predominant focus of inquiry
+predominantly centers on downstream facets of cooperative activities (e.g., waste man-
+agement), relegating other pertinent dimensions that warrant comprehensive exploration.
+Lastly, both the realms of CE and EI lack exhaustive insights into the hurdles, incentives,
+and the strategic role that cooperation might assume in their adoption. Given the limited
+corpus of available literature for scrutiny, further research is imperative. Neglecting to
+address these facets poses the risk of weakening direct reinforcement or lucid associa-
+tions, not solely between CE and EI, but also concerning cooperative enterprises and their
+implications within this speciﬁc business framework.
+The observed uncertainty hinders our understanding of how cooperatives can con-
+tribute to sustainable development from the upstream of the supply chain. The latter
+is relevant since a further detailed understanding of cooperatives enterprises, for these
+ﬁelds, can help distinguish the barriers and drivers in different sectors and cooperatives
+types going beyond an economic discourse framed in a neoclassical versus new economy
+narrative, and rather focusing on democratic stakeholding that provide space to what is in
+its entirety a business form that appears excluded from market-considerations but has to
+Sustainability 2023, 15, 15595
+22 of 27
+comply to the environmental-needs nonetheless (and is yet expected to compete with other
+enterprise forms). There appears to be an absence to the role that cooperatives would place
+within the market when implementing EI pressures for sustainable CE practices against
+larger industries. Furthermore, there is an additional absence to how local and regional
+factors play a role as observed instead when studying singularly EI or CE.
+Since cooperatives exist on values that go beyond proﬁt, the pressure to innovate
+towards efﬁcient CE strategies, it is necessary to revisit our paradigm in a market and
+economic system that does not beneﬁt cooperatives revisiting our vision of production
+and consumption. Furthermore, if we consider EI as the means of harmonizing economic
+activities with environmental resilience [97] it is proven that regulations and government
+involvement in the promotion of EIs come out from a cooperative approach that can help
+business approach clear technologies and products.
+It is already evident that CE can serve as a valuable tool for cooperatives to attain the
+fundamental pillars of sustainability. By considering CE as a catalyst for sustainable devel-
+opment, cooperatives emerge as instrumental in implementing CE, particularly in economi-
+cally disadvantaged regions. While some solutions for decarbonization and environmental
+sustainability already exist, they often face limitations and high costs. However, the cooper-
+ative model can help mitigate these challenges, potentially reducing expenses. It is therefore
+apparent that CE represents a strategic choice for cooperatives to enhance their environ-
+mental sustainability efforts, while cooperatives themselves provide an optimal framework
+to efﬁciently implement these strategies, ultimately leading to reduced inequalities.
+Cooperatives serve as a promising model for integrating sustainable EI and CE strate-
+gies, contributing to environmental sustainability, and reducing inequalities. Further
+research and analysis are warranted to delve deeper into the role of cooperatives in driv-
+ing sustainable practices and their impact on various sectors and regions, especially in
+the context of market-positioning, economic competition (and reciprocity), effective man-
+agement styles, and cooperative-speciﬁc barriers. Hence, as we rethink production and
+consumption a stronger understanding of cooperative and sustainable EI and CE within
+a unique enterprise as the cooperative could lead to a more effective strategy implemen-
+tation toward environmental sustainability that takes into consideration values, such as
+democratic governance, social justice, and stakeholder inclusion for an ideal socially and
+environmentally sustainable circular cooperative (SECC).
+6. Limitations and Further Research
+The main limitation is the need to provide a deeper study based on speciﬁc sub
+keywords in the title and abstract (e.g., on a speciﬁc circular step or cooperative type),
+which was not carried out considering the overall aim of this paper which was meant to
+keep the analysis at the general level and to observe existing relationships and themes.
+It is relevant to note that while there were not many papers resulting from our research
+for the analysis, the problem here is too large for manual analysis. The latter is the reason
+why we deemed a bibliometric analysis is more adapt form of analysis for this paper.
+We acknowledge that further graphical representations within the dataset did not exhibit
+substantial variability or informative patterns, thereby hindering our capacity for in-depth
+analysis. This is indicative of a limitation of scholarly attention to this topic, rather than an
+analysis error.
+According to the initial results from the thematic analysis and those highlighted gaps,
+between the role of production cooperatives and application of CE and EI, shows that while
+there is potential for cooperatives to make a difference due to their social attention and
+ability to include multiple stakeholders, there is little clarity on how this can be carried out.
+Furthermore, it demonstrates the complexity of the application and transition to such CE
+and EI models.
+There is difﬁculty in recognizing the conceptual boundaries among EI, business mod-
+els, and CE with challenges to measure a company’s performance in CE and EI [5]. Addi-
+tional analysis would require expanding within the production chain since results demon-
+Sustainability 2023, 15, 15595
+23 of 27
+strate that they were quite limited when focusing on speciﬁc CE strategy applications, such
+as upstream of the supply chain, such as for decisions prior to production and distribution,
+rather than purchasing and product design. Thus, the approach for cooperatives should
+be investigated alongside, considering the different models possibly suggesting that the
+private companies and cooperatives may not necessarily apply CE and EI in similar ways
+and/or with the same perception. Hence, this would also require expansion based on
+geographical location, sector, and industrial speciﬁcities.
+Further research should identify the barriers and drivers toward EI and CE that coop-
+eratives incur against other forms of enterprise. Although cooperatives already proceed
+in a collaborating manner just simply due to its governance it should be useful to see
+which economic and social elements support cooperatives’ successful transition to CE and
+EI measures.
+A deeper understanding of the policy implications or externalities should be required,
+since considering the studies identiﬁed for CE, barriers may be found not only internally.
+However, regarding internal management, since identity is an extremely important factor
+in the cooperative movement deﬁning the spirit and model on which a cooperatives
+operate, there should be analysis on the insertion of environmental identity. Considering
+the aforementioned scholarly sides to EI and CE studies, as well within the cooperative
+movement, deﬁning a potential environmentally-focused values would be useful to those
+cooperatives within to provide forms of innovation or CES that are land on stronger
+environmental values.
+Given the increasing signiﬁcance of environmental sustainability as a needed strat-
+egy, there arises a proposition to incorporate CE and environmentally-focused values into
+the principles of the International Cooperative Alliance [98]. This suggestion stems from
+the current juncture where cooperatives ﬁnd themselves, necessitating heightened public
+awareness to accomplish their sustainability objectives [99]. Consequently, a more pro-
+nounced emphasis on cooperative enterprises’ narrative, recognition, and concerted efforts
+will become imperative also when tackling environmental sustainability and (concepts
+of responsible) innovation that is now currently unexplored as identiﬁed by this paper.
+Potentially expanding on the questions of a form of democratic governance, such as those
+ideally embedded by cooperatives, which already expand on the concepts of stakeholder
+inclusion (or avoidance of exclusion) and heightened participatory elements would either
+apply EI and CE efﬁciently. Additionally, there is the question at which level would EI
+and/or CES be implemented and how they are induced internally or considering their
+level of levels engagement and dynamics [100]. Furthermore, a stronger understanding
+of the connection between EI and CE can provide support to how forms of innovation
+are incorporated by a model such as the cooperative one. Thus, it is expected that further
+analysis and scrutiny of this research will be crucial to the efﬁcient application of EI and
+CES by cooperatives and identity reinforcement can structure these challenges.
+Supplementary Materials:
+The following supporting information can be downloaded at:
+https://www.mdpi.com/article/10.3390/su152115595/s1, Table S1: Excel list of papers used in
+the Thematic Analysis; Table S2: Excel list of papers used in the Bibliometric Analysis.
+Author Contributions: A.G. conceived the presented idea and topic. A.G. developed the theoretical
+and analytical framework, performed the methodology and analysis, and wrote different drafts of the
+paper. F.J.D.L. guided the conceptual process, revised the draft versions of the manuscript, reviewed
+the methodological approach, and provided comments and contributions. All authors discussed the
+results and contributed to the ﬁnal manuscript. All authors have read and agreed to the published
+version of the manuscript.
+Funding: This research received no external funding.
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Sustainability 2023, 15, 15595
+24 of 27
+Data Availability Statement: The full dataset of the used papers for this research are provided in as
+Supplementary Materials.
+Acknowledgments: The research underpinning this article is inserted into the research initiative
+called Climate Circular Coop (www.climatecircularcoop.it) led by the University of Ferrara and con-
+nected to the University’s PhD programme on Sustainability and Well-being. The initiative is funded
+by the PON (Programma Operativo Nazionale (PON) del Ministero dell’Istruzione, dell’Università
+e della Ricerca) by the Italian Ministry of Education, Universities and Research. EIT Climate KIC’s
+Transitions Hub provides in-kind supervision to this PhD research.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Codini, A. Le Cooperative Sociali; FrancoAngeli: Milan, Italy, 2007.
+2.
+Zamagni, V.N. The Cooperative Enterprise: A Valid Alternative for a More Balanced Society. In Cooperatives in a Post-Growth Era
+Creating Cooperative Economics; Novkovic, S.S., Webb, T., Eds.; Zed Books: London, UK, 2014; pp. 194–210.
+3.
+Castellini, M.; Maran, L. An Overview of Management Systems in the Cooperative Sector. An Analysis of the Italian Leghe. J. Coop.
+Account. Report. 2012, 1, 5. Available online: https://saturn.smu.ca/webﬁles/2012-1-2-p1.pdf (accessed on 11 October 2022).
+4.
+Smith, M. Diversity and Identity in the Non-proﬁt Sector: Lessons from LGBT Organizing in Toronto. Soc. Policy Adm. 2005, 39,
+463–480. [CrossRef]
+5.
+Intergovernmental Panel on Climate Change. Summary for Policymakers: Climate Change 2021. The Physical Science Basis.
+2021. Available online: https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM_ﬁnal.pdf (accessed on
+10 September 2022).
+6.
+Giannetti, B.F.; Diaz Lopez, F.J.; Liu, G.; Agostinho, F.; Sevegnani, F.; Almeida, C.M. A Resilient and Sustainable World:
+Contributions from Cleaner Production, Circular Economy, Eco-innovation, Responsible Consumption, and Cleaner Waste
+Systems. J. Clean. Prod. 2022, 384, 135465. [CrossRef]
+7.
+Chioatto, E.; Zecca, E.; D’Amato, A. Which Innovations for a Circular Business Model? A Product Life-Cycle Approach. FEEM
+Working Paper 2020. [CrossRef]
+8.
+Ghisellini, P.; Cialani, C.; Ulgiati, S. A review on circular economy: The expected transition to a balanced interplay of environmen-
+tal and economic systems. J. Clean. Prod. 2016, 114, 11–32. [CrossRef]
+9.
+de Jesus, A.; Antunes, P.; Santos, R.; Mendonça, S. Eco-innovation in the transition to a circular economy: An analytical literature
+review. J. Clean. Prod. 2018, 172, 2999–3018. [CrossRef]
+10.
+Ziegler, R.; Poirier, C.; Lacasse, M.; Murray, E. Circular Economy and Cooperatives—An Exploratory Survey. Sustainability 2023,
+15, 2530. [CrossRef]
+11.
+Homer-Dixon, T. The Cooperative Enterprise: A Valid Alternative for a More Balanced Society. In Cooperatives in a Post-Growth
+Era Creating Cooperative Economics; Novkovic, S., Webb, T., Eds.; Zed Books: London, UK, 2014; pp. 115–134.
+12.
+European Commission. Circular Economy Action Plan. 2020. Available online: https://ec.europa.eu/environment/strategy/
+circular-economy-action-plan_en (accessed on 30 August 2022).
+13.
+Calle, F.; González-Moreno, N.; Carrasco, I.; Vargas-Vargas, M. Social Economy, Environmental Proactivity, Eco-Innovation and
+Performance in the Spanish Wine Sector. Sustainability 2020, 12, 5908. [CrossRef]
+14.
+EUR-LEX—52011DC0899—EN—EUR-LEX. (n.d.). Available online: https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=
+celex%3A52011DC0899 (accessed on 30 August 2022).
+15.
+Könnölä, T.; Del Río González, P.; Carrillo-Hermosilla, J.; López, F.J.D. Innovación verde en América Latina y el Caribe: Marco
+conceptual|Publications. In Banco Interamericano De Desarrollo (IDB-TN-2 704); Banco Interamericano de Desarrollo: Washington,
+DC, USA, 2023; Available online: https://publications.iadb.org/publications/spanish/viewer/Innovacion-verde-en-America-
+Latina-y-el-Caribe-marco-conceptual.pdf (accessed on 2 October 2023).
+16.
+Voinea, A. International Day of Cooperatives Theme Announced. Cooperative News, 3 May 2022. Available online: https://
+www.thenews.coop/162106/sector/regional-organisations/international-day-of-cooperatives-theme-announced/(accessed on
+11 May 2022).
+17.
+Jossa, B. Cooperativismo, Capitalismo e Socialismo. Una Nuova Stella Polare per la Sinistra; Novalogos: Hague, The Netherlands, 2012.
+18.
+Cropp, R.; Ingalsbe, G. Structure and scope of agricultural cooperatives. In Cooperatives in Agriculture; Cobia, D., Ed.; Prentice-Hall:
+Englewood Cliffs, NJ, USA, 1989; pp. 35–67.
+19.
+van Bekkum, O.-F.; van Dijk, G. (Eds.) Agricultural Cooperatives in the European Union. Trends and Issues on the Eve of the 21st
+Century; Van Gorcum: Assen, The Netherlands, 1997.
+20.
+Sarkar, A.; Wang, H.; Rahman, A.; Qian, L.; Memon, W.H. Evaluating the roles of the farmer’s cooperative for fostering
+environmentally friendly production technologies-a case of kiwi-fruit farmers in Meixian, China. J. Environ. Manag. 2022,
+301, 113858. [CrossRef]
+21.
+Arundel, A.; Kemp, R. Measuring eco-innovation. Res. Pap. Econ. 2009, 17, 1–40. Available online: http://collections.unu.edu/
+eserv/UNU:324/wp2009-017.pdf (accessed on 2 October 2023).
+Sustainability 2023, 15, 15595
+25 of 27
+22.
+Carrillo-Hermosilla, J.; del González, P.R.; Könnölä, T. What is eco-innovation? In Eco-Innovation; Palgrave Macmillan: London,
+UK, 2009. [CrossRef]
+23.
+Harabi, N. Employment Effects of Ecological Innovations: An Empirical Analysis. Munich Personal RePEc Archive. 2000.
+Available online: https://mpra.ub.uni-muenchen.de/4395/ (accessed on 2 October 2023).
+24.
+Pansera, M. The Origins and Purpose of Eco-Innovation. Glob. Environ. 2011, 4, 128–155. [CrossRef]
+25.
+Kemp, R. Eco-innovation: Deﬁnition, measurement and open research issues. Econ. Politica 2010, 3, 397–420. [CrossRef]
+26.
+Ekins, P. Eco-innovation for environmental sustainability: Concepts, progress and policies. Int. Econ. Econ. Policy 2010, 7, 267–290.
+[CrossRef]
+27.
+Reno, J. Waste and Waste Management. Annu. Rev. Anthropol. 2015, 44, 557–572. [CrossRef]
+28.
+Jacob, K. Shaping System Innovation: Transformative environmental policies.
+In Sustainability and Innovation; Springer:
+Berlin/Heidelberg, Germany, 2018. [CrossRef]
+29.
+Moraga, G.; Huysveld, S.; Mathieux, F.; Blengini, G.A.; Alaerts, L.; van Acker, K.; de Meester, S.; Dewulf, J. Circular economy
+indicators: What do they measure? Resour. Conserv. Recycl. 2019, 146, 452–461. [CrossRef]
+30.
+Korhonen, J.; Honkasalo, A.; Seppälä, J. Circular Economy: The Concept and its Limitations. Ecol. Econ. 2018, 143, 37–46.
+[CrossRef]
+31.
+MahmoumGonbadi, A.; Genovese, A.; Sgalambro, A. Closed-loop supply chain design for the transition towards a circular
+economy: A systematic literature review of methods, applications and current gaps. J. Clean. Prod. 2021, 323, 129101. [CrossRef]
+32.
+Betancourt Morales, C.M.; Zartha Sossa, J.W. Circular economy in Latin America: A systematic literature review. Bus. Strategy
+Environ. 2020, 29, 2479–2497. [CrossRef]
+33.
+Figge, F.; Thorpe, A.S.; Gutberlet, M. Deﬁnitions of the circular economy: Circularity matters. Ecol. Econ. 2023, 208, 107823.
+[CrossRef]
+34.
+Peng, X.; Liu, Y. Behind eco-innovation: Managerial environmental awareness and external resource acquisition. J. Clean. Prod.
+2016, 139, 347–360. [CrossRef]
+35.
+Ramus, C.A. Encouraging innovative environmental actions: What companies and managers must do. J. World Bus. 2002, 37,
+151–164. [CrossRef]
+36.
+Ramus, C.A. Employee Environmental Innovation in Firms: Organizational and Managerial Factors; Routledge: London, UK, 2003.
+37.
+Ramus, C.A.; Steger, U. The roles of supervisory support behaviors and environmental policy in employee “Ecoinitiatives” at
+leading-edge European companies. Acad. Manag. J. 2000, 43, 605–626. [CrossRef]
+38.
+Chistov, V.; Carrillo-Hermosilla, J.; Aramburu, N. Open eco-innovation. Aligning cooperation and external knowledge with the
+levels of eco-innovation radicalness. J. Open Innov. Technol. Mark. Complex. 2023, 9, 100049. [CrossRef]
+39.
+Fairbairn, B. The Meaning of Rochdale: The Rochdale Pioneers and the Cooperative Principles. Research in Agricultural &
+Applied Economics. 1994. Available online: https://ageconsearch.umn.edu/record/31778/ (accessed on 5 September 2022).
+40.
+Bernardi, A.; Berranger, C.; Mannella, A.; Monni, S.; Realini, A. Sustainable but Not Spontaneous: Cooperatives and the Solidarity
+Funds in Italy. Sustainability 2022, 14, 4516. [CrossRef]
+41.
+Zamagni, S.; Zamagni, V. Cooperative Enterprise: Facing the Challenge of Globalization; Edward Elgar Publishing: Cheltenham,
+UK, 2011.
+42.
+Cook, M.L. The Future of U.S. Agricultural Cooperatives: A Neo-Institutional Approach. Am. J. Agric. Econ. 1995, 77, 1153–1159.
+[CrossRef]
+43.
+Nilsson, J. Organisational principles for cooperative ﬁrms. Scand. J. Manag. 2001, 17, 329–356. [CrossRef]
+44.
+Scholz, T. PLATFORM COOPERATIVISM: Challenging the Corporate Sharing Economy; Rosa Luxemburg Stiftung: Berlin, Ger-
+many, 2016; Available online: https://eticasfoundation.org/wp-content/uploads/2019/03/Scholz_Platform-Cooperativism.pdf
+(accessed on 14 October 2022).
+45.
+Menzani, T.; Zamagni, V. Cooperative Networks in the Italian Economy. Enterp. Soc. 2010, 11, 98–127. [CrossRef]
+46.
+Jossa, B. La Teoria Economica delle Cooperative di Produzione e la Possibile Fine del Capitalismo, 1st ed.; Giappichelli: Torino, Italy, 2005;
+Volume 1.
+47.
+Dahl, R.A. Democracy and Its Critics; Yale University Press: New Heaven, CT, USA, 1989.
+48.
+Bakaikoa, B.; Errasti, A.; Begiristain, A. Gobierno y democracia en los grupos empresariales cooperativos ante la globalización.
+CIRIEC-España 2004, 48, 53–77.
+49.
+Osti, G. Green social cooperatives in Italy: A practical way to cover the three pillars of sustainability? Sustain. Sci. Pract. Policy
+2012, 8, 82–93. [CrossRef]
+50.
+Neef, M.M. The Cooperative Enterprise: A Valid Alternative for a More Balanced Society. In Cooperatives in a Post-Growth Era
+Creating Cooperative Economics; Novkovic, S., Webb, T., Eds.; Zed Books: London, UK, 2014; pp. 15–39.
+51.
+Goodwin, N. The Cooperative Enterprise: A Valid Alternative for a More Balanced Society. In Cooperatives in a Post-Growth Era
+Creating Cooperative Economics; Novkovic, S., Webb, T., Eds.; Zed Books: London, UK, 2014; pp. 39–61.
+52.
+Van Der Have, R.P.; Rubalcaba, L. Social innovation research: An emerging area of innovation studies? Res. Policy 2016, 45,
+1923–1935. [CrossRef]
+53.
+Sci2 Team. Science of Science (Sci2) Tool. Indiana University and SciTech Strategies. 2019. Available online: https://sci2.cns.iu.edu
+(accessed on 29 October 2023).
+Sustainability 2023, 15, 15595
+26 of 27
+54.
+Bergh, D.D.; Boyd, B.; Byron, K.; Gove, S.; Ketchen, D.J. What constitutes a methodological contribution? J. Manag. 2022, 48,
+1835–1848. [CrossRef]
+55.
+Donthu, N.; Kumar, S.; Mukherjee, D.; Pandey, N.; Lim, W.M. How to conduct a bibliometric analysis: An overview and
+guidelines. J. Bus. Res. 2021, 133, 285–296. [CrossRef]
+56.
+Díaz López, F.J.; Montalvo, C. A comprehensive review of the evolving and cumulative nature of eco-innovation in the chemical
+industry. J. Clean. Prod. 2015, 102, 30–43. [CrossRef]
+57.
+Rivera Delgado, D.; Díaz López, F.J.; Carrillo González, G. Energy transition, innovation, and direct uses of geothermal energy in
+Mexico: A thematic modeling analysis. Probl. Del Desarro. 2021, 52, 115–141.
+58.
+Lumivero. NVivo (Version 14). 2023. Available online: www.lumivero.com (accessed on 29 October 2023).
+59.
+Page, M.J.; McKenzie, J.E.; Bossuyt, P.M.; Boutron, I.; Hoffmann, T.; Mulrow, C.D.; Shamseer, L.; Tetzlaff, J.; Akl, E.A.; Brennan,
+S.E.; et al. The PRISMA 2020 statement: An updated guideline for reporting systematic reviews. BMJ 2021, 88, 105906. [CrossRef]
+60.
+Aria, M.; Cuccurullo, C. Bibliometrix: An R-tool for comprehensive science mapping analysis. J. Informetr. 2017, 11, 959–975.
+[CrossRef]
+61.
+R Core Team. R: A Language and Environment for Statistical Computing; R Foundation for Statistical Computing: Vienna, Austria,
+2022; Available online: https://www.R-project.org/ (accessed on 29 October 2023).
+62.
+Cheng, P.; Zhang, G.; Sun, H. The Sustainable Supply Chain Network Competition Based on Non-Cooperative Equilibrium under
+Carbon Emission Permits. Mathematics 2022, 10, 1364. [CrossRef]
+63.
+Campagnaro, C.; D’Urzo, M. Social Cooperation as a Driver for a Social and Solidarity Focused Approach to the Circular Economy.
+Sustainability 2021, 13, 10145. [CrossRef]
+64.
+EEA. Circular Economy in Europe; European Environment Agency: Copenhagen, Denmark, 2016; Available online: https:
+//www.eea.europa.eu/publications/circular-economy-in-europe/download (accessed on 24 October 2023).
+65.
+Elia, V.; Gnoni, M.G.; Tornese, F. Measuring circular economy strategies through index methods: A critical analysis. J. Clean. Prod.
+2017, 142, 2741–2751. [CrossRef]
+66.
+Boyer, R.H.; Hunka, A.D.; Linder, M.; Whalen, K.A.; Habibi, S. Product Labels for the Circular Economy: Are Customers Willing
+to Pay for Circular? Sustain. Prod. Consum. 2021, 27, 61–71. [CrossRef]
+67.
+Buch, R.; Marseille, A.; Williams, M.; Aggarwal, R.; Sharma, A. From Waste Pickers to Producers: An Inclusive Circular Economy
+Solution through Development of Cooperatives in Waste Management. Sustainability 2021, 13, 8925. [CrossRef]
+68.
+Miranda IT, P.; Fidelis, R.; de Souza Fidelis, D.A.; Pilatti, L.A.; Picinin, C.T. The Integration of Recycling Cooperatives in the Formal
+Management of Municipal Solid Waste as a Strategy for the Circular Economy—The Case of Londrina, Brazil. Sustainability 2020,
+12, 10513. [CrossRef]
+69.
+Łe¸kawska-Andrinopoulou, L.; Tsimiklis, G.; Leick, S.; Moreno Nicolás, M.; Amditis, A. Circular Economy Matchmaking
+Framework for Future Marketplace Deployment. Sustainability 2021, 13, 5668. [CrossRef]
+70.
+Lange, K.; Korevaar, G.; Nikolic, I.; Herder, P. Actor Behaviour and Robustness of Industrial Symbiosis Networks: An Agent-Based
+Modelling Approach. J. Artif. Soc. Soc. Simul. 2021, 24, 8. [CrossRef]
+71.
+Becerra, L.; Carenzo, S.; Juarez, P. When Circular Economy Meets Inclusive Development. Insights from Urban Recycling and
+Rural Water Access in Argentina. Sustainability 2020, 12, 9809. [CrossRef]
+72.
+Jones, S. Waste Management in Australia Is an Environmental Crisis: What Needs to Change so Adaptive Governance Can Help?
+Sustainability 2020, 12, 9212. [CrossRef]
+73.
+Yazan, D.M.; Yazdanpanah, V.; Fraccascia, L. Learning strategic cooperative behavior in industrial symbiosis: A game-theoretic
+approach integrated with agent-based simulation. Bus. Strategy Environ. 2020, 29, 2078–2091. [CrossRef]
+74.
+Sellitto, M.A.; Almeida FA, D. Strategies for value recovery from industrial waste: Case studies of six industries from Brazil.
+Benchmarking Int. J. 2019, 27, 867–885. [CrossRef]
+75.
+Herczeg, G.; Akkerman, R.; Hauschild, M.Z. Supply chain collaboration in industrial symbiosis networks. J. Clean. Prod. 2018,
+171, 1058–1067. [CrossRef]
+76.
+Mulrow, J.S.; Derrible, S.; Ashton, W.S.; Chopra, S.S. Industrial Symbiosis at the Facility Scale. J. Ind. Ecol. 2017, 21, 559–571.
+[CrossRef]
+77.
+Fogarassy, C.; Horvath, B.; Kovacs, A.; Szoke, L.; Takacs-Gyorgy, K. A Circular Evaluation Tool for Sustainable Event
+Management—An Olympic Case Study. Acta Polytech. Hung. 2018, 14, 161–177. [CrossRef]
+78.
+Ada, E.; Sagnak, M.; Uzel, R.A.; Balcıo˘glu, R. Analysis of barriers to circularity for agricultural cooperatives in the digitalization
+era. Int. J. Product. Perform. Manag. 2021, 71, 932–951. [CrossRef]
+79.
+Mercado-Caruso, N.; Segarra-Oña, M.; Peiró-Signes, N.; Portnoy, I.; Navarro, E. Drivers of Eco-innovation in Industrial Clusters—
+A Case Study in the Colombian Metalworking Sector. In Computer Information Systems and Industrial Management; Springer:
+Berlin/Heidelberg, Germany, 2022; pp. 136–145. [CrossRef]
+80.
+Rabadán, A.; Triguero, N.; Gonzalez-Moreno, N. Cooperation as the Secret Ingredient in the Recipe to Foster Internal Technological
+Eco-Innovation in the Agri-Food Industry. Int. J. Environ. Res. Public Health 2020, 17, 2588. [CrossRef] [PubMed]
+81.
+Rabadán, A.; González-Moreno, N.; Sáez-Martínez, F.J. Improving Firms’ Performance and Sustainability: The Case of Eco-
+Innovation in the Agri-Food Industry. Sustainability 2019, 11, 5590. [CrossRef]
+82.
+Rennings, K. Redeﬁning innovation—Eco-innovation research and the contribution from ecological economics. Ecol. Econ. 2000,
+32, 319–332. [CrossRef]
+Sustainability 2023, 15, 15595
+27 of 27
+83.
+Van Es, J.C.; Pampel, F.C. Environmental practices: New strategies needed. J. Ext. 1976, 19, 10–15.
+84.
+Hamburg, I.; Vlădu¸t, G.; O’Brien, E. Fostering eco-innovation in SMEs through bridging research, education and industry for
+building a business oriented model. In Proceedings of the International Conference on Business Excellence, Bucharest, Romania,
+30–31 March 2017; Volume 11, pp. 1050–1057. [CrossRef]
+85.
+Guerreschi, A.; Piras, L.; Heck, F. Barriers to Efﬁcient Knowledge Transfer for a Holistic Circular Economy: Insights towards
+Green Job Developments and Training for Young Professionals. Youth 2023, 3, 553–578. [CrossRef]
+86.
+Mathews, J.A.; Tan, H. Circular economy: Lessons from China. Nature 2016, 531, 440–442. [CrossRef]
+87.
+Carini, C.; Borzaga, C.; Carpita, M. Case Studies on Brazil, Canada, Colombia, the Philippines, the Russian Federation, the United
+Kingdom; ILO: Geneva, Switzerland, 2017.
+88.
+European Commission. Paris Agreement: Climate Action. 2015. Available online: https://climate.ec.europa.eu/eu-action/
+international-action-climate-change/climate-negotiations/paris-agreement_en#:~:text=The%20Paris%20Agreement%20sets%
+20out,support%20them%20in%20their%20efforts (accessed on 15 September 2022).
+89.
+United Nations. International Day of Cooperatives 2020: COOPS 4 Climate Action|Division for Inclusive Social Development
+(DISD). United Nations: Department of Economic and Social Affairs Social Inclusion. 4 July 2020. Available online: https:
+//social.desa.un.org/issues/cooperatives/events/international-day-of-cooperatives-2020-coops-4-climate-action (accessed on
+15 September 2022).
+90.
+Jelinski, L.W.; Graedel, T.E.; Laudise, R.A.; McCall, D.W.; Patel, C.K. Industrial ecology: Concepts and approaches. Proc. Natl.
+Acad. Sci. USA 1992, 89, 793–797. [CrossRef]
+91.
+Kemp, R.; Arundel, A.; Rammer, C.; Miedzinski, M.; Tapia, C.; Barbieri, N.; Türkeli, S.; Bassi, A.; Mazzanti, M.; Chapman, D.; et al.
+Measuring eco-innovation for a green economy. Sustainability 2019, 66, 391–404.
+92.
+Lau, J.C.-H. Towards a care perspective on waste: A new direction in discard studies. Environ. Plan. C Politics Space 2022,
+23996544211063383. [CrossRef]
+93.
+Gille, Z. From the Cult of Waste to the Trash Heap of History: The Politics of Waste in Socialist and Postsocialist Hungary; Indiana
+University Press: Bloomington, IN, USA, 2017.
+94.
+Radhakrishnan, S.; Erbis, S.; Isaacs, J.A.; Kamarthi, S. Correction: Novel keyword co-occurrence network-based methods to foster
+systematic reviews of scientiﬁc literature. PLoS ONE 2017, 12, e0185771. [CrossRef] [PubMed]
+95.
+Clarivate. KeyWords Plus Generation, Creation, and Changes. 9 June 2022. Available online: https://support.clarivate.com/s/
+article/KeyWords-Plus-generation-creation-and-changes?language=en_US (accessed on 29 June 2023).
+96.
+Kirchherr, J.; Urbinati, A.; Hartley, K. Circular economy: A new research ﬁeld? J. Ind. Ecol. 2023, 27, 1239–1251. [CrossRef]
+97.
+Savaget, P.; Carvalho, F. Investigating the Regulatory-Push of Eco-innovations in Brazilian Companies. Sustain. Des. Manuf. 2016,
+2016, 27–37. [CrossRef]
+98.
+Giagnocavo, C. Caring for the Environment and ICA principles. In Proceedings of the ICA CCR European Research Conference
+2022 “Rethinking Cooperatives: From Local to Global and from the Past to the Future”, Athens, Greece, 14 July 2022.
+99.
+Diamantopoulos, M. Bridging co-operation’s communication gap: The Statement on the Cooperative Identity, the sociology of
+cooperative education’s shifting terrain, and the problem of public opinion. J. Coop. Organ. Manag. 2022, 10, 100161. [CrossRef]
+100. Novkovic, S.N. Circular Economy in Cooperatives. In Proceedings of the Global Innovation Coop Summit 2023 Edition, Montreal,
+QC, Canada, 27–29 September 2023.
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

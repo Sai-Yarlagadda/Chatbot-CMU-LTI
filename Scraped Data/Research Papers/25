@@ -1,0 +1,1196 @@
+Citation: Nehme, R.; Chervet, A.;
+Decombat, C.; Longechamp, L.;
+Rossary, A.; Boutin, R.; Rousset, A.;
+Senejoux, F.; Vachias, C.; Auxenfans,
+C.; et al. Aspalathus linearis (Rooibos)
+Targets Adipocytes and
+Obesity-Associated Inﬂammation.
+Nutrients 2023, 15, 1751. https://
+doi.org/10.3390/nu15071751
+Academic Editors: David C. Nieman
+and Federico Carbone
+Received: 22 February 2023
+Revised: 28 March 2023
+Accepted: 30 March 2023
+Published: 3 April 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+nutrients
+Article
+Aspalathus linearis (Rooibos) Targets Adipocytes and
+Obesity-Associated Inﬂammation
+Rawan Nehme 1,*, Arthur Chervet 1
+, Caroline Decombat 1
+, Lucie Longechamp 1, Adrien Rossary 1
+,
+Rebecca Boutin 2, Amandine Rousset 2, François Senejoux 1, Caroline Vachias 3, Céline Auxenfans 4
+,
+Didier Fraisse 1, Jean-Baptiste Guyon 2, Edith Filaire 1, Jean-Yves Berthon 2, Mona Diab-Assaf 5,
+Laetitia Delort 1,†
+and Florence Caldeﬁe-Chezet 1,†
+1
+Université Clermont-Auvergne, INRAE, UNH, Unité de Nutrition Humaine, CRNH-Auvergne,
+63000 Clermont-Ferrand, France
+2
+Greentech, Biopôle Clermont-Limagne, 63360 Saint-Beauzire, France
+3
+iGReD (Institute of Genetics, Reproduction and Development), Université Clermont Auvergne,
+UMR CNRS 6293-INSERM U1103, Faculté de Médecine, 28 Place Henri-Dunant,
+63000 Clermont-Ferrand, France
+4
+Banque de Tissus et de Cellules, Hôpital Edouard-Herriot, 69000 Lyon, France
+5
+Equipe Tumorigénèse Pharmacologie Moléculaire et Anticancéreuse, Faculté des Sciences II,
+Université Libanaise Fanar, Beirut 1500, Lebanon
+*
+Correspondence: rawan.nehme@doctorant.uca.fr
+†
+These authors contributed equally to this work.
+Abstract: Excess weight and obesity are the ﬁfth leading cause of death globally, and sustained
+efforts from health professionals and researchers are required to mitigate this pandemic-scale prob-
+lem. Polyphenols and ﬂavonoids found in Aspalathus linearis—a plant widely consumed as Rooibos
+tea—are increasingly being investigated for their positive effects on various health issues including
+inﬂammation. The aim of our study was to examine the effect of Rooibos extract on obesity and the
+associated low-grade chronic inﬂammatory state by testing antioxidant activity, cytokine secretions,
+macrophage polarization and the differentiation of human adipocytes through the development of
+adipospheroids. Rooibos extract signiﬁcantly decreased ROS production and the secretion of pro-
+inﬂammatory cytokines (IFN-γ, IL-12, IL-2 and IL-17a) in human leukocytes. Additionally, Rooibos
+extract down-regulated LPS-induced macrophage M1 polarization, shown by a signiﬁcant decrease in
+the expression of pro-inﬂammatory cytokines: TNFα, IL-8, IL-6, IL-1β and CXCL10. In addition, Rooi-
+bos inhibited intracellular lipid accumulation and reduced adipogenesis by decreasing the expression
+of PPARγ, Ap2 and HSL in adipospheroids. A signiﬁcant decrease in leptin expression was noted and
+this, more interestingly, was accompanied by a signiﬁcant increase in adiponectin expression. Using a
+co-culture system between macrophages and adipocytes, Rooibos extract signiﬁcantly decreased the
+expression of all studied pro-inﬂammatory cytokines and particularly leptin, and increased adiponectin
+expression. Thus, adding Rooibos tea to the daily diet is likely to prevent the development of obesity
+associated with chronic low-level inﬂammation.
+Keywords: Rooibos; Aspalathus linearis; obesity; inﬂammation; antioxidant; adiponectin; leptin;
+adipogenesis; macrophages
+1. Introduction
+In 2022, the obesity pandemic was one of the most prominent health issues that
+occupied the attention of scientists, healthcare providers and the World Health Organization
+(WHO), who classiﬁed it as one of the ten biggest threats to human health [1]. Obesity has
+now surpassed categorization as a “medical condition”, and is considered a true chronic
+and metabolic disease with its own pathophysiology and rate of comorbidity [2]. It is
+estimated that by 2030, one billion people—that is, 1 in 5 women and 1 in 7 men—will
+Nutrients 2023, 15, 1751. https://doi.org/10.3390/nu15071751
+https://www.mdpi.com/journal/nutrients
+Nutrients 2023, 15, 1751
+2 of 19
+be obese, according to the World Obesity Atlas 2022 [3]. Obesity is clinically deﬁned as a
+body mass index (BMI) over 30 kg/m2, and is characterized by an abnormal increase in
+adipose tissue, leading to physiological dysfunction of the human organism [4]. It has a
+complex etiology that could include genetic and epigenetic factors, environmental factors
+such as overconsumption along with a sedentary lifestyle, and also psychological and
+endocrinological factors [5]. The expansion of adipose tissue is mainly due to adipogenesis,
+which involves the proliferation of preadipocytes and their differentiation into mature
+lipid-accumulating adipocytes [6]. The differentiation may be regulated by many effectors
+(including hormones and miRNAs), but the main regulators are transcription factors that
+inhibit or promote the expression of proteins required for adipogenesis, chief among them
+is Peroxisome proliferator-activated receptor gamma (PPARγ) [7].
+In addition to the well-documented impact of obesity on numerous serious diseases,
+the COVID-19 pandemic has, once again, demonstrated the gravity of this health issue.
+In the last three years, more serious consequences from COVID-19, plus a higher rate of
+hospitalization and death, have been reported among the overweight and obese population
+than among the population within the normal weight range [8]. Obesity causes a series of
+metabolic dysregulations which could affect nearly every organ system, from the endocrine
+system to the cardiovascular system and the central nervous system [9]. It is associated
+with oxidative stress and chronic low-grade inﬂammation, characterized by the inﬁltration
+of an increasing number of immune cells—mainly macrophages—into the obese adipose
+tissue [10]. The resulting phenotypic switch in the adipose tissue leads to the appearance
+of inﬂamed dysfunctional adipocytes [11]. This event is recognized as the ﬁrst stimulus for
+the development of obesity complications that include insulin resistance, diabetes, dyslipi-
+demia, immune disorder, non-alcoholic fatty liver diseases, several cardiovascular issues
+(from hypertension to heart failure) and over 13 types of cancer [12,13]. The inﬁltration of
+immune cells into adipose tissue was ﬁrst noticed in the 1960s and, in 2005, the accumula-
+tion of macrophages around dying adipocytes in a crown-like structure was shown. Since
+then, signiﬁcant attention has been paid to this inﬂammatory reaction. The macrophages
+are classically activated by the adipose microenvironment into M1 macrophages, which
+are pro-inﬂammatory cells producing pro-inﬂammatory cytokines such as interleukin-1β
+(IL-1β), IL-6, IL-12 and TNFα [14]. The inﬂammation of the adipose tissue is persistent
+and fails to resolve, due to the continuous release of inﬂammatory mediators, including
+the cytokines previously mentioned, and adipokines (i.e., leptin) and the lack of secretion
+of anti-inﬂammatory adipokine (i.e., adiponectin) by adipocytes and resident immune
+cells [15].
+It is indisputable that lifestyle modiﬁcation is the ineluctable ﬁrst step in managing
+obesity. This includes not only calorie restriction, but also several other new dietary inter-
+ventions such as time-restricted eating, intermittent fasting and fasting-mimicking diets,
+along with engagement in physical activities. Unfortunately, such behavioral changes are
+insufﬁcient in most cases and adjunctive treatment, including pharmacological therapies
+or surgery, is usually needed [16]. The main FDA-approved anti-obesity drugs are orlis-
+tat, phentermine/topiramate, naltrexone/bupropion, liraglutide [17] and, very recently,
+semaglutide [18]. However, most of these drugs are associated with increased adverse
+events, ranging from mild to potentially serious, which could lead to drug discontinua-
+tion [19,20]. Thus, there is an urgent need to ﬁnd new and safer molecules that could treat
+obesity or prevent its development. Natural substances from various medicinal plants have
+shown a variety of pharmacological properties and served as sources of therapeutic drugs
+against various acute and chronic disorders [21]. Since several medicines originate from
+and/or are inspired by active ingredients in medicinal plants, the use of plant extracts and
+their isolated metabolites is gradually coming to be considered a necessity, and medicinal
+plants play a prominent role in the drug-discovery process [22].
+Rooibos tea, produced from the south African legume Aspalathus linearis (Burm. f.)
+R. Dahlgren, is a well-known health-promoting drink that contains a unique blend of
+bio-active phytochemicals (ﬂavonoids or plant-derived phenolic compounds or phenolic
+Nutrients 2023, 15, 1751
+3 of 19
+constituents), mainly aspalathin [23]. Rooibos tea has been consumed since the late 1700s,
+but its potent antioxidant activity and health-giving properties have only been reported
+in the past two decades, increasing its popularity [24]. Thus, Rooibos has attracted the
+attention of several research groups, and multiple in vivo and in vitro studies have demon-
+strated its signiﬁcant effect on insulin resistance, diabetes, cardiovascular complications
+(mainly as an anti-hypertensive, through inhibition of angiotensin-converting enzyme),
+inﬂammation, viral infections, ovarian function, and others [24,25]. The anti-obesity poten-
+tial of Rooibos extract was ﬁrst reported in 2011 [26]; then, a research group demonstrated
+its effect on murine preadipocyte cells, but no more data were found on its impact on
+human adipocytes [27]. Thus, in this study, we further investigated the metabolic modula-
+tory effect of Rooibos extract in an obesity concept, i.e., an obese inﬂamed adipose tissue
+microenvironment. We hypothesized that because of its antioxidant properties, Rooibos
+extract could interact with the inﬂammatory response of adipocytes. Ultimately, our study
+could unravel the cellular mechanisms by which Rooibos extract works, and highlight the
+use of this plant extract and/or its bioactives in the prevention and management of obesity
+associated with inﬂammation.
+2. Materials and Methods
+2.1. Chemicals and Reagents
+All solvents (water, ethanol, acetonitrile) and chemicals (sodium acetate, acetic acid
+100%, hydrochloric acid 37%, phosphoric acid, 2,4,6-Tris(2-pyridyl)-s-triazine (TPTZ),
+Trolox, DPPH (2,2-diphenyl1-pycrilhydrazyle), Ferric chloride hexahydrate, and Iron
+trichloride) were acquired from VWR (USA) at HPLC grade. Aspalathin standard (primary
+reference standard grade) was obtained from Merck (Darmstadt, Germany).
+2.2. Preparation of Aspalathus linearis Extract
+The aerial parts (leaves and twigs) of green Rooibos (Aspalathus linearis) were collected
+from the city of Malmesbury, South Africa. They were sun-dried and shredded into pieces
+between 0.1 and 0.5 mm. Then, 10 g of dried plant was extracted into a 200 mL ethanol–
+water mixture (50%, v/v) and stirred on a rotary shaker (at 120 rpm) for 4 h at room
+temperature. The mixture was then ﬁltered with a ﬁlter paper in order to separate the solid
+and the extract. The extract was then concentrated using a rotary evaporator (at 40 ◦C) to
+obtain 1.2 g of dry powder. The powder was then dissolved in DMSO and stored at −20 ◦C.
+Final concentrations (0, 10, 25, 50 and 100 µg/mL) were obtained by diluting the extract in
+complete culture medium directly before use.
+2.3. Quantiﬁcation of Aspalathin Content by HPLC-UV
+Aspalathin was analyzed by high-performance liquid chromatography (HPLC) linked
+to a 190–800 nm diode array detector (Agilent, Santa Clara, CA, USA). Analysis was
+performed with a Luna C18 (250 mm × 4.6 mm × 5 µm; Phenomenex) column, with a pre-
+column C18, at 20 ◦C and a ﬂow rate of 1 mL/min. The initial mobile phase was composed
+of 85% solvent A (0.1% phosphoric acid in water) and 15% solvent B (acetonitrile), and
+those percentages were maintained for 25 min. The percentage of solvent B was then
+increased to reach 35% at 35 min and 90% at 40 min. This concentration was then held
+for 5 min, before following a linear gradient to return to 15% at 55 min. Then, 10 µL of a
+5 mg/mL (water/methanol, 1/5, v/v) Rooibos extract solution was injected. Quantiﬁcation
+was performed using UV at 288 nm with an aspalathin standard.
+2.4. Determination of Antioxidant Activity by Ferric-Reducing Antioxidant Power (FRAP) Assay
+and DPPH Radical-Scavenging Activity
+FRAP reagent solution was prepared by mixing acetate buffer (20 mM, pH 3.6), TPTZ
+solution (10 mM in 40 mM HCl) and FeCl3·6H2O solution (20 mM) in a 10:1:1 v/v/v ratio.
+Trolox dilution solutions were prepared (0.1 to 1 mg/L). Then, 50 µL of extract or Trolox
+standard solution, and 200 µL of FRAP reagent solution were mixed and incubated for one
+Nutrients 2023, 15, 1751
+4 of 19
+hour at 37 ◦C. Absorbance was measured at 593 nm. FRAP was calculated and expressed
+as µmol Trolox equivalent/g (dw).
+DPPH reagent (0.180 g·L−1 in ethanol) was prepared. In test tubes, 100 µL samples
+of workable solutions (dilutions of dry extract in ethanol) were combined with 3.9 mL
+of DPPH reagent. The tubes were then kept in complete darkness for 30 min at room
+temperature. Absorbance was measured at 515 nm. The effective concentration value
+(EC50), which corresponds to the concentration of a sample producing a 50% reduction in
+the initial DPPH concentration, was determined.
+2.5. Blood Cells, Cell Cultures and Reagents
+2.5.1. Blood Leukocyte Preparation
+Blood was collected from healthy human volunteers (n = 3; Établissement Français
+du Sang, EFS, Clermont-Ferrand, France). Donors gave their written informed consent
+for the use of blood samples for research purposes under EFS contract no. 16-21-62 (in
+accordance with articles L1222-1, L1222-8, L1243-4 and R1243-61 of the French Public
+Health Code). Blood leukocytes were obtained by hemolytic shock using ammonium
+chloride solution (NH4Cl 155 µM; NaHCO3 12 µM, EDTA 0.01 µM). Leukocytes were then
+centrifuged and suspended in Roswell Park Memorial Institute 1640 Medium (RPMI-1640,
+Gibco, ThermoFisher Scientiﬁc, Waltham, MA, USA) supplemented with fetal bovine serum
+(FBS, 10%) (Eurobio Scientiﬁc, Saclay, France), gentamicin (50 µg/mL) and glutamine (Gln,
+2 mM) (ThermoFisher Scientiﬁc, USA).
+2.5.2. PBMC Preparation
+Blood buffy coats were collected from healthy human volunteers (n = 3 volunteers)
+and carefully layered on a simple gradient of Ficoll–Histopaque 1077® (Sigma-Aldrich,
+St. Louis, MO, USA). After centrifugation (400× g, 40 min at 20 ◦C), the ﬁrst layer of
+plasma was aspirated, yielding a phase of monocytes and lymphocytes (peripheral blood
+mononuclear cells, PBMCs) just above the 1.077 g/mL layer. The phase with PBMCs was
+washed with RPMI and centrifuged (5 min, 400× g) twice, and then suspended in 5 mL of
+supplemented RPMI (FBS 10%, gentamicin 50 µg/mL, and Gln 2 mM). Cell preparation
+was adjusted to 106 cells/mL for assays.
+2.5.3. Human Monocytic Leukemia Cells
+THP-1 cells (American Type Culture Collection, TIB-202TM) were cultured in a RPMI-
+1640 medium supplemented with 10% FBS, 2 mM Gln and 50 µg/mL gentamicin. For
+differentiation, THP-1 cells (4 × 105/mL) were incubated in 6-well plates in a complete
+growth medium containing 16.2 nM phorbol 12-myristate 13-acetate (PMA, Sigma-Aldrich)
+for three days. Macrophages were then polarized into M1-like macrophages by incubation
+with 20 ng/mL of IFN-γ (Gibco) and 10 pg/mL of lipopolysaccharides (LPS, Sigma) for
+24 h.
+2.5.4. Adipose Cells
+Two preadipocyte cell types were used in this study:
+-
+Preadipocyte cells were obtained from patients undergoing surgery for cosmetic pur-
+poses without associated pathology in accordance with the Helsinki Declaration, from
+anonymous healthy donors. Surgical residue was harvested in accordance with French
+regulations, including a declaration to the Research Ministry (DC no. 2008162) and
+procurement of written informed consent from the patients. Four different strains were
+obtained from obese women (BMI > 30). For differentiation into mature adipocytes
+(Mas), cells were seeded at conﬂuence (33,500 cells/cm2) in a differentiation medium
+consisting of Dulbecco’s modiﬁed Eagle medium (DMEM/F12 (1:1), Gibco) supple-
+mented with 10% FBS, 1% Gln, hydrocortisone (25 mg/mL), insulin (3.5 mg/mL),
+T3 (6.5 mg/mL), dexamethazon (980 mg/mL), rosiglitazone (1.78 mg/mL), isobutyl-
+methylxanthine (IBMX) (100 mg/mL, only for the ﬁrst 3 days), and gentamycin
+Nutrients 2023, 15, 1751
+5 of 19
+(50 mg/mL). The medium was replaced every two days. Mas were obtained after
+8 days of differentiation.
+-
+The human subcutaneous preadipocyte cells were purchased from Lonza Group
+Ltd. (Basel, Switzerland). The initiation and expansion of the cells used Preadipocyte
+Growth Medium-2 (Preadipocyte Basal Medium-2 supplemented with 10% FCS, 2 mM
+Gln, 30 µg/mL genistein and 15 ng/mL ampicillin). To induce differentiation, cells
+were plated at 10,000 cells/cm2 in Preadipocyte Growth Medium-2. After 24 h, the
+culture medium was changed to adipocyte differentiation medium, consisting of
+Preadipocyte Growth Medium-2 supplemented with insulin, dexamethasone, in-
+domethacin and IBMX. Cells were allowed to differentiate for 8 days with no further
+medium change.
+All the cells used were cultured in a 5% CO2-humidiﬁed incubator at 37 ◦C.
+2.6. Kinetics of ROS Production by Blood Leukocytes
+The blood leukocyte preparation was adjusted to 106 cells/mL and placed in 96-well
+plates incubated with 0, 10, 25, 50 or 100 µg/mL Rooibos extract and dihydrorhodamine
+123 (DHR 123, 1 µM, Sigma-Aldrich), and stimulated, or not (to check to the stimulation
+efﬁciency), by 1 µM PMA for 120 min, as previously described by Cholet et al. [28]. The
+ﬂuorescence intensity of rhodamine 123, which is the product of DHR 123 oxidation by
+ROS, was recorded every 5 min for 120 min (excitation/emission: 485/538 nm) using a
+microplate ﬂuorometric reader (Tecan Spark®, Männedorf, Switzerland). Results were
+presented as a percentage of ROS production of stimulated treated cells compared to the
+control, which corresponded to stimulated untreated cells (100%).
+2.7. Leukocyte Viability
+The same cell preparation adjusted to 106 cells/mL with supplemented RPMI (FBS
+10%, gentamicin 50 µg/mL and Gln 2 mM) was placed in 96-well polystyrene plates
+incubated with Rooibos extract at four different concentrations (10, 25, 50 or 100 µg/mL),
+PMA (0 or 1 µM), and resazurin (25 µg/mL) [28]. Fluorescence (excitation/emission:
+544/590 nm) was recorded every 30 min for 2 h using the microplate ﬂuorometric reader
+(Fluoroskan®, Ascent FL, ThermoFisher Scientiﬁc, USA).
+2.8. Determination of Cytokine Concentrations
+PBMCs (106 cells/mL) (n = 3 volunteers) were incubated with or without phytohemag-
+glutinin (PHA, 5 µg/mL, Sigma-Aldrich) and Rooibos extract (0 or 50 µg/mL) for 24 h.
+ProcartaPlex™ Immunoassays (ThermoFisher Scientiﬁc, USA) were used for all assays [28].
+All samples were run in triplicate and were assayed for 10 human cytokines (IFN-γ, IL-12
+p70, IL-1β, IL-2, IL-23, IL-6, IL-8, IL-17a, MIP-1α, and TNFα). Cytokine levels were mea-
+sured using optimal concentrations of standards and antibodies in accordance with the
+manufacturer’s instructions. After completion of all the steps in the assay, the plates were
+read in the Luminex Bio-Plex 200 System (Biorad, France) and the data were analyzed using
+Bio-Plex Manager™ 4.1 software with ﬁve-parameter logistic regression (5PL) curve ﬁtting.
+2.9. Quantiﬁcation of Lipid Accumulation
+Oil Red O solution (0.5% in isopropanol) was purchased from Sigma, and staining
+was performed following the supplier’s recommendations. In brief, 3 parts Oil Red O
+solution were mixed with 2 parts water prior to the experiment to make up the working
+solution (0.2% in 60% isopropanol). Cells were washed twice with PBS before ﬁxation with
+4% paraformaldehyde (30 min at room temperature). The paraformaldehyde solution was
+then discarded, and cells were washed twice with water before being incubated with a
+60% isopropanol solution for 5 min and with the working Oil Red O solution for 20 min.
+After 5 more washes with water, the cells were observed under the microscope. In order to
+quantify the staining, the ﬁxed dye was redissolved in a ﬁxed volume of 100% isopropanol,
+Nutrients 2023, 15, 1751
+6 of 19
+and the optical density was measured at 490 nm using the microplate ﬂuorometric reader
+(Tecan Spark®).
+2.10. Evaluation of Gene Expression by Quantitative Real-Time PCR (qRT-PCR)
+Following the incubation, total RNA was extracted with TRIZOL reagent (Invitrogen,
+ThermoFisher Scientiﬁc). After the evaluation of the quantity and purity (Tecan Spark®),
+DNase treatment was applied to remove any remaining genomic DNA (DNase I Ampliﬁca-
+tion grade, Invitrogen) and cDNA reverse transcription (HighCap cDNA RT Kit RNAse
+inhib, Invitrogen) was performed according to the manufacturer’s recommendations. The
+cDNA samples were diluted to 5 ng/µL. Ampliﬁcation reaction assays were carried out
+using SYBRGreen PCR Master Mix (Applied Biosystems, USA) and primers (Table 1) on a
+StepOneTM machine (Applied Biosystems). The thermal cycling conditions were 50 ◦C for
+2 min followed by an initial denaturation step at 95 ◦C for 10 min, 40 cycles at 95 ◦C for 30 s,
+60 ◦C for 30 s and 72 ◦C for 30 s. The experiments were carried out in duplicate for each
+data point. The reference gene β-actin was used as an internal control for the normalization
+of RNA quantity and quality differences among the samples. Genes were considered signif-
+icantly expressed and their transcript measurable if their corresponding Ct value was less
+than 35. The relative quantiﬁcation method (RQ = 2–∆∆CT) was used to calculate the relative
+gene expression of given samples with ∆∆CT = [∆CT (sample1) − ∆CT (sample2)] and
+∆CT = [CT (target gene) − CT (reference gene)]. Paired t-tests were used for comparisons
+of gene-expression levels with at least two valid pairs of values. The rate of false discovery
+due to multiple testing was controlled by means of the Benjamini–Hochberg procedure for
+each comparison separately. Three independent experiments were performed.
+Table 1. PCR primer sequences.
+Gene
+Species
+Forward Primer Sequence (5′-3′)
+Reverse Primer Sequence (5′-3′)
+β-actin
+Human
+CCTGGCACCCAGCACAAT
+GCCGATCCACACGGAGTACT
+IL-8
+Human
+CTGGCCGTGGCTCTCTTG
+CCTTGGCAAAACTGCACCTT
+IL-1β
+Human
+CCTGTCCTGCGTGTTGAAAGA
+GGGAACTGGGCAGACTCAAA
+IL-6
+Human
+GCTGCAGGCACAGAACCA
+ACTCCTTAAAGCTGCGCAGAA
+TNFα
+Human
+TCTTCTCGAACCCCGAGTGA
+GGAGCTGCCCCTCAGCTT
+CXCL10
+Human
+GGAAATCGTGCGTGACATTA
+AGGAAGGAAGGCTGGAAGAG
+PPARγ
+Human
+GGATTCAGCTGGTCGATATCAC
+GTTTCAGAAATGCCTTGCAGT
+Ap2
+Human
+ATCACATCCCCATTCACACT
+ACTTGTCTCCAGTGAAAACTTTG
+HSL
+Human
+GCCTGGGCTTCCAGTTCAC
+CCTGTCTCGTTGCGTTTGTAGT
+Leptin
+Human
+CGGAGAGTACAGTGAGCCA
+CGGAATCTCGCTCTGTCAT
+Adiponectin
+Human
+CCCAAAGAGGAGAGGAA
+TCAGAAACAGGACACAAC
+2.11. Adipospheroid Generation
+The objective was to generate 3D spheroids using human preadipocytes in order to
+mimic the three-dimensionality of adipose tissue with its histological and physiological
+properties. Two methods were tested in order to obtain the spheroids. We used two
+scaffold-free systems in which the cells cannot adhere to the support, and thus can multiply
+in 3D and form multicellular micro-tissues.
+In the ﬁrst method, 20 g/L agarose (ThermoFisher Scientiﬁc) of sterilized 0.9% w/v
+NaCl (Sigma-Aldrich) was prepared, sterilized for 20 min at 120 ◦C and put in MicroTissues®
+3D Petri Dishes® (81 wells, Sigma-Aldrich) according to the manufacturer’s instructions to
+obtain an agarose mold [29]. In these molds, cell adhesion is inhibited, and cells present
+within the suspension spontaneously agglomerate to form spheroids by promoting intercel-
+lular adhesion molecules. Next, a total of 200,000 preadipocyte cells/agarose mold were
+seeded in the agarose mold and cultured in DMEM/F12 medium (supplemented with 10%
+FBS, 1% Gln) at 37 ◦C in 5% CO2, resulting in the assembly of 81 potential adipospheroids
+per agarose mold. At day 2, the differentiation medium was added as described previously.
+The second method consists of using 96-well ultra-low-binding U-shaped-bottom
+plates (Corning, Somerville, MA, USA) that promote cell aggregation and spheroid forma-
+tion. A total of 10,000 preadipocytes/well were seeded and cultured in the DMEM/F12
+medium (supplemented with 10% FBS and 1% Gln); then, the spheroids were differentiated
+Nutrients 2023, 15, 1751
+7 of 19
+for 8 days, with the medium being changed every two days. Imaging of spheroids in these
+low-binding U-shaped-bottom plates was performed using Incucyte® (Sartorius, Göttin-
+gen, Germany), an image acquisition and analysis system with a 10× objective. The total
+spheroid area (diameter) was measured using Fiji and Incucyte® software. A minimum of
+three spheroids were measured for each time point.
+2.12. Confocal Microscopy
+To assess the differentiation of adipocytes in the adipospheroids, we observed and
+analyzed the lipid content by confocal microscopy. Firstly, adipospheroids were washed
+in Dulbecco’s phosphate-buffered saline (DPBS, Gibco) after harvesting and subsequently
+ﬁxed for 1 h at room temperature in a formalin solution (neutral buffered 10%, Sigma-
+Aldrich). The adipospheroids were then stained overnight, protected from light, in 1:2000
+Bodipy-FL (1 mg/mL, Invitrogen), 1:500 Dapi (1 mg/mL) and 1:500 Triton X-100 (5 mg/mL)
+(ThermoFisher Scientiﬁc). After staining, the adipospheroids were washed three times
+for 5 min in DPBS and then mounted in a special support (ISO18 10 mm deep, Ispacer®,
+SUNJin Lab) using Vectashield (H1000 Vector, Eurobio Scientiﬁc) as a mounting medium to
+observe the entire adipospheroids in 3D and avoid cutting or crushing them. The stained
+adipospheroids were analyzed by confocal microscopy using a Micro Zeiss Cell Observer
+Spinning Disk with Yokogawa CSU-1X scanning unit (×20 Plan Apochromat 20×/0.8 M27).
+Bodipy FL was excited using a 488 nm laser paired with a 509/22 nm bandpass ﬁlter. DAPI
+was excited using a 405 nm laser paired with a 450/50 nm bandpass ﬁlter. Equal light
+settings were used for all images within an experiment and sub-ﬁgure.
+2.13. Co-Culture between Macrophages and Adipospheroids/Evaluation of Cell–Cell Interactions
+A co-culture system was used between THP-1 cells seeded at the bottom of wells and
+adipospheroids added in inserts, allowing the effect of Rooibos extract on the interaction
+between the two cell types through a porous membrane (Transwell culture system, porosity
+0.4 µm) to be assessed. THP-1 were seeded at the bottom of wells (450,000 cells/cm2) and
+the differentiation into adherent macrophages was induced by adding PMA for 3 days.
+Next, the macrophages were co-cultured with the mature adipospheroids, with or without
+the presence of IFN-γ, LPS and Rooibos extract (50 µg/mL). After 24 h of incubation, total
+RNA was extracted with TRIZOL, and qRT-PCR was performed as described previously.
+The experiments were carried out at least three times.
+2.14. Statistical Analysis
+All the experiments were performed 3–6 times; data are presented as mean ± SD. The
+data were analyzed using one-way ANOVA or linear-regression analysis in GraphPad
+Prism software version 8 (GraphPad Software, San Diego, USA). Statistical signiﬁcance
+among several groups was assessed using one-way ANOVA followed by Dunnett’s t-test.
+Statistical signiﬁcance between the two groups was evaluated by Student’s t-test. The
+p values were determined, and values < 0.05, < 0.01, < 0.001, 0.0001 (*, **, ***, ****, respec-
+tively) were considered signiﬁcant.
+3. Results
+3.1. Antioxidant and Anti-Inﬂammatory Impact of Rooibos Extract
+3.1.1. Aspalathin Content and Antioxidant Capacity
+The analysis of the main compound in the extract showed the presence of 7.95% of
+Aspalathin (dihydrochalcone C-glycoside) in the dry extract (Aspalathin content (AC)
+≈ 80 g·kg−1).
+The radical-scavenging capacity of the extract was determined using DPPH and FRAP
+assays. The following FRAP and DPPH values, reﬂecting the direct antioxidant activity
+of the extract, were found for the FRAP assay; 4543 ± 143 µmol Trolox equivalent was
+found in 1 g of dry extract. For the free-radical scavenging activity toward the DPPH
+radical, the effective concentration value (EC50), determined by a 50% reduction in the
+Nutrients 2023, 15, 1751
+8 of 19
+initial DPPH concentration, was 0.00895 mg (of dry extract)/mL (Figure 1A). Thus, high
+direct scavenging activity was found in the Rooibos extract.
+Nutrients 2023, 15, x FOR PEER REVIEW 
+9 of 20 
+ 
+ 
+Figure 1. Antioxidant activity of Rooibos extract. (A) Free-radical scavenging activity toward DPPH 
+radical; (B) production of ROS by blood leukocytes with different concentrations of Rooibos. Cells 
+were incubated with Rooibos extract (0, 10, 25, 50 and 100 µg/mL) and stimulated with PMA (1 µM). 
+Data shown as mean ± SD; (C) effect of Rooibos extract on leukocyte viability. Cells were treated 
+with the indicated concentrations of Rooibos for 2 h, and then cell viability was measured. Data 
+shown as mean ± SD (control corresponded to stimulated untreated cells = 100%); * p < 0.05 
+compared with control. 
+3.1.3. Rooibos Impacted PBMC Cytokine Secretion 
+In order to determine the effect of Rooibos extract on inflammatory response, total 
+PBMCs were stimulated by PHA in the presence or absence of 50 µg/mL of Rooibos 
+extract, and the concentration of ten cytokines secreted in the supernatant was measured 
+with ProcartaPlex™ Immunoassays. Rooibos extract significantly decreased the 
+production of four pro-inflammatory cytokines, reflecting its anti-inflammatory effect 
+(Figure 2A). A hugely significant decrease in IL-17a secretion(+ 90%, p < 0.05), followed by 
+decreases in IFN-γ (–76%, p < 0.05), IL-12 (–60%, p < 0.05) and IL-23 (–46%, p < 0.05) were 
+observed in stimulated PBMCs cultured with Rooibos extract in comparison to untreated 
+PBMCs. IL-2 concentration was decreased by almost 45% (ns). Despite a downward trend, 
+Rooibos extract was not able to significantly impact IL-1β secretion (−30% vs. untreated 
+cells) due to interindividual variations. On the other hand, the secretion of IL-6, IL-8 and 
+MIP-1α was not affected in stimulated treated cells vs. untreated cells, and a non-
+significant increase in TNFα secretion was observed, mainly due to high variations 
+between donors. Figure 2B is a summary of the overall effect of Rooibos on the main pro-
+inflammatory cytokines in PHA-stimulated PBMCs. It can be observed that Rooibos 
+extract modified the behavior of the pro-inflammatory cytokines. 
+Figure 1. Antioxidant activity of Rooibos extract. (A) Free-radical scavenging activity toward DPPH
+radical; (B) production of ROS by blood leukocytes with different concentrations of Rooibos. Cells
+were incubated with Rooibos extract (0, 10, 25, 50 and 100 µg/mL) and stimulated with PMA (1 µM).
+Data shown as mean ± SD; (C) effect of Rooibos extract on leukocyte viability. Cells were treated with
+the indicated concentrations of Rooibos for 2 h, and then cell viability was measured. Data shown
+as mean ± SD (control corresponded to stimulated untreated cells = 100%); * p < 0.05 compared
+with control.
+3.1.2. Rooibos Extract Inhibited ROS Production by Blood Leukocytes
+To investigate the potential antioxidant effects of Rooibos extract, we examined its
+effect on ROS production by blood leukocytes triggered by PMA. PMA stimulation resulted
+in a signiﬁcant increase in ROS production after 1 h of incubation. Incubation with Rooibos
+extract inhibited the production of ROS in a dose-dependent manner (Figure 1B). The
+decrease was signiﬁcant after 1 h at 10 µg/mL (≈30%). After 2 h, a signiﬁcant reduction of
+minimum 50% was obtained, with a reduction of more than 60% at 50 µg/mL and above
+(−50%, −61%, –64% and –70% for 10, 25, 50 and 100 µg/mL, respectively). This effect was
+not the consequence of a decrease in cell viability or proliferation, as the viability assay
+did not show any signiﬁcant difference between cells incubated with and without Rooibos
+extract in the concentration range 10–100 µg/mL after 2 h (Figure 1C). In light of these
+results, the concentration of 50 µg/mL was selected for further investigations.
+3.1.3. Rooibos Impacted PBMC Cytokine Secretion
+In order to determine the effect of Rooibos extract on inﬂammatory response, total
+PBMCs were stimulated by PHA in the presence or absence of 50 µg/mL of Rooibos extract,
+and the concentration of ten cytokines secreted in the supernatant was measured with
+ProcartaPlex™ Immunoassays. Rooibos extract signiﬁcantly decreased the production
+of four pro-inﬂammatory cytokines, reﬂecting its anti-inﬂammatory effect (Figure 2A). A
+hugely signiﬁcant decrease in IL-17a secretion(+ 90%, p < 0.05), followed by decreases in
+IFN-γ (–76%, p < 0.05), IL-12 (–60%, p < 0.05) and IL-23 (–46%, p < 0.05) were observed
+in stimulated PBMCs cultured with Rooibos extract in comparison to untreated PBMCs.
+IL-2 concentration was decreased by almost 45% (ns). Despite a downward trend, Rooibos
+Nutrients 2023, 15, 1751
+9 of 19
+extract was not able to signiﬁcantly impact IL-1β secretion (−30% vs. untreated cells) due
+to interindividual variations. On the other hand, the secretion of IL-6, IL-8 and MIP-1α was
+not affected in stimulated treated cells vs. untreated cells, and a non-signiﬁcant increase in
+TNFα secretion was observed, mainly due to high variations between donors. Figure 2B
+is a summary of the overall effect of Rooibos on the main pro-inﬂammatory cytokines in
+PHA-stimulated PBMCs. It can be observed that Rooibos extract modiﬁed the behavior of
+the pro-inﬂammatory cytokines.
+Nutrients 2023, 15, x FOR PEER REVIEW 
+10 of 20 
+ 
+ 
+Figure 2. Impact of Rooibos extract on cytokines. (A) Measurement of ten pro-inflammatory 
+cytokines secreted by PBMCs using Procarta-Plex™ Immunoassays. Cells were incubated with 
+Rooibos extract (50 µg/mL) and stimulated with PHA (5 µg/mL) for 24 h. Data shown as mean ± SD; 
+(B) summary of the overall effect of Rooibos extract on the main pro-inflammatory cytokines in 
+PHA-stimulated PBMCs; (C) THP-1 macrophages were stimulated with 20 ng/mL IFN-γ  +  100 
+ng/mL LPS as described in the Materials and Methods section, and the mRNA expression of IL-6, 
+TNFα, IL-1β, IL-8 and CXCL10 was measured by qRT-PCR. β-Actin was used as an internal control. 
+M0 macrophages were used as a control; (D) the mRNA expression of IL-6, TNF-α, IL-1β, IL-8 and 
+CXCL10 was measured by qRT-PCR in cells treated or untreated with 50 µg/mL Rooibos extract, 
+and stimulated with LPS/IFN-γ. β-Actin was used as an internal control. Untreated M1 macrophages 
+were used as a control. All data represent the means of 3–5 replicates ±  SD. * p < 0.05 , ** p ≤ 0.01, *** 
+p ≤ 0.001 represent significant differences compared with the control. 
+3.1.4. Rooibos Modulated the Polarization of Macrophages toward M1-Type 
+To better investigate the anti-inflammatory effect of Rooibos extract, the production 
+of pro-inflammatory cytokines was quantified in M1 inflammatory macrophages in the 
+presence or absence of 50 µg/mL Rooibos extract. For this purpose, THP-1 cell lines were 
+activated and transformed into M0, and then polarized into M1-type macrophages by 
+adding IFN-γ and LPS. M1 macrophages showed cellular elongation. As expected, the 
+mRNA expression of IL-1β, TNFα, IL-6, IL-8 and CXCL10 (M1 macrophage markers) was 
+significantly upregulated in the M1 population (Figure 2C), validating the successful 
+polarization of monocytes into M1-polarized macrophages. Interestingly, Rooibos extract 
+was able to attenuate the macrophage response to M1 pro-inflammatory activation by 
+significantly reducing all pro-inflammatory cytokines (Figure 2D). 
+3.2. Impact of Rooibos Extract on Inflammatory State of Adipose Tissue 
+3.2.1. Rooibos Extract Reduced Lipid Accumulation in Differentiated Human 
+Adipocytes
+Figure 2. Impact of Rooibos extract on cytokines. (A) Measurement of ten pro-inﬂammatory cytokines
+secreted by PBMCs using Procarta-Plex™ Immunoassays. Cells were incubated with Rooibos extract
+(50 µg/mL) and stimulated with PHA (5 µg/mL) for 24 h. Data shown as mean ± SD; (B) summary
+of the overall effect of Rooibos extract on the main pro-inﬂammatory cytokines in PHA-stimulated
+PBMCs; (C) THP-1 macrophages were stimulated with 20 ng/mL IFN-γ + 100 ng/mL LPS as
+described in the Materials and Methods section, and the mRNA expression of IL-6, TNFα, IL-1β, IL-8
+and CXCL10 was measured by qRT-PCR. β-Actin was used as an internal control. M0 macrophages
+were used as a control; (D) the mRNA expression of IL-6, TNF-α, IL-1β, IL-8 and CXCL10 was
+measured by qRT-PCR in cells treated or untreated with 50 µg/mL Rooibos extract, and stimulated
+with LPS/IFN-γ. β-Actin was used as an internal control. Untreated M1 macrophages were used as
+a control. All data represent the means of 3–5 replicates ± SD. * p < 0.05, ** p ≤ 0.01, *** p ≤ 0.001
+represent signiﬁcant differences compared with the control.
+3.1.4. Rooibos Modulated the Polarization of Macrophages toward M1-Type
+To better investigate the anti-inﬂammatory effect of Rooibos extract, the production
+of pro-inﬂammatory cytokines was quantiﬁed in M1 inﬂammatory macrophages in the
+presence or absence of 50 µg/mL Rooibos extract. For this purpose, THP-1 cell lines
+were activated and transformed into M0, and then polarized into M1-type macrophages
+by adding IFN-γ and LPS. M1 macrophages showed cellular elongation. As expected,
+the mRNA expression of IL-1β, TNFα, IL-6, IL-8 and CXCL10 (M1 macrophage markers)
+was signiﬁcantly upregulated in the M1 population (Figure 2C), validating the successful
+polarization of monocytes into M1-polarized macrophages. Interestingly, Rooibos extract
+Nutrients 2023, 15, 1751
+10 of 19
+was able to attenuate the macrophage response to M1 pro-inﬂammatory activation by
+signiﬁcantly reducing all pro-inﬂammatory cytokines (Figure 2D).
+3.2. Impact of Rooibos Extract on Inﬂammatory State of Adipose Tissue
+3.2.1. Rooibos Extract Reduced Lipid Accumulation in Differentiated Human Adipocytes
+Next, we investigated the potential effect of Rooibos extract on obesity by determining
+its impact on adipogenesis. Microscopic analysis of differentiated Oil Red O-stained
+human adipocytes, cultured in the absence (Figure 3A) and presence of GW9662 which
+is a PPARγ agonist (Figure 3B) or Rooibos (Figure 3C), revealed the accumulation of
+intracellular lipid droplets. Chronic treatment with Rooibos extract appeared to inhibit
+lipid accumulation. Quantiﬁcation of the extracted Oil Red O stain showed that the lipid
+content was signiﬁcantly reduced by ∼36% (p ≤ 0.0001) when treated with GW9662 (used
+as a negative control) and ∼20% (p ≤ 0.001) with Rooibos as compared to the control
+(Figure 2D), indicating a reduction in intracellular lipid accumulation.
+Nutrients 2023, 15, x FOR PEER REVIEW 
+11 of 20 
+ 
+ 
+stained human adipocytes, cultured in the absence (Figure 3A) and presence of GW9662 
+which is a PPARγ agonist (Figure 3B) or Rooibos (Figure 3C), revealed the accumulation 
+of intracellular lipid droplets. Chronic treatment with Rooibos extract appeared to inhibit 
+lipid accumulation. Quantification of the extracted Oil Red O stain showed that the lipid 
+content was significantly reduced by ∼36% (p ≤ 0.0001) when treated with GW9662 (used 
+as a negative control) and ∼20% (p ≤ 0.001) with Rooibos as compared to the control 
+(Figure 2D), indicating a reduction in intracellular lipid accumulation. 
+3.2.2. Rooibos Extract Suppressed Adipocyte-Related Gene Expression during 
+Differentiation 
+Differentiation of human adipocytes with 50 µg/mL of the Rooibos extract decreased 
+the gene expression of PPARγ (Figure 3E) by 47% (p ≤ 0.001) and that of Ap2 by 43% (p < 
+0.01) compared to untreated controls. Additionally, Rooibos extract significantly 
+increased the expression of the Lipase E, hormone-sensitive type (HSL) gene by 186% (p ≤ 
+0.001). 
+ 
+Figure 3. Reduction in intracellular triglyceride content and the expression of adipocyte-related 
+genes in differentiated human adipocytes as a result of Rooibos extract; (A) differentiated human 
+adipocyte controls cultured without Rooibos extract and GW9662; (B) differentiated adipocytes in 
+the presence of GW9662; (C) differentiated adipocytes in the presence of 50 µg/mL Rooibos extract; 
+(D) quantification of Oil Red O staining intensity measured (at 490 nm) after 8 days of chronic 
+exposure to 50 µg/mL of Rooibos extract or GW9662. Results for the Oil Red O staining shown are 
+from a representative experiment which was repeated two more times in quadruplicate with similar 
+trends; (E) differentiating human adipocytes were grown in the presence and absence of 50 µg/mL 
+of Rooibos extract until day 8. Total RNA isolated from untreated cells was used as the control. Data 
+shown are the relative mRNA expression of PPARγ, Ap2, and HSL, normalized to β-actin. 
+Significance is indicated as * where p ≤ 0.05, ** where p ≤ 0.01, *** where p ≤ 0.001 and **** where p ≤ 
+0.0001 and n = 3–6. 
+3.2.3. Rooibos Extract Affected Adipokine Secretion in Differentiated Human 
+Adipocytes 
+In light of the importance of adipokines in obesity and related metabolic syndromes, 
+it was important to study the effect of Rooibos extract on their expression. A substantial 
+decrease of 80% (p ≤ 0.001) was observed in leptin gene (LEP) expression by differentiated 
+human adipocytes after chronic treatment with Rooibos extract at a concentration of 50 
+Figure 3. Reduction in intracellular triglyceride content and the expression of adipocyte-related
+genes in differentiated human adipocytes as a result of Rooibos extract; (A) differentiated human
+adipocyte controls cultured without Rooibos extract and GW9662; (B) differentiated adipocytes in
+the presence of GW9662; (C) differentiated adipocytes in the presence of 50 µg/mL Rooibos extract;
+(D) quantification of Oil Red O staining intensity measured (at 490 nm) after 8 days of chronic exposure
+to 50 µg/mL of Rooibos extract or GW9662. Results for the Oil Red O staining shown are from a
+representative experiment which was repeated two more times in quadruplicate with similar trends; (E)
+differentiating human adipocytes were grown in the presence and absence of 50 µg/mL of Rooibos extract
+until day 8. Total RNA isolated from untreated cells was used as the control. Data shown are the relative
+mRNA expression of PPARγ, Ap2, and HSL, normalized to β-actin. Significance is indicated as * where
+p ≤ 0.05, ** where p ≤ 0.01, *** where p ≤ 0.001 and **** where p ≤ 0.0001 and n = 3–6.
+3.2.2. Rooibos Extract Suppressed Adipocyte-Related Gene Expression during
+Differentiation
+Differentiation of human adipocytes with 50 µg/mL of the Rooibos extract decreased
+the gene expression of PPARγ (Figure 3E) by 47% (p ≤ 0.001) and that of Ap2 by 43%
+(p < 0.01) compared to untreated controls. Additionally, Rooibos extract significantly increased
+the expression of the Lipase E, hormone-sensitive type (HSL) gene by 186% (p ≤ 0.001).
+Nutrients 2023, 15, 1751
+11 of 19
+3.2.3. Rooibos Extract Affected Adipokine Secretion in Differentiated Human Adipocytes
+In light of the importance of adipokines in obesity and related metabolic syndromes,
+it was important to study the effect of Rooibos extract on their expression. A substantial
+decrease of 80% (p ≤ 0.001) was observed in leptin gene (LEP) expression by differentiated
+human adipocytes after chronic treatment with Rooibos extract at a concentration of
+50 µg/mL. Interestingly, adiponectin gene (AdipoQ) expression was signiﬁcantly increased
+by 33% by this treatment condition (Figure 4A).
+ 
+ 
+µg/mL. Interestingly, adiponectin gene (AdipoQ) expression was significantly increased 
+by 33% by this treatment condition (Figure 4A). 
+3.2.4. Rooibos Affected Adipokine and HSL Secretion in Mature Adipocytes 
+Next, the impact of Rooibos extract was evaluated in human mature adipocytes. For 
+that purpose, human preadipocytes were differentiated as previously described for 8 
+days. Next, the mature adipocytes were treated with 50 µg/mL Rooibos extract for 24 h 
+and the expression of adipokines along with HSL was evaluated. Rooibos extract 
+significantly increased the expression of AdipoQ by 346% and HSL by 380% compared to 
+untreated controls (Figure 4B,C). A substantial decrease of 46% (p ≤ 0.001) was observed 
+in LEP expression by mature human adipocytes after 24-hour treatment with 50 µg/mL of 
+Rooibos extract (Figure 4D). 
+ 
+Figure 4. Adipokine expression in human adipocytes is affected by Rooibos treatment. Cells were 
+exposed to 50 µg/mL of Rooibos extract for the full differentiation period. Total RNA isolated from 
+untreated cells was used as the control. Data shown are the relative mRNA expression of leptin and 
+adiponectin (A), normalized to β-actin. Cells were differentiated normally, and mature adipocytes 
+were treated with 50 µg/mL Rooibos for 24 h. Total RNA isolated from untreated cells was used as 
+the control. Data shown are the relative mRNA expression of HSL (B), adiponectin (C) and leptin (D), 
+normalized to β-actin. Significance is indicated as * where p ≤ 0.05, ** where p ≤ 0.01 and *** where p 
+≤ 0.001 and n = 3. 
+3.2.5. Rooibos Extract Effect on Adipospheroids in the Presence or Absence of 
+Inflammatory Macrophages 
+To better demonstrate the potential anti-obesity effect of Rooibos, it was interesting 
+to study its impact on adipose tissue mimetic by developing a 3D system that would allow 
+cell expansion and more closely resemble in vivo conditions. The 3D cultures were shown 
+to be biologically active, and can be maintained in long-term cultures and better reproduce 
+adipose tissue’s morphological and physiological behaviors compared to their 2D 
+Figure 4. Adipokine expression in human adipocytes is affected by Rooibos treatment. Cells were
+exposed to 50 µg/mL of Rooibos extract for the full differentiation period. Total RNA isolated from
+untreated cells was used as the control. Data shown are the relative mRNA expression of leptin and
+adiponectin (A), normalized to β-actin. Cells were differentiated normally, and mature adipocytes
+were treated with 50 µg/mL Rooibos for 24 h. Total RNA isolated from untreated cells was used as
+the control. Data shown are the relative mRNA expression of HSL (B), adiponectin (C) and leptin (D),
+normalized to β-actin. Signiﬁcance is indicated as * where p ≤ 0.05, ** where p ≤ 0.01 and *** where
+p ≤ 0.001 and n = 3.
+3.2.4. Rooibos Affected Adipokine and HSL Secretion in Mature Adipocytes
+Next, the impact of Rooibos extract was evaluated in human mature adipocytes. For
+that purpose, human preadipocytes were differentiated as previously described for 8 days.
+Next, the mature adipocytes were treated with 50 µg/mL Rooibos extract for 24 h and
+the expression of adipokines along with HSL was evaluated. Rooibos extract signiﬁcantly
+increased the expression of AdipoQ by 346% and HSL by 380% compared to untreated
+controls (Figure 4B,C). A substantial decrease of 46% (p ≤ 0.001) was observed in LEP
+expression by mature human adipocytes after 24-hour treatment with 50 µg/mL of Rooibos
+extract (Figure 4D).
+3.2.5. Rooibos Extract Effect on Adipospheroids in the Presence or Absence of
+Inﬂammatory Macrophages
+To better demonstrate the potential anti-obesity effect of Rooibos, it was interesting
+to study its impact on adipose tissue mimetic by developing a 3D system that would
+Nutrients 2023, 15, 1751
+12 of 19
+allow cell expansion and more closely resemble in vivo conditions. The 3D cultures were
+shown to be biologically active, and can be maintained in long-term cultures and better
+reproduce adipose tissue’s morphological and physiological behaviors compared to their
+2D counterparts [30]. To achieve this objective, we took advantage of the ability of human
+preadipocytes to agglomerate and form multicellular micro-tissues or “spheroids” when
+forced together on non-adherent surfaces. To set up the system, we used the same hu-
+man subcutaneous preadipocytes whose ability to differentiate in vitro was demonstrated
+previously. Two techniques were employed to form the adipospheroids:
+-
+The ﬁrst method consisted of simply seeding the preadipocyte cells in speciﬁc U-
+shaped ultra-low-binding plates where cell adhesion is almost impossible (Figure 5A).
+-
+The second method consisted of using agarose molds prepared with MicroTissues®
+3D Petri Dishes® (Figure 5B). In these molds, 200,000 preadipocyte cells were seeded.
+After 24 h of incubation, cells present within the suspension spontaneously agglom-
+erated to form loosely adhesive cell spheroids by promoting intercellular adhesion
+molecules, resulting in the assembly of 81 potential adipospheroids per agarose mold.
+We then added the differentiating medium at day 2 and cells were allowed to continue
+differentiating until day 10 in both methods. To verify the differentiation of spheroids
+and their ability to mimic adipose tissue, the presence of lipid droplets was assessed by
+adding Bodipy, a green ﬂuorescent dye with hydrophobic properties, ideal for staining
+lipids, and then analyzing the samples by confocal microscopy. In Figure 5C,D, the stained
+lipid droplets were clearly shown, indicating the total differentiation of adipospheroids in
+both methods.
+Nutrients 2023, 15, x FOR PEER REVIEW 
+13 of 20 
+ 
+ 
+counterparts [30]. To achieve this objective, we took advantage of the ability of human 
+preadipocytes to agglomerate and form multicellular micro-tissues or “spheroids” when 
+forced together on non-adherent surfaces. To set up the system, we used the same human 
+subcutaneous preadipocytes whose ability to differentiate in vitro was demonstrated 
+previously. Two techniques were employed to form the adipospheroids: 
+- 
+The first method consisted of simply seeding the preadipocyte cells in specific U-
+shaped ultra-low-binding plates where cell adhesion is almost impossible (Figure 
+5A). 
+- 
+The second method consisted of using agarose molds prepared with MicroTissues® 
+3D Petri Dishes® (Figure 5B). In these molds, 200,000 preadipocyte cells were seeded. 
+After 24 h of incubation, cells present within the suspension spontaneously 
+agglomerated to form loosely adhesive cell spheroids by promoting intercellular 
+adhesion molecules, resulting in the assembly of 81 potential adipospheroids per 
+agarose mold. 
+We then added the differentiating medium at day 2 and cells were allowed to 
+continue differentiating until day 10 in both methods. To verify the differentiation of 
+spheroids and their ability to mimic adipose tissue, the presence of lipid droplets was 
+assessed by adding Bodipy, a green fluorescent dye with hydrophobic properties, ideal 
+for staining lipids, and then analyzing the samples by confocal microscopy. In Figures 5C 
+and D, the stained lipid droplets were clearly shown, indicating the total differentiation 
+of adipospheroids in both methods. 
+ 
+Figure 5. Generation of the 3D adipospheroids. (A) Using 96-well ultra-low-binding, U-shaped-
+bottom plates at 10,000 cells/well; (B) using an agarose mold with 81 wells at 200,000 cells/mold. 
+With both methods, differentiation started at day 2 and ended at day 10; (C) confocal microscopy of 
+adipospheroids formed in the plates with Bodipy and DAPI labeling in Vectashield mounting 
+medium; (D) confocal microscopy of adipospheroids formed in the agarose mold with Bodipy and 
+DAPI labeling in Vectashield mounting medium (Micro Zeiss Cell Observer Spinning Disk, ×20 Plan 
+Apochromat 20×/0.8 M27). 
+After verifying the models and the ability of adipospheroids to differentiate, we then 
+examined whether Rooibos extract could regulate their differentiation. To test this, 
+adipospheroids were formed using the ultra-low-binding plates, allowing the use of 
+Incucyte® to monitor the kinetics of the formation of adipospheroids and measure their 
+diameters. The cells were differentiated in the presence or absence of 50 µg/mL of Rooibos 
+extract from day 2. At day 10, the lipid droplets in the adipospheroids were stained using 
+Figure 5. Generation of the 3D adipospheroids. (A) Using 96-well ultra-low-binding, U-shaped-
+bottom plates at 10,000 cells/well; (B) using an agarose mold with 81 wells at 200,000 cells/mold.
+With both methods, differentiation started at day 2 and ended at day 10; (C) confocal microscopy
+of adipospheroids formed in the plates with Bodipy and DAPI labeling in Vectashield mounting
+medium; (D) confocal microscopy of adipospheroids formed in the agarose mold with Bodipy and
+DAPI labeling in Vectashield mounting medium (Micro Zeiss Cell Observer Spinning Disk, ×20 Plan
+Apochromat 20×/0.8 M27).
+After verifying the models and the ability of adipospheroids to differentiate, we then
+examined whether Rooibos extract could regulate their differentiation. To test this, adipo-
+spheroids were formed using the ultra-low-binding plates, allowing the use of Incucyte® to
+monitor the kinetics of the formation of adipospheroids and measure their diameters. The
+cells were differentiated in the presence or absence of 50 µg/mL of Rooibos extract from
+Nutrients 2023, 15, 1751
+13 of 19
+day 2. At day 10, the lipid droplets in the adipospheroids were stained using Bodipy and
+analyzed by confocal microscopy. Figure 6 shows the stained adipospheroids in the absence
+(Figure 6A) or presence (Figure 6B) of Rooibos extract. A decrease in the ﬂuorescence in
+the adipospheroids treated with Rooibos extract was clearly observed under the confocal
+microscope (quantiﬁcation of spheroid volume). The measurement of spheroid diameter
+using Fiji demonstrated that untreated adipospheroids expanded signiﬁcantly more than
+the treated ones (Figure 6C). Similar to the adipose tissue that accumulates lipids when
+preadipocytes mature into adipocytes, our results indicated that, during differentiation, the
+spheroid volume increased over time, and as expected, Rooibos extract had the ability to
+inhibit this process. At the end of the differentiation period, we measured the expression of
+adipogenesis-related genes along with adipokines. The results indicated that the treated
+adipospheroids expressed less Ap2, PPARγ and Leptin (–63%, –50% and –30%, respectively)
+and more adiponectin and HSL (+60% and +33%, respectively) compared to untreated
+adipospheroids (Figure 6D,E). These results generally conﬁrmed our results in 2D.
+Nutrients 2023, 15, x FOR PEER REVIEW 
+14 of 20 
+ 
+ 
+Bodipy and analyzed by confocal microscopy. Figure 6 shows the stained adipospheroids 
+in the absence (Figure 6A) or presence (Figure 6B) of Rooibos extract. A decrease in the 
+fluorescence in the adipospheroids treated with Rooibos extract was clearly observed 
+under the confocal microscope (quantification of spheroid volume). The measurement of 
+spheroid diameter using Fiji demonstrated that untreated adipospheroids expanded 
+significantly more than the treated ones (Figure 6C). Similar to the adipose tissue that 
+accumulates lipids when preadipocytes mature into adipocytes, our results indicated that, 
+during differentiation, the spheroid volume increased over time, and as expected, Rooibos 
+extract had the ability to inhibit this process. At the end of the differentiation period, we 
+measured the expression of adipogenesis-related genes along with adipokines. The results 
+indicated that the treated adipospheroids expressed less Ap2, PPARγ and Leptin (–63%, –
+50% and –30%, respectively) and more adiponectin and HSL (+60% and +33%, respectively) 
+compared to untreated adipospheroids (Figure 6D,E). These results generally confirmed 
+our results in 2D. 
+ 
+Figure 6. Confocal microscopy of adipospheroids stained with Bodipy labeling in Vectashield 
+mounting medium formed in the absence (A) or presence (B) of 50 µg/mL Rooibos extract (Micro 
+Zeiss Cell Observer Spinning Disk, ×20 Plan Apochromat 20×/0.8 M27). (C) Measurement of 
+spheroids’ diameter using Fiji at days 2, 5 and 10 in the presence or absence of 50 µg/mL Rooibos 
+extract. Differentiated human adipospheroids were grown in the presence or absence of 50µg/mL 
+of Rooibos extract until day 8. The mRNA expression of Ap2, PPARγ and HSL (D), and the 
+adipokines (leptin and adiponectin) (E) was measured by qRT-PCR in these adipospheroids. Total 
+RNA isolated from untreated adipospheroids was used as the control. Data shown are the relative 
+mRNA expression normalized to β-actin. Significance is indicated as * where p ≤ 0.05, ** where p ≤ 
+0.01 and *** where p ≤ 0.001, and n = 3–6. 
+Next, we evaluated the effects of Rooibos extract on the interaction between the two 
+inflammatory factors: adipocytes and macrophages. 
+Figure 6. Confocal microscopy of adipospheroids stained with Bodipy labeling in Vectashield
+mounting medium formed in the absence (A) or presence (B) of 50 µg/mL Rooibos extract (Micro
+Zeiss Cell Observer Spinning Disk, ×20 Plan Apochromat 20×/0.8 M27). (C) Measurement of
+spheroids’ diameter using Fiji at days 2, 5 and 10 in the presence or absence of 50 µg/mL Rooibos
+extract. Differentiated human adipospheroids were grown in the presence or absence of 50 µg/mL of
+Rooibos extract until day 8. The mRNA expression of Ap2, PPARγ and HSL (D), and the adipokines
+(leptin and adiponectin) (E) was measured by qRT-PCR in these adipospheroids. Total RNA isolated
+from untreated adipospheroids was used as the control. Data shown are the relative mRNA expression
+normalized to β-actin. Signiﬁcance is indicated as * where p ≤ 0.05, ** where p ≤ 0.01 and *** where
+p ≤ 0.001, and n = 3–6.
+Next, we evaluated the effects of Rooibos extract on the interaction between the two
+inﬂammatory factors: adipocytes and macrophages.
+Nutrients 2023, 15, 1751
+14 of 19
+We utilized a co-culture system to examine the impact of Rooibos extract on the
+inﬂammatory state caused by the interaction between M1 macrophages and adipocytes.
+THP-1 monocytic cells were seeded at the bottom of wells and differentiated into M0 by
+adding PMA. In parallel, adipospheroids were formed and differentiated in agarose molds
+as described previously. This method was selected for the co-culture since it generates
+a higher number of adipospheroids with 200,000 cells (81 vs. 20 spheroids for the low-
+binding plates method). The adipospheroids obtained were subsequently co-cultured with
+macrophages for 24 h in the presence or absence of IFN-γ, LPS to induce a pro-inﬂammatory
+proﬁle, and 50 µg/mL of Rooibos extract. Next, total mRNA was extracted separately
+from the macrophages and adipospheroids to perform qPCR (Figure 7A). Samples were
+analyzed for the expression of markers of an M1-type phenotype, which represents a pro-
+inﬂammatory immune response. Five established M1 phenotype markers were selected:
+IL-6, IL-8, IL-1β, TNFα and CXCL10. In addition, three adipocytes’ markers were examined:
+adiponectin, HSL and leptin. The data showed that Rooibos extract generally decreased the
+inﬂammatory state, reﬂected by a signiﬁcantly decreased expression of pro-inﬂammatory
+cytokines IL-6, IL-8 and IL-1β in THP-1-differentiated macrophages by 60%, 70% and 53%,
+respectively, and the pro-inﬂammatory adipokine, leptin, by 56% in adipospheroids. These
+results were accompanied by a signiﬁcant increase in the expression of HSL by 120% and
+the anti-inﬂammatory adipokine, i.e., adiponectin, by 70% in the adipospheroids compared
+to untreated co-culture (Figure 7B,C).
+Nutrients 2023, 15, x FOR PEER REVIEW 
+15 of 20 
+ 
+ 
+We utilized a co-culture system to examine the impact of Rooibos extract on the 
+inflammatory state caused by the interaction between M1 macrophages and adipocytes. 
+THP-1 monocytic cells were seeded at the bottom of wells and differentiated into M0 by 
+adding PMA. In parallel, adipospheroids were formed and differentiated in agarose 
+molds as described previously. This method was selected for the co-culture since it 
+generates a higher number of adipospheroids with 200,000 cells (81 vs. 20 spheroids for 
+the low-binding plates method). The adipospheroids obtained were subsequently co-
+cultured with macrophages for 24 h in the presence or absence of IFN-γ, LPS to induce a 
+pro-inflammatory profile, and 50µg/mL of Rooibos extract. Next, total mRNA was 
+extracted separately from the macrophages and adipospheroids to perform qPCR (Figure 
+7A). Samples were analyzed for the expression of markers of an M1-type phenotype, 
+which represents a pro-inflammatory immune response. Five established M1 phenotype 
+markers were selected: IL-6, IL-8, IL-1β, TNFα and CXCL10. In addition, three adipocytes’ 
+markers were examined: adiponectin, HSL and leptin. The data showed that Rooibos extract 
+generally decreased the inflammatory state, reflected by a significantly decreased 
+expression of pro-inflammatory cytokines IL-6, IL-8 and IL-1β in THP-1-differentiated 
+macrophages by 60%, 70% and 53%, respectively, and the pro-inflammatory adipokine, 
+leptin, by 56% in adipospheroids. These results were accompanied by a significant increase 
+in the expression of HSL by 120% and the anti-inflammatory adipokine, i.e., adiponectin, 
+by 70% in the adipospheroids compared to untreated co-culture (Figure 7B,C). 
+ 
+Figure 7. Effect of Rooibos on Adipocyte/Macrophage Interaction. (A) Diagram showing co-culture 
+system where THP-1 were cultured in the lower chamber and adipospheroids were added after 
+differentiation on a transwell insert; (B) the mRNA expression of IL-6, TNFα, IL-1β, IL-8 and CXCL10 
+was measured by qRT-PCR in M1 cells after 24 h of co-culture; (C) the mRNA expression of 
+adiponectin, leptin and HSL was measured by qRT-PCR in the adipospheroids after 24 h of co-culture. 
+Total RNA isolated from untreated M1 macrophages or adipospheroids was used as the control. 
+Data shown are the relative mRNA expression of the mentioned genes normalized to β-actin, * where 
+p ≤ 0.05 and ** where p ≤ 0.01 and n = 3. 
+ 
+ 
+Figure 7. Effect of Rooibos on Adipocyte/Macrophage Interaction. (A) Diagram showing co-culture
+system where THP-1 were cultured in the lower chamber and adipospheroids were added after
+differentiation on a transwell insert; (B) the mRNA expression of IL-6, TNFα, IL-1β, IL-8 and CXCL10
+was measured by qRT-PCR in M1 cells after 24 h of co-culture; (C) the mRNA expression of adiponectin,
+leptin and HSL was measured by qRT-PCR in the adipospheroids after 24 h of co-culture. Total RNA
+isolated from untreated M1 macrophages or adipospheroids was used as the control. Data shown are
+the relative mRNA expression of the mentioned genes normalized to β-actin, * where p ≤ 0.05 and **
+where p ≤ 0.01 and n = 3.
+4. Discussion
+Despite the fact that obesity is classiﬁed as a public health priority and is receiving
+special attention from the WHO and governments in all countries, its prevalence is still
+increasing worldwide, leading to great economic and social hardships along with high
+Nutrients 2023, 15, 1751
+15 of 19
+levels of stress on the health services in all countries. All of this goes to show that the
+obesity pandemic presents a real challenge for researchers, and new and improved ways to
+manage weight gain and prevent obesity are urgently needed.
+Knowing that the adipose tissue is the most important organ to be targeted and
+studied when managing obesity, it is critically important to have a treatment that mainly
+targets adipocytes and adipose tissue. It is surprising that most of the available approved
+anti-obesity drugs mainly target the nervous system, mostly to decrease appetite and food
+consumption [18], instead of adipose tissue itself. In our study, we focused on the main
+factors in obesity responsible for chronic inﬂammation: adipocytes and macrophages. We
+investigated the effect of Rooibos extract on both cell types with a view to managing the
+obesity-associated chronic inﬂammation that leads to numerous serious diseases. Accord-
+ingly, in addition to the conventional 2D cultures, we used a 3D system, and we veriﬁed
+that the two tested techniques are simple and easily applicable culture protocols that allow
+the culturing and differentiation of human adipocytes with in vivo-like morphology in
+order to test new anti-obesity drugs. The two techniques allow the formation of mature
+adipospheroids where the preadipocytes can accumulate lipid droplets and gradually
+acquire an adipocyte-speciﬁc gene expression pattern.
+Rooibos is known to contain high levels of valuable bioactive compounds (ﬂavonoid
+antioxidants). Aspalathin is the speciﬁc ﬂavonoid to Rooibos, and it is abundantly present
+in Aspalathus linearis, which explains the huge amount of interest in the potential health
+beneﬁts of this ﬂavonoid. The other four main ﬂavonoids (nothofagin, orientin, isoorientin
+and vitexin) in Rooibos extract are not speciﬁc and may occur in other medicinal plants
+such as Leandra dasytricha [25]. The Rooibos extract used in our study contains 80 g·kg−1
+aspalathin, which is in the range of the natural products containing Rooibos (8–12%) [31,32].
+Generally, the consumption of 200 mL of Rooibos infusion would contribute 1.2–36 mg of
+aspalathin to the diet [25], depending on whether the product is fermented or green. For
+aspalathin and other bioactive compounds to be bio-effective, they must be bioavailable
+and reach their site of action. The various factors affecting bioavailability (absorption,
+distribution, metabolism and excretion) could lead to disparity in efﬁcacy results between
+in vitro and in vivo studies. In this context, Huang et al. showed in their study that the
+absorption of aspalathin in a Caco-2 monolayer cell model was concentration dependent
+and could reach almost 100% of the initial dose in high concentrations [33]. The oral
+bioavailability of aspalathin from Rooibos extract or infusion has been evaluated in vivo
+using pig, mouse and vervet monkey models, in addition to three human studies. Overall,
+the studies have shown evidence of phase-II metabolites in blood circulation. The glu-
+conidated, sulfated and methylated forms of aspalathin were found in the urine following
+phase-II liver metabolism after ingestion of Rooibos beverage or green Rooibos extract. The
+presence of aspalathin in the plasma was detected in one human study only, where the
+subjects drank 500 mL of green rooibos infusion, containing 287 mg aspalathin [34]. In the
+other two studies, no ﬂavonoid metabolites were detected in the plasma and the authors
+noted that a strong afﬁnity of the compounds for plasma carrier proteins such as serum
+albumin could be an explanation for undetectable levels in plasma [35,36]. On the one hand,
+we conﬁrmed the potent antioxidant activity of Rooibos extract associated in our study with
+anti-inﬂammatory activity on blood leukocytes and THP-1-differentiated macrophages. In
+our study, macrophages polarized to M1-type by LPS/IFN-γ treatment showed a reduced
+pro-inﬂammatory response. The inhibition of pro-inﬂammatory cytokines involved in the
+inﬂammatory process, including IL-6, IL-8, IL-1β and TNFα, is one of the ways through
+which Rooibos extract seems to exhibit its anti-inﬂammatory activity. This effect could be
+due to the inhibitory effect of Rooibos on the NF-κB pathway, a mechanism demonstrated
+recently by Gbuza et al. which needs to be better elucidated [32]. The anti-inﬂammatory
+effect of our extract can be attributed to several active ingredients that, in addition to as-
+palathin, include vitexin, an apigenin-8-C-glucoside with various health beneﬁts including
+antioxidation, anti-inﬂammation, fat reduction and glucose metabolism [37]. Thus, we
+conﬁrm that this plant holds interest for the treatment of obesity-associated inﬂammation.
+Nutrients 2023, 15, 1751
+16 of 19
+On the other hand, we showed that Rooibos decreased adipogenesis, decreasing the
+lipid accumulation process in the adipose tissue which is the major lipid storage site.
+This was mainly promoted by a signiﬁcant decrease in the expression of PPARγ, the chief
+regulator of preadipocyte differentiation [38]. Interestingly, we also showed that Rooibos
+signiﬁcantly increased the expression of HSL, which is an enzyme responsible for the
+breakdown of triacylglycerols into fatty acids in adipose tissue [39]. This could have a
+huge beneﬁcial effect on weight loss because HSL is known to have a major impact on
+appetite, food intake and body weight [40]. Furthermore, it is essential to mention that the
+adipocytes are known to secrete over 100 cytokines involved in crosstalk with other cells.
+Among these, leptin and adiponectin have been shown to be therapeutically beneﬁcial
+as a treatment for several obesity-related diseases [41]. The couple leptin/adiponectin is
+being extensively studied, due to the opposing effects of these two adipokines [42]. In
+obesity and associated metabolic diseases, a decreased plasma concentration of adiponectin
+along with increased leptin levels have been found. An imbalance between the pro-
+inﬂammatory leptin and the anti-inﬂammatory adiponectin has been shown to be associated
+with an elevated risk of developing obesity-related complications. Our ﬁndings showed
+that Rooibos extract signiﬁcantly reduced leptin expression in mature adipocytes, once
+again reﬂecting its anti-inﬂammatory properties. Additionally, there is huge interest in
+adiponectin and its analogs as a potential therapy, not only for all metabolic syndromes
+but also for several cancer types [43]. To our knowledge, our team is the ﬁrst to reveal
+that Rooibos signiﬁcantly increases adiponectin expression in 2D and 3D human primary
+adipocyte cultures, contrary to the published results on 3T3-L1 murine adipocytes, where
+adiponectin secretion remained unchanged after Rooibos treatment [27]. To our knowledge,
+we are the ﬁrst team to demonstrate this effect on human adipocytes, which could be
+attributed, once again, to aspalathin, in accordance with an in vivo study conducted on
+obese diabetic ob/ob mice, where the authors demonstrated that serum adiponectin levels
+were signiﬁcantly increased by the dietary feeding of aspalathin [44]. In the longer term, it
+would be interesting to better investigate this impact by studying the effect of Rooibos on
+the AMPK signaling pathway, which is the main pathway activated by adiponectin [45],
+and the expression of adiponectin receptors in human adipocytes. Our results on adipocytes
+highlight the interest in Rooibos as a treatment for obese patients.
+Finally, one of the major ﬁndings of our study was that Rooibos positively impacted
+the interaction between adipocytes and macrophages, mainly by decreasing the inﬂam-
+matory state. The substantial weakness of in vitro experimentation is that it might not
+actually replicate the results in an organism, and one of the limitations of our study is
+the difﬁculty in reﬂecting the results in vivo. However, in our study, we used the 3D cell
+culture system, which is more physiologically relevant and predictive and responds better
+than the conventional 2D culture. In our co-culture system, we tried to mimic the reality
+of the adipose tissue and to copy the existing cell–cell interaction to better understand
+the mechanics of obese inﬂamed adipose tissue. Although not impossible, it is technically
+challenging to discover the exact concentration and form of Rooibos that could generate
+the same beneﬁts in vivo.
+Our results clearly suggest Rooibos as an effective and safe agent for obesity manage-
+ment and obesity development prevention in order to reduce the prevalence of obesity and
+its harmful consequences. To our knowledge, there have been no previously published
+studies where the effect of Rooibos on polarized macrophages has been evaluated. Fur-
+thermore, an obese inﬂamed adipose tissue microenvironment was created by culturing
+the adipospheroids (which are biologically more active than monolayer cultures) with
+M1 macrophages. This is the ﬁrst time that Rooibos has been evaluated from the point
+of view of “obesity”. Nevertheless, a huge amount of work remains to be completed,
+which includes optimization of the dose, means of administration and the safety proﬁle
+of concentrated aspalathin extracts. As a conclusion, our study veriﬁed that Rooibos ex-
+tract could be a good candidate to promote healthy and well-functioning adipose tissue,
+Nutrients 2023, 15, 1751
+17 of 19
+which is important for whole-body metabolism and wellbeing, by reducing the low-grade
+inﬂammation observed in obesity.
+Author Contributions: Conceptualization, R.N., C.D. and A.R. (Adrien Rossary), F.S., J.-B.G., E.F.,
+J.-Y.B., L.D. and F.C.-C.; methodology, R.N., A.C., L.L., C.V., E.F., L.D. and F.C.-C.; validation, R.N.,
+C.D., A.R. (Adrien Rossary), F.S., J.-Y.B., F.C.-C. and L.D.; formal analysis, R.N., A.C., L.L., D.F. and
+L.D.; investigation, R.N., L.L., A.C., R.B., A.R. (Amandine Rousset); resources, C.A., J.-Y.B. and A.R.
+(Adrien Rossary); data curation, R.N., A.C. and L.L.; writing—original draft preparation: R.N., L.D.,
+C.D. and F.C.-C.; writing—review and editing: R.N., F.C.-C., L.D., C.D., F.S., E.F. and A.R. (Adrien
+Rossary); supervision: M.D.-A., F.C.-C., L.D. and J.-Y.B.; project administration: F.C.-C. and J.-Y.B.;
+funding acquisition: F.C.-C. and J.-Y.B. All authors have read and agreed to the published version of
+the manuscript.
+Funding: This research was funded by Project ANR-19-LCV2-0003-01 Program LABCOM 2019PHY-
+TOPROB’INOV (AV0027085). The project is co-ﬁnanced by the European Regional Development
+Fund (FEDER).
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: All donors gave their written informed consent for the use of blood
+samples for research purposes under Établissement Français du Sang contract no. EFS AURA 22-106
+(in accordance with articles L1222-1, L1222-8, L1243-4 and R1243-61 of the French Public Health
+Code). Human adipose stem cells (hASCs) were provided by the Cell and Tissue Bank (Hôpital
+Edouard-Herriot, Lyon, France). hASCs were obtained from patients undergoing surgery for cosmetic
+purposes without associated pathology, in accordance with the Helsinki Declaration, from anonymous
+healthy donors. Surgical residue was harvested in accordance with French regulation, including
+declaration to the Research Ministry (DC no. 2008162) and procurement of written informed consent
+from the patients.
+Data Availability Statement: The data presented in this study are available on request from the
+corresponding author.
+Acknowledgments: We thank Cécile Garnier, Lucie Materson and Pauline Delhorme for their techni-
+cal assistance. We thank Guillaume Tatti and Andreas Farina (Department of Research and Doctoral
+Studies DRED, UCA) for their Administrative Project Management.
+Conﬂicts of Interest: Authors “Amandine Rousset, Rebecca Boutin, Jean-Baptiste Guyon, Jean-Yves
+Berthon” were employed by the company Greentech. The remaining authors declare that the research
+was conducted in the absence of any commercial or ﬁnancial relationships that could be construed as
+a potential conﬂict of interest.
+References
+1.
+Zorena, K.; Jachimowicz-Duda, O.; ´Sl˛ezak, D.; Robakowska, M.; Mrugacz, M. Adipokines and Obesity. Potential Link to Metabolic
+Disorders and Chronic Complications. Int. J. Mol. Sci. 2020, 21, 3570. [CrossRef]
+2.
+Conway, B.; Rene, A. Obesity as a Disease: No Lightweight Matter. Obes. Rev. Off. J. Int. Assoc. Study Obes. 2004, 5, 145–151.
+[CrossRef]
+3.
+World Obesity Atlas. 2022. Available online: https://www.worldobesity.org/resources/resource-library/world-obesity-atlas-20
+22 (accessed on 10 January 2023).
+4.
+Apovian, C.M. Obesity: Deﬁnition, Comorbidities, Causes, and Burden. Am. J. Manag. Care 2016, 22, s176–s185. [PubMed]
+5.
+Milano, W.; De Biasio, V.; Di Munzio, W.; Foggia, G.; Capasso, A. Obesity: The New Global Epidemic Pharmacological Treatment,
+Opportunities and Limits for Personalized Therapy. Endocr. Metab. Immune Disord. Drug Targets 2020, 20, 1232–1243. [CrossRef]
+6.
+Sarjeant, K.; Stephens, J.M. Adipogenesis. Cold Spring Harb. Perspect. Biol. 2012, 4, a008417. [CrossRef]
+7.
+De Sá, P.M.; Richard, A.J.; Hang, H.; Stephens, J.M. Transcriptional Regulation of Adipogenesis. In Comprehensive Physiology; John
+Wiley & Sons, Ltd.: Hoboken, NJ, USA, 2017; pp. 635–674. ISBN 978-0-470-65071-4.
+8.
+De Leeuw, A.J.M.; Oude Luttikhuis, M.A.M.; Wellen, A.C.; Müller, C.; Calkhoven, C.F. Obesity and Its Impact on COVID-19. J.
+Mol. Med. Berl. Ger. 2021, 99, 899–915. [CrossRef] [PubMed]
+9.
+Safaei, M.; Sundararajan, E.A.; Driss, M.; Boulila, W.; Shapi’i, A. A Systematic Literature Review on Obesity: Understanding the
+Causes & Consequences of Obesity and Reviewing Various Machine Learning Approaches Used to Predict Obesity. Comput. Biol.
+Med. 2021, 136, 104754. [CrossRef] [PubMed]
+10.
+Braune, J.; Lindhorst, A.; Fröba, J.; Hobusch, C.; Kovacs, P.; Blüher, M.; Eilers, J.; Bechmann, I.; Gericke, M. Multinucleated Giant
+Cells in Adipose Tissue Are Specialized in Adipocyte Degradation. Diabetes 2021, 70, 538–548. [CrossRef]
+Nutrients 2023, 15, 1751
+18 of 19
+11.
+Kawai, T.; Autieri, M.V.; Scalia, R. Adipose Tissue Inﬂammation and Metabolic Dysfunction in Obesity. Am. J. Physiol.-Cell Physiol.
+2021, 320, C375–C391. [CrossRef] [PubMed]
+12.
+Fahed, G.; Aoun, L.; Bou Zerdan, M.; Allam, S.; Bou Zerdan, M.; Bouferraa, Y.; Assi, H.I. Metabolic Syndrome: Updates on
+Pathophysiology and Management in 2021. Int. J. Mol. Sci. 2022, 23, 786. [CrossRef] [PubMed]
+13.
+Csige, I.; Ujvárosy, D.; Szabó, Z.; L˝orincz, I.; Paragh, G.; Harangi, M.; Somodi, S. The Impact of Obesity on the Cardiovascular
+System. J. Diabetes Res. 2018, 2018, 3407306. [CrossRef]
+14.
+Mouton, A.J.; Li, X.; Hall, M.E.; Hall, J.E. Obesity, Hypertension, and Cardiac Dysfunction: Novel Roles of Immunometabolism in
+Macrophage Activation and Inﬂammation. Circ. Res. 2020, 126, 789–806. [CrossRef] [PubMed]
+15.
+Unamuno, X.; Gómez-Ambrosi, J.; Rodríguez, A.; Becerril, S.; Frühbeck, G.; Catalán, V. Adipokine Dysregulation and Adipose
+Tissue Inﬂammation in Human Obesity. Eur. J. Clin. Investig. 2018, 48, e12997. [CrossRef]
+16.
+Velazquez, A.; Apovian, C.M. Updates on Obesity Pharmacotherapy. Ann. N. Y. Acad. Sci. 2018, 1411, 106–119. [CrossRef]
+[PubMed]
+17.
+Powell, A. Obesity: Pharmacotherapy. FP Essent. 2020, 492, 25–29.
+18.
+Ryan, D.H. Drugs for Treating Obesity. Handb. Exp. Pharmacol. 2022, 274, 387–414. [CrossRef]
+19.
+Tak, Y.J.; Lee, S.Y. Long-Term Efﬁcacy and Safety of Anti-Obesity Treatment: Where Do We Stand? Curr. Obes. Rep. 2021, 10, 14–30.
+[CrossRef] [PubMed]
+20.
+Shi, Q.; Wang, Y.; Hao, Q.; Vandvik, P.O.; Guyatt, G.; Li, J.; Chen, Z.; Xu, S.; Shen, Y.; Ge, L.; et al. Pharmacotherapy for Adults
+with Overweight and Obesity: A Systematic Review and Network Meta-Analysis of Randomised Controlled Trials. Lancet Lond.
+Engl. 2022, 399, 259–269. [CrossRef]
+21.
+Sen, T.; Samanta, S.K. Medicinal Plants, Human Health and Biodiversity: A Broad Review. Adv. Biochem. Eng. Biotechnol. 2015,
+147, 59–110. [CrossRef]
+22.
+Thomford, N.E.; Senthebane, D.A.; Rowe, A.; Munro, D.; Seele, P.; Maroyi, A.; Dzobo, K. Natural Products for Drug Discovery in
+the 21st Century: Innovations for Novel Drug Discovery. Int. J. Mol. Sci. 2018, 19, 1578. [CrossRef]
+23.
+Sprent, J.I.; Odee, D.W.; Dakora, F.D. African Legumes: A Vital but under-Utilized Resource. J. Exp. Bot. 2010, 61, 1257–1265.
+[CrossRef] [PubMed]
+24.
+Sheik Abdul, N.; Marnewick, J.L. Rooibos, a Supportive Role to Play during the COVID-19 Pandemic? J. Funct. Foods 2021, 86,
+104684. [CrossRef] [PubMed]
+25.
+Muller, C.J.F.; Joubert, E.; Chellan, N.; Miura, Y.; Yagasaki, K. New Insights into the Efﬁcacy of Aspalathin and Other Related
+Phytochemicals in Type 2 Diabetes-A Review. Int. J. Mol. Sci. 2021, 23, 356. [CrossRef] [PubMed]
+26.
+Beltrán-Debón, R.; Rull, A.; Rodríguez-Sanabria, F.; Iswaldi, I.; Herranz-López, M.; Aragonès, G.; Camps, J.; Alonso-Villaverde, C.;
+Menéndez, J.A.; Micol, V.; et al. Continuous Administration of Polyphenols from Aqueous Rooibos (Aspalathus linearis) Extract
+Ameliorates Dietary-Induced Metabolic Disturbances in Hyperlipidemic Mice. Phytomedicine Int. J. Phytother. Phytopharm. 2011,
+18, 414–424. [CrossRef] [PubMed]
+27.
+Sanderson, M.; Mazibuko, S.E.; Joubert, E.; de Beer, D.; Johnson, R.; Pheiffer, C.; Louw, J.; Muller, C.J.F. Effects of Fermented
+Rooibos (Aspalathus linearis) on Adipocyte Differentiation. Phytomedicine Int. J. Phytother. Phytopharm. 2014, 21, 109–117. [CrossRef]
+28.
+Cholet, J.; Decombat, C.; Vareille-Delarbre, M.; Gainche, M.; Berry, A.; Senejoux, F.; Ripoche, I.; Delort, L.; Vermerie, M.;
+Fraisse, D.; et al. In Vitro Anti-Inﬂammatory and Immunomodulatory Activities of an Extract from the Roots of Bupleurum
+Rotundifolium. Medicines 2019, 6, 101. [CrossRef]
+29.
+Habanjar, O.; Maurin, A.C.; Vituret, C.; Vachias, C.; Longechamp, L.; Garnier, C.; Decombat, C.; Bourgne, C.; Diab-Assaf, M.;
+Caldeﬁe-Chezet, F.; et al. A bicellular ﬂuorescent ductal carcinoma in situ (DCIS)-like tumoroid to study the progression of
+carcinoma: Practical approaches and optimization. Biomater. Sci. 2023. [CrossRef]
+30.
+Klingelhutz, A.J.; Gourronc, F.A.; Chaly, A.; Wadkins, D.A.; Burand, A.J.; Markan, K.R.; Idiga, S.O.; Wu, M.; Potthoff, M.J.;
+Ankrum, J.A. Scaffold-Free Generation of Uniform Adipose Spheroids for Metabolism Research and Drug Discovery. Sci. Rep.
+2018, 8, 523. [CrossRef]
+31.
+Miller, N.; De Beer, D.; Joubert, E. Minimising Variation in Aspalathin Content of Aqueous Green Rooibos Extract: Optimising
+Extraction and Identifying Critical Material Attributes. J. Sci. Food Agric. 2017, 97, 4937–4942. [CrossRef]
+32.
+Gabuza, K.B.; Buthelezi, N.; Kappo, A.P.; Mabuda, T.I.; Mosa, R.; Louw, J.; Muller, C.J.F. In Vitro and in Vivo Hepatotoxicity Study
+of AfriplexTM GRT through an Inﬂammatory Response. Toxicol. Rep. 2022, 9, 1920–1928. [CrossRef]
+33.
+Huang, M.; du Plessis, J.; du Preez, J.; Hamman, J.; Viljoen, A. Transport of Aspalathin, a Rooibos Tea Flavonoid, across the Skin
+and Intestinal Epithelium. Phytother. Res. PTR 2008, 22, 699–704. [CrossRef] [PubMed]
+34.
+Breiter, T.; Laue, C.; Kressel, G.; Gröll, S.; Engelhardt, U.H.; Hahn, A. Bioavailability and Antioxidant Potential of Rooibos
+Flavonoids in Humans Following the Consumption of Different Rooibos Formulations. Food Chem. 2011, 128, 338–347. [CrossRef]
+35.
+Courts, F.L.; Williamson, G. The C-Glycosyl Flavonoid, Aspalathin, Is Absorbed, Methylated and Glucuronidated Intact in
+Humans. Mol. Nutr. Food Res. 2009, 53, 1104–1111. [CrossRef] [PubMed]
+36.
+Stalmach, A.; Mullen, W.; Pecorari, M.; Seraﬁni, M.; Crozier, A. Bioavailability of C-Linked Dihydrochalcone and Flavanone
+Glucosides in Humans Following Ingestion of Unfermented and Fermented Rooibos Teas. J. Agric. Food Chem. 2009, 57, 7104–7111.
+[CrossRef]
+37.
+Peng, Y.; Gan, R.; Li, H.; Yang, M.; McClements, D.J.; Gao, R.; Sun, Q. Absorption, Metabolism, and Bioactivity of Vitexin: Recent
+Advances in Understanding the Efﬁcacy of an Important Nutraceutical. Crit. Rev. Food Sci. Nutr. 2021, 61, 1049–1064. [CrossRef]
+Nutrients 2023, 15, 1751
+19 of 19
+38.
+Hernandez-Quiles, M.; Broekema, M.F.; Kalkhoven, E. PPARgamma in Metabolism, Immunity, and Cancer: Uniﬁed and Diverse
+Mechanisms of Action. Front. Endocrinol. 2021, 12, 624112. [CrossRef]
+39.
+Recazens, E.; Mouisel, E.; Langin, D. Hormone-Sensitive Lipase: Sixty Years Later. Prog. Lipid Res. 2021, 82, 101084. [CrossRef]
+[PubMed]
+40.
+Hundahl, C.; Kotzbeck, P.; Burm, H.B.; Christiansen, S.H.; Torz, L.; Helge, A.W.; Madsen, M.P.; Ratner, C.; Serup, A.K.; Thompson,
+J.J.; et al. Hypothalamic Hormone-Sensitive Lipase Regulates Appetite and Energy Homeostasis. Mol. Metab. 2021, 47, 101174.
+[CrossRef]
+41.
+Stern, J.H.; Rutkowski, J.M.; Scherer, P.E. Adiponectin, Leptin, and Fatty Acids in the Maintenance of Metabolic Homeostasis
+through Adipose Tissue Crosstalk. Cell Metab. 2016, 23, 770–784. [CrossRef]
+42.
+López-Jaramillo, P.; Gómez-Arbeláez, D.; López-López, J.; López-López, C.; Martínez-Ortega, J.; Gómez-Rodríguez, A.; Triana-
+Cubillos, S. The Role of Leptin/Adiponectin Ratio in Metabolic Syndrome and Diabetes. Horm. Mol. Biol. Clin. Investig. 2014,
+18, 37–45. [CrossRef]
+43.
+Nehme, R.; Diab-Assaf, M.; Decombat, C.; Delort, L.; Caldeﬁe-Chezet, F. Targeting Adiponectin in Breast Cancer. Biomedicines
+2022, 10, 2958. [CrossRef] [PubMed]
+44.
+Son, M.J.; Minakawa, M.; Miura, Y.; Yagasaki, K. Aspalathin Improves Hyperglycemia and Glucose Intolerance in Obese Diabetic
+Ob/Ob Mice. Eur. J. Nutr. 2013, 52, 1607–1619. [CrossRef] [PubMed]
+45.
+Fang, H.; Judd, R.L. Adiponectin Regulation and Function. Compr. Physiol. 2018, 8, 1031–1063. [CrossRef] [PubMed]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

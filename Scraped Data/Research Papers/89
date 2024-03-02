@@ -1,0 +1,793 @@
+REVIEW
+Wavefront shaping improves the transparency
+of the scattering media: a review
+Chunxu Ding ,a Rongjun Shao,a Qiaozhi He ,b Lei S. Li ,c,* and Jiamiao Yang
+a,b,*
+aShanghai Jiao Tong University, School of Electronic Information and Electrical Engineering, Shanghai, China
+bShanghai Jiao Tong University, Institute of Marine Equipment, Shanghai, China
+cRice University, Department of Electrical and Computer Engineering, Houston, Texas, United States
+ABSTRACT.
+Significance:
+Wavefront shaping (WFS) can compensate for distortions by
+optimizing the wavefront of the input light or reversing the transmission matrix of
+the media. It is a promising field of research. A thorough understanding of principles
+and developments of WFS is important for optical research.
+Aim: To provide insight into WFS for researchers who deal with scattering in
+biomedicine, imaging, and optical communication, our study summarizes the basic
+principles and methods of WFS and reviews recent progress.
+Approach: The basic principles, methods of WFS, and the latest applications of
+WFS in focusing, imaging, and multimode fiber (MMF) endoscopy are described.
+The practical challenges and prospects of future development are also discussed.
+Results: Data-driven learning-based methods are opening up new possibilities for
+WFS. High-resolution imaging through MMFs can support small-diameter endos-
+copy in the future.
+Conclusion: The rapid development of WFS over the past decade has shown that
+the best solution is not to avoid scattering but to find ways to correct it or even use it.
+WFS with faster speed, more optical modes, and more modulation degrees of
+freedom will continue to drive exciting developments in various fields.
+© The Authors. Published by SPIE under a Creative Commons Attribution 4.0 International License.
+Distribution or reproduction of this work in whole or in part requires full attribution of the original
+publication, including its DOI. [DOI: 10.1117/1.JBO.29.S1.S11507]
+Keywords: wavefront shaping; scattering media; time reversal; optical focusing and
+imaging
+Paper 230323SSVR received Oct. 14, 2023; revised Nov. 21, 2023; accepted Nov. 22, 2023; published Dec.
+9, 2023; corrected Dec. 15, 2023.
+1 Introduction
+Light can carry and process information in parallel in multiple degrees of freedom, such as
+space, time, wavelength, amplitude, phase, and polarization. Therefore, it has been an essential
+tool for information observation, transmission, and compilation in the last several decades.
+Optical techniques are indispensable, from tracking the trajectory of stars in astronomy, to
+observing the microscopic structure of cells in biomedicine. But if light propagates in a scatter-
+ing environment, such as disordered materials, biological tissues, and multimode fibers
+(MMFs), the inhomogeneous distributions of refractive indices will add random distortions
+to the carried information.1–3 This phenomenon significantly deteriorates the performance of
+traditional optical techniques. Biomedicine is particularly affected. High-resolution imaging
+and high-precision laser therapy often rely on ballistic photons or quasiballistic photons4–6
+because they can achieve coherent and tight focusing. However, scattering in biological tissues
+*Address all correspondence to Lei S. Li, ll120@rice.edu; Jiamiao Yang, jiamiaoyang@sjtu.edu.cn
+Journal of Biomedical Optics
+S11507-1
+Vol. 29(S1)
+causes the number of ballistic photons to decay exponentially with propagation depth, limiting
+optical focusing and direct imaging to a depth of ∼1 to 2 mm.7 At the depths of more than one
+optical transport mean-free path, ballistic photons are rare, and fully developed speckles become
+dominant. Thus for a long time, overcoming scattering to make the turbid medium “transparent”
+has been urgently needed.
+The phenomenon of scattering events exhibiting determinism with the speckle decorrelation
+window is called the memory effect.8–10 Although the scattering transmission of ballistic photons
+is highly complex, there is no irreversible loss of the carried information. If the scrambled infor-
+mation in the scattered light can be successfully retrieved and rearranged, the “transparency” of
+the medium may be achieved. Based on this, Vellekoop and Mosk developed wavefront shaping
+(WFS).11 The phase control pattern of the spatial light modulator is optimized by an iterative
+algorithm, and the precompensation information is introduced into the input light.12–15 A focused
+spot can be successfully obtained behind the scattering medium. A transmission matrix (TM)
+model describing the linear relationship between the input and output light has also been
+established.16–19 By measuring the TM, the scattering distortion can be precompensated to obtain
+the desired output. In addition, time-reversing the scattered field can also restore the speckle to the
+original incident wavefront.20–23 In the past decade, thanks to the development of highly adjustable
+spatial light modulators, such as liquid crystal,11 microelectromechanical,24 and acousto-optic
+modulators,25 especially the increase in the number of controllable modes and modulation rates,
+a large amount of research on WFS has emerged.
+WFS has provided a powerful tool for biomedicine. By manipulating large-scale optical
+modes with high resolution, WFS allows the construction of diffraction-limited spatiotemporal
+focusing behind opaque biological tissues.26 Furthermore, guidance with ultrasound, which pro-
+duces a focus much deeper than light in the medium, can help to focus light inside turbid tissues
+without invasive manipulation.27 The high-resolution and high-contrast antiscattering focusing
+based on WFS increases the penetration depth of two-photon microscopy,28 optical coherence
+tomography,29 and fluorescence imaging,30 promising noninvasive diagnosis and treatment,31
+and benefiting the development of phototherapy and optogenetics. MMF only has a diameter
+of a few hundred microns but can support tens of thousands of optical modes. But the inherent
+mode crosstalk makes it impossible to directly image but produces speckles similar to multiple
+scattering. WFS can compensate for the crosstalk, thereby subtly converting MMFs into endo-
+scopic fibers for minimally invasive imaging of living cells and tissues. Thus WFS accelerates the
+deployment of MMFs to endoscopic imaging.32
+In this review, we introduce the principles of WFS, including the concept of light scattering
+and three basic methods. Then we review the latest developments in the field of focusing, im-
+aging, and MMF. Finally, we discuss the current challenges and prospects of WFS.
+2 Basic Principles of WFS
+2.1 Multiple Scattering
+Affected by the inhomogeneity of the microscopic refractive indices of the medium, photons on
+different paths experience different phase delays, and the transmission directions are deflected to
+different degrees [Fig. 1(a)]. Therefore, ballistic photons decrease sharply during propagation,
+and the scattered light of different paths interferes randomly, forming a speckle pattern with
+chaotic intensity distribution.1 Generally, the absorption coefficient μa is used to describe a frac-
+tional decrease in the light intensity per unit distance traveled due to absorption, and the scatter-
+ing mean free path of scattering ls is used to represent the average distance between two adjacent
+scattering events.33 ls quantifies the scattering strength of the scattering medium. After the
+distance known as the transport mean free path l ¼ ls∕ð1 − gÞ, the propagation path of the
+scattered light becomes sufficiently random, completely losing correlation with the original
+trajectory.2 g is the anisotropy factor of the scattering medium and represents the average value
+of the cosine of the light deflection angle θ during the scattering events. The anisotropy factor of
+biological tissue is typically ∼0.9,31 which means that the forward scattering is dominant. The
+transport mean free path is typically 0.1 to 1 mm, and the observed speckle patterns are basically
+the result of multiple scattering.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-2
+Vol. 29(S1)
+Theoretically, the transport of light can be described by the wave equation, as can multiple
+scattering. However, the complexity of multiple scattering makes it nearly impossible to obtain a
+complete numerical solution. However, there are correlations between multiple scatterings. The
+same input can result in an unchanged speckle response. When the input changes slightly in tilt,
+the speckle pattern maintains a high degree of similarity, i.e., memory effect.34 It should be noted
+that the memory effect is valid within the speckle correlation time.1 Once there is a disturbance,
+the scattering transformation will quickly decorrelate. The transformation of the light field before
+and after scattering is deterministic. If the optimal inputs can be constructed according to the
+transformation, it will be possible to obtain the desired output through scattering.
+Mesoscopic transport35 and random matrix theory36 provide a solution for the quantitative
+analysis of multiple scattering. In the spatial domain, the input and output fields of the scattering
+medium can be represented by Einn and Eout
+m , respectively (with n ¼ 1; : : : ; N and m ¼ 1; : : : ; M).
+n and m are the optical channels or modes. For a system with a surface area A, theoretically, the
+maximum number of spatial modes allowed for the input and output is Nm ≈ 2πA∕λ2, where λ is
+the wavelength of light.37 In practice, N and M depend on the discrete resolution and the finite
+field. The transformation between input and output can be described by a linear complex TM T,
+i.e., Eout
+m ¼ P tmnEinn or Eout ¼ TEin. The TM indicates that a channel of the scattered output is
+the weighted sum of all input channels.16 When the input is a plane wave, the output depends on
+the entire matrix. Since the results of multiple scattering are fully developed speckles, where
+channels or modes are highly uncorrelated, each element of the TM is close to a random variable,
+generally obeying a circularly symmetric Gaussian distribution. The TM expression can also be
+modified to represent a reflective matrix not limited to the transmissive forward scattering.38
+2.2 WFS via TM Engineering
+The TM describes the linear relationship between the light before and after scattering [Fig. 1(b)].
+If each element of the matrix can be accurately obtained, all the scattering events can be analyzed,
+and any scattering output can be achieved using a specially designed input. Therefore, measuring
+the TM to compensate for the scattering distortion is the focus of WFS. At present, there are two
+major methods for measuring the TM of scattering media, namely the interferometric method39–42
+and the noninterferometric method.43–46 The former is first demonstrated by Popoff et al.16 They
+loaded the orthonormal basis as the input to the spatial light modulator sequentially. The camera
+detected the interference between the speckle output of each basis and the additional reference
+beam. The complex amplitude information of the detection was analyzed by the phase-shifting
+Fig. 1 Principles of WFS: (a) propagation of light in a scattering medium. (b) Visualization of TM.
+The input and output optical fields are expanded as vectors. The field Eout
+k
+at the k’th output mode
+is linked to the input Einn by a column t mn of TM. (c) The optimization method. The output field of the
+scattering medium is used as the feedback to optimize the modulation pattern of the spatial light
+modulator by the algorithm, and the desired output is finally obtained. (d) OPC. Time-reverse
+scattered field and recover the input field.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-3
+Vol. 29(S1)
+method, and finally the TM was obtained by specific calculation.16 In Popoff’s method, since the
+reference beam and the signal beam came from the same path, it was also called self-reference
+measurement. Additionally, introducing an external reference for phase shifting or holographic
+measurement can also be used for the measurement. The noninterferometric method is first
+demonstrated by Drémeau et al., mainly relying on phase retrieval algorithms to infer the ele-
+ments of the TM from a large number of input patterns and corresponding speckle outputs.47 The
+phase retrieval algorithms are mostly driven by Bayes’ theorem,43 and the measurement of TM is
+completed with many iterations. Due to the antinoise performance, the noninterferometric
+method is currently a popular research.
+Once measured, the TM T can be used to analyze and control the light propagating through
+the scattering medium. By analyzing the eigenvectors of T†T, the transmission eigenchannel,
+complete control of the light transmission in the scattering medium can be achieved.48 By
+inverting the TM via Ein ¼ T−1Eout, the input wavefront that should be modulated can be calcu-
+lated according to the target output, or the hidden input can be recovered from the output
+speckle.49,50 In practice, the inverse of the matrix is often replaced by the conjugate transpose
+T† or some other operators.51 Although not exactly equivalent, it is more stable than direct inver-
+sion. Because the goal of antiscattering focusing is to form a single focus at one fixed target
+location, it is not necessary to measure the entire TM. The optimal input wavefront is only related
+to a certain column of the TM. Therefore, the measurement error tolerance is high. However,
+recovering the input image from the speckle, or constructing a specific output requires more
+accurate measurement, because almost all elements of the TM are used in the calculation.
+But due to various issues, such as the limited number of optical modes and unstable interfer-
+ometry, the implementation of these complex tasks is quite difficult and often requires additional
+help from iterative or learning-based methods.52,53
+In order to control more degrees of freedom of the scattered light, a lot of expansions of the
+complex amplitude TM method have been developed. For example, the control of polarization
+allows the construction of vector beams for optical tweezers,54 increasing the information capac-
+ity of MMFs.55 Based on the polarization coupling effect of scattering, and the fact that the
+scattered vector field is the summation of the intensities of two fully developed speckles in two
+orthogonal polarization states,51 researchers extend the linear transformation relationship to a two
+by two dimension,56 which means a pair of inputs in two orthogonal polarization states becomes
+a pair of scattered outputs. In addition to the spatial degrees of freedom, spectral and time
+resolved transmission matrices can also be obtained using monochromatic measurement at multi-
+ple frequencies,57,58 or low-coherence measurement in a broad spectrum of light.59,60 Then
+frequency-dependent focusing and spatiotemporal focusing can be achieved.
+2.3 Iteration-Based WFS
+Iteration-based WFS uses the field distribution at the target position as the feedback to search and
+optimize the modulation pattern of the spatial light modulator with iterative algorithms
+[Fig. 1(c)]. It can gradually optimize the incident light and guide the scattered light to generate
+the target field through the scattering medium.11,61 This method was the first demonstration of
+WFS. In the implementation of iteration-based WFS, taking focusing as an example, detection
+devices, such as cameras or photomultiplier tubes, are used to monitor and detect the light inten-
+sity of the target focusing position. The iterative algorithm takes the detected light intensity as
+feedback and completes the optimization.61–65 Finally, the one with the highest feedback is deter-
+mined as the best modulation pattern, and a highly enhanced antiscattering focusing can be
+obtained.
+The iteration-based method can be used to overcome the diffraction limit of a conventional
+imaging system and generate enhanced focusing,66,67 without complex interference techniques.
+For iteration-based WFS, imaging a large field-of-view often requires focus scanning.1,68 It gen-
+erally relies on the memory effect. However, the effective range of memory effect is small, which
+leads to a limited imaging field of view and depth. Constructing a movable guide star, such as
+ultrasound,69 can achieve deep imaging without the aid of memory effects, but the focal spot is
+several orders of magnitude larger than the optical diffraction limited focus.66,70 The imaging
+resolution and contrast are typically insufficient. Recently, a model-based method has been pro-
+posed to achieve the focusing at any spatial location by calculating the refractive index model of
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-4
+Vol. 29(S1)
+the scattering medium.71 But this method requires strong prior knowledge, and its practicability
+needs further exploration.
+The exploration of advanced noninvasive feedback is another important direction for
+iteration-based methods.27 In practice, cameras cannot be used to provide feedback inside the
+scattering medium. However, there is an urgent need to achieve optical focusing and imaging
+inside biological tissues. Therefore, internal guide stars have been proposed, such as fluorescence
+markers,72 photoswitchable proteins,73 magnetic particles,74 and microbubbles.75 The fluorescent
+marker was employed in the medium as the earliest guide star.72 The fluorescence signal outside
+the medium is detected as feedback to optimize the focused spot. In addition, people have pro-
+posed several noninvasive guide stars, such as coherence gating76 and particle displacement.77
+Recently, acousto-optic feedback methods have been extensively studied,66,69,78–80 as ultrasound
+can propagate deep in biological tissue. In addition, the acoustic signal generated via the photo-
+acoustic effect inside the scattering medium as the feedback was also explored.29,81 Moreover,
+people can also focus ultrasound in the medium to induce acousto-optic modulation to shift the
+light frequency and detect the shift as the feedback to achieve noninvasive focusing.69
+2.4 Optical Phase Conjugation
+The analytical solution of the wave equation has time-reversal symmetry.37 It means that if the
+phase conjugate field of the scattered field propagates back to the scattering medium, the initial
+incident field can be restored [Fig. 1(d)]. When the incident light comes from a specific point
+source, the time-reversed light is refocused at that location. This method based on time-reversal is
+called optical phase conjugation (OPC). OPC was first demonstrated in analog devices, such as
+acoustic time-reversal mirrors82,83 and optical nonlinear crystal.84,85 Digital methods of interfer-
+ence recording and spatial light modulation can be alternatives to analog methods to achieve
+optical focusing through turbid media.20
+Compared with the TM and iteration-based WFS, the wavefront information to be modu-
+lated can be determined by OPC with only one measurement, significantly reducing the time
+consumption. It can achieve a fast response of millisecond or submillisecond level.86 But
+OPC also introduces a system alignment challenge. This challenge stems from two major imple-
+mentation steps of OPC: recording of scattered optical fields, and playback of phase-conjugate
+optical fields. In a typical implementation, the camera records the interference patterns of the
+scattered light and the reference light, and the complex amplitude of the scattered light is calcu-
+lated. Then the spatial light modulator displays the corresponding pattern to generate the phase-
+conjugate field and trace it back to the scattering medium. In this process, the pixels of the record-
+ing camera and the playback modulator need to be matched one by one, so that the time-reversal
+can be accurately achieved,23 adding complexity to the implementation of OPC. One possible
+solution is to design a unique device with both detection and modulation functions.1 In addition,
+to achieve the focus inside the scattering medium, the guide stars, such as ultrasound, are also
+required.73,76,87
+3 Application of WFS
+3.1 Focusing and Imaging
+Clinical imaging technologies, such as ultrasound imaging29 and magnetic resonance imaging,1
+can penetrate biological tissues to obtain macroscopic images. But their spatial resolution is
+orders of magnitude lower than optical microscopy. In general, the scattering properties in
+biological tissues are wavelength-dependent.88 As the wavelength increases, the transport mean
+free path becomes longer. Near-infrared light can reach a penetration depth of several millimeters
+to centimeters.89 But conventional optical techniques using visible or near-infrared light, such as
+multiphoton microscopy,90 still rely on ballistic photons, limiting the imaging depth to 1 to 2 mm.
+Using scattered light rather than the almost nonexistent ballistic light is a better choice to solve
+the problem in biological tissues. The rapidly developed WFS makes it possible to achieve focus-
+ing and imaging through thick scattering media and even in living tissues.
+Fast and highly enhanced focusing inside scattering media has been the focus of research. In
+general, the energy gain of light focusing is affected by the number of effective modulation
+modes. However, increasing the number of modes reduces the speed of focusing. This trade-off
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-5
+Vol. 29(S1)
+is particularly prominent in TM and iteration-based methods.1 Digital micromirror devices
+(DMDs) with high refresh rates are used to replace the traditional liquid crystal modulator,
+greatly improving the focusing speed.18 However, DMDs can only control the binary amplitude
+of light, then the focusing quality is reduced. A variety of binary coding methods have been
+proposed, such as Lee holographic method91 and superpixel method,92,93 to improve the modu-
+lation dimension of DMD to the complex amplitude. But these methods sacrifice the number of
+modes. In addition, polarization has also been taken into account, and WFS is carried out in two
+orthogonal polarization directions.23,94,95 On the one hand, the number of modes was cleverly
+increased by two times. On the other hand, it enables WFS to control polarization, another impor-
+tant degree of freedom of light. Recently, a WFS technique that simultaneously achieves high-
+speed, high-energy gain, and high-modulation mode number has been proposed96 [Fig. 2(a)]. By
+combining photorefractive crystal-based analog OPC and stimulated emission amplification, the
+focusing energy gain is increased by three orders of magnitude, and the speed is improved by
+more than 50 times. Light focusing in a living mouse ear has been achieved. It promises optical
+focusing for biomedical applications.
+Focusing light in the scattering medium, such as biological tissue, requires guide stars
+in vivo.27 Since the scattering effect of ultrasound is about 1000 times weaker than that of
+light, a new concept of optical focusing based on ultrasonic encoding was first proposed and
+applied to WFS.69 It is noninvasive and moveable. Because this method uses the focus of ultra-
+sound in the tissue to guide the focus of coherent light, the resolution of optical focus is limited
+by the ultrasonic focus.42 In order to improve the resolution, some methods, including variance
+coding time inversion97 and nonlinear ultrasonic guided iterative optimization66 have been
+proposed. These methods break the ultrasonic resolution limit and realize the optical diffrac-
+tion-limited focusing. Since only a small amount of frequency-shifted first-order diffracted
+photons are useful for focusing, it reduces the focusing efficiency and peak-to-background
+ratio. Recently, it has been found that the brighter zeroth-order diffracted light, which was
+previously considered useless or even harmful, has a field perturbation effect80 [Fig. 2(b)].
+Fig. 2 Fast and high-enhanced optical focusing. (a) Fast OPC: (a1) forward amplification and
+recording process based on stimulated emission light amplification; (a2) playback process based
+on time-reversal; and (a3) optical focusing results in a living-mouse ear. (b) Ultrasound-guided in
+vivo optical focusing: (b1) ultrasonic guide star switch off; (b2) ultrasonic guide star switch on; (b3)
+playback the differential field to achieve in vivo focusing; (b4) energy profile of focusing; and (b5)
+experimental focusing results. Panels (a1)–(a3) are from Ref. 96. Panels (b1)–(b5) are from
+Ref. 80.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-6
+Vol. 29(S1)
+When switching the ultrasonic guide star on and off alternately, the differential field can be
+detected, thereby guiding the light to focus to the location of the field disturbance, improving
+the efficiency and flexibility of light focusing.
+The most straightforward method of translating focusing to imaging is raster scanning,
+which can be combined with fluorescent labeling to realize the imaging of microstructure
+by scanning the focus.98 It can also replace the time-gated method by modulating the light to
+compensate for the scattering of the wall and form a focus to scan hidden objects, to achieve
+non-line-of-sight imaging99 [Fig. 3(a)]. Because the focus of WFS can be close to the diffraction
+limit, the imaging resolution can be significantly improved. In addition, the memory effect
+makes it possible to achieve imaging without scanning focus100 [Fig. 3(b)]. This method can
+reconstruct the hidden objects in the scattering environment using the speckle correlation
+calculation method without complex optimization of the wavefront. However, it should be noted
+that such methods only can image small objects in the narrow-angle range where the memory
+effect takes effect.
+In recent years, the development of deep learning has made a breakthrough in WFS.103,104
+An image-guided WFS method was developed101 [Fig. 3(c)], which iteratively optimizes the
+phase of the spatial light modulator with the goal of maximizing the image quality metric
+(improved combination of entropy and variance). Diffractive-limited, high-contrast images of
+hidden objects from the very low-contrast speckle pattern can be recovered, even with the object
+outside the field of view of the memory effect. In addition, introducing neural networks to cal-
+culate complex optical aberrations from scattering media is also a promising direction102
+[Fig. 3(d)]. Through backpropagation without guide stars, the antiscattering imaging of a wide
+field of view of dynamic scenes at diffraction-limited resolution can also be achieved.
+Fig. 3 Optical imaging of WFS. (a) Non-line-of-sight imaging based on WFS: (a1) principle and
+(a2) imaging results and the scanning focus. (b) Fluorescence imaging based on memory effect:
+(b1) fluorescence images of different pollen grains without scattering and (b2) imaging results with
+scattering. (c) Image-guided WFS: (c1) principle and (c2) imaging results. (d) Learning-based
+WFS: (d1) principle and (d2) imaging results of dynamic objects under dynamic scattering aber-
+rations. Panels (a1) and (a2) are from Ref. 99. Panels (b1) and (b2) are from Ref. 100. Panels (c1)
+and (c2) are from Ref. 101. Panels (d1) and (d2) are from Ref. 102.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-7
+Vol. 29(S1)
+3.2 WFS in MMF
+Correcting aberrations inside MMF has also been studied via WFS. In general, an MMF has a
+diameter of only a few hundred microns but can support tens of thousands of optical modes. This
+advantage makes it an ideal device for endoscopic imaging. It also holds great potential to replace
+the coarse glass fiber bundles105 currently used for medical purposes. However, due to the mode
+coupling, meaning different modes occur in different phase delays, MMF shows the character-
+istics of the scattering medium. The light through MMF cannot be directly used to form an image
+but produces a disordered speckle. The conversion of MMF to endoscope imaging fiber using
+WFS has been widely studied.
+For the linear mode coupling process in MMF, the optical input and output can still be
+connected by the TM. Therefore, WFS is effective in MMF. In fact, methods, such as OPC,28
+TM,106 and iterative optimization,107 have been applied in MMF-based endoscopy imaging,
+and in vivo imaging of animal neurons108 and blood cells109 has also been realized. However,
+these methods require MMF not to be deformed or bent, which limits applications in medical
+diagnosis. A spatial-frequency tracking adaptive beacon light-field-encoded endoscope has
+Fig. 4 Imaging through an MMF. (a) Adaptive MMF endoscope: (a1) principle and (a2) endoscopic
+imaging results. (b) Three-dimensional far-field imaging through an MMF: (b1) principle; (b2) im-
+aging target; and (b3) imaging results. Panels (a1) and (a2) are from Ref. 110. Panels (b1)–(b3) are
+from Ref. 111.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-8
+Vol. 29(S1)
+been proposed recently110 [Fig. 4(a)]. The special beacon intensity that reflects the correlation
+between the current bending states and the precalibrated TM is detected by the single-pixel
+detector. Adaptive tracking is completed by searching the TM that maximizes the intensity
+from the premeasured dataset. This method can improve the resolution of endoscopic imaging
+to subdiffraction-limited value with high stability and robustness against the movement and
+deformation of the fiber. In addition to endoscopic microstructure imaging, MMF has also
+been used in recent years for far-field imaging of three-dimensional (3D) real scenes111,112
+[Fig. 4(b)]. Using WFS to correct the aberration of MMF, combined with the time-of-flight
+method, high-speed 3D imaging can be achieved, benefiting motion detection and tracking for
+industrial applications.
+However, there are nonlinear effects32 between the speckle output and the input of MMF,
+which greatly reduce the effectiveness of the TM based on the linear premise. Deep neural
+networks have been shown to be useful for learning nonlinear processes in MMF.104 By train-
+ing a conventional convolutional neural network,113 the input image can be recovered from the
+speckle without the unstable TM measurement [Fig. 5(a)]. However, the generalization of
+the neural network is limited, and it is usually only effective for the images highly similar
+to the training data set. Thus the performance is limited for the general purpose of image
+transmission. A method to reconstruct the complex inversion matrix of MMF by statistical
+means successfully realizes the transmission and imaging of full-color natural images with
+high frame rate and high resolution, without data-based learning114 [Fig. 5(b)]. Because this
+approach is based on a physically informed model of the imaging system that retrieves an
+approximation to TM, its generalization is better than that of the deep neural network
+approaches.
+The mode coupling of MMF occurs in various degrees of freedom.51 In principle, to
+achieve full control of MMF, the modulated light needs to be completely reversed in time.
+This means that the modulated light is a volume field that should have arbitrarily specified
+amplitude, phase, and polarization at every point in space and time. However, this kind of full
+degree of freedom controlled field has been difficult to produce in research.115,116 Recently, a
+time-reversal device that can independently and simultaneously measure and control all
+classical degrees of freedom has been invented117 (Fig. 6). This method can generate a series
+of arbitrary two-dimensional vector fields at a high rate and is used for spatiotemporal control
+of light in MMF, including imaging, nonlinear optical phenomena, and micromanipulation.
+The modulation of all degrees of freedom could be an important direction of WFS
+development.
+Fig. 5 Smart imaging of MMF. (a) Learning-based imaging: (a1) flowchart and (a2) imaging
+results. (b) Statistics-based imaging: (b1) principle and (b2) input image and reconstruction results.
+Panels (a1) and (a2) are from Ref. 113. Panels (b1) and (b2) are from Ref. 114.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-9
+Vol. 29(S1)
+4 Discussion and Outlook
+So far, WFS has shown unique advantages and potential in solving scattering problems. In this
+paper, the basic concepts and general methods of WFS, as well as the contributions and develop-
+ments in focusing, imaging, and optical fiber endoscopy, are reviewed. It is worth mentioning
+that although dealing with scattering in biomedicine is the current focus, the applications of WFS
+are not limited to this.118–121 As mentioned in the introduction, in recent years, holographic
+display122–124 and optical communication125–127 have also been supported by the rapid develop-
+ment of WFS. However, at present, they are still in the experimental verification stage. For exam-
+ple, the holographic display using scattering can only generate a simple pattern composed of
+focused points, which is far from the commercial 3D digital holographic display.128
+A key problem preventing WFS from practical applications is the trade-off between the
+speed and the number of modulation modes. The TM of the scattering medium changes with
+time, environmental disturbance, or bending deformation.129,130 In general, the decorrelation time
+of biological tissue is approximately milliseconds and decreases with the increase of tissue
+depth.131 In addition, for MMF, bending is basically unavoidable. Despite a lot of exploration,
+such as the development of modulators from liquid crystal modulators to DMDs with refresh
+rates of up to kilohertz,24,132 there is still a long way to go to achieve real-time correction of
+dynamic scattering. WFS that takes effect within the speckle correlation time will be the key
+to determining whether it can be applied.
+In addition, the number of input and output optical modes of a scattering medium is huge,
+but the modes WFS can control are often limited or even insufficient. On the one hand, the
+number of input modes often depends on the number of effective modulation units, which is
+much smaller than the theoretical maximum number,37 which limits the performance of
+Fig. 6 Multidegrees of freedom light control in MMF: (a) principle; (b) vector spectral light gener-
+ation; and (c) optical field with space and polarization state changing with time. Panels (a)–(c) are
+from Ref. 117.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-10
+Vol. 29(S1)
+WFS. For example, the enhancement of antiscattering focusing is approximately linear with the
+number of modulation modes.66 On the other hand, the number of pixels of the camera is also
+limited, and the speckle imaging in the camera is a lowpass filtering process.32 Thus the meas-
+urement of all output modes is almost impossible. Currently, people often choose to trade the
+number of optical modes for the speed,1 because the increase of modes in most methods puts a
+significant burden on speed. WFS outside the speckle correction time window is no longer useful
+to correct the scattering.
+Apart from the speed and mode numbers, the degree of freedom of control is also a key to
+WFS. Multiple scattering not only confuses light into speckles of randomly distributed intensity
+but also disturbs the information of almost all degrees of freedom of light.51 The ultimate ideal of
+WFS needs to control all the information of the light, including but not limited to spatiotemporal
+information in the scattering process, which will truly enable the “transparency” of the scattering
+medium. Currently, it is still a challenge to control the complex information of all the degrees
+of freedom independently for existing spatial light modulators. With the development of
+vector vortex beams,54 spectroscopy,133 and nonlinear optics,134 this challenge can potentially
+be overcome.
+Data-driven learning-based methods bring new vitality to the development of WFS. Instead
+of relying on physical models, such as TM, a deep neural network model is used to learn com-
+pensating scattering aberrations from a large training data set and can achieve better performance.
+For example, it can learn how to correct dynamic scattering aberrations102 and the deformation of
+MMF.114 It can also enlarge the field of view limited by the memory effect, lower the requirement
+of scattering calibration, and improve the stability of the system.135 The relevant research is in the
+initial stage, and future engineering efforts are still needed.1 For example, training a neural
+network requires a large and diverse set of targeted data, resulting in expensive training and
+insufficient generalization. Learning-based imaging mostly stays in the two-dimensional plane,
+and how to translate it to depth-resolved volume imaging is still challenging. Meanwhile, since
+the training process requires direct access to the input and output planes, imaging objects inside
+the scattering medium presents another difficulty. Nevertheless, learning-based WFS is becom-
+ing the focus of research and is promising to bring about a new technological revolution in
+this field.
+5 Conclusion
+Scattering is a fundamental problem in the field of optics. Overcoming the limitation of scattering
+and achieving optical “transparency” in turbid media is always an urgent goal. The rapid devel-
+opment of WFS over the past decade has shown that the best solution is not to avoid scattering
+but to find ways to correct it or even use it. So far, there are many well-established methods to
+compensate scattering to construct a bright focus136,137 or to transmit images.138,139
+In this paper, the basic principles, methods of WFS, and the latest applications of WFS in
+focusing, imaging, and MMF endoscopy are described. In addition, the present challenges and
+outlooks of WFS are discussed. Currently, there are three major aspects for the development of
+WFS: faster to adapt to dynamic scattering,140 more modes to meet the needs of actual scenar-
+ios,96 and more degrees of freedom to be controlled simultaneously.95 Fortunately, the introduc-
+tion of data-driven learning-based methods may open up a new possibility for WFS.141 Although
+WFS is still not mature enough for practical applications, the development of this field is very
+encouraging. Various exciting results show the great potential that WFS will drive major develop-
+ments in biomedicine, imaging, optical communication, and other fields.
+Disclosures
+Lei S. Li has a financial interest in BLOCH Quantum Imaging Solutions, although they did not
+support this work. The other authors declare no competing financial interests.
+Code and Data Availability
+The code and data that support the findings of this study are available from the corresponding
+authors upon reasonable request.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-11
+Vol. 29(S1)
+Acknowledgments
+The authors would like to acknowledge the funding from the National Natural Science Foundation
+of China (Grant Nos. 62375171 and 62205189), the Fundamental Research Funds for the Central
+Universities, Shanghai Pujiang Program (Grant No. 22PJ1407500), Shanghai Jiao Tong
+University 2030 Initiative (Grant No. WH510363001-10), the Oceanic Interdisciplinary Program
+of Shanghai Jiao Tong University (Grant No. SL2022ZD205), the Science Foundation of
+Donghai Laboratory (Grant No. DH-2022KF01001), and the internal fund from Rice University
+(Grant No. F10000205).
+References
+1. S. Gigan et al., “Roadmap on wavefront shaping and deep imaging in complex media,” J. Phys.: Photonics
+4(4), 042501 (2022).
+2. J. W. Goodman, Speckle Phenomena in Optics: Theory and Applications, Roberts and Company Publishers
+(2007).
+3. A. Ishimaru, Wave Propagation and Scattering in Random Media, Vol. 2, pp. 148–166, Academic Press,
+New York (1978).
+4. L. V. Wang and H. Wu, Biomedical Optics: Principles and Imaging, John Wiley & Sons (2012).
+5. A. Escobet-Montalbán et al., “Three-photon light-sheet fluorescence microscopy,” Opt. Lett. 43, 5484–5487
+(2018).
+6. K. Maslov et al., “Optical-resolution photoacoustic microscopy for in vivo imaging of single capillaries,”
+Opt. Lett. 33, 929–93 (2008).
+7. V. Ntziachristos, “Going deeper than microscopy: the optical imaging frontier in biology,” Nat. Methods 7,
+603–614 (2010).
+8. I. Freund, M. Rosenbluh, and S. Feng, “Memory effects in propagation of optical waves through disordered
+media,” Phys. Rev. Lett. 61(20), 2328 (1988).
+9. S. Feng et al., “Correlations and fluctuations of coherent wave transmission through disordered media,”
+Phys. Rev. Lett. 61(7), 834 (1988).
+10. G. Osnabrugge et al., “Generalized optical memory effect,” Optica 4(8), 886–892 (2017).
+11. I. M. Vellekoop and A. P. Mosk, “Focusing coherent light through opaque strongly scattering media,” Opt.
+Lett. 32(16), 2309–2311 (2007).
+12. D. B. Conkey et al., “Genetic algorithm optimization for focusing through turbid media in noisy environ-
+ments,” Opt. Express 20(5), 4840–4849 (2012).
+13. H. Li et al., “Adaptive optical focusing through perturbed scattering media with a dynamic mutation
+algorithm,” Photonics Res. 9(2), 202–212 (2021).
+14. L. Liu et al., “High-contrast light focusing through scattering media with multipixel encoding,” Appl. Phys.
+Express 14(9), 092009, (2021).
+15. H. Jin et al., “Limiting the incident NA for efficient wavefront shaping through thin anisotropic scattering
+media,” Optica 8(4), 428–437 (2021).
+16. S. M. Popoff et al., “Measuring the transmission matrix in optics: an approach to the study and control of
+light propagation in disordered media,” Phys. Rev. Lett. 104(10) 100601 (2010).
+17. L. Devaud et al., “Temporal light control in complex media through the singular-value decomposition of the
+time-gated transmission matrix,” Phys. Rev. A 105(5), L051501 (2022).
+18. T. Zhao et al., “High-speed photoacoustic-guided wavefront shaping for focusing light in scattering media,”
+Opt. Lett. 46(5), 1165–1168 (2021).
+19. E. Seo et al., “Near-field transmission matrix microscopy for mapping high-order eigenmodes of subwa-
+velength nanostructures,” Nat. Commun. 11(1), 2575 (2020).
+20. Z. Yaqoob et al., “Optical phase conjugation for turbidity suppression in biological samples,” Nat.
+Photonics 2(2), 110–115 (2008).
+21. T. R. Hillman et al., “Digital optical phase conjugation for delivering two-dimensional images through
+turbid media,” Sci. Rep. 3(1), 1909 (2013).
+22. Z. Li et al., “Edge enhancement through scattering media enabled by optical wavefront shaping,” Photonics
+Res. 8(6), 954–962 (2020).
+23. L. Liu et al., “Anti-scattering light focusing with full-polarization digital optical phase conjugation based on
+digital micromirror devices,” Opt. Express 30(18), 31614–31622 (2022).
+24. J. Yang et al., “Anti-scattering light focusing by fast wavefront shaping based on multi-pixel encoded
+digital-micromirror device,” Light Sci. Appl. 10(1), 149 (2021).
+25. M. Xu and L. V. Wang, “Photoacoustic imaging in biomedicine,” Rev. Sci. Instrum. 77(4), (2006).
+26. I. M. Vellekoop, A. Lagendijk, and A. P. Mosk, “Exploiting disorder for perfect focusing,” Nat. Photonics
+4(5), 320–322 (2010).
+27. R. Horstmeyer, H. Ruan, and C. Yang, “Guidestar-assisted wavefront-shaping methods for focusing light
+into biological tissue,” Nat. Photonics 9(9), 563–571 (2015).
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-12
+Vol. 29(S1)
+28. E. E. Morales-Delgado, D. Psaltis, and C. Moser, “Two-photon imaging through a multimode fiber,” Opt.
+Express 23(25), 32158–32170 (2015).
+29. L. V. Wang and S. Hu, “Photoacoustic tomography: in vivo imaging from organelles to organs,” Science
+335(6075), 1458–1462 (2012).
+30. J. Bertolotti et al., “Noninvasive imaging through opaque scattering layers,” Nature 491(7423), 232–234
+(2012).
+31. H. Yu et al., “Recent advances in wavefront shaping techniques for biomedical applications,” Curr. Appl.
+Phys. 15(5), 632–641 (2015).
+32. Z. Yu et al., “Wavefront shaping: a versatile tool to conquer multiple scattering in multidisciplinary fields,”
+The Innovation 3(5), 100292 (2022).
+33. H. Cao, A. P. Mosk, and S. Rotter, “Shaping the propagation of light in complex media,” Nat. Phys. 18(9),
+994–1007 (2022).
+34. S. Li et al., “Memory effect assisted imaging through multimode optical fibres,” Nat. Commun. 12(1), 3751
+(2021).
+35. P. Sheng and B. van Tiggelen, Introduction to Wave Scattering, Localization and Mesoscopic Phenomena,
+Taylor & Fransis (2007).
+36. C. W. J. Beenakker, “Random-matrix theory of quantum transport,” Rev. Mod. Phys. 69, 731–808 (1997).
+37. A. P. Mosk et al., “Controlling waves in space and time for imaging and focusing in complex media,” Nat.
+Photonics 6(5), 283–292 (2012).
+38. H. Yu, J. H. Park, and Y. Park, “Measuring large optical reflection matrices of turbid media,” Opt. Commun.
+352, 33–38 (2015).
+39. X. Tao et al., “High-speed scanning interferometric focusing by fast measurement of binary transmission
+matrix for channel demixing,” Opt. Express 23(11), 14168–14187 (2015).
+40. S. R. Huisman et al., “Programmable multiport optical circuits in opaque scattering materials,” Opt. Express
+23(3), 3102–3116 (2015)
+41. S. Leedumrongwatthanakun et al., “Programmable linear quantum networks with a multimode fibre,” Nat.
+Photonics 14(3), 139–142 (2020).
+42. T. Chaigne et al., “Controlling light in scattering media non-invasively using the photoacoustic transmission
+matrix,” Nat. Photonics 8(1), 58–64 (2014).
+43. T. Zhao et al., “Bayes’ theorem-based binary algorithm for fast reference-less calibration of a multimode
+fiber,” Opt. Express 26, 20368–20378 (2018).
+44. G. Huang et al., “Generalizing the Gerchberg-Saxton algorithm for retrieving complex optical transmission
+matrices,” Photonics Res. 9(1), 34–42 (2021).
+45. M. N’Gom et al., “Mode control in a multimode fiber through acquiring its transmission matrix from a
+reference-less optical system,” Opt. Lett. 43(3), 419–422 (2018).
+46. G. Huang et al., “Retrieving the optical transmission matrix of a multimode fiber using the extended Kalman
+filter,” Opt. Express 28(7), 9487–9500 (2020).
+47. A. Drémeau et al., “Reference-less measurement of the transmission matrix of a highly scattering material
+using a DMD and phase retrieval techniques,” Opt. Express 23(9), 11898–11911 (2015).
+48. M. Kim et al., “Maximal energy transport through disordered media with the implementation of transmis-
+sion eigenchannels,” Nat. Photonics 6(9), 581–585 (2012).
+49. H. Lee et al., “High-throughput volumetric adaptive optical imaging using compressed time-reversal
+matrix,” Light Sci. Appl. 11(1), 16 (2022).
+50. K. Lee and Y. Park, “Exploiting the speckle-correlation scattering matrix for a compact reference-free holo-
+graphic image sensor,” Nat. Commun. 7(1), 13359 (2016).
+51. S. Rotter and S. Gigan, “Light fields in complex media: mesoscopic scattering meets wave control,” Rev.
+Mod. Phys. 89(1), 015005 (2017).
+52. H. Yu, K. Lee, and Y. Park, “Ultrahigh enhancement of light focusing through disordered media controlled
+by mega-pixel modes,” Opt. Express 25(7), 8036–8047 (2017).
+53. Y. He et al., “Genetic-algorithm-assisted coherent enhancement absorption in scattering media by exploiting
+transmission and reflection matrices,” Opt. Express 29(13), 20353–20369 (2021).
+54. Q. Zhao et al., “Creation of cylindrical vector beams through highly anisotropic scattering media with a
+single scalar transmission matrix calibration,” Photonics Res. 10(7), 1617–1623 (2022).
+55. W. Xiong et al., “Complete polarization control in multimode fibers with polarization and mode coupling,”
+Light Sci. Appl. 7(1), 54 (2018).
+56. S. Tripathi et al., “Vector transmission matrix for the polarization behavior of light propagation in highly
+scattering media,” Opt. Express 20(14), 16067–16076 (2012).
+57. D. Andreoli et al., “Deterministic control of broadband light through a multiply scattering medium via the
+multispectral transmission matrix,” Sci. Rep. 5(1), 10347 (2015).
+58. M. Mounaix et al., “Spatiotemporal coherent control of light through a multiple scattering medium with the
+multispectral transmission matrix,” Phys. Rev. Let. 116(25), 253901 (2016).
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-13
+Vol. 29(S1)
+59. M. Mounaix et al., “Deterministic light focusing in space and time through multiple scattering media with a
+time-resolved transmission matrix approach,” Phys. Rev. A 94(4), 041802 (2016).
+60. S. Kang et al., “Imaging deep within a scattering medium using collective accumulation of single-scattered
+waves,” Nat. Photonics 9(4), 253–258 (2015).
+61. X. Wei et al., “Harnessing a multi-dimensional fibre laser using genetic wavefront shaping,” Light Sci. Appl.
+9, 149 (2020).
+62. Y. Zhao et al., “Gradient-assisted focusing light through scattering media,” Opt. Lett. 46(7), 1518–1521
+(2021).
+63. C. M. Woo et al., “Optimal efficiency of focusing diffused light through scattering media with iterative
+wavefront shaping,” APL Photonics 7(4), 046109 (2022).
+64. Q. Zhao et al., “Parameter-free optimization algorithm for iterative wavefront shaping,” Opt. Lett. 46(12),
+2880–2883 (2021).
+65. L. Liu et al., “Anti-scattering light focusing by full-polarization wavefront shaping based on digital micro-
+mirror devices,” Appl. Phys. Express 15(9), 092001 (2022).
+66. P. Lai et al., “Photoacoustically guided wavefront shaping for enhanced optical focusing in scattering
+media,” Nat. Photonics 9(2), 126–132 (2015).
+67. O. Katz et al., “Noninvasive nonlinear focusing and imaging through strongly scattering turbid layers,”
+Optica 1(3), 170–174 (2014).
+68. A. M. Caravaca-Aguirre et al., “High contrast three-dimensional photoacoustic imaging through scattering
+media by localized optical fluence enhancement,” Opt. Express 21(22), 26671–26676 (2013).
+69. X. Xu, H. Liu, and L. V. Wang, “Time-reversed ultrasonically encoded optical focusing into scattering
+media,” Nat. Photonics 5(3), 154–157 (2011).
+70. D. B. Conkey, “Super-resolution photoacoustic imaging through a scattering wall,” Nat. Commun. 6(1),
+7902 (2015).
+71. A. Thendiyammal et al., “Model-based wavefront shaping microscopy,” Opt. Lett. 45(18), 5101–5104
+(2020).
+72. I. M. Vellekoop et al., “Demixing light paths inside disordered metamaterials,” Opt. Express 16, 67–80
+(2008).
+73. J. Yang et al., “Focusing light inside live tissue using reversibly switchable bacterial phytochrome as a
+genetically encoded photochromic guide star,” Sci. Adv. 5, eaay1211 (2019).
+74. Z. Yu et al., “Time-reversed magnetically controlled perturbation (TRMCP) optical focusing inside scatter-
+ing media,” Sci. Rep. 8, 2927 (2018).
+75. H. Ruan, M. Jang, and C. Yang, “Optical focusing inside scattering media with time-reversed ultrasound
+microbubble encoded light,” Nat. Commun. 6, 8968 (2015).
+76. M. Rueckel, J. A. Mack-Bucher, and W. Denk, “Adaptive wavefront correction in two-photon microscopy
+using coherence-gated wavefront sensing,” Proc. Natl. Acad. Sci. U. S. A. 103, 17137–17142 (2006).
+77. E. H. Zhou et al., “Focusing on moving targets through scattering samples,” Optica 1, 227–232 (2014).
+78. R. Gao et al., “Breaking acoustic limit of optical focusing using photoacoustic-guided wavefront shaping,”
+Laser Photonics Rev. 15(8), 2000594 (2021).
+79. J. Yang et al., “Angular-spectrum modeling of focusing light inside scattering media by optical phase con-
+jugation,” Optica 6(3), 250–256 (2019).
+80. Z. Cheng and L. V. Wang, “Focusing light into scattering media with ultrasound-induced field perturbation,”
+Light Sci. Appl. 10, 159 (2021).
+81. F. Kong et al., “Photoacoustic-guided convergence of light through optically diffusive media,” Opt. Lett.
+36(11), 2053–2055 (2011).
+82. M. Fink, “Time-reversed acoustics,” Sci. Am. 281(5), 91–97 (1999).
+83. A. Derode, P. Roux, and M. Fink, “Robust acoustic time reversal with highorder multiple scattering,” Phys.
+Rev. Lett. 75, 4206–4209 (1995).
+84. D. A. B. Miller, “Time reversal of optical pulses by four-wave mixing,” Opt. Lett. 5, 300–302 (1980).
+85. A. Yariv, “Four wave nonlinear optical mixing as real time holography,” Opt. Commun. 25, 23–25 (1978).
+86. Y. Liu et al., “Focusing light inside dynamic scattering media with millisecond digital optical phase con-
+jugation,” Optica 4(2), 280–288 (2017).
+87. J. Yang et al., “Fighting against fast speckle decorrelation for light focusing inside live tissue by photon
+frequency shifting,” ACS Photonics 7(3), 837–844 (2020).
+88. A. Bashkatov et al., “Optical properties of human skin, subcutaneous and mucous tissues in the wavelength
+range from 400 to 2000 nm,” J. Phys. D Appl. Phys. 38, 2543 (2005).
+89. P. Theer, M. T. Hasan, and W. Denk, “Two-photon imaging to a depth of 1000 mm in living brains by use of
+a Ti∶Al2O3 regenerative amplifier,” Opt. Lett. 28, 1022–1024 (2003).
+90. P. T. C. So et al., “Two-photon excitation fluorescence microscopy,” Annu. Rev. Biomed. Eng. 2(1),
+399–429 (2000).
+91. W. H. Lee, “Binary computer-generated holograms,” Appl. Opt. 18, 3661–3669 (1979).
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-14
+Vol. 29(S1)
+92. S. A. Goorden, J. Bertolotti, and A. P. Mosk, “Superpixel-based spatial amplitude and phase modulation
+using a digital micromirror device,” Opt. Express 22(15), 17999–18009 (2014).
+93. R. Shao et al., “Volumetric random-access multi-focus scanning based on fast light modulation,” Opt.
+Lasers Eng. 158, 107128 (2022).
+94. Y. Shen et al., “Focusing light through scattering media by full-polarization digital optical phase
+conjugation,” Opt. Lett. 41(6), 1130–1133 (2016).
+95. C. Ding et al., “Spatial full degree-of-freedom scattered optical field modulation,” Laser Photonics Rev. 17,
+2300104 (2023).
+96. Z. Cheng et al., “High-gain and high-speed wavefront shaping through scattering media,” Nat. Photonics
+17, 299–305 (2023).
+97. B. Judkewitz et al., “Speckle-scale focusing in the diffusive regime with time reversal of variance-encoded
+light (TROVE),” Nat. Photonics 7(4), 300–305 (2013).
+98. I. M. Vellekoop and C. M. Aegerter, “Scattered light fluorescence microscopy: imaging through turbid
+layers,” Opt. Lett. 35(8), 1245–1247 (2010).
+99. R. Cao et al., “High-resolution non-line-of-sight imaging employing active focusing,” Nat. Photonics 16,
+462–468 (2022).
+100. A. Boniface, J. Dong, and S. Gigan, “Non-invasive focusing and imaging in scattering media with a
+fluorescence-based transmission matrix,” Nat. Commun. 11, 6154 (2020).
+101. T. Yeminy and O. Katz, “Guidestar-free image-guided wavefront shaping,” Sci. Adv. 7(21), eabf5364
+(2021).
+102. B. Y. Feng et al., “NeuWS: neural wavefront shaping for guidestar-free imaging through static and dynamic
+scattering media,” Sci. Adv. 9(26), eadg4671 (2023).
+103. Y. Luo et al., “Towards smart optical focusing: deep learning-empowered dynamic wavefront shaping
+through nonstationary scattering media,” Photonics Res. 9(8), B262–B278 (2021).
+104. U. Te˘gin et al., “Controlling spatiotemporal nonlinearities in multimode fibers with deep neural networks,”
+APL Photonics 5(3), 030804 (2020).
+105. A. Porat et al., “Widefield lensless imaging through a fiber bundle via speckle correlations,” Opt. Express
+24, 16835–16855 (2016).
+106. M. Plöschner, T. Tyc, and T. Čižmár, “Seeing through chaos in multimode fibres,” Nat. Photonics 9(8),
+529–535 (2015).
+107. T. Čižmár and K. Dholakia, “Shaping the light transmission through a multimode optical fibre: complex
+transformation analysis and applications in biophotonics,” Opt. Express 19(20), 18871–18884 (2011).
+108. T. Zhong et al., “Optically selective neuron stimulation with a wavefront shaping-empowered multimode
+fiber,” Adv. Photonics Res. 3(3), 2100231 (2022).
+109. S. Turtaev et al., “High-fidelity multimode fibre-based endoscopy for deep brain in vivo imaging,” Light Sci.
+Appl. 7, 92 (2018).
+110. Z. Wen et al., “Single multimode fibre for in vivo light-field-encoded endoscopic imaging,” Nat. Photonics
+17, 679–687 (2023).
+111. D. Stellinga et al., “Time-of-flight 3D imaging through multimode optical fibers,” Science 374(6573),
+1395–1399 (2021).
+112. I. T. Leite et al., “Observing distant objects with a multimode fiber-based holographic endoscope,” APL
+Photonics 6(3), 036112 (2021).
+113. B. Rahmani et al., “Multimode optical fiber transmission with a deep learning network,” Light Sci. Appl. 7,
+69 (2018).
+114. P. Caramazza et al., “Transmission of natural scene images through a multimode fibre,” Nat. Commun. 10,
+2029 (2019).
+115. B. Sun et al., “Four-dimensional light shaping: manipulating ultrafast spatiotemporal foci in space and
+time,” Light Sci. Appl. 7, 17117 (2018).
+116. O. Hernandez et al., “Three-dimensional spatiotemporal focusing of holographic patterns,” Nat. Commun.
+7, 11928 (2016).
+117. M. Mounaix et al., “Time reversed optical waves by arbitrary vector spatiotemporal field generation,” Nat.
+Commun. 11, 5813 (2020).
+118. M. W. Matthès et al., “Optical complex media as universal reconfigurable linear operators,” Optica 6(4),
+465–472 (2019).
+119. Q. Zhao et al., “Speckle-based optical cryptosystem and its application for human face recognition via deep
+learning,” Adv. Sci. 9(25), 2202407 (2022).
+120. I. T. Leite et al., “Three-dimensional holographic optical manipulation through a high-numerical-aperture
+soft-glass multimode fibre,” Nat. Photonics 12, 33–39 (2017).
+121. A. M. Caravaca-Aguirre and R. Piestun, “Single multimode fiber endoscope,” Opt. Express 25(3),
+1656–1665 (2017).
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-15
+Vol. 29(S1)
+122. P. Yu et al., “Ultrahigh-density 3D holographic projection by scattering-assisted dynamic holography,”
+Optica 10, 481–490 (2023).
+123. P. Yu et al., “Dynamic polarization holographic projection enabled by a scattering material-based reconfig-
+urable hologram,” ACS Photonics 9(11), 3712–3719 (2022).
+124. H. Yu et al., “Ultrahigh-definition dynamic 3D holographic display by active control of volume speckle
+fields,” Nat. Photonics 11(3), 186–192 (2017).
+125. Q. Zhang et al., “Learning the matrix of few-mode fibers for high-fidelity spatial mode transmission,” APL
+Photonics 7(6), 066104 (2022).
+126. Y. Zhou et al., “High-fidelity spatial mode transmission through a 1-km-long multimode fiber via vectorial
+time reversal,” Nat. Commun. 12, 1866 (2021).
+127. L. Gong et al., “Optical orbital-angular-momentum-multiplexed data transmission under high scattering.,”
+Light Sci. Appl. 8(1), 27 (2019).
+128. J. H. Park and B. Lee, “Holographic techniques for augmented reality and virtual reality near-eye displays,”
+Light: Adv. Manuf. 3(1), 137–150 (2022).
+129. B. Rudolf et al., “Thermal stability of wavefront shaping using a DMD as a spatial light modulator,” Opt.
+Express 29(25), 41808–41818 (2021).
+130. D. E. B. Flaes et al., “Robustness of light-transport processes to bending deformations in graded-index
+multimode waveguides,” Phys. Rev. Lett 120(23), 233901 (2018).
+131. M. M. Qureshi et al., “In vivo study of optical speckle decorrelation time across depths in the mouse brain,”
+Biomed. Opt. Express 8(11), 4855–4864 (2017).
+132. G. Zou et al., “Random-access multi-focus manipulation through superpixel-encoding wavefront engineer-
+ing,” Appl. Phys. Express 15(11), 112004 (2022).
+133. B. W. Pogue and M. S. Patterson, “Review of tissue simulating phantoms for optical spectroscopy, imaging
+and dosimetry,” J. Biomed. Opt. 11, 041102 (2006).
+134. L. G. Wright, D. N. Christodoulides, and F. W. Wise, “Controllable spatiotemporal nonlinear effects in
+multimode fibres,” Nat. Photonics 9, 306–310 (2015).
+135. S. Cheng et al., “Artificial intelligence-assisted light control and computational imaging through scattering
+media,” J. Innov. Opt. Health 12(04), 1930006 (2019).
+136. C. M. Hsieh, M. O. Malik, and Q. Liu, “High-speed feedback based wavefront shaping for spatiotemporal
+enhancement of incoherent light through dynamic scattering media,” Opt. Lett. 48, 2313–2316 (2023).
+137. L. Valzania and S. Gigan, “Online learning of the transmission matrix of dynamic scattering media,” Optica
+10, 708–716 (2023).
+138. X. Hu et al., “Adaptive inverse mapping: a model-free semi-supervised learning approach towards robust
+imaging through dynamic scattering media,” Opt. Express 31, 14343–14357 (2023).
+139. X. Zhang et al., “Different channels to transmit information in scattering media,” PhotoniX 4, 10 (2023).
+140. E. Guo et al., “Dynamic imaging through random perturbed fibers via physics-informed learning,” Opt.
+Laser Technol. 158, 108923 (2023).
+141. X. Zhang et al., “Physical origin and boundary of scalable imaging through scattering media: a deep
+learning-based exploration,” Photonics Res. 11, 1038–1046 (2023).
+Biographies of the authors are not available.
+Ding et al.: Wavefront shaping improves the transparency of the scattering media: a review
+Journal of Biomedical Optics
+S11507-16
+Vol. 29(S1)
+

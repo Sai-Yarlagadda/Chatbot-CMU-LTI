@@ -1,0 +1,470 @@
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 17
+Cytomegalovirus at the crossroads of immunosenescence and 
+oncogenesis
+Fidaa Bouezzedine1,2†, Ranim El Baba1,2†          , Stéphanie Morot-Bizot3, Mona Diab-Assaf2, Georges Herbein1,4*
+1Department of Pathogens & Inflammation-EPILAB EA4266, University of Franche-Comté, F-25030 Besançon, France
+2Molecular Cancer and Pharmaceutical Biology Laboratory, Lebanese University, Beirut 1500, Lebanon
+3Apex Biosolutions, 25000 Besançon, France
+4Department of Virology, CHRU Besançon, 25000 Besançon, France
+†These authors contributed equally to this work.
+*Correspondence: Georges Herbein, Department of Pathogens & Inflammation-EPILAB EA4266, University of Franche-Comté, 
+16 route de Gray, F-25030 Besançon, France. georges.herbein@univ-fcomte.fr
+Academic Editor: Roberto Paganelli, G. d’Annunzio University, Italy
+Received: November 15, 2022  Accepted: December 27, 2022  Published: February 24, 2023
+Cite this article: Bouezzedine F, El Baba R, Morot-Bizot S, Diab-Assaf M, Herbein G. Cytomegalovirus at the crossroads of 
+immunosenescence and oncogenesis. Explor Immunol. 2023;3:17–27. https://doi.org/10.37349/ei.2023.00086
+Abstract
+Human cytomegalovirus (HCMV), whose genome is around 235 kb, is a ubiquitous human herpesvirus 
+that infects between 40% and 95% of the population. Though HCMV infection is commonly asymptomatic 
+and leads to subtle clinical symptoms, it can promote robust immune responses and establish lifelong 
+latency. In addition, in immunocompromised hosts, including individuals with acquired immunodeficiency 
+syndrome (AIDS), transplant recipients, and developing fetuses it can lead to severe diseases. 
+Immunosenescence, well-defined as the alterations in the immune system, is linked mainly to aging and has 
+been recently gathering considerable attention. Senescence was characterized by an elevated inflammation 
+and hence considered a powerful contributor to “inflammaging” that is measured mainly by tumor necrosis 
+factor-α (TNF-α), interleukin-6 (IL-6), and C-reactive protein (CRP) levels as well as latent viral infections, 
+for instance, cytomegalovirus (CMV). Inflammaging resulted in a senescence-associated secretory phenotype 
+(SASP). HCMV is markedly associated with accelerated aging of the immune system as well as several 
+age-associated diseases that accumulate and subsequently deteriorate the immune responses, thus have 
+been linked to mortality, declined vaccine efficacy, serious diseases, and tumors in the elderly. HCMV triggers 
+or exacerbates immunosenescence; on the other hand, the weakened immune responses and inflammaging 
+favor viral reactivation and highlight the role of HCMV in aging as well as viral-associated tumors. HCMV 
+reactivation resulting in sequential lytic and latent viral cycles could contribute to HCMV genomic variability. 
+Besides the oncomodulatory role and transforming capacities of HCMV, the immune-privileged tumor 
+microenvironment has been considered the main element in tumor progression and aggressiveness. 
+Therefore, the interplay between HCMV, immunosenescence, and cancer will aid in discovering new 
+therapeutic approaches that target HCMV and act as immune response boosters mainly to fight cancers of 
+poor prognosis, particularly in the elderly population.
+Open Access   Review
+© The Author(s) 2023. This is an Open Access article licensed under a Creative Commons Attribution 4.0 International 
+License (https://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, sharing, adaptation, distribution 
+and reproduction in any medium or format, for any purpose, even commercially, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made.
+Exploration of Immunology
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 18
+Keywords
+Cytomegalovirus, immunosenescence, oncomodulation, oncogenesis, inflammaging, tumor microenvironment
+Introduction
+Human cytomegalovirus (HCMV) belongs to the β-herpesvirus family and is a prevalent human pathogen 
+infecting 40% to 95% of the world’s population [1]. Following primary infection, cytomegalovirus 
+(CMV) possesses the capacity to induce both lytic and latent infections to establish lifelong persistence 
+in human hosts [2]. The clinical course of HCMV infection is widely variable, it depends on the age and is 
+highly influenced by the immune fitness of the host. While the immunocompetent healthy individuals 
+are asymptomatic, the congenitally infected infants could be symptomatic at birth and suffer long-term 
+neurologic sequelae [3]. However, over time pronounced changes occur in the human immune system, 
+known as immunosenescence. These age-related changes decrease immune protection and have been linked 
+to mortality, decreased vaccine responsiveness, cardiovascular diseases, and cancer in the elderly [4, 5]. 
+Importantly, while some studies implicate HCMV in driving immunosenescence and disease risk, others 
+suggest it enhances immune function [6, 7]. Recently, HCMV has been reported to induce oncomodulation 
+and even oncogenesis in some cases [2]. In this review, the role of HCMV in driving immunosenescence and 
+its impact on oncogenesis were highlighted.
+Concepts and hallmarks of immunosenescence
+Immunosenescence is a normal physiologic process in which immune system function slowly changes 
+with age. In fact, immunosenescence is regulated by many factors including aging, particularly the 
+degeneration of the thymus resulting in a decrease of the T cell population and decrease of CD8+ naive T 
+cells, one of the main manifestations of immunosenescence [8]; as well the inflammation which produces 
+senescence-associated secretory phenotype (SASP) wherein aging cells secrete soluble factors such as 
+growth factors, cytokines, chemokines, and extracellular matrix inducing several senescence-related 
+diseases, including various malignancies [9] in addition to the overlooking of intrinsic and extrinsic factors of 
+the immune system [10]. Moreover, the characterization of the hallmarks of immunosenescence is essential, 
+especially for understanding its impact on the disease risk and tumor progression. With aging, the cytotoxic 
+effect of immune cells as well as the expression of interferon γ (IFN-γ) and cytotoxic molecules such as 
+granzyme B and perforin decrease [11, 12]. In addition, memory T cells which differentiate from naive T cells 
+upon primary antigenic stimulation play a crucial role in the adaptive immune system and enable a robust 
+immune response over the human lifespan. Nevertheless, pronounced age-associated changes occur in the 
+composition of T cell populations (naive versus memory cells). Despite the increased number of memory cells 
+during early life, it shows senescent changes after 65 years [13]. One of the most prominent markers of T 
+cell senescence is the loss of the costimulatory molecule CD28 and the accumulation of highly differentiated 
+effector memory T cell [CD27−CD28−CD57+ killer cell lectin-like receptor G1 (KLRG1)+], which are hallmarks 
+of immunosenescence [14]. Another hallmark of senescent T cells is telomerase shortening [15]. It should 
+be noted that, in the process of immunosenescence, there is remodeling of mature natural killer (NK) cells 
+and reduced expression of the activated receptors which may affect the immune monitoring effect of NK 
+cells in the elderly [16]. Age-related modifications also occur in naive/memory B cell subsets. Indeed, in 
+the elderly, there is a reduction of naive B cells, accompanied by the expansion of memory B cells that 
+show a senescence-associated phenotype [17]. While the functions of dendritic cells (DCs) such as antigen 
+presentation, endocytosis, and IFN production are reduced in elderly individuals [18], the phagocytic 
+ability of neutrophils decreases [19]. Aged macrophages reduce their functional activity leading to the 
+accumulation of unphagocytosed debris, increased senescent-associated markers, increased inflammatory 
+cytokine production, reduced autophagy, and a decrease in Toll-like receptor (TLR) expression [20].
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 19
+HCMV infection driving immunosenescence
+Following primary infection, HCMV has the capacity to induce both lytic and latent infection to establish 
+lifelong persistence in human hosts. Despite the extensive innate and adaptive response elicited by HCMV 
+infection during both lytic and latent infection, the virus develops diverse immune evasion strategies to alter 
+the host immune recognition [21]. The clinical presentation of HCMV infection is highly influenced by the 
+immune response of the host during distinct life stages. In healthy immunocompetent hosts, viral reactivation 
+which occurs throughout life induces the establishment of immune memory leading to the control of viral 
+replication. However, in immunocompromised hosts, the loss of CMV-specific CD4+CD8+ T cells favors 
+uncontrolled viral replication and dissemination leading to serious clinical diseases and even death [22]. 
+In addition, long-term HCMV persistence will modulate the immune system composition and function 
+even in healthy HCMV-infected individuals (Figure 1). Many epidemiologic studies on aging indicate that 
+HCMV seropositivity is associated with immunosenescence and increased mortality in the elderly [23, 24]. 
+Moreover, HCMV seropositive older individuals have a reduced response to vaccination [25]. Reactivation 
+of HCMV triggered in severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) infected patients 
+exacerbates the risk of coronavirus disease [26]. Although, the link between HCMV and immunosenescence 
+request more investigation, HCMV persistence is thought to be a driver of immunosenescence in humans [7]. 
+It was postulated that inflation of HCMV-specific T cells during viral persistence compromised host immunity. 
+In HCMV-infected elderly individuals, the CD8+ T cells response to HCMV antigens constitutes 50% of the 
+entire memory CD8+ T cells compartment in peripheral blood, while around 30% of total circulating CD4+ T 
+cells can be HCMV responsive [27]. The majority of this terminally differentiated inflationary HCMV-specific 
+CD8+ T cell subset has a typical age-related senescent T cell phenotype [CD57+CD28− C-C motif chemokine 
+receptor 7 (CCR7)−], lacking CD28 expression which is a major characteristic of T cell aging [28]. This finding 
+is supported by the fact that this large population of HCMV-specific CD8+CD28– T cells is absent in seronegative 
+elderly individuals [29]. Moreover, in elderly hosts, impairment of T cell immunity is also linked to memory 
+inflation in HCMV infection. Despite the diverse CD8+ T cells repertoire to recognize different viral epitopes 
+soon after HCMV primary infection, this diversity starts to decrease with age often manifested as large clonal 
+expansions of cells of limited antigen specificity together with a marked shrinkage of the T cell antigen 
+receptor repertoire [7]. In elderly hosts, more than 25% of total CD8+ T cells show a specific response to 
+an individual immunodominant HCMV epitope such as p65 tumor suppressor protein (p65) and immediate 
+early 1 (IE1) [30]. This limited diversity of HCMV-specific T cell clones during memory inflation may affect the 
+immune protection to novel and vaccine antigens through decreased T cell receptors (TCRs) diversity in the 
+elderly and thereby exposing them to the risk of life-threatening diseases [31]. Additionally, in older adults, 
+most inflationary CD4+ T cells induce T-helper 1 (Th1) responses by producing IFN-γ which explains the poor 
+humoral responses seen in the elderly [32]. Although HCMV has a more immunologic impact on memory T 
+cells than naive T cells, it also alters naive T cells. Thus, mainly and exclusively in older subjects with elevated 
+anti-CMV antibody titers, there is a significant decrease in CD4+ naive T cells parallel to an absolute increase 
+in effector/effector memory CD4+CD8+ T cells [33].
+Moreover, cell exhaustion, another form of T cell dysfunction, can arise during chronic infection which is often 
+associated with inefficient control of persisting infections due to the loss of proliferative potential, decreased 
+cytotoxicity, impaired cytokines secretions, and high expression of several inhibitory receptors [programmed 
+death 1 (PD1), KLRG1, and CD57]. HCMV-specific CD8+ T cells are characterized by a low proliferative capacity 
+and expression of senescent markers such as KLRG1 and CD57. These cells are not totally exhausted since 
+they are still highly cytotoxic and produce Th1 cytokines in response to viral replication [31]. It’s worth 
+mentioning that HCMV infection leads to the accumulation of functional exhausted cells that could accelerate 
+immunosenescence in immunocompromised and immunosuppressed individuals [34].
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 20
+Figure 1. HCMV-induced immunosenescence. Acute and chronic HCMV infections modulate the host immune system resulting in 
+naive T cell pool depletion and memory inflation, respectively which further drive/accelerate immunosenescence. The weakened 
+immune responses and inflammaging favor HCMV reactivation which is the key to the accumulated HCMV-specific immune 
+responses. IL-2: interleukin-2; TNF-α: tumor necrosis factor-α; CRP: C-reactive protein; MHC: major histocompatibility complex
+Immunosenescence—a key player in cancer
+Due to the increased rates of mortality and morbidity of various tumors with age, cancers are generally 
+defined as aging diseases. The immunosenescence features and mechanisms were described as an 
+important player in the tumoral process resulting in a high-risk of tumors in elderly groups [35]. 
+Immunosenescence in the tumorogenesis process reflects the senescence of both innate (NK cells and 
+macrophages) and acquired immune cells (B cells and T cells) affected on one side by the age-related change 
+and the other side by the factors of the tumor microenvironment (TME). In acute myeloid leukaemia (AML) in 
+elderly patients, NK cells harbor diminished levels of several activating receptors that contribute to impairing 
+NK function and thereby favoring disease progression and decreased survival [36]. Age-modified changes 
+in tissue-specific macrophages and neutrophils cause chronic low inflammation that is associated with a 
+macrophage pro-tumorigenic phenotype [19]. Cytotoxic T lymphocytes (CTLs) are critical in eliminating 
+tumor cells as well as virally infected cells. Thus, alterations of CTL function observed during aging could favor 
+both viral infection and cancer. In patients with HCMV-positive glioblastoma multiforme (GBM), the signs of 
+immunosenescence in the CD4+ T cells compartment are associated with poor prognosis which may reflect 
+the activity of HCMV [37]. Aging can also alter the TME. Thus, the increased presence of tumor-associated 
+macrophages (TAMs) and tumor-derived γδ regulatory T cells (Tregs) in TME has been reported to decrease 
+both innate and adaptive immunity; TAMs produce cytokines that promote T cell inactivation and inhibition 
+of DCs activity thus increasing cancer cell proliferation [38, 39]. In hypoxic TME, tumor-derived cyclic 
+adenosine monophosphate (cAMP) activates DNA damage and induces T cell senescence [40]. Similarly, 
+glucose deprivation triggers DNA damage and activates the p38 pathway leading to cell cycle arrest and 
+inhibition of T cell proliferation [41]. Moreover, the TME oncogenic stress activates signaling pathways 
+including nuclear factor-kB (NF-kB), p38, CCAAT/enhancer binding protein β (C/EBPβ), and mechanistic 
+target of rapamycin complex 1 (mTORC1) which play a role in regulating T cell SASP [42]. Furthermore, in 
+aging, secretion of SASP molecules, such as IL-6, IL-8, and IL-10 in TME favors tumor progression through 
+an inflammaging mechanism [43, 44]. Finally, HCMV favors immunosenescence with decreased immune 
+defenses and inflammaging that could trigger viral reactivation from latency and further supports its role in 
+aging as well as viral-driven malignancies.
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 21
+Oncomodulatory and oncogenic properties of HCMV
+Besides HCMV-induced immunosenescence, presented evidence reveals HCMV presence in numerous solid 
+tumors [45, 46]. HCMV proteins have been found in 90–100% of breast, ovarian, colon, and prostate 
+tumors, in sarcomas as well as in neural-derived tumors such as neuroblastoma, glioblastoma, and 
+medulloblastoma [47]. Taking into account the broader concept of cancer hallmarks, the TME and cancer 
+progression are considered essential oncomodulatory mechanisms relating tumor initiation to viral infections 
+caused by oncoviruses [48]. HCMV mediates both oncomodulation and oncogenesis (Figure 2) [49]. During 
+HCMV infection, the virus expresses viral gene products possessing potential transforming capacities and 
+activating specific molecular pro-oncogenic pathways. HCMV key products involves IE1, IE2, unique short 
+28 protein (pUS28), viral IL-10 (vIL-10), unique long 76 protein (pUL76), pUL97, pUL82, pUS2, pUL16, 
+65-kDa tegument protein (pp65), pUL36, pUL37x1, and long non-coding RNA4.9 (lncRNA4.9) [49]. Early 
+HCMV proteins regulate main cellular factors, for instance, retinoblastoma protein family, p53, cyclins, 
+Wnt, phosphoinositide 3-kinase (PI3K)/protein kinase B (Akt), and NF-kB, hence affecting the cell cycle, 
+differentiation, cellular proliferation, apoptosis, and metabolism [50–52]. HCMV-unique short 28 (US28) 
+stimulates signaling pathways that are well-known to interfere with proliferation as well as survival, 
+migration, angiogenesis, and inflammation [53–56]. pp65 tends to incapacitate the intrinsic cellular immune 
+responses [57]. By expressing CMV IL-10 (cmvIL-10), HCMV displays a potent immunosuppressive effect 
+thereby promoting the maturation of protumoral M2 macrophages TAM [58]. Thus, HCMV can entirely 
+promote the steps of classical hallmarks of cancer through the expression of many gene products [49]. 
+Furthermore, a direct oncogenic outcome was revealed by a few HCMV strains, namely, high-risk strains [59], 
+that could promote cellular stress, polyploid giant cancer cells (PGCCs) generation, stemness, and epithelial-
+to-mesenchymal transition (EMT) plasticity explaining the appearance of aggressive tumor phenotypes, 
+particularly adenocarcinomas, having poor prognosis, metastasis, therapy resistance, and relapse [46, 60]. 
+HCMV-DB and BL, isolated high-risk clinical strains, displayed oncogenic potential in human mammary 
+epithelial cells (HMECs) and replicated in epithelial cells with the interchange of lytic and latent viral cycles 
+promoting the appearance of CMV-transformed HMECs (CTH cells) [60–62]. Two additional high-risk HCMV 
+strains, namely biopsy 544 (B544) and B693, recently isolated from enhancer of zeste homolog 2 (EZH2)High 
+MycHigh triple-negative breast cancer (TNBC) biopsies revealed oncogenic and stemness potential [63, 64]. 
+EZH2 was identified as a downstream target for HCMV-induced Myc upregulation upon HMECs infection with 
+high-risk HCMV strains [64]. In GBM tissues harboring HCMV, EZH2 overexpression was detected [65]. EZH2 
+is overexpressed in PGCCs highlighting the presence of a potential link between HCMV infection, Myc/EZH2 
+upregulation, and PGCC generation [64]. Hence, this evidence suggests that some HCMV strains may not only 
+possess an oncomodulatory role but in a certain cellular context, it unveils direct tumor-promoting strategies. 
+Besides the transforming capacities of HCMV, the TME has increasingly been recognized as a key element in 
+tumor progression and metastasis [2]. Restricted immune control against HCMV will favor the productive 
+viral infection in the immune-privileged TME thereby supporting a stem-cell-like state of cancer cells and 
+promoting cancer aggressiveness [66, 67]. HCMV reactivation in M1 macrophages promotes an M2/TAM 
+shift, thus driving the neoplastic progression [21, 68]. Tumor cells evade immune responses promoting EMT, 
+metastasis, and relapse. Therefore, in tumor cells, the association of cellular machinery and viral immune 
+evasion mechanisms may give rise to an environment that enhances limited HCMV replication and triggers 
+cancer cells to evade immune surveillance revealing the bidirectional association between cancer cells and 
+HCMV [21, 69]. Persistent HCMV infection markedly alters the host immune system and has been suggested 
+to trigger or exacerbate age-associated diseases as well as immunosenescence (Figure 3) [70, 71].
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 22
+Figure 2. HCMV from oncomodulation to oncogenesis. Activation of specific molecular pathways that are implicated in 
+oncomodulation and cellular transformation. Oncomodulation, which favors the growth and spread of tumor cells, as well as 
+oncogenesis are mainly targeted by HCMV gene products (in red). PDGFRα: platelet-derived growth factor receptor α; 
+EGFR: epidermal growth factor receptor; VEGF: vascular endothelial growth factor; STAT3: signal transducer and activator 
+of transcription 3; JAK: Janus kinase; TGF-β: transforming growth factor β; UL37: unique long 37; V-CXC1: viral chemokine 
+(C-X-C motif) ligand 1; gpUL40: glycoprotein unique long 40; miRNA: microRNA; STING: stimulator of interferon genes; 
+TSP-1: thrombospondin 1; CASP8: caspase 8; Bcl-2: B-cell lymphoma 2; Bax: Bcl-2-associated X protein; Bak: Bcl-2 homologous 
+antagonist/killer; Rb: retinoblastoma protein
+Figure 3. The interplay between HCMV-induced immunosenescence and oncogenesis. A scheme showing the potential 
+association between HCMV, immunosenescence, and tumorigenesis. Persistent HCMV infection fulfills all the cancer hallmarks 
+and is associated with enhanced aging of the immune system. Immunosenescence and inflammaging play a substantial role in 
+the pathogenesis of several serious diseases in the elderly. Both players, HCMV and immunosenescence, have been associated 
+with high mortality rates, chronic diseases, and tumors
+Conclusions
+HCMV infection and immunosenescence in clinical conditions such as organ transplantation, cancer, 
+immunodeficiency, as well as autoimmune and inflammatory illnesses, support the concept that HCMV 
+can affect their progression by inducing immunosenescence. In return, immunosenescence favors HCMV 
+reactivation from latency in an inflammatory microenvironment (inflammaging). Viral reactivation will trigger 
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 23
+HCMV-driven oncomodulation by low- and high-risk HCMV strains, and could also promote the initiation 
+of tumorigenesis, particularly by high-risk HCMV strains, thus directly favoring the appearance of tumors 
+especially adenocarcinoma and glioblastoma in an immunocompromised TME with immunosenescence and 
+inflammaging traits. A better understanding of the complex interaction between HCMV, immunosenescence, 
+and tumors will open new perspectives to explore novel therapeutic approaches that will reverse 
+immunosenescence and boost the immune system to fight viral infections, especially HCMV, and tumor 
+development in the elderly.
+Abbreviations
+Akt: protein kinase B
+CMV: cytomegalovirus
+DCs: dendritic cells
+EMT: epithelial-to-mesenchymal transition
+EZH2: enhancer of zeste homolog 2
+HCMV: human cytomegalovirus
+HMECs: human mammary epithelial cells
+IE1: immediate early 1
+IFN-γ: interferon γ
+IL-6: interleukin-6
+KLRG1: killer cell lectin-like receptor G1
+NF-kB: nuclear factor-kB
+NK: natural killer
+p65: p65 tumor suppressor protein
+PGCCs: polyploid giant cancer cells
+pp65: 65-kDa tegument protein
+pUL76: unique long 76 protein
+pUS28: unique short 28 protein
+SASP: senescence-associated secretory phenotype
+TAMs: tumor-associated macrophages
+Th1: T-helper 1
+TME: tumor microenvironment
+UL37: unique long 37
+US28: unique short 28
+Declarations
+Author contributions
+FB, REB, SMB, MDA, and GH: Writing—original draft, Writing—review & editing. GH: Conceptualization, Supervision.
+Conflicts of interest
+The authors declare that they have no conflicts of interest.
+Ethical approval
+Not applicable.
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 24
+Consent to participate
+Not applicable.
+Consent to publication
+Not applicable.
+Availability of data and materials
+Not applicable.
+Funding
+GH received grants from the University of Franche-Comté [3300]. The funders had no role in study design, 
+data collection and analysis, decision to publish, or preparation of the manuscript.
+Copyright
+© The Author(s) 2023.
+References
+1. 
+Zuhair M, Smit GSA, Wallis G, Jabbar F, Smith C, Devleesschauwer B, et al. Estimation of the worldwide 
+seroprevalence of cytomegalovirus: a systematic review and meta-analysis. Rev Med Virol. 
+2019;29:e2034.
+2. 
+Herbein G. Tumors and cytomegalovirus: an intimate interplay. Viruses. 2022;14:812.
+3. 
+Ehlinger EP, Webster EM, Kang HH, Cangialose A, Simmons AC, Barbas KH, et al. Maternal 
+cytomegalovirus-specific immune responses and symptomatic postnatal cytomegalovirus transmission 
+in very low-birth-weight preterm infants. J Infect Dis. 2011;204:1672–82. Erratum in: J Infect Dis. 
+2012;205:1767.
+4. 
+Olsson J, Wikby A, Johansson B, Löfgren S, Nilsson BO, Ferguson FG. Age-related change in peripheral 
+blood T-lymphocyte subpopulations and cytomegalovirus infection in the very old: the Swedish 
+longitudinal OCTO immune study. Mech Ageing Dev. 2000;121:187–201.
+5. 
+Wang H, Peng G, Bai J, He B, Huang K, Hu X, et al. Cytomegalovirus infection and relative risk of 
+cardiovascular disease (ischemic heart disease, stroke, and cardiovascular death): a meta-analysis of 
+prospective studies up to 2016. J Am Heart Assoc. 2017;6:e005025.
+6. 
+Picarda G, Benedict CA. Cytomegalovirus: shape-shifting the immune system. J Immunol. 
+2018;200:3881–9.
+7. 
+Koch S, Larbi A, Öǆ zcelik D, Solana R, Gouttefangeas C, Attig S, et al. Cytomegalovirus infection: a driving 
+force in human T cell immunosenescence. Ann N Y Acad Sci. 2007;1114:23–35.
+8. 
+Thomas R, Wang W, Su DM. Contributions of age-related thymic involution to immunosenescence and 
+inflammaging. Immun Ageing. 2020;17:2.
+9. 
+Accardi G, Caruso C. Immune-inflammatory responses in the elderly: an update. Immun Ageing. 
+2018;15:11.
+10. Masters AR, Haynes L, Su DM, Palmer DB. Immune senescence: significance of the stromal 
+microenvironment. Clin Exp Immunol. 2017;187:6–15.
+11. Crespo J, Sun H, Welling TH, Tian Z, Zou W. T cell anergy, exhaustion, senescence, and stemness in the 
+tumor microenvironment. Curr Opin Immunol. 2013;25:214–21.
+12. Yang OO, Lin H, Dagarag M, Ng HL, Effros RB, Uittenbogaart CH. Decreased perforin and granzyme B 
+expression in senescent HIV-1-specific cytotoxic T lymphocytes. Virology. 2005;332:16–9.
+13. Farber DL, Yudanin NA, Restifo NP. Human memory T cells: generation, compartmentalization and 
+homeostasis. Nat Rev Immunol. 2014;14:24–35.
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 25
+14. Huff WX, Kwon JH, Henriquez M, Fetcko K, Dey M. The evolving role of CD8+CD28– immunosenescent 
+T cells in cancer immunology. Int J Mol Sci. 2019;20:2810.
+15. Bernadotte A, Mikhelson VM, Spivak IM. Markers of cellular senescence. Telomere shortening as a 
+marker of cellular senescence. Aging (Albany NY). 2016;8:3–11.
+16. Manser AR, Uhrberg M. Age-related changes in natural killer cell repertoires: impact on NK cell 
+function and immune surveillance. Cancer Immunol Immunother. 2016;65:417–26.
+17. Bulati M, Caruso C, Colonna-Romano G. From lymphopoiesis to plasma cells differentiation, the 
+age-related modifications of B cell compartment are influenced by “inflamm-ageing”. Ageing Res Rev. 
+2017;36:125–36.
+18. Agrawal A, Agrawal S, Gupta S. Role of dendritic cells in inflammation and loss of tolerance in the elderly. 
+Front Immunol. 2017;8:896.
+19. Jackaman C, Tomay F, Duong L, Abdol Razak NB, Pixley FJ, Metharom P, et al. Aging and cancer: the 
+role of macrophages and neutrophils. Ageing Res Rev. 2017;36:105–16.
+20. De Maeyer RPH, Chambers ES. The impact of ageing on monocytes and macrophages. Immunol Lett. 
+2021;230:1–10.
+21. El Baba R, Herbein G. Immune landscape of CMV infection in cancer patients: from “canonical” diseases 
+toward virus-elicited oncomodulation. Front Immunol. 2021;12:730765.
+22. Sansoni P, Vescovini R, Fagnoni FF, Akbar A, Arens R, Chiu YL, et al. New advances in CMV and 
+immunosenescence. Exp Gerontol. 2014;55:54–62.
+23. Roberts ET, Haan MN, Dowd JB, Aiello AE. Cytomegalovirus antibody levels, inflammation, and 
+mortality among elderly Latinos over 9 years of follow-up. Am J Epidemiol. 2010;172:363–71.
+24. Pawelec G, Gouttefangeas C. T-cell dysregulation caused by chronic antigenic stress: the role of CMV 
+in immunosenescence? Aging Clin Exp Res. 2006;18:171–3.
+25. Trzonkowski P, Myśliwska J, Szmit E, Wieckiewicz J, Lukaszuk K, Brydak LB, et al. Association between 
+cytomegalovirus infection, enhanced proinflammatory response and low level of anti-hemagglutinins 
+during the anti-influenza vaccination—an impact of immunosenescence. Vaccine. 2003;21:3826–36.
+26. Söderberg-Nauclér C. Does reactivation of cytomegalovirus contribute to severe COVID-19 disease? 
+Immun Ageing. 2021;18:12.
+27. Li H, Margolick JB, Bream JH, Nilles TL, Langan S, Bui HT, et al. Heterogeneity of CD4+ and CD8+ T-cell 
+responses to cytomegalovirus in HIV-infected and HIV-uninfected men who have sex with men. J Infect 
+Dis. 2014;210:400–4.
+28. Kuijpers TW, Vossen MT, Gent MR, Davin JC, Roos MT, Wertheim-van Dillen PM, et al. Frequencies of 
+circulating cytolytic, CD45RA+CD27–, CD8+ T lymphocytes depend on infection with CMV. J Immunol. 
+2003;170:4342–8.
+29. Derhovanessian E, Maier AB, Beck R, Jahn G, Hähnel K, Slagboom PE, et al. Hallmark features of 
+immunosenescence are absent in familial longevity. J Immunol. 2010;185:4618–24.
+30. Sylwester AW, Mitchell BL, Edgar JB, Taormina C, Pelte C, Ruchti F, et al. Broadly targeted human 
+cytomegalovirus-specific CD4+ and CD8+ T cells dominate the memory compartments of exposed 
+subjects. J Exp Med. 2005;202:673–85.
+31. Klenerman P, Oxenius A. T cell responses to cytomegalovirus. Nat Rev Immunol. 2016;16:367–77.
+32. van Leeuwen EM, Remmerswaal EB, Heemskerk MH, ten Berge IJ, van Lier RA. Strong selection of 
+virus-specific cytotoxic CD4+ T-cell clones during primary human cytomegalovirus infection. Blood. 
+2006;108:3121–7.
+33. Wertheimer AM, Bennett MS, Park B, Uhrlaub JL, Martinez C, Pulko V, et al. Aging and cytomegalovirus 
+infection differentially and jointly affect distinct circulating T cell subsets in humans. J Immunol. 
+2014;192:2143–55.
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 26
+34. Chou JP, Effros RB. T cell replicative senescence in human aging. Curr Pharm Des. 2013;19:1680–98.
+35. DeSantis CE, Miller KD, Dale W, Mohile SG, Cohen HJ, Leach CR, et al. Cancer statistics for adults aged 
+85 years and older, 2019. CA Cancer J Clin. 2019;69:452–67.
+36. Sanchez-Correa B, Campos C, Pera A, Bergua JM, Arcos MJ, Bañas H, et al. Natural killer cell 
+immunosenescence in acute myeloid leukaemia patients: new targets for immunotherapeutic strategies? 
+Cancer Immunol Immunother. 2016;65:453–63.
+37. Fornara O, Odeberg J, Wolmer Solberg N, Tammik C, Skarman P, Peredo I, et al. Poor survival 
+in glioblastoma patients is associated with early signs of immunosenescence in the CD4 T-cell 
+compartment after surgery. Oncoimmunology. 2015;4:e1036211.
+38. Ye J, Ma C, Hsueh EC, Eickhoff CS, Zhang Y, Varvares MA, et al. Tumor-derived γδ regulatory T cells 
+suppress innate and adaptive immunity through the induction of immunosenescence. J Immunol. 
+2013;190:2403–14.
+39. Wang D, Yang L, Yue D, Cao L, Li L, Wang D, et al. Macrophage-derived CCL22 promotes an 
+immunosuppressive tumor microenvironment via IL-8 in malignant pleural effusion. Cancer Lett. 
+2019;452:244–53.
+40. Vang T, Torgersen KM, Sundvold V, Saxena M, Levy FO, Skålhegg BS, et al. Activation of the COOH-terminal 
+Src kinase (Csk) by cAMP-dependent protein kinase inhibits signaling through the T cell receptor. 
+J Exp Med. 2001;193:497–507.
+41. Lanna A, Henson SM, Escors D, Akbar AN. The kinase p38 activated by the metabolic regulator AMPK 
+and scaffold TAB1 drives the senescence of human T cells. Nat Immunol. 2014;15:965–72.
+42. Goronzy JJ, Weyand CM. Mechanisms underlying T cell ageing. Nat Rev Immunol. 2019;19:573–83.
+43. Fane M, Weeraratna AT. How the ageing microenvironment influences tumour progression. Nat Rev 
+Cancer. 2020;20:89–106.
+44. Fulop T, Larbi A, Pawelec G, Khalil A, Cohen AA, Hirokawa K, et al. Immunology of aging: the birth of 
+inflammaging. Clin Rev Allergy Immunol. 2021;[Epub ahead of print].
+45. Rahbar A, Orrego A, Peredo I, Dzabic M, Wolmer-Solberg N, Strååt K, et al. Human cytomegalovirus infection 
+levels in glioblastoma multiforme are of prognostic value for survival. J Clin Virol. 2013;57:36–42.
+46. Cobbs C. Cytomegalovirus is a tumor-associated virus: armed and dangerous. Curr Opin Virol. 
+2019;39:49–59.
+47. Söderberg-Nauclér C. New mechanistic insights of the pathogenicity of high-risk cytomegalovirus (CMV) 
+strains derived from breast cancer: hope for new cancer therapy options. EBioMedicine. 2022;81:104103.
+48. Hanahan D, Weinberg RA. Hallmarks of cancer: the next generation. Cell. 2011;144:646–74.
+49. Herbein G. The Human cytomegalovirus, from oncomodulation to oncogenesis. Viruses. 2018;10:408.
+50. Cinatl J Jr, Vogel JU, Kotchetkov R, Wilhelm Doerr H. Oncomodulatory signals by regulatory proteins 
+encoded by human cytomegalovirus: a novel role for viral infection in tumor progression. FEMS 
+Microbiol Rev. 2004;28:59–77.
+51. Yurochko AD, Kowalik TF, Huong SM, Huang ES. Human cytomegalovirus upregulates NF-kappa B 
+activity by transactivating the NF-kappa B p105/p50 and p65 promoters. J Virol. 1995;69:5391–400.
+52. Söderberg-Nauclér C. Does cytomegalovirus play a causative role in the development of various 
+inflammatory diseases and cancer? J Intern Med. 2006;259:219–46.
+53. Heukers R, Fan TS, de Wit RH, van Senten JR, De Groof TWM, Bebelman MP, et al. The constitutive 
+activity of the virally encoded chemokine receptor US28 accelerates glioblastoma growth. Oncogene. 
+2018;37:4110–21.
+54. de Wit RH, Mujić-Delić A, van Senten JR, Fraile-Ramos A, Siderius M, Smit MJ. Human cytomegalovirus 
+encoded chemokine receptor US28 activates the HIF-1α/PKM2 axis in glioblastoma cells. Öncotarget. 
+2016;7:67966–85.
+Explor Immunol. 2023;3:17–27 | https://doi.org/10.37349/ei.2023.00086
+Page 27
+55. Soroceanu L, Matlaf L, Bezrookove V, Harkins L, Martinez R, Greene M, et al. Human cytomegalovirus 
+US28 found in glioblastoma promotes an invasive and angiogenic phenotype. Cancer Res. 
+2011;71:6643–53.
+56. Maussang D, Langemeijer E, Fitzsimons CP, Stigter-van Walsum M, Dijkman R, Borg MK, et al. The 
+human cytomegalovirus-encoded chemokine receptor US28 promotes angiogenesis and tumor 
+formation via cyclooxygenase-2. Cancer Res. 2009;69:2861–9.
+57. Crough T, Khanna R. Immunobiology of human cytomegalovirus: from bench to bedside. Clin Microbiol 
+Rev. 2009;22:76–98.
+58. Bellone G, Turletti A, Artusio E, Mareschi K, Carbone A, Tibaudi D, et al. Tumor-associated transforming 
+growth factor-β and interleukin-10 contribute to a systemic Th2 immune phenotype in pancreatic 
+carcinoma patients. Am J Pathol. 1999;155:537–47.
+59. Herbein G. High-risk oncogenic human cytomegalovirus. Viruses. 2022;14:2462.
+60. Nehme Z, Pasquereau S, Haidar Ahmad S, Coaquette A, Molimard C, Monnien F, et al. Polyploid giant 
+cancer cells, stemness and epithelial-mesenchymal plasticity elicited by human cytomegalovirus. 
+Oncogene. 2021;40:3030–46.
+61. Haidar Ahmad S, Pasquereau S, El Baba R, Nehme Z, Lewandowski C, Herbein G. Distinct oncogenic 
+transcriptomes in human mammary epithelial cells infected with cytomegalovirus. Front Immunol. 
+2021;12:772160.
+62. Kumar A, Tripathy MK, Pasquereau S, Al Moussawi F, Abbas W, Coquard L, et al. The human 
+cytomegalovirus strain DB activates oncogenic pathways in mammary epithelial cells. EBioMedicine. 
+2018;30:167–83.
+63. El Baba R, Pasquereau S, Haidar Ahmad S, Diab-Assaf M, Herbein G. Oncogenic and stemness signatures 
+of the high-risk HCMV strains in breast cancer progression. Cancers (Basel). 2022;14:4271.
+64. Nehme Z, Pasquereau S, Haidar Ahmad S, El Baba R, Herbein G. Polyploid giant cancer cells, EZH2 
+and Myc upregulation in mammary epithelial cells infected with high-risk human cytomegalovirus. 
+EBioMedicine. 2022;80:104056.
+65. Ahani N, Shirkoohi R, Rokouei M, Alipour Eskandani M, Nikravesh A. Overexpression of enhancer of 
+zeste human homolog 2 (EZH2) gene in human cytomegalovirus positive glioblastoma multiforme 
+tissues. Med Oncol. 2014;31:252.
+66. Nauclér CS, Geisler J, Vetvik K. The emerging role of human cytomegalovirus infection in human 
+carcinogenesis: a review of current evidence and potential therapeutic implications. Oncotarget. 
+2019;10:4333–47.
+67. Wang ECY, Pjechova M, Nightingale K, Vlahava VM, Patel M, Ruckova E, et al. Suppression of costimulation 
+by human cytomegalovirus promotes evasion of cellular immune defenses. Proc Natl Acad Sci U S A. 
+2018;115:4998–5003.
+68. Chen Y, Song Y, Du W, Gong L, Chang H, Zou Z. Tumor-associated macrophages: an accomplice in solid 
+tumor progression. J Biomed Sci. 2019;26:78.
+69. Lepiller Q, Aziz Khan K, Di Martino V, Herbein G. Cytomegalovirus and tumors: two players for one 
+goal-immune escape. Open Virol J. 2011;5:60–9.
+70. Solana R, Tarazona R, Aiello AE, Akbar AN, Appay V, Beswick M, et al. CMV and immunosenescence: 
+from basics to clinics. Immun Ageing. 2012;9:23.
+71. Goodrum F, Caviness K, Zagallo P. Human cytomegalovirus persistence. Cell Microbiol. 2012;14:644–55.
+

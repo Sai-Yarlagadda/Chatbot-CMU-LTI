@@ -1,0 +1,2767 @@
+Citation: Habanjar, O.; Bingula, R.;
+Decombat, C.; Diab-Assaf, M.;
+Caldeﬁe-Chezet, F.; Delort, L.
+Crosstalk of Inﬂammatory Cytokines
+within the Breast Tumor
+Microenvironment. Int. J. Mol. Sci.
+2023, 24, 4002. https://doi.org/
+10.3390/ijms24044002
+Academic Editors: Peter J.K. Kuppen,
+Carmine Stolfi and Massimo Nabissi
+Received: 23 December 2022
+Revised: 10 February 2023
+Accepted: 14 February 2023
+Published: 16 February 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+ 
+International Journal of 
+Molecular Sciences
+Review
+Crosstalk of Inﬂammatory Cytokines within the Breast Tumor
+Microenvironment
+Ola Habanjar 1
+, Rea Bingula 1
+, Caroline Decombat 1
+, Mona Diab-Assaf 2, Florence Caldeﬁe-Chezet 1
+and Laetitia Delort 1,*
+1
+Université Clermont-Auvergne, INRAE, UNH, Unité de Nutrition Humaine, CRNH-Auvergne,
+63000 Clermont-Ferrand, France
+2
+Equipe Tumorigénèse Pharmacologie Moléculaire et Anticancéreuse, Faculté des Sciences II,
+Université Libanaise Fanar, Beyrouth 1500, Lebanon
+*
+Correspondence: laetitia.delort@uca.fr
+Abstract: Several immune and immunocompetent cells, including dendritic cells, macrophages,
+adipocytes, natural killer cells, T cells, and B cells, are signiﬁcantly correlated with the complex
+discipline of oncology. Cytotoxic innate and adaptive immune cells can block tumor proliferation,
+and others can prevent the immune system from rejecting malignant cells and provide a favorable
+environment for tumor progression. These cells communicate with the microenvironment through
+cytokines, a chemical messenger, in an endocrine, paracrine, or autocrine manner. These cytokines
+play an important role in health and disease, particularly in host immune responses to infection
+and inﬂammation. They include chemokines, interleukins (ILs), adipokines, interferons, colony-
+stimulating factors (CSFs), and tumor necrosis factor (TNF), which are produced by a wide range
+of cells, including immune cells, such as macrophages, B-cells, T-cells, and mast cells, as well as
+endothelial cells, ﬁbroblasts, a variety of stromal cells, and some cancer cells. Cytokines play a crucial
+role in cancer and cancer-related inﬂammation, with direct and indirect effects on tumor antagonistic
+or tumor promoting functions. They have been extensively researched as immunostimulatory
+mediators to promote the generation, migration and recruitment of immune cells that contribute to an
+effective antitumor immune response or pro-tumor microenvironment. Thus, in many cancers such
+as breast cancer, cytokines including leptin, IL-1B, IL-6, IL-8, IL-23, IL-17, and IL-10 stimulate while
+others including IL-2, IL-12, and IFN-γ, inhibit cancer proliferation and/or invasion and enhance
+the body’s anti-tumor defense. Indeed, the multifactorial functions of cytokines in tumorigenesis
+will advance our understanding of cytokine crosstalk pathways in the tumor microenvironment,
+such as JAK/STAT, PI3K, AKT, Rac, MAPK, NF-κB, JunB, cFos, and mTOR, which are involved
+in angiogenesis, cancer proliferation and metastasis. Accordingly, targeting and blocking tumor-
+promoting cytokines or activating and amplifying tumor-inhibiting cytokines are considered cancer-
+directed therapies. Here, we focus on the role of the inﬂammatory cytokine system in pro- and
+anti-tumor immune responses, discuss cytokine pathways involved in immune responses to cancer
+and some anti-cancer therapeutic applications.
+Keywords: immune-inﬂammatory cells; adaptive immune cells; immunocompetent cells; cytokines;
+adipokines; interleukins; crosstalk; signaling pathways; tumor microenvironment
+1. Introduction
+Immunology is closely related to the complex discipline of oncology, where the im-
+mune response is recognized as a double-edged sword in terms of tumor progression,
+either by attenuating or promoting cancer invasiveness and metastasis. There are two
+distinct aspects of the immune response: (1) the innate, mediated by non-speciﬁc immunity
+cells, such as neutrophils, monocytes, macrophages, dendritic cells (DCs), natural killer
+(NK) cells, and γδT lymphocytes [1]; and (2) the adaptive, mediated by speciﬁc immunity
+Int. J. Mol. Sci. 2023, 24, 4002. https://doi.org/10.3390/ijms24044002
+https://www.mdpi.com/journal/ijms
+Int. J. Mol. Sci. 2023, 24, 4002
+2 of 40
+cells, such as T (CD4+ helpers and CD8+ cytotoxic) and B lymphocytes, both working
+together to protect against pathogens [2] and abnormal cells. Immunocompetent cells
+(cells capable of mediating an effective immune response) include non-speciﬁc and spe-
+ciﬁc immunity cells, but also non-immune cells, such as adipocytes. The latter can act as
+antigen-presenting cells (APCs) since they can express major histocompatibility complex
+(MHC) class I and II molecules and present their antigenic determinants to T cells to trigger
+an immune response, cytokine production, and subsequent intercellular signaling. In obese
+individuals, adipocytes can recruit and activate immune cells, such as adipose-resident T
+cells (ARTs) to stimulate the adipose pro-inﬂammatory response during the progression
+of obesity [3]. Naïve CD4+ T helper cells (Th) are activated after interaction with the
+antigen-MHC complex and differentiated into subsets of helper T cells, such as Th1, Th2,
+Th17, and regulatory T cell (Tregs) that produce different combinations of cytokines and
+other factors. Tregs are identiﬁed as those suppressing anti-tumor activity by inhibiting,
+among others, the differentiation of naïve CD4+ T cells into Th1, thus enhancing the tumor
+development and metastasis [4]. In addition, some immune cells play a dual role, such as
+neutrophils (cancer promoting—tumor-associated neutrophils (TANs)/suppressing) [5]
+and macrophages, divided into M1-like macrophages (pro-inﬂammatory and anti-cancer
+activities), M2-like macrophages (anti-inﬂammatory and pro-cancer activities) and tumor-
+associated macrophages (TAMs) [6].
+These immune cells send signals to communicate with the microenvironment using
+cytokines that act as chemical messengers in an endocrine, paracrine, or autocrine manner
+and mediate intercellular communication of the immune system. Cytokines, called im-
+munomodulatory agents, are synthesized under physiological and pathological conditions,
+and secreted by different cell types, such as immune cells, immunocompetent cells (e.g.,
+adipocytes), and some cancer cells. They are involved in cellular (type 1) and antibody-
+mediated (type 2) immunity, as anti/pro-inﬂammatory and pro/anti-tumorigenic effectors
+depending on the microenvironment. Cytokines can affect the actions of other cells by
+binding to their surface receptors and subsequently activating numerous signaling path-
+ways. There are different types of cytokines, including chemokines, interleukins, adipokines,
+transforming growth factors (TGFs), tumor necrosis factor (TNF), colony-stimulating factors (CSFs)
+and interferons (IFN), which can act alone, in synergic, protagonist, or antagonist manner to
+regulate inﬂammatory and immune responses [7].
+Chemokines are chemoattractant cytokines that give chemical orders to attract inﬂamma-
+tory cells, such as leukocytes (monocytes, neutrophils) as well as other cell types, including
+endothelial and epithelial cells, to the site of interest [8]. They are classiﬁed as CX3C,
+CXC, CC, or C chemokines based on the positioning of conserved cysteine residues [9] and
+interact with G protein-linked transmembrane receptors called chemokine receptors [10].
+Depending on their function, chemokines can be inﬂammatory (e.g., CXCL8, CCL3), recruit-
+ing cells through inﬂammatory stimulus, or/and homeostatic (movement and localization
+of cell subsets) [11].
+Moreover, interleukins (ILs), low molecular weight cytokines, have both pro- and
+anti-inﬂammatory properties. They are secreted by almost all immunocompetent cells,
+such as (but not limited to) T cells, granulocytes, monocytes, macrophages, adipocytes,
+and endothelial cells [12]. They play essential roles in the development, differentiation,
+activation, maturation, migration, and adhesion of immune cells [13].
+Adipokines, or adipocytokines, are cytokines speciﬁcally secreted by adipose tissue that
+is composed mainly of adipocytes, pre-adipocytes, macrophages, stromal cells, ﬁbroblasts,
+and endothelial cells [14]. They include adipose tissue-speciﬁc cytokines (adiponectin, lep-
+tin), but also other cytokine types, such as interleukins, TNFs, or chemokines. Adipokines
+regulate energy expenditure, inﬂammation, appetite control, and fat distribution [15], but
+can contribute to an obesity-related low-grade inﬂammation, development of metabolic
+diseases [16], and also to cancer progression and metastasis [17]. There are two groups of
+adipokines based on their effect on the immune system: pro-inﬂammatory, such as leptin,
+TNFα, interleukin-1β (IL-1β), interleukin-6 (IL-6), and interleukin-8 (IL-8), potentially
+Int. J. Mol. Sci. 2023, 24, 4002
+3 of 40
+linking adiposity and inﬂammation, and anti-inﬂammatory, such as interleukin-10 (IL-10)
+and adiponectin [17,18]. Some of the adipokines participate in the anti-cancer activity, such
+as adiponectin [18] and some present tumorigenic properties, such as leptin [19].
+TGFs are a subgroup of a larger family of protein hormones that are up-regulated in
+some human cancers and play several roles in growth and development of non-malignant
+and malignant cells. TGFα belongs to the epidermal growth factor (EGF) family, can
+induce epithelial development, cell proliferation, and is involved in tumorigenesis and
+angiogenesis [20]. It is secreted by M2 macrophages and various tumor cells, and can
+regulate T cells, NK cells, and macrophages in tumor microenvironment (TME), which
+contributes to the suppression of anti-tumor immunity and promotes tumor growth [21].
+CSF has been implicated, for example, in breast carcinogenesis (varies by menopausal
+status) [22]. TNFα is a key cytokine involved in the generation of the proinﬂammatory
+response and many different cellular responses, such as the up-regulation of anti-apoptotic
+genes, inducing cell survival and proliferation, but also cancer invasion [23]. As an
+adipokine, it has an impact on the endocrine functions of adipose tissue and is associ-
+ated with obesity, promotes insulin resistance and type 2 diabetes.
+Finally, IFN, named after its ability to interfere with viral growth [24], is released by
+host cells and plays a controversial role in immune status modulation, anti-microbial/anti-
+viral host defense, up-regulation of antigen presentation and expression of MHC antigens.
+Type I IFNs (IFN-α, IFN-β) are produced by ﬁbroblasts and monocytes when the body
+recognizes a virus that has invaded it. They stimulate the expression of proteins that
+will prevent the virus from producing and replicating its RNA and/or DNA. Type II IFN
+(IFN-γ) is released by CD8+ T and Th1 cells, activating cells, such as NK cells, M1-type
+macrophages and cytotoxic CD8+ T cells, increasing MHC I and II presentation, thus
+enhancing anti-tumor immunity [25].
+So, cytokines affect the growth and function of many cell types and can activate or
+modulate speciﬁc or non-speciﬁc anti-tumor responses. In breast cancer, cancer cells are
+directly in contact with the adipose microenvironment and reciprocal interactions with
+immunocompetent cells, immune cells, inﬁltrating immune cells (TANs, M2, TAMs) [6],
+ﬁbroblasts, cancer-associated ﬁbroblasts (CAFs) [26], and endothelial cells, have been re-
+vealed, particularly in obese people [27]. The TME could play a critical role in all stages
+of tumor development, contributing to the development, progression, and metastasis of
+malignant cells. Some cytokines (leptin, IL-1β, IL-6, IL-8, IL-23, IL-17, TGF-β, IL-10) are
+mostly reported to stimulate while others (Il-2, IL-12, IFNs) inhibit breast cancer prolifera-
+tion and/or invasion. The former contribute to the establishment of a tumor-promoting
+inﬂammation, recognized as a hallmark of cancer [28]. There are two types of inﬂammation,
+acute inﬂammation induced by common bacterial infections and viruses, and chronic
+inﬂammation associated with chronic disease, obesity [29], and cancer [30]. To some extent,
+inﬂammatory environment and chronic inﬂammation have long been associated with
+increased incidence of malignancy and tumor-promoting effect [31,32] through bioactive
+molecules. Therefore, using various agents to activate or boost the immune system and
+attack cancer cells by natural mechanisms through immunotherapy is becoming a powerful
+clinical strategy to treat cancer [33]. To this end, it is extremely relevant to understand the
+regulatory mechanisms of inﬂammation in breast carcinogenesis and metastatic progression
+to enable identiﬁcation of novel therapeutic targets for tumors [28].
+In this review, we are discussing the relationship between cytokines recognized as
+having an important role in TME in breast cancer, such as adipokines and some other
+cytokines, and how they regulate cancer immunity. It provides a comprehensive overview
+of cytokine crosstalk, their biological roles, the signaling pathways and transcription factors
+responsible for the anti- or pro-tumor response and suggested immunotherapeutic strategy
+for each cytokine for effective treatment of cancer. The details of cytokine overview are
+described in Table 1.
+Int. J. Mol. Sci. 2023, 24, 4002
+4 of 40
+Table 1. Main sources, target cells, receptor types, activated pathways, and functions of each cytokine.
+Source
+Targets
+Action
+Receptors
+Pathways
+Functions
+Leptin
+Adipose cells,
+enterocytes, CAFs, some
+cancer cells
+Adipose cells, epithelial
+cancer cells, cancer stem
+cells, immune cells,
+endothelial cells,
+potentially ﬁbroblasts
+Endocrine,
+paracrine, and
+autocrine
+ObR
+•
+JAK2/STAT3;
+•
+MAPK/ERK;
+•
+PI3K/Akt/Rac
+[34,35].
+•
+Regulates the energy balance, suppressing food
+intake, controlling appetite and body
+weight [36,37];
+•
+Increases cancer and immune cell proliferation,
+anti-apoptosis, migration, invasion,
+angiogenesis [38], EMT [39] and cytokine
+secretion [40].
+TNFα
+Adipocytes,
+macrophages, CD8+ T,
+CD4+ Th1, NK cells,
+mast cells, ﬁbroblasts,
+osteoclasts, endothelial,
+DCs, Th17, TAMs,
+epithelial, and malignant
+cancer cells [41–44]
+Epithelial cancer cells,
+cancer cells, immune
+cells, endothelial cells,
+potentially ﬁbroblasts
+Endocrine,
+paracrine, and
+autocrine
+TNFR1/TNFR2
+•
+NF-κB [45,46], JNK,
+MAPKs, AKT,
+AP-1, TAZ,
+JNK/P38 (activate
+AP-1);
+•
+Non-canonical
+NF-κB [47];
+•
+MAPK/ERK.
+•
+Up-regulates transcription of pro-inﬂammatory
+genes, including anti-apoptotic proteins,
+cell-adhesion molecules, inﬂammatory
+cytokines, and chemokines [48,49];
+•
+Activates cell survival and proliferation, VEGF
+production, angiogenesis [50,51], and cell
+migration;
+•
+Cancer cell survival and/or proliferation [52],
+tumor-promoting, aggressiveness [53], EMT,
+MMP9 expression;
+•
+IL-17 production by Th17 cells [53].
+IL1-β
+Macrophages,
+adipocytes, monocyte,
+DCs, ﬁbroblasts, B-cells,
+TAMs [54,55], and some
+cancer cells [54,56]
+Cancer cells, Th cells, B
+cells, NK cells, γδT cells,
+macrophages,
+endothelial cells [57].
+Paracrine and
+autocrine
+CD121a/IL1R1,
+CD121b/IL1R2
+•
+NF-κB, STAT1,
+PI3K/Rac [58];
+•
+(ERK)1/2,
+AP-1 [59].
+•
+Increases COX-2 expression in cancer cells for
+cancer progression [60,61] and regulates
+maturation and proliferation of B cells,
+activation of NK [62];
+•
+Can activate Th, neutrophils to dampen the
+CD8+ T cells [63], γδT and Th17;
+•
+Induces migration/invasion [64,65], EMT [66],
+angiogenesis (viaVEGF, neo-angiogenesis,
+CXCL2) [67,68], and matrix-remodeling
+activities [69,70].
+Int. J. Mol. Sci. 2023, 24, 4002
+5 of 40
+Table 1. Cont.
+Source
+Targets
+Action
+Receptors
+Pathways
+Functions
+IL-6
+Monocytes,
+macrophages,
+TAM [71,72], T cells, B
+cells, ﬁbroblasts,
+CAFs [73,74],
+endothelial cells, and
+adipocytes [75–77] some
+cancer cells [78,79],
+myeloid-derived
+suppressor cells (MDSC),
+and CD4+ T cells
+Activated B, DCs, cells, T
+cells, CD4+ T, plasma
+cells, hematopoietic stem
+cells, cancer cells,
+macrophages, and
+endothelial cells [80]
+Endocrine,
+paracrine, and
+autocrine
+IL-6Rα/gp80
+IR6Rβ/grp130
+•
+JAK1, JAK2, and
+Tyk2 [81];
+•
+STAT3/STAT1
+[82,83];
+•
+SHP2, ERK, MAPK
+PI3K [84,85] and
+mTOR.
+•
+Mediates tumorigenesis, increasing cell-cycle
+progression, resistance to apoptosis and
+senescence [86], tumor cell proliferation,
+survival [87,88], and metastasis [89,90];
+•
+Blocks DC differentiation, thereby preventing T
+cell activation and inducing T cell death [91],
+Th17 cells [92];
+•
+Promotes the mobilization of anti-tumor CD8+
+effector T cell responses, the development of
+APC, such as DCs and cytotoxic T cells [91,93],
+as well as the survival, proliferation,
+differentiation, and recruitment of
+leukocytes [94,95].
+IL-
+8/CXCL8
+Macrophages [96],
+TAMs [97],
+monocytes [98],
+ﬁbroblasts [99], epithelial
+cells [100], vascular
+endothelial cells [101],
+CAFs [102], T cells, and
+some cancer cells
+Macrophages, TAMs,
+monocytes, ﬁbroblasts,
+endothelial cells, CAFs,
+T cells,
+neutrophils [103,104],
+and some cancer
+cells [105]
+Paracrine and
+autocrine
+CXCR1/IL8RA,
+CXCR2/IL8RB
+•
+PI3K [106],
+PKB/Akt [106],
+MAPK [103,104];
+•
+Raf-1/MEP/ERK1
+cascade, p38
+MAPK [107] and
+PLC;
+•
+FAK [108,109],
+STAT3 [97,110],
+JAK2/STAT3/Snail [96];
+•
+Ras/MAPK/PI3K
+[111,112],
+NF-κB/VEGF
+activation [113].
+•
+Activates cell survival, angiogenesis, and cell
+migration [114], cell motility, invasion, and
+metastasis [115];
+•
+Induces M2/TAM macrophage
+polarization [116] and alters NK cell
+function [117], EMT [118], and
+chemoresistance [101], suppresses CD8+ T-cell
+activity [119] and limits the anti-PD-1
+immune response.
+•
+Induces of inﬂammatory cells recruitment to
+exert cytotoxic activities [120]
+Int. J. Mol. Sci. 2023, 24, 4002
+6 of 40
+Table 1. Cont.
+Source
+Targets
+Action
+Receptors
+Pathways
+Functions
+IL-23
+DCs, phagocytic cells,
+monocytes, neutrophils,
+and innate lymphoid
+cells (ILCs) [121–123]
+T cells, NK, NKT cells,
+tumor cells, monocytes,
+macrophages, and
+DCs [124]
+Paracrine and
+autocrine
+IL23R
+•
+TYK2/JAK2/STAT3
+[124,125];
+•
+NFκB.
+•
+Regulates Th17 cell differentiation, stimulates
+IL-17 production, maintains suppressive Treg
+activity;
+•
+Decreases the inﬁltration of CD4+ and CD8+ T
+cells [126];
+•
+Enhances tumor-associated inﬂammation,
+tumor growth, metastasis [127],
+angiogenesis [128,129], immunosuppressive
+cytokines [126];
+•
+Increases the expression of VEGF, MMP9, CD31,
+and the proliferative marker Ki67 in tumors.
+IL-17A
+T helper 17 cells
+(Th17) [130,131],
+T-cells [132], CD8+ T
+cells, γδ T cells, and
+NKT, NK
+Epithelial cells,
+endothelial cells, cancer
+cells, CD4-CD8- T cells,
+other T-cells [132],
+ﬁbroblasts, keratinocytes,
+and macrophages
+Paracrine and
+autocrine
+IL-17R
+IL17RA/IL17RB
+•
+ERK1/2
+phosphorylation,
+p38/MAPK and
+STAT3;
+•
+NF-κB.
+•
+Ampliﬁes the inﬂammatory response, the
+secretion of inﬂammatory cytokines, including
+IL-6, TNFα, and IL-1β;
+•
+Enhances the production of chemokines, such
+as CXCL-8 which leads to granulocyte
+recruitment at inﬂamed sites;
+•
+Activates oncogenic signal transducer, tumor
+growth [133], migration [134], tissue invasion,
+tumorigenesis, inhibits apoptosis,
+and angiogenesis.
+IL-12
+DCs, B cells, T cells, and
+macrophages
+T cells, NK cells, NKT
+cells, monocytes,
+macrophages, DCs,
+CD4+ T cells, and
+cancer cells
+Paracrine and
+autocrine
+IL-12Rβ1IL-
+12Rβ2
+•
+JAK2 and
+TYK2 [135], STAT4.
+•
+Activates M1 macrophage polarization and
+enhances anti-tumor cytotoxic immune
+responses in tumor microenvironment [135];
+•
+Regulates Th1 cell differentiation and cytokine
+secretion including IFN-γ;
+•
+Upregulates MHCI on tumor cells to facilitate
+antigen presentation;
+•
+Activates Th1, recruits cytotoxic T cells, NK,
+and CD8+ T cells;
+•
+Activates the differentiation of naïve CD8+ T
+cells to the effector phenotype and acts as an
+anti-apoptotic factor.
+Int. J. Mol. Sci. 2023, 24, 4002
+7 of 40
+Table 1. Cont.
+Source
+Targets
+Action
+Receptors
+Pathways
+Functions
+IL-2
+Th1-cells, CD4+ T, CD8+
+T cells [136], activated
+DCs and NK
+cells [137,138], NK [139],
+B [140], T [141] cells,
+neutrophils [142], and
+some tumor cells [143]
+B cells, NK cells,
+macrophages, CD4+ and
+CD8+ T cells, mature
+DCs, endothelial
+cells [144–146], Tregs,
+NK cells, and tumor cells
+Paracrine and
+autocrine
+IL-2Rα
+(CD25)IL-2Rβ
+(CD122)IL-2Rγ
+(CD132)
+•
+JAK1 and JAK3,
+STAT5A/STAT5B
+STAT1 and STAT3;
+•
+PI3K-AKT,
+JAK-STAT, and
+MAPK/ERK.
+•
+Differentiates CD4+ T cells into Th1 and
+Th2 [147], promotes CD8+ T cells, inhibits Th17
+differentiation but also expands Th17
+cells [148];
+•
+Increases NK cytolytic activity, mediates
+activation-induced cell death, induces
+development of Treg (FoxP3) and cytotoxic T
+cells (CD8+ T cells);
+•
+Activates [149] tumor cell growth, survival, and
+differentiation, cytokine production (Il-4,
+Il-12,Il-6) [150,151], and activates induced cell
+death in diverse immune cell types [152,153].
+IFN-γ
+NK and NKT in innate
+immunity, macrophages,
+epithelial cells, Th1 [154],
+DCs [155], Tγδ [156],
+and CD8+ T
+cells [157,158] in the
+adaptive immune
+response [159]
+T-cells and NK, cancer
+cells, macrophages, Treg,
+endothelial cells,
+Tγδ [156], CD4+ T, and
+CD8+ T cells [157,158]
+Endocrine,
+paracrine, and
+autocrine
+IFNGR1/2
+•
+JAK(1/2)-
+STAT(1/3/4)
+[160,161];
+•
+JAK-STAT;
+•
+MAP, PI3K, JNK,
+and NF-κB
+[162–164];
+•
+Src ki-
+nases/MAPKs/ERK
+/p38/then Fos and
+Jun kinases;
+•
+ICAM1-PI3K-Akt-
+Notch1.
+•
+Implicated in allergies [165,166], obesity [167],
+autoimmune diseases [168], and cancer;
+•
+Activates the proinﬂammatory response [169]
+by promoting NK cell activity [170],
+differentiation of naïve CD4+ T-cells into Th1
+and Th2 cells [171], increases the killing
+capacity of CD8+ T-cells [172] and decreases the
+proliferation of Tregs [173];
+•
+Eliminates tumors [154], reduces metastasis by
+up-regulating ﬁbronectin [155], arrests the cell
+cycle and initiates apoptosis in tumor cells,
+inhibits the migration of TAMs;
+•
+May enhance tumor cell survival, induces risk
+of metastasis, EMT transcription
+factors [174,175];
+•
+May induce apoptosis in CD4+ T-cells,
+suppress immune and secondary antitumor
+immune response [176], causes immune
+evasion adaptive immune resistance to
+immune checkpoint therapy [177].
+Int. J. Mol. Sci. 2023, 24, 4002
+8 of 40
+Table 1. Cont.
+Source
+Targets
+Action
+Receptors
+Pathways
+Functions
+IL-10
+Th2, Th1, Treg [178],
+Th17, and also by CD8+
+T cells, monocytes,
+macrophages, DCs [179],
+B cells [180], mast cells,
+eosinophils [181],
+keratinocytes, epithelial
+cells, and even some
+tumor cells [182,183]
+DCs [184], T, B, NK, Treg,
+mast, dendritic cells,
+M2/TAM lymphocytes,
+and cancer cells458
+Endocrine,
+paracrine, and
+autocrine
+Two IL-10R1 and
+two IL-10R2
+•
+Jak1 and Tyk2;
+•
+STAT3/STAT1
+/STAT5;
+•
+MAPK inhibition
+and/or activation
+of a PI3K/AKT
+inhibitory pathway.
+•
+Leads to the expression of anti-inﬂammatory
+mediators that block various inﬂammatory
+pathways;
+•
+Regulating intestinal inﬂammation, tumor
+immunosuppression, viral infection, allergic
+reactions [185];
+•
+Inhibits the production of proinﬂammatory
+cytokines, such as IL-1β, IL-6, IL-8, IL-12, IL-18,
+CSF, and TNF-α) [186], suppresses
+Th1-associated cytokines (IL-2, IFN-γ, and
+stimulates B cell and NK cell survival and
+proliferation, as well as their production of
+antibodies and cytokines [187];
+•
+Downregulates the expression of
+co-stimulatory molecules on macrophages,
+differentiation, and maturation of DCs,
+activation of CD4+ T cells [188,189];
+•
+Inhibits NF-κB translocation;
+•
+Contributes to tumor growth and promotion
+(STAT3 in cancer cells), angiogenesis, and
+metastasis. In carcinomas, IL-10 levels increase
+TGF-β excretion in Treg cells and macrophages
+and then promote EMT [190];
+•
+Suppresses T-cell proliferation and activity in
+breast cancer [191] and inhibits
+T-cell-stimulated anti-tumor immunity by
+down-regulating MHC class II (APC) and class
+I (colon tumor cells) [192].
+Int. J. Mol. Sci. 2023, 24, 4002
+9 of 40
+2. Leptin
+Leptin is an obesity-associated adipokine known as the “obesity hormone”, whose
+circulating levels increase proportionally to body fat mass [193]. It is a pleiotropic cytokine
+of the IL-6 family produced and expressed mainly by adipose tissue [194], enterocytes [195],
+but also by immune cells, endothelial cells [196], ﬁbroblasts, CAFs [197], and some tumor
+tissues. It is encoded by the obese (Ob) gene which maintains energy homeostasis, through
+a central feedback mechanism at the hypothalamus. Under normal physiological conditions,
+leptin plays a key role in the long-term regulation of energy balance by reducing appetite
+and increasing the metabolism, thereby controlling food intake and body weight [36,37]. In
+obese individuals with insulin resistance, high levels of leptin have been correlated with
+the amount of fat in the body, acting as a pro-inﬂammatory cytokine and amplifying the
+insulin resistance process [40,198,199].
+Leptin promotes cell proliferation and the development of breast cancers [200] and
+may be a potential biomarker of breast cancer risk in women, especially overweight/obese
+or postmenopausal women [201]. Women with elevated serum leptin have a higher risk of
+breast cancer [202]. Higher levels of leptin have been observed in the invasive stage, from
+mammary ductal carcinoma in situ to invasive ductal carcinoma [27], in the cytosol and
+nuclei of metastatic cells [203,204].
+In addition, leptin promotes epithelial-to-mesenchymal transition (EMT) [39] by up-
+regulating the expression of CSC/EMT-related genes [205], tumor evasion, cell migra-
+tion [206,207], tumor size, overexpression of estrogen and progesterone receptors [208],
+protection of malignant cells from apoptosis [38], and breast cancer metastasis [209]. The
+functions of leptin are enhanced by the cross-talk with multiple cytokines. Indeed, it
+is an important mediator of interactions between breast cancer cells and TAMs [38] by
+stimulating the production of IL-8 which is directly involved in tumor growth [210,211].
+The molecular actions of leptin are mediated by ObR (leptin receptor), a large mem-
+brane protein member of the class I cytokine receptors [212]. Following leptin binding
+to its receptor (Lep/ObR), Janus kinase 2 (JAK2) becomes activated through autophos-
+phorylation, which in turn phosphorylates tyrosine residues on the intracellular domain
+of the receptor for the signal transducer and activator of transcription 3 (STAT3). STAT3
+forms dimers and translocates into the nucleus where it activates the transcription of dif-
+ferent target genes involved in cellular activation, proliferation, and differentiation [213].
+Phosphorylated JAK2 also activates other pathways, including mitogen-activated-protein
+kinase (MAPK)/extracellular signal-regulated kinase (ERK) promoting cell proliferation
+and differentiation [214,215] and phosphatidylinositol 3-kinase (PI3K)/protein kinase B
+(Akt)/Rac that mediates the regulation of cell cycle, growth, proliferation, and energy
+metabolism [34,35,216]. It also activates the hypoxia-inducible factor-1α (HIF-1α) and
+NF-κB to regulate the vascular endothelial growth factor (VEGF) and then promotes an-
+giogenesis in mammary tumors [35]. In addition, it activates reactive oxygen species
+(ROS) production in human epithelial mammary cells [217], and can regulate metabolic
+reprogramming to promote cellular growth [218] (Figures 1 and 2).
+Int. J. Mol. Sci. 2023, 24, 4002
+10 of 40
+Int. J. Mol. Sci. 2023, 24, x FOR PEER REVIEW 
+11 of 43 
+ 
+ 
+ 
+Figure 1. Schematic representation of TYK2-mediated JAK/STAT signaling network. Binding of cytokine to the cytokine receptor which consequently phosphorylates 
+JAK proteins as the cytokine receptor itself lacks intrinsic biological activity. Activated JAKs induce the phosphorylation of STATs which, following dimerization, 
+translocate into the nucleus and stimulate gene expression. JAKs activate other downstream signaling cascades, including PI3K/mTOR, RAS and NF-κB. 4EBP1: 
+eukaryotic translation initiation factor 4E-binding protein 1; ACT1: NF-κB activator 1; AKT: protein kinase B; ASK: apoptosis signal-regulating kinase; ELK: E26 
+transformation-specific like-1 protein; ERK: extracellular signal-related kinase; FADD: Fas-Associated protein with Death Domain; FAK: focal adhesion kinase; GRB2: 
+growth factor receptor-bound protein 2; HIF-1α: hypoxia-inducible factor 1-alpha; IKK: serine-specific IκB kinase; IRAK: interleukin-1 receptor-associated kinase; 
+IRF4: interferon regulatory factor 4; IRS: insulin receptor substrate; JAK: Janus kinase; JNK: c-Jun N-terminal kinases; MAPK: mitogen-activated protein kinase; 
+MEK/MKK: mitogen-activated protein kinase kinase; MEKK: mitogen-activated protein kinase kinase; mTOR: mammalian target of rapamycin; MYC: 
+myelocytomatosis oncogene; MYD88: myeloid differentiation primary response 88; NF-κb: nuclear factor kappa-light-chain-enhancer of activated B cells; PDK1: 
+phosphoinositide-dependent kinase-1; PI3K: phosphoinositide 3-kinases; PIP3: phosphatidylinositol-3,4,5-trisphosphate; PKC: protein kinase C; PLC: phospholipase 
+C; RAF: rapidly accelerated fibrosarcoma; RAS: rat sarcoma virus; RIP: ribosome-inactivating protein; SHC: SHC (Src homology 2 domain containing) transforming 
+protein; SHP2: Src homology region 2-containing protein tyrosine phosphatase-2; SOS: son of sevenless; SRC: proto-oncogene, non-receptor tyrosine kinase; STAT: 
+signal transducer and activator of transcription; TAB: mitogen-activated protein kinase kinase kinase 7-interacting protein; TAK: mitogen-activated protein kinase 
+kinase kinase 7; TRADD: tumor necrosis factor receptor type 1-associated DEATH domain protein; TRAF: tumor necrosis factor receptor-associated factors; TYK: 
+tyrosine kinase. 
+Figure 1. Schematic representation of TYK2-mediated JAK/STAT signaling network. Binding of cytokine to the cytokine receptor which consequently phosphorylates
+JAK proteins as the cytokine receptor itself lacks intrinsic biological activity. Activated JAKs induce the phosphorylation of STATs which, following dimerization,
+translocate into the nucleus and stimulate gene expression. JAKs activate other downstream signaling cascades, including PI3K/mTOR, RAS and NF-κB. 4EBP1:
+eukaryotic translation initiation factor 4E-binding protein 1; ACT1: NF-κB activator 1; AKT: protein kinase B; ASK: apoptosis signal-regulating kinase; ELK: E26
+transformation-speciﬁc like-1 protein; ERK: extracellular signal-related kinase; FADD: Fas-Associated protein with Death Domain; FAK: focal adhesion kinase;
+GRB2: growth factor receptor-bound protein 2; HIF-1α: hypoxia-inducible factor 1-alpha; IKK: serine-speciﬁc IκB kinase; IRAK: interleukin-1 receptor-associated
+kinase; IRF4: interferon regulatory factor 4; IRS: insulin receptor substrate; JAK: Janus kinase; JNK: c-Jun N-terminal kinases; MAPK: mitogen-activated protein
+kinase; MEK/MKK: mitogen-activated protein kinase kinase; MEKK: mitogen-activated protein kinase kinase; mTOR: mammalian target of rapamycin; MYC:
+myelocytomatosis oncogene; MYD88: myeloid differentiation primary response 88; NF-κb: nuclear factor kappa-light-chain-enhancer of activated B cells; PDK1:
+phosphoinositide-dependent kinase-1; PI3K: phosphoinositide 3-kinases; PIP3: phosphatidylinositol-3,4,5-trisphosphate; PKC: protein kinase C; PLC: phospholipase
+C; RAF: rapidly accelerated ﬁbrosarcoma; RAS: rat sarcoma virus; RIP: ribosome-inactivating protein; SHC: SHC (Src homology 2 domain containing) transforming
+protein; SHP2: Src homology region 2-containing protein tyrosine phosphatase-2; SOS: son of sevenless; SRC: proto-oncogene, non-receptor tyrosine kinase; STAT:
+signal transducer and activator of transcription; TAB: mitogen-activated protein kinase kinase kinase 7-interacting protein; TAK: mitogen-activated protein kinase
+kinase kinase 7; TRADD: tumor necrosis factor receptor type 1-associated DEATH domain protein; TRAF: tumor necrosis factor receptor-associated factors; TYK:
+tyrosine kinase.
+Int. J. Mol. Sci. 2023, 24, 4002
+11 of 40
+Int. J. Mol. Sci. 2023, 24, x FOR PEER REVIEW 
+12 of 43 
+ 
+ 
+ 
+Figure 2. Reciprocal crosstalk and immunoregulation between immune cells, adipocytes, and 
+fibroblasts. DC: dendritic cell; IFN: interferon; IL: interleukin; M: macrophage; N: neutrophil; NK: 
+natural killer cell; Th: T-helper cell; Treg: regulatory T cell; γδT: gamma delta T cells; Th17: T-helper 
+cell 17; A: adipocyte; F: fibroblast. 
+Leptin-targeting drugs can affect different cell types, including endothelial cells, 
+adipocytes [219], cancer cells with a less aggressive phenotype, and immune cells by 
+decreasing macrophage recruitment, phagocytic activity, and cytokine production [209]. 
+Thus, the use of antibodies targeting leptin/Ob-R able to perform an antagonist activity 
+could be used in breast cancer therapy. For example, researchers blocked leptin signaling 
+by a leptin peptide receptor antagonist that simultaneously decreased VEGF/VEGFR2 and 
+IL-1 levels [220], or by producing a synthetic farnesoid X receptor (FXR) (regulator of the 
+dialogue between breast cancer cells and cancer-associated fibroblasts) agonist GW4064, 
+which affects the tumor-promoting activities of CAFs in breast malignancy [221]. Some new 
+super active leptin antagonists (D23L/L39A/D40A/F41A) exhibited more than 60-fold 
+binding to the leptin receptor [222]. In breast cancer, a leptin antagonist-honokiol, a bioactive 
+polyphenol from Magnolia grandiflora, is reported to activate the liver kinase B1-miR-34a axis 
+and finally inhibit EMT [223]. 
+3. TNFα 
+TNFα is a major inflammatory cytokine and adipokine described as a circulating and 
+endotoxin-induced factor of hemorrhagic tumor necrosis when present in high 
+concentrations. It is mainly produced by macrophages and in a lower extent by B and T 
+(cytotoxic CD8+ and CD4+ Th1) cells, NK cells, mast cells, fibroblasts, osteoclasts, endothelial, 
+and muscle cells. It can act both in autocrine and paracrine signaling [224]. In general, as an 
+adipokine, it is associated with obesity, promotes insulin resistance and type 2 diabetes. By 
+regulating many cellular and biological processes, it may also have an impact on the 
+endocrine functions of adipose tissue. It can reduce adiponectin secretion, inhibit 
+carbohydrate metabolism, lipogenesis and adipogenesis, and stimulate lipolysis [225]. As a 
+cytokine, it is released by macrophages to alert other cells of the immune system as part of 
+an inflammatory response [226]. Thus, it is involved in the generation of a pro-inflammatory 
+response, as it can activate and up-regulate more than 400 inflammatory genes and 
+stimulate many different cellular responses, such as transcription of pro-inflammatory 
+genes of inflammatory cytokines and chemokines [48,49]. 
+Figure 2. Reciprocal crosstalk and immunoregulation between immune cells, adipocytes, and ﬁbrob-
+lasts. DC: dendritic cell; IFN: interferon; IL: interleukin; M: macrophage; N: neutrophil; NK: natural
+killer cell; Th: T-helper cell; Treg: regulatory T cell; γδT: gamma delta T cells; Th17: T-helper cell 17;
+A: adipocyte; F: ﬁbroblast.
+Leptin-targeting drugs can affect different cell types, including endothelial cells,
+adipocytes [219], cancer cells with a less aggressive phenotype, and immune cells by
+decreasing macrophage recruitment, phagocytic activity, and cytokine production [209].
+Thus, the use of antibodies targeting leptin/Ob-R able to perform an antagonist activity
+could be used in breast cancer therapy. For example, researchers blocked leptin signaling
+by a leptin peptide receptor antagonist that simultaneously decreased VEGF/VEGFR2 and
+IL-1 levels [220], or by producing a synthetic farnesoid X receptor (FXR) (regulator of the
+dialogue between breast cancer cells and cancer-associated ﬁbroblasts) agonist GW4064,
+which affects the tumor-promoting activities of CAFs in breast malignancy [221]. Some new
+super active leptin antagonists (D23L/L39A/D40A/F41A) exhibited more than 60-fold
+binding to the leptin receptor [222]. In breast cancer, a leptin antagonist-honokiol, a bioac-
+tive polyphenol from Magnolia grandiﬂora, is reported to activate the liver kinase B1-miR-34a
+axis and ﬁnally inhibit EMT [223].
+3. TNFα
+TNFα is a major inﬂammatory cytokine and adipokine described as a circulating and
+endotoxin-induced factor of hemorrhagic tumor necrosis when present in high concentra-
+tions. It is mainly produced by macrophages and in a lower extent by B and T (cytotoxic
+CD8+ and CD4+ Th1) cells, NK cells, mast cells, ﬁbroblasts, osteoclasts, endothelial, and
+muscle cells. It can act both in autocrine and paracrine signaling [224]. In general, as an
+adipokine, it is associated with obesity, promotes insulin resistance and type 2 diabetes.
+By regulating many cellular and biological processes, it may also have an impact on the
+endocrine functions of adipose tissue. It can reduce adiponectin secretion, inhibit carbo-
+hydrate metabolism, lipogenesis and adipogenesis, and stimulate lipolysis [225]. As a
+cytokine, it is released by macrophages to alert other cells of the immune system as part of
+an inﬂammatory response [226]. Thus, it is involved in the generation of a pro-inﬂammatory
+response, as it can activate and up-regulate more than 400 inﬂammatory genes and stimu-
+late many different cellular responses, such as transcription of pro-inﬂammatory genes of
+inﬂammatory cytokines and chemokines [48,49].
+TNFα has a key role in breast cancer. It is involved in breast cancer cell survival and/or
+proliferation [52], tumor-promoting, aggressiveness [53], tumor-promoting macrophage
+Int. J. Mol. Sci. 2023, 24, 4002
+12 of 40
+inﬁltration, CAF phenotype, inﬂammatory chemokine expression, such as C-X-C motif
+ligand 8 (CXCL8 = IL-8), and angiogenesis [50]. The prometastatic role of TNFα and its
+involvement in the EMT process required tumor cell migration to establish breast cancer
+metastasis [41] and its over-expression has often been associated with aggressive cancer
+behavior and poor prognosis [227]. TNFα and IL-1β are the essential pro-inﬂammatory
+cytokines often found in TME. In breast cancer, inﬂammation is known to be associated
+with poor prognosis and higher risk of recurrence in patients [228]. TNF-α production
+by peripheral blood T cells in patients with inﬂammatory breast cancer was positively
+correlated with the detection of circulating tumor cells expressing EMT markers [229].
+TNFα is recognized by a variety of stromal cells, mainly by TAMs, adipocytes, epithelial
+and malignant cancer cells themselves [41–44]. In addition, TNFα and IL-6 have been
+positively correlated with aromatase activity in human breast adipose tissue in primary
+culture by increasing aromatase mRNA [230].
+Ultimately, TNFα binds to two different receptors, TNFR1 and TNFR2, and is capa-
+ble of activating NF-κB, c-Jun, activating protein-1 (AP1), MAPKs, Akt, TAZ, and c-Jun
+N-terminal kinase (JNK)/P38 [45–47]. TAZ is a transcriptional coactivator, activated via
+NF-κB to induce tumor initiation and self-renewal in breast cancer stem-like cells, a sub-
+population of primary breast tumor cells with differentiation and self-renewal capacities
+implicated in tumor generation, cancer relapse, and metastasis [231]. TNFα expression
+is transcriptionally induced by NF-κB, c-Jun, AP1, and nuclear factor associated with
+activated T cells (NFAT). Ligand-occupied TNFR1 induces NF-κB and c-Jun activations,
+which inhibit apoptosis, increase transcription of survival factors (Bcl-2), transcription of
+pro-inﬂammatory genes, cell death pathways through apoptosis (apoptosis signaling kinase
+1 ASK1) or necroptosis [232], promote transcription of EMT-related factors (i.e., matrix
+metallopeptidase-2 [MMP2], MMP9), and decrease E-cadherin transcription. However,
+TNFR2 can activate NF-κB through a pathway similar to that of TNFR1, but it can also
+activate endothelial/epithelial tyrosine kinase phosphorylation that can activate the Akt
+pathway. In particular, prolonged exposure of breast cancer cell lines to TNFα induces EMT
+through the activation of IKKβ and NF-κB [233], cancer cell migration via the MAPK/ERK
+signaling pathway [234], and MMP2 and MMP9 expression [235,236]. TNFα has been
+shown to induce the gene expression of aromatase in undifferentiated adipose ﬁbroblasts
+via c-Fos and c-Jun, and inhibits adipogenic differentiation in breast TME [237]. However,
+IL-10, through inhibition of TNFα induction, can suppress aromatase mRNA expression in
+human adipose tissue [238] (Figures 1 and 2).
+TNFα can induce resistance to breast cancer therapies, such as ionizing radiation
+therapy [239] and chemotherapy [240]. In breast cancer, TNFα inhibition has been shown
+to increase the sensitivity to doxorubicin [241]. TNFα mediates TNFR1-dependent IL-17
+production by CD4+ T cells [53] and can promote the activities of immune and cancer cells
+within tumors. Targeting TNFR2 with antagonistic antibodies (anti-PD-1) has been shown to
+inhibit the proliferation of cancer cells and tumor-associated Tregs [242]. Therefore, blocking
+TNFα or its receptors may have signiﬁcant anti-tumor effects [31,243,244] and inhibition of
+TNFα on tumorigenesis can be positive depending on the immune microenvironment and
+TNFα concentration.
+4. Interleukin-1β (IL-1β)
+IL-1β, known as an endogenous mediator of leukocytes, is a potent pro-inﬂammatory
+cytokine involved in the modulation of autoimmune inﬂammation [245], proinﬂamma-
+tory response, cell proliferation, and cell differentiation. IL1-β gene transcription in
+macrophages is mainly induced by lipopolysaccharides (LPS) via toll-like receptors (TLRs)
+or IL-1β itself and by TNFα via the TNF receptors, which are capable of activating NF-κB
+and subsequently STAT1 pathway [246]. This cytokine is primarily produced by activated
+macrophages as a proprotein called pro-IL-1β, an inactive precursor. It is proteolytically pro-
+cessed to its active form IL-1β by inﬂammatory caspase 1 cleavage (CASP1/ICE) [247] and
+subsequently binds to IL-1 receptor CD121a/IL1R1 and CD121b/IL1R2 subunits [248,249].
+Int. J. Mol. Sci. 2023, 24, 4002
+13 of 40
+It can also be produced and secreted by a variety of cell types, such as adipocytes, mono-
+cytes, DCs, ﬁbroblasts, B cells, TAMs [54,55], and some cancer cells to enhance tumor-
+promotion [54,56].
+In the TME, IL-1β is up-regulated in many solid tumors, including breast cancers [54].
+IL-1β has been reported to control tumor invasion, up-regulate the initiation and develop-
+ment of primary tumor, increase the aggressivity of luminal breast cancer cells, and increase
+IL-6 production through NF-κB pathway [250] leading to tumor growth and aggressiveness.
+IL-1β has been linked with poor prognosis in breast cancer [251] and plays a critical role in
+the recruitment and maturation of adaptive T cell-mediated immunity including CD4+ and
+CD8+ T cells [252] and myeloid cells [68]. IL-1β also activates focal adhesion kinase and
+Src to induce MMP9 production and invasion of MCF-7 breast cancer cells [253]. In vitro
+studies have recently shown that primary breast cancer cells cocultured with monocytes
+exhibit increased IL-1β, IL-8, and MMPs [254], suggesting that inﬂammation and subse-
+quent recruitment of immune cells promote breast cancer development at early stages.
+Furthermore, in a spontaneous in vivo model of breast cancer, cancer cells stimulate sys-
+temic inﬂammation by producing IL-1β, which leads to stimulation of IL-17 production
+by γδT cells [57] and can inhibit anti-tumor CD8+ T cell activity [57]. TAM-derived IL-1β
+can increase cyclo-oxygenase-2 (COX-2) expression in breast cancer cells and contribute to
+cancer progression [60,61], migration/invasion [65], regulate metastatic process [255], and
+EMT [66].
+M2-type macrophages, TAMs and cancer cells can stimulate IL-1β production [256]
+and subsequently, IL-1β increases macrophage recruitment through the expression of
+monocyte chemoattractant protein (MCP)-1, which can be polarized into TAM and pro-
+mote cancer, tumor growth, and metastasis [257]. M1-type macrophages are the cells
+most frequently induced to produce IL-1β, and subsequently stimulate proinﬂamma-
+tory mediators [258], the production of angiopoietin-like 4 (ANGPTL4), and VEGF-A in
+adipocytes [259], MMP9 [59], and matrix-remodeling activities [69,70]. In this context,
+obesity induces secretion of MCP1 and IL-1β by adipocytes associated with breast tissue,
+which increases macrophage recruitment and the formation of crown-like structures (CLS),
+followed by the secretion of CXCL12, a key effector responsible for stromal vasculariza-
+tion and angiogenesis [260]. In addition, it promotes activation of PI3K/Rac 1-regulated,
+ERK1/2 and AP-1, and the reorganization of the actin cytoskeleton in invasive cancer
+cells [58] (Figures 1 and 2).
+Overall, IL-1β represents a major upstream cytokine. Inhibition of IL-1β signaling
+in malignant tumors are now considered as potential targets for cancer therapy. Anti-IL-
+1β therapy is shown to decrease metastasis [66], invasiveness, inﬂammation-mediated
+immunosuppression concomitantly with increased anti-tumor immunity response [261].
+In breast cancer, a variety of drugs are currently used in clinical practice to target the IL-1
+signaling pathway, including anakinra (Nbib1802970), the standard of care used for phase I
+metastatic breast cancer, and PDR001 (Nbib2900664), in combination with CJM112, EGF816,
+Ilaris (canakinumab), or Mekinist (trametinib) used for triple-negative phase I and phase II
+breast cancer [262].
+5. Interleukin-6 (IL-6)
+IL-6 is a multifunctional cytokine and an adipokine that clearly has both tumor-
+promoting and pro-inﬂammatory effects [75,76]. It was originally identiﬁed as B cell
+stimulating factor-2 (BSF-2) and the inducer of immunoglobulin production [263].
+IL-6 is produced by non-malignant cells, such as monocytes, macrophages, T cells, B
+cells, ﬁbroblasts, endothelial cells, and adipocytes [75–77]. IL-6 transcription is induced
+by various stimuli, such as TNFα and ROS [264,265]. It promotes Th2 differentiation and
+simultaneously inhibits Th1 polarization, maintains dynamic balance between Th1 and
+Th2 immune cells [266], and regulates the balance between IL-17-producing Th17 cells
+and Treg [267]. In the TME, its main sources are some cancer cells [78,79], TAMs [71],
+myeloid-derived suppressor cells (MDSC), Th2 cells, and CAFs [73,74].
+Int. J. Mol. Sci. 2023, 24, 4002
+14 of 40
+IL-6 is a major player in chronic inﬂammatory diseases, autoimmune diseases, cancer,
+and tumor immunity [268,269]. In breast cancer, IL-6 is found to be overexpressed [270]
+and has been described as a tumor-promoting cytokine through its major effector STAT3. It
+is a key factor in malignancy by promoting cell growth (via the suppression of apoptosis
+and promotion of angiogenesis [271]), macrophage polarization [72], tumor initiation,
+progression, and metastasis [31,268,272], by selectively recruiting mesenchymal stem cells
+to sites of carcinoma growth where they interact with breast cancer stem cells [273]. IL-6
+controls cancer stem cell renewal and induces cancer cell migration [274], and EMT [275]. IL-
+6 stimulates aromatase and therefore estrogen biosynthesis, thus contributing to hormone-
+dependent breast cancer [276]. CAFs in breast tumors express high levels of IL-6 and
+subsequently mediate epithelial-stromal interactions to promote tumorigenesis [277]. High
+IL-6 levels in breast cancer tissues maintain the aggressive phenotype [278].
+The IL-6 receptor (IL-6R) is a hetero-trimeric complex receptor composed of an IL-
+6-binding receptor molecule α-subunit (gp80) and two signal transducing β-subunits of
+glycoprotein 130 (gp130) [264]. Classical IL-6 signaling is initiated by its binding to IL-6Rα
+(present either on the cell surface or in secreted form, which then induces cis dimerization
+of gp130, auto- and trans-phosphorylation and activation of the associated JAK1, JAK2,
+and tyrosine kinase 2 (TYK2) [81]. The tyrosine residues phosphorylated by JAKs in the
+intracellular domain of gp130 activate the transcription factors STAT3/STAT1 [82,83], Src
+homology 2 (SH2)-containing protein tyrosine phosphatase 2 (SHP2), ERK, MAPK, and
+PI3K signaling pathways [84,85]. Thus, STAT3 may mediate tumorigenesis by increasing
+cell-cycle progression [87], resistance to apoptosis (inducing the expression of BCL2, BCL-
+XL, and survivin) [279,280], metastasis [89], and senescence [86]. In addition, IL-6/STAT3
+signaling activates the transcription of target genes, including the proto-oncogenes c-myc,
+JunB, cFos, and mTORC1 metabolic regulators [279,281–285]. It also blocks DC differen-
+tiation, thereby preventing T cell activation and inducing T cell death [91]. Activation of
+STAT3 in tumor-associated endothelial cells, TAMs, and cancer cells, induces their ability to
+express basic ﬁbroblast growth factor (bFGF) and VEGF, promoting rapid vascularization.
+Indeed, IL-6 may up-regulate circulating VEGF in breast cancer patients and promote
+angiogenesis and metastasis [286]. IL-6 may promote the mobilization of anti-tumor CD8+
+effector T cell responses, the development of APC, such as DCs and cytotoxic T cells [91,93],
+as well as the survival, proliferation, differentiation, and recruitment of leukocytes [94,95].
+Activation of IL-6Rα expressed on DCs can act directly on CD4+ T cells through gp130 and
+subsequently induce Th17 cells [92]. Furthermore, it has been shown that high expression
+of IL-6Rα induces resistance to apoptosis in breast cancer [287] (Figures 1 and 2).
+Therefore, blocking IL-6 (i.e., anti-IL-6 therapy), targeting its receptor in combination
+with signaling from other anticancer therapies, and targeting the IL-6-STAT3 axis is a poten-
+tial therapeutic strategy that may be beneﬁcial in the treatment of breast cancer [206,288,289].
+Down-regulation of IL-6 is linked to a better response to breast cancer treatment [290] and
+a recent study showed that the IL-6R neutralizing antibody, tocilizumab, abrogated IL-6
+signaling in breast cancer [291]. A synthetic anti-gp130 compound (bazedoxifene) inhibited
+IL-6-induced growth of breast cancer cell lines and down-regulated STAT3 phosphoryla-
+tion [292]. An IL-6R antagonist (Tocilizumab) for trastuzumab-resistant HER2-positive
+metastatic breast cancer is being evaluated in a clinical trial (NCT03135171) [293].
+6. Interleukin-8 (IL-8)
+IL-8, also known as CXCL8 [294], is a proinﬂammatory chemokine, produced and ex-
+pressed by monocytes [98], macrophages [96], neutrophils [103,104], T cells, ﬁbroblasts [99],
+epithelial cells [100], and vascular endothelial cells [101]. It is known as neutrophil chemo-
+tactic factor inducing neutrophil and granulocytes recruitment, degranulation [295], and
+phagocytosis [296]. IL-8 has been associated with proinﬂammatory response in obesity [297]
+and cancer [298] and can induce the recruitment of inﬂammatory cells and oxidative stress
+mediators into localized inﬂammation to exert cytotoxic activities [120].
+Int. J. Mol. Sci. 2023, 24, 4002
+15 of 40
+IL-8 secretion by TAMs [97], CAFs [102], and some cancer cells [105] promotes their re-
+cruitment, proliferation, and survival, suppresses CD8+ T cell activity [119], and stimulates
+cellular secretion of additional growth factors that contribute to breast cancer progression.
+Several studies have shown that in breast cancer cell lines, invasion is directly proportional
+to IL-8 expression [299] where, various cytokines, such as IL-1β, TNFα, and IL-6, as well as
+hormones, such as progesterone and estrogen, are thought to up-regulate IL-8 expression in
+breast cancer cells compared to normal breast tissue [300]. Breast cancer cells are reported
+to secrete IL-8, express CXCR1/2, and promote breast cancer initiation and progression, as
+well as tumor cell migration and invasion [301].
+Cellular responses to IL-8 are mediated by two cell-surface G protein-coupled serpen-
+tine receptors for a group of C-X-C chemokines, termed CXCR1 and CXCR2 [302]. CXCR1
+is speciﬁc for IL-8, whereas CXCR2 can mediate cellular responses [303] after binding other
+chemokines as well, such as IL-2 and IL-6. IL-8 expression can be regulated by a variety
+of stimuli, including inﬂammatory signals (e.g., TNFα, IL-1β) [99,100], environmental
+and chemical stresses (e.g., hypoxia or exposure to chemotherapy agents), and steroid
+hormones [304]
+IL-8 signaling can activate and regulate PI3K (in neutrophils) [106], PKB/Akt [106],
+MAPK (cell proliferation in neutrophils [103,104], endothelial [305], and in some breast can-
+cer cell lines) and the Raf-1/MAP/ERK1 cascade, p38 MAPK signaling cascade [107] and
+phospholipase C [306,307]. In addition, it can activate Src, focal adhesion kinase FAK [109],
+STAT3 [97,110], JAK2/STAT3/Snail (in cancer cells) [96], signaling kinases correlated with
+cancer progression. Thus, it forms an immunosuppressive microenvironment to enhance
+tumorigenicity, cancer cell motility (via MMP9 expression [308], PI3K-Akt signaling, and
+E-cadherin down-regulation) [309], EMT [118,310], invasion and metastasis [115]. In ad-
+dition, it can activate endothelial cells in the tumor to promote vascular endothelial cell
+proliferation [311] and angiogenesis [312–314]. IL-8 receptors on endothelial cells can
+activate Ras/PI3K [111,112], NF-κB/VEGF activation [113], chemoresistance [101], and
+metastasis [315] (Figures 1 and 2).
+The multiple effects of IL-8 signaling on different cell types present in the TME suggest
+that targeting CXC chemokine signaling (including, but not limited to IL-8) may have
+important implications for halting disease progression and helping to sensitize tumors to
+chemotherapeutic and biologic agents [108]. Furthermore, a clinical study has shown that
+elevated serum IL-8 levels correlate with higher-stage breast tumors [316], invasiveness
+and poor prognosis [299,317]. CXCL8-CXCR1/2, as a key driver of immune suppression,
+may interfere with the differentiation and function of stromal and immune cells in the TME,
+ultimately affecting immunotherapy [318,319]. Therefore, blocking the CXCL8-CXCR1/2
+axis by using small molecules or antibodies were testes, such as SB225002 (CXCL8 inhibitor
+binding to CXCR2) [320] to inhibit tumor progression in HER2+ breast cancer [321], and
+danirixin (GSK1325756) to suppress cancer migration, invasion, and metastasis. Finally,
+various orally active small-molecule non-competitive antagonists of CXCR1 and CXCR2,
+such as SCH527123 (Merck) [322], repertaxin (Dompé, Milan, Italy), and SCH479833 (Merck,
+Whitehouse Station, NJ, USA), have demonstrated anti-tumor effects in breast cancer
+xenograft models [323].
+7. Interleukin-17A (IL-17A)
+IL-17A is the founding member of the IL-17 family of pro-inﬂammatory cytokines
+associated with allergic responses [324]. In humans, increased IL-17A level is associated
+with infections, antimicrobial immunity, chronic inﬂammatory diseases, obesity, and au-
+toimmune diseases [325,326]. Following stimulation of CD4+ T cells by cytokines, such
+as IL-6, TNFα, IL-21, IL-23, TGF-β, and IL-1β, a naïve CD4+ T cell differentiates into an
+inﬂammatory class of Th17 cells [130,131] and secretes IL-17A. It is primarily produced by
+a group of Th cells known as Th17 cells [132], in response to their stimulation by IL-23 [327].
+It is also produced by other cells, such as CD8+ T cells, γδ T cells, NKT, and NK cells [328].
+Both STAT3 and NF-κB signaling pathways are required for this cytokine-mediated IL-17
+Int. J. Mol. Sci. 2023, 24, 4002
+16 of 40
+production [130,329]. Additionally, the RAR-related orphan nuclear receptor-γt (RORγt) is
+the most speciﬁc transcription factor promoting Th17 cell differentiation [330]. The most
+notable role of IL-17 is its involvement in the induction and mediation of proinﬂamma-
+tory responses under inﬂammatory conditions through the stimulation of many cell types
+(macrophages, ﬁbroblasts, endothelial cells) to produce other cytokines, such as TNFα,
+IL-1β, IL-6, CSF, TGF-β, and chemokines, including IL-8 to amplify the inﬂammatory
+response [326,331,332].
+Biologically active IL-17A interacts with the type I single-pass transmembrane protein,
+IL-17R cell surface receptor. It can be expressed by T cells [333], macrophages, ﬁbroblasts,
+endothelial, epithelial, and cancer cells. Following binding to its receptor, IL-17 activates
+several signaling cascades that, in turn, lead to the induction of chemokines and the
+recruitment of immune cells, such as neutrophils and monocytes to the site of inﬂammation.
+It stabilizes RORγt important pathways that have become a focus around the IL-17 cytokine
+family, including NF-κB [334], and the production of IL-6 and TGFβ, and IL-1β signaling
+pathways that induce the expression of several proinﬂammatory cytokines.
+High levels of IL-17A in the breast microenvironment are associated with the highly
+invasive and aggressive phenotype of breast cancer. IL-17A induces activation of ERK1/2
+phosphorylation, p38 MAPK and STAT3 (IL-6-STAT3) signaling pathways, and promotes
+tumor growth [133], tissue invasion, tissue-remodeling and matrix degrading substances
+(such as MMPs, including MMP2 and MMP9) [335], migration [134], inhibition of apoptosis,
+and angiogenesis [336] (via activation of VEGF and CXCL8 expression [57]). IL-17A can
+stimulate breast tumorigenesis and, in turn, CAFs, γδT and breast tumor cells increase
+Th17 cell recruitment and IL-17A production [337]. Tumor-derived IL1β activates γδ T
+to produce high levels of IL-17, which leads to neutrophil expansion and altered neu-
+trophil phenotype. Neutrophils produce inducible nitric oxide synthase (iNOS), which
+inhibits the activity of anti-tumor CD8+ T-cells and subsequently stimulates cancer pro-
+gression [338], migration, invasion, and metastasis [339]. Interestingly, IL-17 increases
+expression of MMP-9, indoleamine 2,3-dioxygenase, COX-2, and MMP-13. furthermore,
+IL-17 up-regulates the gene expression corresponding to M2-type TAMs. IL-17 acts alone or
+in synergy with other stimuli (such as TNFα and IFN-γ) to activate the expression of many
+genes, including cytokines, such as IL-6, IL-19, IL-20, IL-24, TNFα, and granulocyte-CSF,
+chemokines, such as IL-8, CXCL1, CXCL2, CXCL5, CXCL9, CXCL10, C-C motif ligand
+2 (CCL2), CCL7, and CCL20 [326,332,340,341], MMP13, receptor activator of nuclear factor
+kappa-B ligand (RANKL), and antimicrobial peptides (lipocalin 2, β-defensin-2, S100A7,
+and S100A8/9) [326] (Figures 1 and 2).
+A better understanding of the character of Th17 cells in tumor immunity should gen-
+erate opportunities for the progression of new therapeutic approaches for cancer patients.
+Therefore, different strategies should be used depending on the type of cancer and the
+clinical inﬂuence of IL-17 in tumor development. For example, the use of neutralizing
+antibodies against Th17-related cytokines has been shown to decrease EMT and signiﬁ-
+cantly inhibit progression and metastasis of lung cancer [342] and control invasive breast
+tumors [343]. Similarly, because the absence of γδ T cells or neutrophils profoundly reduces
+metastasis without inﬂuencing primary tumor progression, regulation of the Treg/Th17
+axis, inhibition of the γδ/IL-17/neutrophil axis, and blockade of IL-17RB in cancer cells
+could be an effective therapeutic approach in breast cancer [57,344].
+8. Interleukin-23 (IL-23)
+IL-23 is a heterodimeric proinﬂammatory cytokine that belongs to the IL-12 cytokine
+family. These two share a common p40 subunit that is covalently linked either to p35
+subunit to form IL-12 or to p19 subunit to form IL-23 [345]. It is a key cytokine for the dif-
+ferentiation, maintenance, and expansion of Th17 cell, as discussed earlier [345,346]. IL-23
+is mainly produced by DCs and macrophages, but also by monocytes, neutrophils, innate
+lymphoid cells [121–123], γδ T cells, B cells, and M2/TAM cells [347]. The heterodimeric
+IL-23 cytokine receptor is composed of IL12Rβ1 (receptor for IL-12) that signals through
+Int. J. Mol. Sci. 2023, 24, 4002
+17 of 40
+tyrosine kinase-2 (TYK2), and IL-23R that signals through JAK2 to activate STAT3 [124,125].
+IL-23 receptors can be expressed in T cells, NK cells, NKT cells, tumor cells and are weakly
+expressed on monocytes, macrophages, and DC populations [124].
+Within the immune and inﬂammatory microenvironment, IL-23 participates in the
+progression of chronic inﬂammation and its maintenance and plays a critical role in autoim-
+mune diseases (via IL-23/IL-17 immune axis) [123,348,349]. Notably, it can manipulate host
+immune responses and modulate TME cells. IL-23 is a key cytokine for the differentiation,
+maintenance, and expansion of Th17 cells via activation of STAT3, which in turn stabilizes
+RORγt, as previously detailed.
+It has been identiﬁed as a link between tumor-associated inﬂammation and tumor
+immune evasion [129], and can directly affect a variety of premalignant and malignant
+tumors. IL-23 is involved in breast carcinoma cell metastasis [349] and is associated with
+higher breast cancer tumor size and stages [350]. The pro-tumorigenic role of IL-23 was
+ﬁrst reported by Langowski et al., where its genetic blockade resulted in increased cytotoxic
+T cell tumor inﬁltration [129]. It has been shown to activate the NF-κB signaling and
+then induces immune cell activation which exacerbates inﬂammation and promotes tumor
+growth. IL-23 decreases inﬁltration of Treg and CD8+ T cells [126] to promote the inﬁltration
+of M2-type macrophages and neutrophil cells and their overexpression and secretion of pro-
+tumor immunosuppressive cytokines [126], such as TGF-β and IL-10. Furthermore, IL-23
+increases the expression of endothelial and angiogenic markers, such as VEGF [129,351],
+MMP9, CD31, and the proliferative marker Ki67 in tumors [126,352]. In turn, mammary
+tumor cells produce IL-6, VEGF, CCL22 to recruit TAMs, which stimulate IL-23 production
+and maintain the suppressive activity of Treg in the TME [353] (Figures 1 and 2).
+In conclusion, IL-23 has been shown to play multifunctional roles in tumorigenesis
+by inhibiting anti-tumor effector immunity. It provides an important molecular link be-
+tween the tumor-promoting inﬂammatory response and the failure of adaptive immune
+surveillance to inﬁltrate tumors [354]. Therefore, injectable IL-23 inhibitor drugs, such as
+guselkumab/Tremfya, risankizumab-rzaa/Skyrizi and tildrakizumab-asmn/Ilumya [355],
+blocking-up the process of IL-23 (M2 and neutrophils), neutralizing antibodies speciﬁc to
+IL-23p19 (G23-8 antibody can down-modulate MMP9 expression and increased surveil-
+lance of CD8+ T cells), and IL-23p19 antagonists can provide effective anti-tumor ther-
+apy [126,129,356,357].
+9. Interleukin-12 (IL-12)
+IL-12 is a member of a small family of heterodimeric pro-inﬂammatory cytokines [345],
+produced and expressed primarily by APCs, such as DCs and activated macrophages,
+depending on the immune context [356,358]. Despite its similarities to IL-23, IL-12 may be
+able to stimulate effector cells of innate and adaptive immunity, activate macrophage polar-
+ization to M1 type, and enhance anti-tumor cytotoxic immune responses in the TME [135].
+The IL-12 receptor comprises IL-12Rβ1 and IL-12Rβ2 subunits and is commonly expressed
+in T cells, NK cells, NKT cells, monocytes, macrophages, and DC populations [124].
+Following binding of IL-12 to its receptor expressed on target cells, phosphorylation
+and homo-dimerization of STAT4 are promoted by JAK2 and TYK2 [135]. Therefore,
+activated STAT4 in CD4+ T cells induces transcription of the transcription factor T-box
+(T-bet) that can control IFN-γ production by Th1 cells [359], whereas in combination
+with STAT4, it enhances transcription of IL-12Rβ1, regulates Th1 cell differentiation and
+promotes expression and activation of Th1-associated receptors [360,361].
+IL-12-mediated Th1 activation releases Th1-speciﬁc cytokines, including IFN-γ, to
+solicit and recruit cytotoxic NK and CD8+ T cells. IL-12 promotes the differentiation of
+naïve CD8+ T cells to the effector phenotype and acts as a CD8+ T-anti-apoptotic factor
+that can directly destroy microorganisms and cancer cells through the release of perforin
+and proteolytic enzymes [362,363]. Overall, IL-12 targets and modulates Th1, CD8+ T, NK,
+and APC cells that regulate immune surveillance, effective antimicrobial and cytotoxic
+activity [360,364]. Thus, it promotes efﬁcient anti-tumor responses [360,365], cancer cell
+Int. J. Mol. Sci. 2023, 24, 4002
+18 of 40
+elimination, and tumor clearance in many cancers, such as breast cancer [366], through
+inhibition of the PI3K/AKT/mTOR signaling pathway. In addition, T-bet and STAT4
+down-regulate RORγt, which limits the generation and proliferation of Th17 and Treg
+within the tumor [367,368]. Furthermore, it up-regulates MHCI on tumor cells to facili-
+tate self-antigen presentation, increases the production of chemokines, such as CXCL9,
+CXCL10, CXCL11, and IFN-γ to attract effector immune cells, such as CD8+ T, NKs, and M1
+macrophages [369,369]. In addition, IL-12 can increase the inﬁltration of IFN-γ-producing
+NK cells where, mechanistically, activation of IFN-γ signaling inhibits the proliferation of
+Tregs and subsequently converts them into IFN-γ-producing T cells [370]. Thus, it enhances
+the body’s immune response against cancer [371], promotes cancer cell apoptosis, increases
+MHCI expression on APCs, and down-regulates intratumor VEGF [372] (Figures 1 and 3).
+Int. J. Mol. Sci. 2023, 24, x FOR PEER REVIEW 
+19 of 43 
+ 
+ 
+directly destroy microorganisms and cancer cells through the release of perforin and 
+proteolytic enzymes [362,363]. Overall, IL-12 targets and modulates Th1, CD8+ T, NK, and 
+APC cells that regulate immune surveillance, effective antimicrobial and cytotoxic activity 
+[360,364]. Thus, it promotes efficient anti-tumor responses [360,365], cancer cell elimination, 
+and tumor clearance in many cancers, such as breast cancer [366], through inhibition of the 
+PI3K/AKT/mTOR signaling pathway. In addition, T-bet and STAT4 down-regulate RORγt, 
+which limits the generation and proliferation of Th17 and Treg within the tumor [367,368]. 
+Furthermore, it up-regulates MHCI on tumor cells to facilitate self-antigen presentation, 
+increases the production of chemokines, such as CXCL9, CXCL10, CXCL11, and IFN-γ to 
+attract effector immune cells, such as CD8+ T, NKs, and M1 macrophages [369,369]. In 
+addition, IL-12 can increase the infiltration of IFN-γ-producing NK cells where, 
+mechanistically, activation of IFN-γ signaling inhibits the proliferation of Tregs and 
+subsequently converts them into IFN-γ-producing T cells [370]. Thus, it enhances the body’s 
+immune response against cancer [371], promotes cancer cell apoptosis, increases MHCI 
+expression on APCs, and down-regulates intratumor VEGF [372] (Figures 1 and 3). 
+ 
+Figure 3. Reciprocal crosstalk and immunoregulation between immune cells by IL-12 and IL-2. DC: 
+dendritic cell; IFN: interferon; IL: interleukin; M: macrophage; N: neutrophil; NK: natural killer cell; 
+Th: T-helper cell; Treg: regulatory T cell; γδT: gamma delta T cells; Th17: T-helper cell 17. 
+Therefore, IL-12 can be considered a strong candidate for immunotherapy-based 
+interventions. It may be beneficial in controlling tumor growth by activating effective anti-
+tumor cytotoxic immune responses and killing tumor cells by tumor-specific cytotoxic NK 
+and CD8+ T cells [373,374]. Recombinant human IL-12 (rhIL-12) is currently in clinical trials 
+for the treatment of cancer and may also play a beneficial role in synergy with chemotherapy 
+(through activation of NK cells) and radiation therapy (reducing complications) 
+[356,375,376]. Various therapies have been devised. For advanced solid tumors, such as 
+breast, a mRNA-based IL-12 delivery (SAR441000), an mRNA mixture encoding IL-12sc, 
+interferon alpha2b, GM-CSF, and IL-15sushi/ is being evaluated [374]. 
+10. Interleukin-2 (IL-2) 
+IL-2 is a pro-inflammatory cytokine, doted of the anti-tumor response [377]. It was 
+firstly identified by Morgan and colleagues in 1976 as “T-cell growth factor” (TCGF) [378]. 
+Among other things, IL-2 can modulate the differentiation of CD4+ T cells into Th1 and Th2 
+[147], increase the cytolytic activity of NKs, induce the development of Treg and cytotoxic 
+T cells (CD8+ T cells), while it can both inhibit the differentiation of Th17, but also stimulate 
+their expansion [148]. In addition, IL-2 promotes autocrine survival and cytolytic activity of 
+T and NK cells in anti-tumor immunity [379]. The main sources of IL-2 are antigen-
+Figure 3. Reciprocal crosstalk and immunoregulation between immune cells by IL-12 and IL-2. DC:
+dendritic cell; IFN: interferon; IL: interleukin; M: macrophage; N: neutrophil; NK: natural killer cell;
+Th: T-helper cell; Treg: regulatory T cell; γδT: gamma delta T cells; Th17: T-helper cell 17.
+Therefore, IL-12 can be considered a strong candidate for immunotherapy-based
+interventions. It may be beneﬁcial in controlling tumor growth by activating effective anti-
+tumor cytotoxic immune responses and killing tumor cells by tumor-speciﬁc cytotoxic NK
+and CD8+ T cells [373,374]. Recombinant human IL-12 (rhIL-12) is currently in clinical trials
+for the treatment of cancer and may also play a beneficial role in synergy with chemotherapy
+(through activation of NK cells) and radiation therapy (reducing complications) [356,375,376].
+Various therapies have been devised. For advanced solid tumors, such as breast, a mRNA-
+based IL-12 delivery (SAR441000), an mRNA mixture encoding IL-12sc, interferon alpha2b,
+GM-CSF, and IL-15sushi/ is being evaluated [374].
+10. Interleukin-2 (IL-2)
+IL-2 is a pro-inﬂammatory cytokine, doted of the anti-tumor response [377]. It was
+ﬁrstly identiﬁed by Morgan and colleagues in 1976 as “T-cell growth factor” (TCGF) [378].
+Among other things, IL-2 can modulate the differentiation of CD4+ T cells into Th1 and
+Th2 [147], increase the cytolytic activity of NKs, induce the development of Treg and
+cytotoxic T cells (CD8+ T cells), while it can both inhibit the differentiation of Th17, but
+also stimulate their expansion [148]. In addition, IL-2 promotes autocrine survival and
+cytolytic activity of T and NK cells in anti-tumor immunity [379]. The main sources of
+IL-2 are antigen-stimulated CD4+ T cells, but it can also be produced by activated CD8+ T
+cells [136], activated DCs, and NK cells [137,138].
+IL-2 exerts its effects by binding to the IL-2 receptor subunits, IL-2Rα (CD25), IL-2Rβ
+(CD122), and IL-2Rγ (CD132), with different afﬁnities [380,381]. The α chain is unique
+Int. J. Mol. Sci. 2023, 24, 4002
+19 of 40
+to IL-2 and binds it with low afﬁnity, without transducing a signal because of its short
+intracellular chain [382]. IL-2Rβ is the key component of the IL-15 receptor, whereas
+the γ chain is shared by the receptors for IL-2, IL-4, IL-7, IL-9, IL-15, and IL-21 [136].
+Notably, the α chain functions to initially bind IL-2, which localizes it to the cell surface,
+effectively increasing its concentration and also inducing a conformational change in IL-
+2R. Heterodimerization of the intermediate (IL-2Rβγ) and high afﬁnity (IL-2Rαβγ) [383]
+receptor is essential for the activation of several IL-2 transducers and T cell signaling [384].
+IL-2Rα can be expressed by naïve T cells (can be triggered rapidly by T cell receptor TCR),
+activated CD4+ and CD8+ T cells, mature DCs, B cells, and endothelial cells [144–146]. In
+addition, Tregs and some NK cells can also express high levels of the α chain after the
+IL-2 stimulation [385], allowing them to consume IL-2 more efﬁciently than CD4+ and
+CD8+ effector, even at low levels [386] (Figure 2). The IL-2Rβ is mainly expressed by Treg,
+memory CD8+ T cells, and NK cells. The intracellularly stored IL-2Rγ subunit is expressed
+primarily by hematopoietic cells [387], some tumor cells [143], and by CD4+ T only during
+activation [388], whereas the dimeric IL-2Rβγ receptor is expressed by memory CD8+ cells,
+naïve, T, and NK cells. Tregs and activated T cells express high levels of trimeric IL-2Rαβγ
+complex [387].
+Further binding of IL-2 to its receptor, IL-2Rβγ or IL-2Rαβγ complex, results in ac-
+tivation of the JAK1 and JAK3, which activate the recruitment and phosphorylation of
+STAT transcription factors, primarily STAT5, but also STAT1 and STAT3. Subsequently,
+three major signaling pathways, including PI3K-AKT, JAK-STAT, and MAPK/ERK are acti-
+vated [149] to mediate cell growth, survival, and differentiation, and cytokine production
+(IL-4, IL-6, IL-12) [150,151]. Thus, in breast cancer [389], IL-2 plays an anti-tumor effect [390]
+due to increased recruitment of IL-2-releasing NK cells and the induction of anti-apoptotic
+function in CD8+ T cells [391], the main effector of the antitumor response [392]. IL-2 can
+promote activation and proliferation of CD8+ T cells in early tumor stage but can deplete
+CD8+ T cells in late tumor stage [393] (Figure 1).
+The multiple effects of IL-2 signaling on the different cell types present in the TME
+may be beneﬁcial in developing T cells and controlling tumor growth by activating effective
+antitumor cytotoxic immune responses and killing tumor cells. Thus, IL-2 administration
+and adoptive transfer of antitumor T cells cultured with IL-2 have represented highly
+effective therapies in patients with solid human cancers, such as metastatic renal cancer,
+and melanoma [33,386].
+11. Interferon-γ (IFN-γ)
+IFN-γ is named after its ability to interfere with virus growth [24]. It is a pluripotent
+cytokine that plays a controversial role in the immunomodulation, anti-microbial/anti-viral
+host defense, allergies [165,166], autoimmune diseases [168], obesity [167], and antitumor
+immunity [25]. It enhances the response to inﬂammatory molecules (TLR ligands and
+TNF [394]), cytotoxic function of NK cells [395], and the number of M1-macrophages [396]
+to provide phagocytic activity [397,398]. It is an important autocrine signal in the innate im-
+mune response and a paracrine signal in the adaptive response [399]. During inﬂammation,
+CD4+ Th1 cells are the main source of IFN-γ that promotes IFN-γ production by Th1 and
+NK cells [400,401]. IFN-γ triggers the activation of the proinﬂammatory response [169] by
+promoting differentiation of naïve CD4+ T cells into Th1 and Th2 cells [171], increasing the
+killing capacity of CD8+ T cells [172] and decreasing the proliferation of Tregs [173]. In DCs,
+IFN-γ signaling contributes to their maturation, production of IL-12, IL-1β, and activation
+of CD4+ and CD8+ T-cells [402]. These cells can be stimulated in an inﬂammatory or tumor
+microenvironment by antigens secreted by the tumor or pathogen [403], IFN-γ itself via
+positive feedback [404], or IL-12, IL-15, and IL-18 [405,406] to activate IFN-γ production.
+IFN-γ has been shown to interact with a heterodimeric receptor composed of two sub-
+units, IFN receptor 1 (IFNGR1) and IFN receptor 2 (IFNGR2), expressed on the surface of
+nearly all types of cells to regulate the immune response [407,408]. Secreted IFN-γ binds to
+its receptor (IFNGR1/2) and can activate the JAK(1/2)-STAT pathway (1/3/4) [160,161],
+Int. J. Mol. Sci. 2023, 24, 4002
+20 of 40
+AP-1 [409] and subsequently the up-regulation of interferon regulatory factor 1 (IRF1) and
+interferon-stimulated genes (ISGs), including those for MHC presentation [394,410,411].
+In the TME, the concentration of IFN-γ determines whether the function will be anti
+or pro-tumorigenic. A high dose of IFN-γ stimulates JAK-STAT1 signaling [155,412,413]
+and can induce cancer cell death and apoptosis. However, low doses of IFN-γ produced at
+the tumor site by host-inﬁltrating cells or during immunotherapy can enhance tumor cell
+survival, induce risk of metastasis and expression of EMT transcription factors [174,175]
+via activation of ICAM1-PI3K-Akt-Notch1 signaling in cancer cells [414]. IFN-γ production
+by NK, NKT, CD8+ T, Th1, and γδ T cells stimulates and enhances immunorecognition,
+recruitment of immune cells to tumor sites and subsequently increases the ability to kill
+tumor cells [406], by improving the anti-proliferative status of cancer cells (growth inhi-
+bition, cell death, autophagy) [415], tumor cell antigenicity, and metastasis reduction by
+up-regulating ﬁbronectin [155]. IFN-γ arrests the cell cycle and initiates apoptosis in tumor
+cells (up-regulation of p21 and p27 [416], granzyme B and perforin [417,418]). In addition,
+IFN-γ can increase the destruction of established tumor-associated blood vessels [419,420],
+inhibit the migration of TAMs to enhance the efﬁcacy of anti-PD1 antibody therapy [421]
+(Figures 1–3).
+Chronic high-dose IFN-γ release [422], loss of the IFN-γ receptor [423], prolonged
+IFN-γ signaling in tumor cells, and PD-L1 expression (cancer and immune inﬁltrating
+cells) [424,425], may induce apoptosis in CD4+ T-cells, suppress immune and secondary
+antitumor immune response [176], cause immune evasion adaptive immune resistance to
+immune checkpoint therapy [177]. Therefore, IFN-γ is believed to be one of the critical
+factors determining the success of immunotherapy because dysregulation of IFN-γ respon-
+siveness and/or signaling is often associated with resistance to immunotherapy [426–429].
+12. Interleukin 10 (IL-10)
+IL-10 is known as human cytokine synthesis inhibitory factor [430], with multiple and
+pleiotropic effects in immunoregulation, infection, inﬂammation, autoimmunity, transplan-
+tation, and tumorigenesis [431]. It is a cytokine with potent anti-inﬂammatory properties
+by repressing the expression of inﬂammatory cytokines, such as TNF-α, IL-6, and IL-1 and
+is considered one of the most crucial immunosuppressive cytokines in tumor progression.
+In general, IL-10 is mainly produced by Th2, Th1, Treg [178], and Th17, and also by CD8+ T
+cells, monocytes, macrophages, DCs [179], B cells [180], mast cells, eosinophils [181], ker-
+atinocytes, epithelial cells, and even some tumor cells [182,183]. The IL-10-producing cell
+type depends on the inducing stimulus, e.g., Th1, Th17 cells, and macrophages represent
+an important source of IL-10 in infectious diseases [432].
+IL-10 receptor is a two-receptor complex consisting of two copies of IL-10 receptor
+1 (IL-10R1) and IL-10R2 [430]. Both subunits belong to the class II cytokine receptor family.
+IL-10R1 forms speciﬁc high-afﬁnity interactions with IL-10, whereas IL-10R2 is a shared
+low-afﬁnity receptor that participates in receptor complexes with other cytokines, such
+as IL-22, IL-26, IL-28, IFN-γ, and IL-29, which play critical roles in host defense [433].
+DCs [184], T cells, B cells, NK, Treg, and mast cells express IL-10R1, whereas the IL-10R2
+subunit is ubiquitously expressed. In humans, IL-10 ﬁrst binds to IL10R1, and then this
+complex binds to IL10R2, forming a heterotetramer (two IL10R1/two IL10R2), allowing the
+assembly of the IL-10R complex, which is the ﬁrst step in the initiation of IL-10 signaling
+pathways. Once the complex is assembled, Jak1 and Tyk2 associated with IL-10R1 and
+IL-10R2, respectively, are activated and phosphorylate the intracellular cytoplasmic tails
+of the IL10R1 subunit. This results in the recruitment and phosphorylation/activation
+of STAT3 and STAT1 or STAT5 under certain conditions [430]. STAT3 is most notably
+associated with IL-10 signaling, recruited to IL-10R1 [434] upon IL-10 binding, driving
+the expression of anti-inﬂammatory mediators that block various inﬂammatory pathways.
+The silencing of STAT3 and suppressor of cytokine signaling 3 (SOCS3) protein reduces
+the IL-10 expression [435]. In addition, IL-10 is involved in MAPK inhibition and/or
+activation of a PI3K/AKT inhibitory pathway [183] and can inhibit NF-κB translocation
+Int. J. Mol. Sci. 2023, 24, 4002
+21 of 40
+to the nucleus and DNA binding [436], whereas hyper induction and production of high
+levels of IL-10 are due to MAPK/ERK activation. In macrophages, IL-10 activates the
+PI3K/Akt/GSK3 β-signaling cascade and modulates downstream transcription [437] and
+PI3K-mediated mTORC1 activity in monocytes [438]. The IL10 response leads to the expres-
+sion of anti-inﬂammatory mediators that block various inﬂammatory pathways, therefore
+has prominent role in regulating intestinal inﬂammation, tumor immunosuppression, viral
+infection, allergic reactions [185]. For example, IL-10 down-regulates the expression of
+co-stimulatory molecules on macrophages, differentiation and maturation of DCs, activa-
+tion of CD4+ Tcells [188,189]. It also inhibits the production of proinﬂammatory cytokines
+such as IL-1β, IL-6, IL-8, IL-12, IL-18, CSF, and TNF-α, suppresses Th1-associated cytokines
+(IL-2, IFN-γ) [186], and stimulates B and NK cell survival and proliferation, as well as their
+production of antibodies and cytokines [187].
+The role of IL-10 in modulating the tumor immune response appears to be dependent
+on the TME and the number of IL-10 receptors expressed on immune cells. IL10 is primarily
+produced and expressed by M2/TAM, lymphocytes and cancer cells [439]. It contributes
+positively to tumor growth and promotion (STAT3 in cancer cells), angiogenesis, tumor
+escape, and metastasis [191]. Furthermore, IL-10 levels increases TGF-β excretion in Treg
+cells and macrophages and then promotes EMT [190]. Similarly, TGF-β in combination
+with IL-6, induces IL-10 secretion by Th-17 cells [440]. In addition, IL-10 can suppress T-cell
+proliferation and activity in breast cancer [191] and inhibit T-cell-stimulated anti-tumor im-
+munity by down-regulating MHC class II (APC). IL-10 produced by TAMs and activation of
+the IL-10/STAT3/BCL-2 signaling pathway have been reported to contribute to therapeutic
+resistance in irradiation, chemotherapy and immunotherapy [441,442] (Figures 1 and 2).
+Therefore, targeting IL-10 may provide a new therapeutic opportunity for cancer. The
+use of PEG-IL-10 (pegilodecakin) and anti-PD-1 (pembrolizumab or nivolumab)) treatment
+to suppress Il-10 signaling [443] or PEGylated human IL-10 (PEG-rhuIL-10), has been
+designed for clinical use in patients with advanced solid tumors. These strategies are
+effective in stimulating IFN-γ secretion, perforin, and granzyme B production by CD8+ T
+cells and decreasing TGFβ levels [444].
+13. Conclusions
+The microenvironment signiﬁcantly affects immune cell response, activation, differ-
+entiation, and cytokine secretion. It can enhance the pro- and antitumorigenic response,
+mediate inﬂammation and oncogenesis depending on cytokine interference. Many solid
+tumors, including breast cancer, are composed of heterogeneous cell populations that
+interact in complex networks through a mixture of cytokines. These are generated by innate
+or adaptive immune cells, immunocompetent cells, stromal cells, and some cancer cells to
+inhibit tumor growth, such as IL-2, IL-12, IFNs, or promote tumorigenesis, proliferation,
+and/or invasion, such as, IL-23, IL-17, TGF- β, IL-10, and some adipokines including leptin,
+TNFα, IL-1β, and IL-6. Adipokines may contribute to an obesity-related state of low-grade
+inﬂammation, regulate energy expenditure, inﬂammation, cancer growth, progression,
+and metastasis. Therefore, inﬂammatory cytokines generated by cancer-associated cells,
+such as TAMs, CAFs, Th17s, and Tregs, can be expressed by both immune and cancer
+cells and promote breast cancer, and especially cancer-associated inﬂammation, such as
+obesity-associated breast cancer. Thus, they induce tumor-associated inﬂammation, prolif-
+eration, survival, progression, escape, migration, invasiveness, and metastasis of cancer.
+They decrease the inﬁltration of Th1, CD8+ T cells, NKs, Tregs, promote the inﬁltration of
+Th2, M2/TAMs and CAFs and their secretion of pro-tumor immunosuppressive cytokines.
+Figure 2 summarizes the crosstalk and the immunoregulation between all of these actors.
+Although they can be activated, such as JAK/STAT, PI3K, AKT, Rac, MAPK, JunB, cFos,
+and mTORC, involved in the activation of proliferation, survival, differentiation, and cell
+migration, NF-κB, JNK, and P38 are involved in inﬂammation, metastatic protein (MMP,
+COX-2), and anti-apoptotic protein (Bcl-XL). Thus, it forms an immunosuppressive microen-
+vironment to enhance tumorigenicity, cancer cell motility (via MMP9 expression, PI3K-Akt
+Int. J. Mol. Sci. 2023, 24, 4002
+22 of 40
+signaling), EMT (FoxC1 in cancer cells), and angiogenesis (activation of Ras/MAPK/PI3K,
+NF-κB/VEGF). In the Figure 1, TYK2-mediated JAK/STAT signaling network is repre-
+sented. Moreover, for tumor clearance and effective anti-tumor responses, many cytokines
+attract effector immune cells, such as NKs, NKTs, M1s, CD8+ T cells, APC, and Th1, to
+regulate immune surveillance, cytotoxic activity, and anti-apoptotic factors for CD8+ T
+cells. In addition, they can stimulate the secretion of perforin, proteolytic enzymes, and
+cell adhesion molecules and inhibit tumor induced Treg cells that suppress effector T cells
+and impair the body’s immune response against cancer. Because of the critical role of cy-
+tokines in the progression of various disorders, such as cancer, understanding the crosstalk
+between cytokines can provide important insights into immune-related mechanisms of
+cancer development, and this knowledge can then be applied to cancer treatment.
+Author Contributions: Conceptualization, O.H. and L.D.; Writing—original draft preparation, O.H.;
+writing and editing, R.B., L.D., M.D.-A., C.D. and F.C.-C. All authors have read and agreed to the
+published version of the manuscript.
+Funding: This research was funded by institutional support from the Institut national de recherche
+pour l’agriculture, l’alimentation et l’environnement (INRAE) and “La Ligue contre le Cancer”.
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Data Availability Statement: Not applicable.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+Abbreviations
+4EBP1
+eukaryotic translation initiation factor 4E-binding protein 1
+ACT1
+NF-κB activator 1
+Akt
+protein kinase B
+ANGPTL4
+angiopoietin-like 4
+AP-1
+activating protein-1
+APC
+antigen-presenting cell
+ART
+adipose-resident T cells
+ASK1
+apoptosis signaling kinase 1
+bFGF
+basic ﬁbroblast growth factor
+BSF-2
+B-cell stimulating factor-2
+CAFs
+cancer-associated ﬁbroblasts
+CASP1
+caspase 1
+CCL
+C-C motif ligand
+CLS
+crown-like structures
+COX2
+cyclo-oxygenase-2
+CSFs
+colony-stimulating factors
+CXCL
+C-X-C motif ligand
+DCs
+dendritic cells
+EGF
+epidermal growth factor
+ELK
+E26 transformation-speciﬁc like-1 protein
+EMT
+epithelial-to-mesenchymal transition
+ERK
+extracellular signal-regulated kinase
+FADD
+Fas-associated protein with death domain
+FAK
+focal adhesion kinase
+FXR
+farnesoid X receptor
+γδT
+γδT lymphocytes
+GAB1/2
+GRB2-associated-binding protein 1 or 2
+GRB2
+growth factor receptor-bound protein 2
+HIF-1α
+hypoxia-inducible factor-1α
+Int. J. Mol. Sci. 2023, 24, 4002
+23 of 40
+IFNγ
+interferon-γ
+IKK-β
+inhibitor of nuclear factor kappa-B kinase subunit beta
+IL
+interleukin
+IL-1β
+interleukin-1β
+IL-6
+interleukin-6
+IL-6R
+IL-6 receptor
+IL-8
+interleukin-8
+IL-10
+interleukin-10
+iNOS
+inductible nitric oxide synthase
+IRAK
+interleukin-1 receptor-associated kinase
+IRF4
+interferon regulatory factor 4
+IRS
+insulin receptor substrate
+JAK
+Janus kinase
+JNK
+c-Jun N-terminal kinase
+LPS
+lipopolysaccharides
+MAPK
+mitogen-activated-protein kinase
+MCP-1
+monocyte chemoattractant protein-1
+MDSC
+myeloid-derived suppressor cells
+MEKK
+mitogen-activated protein kinase kinase
+MEK/MKK
+mitogen-activated protein kinase kinase
+MHC
+major histocompatibility complex
+MMP
+matrix metallopeptidase
+mTOR
+mammalian target of rapamycin
+MYC
+myelocytomatosis oncogene
+MYD88
+myeloid differentiation primary response 88
+NFAT
+nuclear factor associated with activated T cells
+NF-κB
+nuclear factor kappa-light-chain-enhancer of activated B cells
+NK
+natural killer
+NKT
+natural killer T
+ObR
+leptin receptor
+PDK1
+phosphoinositide-dependent kinase-1
+PTB
+phosphotyrosine-binding domains
+PI3K
+phosphatidylinositol 3-kinase
+PIP3
+phosphatidylinositol-3,4,5-trisphosphate
+PKC
+protein kinase C
+PLC
+phospholipase C
+RAF
+rapidly accelerated ﬁbrosarcoma
+RANKL
+receptor activator of nuclear factor kappa-B ligand
+RAS
+rat sarcoma virus
+RIP
+ribosome-inactivating protein
+RORγt
+RAR-related orphan nuclear receptor-γt
+ROS
+reactive oxygen species
+SHC
+SHC (Src homology 2 domain containing) transforming protein
+SHP2
+Src homology region 2-containing protein tyrosine phosphatase
+SOCS3
+suppressor of cytokine signaling 3
+SOS
+son of sevenless
+SRC
+proto-oncogene, non-receptor tyrosine kinase
+STAT
+signal transducer and activator of transcription
+TAB
+mitogen-activated protein kinase kinase kinase 7-interacting protein
+TAK
+mitogen-activated protein kinase kinase kinase 7
+TAMs
+tumor-associated macrophages
+TANs
+tumor-associated neutrophils
+TGF-β
+transforming growth factor-β
+Th1
+T-helper 1
+Th2
+T-helper 2
+Th17
+T-helper 17
+Tregs
+regulatory T cells
+Int. J. Mol. Sci. 2023, 24, 4002
+24 of 40
+TLRs
+toll-like receptors
+TME
+tumor micro-environment
+TNFα
+tumor necrosis factor-α
+TNFR
+tumor necrosis factor-α receptor
+TRADD
+tumor necrosis factor receptor type 1-associated DEATH domain protein
+TRAF
+tumor necrosis factor receptor-associated factors
+TYK
+tyrosine kinase
+VEGF
+vascular endothelial growth factor
+References
+1.
+Yazdanifar, M.; Barbarito, G.; Bertaina, A.; Airoldi, I. γδ T Cells: The Ideal Tool for Cancer Immunotherapy. Cells 2020, 9, 1305.
+[CrossRef]
+2.
+Chaplin, D.D. Overview of the immune response. J. Allergy Clin. Immunol. 2010, 125, S3–S23. [CrossRef] [PubMed]
+3.
+Deng, T.; Lyon, C.J.; Minze, L.J.; Lin, J.; Zou, J.; Liu, J.Z.; Ren, Y.; Yin, Z.; Hamilton, D.J.; Reardon, P.R.; et al. Class II Major
+Histocompatibility Complex Plays an Essential Role in Obesity-Induced Adipose Inﬂammation. Cell Metab. 2013, 17, 411–422.
+[CrossRef] [PubMed]
+4.
+Ohue, Y.; Nishikawa, H. Regulatory T (Treg) cells in cancer: Can Treg cells be a new therapeutic target? Cancer Sci. 2019, 110,
+2080–2089. [CrossRef]
+5.
+Xiong, S.; Dong, L.; Cheng, L. Neutrophils in cancer carcinogenesis and metastasis. J. Hematol. Oncol. 2021, 14, 173. [CrossRef]
+[PubMed]
+6.
+Habanjar, O.; Diab-Assaf, M.; Caldeﬁe-Chezet, F.; Delort, L. The Impact of Obesity, Adipose Tissue, and Tumor Microenvironment
+on Macrophage Polarization and Metastasis. Biology 2022, 11, 339. [CrossRef]
+7.
+Zhang, J.-M.; An, J. Cytokines, Inﬂammation, and Pain. Int. Anesthesiol. Clin. 2007, 45, 27–37. [CrossRef]
+8.
+Raman, D.; Sobolik-Delmaire, T.; Richmond, A. Chemokines in health and disease. Exp. Cell Res. 2011, 317, 575–589. [CrossRef]
+9.
+Bachelerie, F.; Ben-Baruch, A.; Burkhardt, A.M.; Combadiere, C.; Farber, J.M.; Graham, G.J.; Horuk, R.; Sparre-Ulrich, A.H.; Locati,
+M.; Luster, A.D.; et al. International Union of Basic and Clinical Pharmacology. LXXXIX. Update on the Extended Family of
+Chemokine Receptors and Introducing a New Nomenclature for Atypical Chemokine Receptors. Pharmacol. Rev. 2014, 66, 1–79.
+[CrossRef]
+10.
+Mélik-Parsadaniantz, S.; Rostène, W. Chemokines and neuromodulation. J. Neuroimmunol. 2008, 198, 62–68. [CrossRef]
+11.
+Zlotnik, A.; Yoshie, O. The Chemokine Superfamily Revisited. Immunity 2012, 36, 705–716. [CrossRef] [PubMed]
+12.
+Kaneko, N.; Kurata, M.; Yamamoto, T.; Morikawa, S.; Masumoto, J. The role of interleukin-1 in general pathology. Inﬂamm. Regen.
+2019, 39, 12. [CrossRef] [PubMed]
+13.
+Akdis, M.; Burgler, S.; Crameri, R.; Eiwegger, T.; Fujita, H.; Gomez, E.; Klunker, S.; Meyer, N.; O’Mahony, L.; Palomares, O.;
+et al. Interleukins, from 1 to 37, and interferon-γ: Receptors, functions, and roles in diseases. J. Allergy Clin. Immunol. 2011, 127,
+701–721.e70. [CrossRef]
+14.
+Shin, E.; Koo, J.S. The Role of Adipokines and Bone Marrow Adipocytes in Breast Cancer Bone Metastasis. Int. J. Mol. Sci. 2020,
+21, 4967. [CrossRef] [PubMed]
+15.
+Blüher, M.; Mantzoros, C.S. From leptin to other adipokines in health and disease: Facts and expectations at the beginning of the
+21st century. Metabolism 2015, 64, 131–145. [CrossRef]
+16.
+Mancuso, P. The role of adipokines in chronic inﬂammation. ImmunoTargets Ther. 2016, 2016, 47–56. [CrossRef]
+17.
+Barchetta, I.; Cimini, F.A.; Ciccarelli, G.; Baroni, M.G.; Cavallo, M.G. Sick fat: The good and the bad of old and new circulating
+markers of adipose tissue inﬂammation. J. Endocrinol. Investig. 2019, 42, 1257–1272. [CrossRef]
+18.
+Nehme, R.; Diab-Assaf, M.; Decombat, C.; Delort, L.; Caldeﬁe-Chezet, F. Targeting Adiponectin in Breast Cancer. Biomedicines
+2022, 10, 2958. [CrossRef]
+19.
+Artac, M.; Altundag, K. Leptin and breast cancer: An overview. Med. Oncol. 2012, 29, 1510–1514. [CrossRef]
+20.
+Ferrer, I. Transforming growth factor-α (TGF-α) and epidermal growth factor-receptor (EGF-R) immunoreactivity in normal and
+pathologic brain. Prog. Neurobiol. 1996, 49, 99–119. [CrossRef]
+21.
+MaruYama, T.; Chen, W.; Shibata, H. TGF-β and Cancer Immunotherapy. Biol. Pharm. Bull. 2022, 45, 155–161. [CrossRef]
+[PubMed]
+22.
+Tamimi, R.M.; Brugge, J.S.; Freedman, M.L.; Miron, A.; Iglehart, J.D.; Colditz, G.A.; Hankinson, S.E. Circulating Colony
+Stimulating Factor-1 and Breast Cancer Risk. Cancer Res. 2008, 68, 18–21. [CrossRef] [PubMed]
+23.
+Balkwill, F. Tumour necrosis factor and cancer. Nat. Rev. Cancer 2009, 9, 361–371. [CrossRef]
+24.
+Isaacs, A.; Lindenmann, J. Virus interference. I. The interferon. Proc. R. Soc. Lond. Ser. B-Biol. Sci. 1957, 147, 258–267. [CrossRef]
+25.
+Schroder, K.; Hertzog, P.J.; Ravasi, T.; Hume, D.A. Interferon-γ: An overview of signals, mechanisms and functions. J. Leukoc. Biol.
+2004, 75, 163–189. [CrossRef] [PubMed]
+26.
+Spaeth, E.L.; Dembinski, J.L.; Sasser, A.K.; Watson, K.; Klopp, A.; Hall, B.; Andreeff, M.; Marini, F. Mesenchymal Stem Cell
+Transition to Tumor-Associated Fibroblasts Contributes to Fibrovascular Network Expansion and Tumor Progression. PLoS ONE
+2009, 4, e4992. [CrossRef] [PubMed]
+Int. J. Mol. Sci. 2023, 24, 4002
+25 of 40
+27.
+Delort, L.; Cholet, J.; Decombat, C.; Vermerie, M.; Dumontet, C.; Castelli, F.A.; Fenaille, F.; Auxenfans, C.; Rossary, A.; Caldeﬁe-
+Chezet, F. The Adipose Microenvironment Dysregulates the Mammary Myoepithelial Cells and Could Participate to the
+Progression of Breast Cancer. Front. Cell Dev. Biol. 2021, 8, 571948. [CrossRef] [PubMed]
+28.
+Hanahan, D.; Weinberg, R.A. Hallmarks of Cancer: The Next Generation. Cell 2011, 144, 646–674. [CrossRef] [PubMed]
+29.
+Kawai, T.; Autieri, M.V.; Scalia, R. Adipose tissue inﬂammation and metabolic dysfunction in obesity. Am. J. Physiol.-Cell Physiol.
+2021, 320, C375–C391. [CrossRef]
+30.
+Singh, N.; Baby, D.; Rajguru, J.; Patil, P.; Thakkannavar, S.; Pujari, V. Inﬂammation and cancer. Ann. Afr. Med. 2019, 18, 121.
+[CrossRef]
+31.
+Mantovani, A.; Allavena, P.; Sica, A.; Balkwill, F. Cancer-related inﬂammation. Nature 2008, 454, 436–444. [CrossRef]
+32.
+Frankenberger, C.; Rabe, D.; Bainer, R.; Sankarasharma, D.; Chada, K.; Krausz, T.; Gilad, Y.; Becker, L.; Rosner, M.R. Metastasis
+Suppressors Regulate the Tumor Microenvironment by Blocking Recruitment of Prometastatic Tumor-Associated Macrophages.
+Cancer Res. 2015, 75, 4063–4073. [CrossRef]
+33.
+Rosenberg, S.A. IL-2: The First Effective Immunotherapy for Human Cancer. J. Immunol. 2014, 192, 5451–5458. [CrossRef]
+34.
+Risso, G.; Blaustein, M.; Pozzi, B.; Mammi, P.; Srebrow, A. Akt/PKB: One kinase, many modiﬁcations. Biochem. J. 2015, 468,
+203–214. [CrossRef]
+35.
+Gonzalez-Perez, R.R.; Xu, Y.; Guo, S.; Watters, A.; Zhou, W.; Leibovich, S.J. Leptin upregulates VEGF in breast cancer via canonic
+and non-canonical signalling pathways and NFκB/HIF-1α activation. Cell. Signal. 2010, 22, 1350–1362. [CrossRef]
+36.
+Tartaglia, L.A.; Dembski, M.; Weng, X.; Deng, N.; Culpepper, J.; Devos, R.; Richards, G.J.; Campﬁeld, L.A.; Clark, F.T.; Deeds, J.;
+et al. Identiﬁcation and expression cloning of a leptin receptor, OB-R. Cell 1995, 83, 1263–1271. [CrossRef]
+37.
+Halaas, J.L.; Gajiwala, K.S.; Maffei, M.; Cohen, S.L.; Chait, B.T.; Rabinowitz, D.; Lallone, R.L.; Burley, S.K.; Friedman, J.M.
+Weight-Reducing Effects of the Plasma Protein Encoded by the obese Gene. Science 1995, 269, 543–546. [CrossRef]
+38.
+Santander, A.; Lopez-Ocejo, O.; Casas, O.; Agostini, T.; Sanchez, L.; Lamas-Basulto, E.; Carrio, R.; Cleary, M.; Gonzalez-Perez,
+R.; Torroella-Kouri, M. Paracrine Interactions between Adipocytes and Tumor Cells Recruit and Modify Macrophages to the
+Mammary Tumor Microenvironment: The Role of Obesity and Inﬂammation in Breast Adipose Tissue. Cancers 2015, 7, 143–178.
+[CrossRef]
+39.
+Ip, W.K.E.; Hoshi, N.; Shouval, D.S.; Snapper, S.; Medzhitov, R. Anti-inﬂammatory effect of IL-10 mediated by metabolic
+reprogramming of macrophages. Science 2017, 356, 513–519. [CrossRef]
+40.
+Sánchez-Margalet, V.; Martín-Romero, C.; Santos-Alvarez, J.; Goberna, R.; Najib, S.; Gonzalez-Yanes, C. Role of leptin as an
+immunomodulator of blood mononuclear cells: Mechanisms of action. Clin. Exp. Immunol. 2003, 133, 11–19. [CrossRef]
+41.
+Cruceriu, D.; Baldasici, O.; Balacescu, O.; Berindan-Neagoe, I. The dual role of tumor necrosis factor-alpha (TNF-α) in breast
+cancer: Molecular insights and therapeutic approaches. Cell. Oncol. 2020, 43, 1–18. [CrossRef]
+42.
+Aggarwal, B.B.; Shishodia, S.; Takada, Y.; Jackson-Bernitsas, D.; Ahn, K.S.; Sethi, G.; Ichikawa, H. TNF Blockade: An Inﬂammatory
+Issue. In Cytokines as Potential Therapeutic Targets for Inﬂammatory Skin Diseases; Numerof, R., Dinarello, C.A., Asadullah, K., Eds.;
+Springer: Berlin/Heidelberg, Germany, 2005; Volume 56, pp. 161–186. [CrossRef]
+43.
+Callahan, M.K.; Williamson, P.; Schlegel, R.A. Surface expression of phosphatidylserine on macrophages is required for phagocy-
+tosis of apoptotic thymocytes. Cell Death Differ. 2000, 7, 645–653. [CrossRef]
+44.
+Hawkes, J.E.; Yan, B.Y.; Chan, T.C.; Krueger, J.G. Discovery of the IL-23/IL-17 Signaling Pathway and the Treatment of Psoriasis.
+J. Immunol. 2018, 201, 1605–1613. [CrossRef]
+45.
+Aggarwal, B.B. Signalling pathways of the TNF superfamily: A double-edged sword. Nat. Rev. Immunol. 2003, 3, 745–756.
+[CrossRef]
+46.
+Aggarwal, B.B.; Shishodia, S.; Ashikawa, K.; Bharti, A.C. The Role of TNF and Its Family Members in Inﬂammation and Cancer:
+Lessons from Gene Deletion. Curr. Drug Target-Inﬂamm. Allergy 2002, 1, 327–341. [CrossRef]
+47.
+Aggarwal, B.B.; Takada, Y. Pro-apototic and Anti-apoptotic Effects of Tumor Necrosis Factor in Tumor Cells. In Cytokines and
+Cancer; Platanias, L.C., Ed.; Springer: New York, NY, USA, 2005; Volume 126, pp. 103–127. [CrossRef]
+48.
+Aggarwal, B.B. Nuclear factor-κB. Cancer Cell 2004, 6, 203–208. [CrossRef]
+49.
+Yadav, V.R.; Prasad, S.; Sung, B.; Kannappan, R.; Aggarwal, B.B. Targeting Inﬂammatory Pathways by Triterpenoids for Prevention
+and Treatment of Cancer. Toxins 2010, 2, 2428–2466. [CrossRef]
+50.
+Arendt, L.M.; McCready, J.; Keller, P.J.; Baker, D.D.; Naber, S.P.; Seewaldt, V.; Kuperwasser, C. Obesity Promotes Breast Cancer by
+CCL2-Mediated Macrophage Recruitment and Angiogenesis. Cancer Res. 2013, 73, 6080–6093. [CrossRef]
+51.
+Welte, G.; Alt, E.; Devarajan, E.; Krishnappa, S.; Jotzu, C.; Song, Y.-H. Interleukin-8 derived from local tissue-resident stromal cells
+promotes tumor cell invasion. Mol. Carcinog. 2012, 51, 861–868. [CrossRef]
+52.
+Coussens, L.M.; Werb, Z. Inﬂammation and cancer. Nature 2002, 420, 860–867. [CrossRef]
+53.
+Ben-Baruch, A. The Tumor-Promoting Flow of Cells Into, Within and Out of the Tumor Site: Regulation by the Inﬂammatory Axis
+of TNFα and Chemokines. Cancer Microenviron. 2012, 5, 151–164. [CrossRef]
+54.
+Rébé, C.; Ghiringhelli, F. Interleukin-1β and Cancer. Cancers 2020, 12, 1791. [CrossRef]
+55.
+Kim, J.-E.; Phan, T.X.; Nguyen, V.H.; Dinh-Vu, H.-V.; Zheng, J.H.; Yun, M.; Park, S.-G.; Hong, Y.; Choy, H.E.; Szardenings, M.;
+et al. Salmonella typhimurium Suppresses Tumor Growth via the Pro-Inﬂammatory Cytokine Interleukin-1β. Theranostics 2015, 5,
+1328–1342. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+26 of 40
+56.
+Li, H.-J.; Reinhardt, F.; Herschman, H.R.; Weinberg, R.A. Cancer-Stimulated Mesenchymal Stem Cells Create a Carcinoma Stem
+Cell Niche via Prostaglandin E2 Signaling. Cancer Discov. 2012, 2, 840–855. [CrossRef]
+57.
+Coffelt, S.B.; Kersten, K.; Doornebal, C.W.; Weiden, J.; Vrijland, K.; Hau, C.-S.; Verstegen, N.J.M.; Ciampricotti, M.; Hawinkels,
+L.J.A.C.; Jonkers, J.; et al. IL-17-producing γδ T cells and neutrophils conspire to promote breast cancer metastasis. Nature 2015,
+522, 345–348. [CrossRef]
+58.
+Franco-Barraza, J.; Valdivia-Silva, J.E.; Zamudio-Meza, H.; Castillo, A.; García-Zepeda, E.A.; Benítez-Bribiesca, L.; Meza, I. Actin
+Cytoskeleton Participation in the Onset of IL-1β Induction of an Invasive Mesenchymal-like Phenotype in Epithelial MCF-7 Cells.
+Arch. Med. Res. 2010, 41, 170–181. [CrossRef]
+59.
+Ma, L.; Lan, F.; Zheng, Z.; Xie, F.; Wang, L.; Liu, W.; Han, J.; Zheng, F.; Xie, Y.; Huang, Q. Epidermal growth factor (EGF) and
+interleukin (IL)-1β synergistically promote ERK1/2-mediated invasive breast ductal cancer cell migration and invasion. Mol.
+Cancer 2012, 11, 79. [CrossRef]
+60.
+Hou, Z.; Falcone, D.J.; Subbaramaiah, K.; Dannenberg, A.J. Macrophages induce COX-2 expression in breast cancer cells: Role of
+IL-1β autoampliﬁcation. Carcinogenesis 2011, 32, 695–702. [CrossRef]
+61.
+Reed, J.R.; Leon, R.P.; Hall, M.K.; Schwertfeger, K.L. Interleukin-1beta and ﬁbroblast growth factor receptor 1 cooperate to induce
+cyclooxygenase-2 during early mammary tumourigenesis. Breast Cancer Res. 2009, 11, R21. [CrossRef]
+62.
+Cytokine Tutorial. Available online: https://www.elisakits.co.uk/immunology-cytokines/cytokine-tutorial/ (accessed on
+20 November 2022).
+63.
+Wellenstein, M.D.; Coffelt, S.B.; Duits, D.E.M.; van Miltenburg, M.H.; Slagter, M.; de Rink, I.; Henneman, L.; Kas, S.M.; Prekovic,
+S.; Hau, C.-S.; et al. Loss of p53 triggers WNT-dependent systemic inﬂammation to drive breast cancer metastasis. Nature 2019,
+572, 538–542. [CrossRef]
+64.
+Huang, J.; Lan, X.; Wang, T.; Lu, H.; Cao, M.; Yan, S.; Cui, Y.; Jia, D.; Cai, L.; Xing, Y. Targeting the IL-1β/EHD1/TUBB3 axis
+overcomes resistance to EGFR-TKI in NSCLC. Oncogene 2020, 39, 1739–1755. [CrossRef] [PubMed]
+65.
+Jiménez-Garduño, A.M.; Mendoza-Rodríguez, M.G.; Urrutia-Cabrera, D.; Domínguez-Robles, M.C.; Pérez-Yépez, E.A.; Ayala-
+Sumuano, J.T.; Meza, I. IL-1β induced methylation of the estrogen receptor ERα gene correlates with EMT and chemoresistance
+in breast cancer cells. Biochem. Biophys. Res. Commun. 2017, 490, 780–785. [CrossRef]
+66.
+Zhou, J.; Tulotta, C.; Ottewell, P.D. IL-1β in breast cancer bone metastasis. Expert Rev. Mol. Med. 2022, 24, e11. [CrossRef]
+[PubMed]
+67.
+Carmi, Y.; Voronov, E.; Dotan, S.; Lahat, N.; Rahat, M.A.; Fogel, M.; Huszar, M.; White, M.R.; Dinarello, C.A.; Apte, R.N. The
+Role of Macrophage-Derived IL-1 in Induction and Maintenance of Angiogenesis. J. Immunol. 2009, 183, 4705–4714. [CrossRef]
+[PubMed]
+68.
+Carmi, Y.; Dotan, S.; Rider, P.; Kaplanov, I.; White, M.R.; Baron, R.; Abutbul, S.; Huszar, M.; Dinarello, C.A.; Apte, R.N.; et al. The
+Role of IL-1β in the Early Tumor Cell–Induced Angiogenic Response. J. Immunol. 2013, 190, 3500–3509. [CrossRef]
+69.
+Schmid, M.C.; Avraamides, C.J.; Foubert, P.; Shaked, Y.; Kang, S.W.; Kerbel, R.S.; Varner, J.A. Combined Blockade of Integrin-α4β1
+Plus Cytokines SDF-1α or IL-1β Potently Inhibits Tumor Inﬂammation and Growth. Cancer Res. 2011, 71, 6965–6975. [CrossRef]
+70.
+Naldini, A.; Filippi, I.; Miglietta, D.; Moschetta, M.; Giavazzi, R.; Carraro, F. Interleukin-1β regulates the migratory potential of
+MDAMB231 breast cancer cells through the hypoxia-inducible factor-1α. Eur. J. Cancer 2010, 46, 3400–3408. [CrossRef]
+71.
+Solís-Martínez, R.; Cancino-Marentes, M.; Hernández-Flores, G.; Ortiz-Lazareno, P.; Mandujano-Álvarez, G.; Cruz-Gálvez, C.;
+Sierra-Díaz, E.; Rodríguez-Padilla, C.; Jave-Suárez, L.F.; Aguilar-Lemarroy, A.; et al. Regulation of immunophenotype modulation
+of monocytes-macrophages from M1 into M2 by prostate cancer cell-culture supernatant via transcription factor STAT3. Immunol.
+Lett. 2018, 196, 140–148. [CrossRef]
+72.
+Fu, X.-L.; Duan, W.; Su, C.-Y.; Mao, F.-Y.; Lv, Y.-P.; Teng, Y.-S.; Yu, P.-W.; Zhuang, Y.; Zhao, Y.-L. Interleukin 6 induces M2
+macrophage differentiation by STAT3 activation that correlates with gastric cancer progression. Cancer Immunol. Immunother.
+2017, 66, 1597–1608. [CrossRef]
+73.
+Grivennikov, S.; Karin, E.; Terzic, J.; Mucida, D.; Yu, G.-Y.; Vallabhapurapu, S.; Scheller, J.; Rose-John, S.; Cheroutre, H.; Eckmann,
+L.; et al. IL-6 and Stat3 Are Required for Survival of Intestinal Epithelial Cells and Development of Colitis-Associated Cancer.
+Cancer Cell 2009, 15, 103–113. [CrossRef]
+74.
+Mitchem, J.B.; Brennan, D.J.; Knolhoff, B.L.; Belt, B.A.; Zhu, Y.; Sanford, D.E.; Belaygorod, L.; Carpenter, D.; Collins, L.; Piwnica-
+Worms, D.; et al. Targeting Tumor-Inﬁltrating Macrophages Decreases Tumor-Initiating Cells, Relieves Immunosuppression, and
+Improves Chemotherapeutic Responses. Cancer Res. 2013, 73, 1128–1141. [CrossRef] [PubMed]
+75.
+Ibrahim, M.M. Subcutaneous and visceral adipose tissue: Structural and functional differences. Obes. Rev. 2010, 11, 11–18.
+[CrossRef] [PubMed]
+76.
+Vgontzas, A.N.; Papanicolaou, D.A.; Bixler, E.O.; Kales, A.; Tyson, K.; Chrousos, G.P. Elevation of Plasma Cytokines in Disorders
+of Excessive Daytime Sleepiness: Role of Sleep Disturbance and Obesity. J. Clin. Endocrinol. Metab. 1997, 82, 1313–1316. [CrossRef]
+[PubMed]
+77.
+Zhao, X.; Sun, X.; Gao, F.; Luo, J.; Sun, Z. Effects of ulinastatin and docataxel on breast tumor growth and expression of IL-6, IL-8,
+and TNF-α. J. Exp. Clin. Cancer Res. 2011, 30, 22. [CrossRef] [PubMed]
+78.
+Kishimoto, T.; Hirano, T. Molecular Regulation of B Lymphocyte Response. Annu. Rev. Immunol. 1988, 6, 485–512. [CrossRef]
+[PubMed]
+Int. J. Mol. Sci. 2023, 24, 4002
+27 of 40
+79.
+Takenawa, J.; Kaneko, Y.; Fukumoto, M.; Fukatsu, A.; Hirano, T.; Fukuyama, H.; Nakayama, H.; Fujita, J.; Yoshida, O. Enhanced
+Expression of Interleukin-6 in Primary Human Renal Cell Carcinomas. J. Natl. Cancer Inst. 1991, 83, 1668–1672. [CrossRef]
+80.
+Xie, T.; Wei, D.; Liu, M.; Gao, A.C.; Ali-Osman, F.; Sawaya, R.; Huang, S. Stat3 activation regulates the expression of matrix
+metalloproteinase-2 and tumor invasion and metastasis. Oncogene 2004, 23, 3550–3560. [CrossRef]
+81.
+Goswami, S.; Gupta, A.; Sharma, S.K. Interleukin-6-Mediated Autocrine Growth Promotion in Human Glioblastoma Multiforme
+Cell Line U87MG. J. Neurochem. 2002, 71, 1837–1845. [CrossRef]
+82.
+Bromberg, J.; Wang, T.C. Inﬂammation and Cancer: IL-6 and STAT3 Complete the Link. Cancer Cell 2009, 15, 79–80. [CrossRef]
+83.
+Barbieri, I.; Pensa, S.; Pannellini, T.; Quaglino, E.; Maritano, D.; Demaria, M.; Voster, A.; Turkson, J.; Cavallo, F.; Watson, C.J.; et al.
+Constitutively Active Stat3 Enhances Neu-Mediated Migration and Metastasis in Mammary Tumors via Upregulation of Cten.
+Cancer Res. 2010, 70, 2558–2567. [CrossRef]
+84.
+Bromberg, J.; Darnell, J.E. The role of STATs in transcriptional control and their impact on cellular function. Oncogene 2000, 19,
+2468–2473. [CrossRef] [PubMed]
+85.
+Stark, G.R.; Darnell, J.E. The JAK-STAT Pathway at Twenty. Immunity 2012, 36, 503–514. [CrossRef] [PubMed]
+86.
+Demaria, M.; Misale, S.; Giorgi, C.; Miano, V.; Camporeale, A.; Campisi, J.; Pinton, P.; Poli, V. STAT3 can serve as a hit in the
+process of malignant transformation of primary cells. Cell Death Differ. 2012, 19, 1390–1397. [CrossRef]
+87.
+Knüpfer, H.; Preiß, R. Signiﬁcance of interleukin-6 (IL-6) in breast cancer (review). Breast Cancer Res. Treat. 2007, 102, 129–135.
+[CrossRef]
+88.
+Bachelot, T.; Ray-Coquard, I.; Menetrier-Caux, C.; Rastkha, M.; Duc, A.; Blay, J.-Y. Prognostic value of serum levels of interleukin
+6 and of serum and plasma levels of vascular endothelial growth factor in hormone-refractory metastatic breast cancer patients.
+Br. J. Cancer 2003, 88, 1721–1726. [CrossRef]
+89.
+Arihiro, K.; Oda, H.; Kaneko, M.; Inai, K. Cytokines facilitate chemotactic motility of breast carcinoma cells. Breast Cancer 2000, 7,
+221–230. [CrossRef]
+90.
+Sehgal, P.B.; Tamm, I. Interleukin-6 enhances motility of breast carcinoma cells. In Cell Motility Factors; Goldberg, I.D., Ed.;
+Birkhäuser Basel: Basel, Switzerland, 1991; Volume 59, pp. 178–193. [CrossRef]
+91.
+Park, S.-J.; Nakagawa, T.; Kitamura, H.; Atsumi, T.; Kamon, H.; Sawa, S.; Kamimura, D.; Ueda, N.; Iwakura, Y.; Ishihara, K.; et al.
+IL-6 Regulates In Vivo Dendritic Cell Differentiation through STAT3 Activation. J. Immunol. 2004, 173, 3844–3854. [CrossRef]
+92.
+Heink, S.; Yogev, N.; Garbers, C.; Herwerth, M.; Aly, L.; Gasperi, C.; Husterer, V.; Croxford, A.L.; Möller-Hackbarth, K.; Bartsch,
+H.S.; et al. Trans-presentation of IL-6 by dendritic cells is required for the priming of pathogenic TH17 cells. Nat. Immunol. 2017,
+18, 74–85. [CrossRef]
+93.
+Chomarat, P.; Banchereau, J.; Davoust, J.; Karolina Palucka, A. IL-6 switches the differentiation of monocytes from dendritic cells
+to macrophages. Nat. Immunol. 2000, 1, 510–514. [CrossRef]
+94.
+Dejean, A.S.; Beisner, D.R.; Ch’en, I.L.; Kerdiles, Y.M.; Babour, A.; Arden, K.C.; Castrillon, D.H.; DePinho, R.A.; Hedrick, S.M.
+Transcription factor Foxo3 controls the magnitude of T cell immune responses by modulating the function of dendritic cells. Nat.
+Immunol. 2009, 10, 504–513. [CrossRef]
+95.
+Chen, Q.; Fisher, D.T.; Kucinska, S.A.; Wang, W.-C.; Evans, S.S. Dynamic control of lymphocyte trafﬁcking by fever-range thermal
+stress. Cancer Immunol. Immunother. 2006, 55, 299–311. [CrossRef]
+96.
+Fu, X.-T.; Dai, Z.; Song, K.; Zhang, Z.-J.; Zhou, Z.-J.; Zhou, S.-L.; Zhao, Y.-M.; Xiao, Y.-S.; Sun, Q.-M.; Ding, Z.-B.; et al. Macrophage-
+secreted IL-8 induces epithelial-mesenchymal transition in hepatocellular carcinoma cells by activating the JAK2/STAT3/Snail
+pathway. Int. J. Oncol. 2015, 46, 587–596. [CrossRef]
+97.
+Chen, S.; Lian, G.; Li, J.; Zhang, Q.; Zeng, L.; Yang, K.; Huang, C.; Li, Y.; Chen, Y.; Huang, K. Tumor-driven like macrophages
+induced by conditioned media from pancreatic ductal adenocarcinoma promote tumor metastasis via secreting IL-8. Cancer Med.
+2018, 7, 5679–5690. [CrossRef]
+98.
+Peveri, P.; Walz, A.; Dewald, B.; Baggiolini, M. A novel neutrophil-activating factor produced by human mononuclear phagocytes.
+J. Exp. Med. 1988, 167, 1547–1559. [CrossRef]
+99.
+Wanninger, J.; Neumeier, M.; Weigert, J.; Bauer, S.; Weiss, T.S.; Schäfﬂer, A.; Krempl, C.; Bleyl, C.; Aslanidis, C.; Schölmerich, J.;
+et al. Adiponectin-stimulated CXCL8 release in primary human hepatocytes is regulated by ERK1/ERK2, p38 MAPK, NF-κB,
+and STAT3 signaling pathways. Am. J. Physiol.-Gastrointest. Liver Physiol. 2009, 297, G611–G618. [CrossRef]
+100. Kwon, O.J.; Au, B.T.; Collins, P.D.; Adcock, I.M.; Mak, J.C.; Robbins, R.R.; Chung, K.F.; Barnes, P.J. Tumor necrosis factor-induced
+interleukin-8 expression in cultured human airway epithelial cells. Am. J. Physiol.-Lung Cell. Mol. Physiol. 1994, 267, L398–L405.
+[CrossRef]
+101. Vijay, V.; Miller, R.; Vue, G.S.; Pezeshkian, M.B.; Maywood, M.; Ast, A.M.; Drusbosky, L.M.; Pompeu, Y.; Salgado, A.D.; Lipten,
+S.D.; et al. Interleukin-8 blockade prevents activated endothelial cell mediated proliferation and chemoresistance of acute myeloid
+leukemia. Leuk. Res. 2019, 84, 106180. [CrossRef]
+102. Chen, Y.; McAndrews, K.M.; Kalluri, R. Clinical and therapeutic relevance of cancer-associated ﬁbroblasts. Nat. Rev. Clin. Oncol.
+2021, 18, 792–804. [CrossRef]
+103. Knall, C.; Worthen, G.S.; Buhl, A.M.; Johnson, G.L. IL-8 Signal Transduction in Human Neutrophils. Ann. N. Y. Acad. Sci. 1995,
+766, 288–291. [CrossRef]
+104. Glynn, P.C.; Henney, E.; Hall, I.P. The Selective CXCR2 Antagonist SB272844 Blocks Interleukin-8 and Growth-related Oncogene-
+α-mediated Inhibition of Spontaneous Neutrophil Apoptosis. Pulm. Pharmacol. Ther. 2002, 15, 103–110. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+28 of 40
+105. Statement of Retraction: Signiﬁcance of the IL-8 pathway for immunotherapy. Hum. Vaccines Immunother. 2022, 18, 2052703.
+[CrossRef]
+106. Knall, C.; Worthen, G.S.; Johnson, G.L. Interleukin 8-stimulated phosphatidylinositol-3-kinase activity regulates the migration of
+human neutrophils independent of extracellular signal-regulated kinase and p38 mitogen-activated protein kinases. Proc. Natl.
+Acad. Sci. USA 1997, 94, 3052–3057. [CrossRef]
+107. Murphy, C.; McGurk, M.; Pettigrew, J.; Santinelli, A.; Mazzucchelli, R.; Johnston, P.G.; Montironi, R.; Waugh, D.J.J. Nonapical
+and Cytoplasmic Expression of Interleukin-8, CXCR1, and CXCR2 Correlates with Cell Proliferation and Microvessel Density in
+Prostate Cancer. Clin. Cancer Res. 2005, 11, 4117–4127. [CrossRef]
+108. Waugh, D.J.J.; Wilson, C. The Interleukin-8 Pathway in Cancer. Clin. Cancer Res. 2008, 14, 6735–6741. [CrossRef]
+109. Cohenhillel, E.; Yron, I.; Meshel, T.; Soria, G.; Attal, H.; Benbaruch, A. CXCL8-induced FAK phosphorylation via CXCR1 and
+CXCR2: Cytoskeleton- and integrin-related mechanisms converge with FAK regulatory pathways in a receptor-speciﬁc manner.
+Cytokine 2006, 33, 1–16. [CrossRef]
+110. Ning, Y.; Cui, Y.; Li, X.; Cao, X.; Chen, A.; Xu, C.; Cao, J.; Luo, X. Co-culture of ovarian cancer stem-like cells with macrophages
+induced SKOV3 cells stemness via IL-8/STAT3 signaling. Biomed. Pharmacother. 2018, 103, 262–271. [CrossRef]
+111. Sparmann, A.; Bar-Sagi, D. Ras-induced interleukin-8 expression plays a critical role in tumor growth and angiogenesis. Cancer
+Cell 2004, 6, 447–458. [CrossRef]
+112. Roskoski, R. ERK1/2 MAP kinases: Structure, function, and regulation. Pharmacol. Res. 2012, 66, 105–143. [CrossRef]
+113. Omi, K.; Matsuo, Y.; Ueda, G.; Aoyama, Y.; Kato, T.; Hayashi, Y.; Imafuji, H.; Saito, K.; Tsuboi, K.; Morimoto, M.; et al. Escin
+inhibits angiogenesis by suppressing interleukin-8 and vascular endothelial growth factor production by blocking nuclear
+factor-κB activation in pancreatic cancer cell lines. Oncol. Rep. 2021, 45, 55. [CrossRef]
+114. Cheng, J.Q.; Lindsley, C.W.; Cheng, G.Z.; Yang, H.; Nicosia, S.V. The Akt/PKB pathway: Molecular target for cancer drug
+discovery. Oncogene 2005, 24, 7482–7492. [CrossRef]
+115. Siesser, P.M.F.; Hanks, S.K. The Signaling and Biological Implications of FAK Overexpression in Cancer. Clin. Cancer Res. 2006, 12,
+3233–3237. [CrossRef] [PubMed]
+116. Ning, Y.; Feng, W.; Cao, X.; Ren, K.; Quan, M.; Chen, A.; Xu, C.; Qiu, Y.; Cao, J.; Li, X.; et al. Genistein inhibits stemness of SKOV3
+cells induced by macrophages co-cultured with ovarian cancer stem-like cells through IL-8/STAT3 axis. J. Exp. Clin. Cancer Res.
+2019, 38, 19. [CrossRef] [PubMed]
+117. Wu, J.; Gao, F.; Wang, C.; Qin, M.; Han, F.; Xu, T.; Hu, Z.; Long, Y.; He, X.; Deng, X.; et al. IL-6 and IL-8 secreted by tumour
+cells impair the function of NK cells via the STAT3 pathway in oesophageal squamous cell carcinoma. J. Exp. Clin. Cancer Res.
+2019, 38, 321. [CrossRef] [PubMed]
+118. Xiao, P.; Long, X.; Zhang, L.; Ye, Y.; Guo, J.; Liu, P.; Zhang, R.; Ning, J.; Yu, W.; Wei, F.; et al. Neurotensin/IL-8 pathway
+orchestrates local inﬂammatory response and tumor invasion by inducing M2 polarization of Tumor-Associated macrophages
+and epithelial-mesenchymal transition of hepatocellular carcinoma cells. OncoImmunology 2018, 7, e1440166. [CrossRef]
+119. Yang, M.; Zhang, G.; Wang, Y.; He, M.; Xu, Q.; Lu, J.; Liu, H.; Xu, C. Tumour-associated neutrophils orchestrate intratumoural
+IL-8-driven immune evasion through Jagged2 activation in ovarian cancer. Br. J. Cancer 2020, 123, 1404–1416. [CrossRef]
+120. Samie, A.; Dzhivhuho, G.A.; Nangammbi, T.C. Distribution of CXCR2 +1208 T/C gene polymorphisms in relation to opportunistic
+infections among HIV-infected patients in Limpopo Province, South Africa. Genet. Mol. Res. 2014, 13, 7470–7479. [CrossRef]
+121. Ignacio, A.; Breda, C.N.S.; Camara, N.O.S. Innate lymphoid cells in tissue homeostasis and diseases. World J. Hepatol. 2017, 9, 979.
+[CrossRef]
+122. Tian, Z.; van Velkinburgh, J.C.; Wu, Y.; Ni, B. Innate lymphoid cells involve in tumorigenesis: Effects of ILCs on tumorigenesis.
+Int. J. Cancer 2016, 138, 22–29. [CrossRef]
+123. Tamassia, N.; Arruda-Silva, F.; Wright, H.L.; Moots, R.J.; Gardiman, E.; Bianchetto-Aguilera, F.; Gasperini, S.; Capone, M.; Maggi,
+L.; Annunziato, F.; et al. Human neutrophils activated via TLR8 promote Th17 polarization through IL-23. J. Leukoc. Biol. 2019,
+105, 1155–1165. [CrossRef]
+124. Parham, C.; Chirica, M.; Timans, J.; Vaisberg, E.; Travis, M.; Cheung, J.; Pﬂanz, S.; Zhang, R.; Singh, K.P.; Vega, F.; et al. A Receptor
+for the Heterodimeric Cytokine IL-23 Is Composed of IL-12Rβ1 and a Novel Cytokine Receptor Subunit, IL-23R. J. Immunol. 2002,
+168, 5699–5708. [CrossRef]
+125. Zhou, L.; Ivanov, I.I.; Spolski, R.; Min, R.; Shenderov, K.; Egawa, T.; Levy, D.E.; Leonard, W.J.; Littman, D.R. IL-6 programs
+TH-17 cell differentiation by promoting sequential engagement of the IL-21 and IL-23 pathways. Nat. Immunol. 2007, 8, 967–974.
+[CrossRef]
+126. Nie, W.; Yu, T.; Sang, Y.; Gao, X. Tumor-promoting effect of IL-23 in mammary cancer mediated by inﬁltration of M2 macrophages
+and neutrophils in tumor microenvironment. Biochem. Biophys. Res. Commun. 2017, 482, 1400–1406. [CrossRef]
+127. Yan, J.; Smyth, M.J.; Teng, M.W.L. Interleukin (IL)-12 and IL-23 and Their Conﬂicting Roles in Cancer. Cold Spring Harb. Perspect.
+Biol. 2018, 10, a028530. [CrossRef]
+128. Du, J.-W.; Xu, K.-Y.; Fang, L.-Y.; Qi, X.-L. Interleukin-17, produced by lymphocytes, promotes tumor growth and angiogenesis in
+a mouse model of breast cancer. Mol. Med. Rep. 2012, 6, 1099–1102. [CrossRef]
+129. Langowski, J.L.; Zhang, X.; Wu, L.; Mattson, J.D.; Chen, T.; Smith, K.; Basham, B.; McClanahan, T.; Kastelein, R.A.; Oft, M. IL-23
+promotes tumour incidence and growth. Nature 2006, 442, 461–465. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+29 of 40
+130. Gaffen, S.L.; Jain, R.; Garg, A.V.; Cua, D.J. The IL-23–IL-17 immune axis: From mechanisms to therapeutic testing. Nat. Rev.
+Immunol. 2014, 14, 585–600. [CrossRef]
+131. Park, H.; Li, Z.; Yang, X.O.; Chang, S.H.; Nurieva, R.; Wang, Y.-H.; Wang, Y.; Hood, L.; Zhu, Z.; Tian, Q.; et al. A distinct lineage of
+CD4 T cells regulates tissue inﬂammation by producing interleukin 17. Nat. Immunol. 2005, 6, 1133–1141. [CrossRef]
+132. Ouyang, W.; Kolls, J.K.; Zheng, Y. The Biological Functions of T Helper 17 Cell Effector Cytokines in Inﬂammation. Immunity
+2008, 28, 454–467. [CrossRef]
+133. Wang, L.; Yi, T.; Kortylewski, M.; Pardoll, D.M.; Zeng, D.; Yu, H. IL-17 can promote tumor growth through an IL-6–Stat3 signaling
+pathway. J. Exp. Med. 2009, 206, 1457–1464. [CrossRef]
+134. Zhu, X.; Mulcahy, L.A.; Mohammed, R.A.; Lee, A.H.; Franks, H.A.; Kilpatrick, L.; Yilmazer, A.; Paish, E.C.; Ellis, I.O.; Patel, P.M.;
+et al. IL-17 expression by breast-cancer-associated macrophages: IL-17 promotes invasiveness of breast cancer cell lines. Breast
+Cancer Res. 2008, 10, R95. [CrossRef]
+135. Tait Wojno, E.D.; Hunter, C.A.; Stumhofer, J.S. The Immunobiology of the Interleukin-12 Family: Room for Discovery. Immunity
+2019, 50, 851–870. [CrossRef]
+136. Liao, W.; Lin, J.-X.; Leonard, W.J. IL-2 family cytokines: New insights into the complex roles of IL-2 as a broad regulator of T
+helper cell differentiation. Curr. Opin. Immunol. 2011, 23, 598–604. [CrossRef] [PubMed]
+137. Yui, M.A.; Sharp, L.L.; Havran, W.L.; Rothenberg, E.V. Preferential Activation of an IL-2 Regulatory Sequence Transgene in TCRγδ
+and NKT Cells: Subset-Speciﬁc Differences in IL-2 Regulation. J. Immunol. 2004, 172, 4691–4699. [CrossRef] [PubMed]
+138. Granucci, F. NEW EMBO MEMBER’S REVIEW: Dendritic cell regulation of immune responses: A new role for interleukin 2 at
+the intersection of innate and adaptive immunity. EMBO J. 2003, 22, 2546–2551. [CrossRef] [PubMed]
+139. Henney, C.S.; Kuribayashi, K.; Kern, D.E.; Gillis, S. Interleukin-2 augments natural killer cell activity. Nature 1981, 291, 335–338.
+[CrossRef]
+140. Blackman, M.A.; Tigges, M.A.; Minie, M.E.; Koshland, M.E. A model system for peptide hormone action in differentiation:
+Interleukin 2 induces a B lymphoma to transcribe the J chain gene. Cell 1986, 47, 609–617. [CrossRef]
+141. Rochman, Y.; Spolski, R.; Leonard, W.J. New insights into the regulation of T cells by γc family cytokines. Nat. Rev. Immunol.
+2009, 9, 480–490. [CrossRef]
+142. Wei, S.; Blanchard, D.K.; Liu, J.H.; Leonard, W.J.; Djeu, J.Y. Activation of tumor necrosis factor-alpha production from human
+neutrophils by IL-2 via IL-2-R beta. J. Immunol. 1993, 150, 1979. [CrossRef]
+143. Reichert, T.E.; Kashii, Y.; Stanson, J.; Zeevi, A.; Whiteside, T.L. The role of endogenous interleukin-2 in proliferation of human
+carcinoma cell lines. Br. J. Cancer 1999, 81, 822–831. [CrossRef]
+144. Rudensky, A.Y. Regulatory T cells and Foxp3: Regulatory T cells and Foxp3. Immunol. Rev. 2011, 241, 260–268. [CrossRef]
+145. Brisslert, M.; Bokarewa, M.; Larsson, P.; Wing, K.; Collins, L.V.; Tarkowski, A. Phenotypic and functional characterization of
+human CD25+ B cells. Immunology 2006, 117, 548–557. [CrossRef] [PubMed]
+146. Krieg, C.; Létourneau, S.; Pantaleo, G.; Boyman, O. Improved IL-2 immunotherapy by selective stimulation of IL-2 receptors on
+lymphocytes and endothelial cells. Proc. Natl. Acad. Sci. USA 2010, 107, 11906–11911. [CrossRef] [PubMed]
+147. Malek, T.R.; Castro, I. Interleukin-2 Receptor Signaling: At the Interface between Tolerance and Immunity. Immunity 2010, 33,
+153–165. [CrossRef] [PubMed]
+148. Littman, D.R.; Rudensky, A.Y. Th17 and Regulatory T Cells in Mediating and Restraining Inﬂammation. Cell 2010, 140, 845–858.
+[CrossRef] [PubMed]
+149. Leung, D.T.M.; Moreﬁeld, S.; Willerford, D.M. Regulation of Lymphoid Homeostasis by IL-2 Receptor Signals In Vivo. J. Immunol.
+2000, 164, 3527–3534. [CrossRef] [PubMed]
+150. Liao, W.; Lin, J.-X.; Wang, L.; Li, P.; Leonard, W.J. Modulation of cytokine receptors by IL-2 broadly regulates differentiation into
+helper T cell lineages. Nat. Immunol. 2011, 12, 551–559. [CrossRef]
+151. Liao, W.; Schones, D.E.; Oh, J.; Cui, Y.; Cui, K.; Roh, T.-Y.; Zhao, K.; Leonard, W.J. Priming for T helper type 2 differentiation by
+interleukin 2–mediated induction of interleukin 4 receptor α-chain expression. Nat. Immunol. 2008, 9, 1288–1296. [CrossRef]
+152. Friedmann, M.C.; Migone, T.S.; Russell, S.M.; Leonard, W.J. Different interleukin 2 receptor beta-chain tyrosines couple to at
+least two signaling pathways and synergistically mediate interleukin 2-induced proliferation. Proc. Natl. Acad. Sci. USA 1996, 93,
+2077–2082. [CrossRef]
+153. Lin, J.-X.; Migone, T.-S.; Tseng, M.; Friedmann, M.; Weatherbee, J.A.; Zhou, L.; Yamauchi, A.; Bloom, E.T.; Mietz, J.; John, S.; et al.
+The role of shared receptor motifs and common stat proteins in the generation of cytokine pleiotropy and redundancy by IL-2,
+IL-4, IL-7, IL-13, and IL-15. Immunity 1995, 2, 331–339. [CrossRef]
+154. Abbas, A.K.; Murphy, K.M.; Sher, A. Functional diversity of helper T lymphocytes. Nature 1996, 383, 787–793. [CrossRef]
+155. Jorgovanovic, D.; Song, M.; Wang, L.; Zhang, Y. Roles of IFN-γ in tumor progression and regression: A review. Biomark. Res. 2020,
+8, 49. [CrossRef]
+156. Cua, D.J.; Tato, C.M. Innate IL-17-producing cells: The sentinels of the immune system. Nat. Rev. Immunol. 2010, 10, 479–489.
+[CrossRef] [PubMed]
+157. Schoenborn, J.R.; Wilson, C.B. Regulation of Interferon-γ During Innate and Adaptive Immune Responses. In Advances in
+Immunology; Academic Press: Cambridge, MA, USA, 2007; Volume 96, pp. 41–101. [CrossRef]
+158. Olson, M.R.; Russ, B.E.; Doherty, P.C.; Turner, S.J. The role of epigenetics in the acquisition and maintenance of effector function
+in virus-speciﬁc CD8 T cells. IUBMB Life 2010, 62, 519–526. [CrossRef] [PubMed]
+Int. J. Mol. Sci. 2023, 24, 4002
+30 of 40
+159. Burke, J.D.; Young, H.A. IFN-γ: A cytokine at the right time, is in the right place. Semin. Immunol. 2019, 43, 101280. [CrossRef]
+[PubMed]
+160. Thieu, V.T.; Yu, Q.; Chang, H.-C.; Yeh, N.; Nguyen, E.T.; Sehra, S.; Kaplan, M.H. Signal Transducer and Activator of Transcription
+4 Is Required for the Transcription Factor T-bet to Promote T Helper 1 Cell-Fate Determination. Immunity 2008, 29, 679–690.
+[CrossRef]
+161. Poggi, A.; Giuliani, M. Mesenchymal Stromal Cells Can Regulate the Immune Response in the Tumor Microenvironment. Vaccines
+2016, 4, 41. [CrossRef] [PubMed]
+162. Garcia-Diaz, A.; Shin, D.S.; Moreno, B.H.; Saco, J.; Escuin-Ordinas, H.; Rodriguez, G.A.; Zaretsky, J.M.; Sun, L.; Hugo, W.;
+Wang, X.; et al. Interferon Receptor Signaling Pathways Regulating PD-L1 and PD-L2 Expression. Cell Rep. 2017, 19, 1189–1201.
+[CrossRef]
+163. Gough, D.J.; Levy, D.E.; Johnstone, R.W.; Clarke, C.J. IFNγ signaling—Does it mean JAK–STAT? Cytokine Growth Factor Rev. 2008,
+19, 383–394. [CrossRef]
+164. Wang, L.; Zhao, Y.; Liu, Y.; Akiyama, K.; Chen, C.; Qu, C.; Jin, Y.; Shi, S. IFN-γ and TNF-α Synergistically Induce Mesenchymal
+Stem Cell Impairment and Tumorigenesis via NFκB Signaling. Stem Cells 2013, 31, 1383–1395. [CrossRef]
+165. Teixeira, L.K.; Fonseca, B.P.; Barboza, B.A.; Viola, J.P. The role of interferon-gamma on immune and allergic responses. Mem. Inst.
+Oswaldo Cruz 2005, 100, 137–144. [CrossRef]
+166. Shtrichman, R.; Samuel, C.E. The role of gamma interferon in antimicrobial immunity. Curr. Opin. Microbiol. 2001, 4, 251–259.
+[CrossRef] [PubMed]
+167. Rocha, V.Z.; Folco, E.J.; Sukhova, G.; Shimizu, K.; Gotsman, I.; Vernon, A.H.; Libby, P. Interferon-γ, a Th1 Cytokine, Regulates Fat
+Inﬂammation: A Role for Adaptive Immunity in Obesity. Circ. Res. 2008, 103, 467–476. [CrossRef] [PubMed]
+168. Lees, J.R. Interferon gamma in autoimmunity: A complicated player on a complex stage. Cytokine 2015, 74, 18–26. [CrossRef]
+169. Ivashkiv, L.B. IFNγ: Signalling, epigenetics and roles in immunity, metabolism, disease and cancer immunotherapy. Nat. Rev.
+Immunol. 2018, 18, 545–558. [CrossRef]
+170. Konjevi´c, G.M.; Vuleti´c, A.M.; Mirjaˇci´c Martinovi´c, K.M.; Larsen, A.K.; Juriši´c, V.B. The role of cytokines in the regulation of NK
+cells in the tumor environment. Cytokine 2019, 117, 30–40. [CrossRef] [PubMed]
+171. Luckheeram, R.V.; Zhou, R.; Verma, A.D.; Xia, B. CD4 + T Cells: Differentiation and Functions.
+Clin.
+Dev.
+Immunol.
+2012, 2012, 925135. [CrossRef] [PubMed]
+172. Bhat, P.; Leggatt, G.; Waterhouse, N.; Frazer, I.H. Interferon-γ derived from cytotoxic lymphocytes directly enhances their motility
+and cytotoxicity. Cell Death Dis. 2017, 8, e2836. [CrossRef]
+173. Panduro, M.; Benoist, C.; Mathis, D. T reg cells limit IFN-γ production to control macrophage accrual and phenotype during
+skeletal muscle regeneration. Proc. Natl. Acad. Sci. USA 2018, 115, E2585–E2593. [CrossRef]
+174. Chen, H.-C.; Chou, A.S.-B.; Liu, Y.-C.; Hsieh, C.-H.; Kang, C.-C.; Pang, S.-T.; Yeh, C.-T.; Liu, H.-P.; Liao, S.-K. Induction of
+metastatic cancer stem cells from the NK/LAK-resistant ﬂoating, but not adherent, subset of the UP-LN1 carcinoma cell line by
+IFN-γ. Lab. Investig. 2011, 91, 1502–1513. [CrossRef]
+175. Lo, U.-G.; Pong, R.-C.; Yang, D.; Gandee, L.; Hernandez, E.; Dang, A.; Lin, C.-J.; Santoyo, J.; Ma, S.; Sonavane, R.; et al. IFNγ-
+Induced IFIT5 Promotes Epithelial-to-Mesenchymal Transition in Prostate Cancer via miRNA Processing. Cancer Res. 2019, 79,
+1098–1112. [CrossRef]
+176. Berner, V.; Liu, H.; Zhou, Q.; Alderson, K.L.; Sun, K.; Weiss, J.M.; Back, T.C.; Longo, D.L.; Blazar, B.R.; Wiltrout, R.H.; et al. IFN-γ
+mediates CD4+ T-cell loss and impairs secondary antitumor responses after successful initial immunotherapy. Nat. Med. 2007, 13,
+354–360. [CrossRef]
+177. Sharma, P.; Hu-Lieskovan, S.; Wargo, J.A.; Ribas, A. Primary, Adaptive, and Acquired Resistance to Cancer Immunotherapy. Cell
+2017, 168, 707–723. [CrossRef]
+178. Allan, S.E.; Broady, R.; Gregori, S.; Himmel, M.E.; Locke, N.; Roncarolo, M.G.; Bacchetta, R.; Levings, M.K. CD4 + T-regulatory
+cells: Toward therapy for human diseases. Immunol. Rev. 2008, 223, 391–421. [CrossRef]
+179. O’Garra, A.; Vieira, P. TH1 cells control themselves by producing interleukin-10. Nat. Rev. Immunol. 2007, 7, 425–428. [CrossRef]
+180. Fillatreau, S.; Gray, D.; Anderton, S.M. Not always the bad guys: B cells as regulators of autoimmune pathology. Nat. Rev.
+Immunol. 2008, 8, 391–397. [CrossRef]
+181. Mast Cell Homeostasis: A Fundamental Aspect of Allergic Disease. Available online: https://pubmed.ncbi.nlm.nih.gov/174300
+94/ (accessed on 20 December 2022).
+182. Moore, K.W.; de Waal Malefyt, R.; Coffman, R.L.; O’Garra, A. Interleukin-10 and the Interleukin-10 Receptor. Annu. Rev. Immunol.
+2001, 19, 683–765. [CrossRef]
+183. Williams, L.M.; Ricchetti, G.; Sarma, U.; Smallie, T.; Foxwell, B.M.J. Interleukin-10 suppression of myeloid cell activation—A
+continuing puzzle. Immunology 2004, 113, 281–292. [CrossRef]
+184. Dillon, S. Yeast zymosan, a stimulus for TLR2 and dectin-1, induces regulatory antigen-presenting cells and immunological
+tolerance. J. Clin. Investig. 2006, 116, 916–928. [CrossRef]
+185. Grimbaldeston, M.A.; Nakae, S.; Kalesnikoff, J.; Tsai, M.; Galli, S.J. Mast cell-derived interleukin 10 limits skin pathology in
+contact dermatitis and chronic irradiation with ultraviolet B. Nat. Immunol. 2007, 8, 1095–1104. [CrossRef]
+186. Akdis, C.A.; Blaser, K. Mechanisms of interleukin-10-mediated immune suppression. Immunology 2001, 103, 131–136. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+31 of 40
+187. Cai, G.; Kastelein, R.A.; Hunter, C.A. IL-10 enhances NK cell proliferation, cytotoxicity and production of IFN-γ when combined
+with IL-18. Eur. J. Immunol. 1999, 29, 2658–2665. [CrossRef]
+188. de Waal Malefyt, R.; Haanen, J.; Spits, H.; Roncarolo, M.G.; te Velde, A.; Figdor, C.; Johnson, K.; Kastelein, R.; Yssel, H.; de
+Vries, J.E. Interleukin 10 (IL-10) and viral IL-10 strongly reduce antigen-speciﬁc human T cell proliferation by diminishing the
+antigen-presenting capacity of monocytes via downregulation of class II major histocompatibility complex expression. J. Exp.
+Med. 1991, 174, 915–924. [CrossRef]
+189. Joss, A.; Akdis, M.; Faith, A.; Blaser, K.; Akdis, C.A. IL-10 directly acts on T cells by speciﬁcally altering the CD28 co-stimulation
+pathway. Eur. J. Immunol. 2000, 30, 1683–1690. [CrossRef]
+190. Li, F.Z.; Dhillon, A.S.; Anderson, R.L.; McArthur, G.; Ferrao, P.T. Phenotype Switching in Melanoma: Implications for Progression
+and Therapy. Front. Oncol. 2015, 5, 31. [CrossRef]
+191. Llanes-Fernández, L.; Álvarez-Goyanes, R.I.; Arango-Prado, M.D.C.; Alcocer-González, J.M.; Mojarrieta, J.C.; Pérez, X.E.; López,
+M.O.; Odio, S.F.; Camacho-Rodríguez, R.; Guerra-Yi, M.E.; et al. Relationship between IL-10 and tumor markers in breast cancer
+patients. Breast 2006, 15, 482–489. [CrossRef]
+192. Adris, S.K.; Klein, S.; Jasnis, M.A.; Chuluyan, E.; Ledda, M.F.; Bravo, A.I.; Carbone, C.; Chernajovsky, Y.; Podhajcer, O.L. IL-10
+expression by CT26 colon carcinoma cells inhibits their malignant phenotype and induces a T cell-mediated tumor rejection in
+the context of a systemic Th2 response. Gene Ther. 1999, 6, 1705–1712. [CrossRef]
+193. Considine, R.V.; Sinha, M.K.; Heiman, M.L.; Kriauciunas, A.; Stephens, T.W.; Nyce, M.R.; Ohannesian, J.P.; Marco, C.C.; McKee,
+L.J.; Bauer, T.L.; et al. Serum Immunoreactive-Leptin Concentrations in Normal-Weight and Obese Humans. N. Engl. J. Med. 1996,
+334, 292–295. [CrossRef]
+194. Andò, S.; Barone, I.; Giordano, C.; Bonoﬁglio, D.; Catalano, S. The Multifaceted Mechanism of Leptin Signaling within Tumor
+Microenvironment in Driving Breast Cancer Growth and Progression. Front. Oncol. 2014, 4, 340. [CrossRef]
+195. Akeel Al-hussaniy, H.; Hikmate Alburghaif, A.; Akeel Naji, M. Leptin hormone and its effectiveness in reproduction, metabolism,
+immunity, diabetes, hopes and ambitions. J. Med. Life 2021, 14, 600–605. [CrossRef]
+196. Lin, T.-C.; Hsiao, M. Leptin and Cancer: Updated Functional Roles in Carcinogenesis, Therapeutic Niches, and Developments.
+Int. J. Mol. Sci. 2021, 22, 2870. [CrossRef]
+197. Barone, I.; Catalano, S.; Gelsomino, L.; Marsico, S.; Giordano, C.; Panza, S.; Bonoﬁglio, D.; Bossi, G.; Covington, K.R.; Fuqua,
+S.A.W.; et al. Leptin Mediates Tumor–Stromal Interactions That Promote the Invasive Growth of Breast Cancer Cells. Cancer Res.
+2012, 72, 1416–1427. [CrossRef] [PubMed]
+198. Fuentes-Mattei, E.; Velazquez-Torres, G.; Phan, L.; Zhang, F.; Chou, P.-C.; Shin, J.-H.; Choi, H.H.; Chen, J.-S.; Zhao, R.; Chen, J.;
+et al. Effects of Obesity on Transcriptomic Changes and Cancer Hallmarks in Estrogen Receptor–Positive Breast Cancer. J. Natl.
+Cancer Inst. 2014, 106, dju158. [CrossRef] [PubMed]
+199. Kumar, R.; Mal, K.; Razaq, M.K.; Magsi, M.; Memon, M.K.; Memon, S.; Afroz, M.N.; Siddiqui, H.F.; Rizwan, A. Association of
+Leptin With Obesity and Insulin Resistance. Cureus 2020, 12, e12178. [CrossRef] [PubMed]
+200. Angelucci, A.; Clementi, L.; Alesse, E. Leptin in Tumor Microenvironment. In Tumor Microenvironment; Birbrair, A., Ed.; Springer
+International Publishing: Cham, Switzerland, 2020; Volume 1259, pp. 89–112. [CrossRef]
+201. Pan, H.; Deng, L.-L.; Cui, J.-Q.; Shi, L.; Yang, Y.-C.; Luo, J.-H.; Qin, D.; Wang, L. Association between serum leptin levels and
+breast cancer risk: An updated systematic review and meta-analysis. Medicine 2018, 97, e11345. [CrossRef]
+202. Hao, J.-Q.; Zhang, Q.-K.; Zhou, Y.-X.; Chen, L.-H.; Wu, P.-F. Association between circulating leptin concentration and G-2548A
+gene polymorphism in patients with breast cancer: A meta-analysis. Arch. Med. Sci. 2019, 15, 275–283. [CrossRef]
+203. Li, S.-J.; Wei, X.-H.; Zhan, X.-M.; He, J.-Y.; Zeng, Y.-Q.; Tian, X.-M.; Yuan, S.-T.; Sun, L. Adipocyte-Derived Leptin Promotes
+PAI-1-Mediated Breast Cancer Metastasis in a STAT3/MiR-34a Dependent Manner. Cancers 2020, 12, 3864. [CrossRef]
+204. Duan, L.; Lu, Y.; Xie, W.; Nong, L.; Jia, Y.; Tan, A.; Liu, Y. Leptin promotes bone metastasis of breast cancer by activating the
+SDF-1/CXCR4 axis. Aging 2020, 12, 16172–16182. [CrossRef]
+205. Sánchez-Jiménez, F.; Pérez-Pérez, A.; de la Cruz-Merino, L.; Sánchez-Margalet, V. Obesity and Breast Cancer: Role of Leptin.
+Front. Oncol. 2019, 9, 596. [CrossRef]
+206. Lipsey, C.C.; Harbuzariu, A.; Daley-Brown, D.; Gonzalez-Perez, R.R. Oncogenic role of leptin and Notch interleukin-1 leptin
+crosstalk outcome in cancer. World J. Methodol. 2016, 6, 43. [CrossRef]
+207. Mullen, M.; Gonzalez-Perez, R. Leptin-Induced JAK/STAT Signaling and Cancer Growth. Vaccines 2016, 4, 26. [CrossRef]
+208. Maharjan, C.K.; Mo, J.; Wang, L.; Kim, M.-C.; Wang, S.; Borcherding, N.; Vikas, P.; Zhang, W. Natural and Synthetic Estrogens in
+Chronic Inﬂammation and Breast Cancer. Cancers 2021, 14, 206. [CrossRef] [PubMed]
+209. Gelsomino, L.; Naimo, G.D.; Malivindi, R.; Augimeri, G.; Panza, S.; Giordano, C.; Barone, I.; Bonoﬁglio, D.; Mauro, L.; Catalano,
+S.; et al. Knockdown of Leptin Receptor Affects Macrophage Phenotype in the Tumor Microenvironment Inhibiting Breast Cancer
+Growth and Progression. Cancers 2020, 12, 2078. [CrossRef] [PubMed]
+210. Olea-Flores, M.; Zuñiga-Eulogio, M.; Tacuba-Saavedra, A.; Bueno-Salgado, M.; Sánchez-Carvajal, A.; Vargas-Santiago, Y.;
+Mendoza-Catalán, M.A.; Pérez Salazar, E.; García-Hernández, A.; Padilla-Benavides, T.; et al. Leptin Promotes Expression of
+EMT-Related Transcription Factors and Invasion in a Src and FAK-Dependent Pathway in MCF10A Mammary Epithelial Cells.
+Cells 2019, 8, 1133. [CrossRef] [PubMed]
+211. Linares, R.L.; Benítez, J.G.S.; Reynoso, M.O.; Romero, C.G.; Sandoval-Cabrera, A. Modulation of the leptin receptors expression in
+breast cancer cell lines exposed to leptin and tamoxifen. Sci. Rep. 2019, 9, 19189. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+32 of 40
+212. Wauman, J.; Zabeau, L.; Tavernier, J. The Leptin Receptor Complex: Heavier Than Expected? Front. Endocrinol. 2017, 8, 30.
+[CrossRef]
+213. Cui, H.; Cai, F.; Belsham, D.D.; Cui, H.; Cai, F.; Belsham, D.D. Leptin signaling in neurotensin neurons involves STAT, MAP
+kinases ERK1/2, and p38 through c-Fos and ATF1. FASEB J. 2006, 20, 2654–2656. [CrossRef]
+214. Cirillo, D.; Rachiglio, A.M.; la Montagna, R.; Giordano, A.; Normanno, N. Leptin signaling in breast cancer: An overview. J. Cell.
+Biochem. 2008, 105, 956–964. [CrossRef]
+215. Gualillo, O.; Eiras, S.; White, D.W.; Diéguez, C.; Casanueva, F.F. Leptin promotes the tyrosine phosphorylation of SHC proteins
+and SHC association with GRB2. Mol. Cell. Endocrinol. 2002, 190, 83–89. [CrossRef]
+216. Delort, L.; Rossary, A.; Farges, M.-C.; Vasson, M.-P.; Caldeﬁe-Chézet, F. Leptin, adipocytes and breast cancer: Focus on
+inﬂammation and anti-tumor immunity. Life Sci. 2015, 140, 37–48. [CrossRef]
+217. Mahbouli, S.; Der Vartanian, A.; Ortega, S.; Rougé, S.; Vasson, M.-P.; Rossary, A. Leptin induces ROS via NOX5 in healthy and
+neoplastic mammary epithelial cells. Oncol. Rep. 2017, 38, 3254–3264. [CrossRef]
+218. del Mar Blanquer-Rosselló, M.; Oliver, J.; Sastre-Serra, J.; Valle, A.; Roca, P. Leptin regulates energy metabolism in MCF-7 breast
+cancer cells. Int. J. Biochem. Cell Biol. 2016, 72, 18–26. [CrossRef] [PubMed]
+219. Park, J.; Scherer, P.E. Leptin and cancer: From cancer stem cells to metastasis. Endocr. Relat. Cancer 2011, 18, C25–C29. [CrossRef]
+[PubMed]
+220. Newman, G.; Gonzalez-Perez, R.R. Leptin–cytokine crosstalk in breast cancer. Mol. Cell. Endocrinol. 2014, 382, 570–582. [CrossRef]
+[PubMed]
+221. Giordano, C.; Chemi, F.; Panza, S.; Barone, I.; Bonoﬁglio, D.; Lanzino, M.; Cordella, A.; Campana, A.; Hashim, A.; Rizza, P.;
+et al. Leptin as a mediator of tumor-stromal interactions promotes breast cancer stem cell activity. Oncotarget 2016, 7, 1262–1275.
+[CrossRef]
+222. Shpilman, M.; Niv-Spector, L.; Katz, M.; Varol, C.; Solomon, G.; Ayalon-Soffer, M.; Boder, E.; Halpern, Z.; Elinav, E.; Gertler,
+A. Development and Characterization of High Afﬁnity Leptins and Leptin Antagonists. J. Biol. Chem. 2011, 286, 4429–4442.
+[CrossRef]
+223. Avtanski, D.B.; Nagalingam, A.; Bonner, M.Y.; Arbiser, J.L.; Saxena, N.K.; Sharma, D. Honokiol activates LKB1-miR-34a axis and
+antagonizes the oncogenic actions of leptin in breast cancer. Oncotarget 2015, 6, 29947–29962. [CrossRef]
+224. Wu, Y.; Zhou, B.P. TNF-α/NF-κB/Snail pathway in cancer cell migration and invasion. Br. J. Cancer 2010, 102, 639–644. [CrossRef]
+225. Cawthorn, W.P.; Sethi, J.K. TNF-α and adipocyte biology. FEBS Lett. 2008, 582, 117–131. [CrossRef]
+226. Sethi, J.K.; Hotamisligil, G.S. Metabolic Messengers: Tumour necrosis factor. Nat. Metab. 2021, 3, 1302–1312. [CrossRef]
+227. Storci, G.; Sansone, P.; Mari, S.; D’Uva, G.; Tavolari, S.; Guarnieri, T.; Taffurelli, M.; Ceccarelli, C.; Santini, D.; Chieco, P.;
+et al. TNFalpha up-regulates SLUG via the NF-kappaB/HIF1alpha axis, which imparts breast cancer cells with a stem cell-like
+phenotype. J. Cell. Physiol. 2010, 225, 682–691. [CrossRef]
+228. Mantovani, A.; Marchesi, F.; Porta, C.; Sica, A.; Allavena, P. Inﬂammation and cancer: Breast cancer as a prototype. Breast 2007, 16,
+27–33. [CrossRef]
+229. Cohen, E.N.; Gao, H.; Anfossi, S.; Mego, M.; Reddy, N.G.; Debeb, B.; Giordano, A.; Tin, S.; Wu, Q.; Garza, R.J.; et al. Inﬂammation
+Mediated Metastasis: Immune Induced Epithelial-To-Mesenchymal Transition in Inﬂammatory Breast Cancer Cells. PLoS ONE
+2015, 10, e0132710. [CrossRef]
+230. Macdiarmid, F.; Wang, D.; Duncan, L.J.; Purohit, A.; Ghilchik, M.W.; Reed, M.J. Stimulation of aromatase activity in breast
+ﬁbroblasts by tumor necrosis factor. Mol. Cell. Endocrinol. 1994, 106, 17–21. [CrossRef]
+231. Liu, W.; Lu, X.; Shi, P.; Yang, G.; Zhou, Z.; Li, W.; Mao, X.; Jiang, D.; Chen, C. TNF-α increases breast cancer stem-like cells through
+up-regulating TAZ expression via the non-canonical NF-κB pathway. Sci. Rep. 2020, 10, 1804. [CrossRef]
+232. Devin, A.; Lin, Y.; Yamaoka, S.; Li, Z.; Karin, M.; Liu, Z. The α and β Subunits of IκB Kinase (IKK) Mediate TRAF2-Dependent
+IKK Recruitment to Tumor Necrosis Factor (TNF) Receptor 1 in Response to TNF. Mol. Cell. Biol. 2001, 21, 3986–3994. [CrossRef]
+233. Li, C.-W.; Xia, W.; Huo, L.; Lim, S.-O.; Wu, Y.; Hsu, J.L.; Chao, C.-H.; Yamaguchi, H.; Yang, N.-K.; Ding, Q.; et al. Epithelial–
+Mesenchymal Transition Induced by TNF-α Requires NF-κB–Mediated Transcriptional Upregulation of Twist1. Cancer Res. 2012,
+72, 1290–1300. [CrossRef]
+234. Wolczyk, D.; Zaremba-Czogalla, M.; Hryniewicz-Jankowska, A.; Tabola, R.; Grabowski, K.; Sikorski, A.F.; Augoff, K. TNF-α
+promotes breast cancer cell migration and enhances the concentration of membrane-associated proteases in lipid rafts. Cell. Oncol.
+2016, 39, 353–363. [CrossRef]
+235. Robinson, S.C.; Scott, K.A.; Balkwill, F.R. Chemokine stimulation of monocyte matrix metalloproteinase-9 requires endogenous
+TNF-α. Eur. J. Immunol. 2002, 32, 404–412. [CrossRef]
+236. Raghu, H.; Sodadasu, P.K.; Malla, R.R.; Gondi, C.S.; Estes, N.; Rao, J.S. Localization of uPAR and MMP-9 in lipid rafts is critical
+for migration, invasion and angiogenesis in human breast cancer cells. BMC Cancer 2010, 10, 647. [CrossRef]
+237. Lane, M.D.; Tang, Q.-Q.; Jiang, M.-S. Role of the CCAAT Enhancer Binding Proteins (C/EBPs) in Adipocyte Differentiation.
+Biochem. Biophys. Res. Commun. 1999, 266, 677–683. [CrossRef]
+238. Martínez-Chacón, G.; Brown, K.A.; Docanto, M.M.; Kumar, H.; Salminen, S.; Saarinen, N.; Mäkelä, S. IL-10 suppresses TNF-α-
+induced expression of human aromatase gene in mammary adipose tissue. FASEB J. 2018, 32, 3361–3370. [CrossRef]
+239. Yu, H.; Aravindan, N.; Xu, J.; Natarajan, M. Inter- and intra-cellular mechanism of NF-kB-dependent survival advantage and
+clonal expansion of radio-resistant cancer cells. Cell. Signal. 2017, 31, 105–111. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+33 of 40
+240. Activation of Nuclear Factor-Kappa B Is Linked to Resistance to Neoadjuvant Chemotherapy in Breast Cancer Patients. Available
+online: https://pubmed.ncbi.nlm.nih.gov/16728586/ (accessed on 7 February 2023).
+241. Zhang, Z.; Lin, G.; Yan, Y.; Li, X.; Hu, Y.; Wang, J.; Yin, B.; Wu, Y.; Li, Z.; Yang, X.-P. Transmembrane TNF-alpha promotes
+chemoresistance in breast cancer cells. Oncogene 2018, 37, 3456–3470. [CrossRef]
+242. Torrey, H.; Butterworth, J.; Mera, T.; Okubo, Y.; Wang, L.; Baum, D.; Defusco, A.; Plager, S.; Warden, S.; Huang, D.; et al.
+Targeting TNFR2 with antagonistic antibodies inhibits proliferation of ovarian cancer cells and tumor-associated Tregs. Sci. Signal.
+2017, 10, eaaf8608. [CrossRef]
+243. Rubio, M.F.; Werbajh, S.; Cafferata, E.G.A.; Quaglino, A.; Coló, G.P.; Nojek, I.M.; Kordon, E.C.; Nahmod, V.E.; Costas, M.A. TNF-α
+enhances estrogen-induced cell proliferation of estrogen-dependent breast tumor cells through a complex containing nuclear
+factor-kappa B. Oncogene 2006, 25, 1367–1377. [CrossRef]
+244. Transactivation of ErbB-2 Induced by Tumor Necrosis Factor Alpha Promotes NF-kappaB Activation and Breast Cancer Cell
+Proliferation. Available online: https://pubmed.ncbi.nlm.nih.gov/19760502/ (accessed on 10 November 2022).
+245. Sutton, C.E.; Lalor, S.J.; Sweeney, C.M.; Brereton, C.F.; Lavelle, E.C.; Mills, K.H.G. Interleukin-1 and IL-23 Induce Innate IL-17
+Production from γδ T Cells, Amplifying Th17 Responses and Autoimmunity. Immunity 2009, 31, 331–341. [CrossRef]
+246. Kaler, P.; Augenlicht, L.; Klampfer, L. Macrophage-derived IL-1β stimulates Wnt signaling and growth of colon cancer cells: A
+crosstalk interrupted by vitamin D3. Oncogene 2009, 28, 3892–3902. [CrossRef]
+247. Afonina, I.S.; Müller, C.; Martin, S.J.; Beyaert, R. Proteolytic Processing of Interleukin-1 Family Cytokines: Variations on a
+Common Theme. Immunity 2015, 42, 991–1004. [CrossRef]
+248. Schroder, K.; Tschopp, J. The Inﬂammasomes. Cell 2010, 140, 821–832. [CrossRef]
+249. McMahan, C.J.; Slack, J.L.; Mosley, B.; Cosman, D.; Lupton, S.D.; Brunton, L.L.; Grubin, C.E.; Wignall, J.M.; Jenkins, N.A.; Brannan,
+C.I. A novel IL-1 receptor, cloned from B cells by mammalian expression, is expressed in many cell types. EMBO J. 1991, 10,
+2821–2832. [CrossRef]
+250. Oh, K.; Lee, O.-Y.; Park, Y.; Seo, M.W.; Lee, D.-S. IL-1β induces IL-6 production and increases invasiveness and estrogen-
+independent growth in a TG2-dependent manner in human breast cancer cells. BMC Cancer 2016, 16, 724. [CrossRef]
+251. Nutter, F.; Holen, I.; Brown, H.K.; Cross, S.S.; Evans, C.A.; Walker, M.; Coleman, R.E.; Westbrook, J.A.; Selby, P.J.; Brown, J.E.; et al.
+Different molecular proﬁles are associated with breast cancer cell homing compared with colonisation of bone: Evidence using a
+novel bone-seeking cell line. Endocr. Relat. Cancer 2014, 21, 327–341. [CrossRef]
+252. Ben-Sasson, S.Z.; Hogg, A.; Hu-Li, J.; Wingﬁeld, P.; Chen, X.; Crank, M.; Caucheteux, S.; Ratner-Hurevich, M.; Berzofsky, J.A.;
+Nir-Paz, R.; et al. IL-1 enhances expansion, effector function, tissue localization, and memory response of antigen-speciﬁc CD8 T
+cells. J. Exp. Med. 2013, 210, 491–502. [CrossRef]
+253. Mon, N.N.; Senga, T.; Ito, S. Interleukin-1β activates focal adhesion kinase and Src to induce matrix metalloproteinase-9
+production and invasion of MCF-7 breast cancer cells. Oncol. Lett. 2017, 13, 955–960. [CrossRef] [PubMed]
+254. Espinoza-Sánchez, N.A.; Chimal-Ramírez, G.K.; Mantilla, A.; Fuentes-Pananá, E.M. IL-1β, IL-8, and Matrix Metalloproteinases-1,
+-2, and -10 Are Enriched upon Monocyte–Breast Cancer Cell Cocultivation in a Matrigel-Based Three-Dimensional System. Front.
+Immunol. 2017, 8, 205. [CrossRef] [PubMed]
+255. Escobar, P.; Bouclier, C.; Serret, J.; Bièche, I.; Brigitte, M.; Caicedo, A.; Sanchez, E.; Vacher, S.; Vignais, M.-L.; Bourin, P.; et al.
+IL-1β produced by aggressive breast cancer cells is one of the factors that dictate their interactions with mesenchymal stem cells
+through chemokine production. Oncotarget 2015, 6, 29034–29047. [CrossRef] [PubMed]
+256. Chen, Q.; Wang, J.; Zhang, Q.; Zhang, J.; Lou, Y.; Yang, J.; Chen, Y.; Wei, T.; Zhang, J.; Fu, Q.; et al. Tumour cell-derived debris and
+IgG synergistically promote metastasis of pancreatic cancer by inducing inﬂammation via tumour-associated macrophages. Br. J.
+Cancer 2019, 121, 786–795. [CrossRef]
+257. Jang, J.-H.; Kim, D.-H.; Lim, J.M.; Lee, J.W.; Jeong, S.J.; Kim, K.P.; Surh, Y.-J. Breast Cancer Cell–Derived Soluble CD44 Promotes
+Tumor Progression by Triggering Macrophage IL1β Production. Cancer Res. 2020, 80, 1342–1356. [CrossRef]
+258. Shchors, K.; Shchors, E.; Rostker, F.; Lawlor, E.R.; Brown-Swigart, L.; Evan, G.I. The Myc-dependent angiogenic switch in tumors
+is mediated by interleukin 1β. Genes Dev. 2006, 20, 2527–2538. [CrossRef]
+259. Kolb, R.; Kluz, P.; Tan, Z.W.; Borcherding, N.; Bormann, N.; Vishwakarma, A.; Balcziak, L.; Zhu, P.; Davies, B.S.J.; Gourronc,
+F.; et al. Obesity-associated inﬂammation promotes angiogenesis and breast cancer via angiopoietin-like 4. Oncogene 2019, 38,
+2351–2363. [CrossRef]
+260. Zhang, L.; Zhou, Y.; Sun, X.; Zhou, J.; Yang, P. CXCL12 overexpression promotes the angiogenesis potential of periodontal
+ligament stem cells. Sci. Rep. 2017, 7, 10286. [CrossRef] [PubMed]
+261. Kaplanov, I.; Carmi, Y.; Kornetsky, R.; Shemesh, A.; Shurin, G.V.; Shurin, M.R.; Dinarello, C.A.; Voronov, E.; Apte, R.N. Blocking
+IL-1β reverses the immunosuppression in mouse breast cancer and synergizes with anti–PD-1 for tumor abrogation. Proc. Natl.
+Acad. Sci. USA 2019, 116, 1361–1369. [CrossRef] [PubMed]
+262. Tulotta, C.; Ottewell, P. The role of IL-1B in breast cancer bone metastasis. Endocr. Relat. Cancer 2018, 25, R421–R434. [CrossRef]
+[PubMed]
+263. Muraguchi, A.; Hirano, T.; Tang, B.; Matsuda, T.; Horii, Y.; Nakajima, K.; Kishimoto, T. The essential role of B cell stimulatory
+factor 2 (BSF-2/IL-6) for the terminal differentiation of B cells. J. Exp. Med. 1988, 167, 332–344. [CrossRef]
+264. Murakami, M.; Kamimura, D.; Hirano, T. Pleiotropy and Speciﬁcity: Insights from the Interleukin 6 Family of Cytokines. Immunity
+2019, 50, 812–831. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+34 of 40
+265. Yoon, S.; Woo, S.U.; Kang, J.H.; Kim, K.; Kwon, M.-H.; Park, S.; Shin, H.-J.; Gwak, H.-S.; Chwae, Y.-J. STAT3 transcriptional factor
+activated by reactive oxygen species induces IL6 in starvation-induced autophagy of cancer cells. Autophagy 2010, 6, 1125–1138.
+[CrossRef]
+266. Diehl, S.; Rincón, M. The two faces of IL-6 on Th1/Th2 differentiation. Mol. Immunol. 2002, 39, 531–536. [CrossRef]
+267. Kimura, A.; Kishimoto, T. IL-6: Regulator of Treg/Th17 balance. Eur. J. Immunol. 2010, 40, 1830–1835. [CrossRef]
+268. Rose-John, S. IL-6 Trans-Signaling via the Soluble IL-6 Receptor: Importance for the Pro-Inﬂammatory Activities of IL-6. Int. J.
+Biol. Sci. 2012, 8, 1237–1247. [CrossRef]
+269. Angell, H.; Galon, J. From the immune contexture to the Immunoscore: The role of prognostic and predictive immune markers in
+cancer. Curr. Opin. Immunol. 2013, 25, 261–267. [CrossRef]
+270. Santer, F.R.; Malinowska, K.; Culig, Z.; Cavarretta, I.T. Interleukin-6 trans-signalling differentially regulates proliferation,
+migration, adhesion and maspin expression in human prostate cancer cells. Endocr. Relat. Cancer 2010, 17, 241–253. [CrossRef]
+271. Naugler, W.E.; Karin, M. The wolf in sheep’s clothing: The role of interleukin-6 in immunity, inﬂammation and cancer. Trends Mol.
+Med. 2008, 14, 109–119. [CrossRef] [PubMed]
+272. Grivennikov, S.I.; Greten, F.R.; Karin, M. Immunity, Inﬂammation, and Cancer. Cell 2010, 140, 883–899. [CrossRef] [PubMed]
+273. Liu, S.; Ginestier, C.; Ou, S.J.; Clouthier, S.G.; Patel, S.H.; Monville, F.; Korkaya, H.; Heath, A.; Dutcher, J.; Kleer, C.G.; et al.
+Breast Cancer Stem Cells Are Regulated by Mesenchymal Stem Cells through Cytokine Networks. Cancer Res. 2011, 71, 614–624.
+[CrossRef] [PubMed]
+274. Dethlefsen, C.; Højfeldt, G.; Hojman, P. The role of intratumoral and systemic IL-6 in breast cancer. Breast Cancer Res. Treat. 2013,
+138, 657–664. [CrossRef] [PubMed]
+275. Oh, K.; Ko, E.; Kim, H.S.; Park, A.K.; Moon, H.-G.; Noh, D.-Y.; Lee, D.-S. Transglutaminase 2 facilitates the distant hematogenous
+metastasis of breast cancer by modulating interleukin-6 in cancer cells. Breast Cancer Res. 2011, 13, R96. [CrossRef] [PubMed]
+276. Purohit, A.; Reed, M.J. Regulation of estrogen synthesis in postmenopausal women. Steroids 2002, 67, 979–983. [CrossRef]
+277. Erez, N.; Glanz, S.; Raz, Y.; Avivi, C.; Barshack, I. Cancer Associated Fibroblasts express pro-inﬂammatory factors in human
+breast and ovarian tumors. Biochem. Biophys. Res. Commun. 2013, 437, 397–402. [CrossRef]
+278. Sansone, P.; Storci, G.; Tavolari, S.; Guarnieri, T.; Giovannini, C.; Taffurelli, M.; Ceccarelli, C.; Santini, D.; Paterini, P.; Marcu, K.B.;
+et al. IL-6 triggers malignant features in mammospheres from human ductal breast carcinoma and normal mammary gland. J.
+Clin. Investig. 2007, 117, 3988–4002. [CrossRef]
+279. Bromberg, J.F.; Wrzeszczynska, M.H.; Devgan, G.; Zhao, Y.; Pestell, R.G.; Albanese, C.; Darnell, J.E. Stat3 as an Oncogene. Cell
+1999, 98, 295–303. [CrossRef]
+280. Gritsko, T.; Williams, A.; Turkson, J.; Kaneko, S.; Bowman, T.; Huang, M.; Nam, S.; Eweis, I.; Diaz, N.; Sullivan, D.; et al. Persistent
+Activation of Stat3 Signaling Induces Survivin Gene Expression and Confers Resistance to Apoptosis in Human Breast Cancer
+Cells. Clin. Cancer Res. 2006, 12, 11–19. [CrossRef]
+281. Kiuchi, N.; Nakajima, K.; Ichiba, M.; Fukada, T.; Narimatsu, M.; Mizuno, K.; Hibi, M.; Hirano, T. STAT3 Is Required for the
+gp130-mediated Full Activation of the c-myc Gene. J. Exp. Med. 1999, 189, 63–73. [CrossRef] [PubMed]
+282. Thiem, S.; Pierce, T.P.; Palmieri, M.; Putoczki, T.L.; Buchert, M.; Preaudet, A.; Farid, R.O.; Love, C.; Catimel, B.; Lei, Z.; et al.
+mTORC1 inhibition restricts inﬂammation-associated gastrointestinal tumorigenesis in mice. J. Clin. Investig. 2013, 123, 767–781.
+[CrossRef] [PubMed]
+283. Rebouissou, S.; Amessou, M.; Couchy, G.; Poussin, K.; Imbeaud, S.; Pilati, C.; Izard, T.; Balabaud, C.; Bioulac-Sage, P.; Zucman-
+Rossi, J. Frequent in-frame somatic deletions activate gp130 in inﬂammatory hepatocellular tumours. Nature 2009, 457, 200–204.
+[CrossRef] [PubMed]
+284. Pilati, C.; Amessou, M.; Bihl, M.P.; Balabaud, C.; Van Nhieu, J.T.; Paradis, V.; Nault, J.C.; Izard, T.; Bioulac-Sage, P.; Couchy, G.;
+et al. Somatic mutations activating STAT3 in human inﬂammatory hepatocellular adenomas. J. Exp. Med. 2011, 208, 1359–1366.
+[CrossRef] [PubMed]
+285. Shirogane, T.; Fukada, T.; Muller, J.M.M.; Shima, D.T.; Hibi, M.; Hirano, T. Synergistic Roles for Pim-1 and c-Myc in STAT3-
+Mediated Cell Cycle Progression and Antiapoptosis. Immunity 1999, 11, 709–719. [CrossRef] [PubMed]
+286. Benoy, I.; Salgado, R.; Colpaert, C.; Weytjens, R.; Vermeulen, P.B.; Dirix, L.Y. Serum Interleukin 6, Plasma VEGF, Serum VEGF, and
+VEGF Platelet Load in Breast Cancer Patients. Clin. Breast Cancer 2002, 2, 311–315. [CrossRef]
+287. Garcia-Tunon, I.; Ricote, M.; Ruiz, A.; Fraile, B.; Paniagua, R.; Royuela, M. IL-6, its receptors and its relationship with bcl-2 and
+bax proteins in inﬁltrating and in situ human breast carcinoma. Histopathology 2005, 47, 82–89. [CrossRef]
+288. Hirano, T. IL-6 in inﬂammation, autoimmunity and cancer. Int. Immunol. 2021, 33, 127–148. [CrossRef]
+289. Sansone, P.; Bromberg, J. Targeting the Interleukin-6/Jak/Stat Pathway in Human Malignancies. J. Clin. Oncol. 2012, 30, 1005–1014.
+[CrossRef]
+290. Shibayama, O.; Yoshiuchi, K.; Inagaki, M.; Matsuoka, Y.; Yoshikawa, E.; Sugawara, Y.; Akechi, T.; Wada, N.; Imoto, S.; Murakami,
+K.; et al. Association between adjuvant regional radiotherapy and cognitive function in breast cancer patients treated with
+conservation therapy. Cancer Med. 2014, 3, 702–709. [CrossRef] [PubMed]
+291. Morrow, R.J.; Allam, A.H.; Yeo, B.; Deb, S.; Murone, C.; Lim, E.; Johnstone, C.N.; Ernst, M. Paracrine IL-6 Signaling Confers
+Proliferation between Heterogeneous Inﬂammatory Breast Cancer Sub-Clones. Cancers 2022, 14, 2292. [CrossRef] [PubMed]
+Int. J. Mol. Sci. 2023, 24, 4002
+35 of 40
+292. Li, H.; Xiao, H.; Lin, L.; Jou, D.; Kumari, V.; Lin, J.; Li, C. Drug Design Targeting Protein–Protein Interactions (PPIs) Using Multiple
+Ligand Simultaneous Docking (MLSD) and Drug Repositioning: Discovery of Raloxifene and Bazedoxifene as Novel Inhibitors
+of IL-6/GP130 Interface. J. Med. Chem. 2014, 57, 632–641. [CrossRef] [PubMed]
+293. Chen, J.; Wei, Y.; Yang, W.; Huang, Q.; Chen, Y.; Zeng, K.; Chen, J. IL-6: The Link Between Inﬂammation, Immunity and Breast
+Cancer. Front. Oncol. 2022, 12, 903800. [CrossRef] [PubMed]
+294. Modi, W.S.; Dean, M.; Seuanez, H.N.; Mukaida, N.; Matsushima, K.; O’Brien, S.J. Monocyte-derived neutrophil chemotactic factor
+(MDNCF/IL-8) resides in a gene cluster along with several other members of the platelet factor 4 gene superfamily. Hum. Genet.
+1990, 84, 185–187. [CrossRef]
+295. Harada, A.; Sekido, N.; Akahoshi, T.; Wada, T.; Mukaida, N.; Matsushima, K. Essential involvement of interleukin-8 (IL-8) in
+acute inﬂammation. J. Leukoc. Biol. 1994, 56, 559–564. [CrossRef]
+296. Baggiolini, M.; Dahinden, C.A. CC chemokines in allergic inﬂammation. Immunol. Today 1994, 15, 127–133. [CrossRef]
+297. Azar Sharabiani, M.T.; Vermeulen, R.; Scoccianti, C.; Hosnijeh, F.S.; Minelli, L.; Sacerdote, C.; Palli, D.; Krogh, V.; Tumino, R.;
+Chiodini, P.; et al. Immunologic proﬁle of excessive body weight. Biomarkers 2011, 16, 243–251. [CrossRef]
+298. Alfaro, C.; Sanmamed, M.F.; Rodríguez-Ruiz, M.E.; Teijeira, Á.; Oñate, C.; González, Á.; Ponz, M.; Schalper, K.A.; Pérez-Gracia,
+J.L.; Melero, I. Interleukin-8 in cancer pathogenesis, treatment and follow-up. Cancer Treat. Rev. 2017, 60, 24–31. [CrossRef]
+299. Todorovi´c-Rakovi´c, N.; Milovanovi´c, J. Interleukin-8 in Breast Cancer Progression. J. Interferon Cytokine Res. 2013, 33, 563–570.
+[CrossRef]
+300. Korkaya, H.; Kim, G.; Davis, A.; Malik, F.; Henry, N.L.; Ithimakin, S.; Quraishi, A.A.; Tawakkol, N.; D’Angelo, R.; Paulson, A.K.;
+et al. Activation of an IL6 Inﬂammatory Loop Mediates Trastuzumab Resistance in HER2+ Breast Cancer by Expanding the
+Cancer Stem Cell Population. Mol. Cell 2012, 47, 570–584. [CrossRef] [PubMed]
+301. Bohrer, L.R.; Schwertfeger, K.L. Macrophages Promote Fibroblast Growth Factor Receptor-Driven Tumor Cell Migration and
+Invasion in a Cxcr2-Dependent Manner. Mol. Cancer Res. 2012, 10, 1294–1305. [CrossRef] [PubMed]
+302. Joseph, P.R.B.; Rajarathnam, K. Solution NMR characterization of WTCXCL8 monomer and dimer binding to CXCR1 N-terminal
+domain: Differential Activities of CXCL8 Monomer and Dimer. Protein Sci. 2015, 24, 81–92. [CrossRef] [PubMed]
+303. Schumacher, C.; Clark-Lewis, I.; Baggiolini, M.; Moser, B. High- and low-afﬁnity binding of GRO alpha and neutrophil-activating
+peptide 2 to interleukin 8 receptors on human neutrophils. Proc. Natl. Acad. Sci. USA 1992, 89, 10542–10546. [CrossRef]
+304. Brat, D.J.; Bellail, A.C.; Van Meir, E.G. The role of interleukin-8 and its receptors in gliomagenesis and tumoralangiogenesis.
+Neuro-Oncol. 2005, 7, 122–133. [CrossRef]
+305. Li, A.; Dubey, S.; Varney, M.L.; Dave, B.J.; Singh, R.K. IL-8 Directly Enhanced Endothelial Cell Survival, Proliferation, and Matrix
+Metalloproteinases Production and Regulated Angiogenesis. J. Immunol. 2003, 170, 3369–3376. [CrossRef]
+306. Lang, K.; Niggemann, B.; Zanker, K.S.; Entschladen, F. Signal processing in migrating T24 human bladder carcinoma cells: Role of
+the autocrine interleukin-8 loop. Int. J. Cancer 2002, 99, 673–680. [CrossRef]
+307. Richardson, R.M.; Ali, H.; Pridgen, B.C.; Haribabu, B.; Snyderman, R. Multiple Signaling Pathways of Human Interleukin-8
+Receptor A. J. Biol. Chem. 1998, 273, 10690–10695. [CrossRef]
+308. Reis, S.T.; Leite, K.R.M.; Piovesan, L.F.; Pontes-Junior, J.; Viana, N.I.; Abe, D.K.; Crippa, A.; Moura, C.M.; Adonias, S.P.; Srougi, M.;
+et al. Increased expression of MMP-9 and IL-8 are correlated with poor prognosis of Bladder Cancer. BMC Urol. 2012, 12, 18.
+[CrossRef]
+309. Deng, F.; Weng, Y.; Li, X.; Wang, T.; Fan, M.; Shi, Q. Overexpression of IL-8 promotes cell migration via PI3K-Akt signaling
+pathway and EMT in triple-negative breast cancer. Pathol.-Res. Pract. 2021, 223, 152824. [CrossRef]
+310. Huang, W.; Chen, Z.; Zhang, L.; Tian, D.; Wang, D.; Fan, D.; Wu, K.; Xia, L. Interleukin-8 Induces Expression of FOXC1 to
+Promote Transactivation of CXCR1 and CCL2 in Hepatocellular Carcinoma Cell Lines and Formation of Metastases in Mice.
+Gastroenterology 2015, 149, 1053–1067.e14. [CrossRef] [PubMed]
+311. Paulitti, A.; Andreuzzi, E.; Bizzotto, D.; Pellicani, R.; Tarticchio, G.; Marastoni, S.; Pastrello, C.; Jurisica, I.; Ligresti, G.; Bucciotti, F.;
+et al. The ablation of the matricellular protein EMILIN2 causes defective vascularization due to impaired EGFR-dependent IL-8
+production affecting tumor growth. Oncogene 2018, 37, 3399–3414. [CrossRef] [PubMed]
+312. Schraufstatter, I.U.; Trieu, K.; Zhao, M.; Rose, D.M.; Terkeltaub, R.A.; Burger, M. IL-8-Mediated Cell Migration in Endothelial
+Cells Depends on Cathepsin B Activity and Transactivation of the Epidermal Growth Factor Receptor. J. Immunol. 2003, 171,
+6714–6722. [CrossRef]
+313. Petreaca, M.L.; Yao, M.; Liu, Y.; DeFea, K.; Martins-Green, M. Transactivation of Vascular Endothelial Growth Factor Receptor-2
+by Interleukin-8 (IL-8/CXCL8) Is Required for IL-8/CXCL8-induced Endothelial Permeability. Mol. Biol. Cell 2007, 18, 5014–5023.
+[CrossRef] [PubMed]
+314. Fousek, K.; Horn, L.A.; Palena, C. Interleukin-8: A chemokine at the intersection of cancer plasticity, angiogenesis, and immune
+suppression. Pharmacol. Ther. 2021, 219, 107692. [CrossRef] [PubMed]
+315. Rubinstein-Achiasaf, L.; Morein, D.; Ben-Yaakov, H.; Liubomirski, Y.; Meshel, T.; Elbaz, E.; Dorot, O.; Pichinuk, E.; Gershovits,
+M.; Weil, M.; et al. Persistent Inﬂammatory Stimulation Drives the Conversion of MSCs to Inﬂammatory CAFs That Promote
+Pro-Metastatic Characteristics in Breast Cancer Cells. Cancers 2021, 13, 1472. [CrossRef] [PubMed]
+316. Benoy, I.H.; Salgado, R.; Van Dam, P.; Geboers, K.; Van Marck, E.; Scharpé, S.; Vermeulen, P.B.; Dirix, L.Y. Increased Serum
+Interleukin-8 in Patients with Early and Metastatic Breast Cancer Correlates with Early Dissemination and Survival. Clin. Cancer
+Res. 2004, 10, 7157–7162. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+36 of 40
+317. Chin, A.R.; Wang, S.E. Cytokines driving breast cancer stemness. Mol. Cell. Endocrinol. 2014, 382, 598–602. [CrossRef]
+318. Liu, Q.; Li, A.; Tian, Y.; Wu, J.D.; Liu, Y.; Li, T.; Chen, Y.; Han, X.; Wu, K. The CXCL8-CXCR1/2 pathways in cancer. Cytokine
+Growth Factor Rev. 2016, 31, 61–71. [CrossRef]
+319. Han, Z.-J.; Li, Y.-B.; Yang, L.-X.; Cheng, H.-J.; Liu, X.; Chen, H. Roles of the CXCL8-CXCR1/2 Axis in the Tumor Microenvironment
+and Immunotherapy. Molecules 2021, 27, 137. [CrossRef]
+320. White, J.R.; Lee, J.M.; Young, P.R.; Hertzberg, R.P.; Jurewicz, A.J.; Chaikin, M.A.; Widdowson, K.; Foley, J.J.; Martin, L.D.; Griswold,
+D.E.; et al. Identiﬁcation of a Potent, Selective Non-peptide CXCR2 Antagonist That Inhibits Interleukin-8-induced Neutrophil
+Migration. J. Biol. Chem. 1998, 273, 10095–10098. [CrossRef] [PubMed]
+321. Kim, S.; You, D.; Jeong, Y.; Yoon, S.Y.; Kim, S.A.; Kim, S.W.; Nam, S.J.; Lee, J.E. WNT5A augments cell invasiveness by inducing
+CXCL8 in HER2-positive breast cancer cells. Cytokine 2020, 135, 155213. [CrossRef] [PubMed]
+322. Singh, J.K.; Farnie, G.; Bundred, N.J.; Simões, B.M.; Shergill, A.; Landberg, G.; Howell, S.J.; Clarke, R.B. Targeting CXCR1/2
+Signiﬁcantly Reduces Breast Cancer Stem Cell Activity and Increases the Efﬁcacy of Inhibiting HER2 via HER2-Dependent and
+-Independent Mechanisms. Clin. Cancer Res. 2013, 19, 643–656. [CrossRef] [PubMed]
+323. Ginestier, C.; Liu, S.; Diebel, M.E.; Korkaya, H.; Luo, M.; Brown, M.; Wicinski, J.; Cabaud, O.; Charafe-Jauffret, E.; Birnbaum, D.;
+et al. CXCR1 blockade selectively targets human breast cancer stem cells in vitro and in xenografts. J. Clin. Investig. 2010, 120,
+485–497. [CrossRef]
+324. Moseley, T.A.; Haudenschild, D.R.; Rose, L.; Reddi, A.H. Interleukin-17 family and IL-17 receptors. Cytokine Growth Factor Rev.
+2003, 14, 155–174. [CrossRef]
+325. Korn, T.; Bettelli, E.; Oukka, M.; Kuchroo, V.K. IL-17 and Th17 Cells. Annu. Rev. Immunol. 2009, 27, 485–517. [CrossRef]
+326. Onishi, R.M.; Gaffen, S.L. Interleukin-17 and its target genes: Mechanisms of interleukin-17 function in disease. Immunology 2010,
+129, 311–321. [CrossRef]
+327. Aggarwal, S.; Ghilardi, N.; Xie, M.-H.; de Sauvage, F.J.; Gurney, A.L. Interleukin-23 Promotes a Distinct CD4 T Cell Activation
+State Characterized by the Production of Interleukin-17. J. Biol. Chem. 2003, 278, 1910–1914. [CrossRef]
+328. McGeachy, M.J.; Cua, D.J.; Gaffen, S.L. The IL-17 Family of Cytokines in Health and Disease. Immunity 2019, 50, 892–906.
+[CrossRef]
+329. Mangan, P.R.; Harrington, L.E.; O’Quinn, D.B.; Helms, W.S.; Bullard, D.C.; Elson, C.O.; Hatton, R.D.; Wahl, S.M.; Schoeb, T.R.;
+Weaver, C.T. Transforming growth factor-β induces development of the TH17 lineage. Nature 2006, 441, 231–234. [CrossRef]
+330. Ivanov, I.I.; McKenzie, B.S.; Zhou, L.; Tadokoro, C.E.; Lepelley, A.; Lafaille, J.J.; Cua, D.J.; Littman, D.R. The Orphan Nuclear
+Receptor RORγt Directs the Differentiation Program of Proinﬂammatory IL-17+ T Helper Cells. Cell 2006, 126, 1121–1133.
+[CrossRef]
+331. Mimpen, J.Y.; Snelling, S.J.B.; Carr, A.J.; Dakin, S.G. Interleukin-17 Cytokines and Receptors: Potential Ampliﬁers of Tendon
+Inﬂammation. Front. Bioeng. Biotechnol. 2021, 9, 795830. [CrossRef] [PubMed]
+332. Huang, Q.; Duan, L.; Qian, X.; Fan, J.; Lv, Z.; Zhang, X.; Han, J.; Wu, F.; Guo, M.; Hu, G.; et al. IL-17 Promotes Angiogenic Factors
+IL-6, IL-8, and Vegf Production via Stat1 in Lung Adenocarcinoma. Sci. Rep. 2016, 6, 36551. [CrossRef] [PubMed]
+333. Kennedy, J.; Rossi, D.L.; Zurawski, S.M.; Vega, F.; Kastelein, R.A.; Wagner, J.L.; Hannum, C.H.; Zlotnik, A. Mouse IL-17: A
+Cytokine Preferentially Expressed by αβTCR+CD4—CD8—T Cells. J. Interferon Cytokine Res. 1996, 16, 611–617. [CrossRef]
+[PubMed]
+334. Shalom-Barak, T.; Quach, J.; Lotz, M. Interleukin-17-induced Gene Expression in Articular Chondrocytes Is Associated with
+Activation of Mitogen-activated Protein Kinases and NF-κB. J. Biol. Chem. 1998, 273, 27467–27473. [CrossRef] [PubMed]
+335. Chen, X.; Chang, L.; Li, X.; Huang, J.; Yang, L.; Lai, X.; Huang, Z.; Wang, Z.; Wu, X.; Zhao, J.; et al. Tc17/IL-17A Up-Regulated the
+Expression of MMP-9 via NF-κB Pathway in Nasal Epithelial Cells of Patients With Chronic Rhinosinusitis. Front. Immunol. 2018,
+9, 2121. [CrossRef]
+336. Numasaki, M.; Watanabe, M.; Suzuki, T.; Takahashi, H.; Nakamura, A.; McAllister, F.; Hishinuma, T.; Goto, J.; Lotze, M.T.; Kolls,
+J.K.; et al. IL-17 Enhances the Net Angiogenic Activity and In Vivo Growth of Human Non-Small Cell Lung Cancer in SCID Mice
+through Promoting CXCR-2-Dependent Angiogenesis. J. Immunol. 2005, 175, 6177–6189. [CrossRef]
+337. Su, X.; Ye, J.; Hsueh, E.C.; Zhang, Y.; Hoft, D.F.; Peng, G. Tumor Microenvironments Direct the Recruitment and Expansion of
+Human Th17 Cells. J. Immunol. 2010, 184, 1630–1641. [CrossRef]
+338. Alinejad, V.; Dolati, S.; Motallebnezhad, M.; Youseﬁ, M. The role of IL17B-IL17RB signaling pathway in breast cancer. Biomed.
+Pharmacother. 2017, 88, 795–803. [CrossRef]
+339. Cochaud, S.; Giustiniani, J.; Thomas, C.; Laprevotte, E.; Garbar, C.; Savoye, A.-M.; Curé, H.; Mascaux, C.; Alberici, G.; Bonnefoy,
+N.; et al. IL-17A is produced by breast cancer TILs and promotes chemoresistance and proliferation through ERK1/2. Sci. Rep.
+2013, 3, 3456. [CrossRef]
+340. Suryawanshi, A.; Veiga-Parga, T.; Reddy, P.B.J.; Rajasagi, N.K.; Rouse, B.T. IL-17A Differentially Regulates Corneal Vascular
+Endothelial Growth Factor (VEGF)-A and Soluble VEGF Receptor 1 Expression and Promotes Corneal Angiogenesis after Herpes
+Simplex Virus Infection. J. Immunol. 2012, 188, 3434–3446. [CrossRef] [PubMed]
+341. Muromoto, R.; Hirao, T.; Tawa, K.; Hirashima, K.; Kon, S.; Kitai, Y.; Matsuda, T. IL-17A plays a central role in the expression of
+psoriasis signature genes through the induction of IκB-ζ in keratinocytes. Int. Immunol. 2016, 28, 443–452. [CrossRef] [PubMed]
+Int. J. Mol. Sci. 2023, 24, 4002
+37 of 40
+342. Salazar, Y.; Zheng, X.; Brunn, D.; Raifer, H.; Picard, F.; Zhang, Y.; Winter, H.; Guenther, S.; Weigert, A.; Weigmann, B.; et al.
+Microenvironmental Th9 and Th17 lymphocytes induce metastatic spreading in lung cancer. J. Clin. Investig. 2020, 130, 3560–3575.
+[CrossRef] [PubMed]
+343. Benevides, L.; da Fonseca, D.M.; Donate, P.B.; Tiezzi, D.G.; De Carvalho, D.D.; de Andrade, J.M.; Martins, G.A.; Silva, J.S.
+IL17 Promotes Mammary Tumor Progression by Changing the Behavior of Tumor Cells and Eliciting Tumorigenic Neutrophils
+Recruitment. Cancer Res. 2015, 75, 3788–3799. [CrossRef]
+344. Huang, S.; Wei, P.; Hwang-Verslues, W.W.; Kuo, W.; Jeng, Y.; Hu, C.; Shew, J.; Huang, C.; Chang, K.; Lee, E.Y.; et al. TGF-β1
+secreted by Tregs in lymph nodes promotes breast cancer malignancy via up-regulation of IL-17RB. EMBO Mol. Med. 2017, 9,
+1660–1680. [CrossRef]
+345. Teng, M.W.L.; Bowman, E.P.; McElwee, J.J.; Smyth, M.J.; Casanova, J.-L.; Cooper, A.M.; Cua, D.J. IL-12 and IL-23 cytokines: From
+discovery to targeted therapies for immune-mediated inﬂammatory diseases. Nat. Med. 2015, 21, 719–729. [CrossRef]
+346. Langrish, C.L.; McKenzie, B.S.; Wilson, N.J.; de Waal Malefyt, R.; Kastelein, R.A.; Cua, D.J. IL-12 and IL-23: Master regulators of
+innate and adaptive immunity. Immunol. Rev. 2004, 202, 96–105. [CrossRef]
+347. Gagro, A.; Servis, D.; Cepika, A.-M.; Toellner, K.-M.; Grafton, G.; Taylor, D.R.; Branica, S.; Gordon, J. Type I cytokine proﬁles of
+human naive and memory B lymphocytes: A potential for memory cells to impact polarization. Immunology 2006, 118, 66–77.
+[CrossRef]
+348. Teng, M.W.L.; Andrews, D.M.; McLaughlin, N.; von Scheidt, B.; Ngiow, S.F.; Möller, A.; Hill, G.R.; Iwakura, Y.; Oft, M.; Smyth,
+M.J. IL-23 suppresses innate immune response independently of IL-17A during carcinogenesis and metastasis. Proc. Natl. Acad.
+Sci. USA 2010, 107, 8328–8333. [CrossRef]
+349. Zhang, L.; Li, J.; Li, L.; Zhang, J.; Wang, X.; Yang, C.; Li, Y.; Lan, F.; Lin, P. IL-23 selectively promotes the metastasis of colorectal
+carcinoma cells with impaired Socs3 expression via the STAT5 pathway. Carcinogenesis 2014, 35, 1330–1340. [CrossRef]
+350. Sheng, S.; Zhang, J.; Ai, J.; Hao, X.; Luan, R. Aberrant expression of IL-23/IL-23R in patients with breast cancer and its clinical
+signiﬁcance. Mol. Med. Rep. 2018, 17, 4639–4644. [CrossRef] [PubMed]
+351. D’Elios, M.M.; Del Prete, G.; Amedei, A. Targeting IL-23 in human diseases. Expert Opin. Ther. Targets 2010, 14, 759–774. [CrossRef]
+[PubMed]
+352. Pan, B.; Shen, J.; Cao, J.; Zhou, Y.; Shang, L.; Jin, S.; Cao, S.; Che, D.; Liu, F.; Yu, Y. Interleukin-17 promotes angiogenesis by
+stimulating VEGF production of cancer cells via the STAT3/GIV signaling pathway in non-small-cell lung cancer. Sci. Rep. 2015,
+5, 16053. [CrossRef] [PubMed]
+353. Martinenaite, E.; Munir Ahmad, S.; Hansen, M.; Met, Ö.; Westergaard, M.W.; Larsen, S.K.; Klausen, T.W.; Donia, M.; Svane,
+I.M.; Andersen, M.H. CCL22-speciﬁc T Cells: Modulating the immunosuppressive tumor microenvironment. OncoImmunology
+2016, 5, e1238541. [CrossRef]
+354. Panneerselvam, J.; Madka, V.; Rai, R.; Morris, K.T.; Houchen, C.W.; Chandrakesan, P.; Rao, C.V. Inﬂammatory Mediators and Gut
+Microbial Toxins Drive Colon Tumorigenesis by IL-23 Dependent Mechanism. Cancers 2021, 13, 5159. [CrossRef]
+355. Chan, T.C.; Hawkes, J.E.; Krueger, J.G. Interleukin 23 in the skin: Role in psoriasis pathogenesis and selective interleukin 23
+blockade as treatment. Ther. Adv. Chronic Dis. 2018, 9, 111–119. [CrossRef]
+356. Vignali, D.A.A.; Kuchroo, V.K. IL-12 family cytokines: Immunological playmakers. Nat. Immunol. 2012, 13, 722–728. [CrossRef]
+357. Almradi, A.; Hanzel, J.; Sedano, R.; Parker, C.E.; Feagan, B.G.; Ma, C.; Jairath, V. Clinical Trials of IL-12/IL-23 Inhibitors in
+Inﬂammatory Bowel Disease. BioDrugs 2020, 34, 713–721. [CrossRef]
+358. Zheng, H.; Ban, Y.; Wei, F.; Ma, X. Regulation of Interleukin-12 Production in Antigen-Presenting Cells. In Regulation of Cytokine
+Gene Expression in Immunity and Diseases; Ma, X., Ed.; Springer: Dordrecht, The Netherlands, 2016; Volume 941, pp. 117–138.
+[CrossRef]
+359. Liaskou, E.; Patel, S.R.; Webb, G.; Bagkou Dimakou, D.; Akiror, S.; Krishna, M.; Mells, G.; Jones, D.E.; Bowman, S.J.; Barone, F.;
+et al. Increased sensitivity of Treg cells from patients with PBC to low dose IL-12 drives their differentiation into IFN-γ secreting
+cells. J. Autoimmun. 2018, 94, 143–155. [CrossRef]
+360. Zwirner, N.W.; Ziblat, A. Regulation of NK Cell Activation and Effector Functions by the IL-12 Family of Cytokines: The Case of
+IL-27. Front. Immunol. 2017, 8, 25. [CrossRef]
+361. Oka, N.; Markova, T.; Tsuzuki, K.; Li, W.; El-Darawish, Y.; Pencheva-Demireva, M.; Yamanishi, K.; Yamanishi, H.; Sakagami, M.;
+Tanaka, Y.; et al. IL-12 regulates the expansion, phenotype, and function of murine NK cells activated by IL-15 and IL-18. Cancer
+Immunol. Immunother. 2020, 69, 1699–1712. [CrossRef] [PubMed]
+362. Zhang, N.; Bevan, M.J. CD8+ T Cells: Foot Soldiers of the Immune System. Immunity 2011, 35, 161–168. [CrossRef] [PubMed]
+363. Díaz-Montero, C.M.; El Naggar, S.; Al Khami, A.; El Naggar, R.; Montero, A.J.; Cole, D.J.; Salem, M.L. Priming of naive CD8+ T
+cells in the presence of IL-12 selectively enhances the survival of CD8+CD62Lhi cells and results in superior anti-tumor activity in
+a tolerogenic murine model. Cancer Immunol. Immunother. 2008, 57, 563–572. [CrossRef] [PubMed]
+364. Zundler, S.; Neurath, M.F. Interleukin-12: Functional activities and implications for disease. Cytokine Growth Factor Rev. 2015, 26,
+559–568. [CrossRef]
+365. Vilgelm, A.E.; Richmond, A. Chemokines Modulate Immune Surveillance in Tumorigenesis, Metastasis, and Response to
+Immunotherapy. Front. Immunol. 2019, 10, 333. [CrossRef]
+366. Lin, Y.; Kuang, W.; Wu, B.; Xie, C.; Liu, C.; Tu, Z. IL-12 induces autophagy in human breast cancer cells through AMPK and the
+PI3K/Akt pathway. Mol. Med. Rep. 2017, 16, 4113–4118. [CrossRef]
+Int. J. Mol. Sci. 2023, 24, 4002
+38 of 40
+367. Lin, Z.-W.; Wu, L.-X.; Xie, Y.; Ou, X.; Tian, P.-K.; Liu, X.-P.; Min, J.; Wang, J.; Chen, R.-F.; Chen, Y.-J.; et al. The Expression Levels of
+Transcription Factors T-bet, GATA-3, RORγt and FOXP3 in Peripheral Blood Lymphocyte (PBL) of Patients with Liver Cancer
+and their Signiﬁcance. Int. J. Med. Sci. 2015, 12, 7–16. [CrossRef]
+368. Li, C.; Jiang, P.; Wei, S.; Xu, X.; Wang, J. Regulatory T cells in tumor microenvironment: New mechanisms, potential therapeutic
+strategies and future prospects. Mol. Cancer 2020, 19, 116. [CrossRef]
+369. Tugues, S.; Burkhard, S.H.; Ohs, I.; Vrohlings, M.; Nussbaum, K.; vom Berg, J.; Kulig, P.; Becher, B. New insights into IL-12-
+mediated tumor suppression. Cell Death Differ. 2015, 22, 237–246. [CrossRef]
+370. Cao, X.; Leonard, K.; Collins, L.I.; Cai, S.F.; Mayer, J.C.; Payton, J.E.; Walter, M.J.; Piwnica-Worms, D.; Schreiber, R.D.; Ley, T.J.
+Interleukin 12 Stimulates IFN-γ–Mediated Inhibition of Tumor-Induced Regulatory T-Cell Proliferation and Enhances Tumor
+Clearance. Cancer Res. 2009, 69, 8700–8709. [CrossRef]
+371. Zhao, J.; Zhao, J.; Perlman, S. Differential Effects of IL-12 on Tregs and Non-Treg T Cells: Roles of IFN-γ, IL-2 and IL-2R. PLoS
+ONE 2012, 7, e46241. [CrossRef]
+372. El-Shemi, A.G.; Ashshi, A.M.; Na, Y.; Li, Y.; Basalamah, M.; Al-Allaf, F.A.; Oh, E.; Jung, B.-K.; Yun, C.-O. Combined therapy with
+oncolytic adenoviruses encoding TRAIL and IL-12 genes markedly suppressed human hepatocellular carcinoma both in vitro
+and in an orthotopic transplanted mouse model. J. Exp. Clin. Cancer Res. 2016, 35, 74. [CrossRef] [PubMed]
+373. Jia, Z.; Ragoonanan, D.; Mahadeo, K.M.; Gill, J.; Gorlick, R.; Shpal, E.; Li, S. IL12 immune therapy clinical trial review: Novel
+strategies for avoiding CRS-associated cytokines. Front. Immunol. 2022, 13, 952231. [CrossRef] [PubMed]
+374. Nguyen, K.G.; Vrabel, M.R.; Mantooth, S.M.; Hopkins, J.J.; Wagner, E.S.; Gabaldon, T.A.; Zaharoff, D.A. Localized Interleukin-12
+for Cancer Immunotherapy. Front. Immunol. 2020, 11, 575597. [CrossRef] [PubMed]
+375. Bekaii-Saab, T.S.; Roda, J.M.; Guenterberg, K.D.; Ramaswamy, B.; Young, D.C.; Ferketich, A.K.; Lamb, T.A.; Grever, M.R.;
+Shapiro, C.L.; Carson, W.E. A phase I trial of paclitaxel and trastuzumab in combination with interleukin-12 in patients with
+HER2/neu-expressing malignancies. Mol. Cancer Ther. 2009, 8, 2983–2991. [CrossRef]
+376. Guo, N.; Wang, W.-Q.; Gong, X.-J.; Gao, L.; Yang, L.-R.; Yu, W.-N.; Shen, H.-Y.; Wan, L.-Q.; Jia, X.-F.; Wang, Y.-S.; et al. Study
+of rhIL-12 for treatment of complications after radiotherapy for tumor patients. World J. Clin. Oncol. 2017, 8, 158. [CrossRef]
+[PubMed]
+377. de Rham, C.; Ferrari-Lacraz, S.; Jendly, S.; Schneiter, G.; Dayer, J.-M.; Villard, J. The proinﬂammatory cytokines IL-2, IL-15 and
+IL-21 modulate the repertoire of mature human natural killer cell receptors. Arthritis Res. Ther. 2007, 9, R125. [CrossRef]
+378. Morgan, D.A.; Ruscetti, F.W.; Gallo, R. Selective in Vitro Growth of T Lymphocytes from Normal Human Bone Marrows. Science
+1976, 193, 1007–1008. [CrossRef]
+379. Raker, V.K.; Becker, C.; Landfester, K.; Steinbrink, K. Targeted Activation of T Cells with IL-2-Coupled Nanoparticles. Cells 2020,
+9, 2063. [CrossRef]
+380. Cosman, D. The hematopoietin receptor superfamily. Cytokine 1993, 5, 95–106. [CrossRef]
+381. Rickert, M.; Wang, X.; Boulanger, M.J.; Goriatcheva, N.; Garcia, K.C. The Structure of Interleukin-2 Complexed with Its Alpha
+Receptor. Science 2005, 308, 1477–1480. [CrossRef] [PubMed]
+382. Malek, T.R. The Biology of Interleukin-2. Annu. Rev. Immunol. 2008, 26, 453–479. [CrossRef] [PubMed]
+383. Wang, X.; Lupardus, P.; LaPorte, S.L.; Garcia, K.C. Structural Biology of Shared Cytokine Receptors. Annu. Rev. Immunol. 2009, 27,
+29–60. [CrossRef] [PubMed]
+384. Gaffen, S.; Liu, K. Overview of interleukin-2 function, production and clinical applications. Cytokine 2004, 28, 109–123. [CrossRef]
+385. Feng, Y.; Arvey, A.; Chinen, T.; van der Veeken, J.; Gasteiger, G.; Rudensky, A.Y. Control of the Inheritance of Regulatory T Cell
+Identity by a cis Element in the Foxp3 Locus. Cell 2014, 158, 749–763. [CrossRef] [PubMed]
+386. Sim, G.C.; Radvanyi, L. The IL-2 cytokine family in cancer immunotherapy. Cytokine Growth Factor Rev. 2014, 25, 377–390.
+[CrossRef]
+387. Kim, H.P.; Imbert, J.; Leonard, W.J. Both integrated and differential regulation of components of the IL-2/IL-2 receptor system.
+Cytokine Growth Factor Rev. 2006, 17, 349–366. [CrossRef]
+388. Bani, L. Expression of the IL-2 receptor gamma subunit in resting human CD4 T lymphocytes: mRNA is constitutively transcribed
+and the protein stored as an intracellular component. Int. Immunol. 1997, 9, 573–580. [CrossRef]
+389. Widowati, W.; Jasaputra, D.K.; Sumitro, S.B.; Widodo, M.A.; Mozef, T.; Rizal, R.; Kusuma, H.S.W.; Laksmitawati, D.R.; Murti, H.;
+Bachtiar, I.; et al. Effect of interleukins (IL-2, IL-15, IL-18) on receptors activation and cytotoxic activity of natural killer cells in
+breast cancer cell. Afr. Health Sci. 2020, 20, 822–832. [CrossRef]
+390. Fragelli, B.D.D.L.; Camillo, L.; Rodolpho, J.M.D.A.; de Godoy, K.F.; de Castro, C.A.; Brassolatti, P.; da Silva, A.J.; Borra, R.C.;
+Anibal, F.D.F. Antitumor Effect of IL-2 and TRAIL Proteins Expressed by Recombinant Salmonella in Murine Bladder Cancer
+Cells. Cell. Physiol. Biochem. 2021, 55, 460–476. [CrossRef]
+391. Kalia, V.; Sarkar, S.; Subramaniam, S.; Haining, W.N.; Smith, K.A.; Ahmed, R. Prolonged Interleukin-2Rα Expression on
+Virus-Speciﬁc CD8+ T Cells Favors Terminal-Effector Differentiation In Vivo. Immunity 2010, 32, 91–103. [CrossRef] [PubMed]
+392. Kilinc, M.O.; Gu, T.; Harden, J.L.; Virtuoso, L.P.; Egilmez, N.K. Central Role of Tumor-Associated CD8 + T Effector/Memory Cells
+in Restoring Systemic Antitumor Immunity. J. Immunol. 2009, 182, 4217–4225. [CrossRef] [PubMed]
+393. Liu, Y.; Zhou, N.; Zhou, L.; Wang, J.; Zhou, Y.; Zhang, T.; Fang, Y.; Deng, J.; Gao, Y.; Liang, X.; et al. IL-2 regulates tumor-reactive
+CD8+ T cell exhaustion by activating the aryl hydrocarbon receptor. Nat. Immunol. 2021, 22, 358–369. [CrossRef] [PubMed]
+Int. J. Mol. Sci. 2023, 24, 4002
+39 of 40
+394. Hu, X.; Ivashkiv, L.B. Cross-regulation of Signaling Pathways by Interferon-γ: Implications for Immune Responses and Autoim-
+mune Diseases. Immunity 2009, 31, 539–550. [CrossRef]
+395. Young, H.A.; Hardy, K.J. Role of interferon-γ in immune cell regulation. J. Leukoc. Biol. 1995, 58, 373–381. [CrossRef]
+396. Paul, S.; Chhatar, S.; Mishra, A.; Lal, G. Natural killer T cell activation increases iNOS+CD206-M1 macrophage and controls the
+growth of solid tumor. J. Immunother. Cancer 2019, 7, 208. [CrossRef]
+397. Ni, L.; Lu, J. Interferon gamma in cancer immunotherapy. Cancer Med. 2018, 7, 4509–4516. [CrossRef]
+398. Ong, C.E.B.; Lyons, A.B.; Woods, G.M.; Flies, A.S. Inducible IFN-γ Expression for MHC-I Upregulation in Devil Facial Tumor
+Cells. Front. Immunol. 2019, 9, 3117. [CrossRef]
+399. Mendoza, J.L.; Escalante, N.K.; Jude, K.M.; Sotolongo Bellon, J.; Su, L.; Horton, T.M.; Tsutsumi, N.; Berardinelli, S.J.; Haltiwanger,
+R.S.; Piehler, J.; et al. Structure of the IFNγ receptor complex guides design of biased agonists. Nature 2019, 567, 56–60. [CrossRef]
+400. Xu, H.-M. Th1 cytokine-based immunotherapy for cancer. Hepatobiliary Pancreat. Dis. Int. 2014, 13, 482–494. [CrossRef]
+401. Tosolini, M.; Kirilovsky, A.; Mlecnik, B.; Fredriksen, T.; Mauger, S.; Bindea, G.; Berger, A.; Bruneval, P.; Fridman, W.-H.; Pagès,
+F.; et al. Clinical Impact of Different Classes of Inﬁltrating T Cytotoxic and Helper Cells (Th1, Th2, Treg, Th17) in Patients with
+Colorectal Cancer. Cancer Res. 2011, 71, 1263–1271. [CrossRef] [PubMed]
+402. Pan, J.; Zhang, M.; Wang, J.; Wang, Q.; Xia, D.; Sun, W.; Zhang, L.; Yu, H.; Liu, Y.; Cao, X. Interferon-γ is an autocrine mediator for
+dendritic cell maturation. Immunol. Lett. 2004, 94, 141–151. [CrossRef] [PubMed]
+403. Hosking, M.P.; Flynn, C.T.; Whitton, J.L. Antigen-Speciﬁc Naive CD8 + T Cells Produce a Single Pulse of IFN-γ In Vivo within
+Hours of Infection, but without Antiviral Effect. J. Immunol. 2014, 193, 1873–1885. [CrossRef] [PubMed]
+404. Alspach, E.; Lussier, D.M.; Schreiber, R.D. Interferon γ and Its Important Roles in Promoting and Inhibiting Spontaneous and
+Therapeutic Cancer Immunity. Cold Spring Harb. Perspect. Biol. 2019, 11, a028480. [CrossRef]
+405. Kannan, Y.; Yu, J.; Raices, R.M.; Seshadri, S.; Wei, M.; Caligiuri, M.A.; Wewers, M.D. IκBζ augments IL-12– and IL-18–mediated
+IFN-γ production in human NK cells. Blood 2011, 117, 2855–2863. [CrossRef]
+406. Castro, F.; Cardoso, A.P.; Gonçalves, R.M.; Serre, K.; Oliveira, M.J. Interferon-Gamma at the Crossroads of Tumor Immune
+Surveillance or Evasion. Front. Immunol. 2018, 9, 847. [CrossRef]
+407. Thiel, D.; le Du, M.-H.; Walter, R.; D’Arcy, A.; Chène, C.; Fountoulakis, M.; Garotta, G.; Winkler, F.; Ealick, S. Observation of an
+unexpected third receptor molecule in the crystal structure of human interferon-γ receptor complex. Structure 2000, 8, 927–936.
+[CrossRef]
+408. Kotenko, S.V.; Izotova, L.S.; Pollack, B.P.; Mariano, T.M.; Donnelly, R.J.; Muthukumaran, G.; Cook, J.R.; Garotta, G.; Silvennoinen,
+O.; Ihle, J.N.; et al. Interaction between the Components of the Interferon γ Receptor Complex. J. Biol. Chem. 1995, 270,
+20915–20921. [CrossRef]
+409. Negishi, H.; Taniguchi, T.; Yanai, H. The Interferon (IFN) Class of Cytokines and the IFN Regulatory Factor (IRF) Transcription
+Factor Family. Cold Spring Harb. Perspect. Biol. 2018, 10, a028423. [CrossRef]
+410. Vigneron, N. Human Tumor Antigens and Cancer Immunotherapy. BioMed Res. Int. 2015, 2015, 948501. [CrossRef]
+411. Street, D.; Kaufmann, A.M.; Vaughan, A.; Fisher, S.G.; Hunter, M.; Schreckenberger, C.; Potkul, R.K.; Gissmann, L.; Qiao, L.
+Interferon-γ Enhances Susceptibility of Cervical Cancer Cells to Lysis by Tumor-Speciﬁc Cytotoxic T Cells. Gynecol. Oncol. 1997,
+65, 265–272. [CrossRef] [PubMed]
+412. Kundu, M.; Roy, A.; Pahan, K. Selective neutralization of IL-12 p40 monomer induces death in prostate cancer cells via IL-12–IFN-γ.
+Proc. Natl. Acad. Sci. USA 2017, 114, 11482–11487. [CrossRef] [PubMed]
+413. Hao, Q.; Tang, H. Interferon-γ and Smac mimetics synergize to induce apoptosis of lung cancer cells in a TNFα-independent
+manner. Cancer Cell Int. 2018, 18, 84. [CrossRef] [PubMed]
+414. Song, M.; Ping, Y.; Zhang, K.; Yang, L.; Li, F.; Zhang, C.; Cheng, S.; Yue, D.; Maimela, N.R.; Qu, J.; et al. Low-Dose IFNγ Induces
+Tumor Cell Stemness in Tumor Microenvironment of Non–Small Cell Lung Cancer. Cancer Res. 2019, 79, 3737–3748. [CrossRef]
+415. Razaghi, A.; Owens, L.; Heimann, K. Review of the recombinant human interferon gamma as an immunotherapeutic: Impacts of
+production platforms and glycosylation. J. Biotechnol. 2016, 240, 48–60. [CrossRef]
+416. Harvat, B.L.; Seth, P.; Jetten, A.M. The role of p27Kip1 in gamma interferon-mediated growth arrest of mammary epithelial cells
+and related defects in mammary carcinoma cells. Oncogene 1997, 14, 2111–2122. [CrossRef]
+417. Tau, G.Z.; Cowan, S.N.; Weisburg, J.; Braunstein, N.S.; Rothman, P.B. Regulation of IFN-γ Signaling Is Essential for the Cytotoxic
+Activity of CD8 + T Cells. J. Immunol. 2001, 167, 5574–5582. [CrossRef]
+418. Maimela, N.R.; Liu, S.; Zhang, Y. Fates of CD8+ T cells in Tumor Microenvironment. Comput. Struct. Biotechnol. J. 2019, 17, 1–13.
+[CrossRef]
+419. Coughlin, C.M.; Salhany, K.E.; Gee, M.S.; LaTemple, D.C.; Kotenko, S.; Ma, X.; Gri, G.; Wysocka, M.; Kim, J.E.; Liu, L.; et al. Tumor
+Cell Responses to IFNγ Affect Tumorigenicity and Response to IL-12 Therapy and Antiangiogenesis. Immunity 1998, 9, 25–34.
+[CrossRef]
+420. Ibe, S.; Qin, Z.; Schüler, T.; Preiss, S.; Blankenstein, T. Tumor Rejection by Disturbing Tumor Stroma Cell Interactions. J. Exp. Med.
+2001, 194, 1549–1560. [CrossRef]
+421. Zhang, M.; Huang, L.; Ding, G.; Huang, H.; Cao, G.; Sun, X.; Lou, N.; Wei, Q.; Shen, T.; Xu, X.; et al. Interferon gamma inhibits
+CXCL8–CXCR2 axis mediated tumor-associated macrophages tumor trafﬁcking and enhances anti-PD1 efﬁcacy in pancreatic
+cancer. J. Immunother. Cancer 2020, 8, e000308. [CrossRef] [PubMed]
+Int. J. Mol. Sci. 2023, 24, 4002
+40 of 40
+422. Zou, Q.; Jin, J.; Xiao, Y.; Zhou, X.; Hu, H.; Cheng, X.; Kazimi, N.; Ullrich, S.E.; Sun, S.-C. T Cell Intrinsic USP15 Deﬁciency
+Promotes Excessive IFN-γ Production and an Immunosuppressive Tumor Microenvironment in MCA-Induced Fibrosarcoma.
+Cell Rep. 2015, 13, 2470–2479. [CrossRef] [PubMed]
+423. Duncan, T.J.; Rolland, P.; Deen, S.; Scott, I.V.; Liu, D.T.Y.; Spendlove, I.; Durrant, L.G. Loss of IFNγ Receptor Is an Independent
+Prognostic Factor in Ovarian Cancer. Clin. Cancer Res. 2007, 13, 4139–4145. [CrossRef] [PubMed]
+424. Abiko, K.; Matsumura, N.; Hamanishi, J.; Horikawa, N.; Murakami, R.; Yamaguchi, K.; Yoshioka, Y.; Baba, T.; Konishi, I.; Mandai,
+M. IFN-γ from lymphocytes induces PD-L1 expression and promotes progression of ovarian cancer. Br. J. Cancer 2015, 112,
+1501–1509. [CrossRef]
+425. Spranger, S.; Spaapen, R.M.; Zha, Y.; Williams, J.; Meng, Y.; Ha, T.T.; Gajewski, T.F. Up-Regulation of PD-L1, IDO, and T regs in the
+Melanoma Tumor Microenvironment Is Driven by CD8 + T Cells. Sci. Transl. Med. 2013, 5, 200ra116. [CrossRef]
+426. Manguso, R.T.; Pope, H.W.; Zimmer, M.D.; Brown, F.D.; Yates, K.B.; Miller, B.C.; Collins, N.B.; Bi, K.; LaFleur, M.W.; Juneja, V.R.;
+et al. In vivo CRISPR screening identiﬁes Ptpn2 as a cancer immunotherapy target. Nature 2017, 547, 413–418. [CrossRef]
+427. Patel, S.J.; Sanjana, N.E.; Kishton, R.J.; Eidizadeh, A.; Vodnala, S.K.; Cam, M.; Gartner, J.J.; Jia, L.; Steinberg, S.M.; Yamamoto, T.N.;
+et al. Identiﬁcation of essential genes for cancer immunotherapy. Nature 2017, 548, 537–542. [CrossRef]
+428. Rooney, M.S.; Shukla, S.A.; Wu, C.J.; Getz, G.; Hacohen, N. Molecular and Genetic Properties of Tumors Associated with Local
+Immune Cytolytic Activity. Cell 2015, 160, 48–61. [CrossRef]
+429. Grasso, C.S.; Tsoi, J.; Onyshchenko, M.; Abril-Rodriguez, G.; Ross-Macdonald, P.; Wind-Rotolo, M.; Champhekar, A.; Medina, E.;
+Torrejon, D.Y.; Shin, D.S.; et al. Conserved Interferon-γ Signaling Drives Clinical Response to Immune Checkpoint Blockade
+Therapy in Melanoma. Cancer Cell 2020, 38, 500–515.e3. [CrossRef]
+430. Mosser, D.M.; Zhang, X. Interleukin-10: New perspectives on an old cytokine. Immunol. Rev. 2008, 226, 205–218. [CrossRef]
+431. Standiford, T.J.; Deng, J.C. INTERLEUKINS IL-10. In Encyclopedia of Respiratory Medicine; Academic Press: Cambridge, MA, USA,
+2006; pp. 373–377. [CrossRef]
+432. Jankovic, D.; Kullberg, M.C.; Feng, C.G.; Goldszmid, R.S.; Collazo, C.M.; Wilson, M.; Wynn, T.A.; Kamanaka, M.; Flavell, R.A.;
+Sher, A. Conventional T-bet+Foxp3− Th1 cells are the major source of host-protective regulatory IL-10 during intracellular
+protozoan infection. J. Exp. Med. 2007, 204, 273–283. [CrossRef] [PubMed]
+433. Yoon, S.; Jones, B.C.; Logsdon, N.J.; Harris, B.D.; Deshpande, A.; Radaeva, S.; Halloran, B.A.; Gao, B.; Walter, M.R. Structure and
+Mechanism of Receptor Sharing by the IL-10R2 Common Chain. Structure 2010, 18, 638–648. [CrossRef] [PubMed]
+434. Donnelly, R.P.; Sheikh, F.; Kotenko, S.V.; Dickensheets, H. The expanded family of class II cytokines that share the IL-10 receptor-2
+(IL-10R2) chain. J. Leukoc. Biol. 2004, 76, 314–321. [CrossRef] [PubMed]
+435. Hamidullah; Changkija, B.; Konwar, R. Role of interleukin-10 in breast cancer. Breast Cancer Res. Treat. 2012, 133, 11–21. [CrossRef]
+436. Schottelius, A.J.G.; Mayo, M.W.; Sartor, R.B.; Baldwin, A.S. Interleukin-10 Signaling Blocks Inhibitor of κB Kinase Activity and
+Nuclear Factor κB DNA Binding. J. Biol. Chem. 1999, 274, 31868–31874. [CrossRef]
+437. Antoniv, T.T.; Ivashkiv, L.B. Interleukin-10-induced gene expression and suppressive function are selectively modulated by
+the PI3K-Akt-GSK3 pathway: IL-10-induced transcription is modulated by PI3K-Akt-GSK3. Immunology 2011, 132, 567–577.
+[CrossRef]
+438. Crawley, J.B.; Williams, L.M.; Mander, T.; Brennan, F.M.; Foxwell, B.M.J. Interleukin-10 Stimulation of Phosphatidylinositol
+3-Kinase and p70 S6 Kinase Is Required for the Proliferative but Not the Antiinﬂammatory Effects of the Cytokine. J. Biol. Chem.
+1996, 271, 16357–16362. [CrossRef]
+439. Wang, T.; Ge, Y.; Xiao, M.; Lopez-Coral, A.; Azuma, R.; Somasundaram, R.; Zhang, G.; Wei, Z.; Xu, X.; Rauscher, F.J.; et al.
+Melanoma-derived conditioned media efﬁciently induce the differentiation of monocytes to macrophages that display a highly
+invasive gene signature: Melanoma-conditioned media induce monocytes to Mϕ. Pigment Cell Melanoma Res. 2012, 25, 493–505.
+[CrossRef]
+440. McGeachy, M.J.; Bak-Jensen, K.S.; Chen, Y.; Tato, C.M.; Blumenschein, W.; McClanahan, T.; Cua, D.J. TGF-β and IL-6 drive the
+production of IL-17 and IL-10 by T cells and restrain TH-17 cell–mediated pathology. Nat. Immunol. 2007, 8, 1390–1397. [CrossRef]
+441. Jiang, X. Macrophage-produced IL-10 limits the chemotherapy efﬁcacy in breast cancer. J. Zhejiang Univ.-Sci. B 2015, 16, 44–45.
+[CrossRef]
+442. Yang, C.; He, L.; He, P.; Liu, Y.; Wang, W.; He, Y.; Du, Y.; Gao, F. Increased drug resistance in breast cancer by tumor-associated
+macrophages through IL-10/STAT3/bcl-2 signaling pathway. Med. Oncol. 2015, 32, 14. [CrossRef] [PubMed]
+443. Naing, A.; Wong, D.J.; Infante, J.R.; Korn, W.M.; Aljumaily, R.; Papadopoulos, K.P.; Autio, K.A.; Pant, S.; Bauer, T.M.; Drakaki, A.;
+et al. Pegilodecakin combined with pembrolizumab or nivolumab for patients with advanced solid tumours (IVY): A multicentre,
+multicohort, open-label, phase 1b trial. Lancet Oncol. 2019, 20, 1544–1555. [CrossRef] [PubMed]
+444. Naing, A.; Papadopoulos, K.P.; Autio, K.A.; Ott, P.A.; Patel, M.R.; Wong, D.J.; Falchook, G.S.; Pant, S.; Whiteside, M.; Rasco, D.R.;
+et al. Safety, Antitumor Activity, and Immune Activation of Pegylated Recombinant Human Interleukin-10 (AM0010) in Patients
+With Advanced Solid Tumors. J. Clin. Oncol. 2016, 34, 3562–3569. [CrossRef] [PubMed]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

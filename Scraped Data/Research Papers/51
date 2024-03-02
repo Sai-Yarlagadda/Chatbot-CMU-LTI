@@ -1,0 +1,772 @@
+Citation: Zhu, Y.; Ng, C.; Le, O.; Ho,
+Y.-C.; Fried, D. Diagnostic
+Performance of Multispectral SWIR
+Transillumination and Reﬂectance
+Imaging for Caries Detection.
+Diagnostics 2023, 13, 2824.
+https://doi.org/10.3390/
+diagnostics13172824
+Academic Editor: Gianna Dipalma
+Received: 9 August 2023
+Revised: 23 August 2023
+Accepted: 25 August 2023
+Published: 31 August 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+diagnostics
+Article
+Diagnostic Performance of Multispectral SWIR
+Transillumination and Reﬂectance Imaging for Caries Detection
+Yihua Zhu 1
+, Chung Ng 1, Oanh Le 1, Yi-Ching Ho 1,2 and Daniel Fried 1,*
+1
+Department of Preventive and Restorative Dental Sciences, University of California, 707 Parnassus Ave,
+San Francisco, CA 94143, USA; yihua.zhu@ucsf.edu (Y.Z.); chung.ng@ucsf.edu (C.N.);
+oanh.le@ucsf.edu (O.L.); yi-ching.ho@ucsf.edu (Y.-C.H.)
+2
+Department of Stomatology, Taipei Veterans General Hospital, Taipei 11217, Taiwan
+*
+Correspondence: daniel.fried@ucsf.edu
+Abstract: The aim of this clinical study was to compare the diagnostic performance of dual short
+wavelength infrared (SWIR) occlusal transillumination and reﬂectance multispectral imaging with
+conventional visual assessment and radiography for caries detection on premolars scheduled for
+extraction for orthodontics reasons. Polarized light microscopy (PLM) and micro-computed tomogra-
+phy (microCT) performed after tooth extraction were used as gold standards. The custom-fabricated
+imaging probe was 3D-printed and the imaging system employed a SWIR camera and ﬁber-optic
+light sources emitting light at 1300 nm for occlusal transillumination and 1600 nm for reﬂectance
+measurements. Teeth (n = 135) on 40 test subjects were imaged in vivo using the SWIR imaging
+prototype in the study and teeth were extracted after imaging. Our study demonstrates for the ﬁrst
+time that near-simultaneous real-time transillumination and reﬂectance video can be successfully
+acquired for caries detection. Both SWIR imaging modalities had markedly higher sensitivity for le-
+sions on proximal and occlusal surfaces compared to conventional methods (visual and radiographic).
+Reﬂectance imaging at 1600 nm had higher sensitivity and speciﬁcity than transillumination at
+1300 nm. The combined SWIR methods yielded higher speciﬁcity but the combined sensitivity was
+lower than for each individual method.
+Keywords: SWIR imaging; caries detection; reﬂectance; transillumination
+1. Introduction
+Despite the introduction of ﬂuoridated drinking water, ﬂuoride dentifrices and rinses,
+and improved dental hygiene in the US, dental decay continues to be the leading cause
+of tooth loss even though caries progression is potentially preventable and reversible if
+detected early [1,2]. The locations of most newly discovered caries are on the occlusal
+pits/ﬁssures of the posterior dentition and the interproximal contact sites between adjacent
+teeth where physical access is difﬁcult. Radiographs have low diagnostic sensitivity due to
+overlapping enamel [3,4]. Stains interfere with visual diagnosis and other proposed imaging
+technologies such as ﬁber optic transillumination or ﬂuorescence-based methods and may
+increase false positives [5]. Likewise, early lesions on proximal surfaces can also be difﬁcult
+to detect due to lack of physical access and the challenge of radiographically identifying the
+initial, subtle mineral loss of these lesions [3,4]. Radiographs are not effective for the early
+detection of occlusal caries lesions because of the overlapping features of the crowns [6–8].
+Lesions are not typically visible on radiographs until decalciﬁcation has exceeded 30% [3,4],
+while SWIR imaging methods are diagnostic with only 5% decalciﬁcation [9]. Moreover,
+the risk of exposure to ionizing radiation is poorly understood, and even greatly reduced
+levels of radiation exposure may still pose a signiﬁcant risk, especially for children and
+pregnant women. It is unlikely that improvements in radiographic sensitivity will enable
+the detection of hidden occlusal lesions or an improved diagnosis of suspicious occlusal
+Diagnostics 2023, 13, 2824. https://doi.org/10.3390/diagnostics13172824
+https://www.mdpi.com/journal/diagnostics
+Diagnostics 2023, 13, 2824
+2 of 12
+caries lesions, those lesions with no cavitation and no radiographic radiolucency, but where
+caries is suspected due to surface roughness, opacities, or staining [6–8].
+A highly sensitive and more reliable method for detecting demineralization during early
+lesion formation would be valuable for clinicians to monitor the activity of new caries and to
+assess the efficacy of non-surgical intervention. Short wavelength infrared (SWIR) and near-IR
+imaging (NIR) methods have been under development for almost 20 years for use in dentistry
+and several NIR clinical devices are now available commercially. Due to the high transparency
+of enamel at longer wavelengths, multiple imaging configurations are feasible. Lesions can
+be imaged using transillumination and reflectance from tooth occlusal, buccal, and lingual
+surfaces [9]. In proximal transillumination, the light source and detector are placed on the buccal
+and lingual sides of the tooth. The positions can be alternated to obtain images of each surface
+since this method will have greater sensitivity for those lesions located closer to the detector [9].
+This is the same imaging geometry used to acquire bitewing radiographs. Interproximal lesions,
+the lesions located at the proximal contact points in between teeth, can be imaged via all three
+imaging geometries. Transillumination of the proximal contact points between teeth can also be
+accomplished via occlusal transillumination by directing SWIR light below the crown while
+imaging the occlusal surface [9,10] (see Figure 1). The latter approach that was used in this study
+is capable of imaging occlusal lesions as well with high contrast [9]. The first clinical SWIR/NIR
+study was carried out in 2010; it was demonstrated that interproximal lesions that appeared on
+radiographs could be detected in vivo using proximal and occlusal transillumination imaging
+at 1310 nm with similar sensitivity [10]. Currently, the only clinical systems that are available
+operate at shorter NIR wavelengths at 830 and 780 nm [11–14]. The use of shorter wavelength
+830 nm NIR light was first investigated more than 20 years ago when it was found that the
+contrast between sound and demineralized enamel was higher at longer SWIR wavelengths [9].
+Shorter wavelengths allow the use of less expensive silicon-based detectors. However, longer
+wavelength SWIR light has significant advantages, stains interfere significantly at wavelengths
+less than 1200 nm [5] and the contrast between sound and demineralized enamel is markedly
+higher at wavelengths beyond 1400 nm in reflectance measurements [9].
+ 
+especially for children and pregnant women. It is unlikely that improvements in radio-
+graphic sensitivity will enable the detection of hidden occlusal lesions or an improved 
+diagnosis of suspicious occlusal caries lesions, those lesions with no cavitation and no 
+radiographic radiolucency, but where caries is suspected due to surface roughness, opac-
+ities, or staining [6–8]. 
+A highly sensitive and more reliable method for detecting demineralization during 
+early lesion formation would be valuable for clinicians to monitor the activity of new car-
+ies  and  to  assess  the  eﬃcacy  of  non-surgical  intervention.  Short  wavelength  infrared 
+(SWIR) and near-IR imaging (NIR) methods have been under development for almost 20 
+years for use in dentistry and several NIR clinical devices are now available commercially. 
+Due to the high transparency of enamel at longer wavelengths, multiple imaging conﬁg-
+urations are feasible. Lesions can be imaged using transillumination and reﬂectance from 
+tooth occlusal, buccal, and lingual surfaces [9]. In proximal transillumination, the light 
+source and detector are placed on the buccal and lingual sides of the tooth. The positions 
+can be alternated to obtain images of each surface since this method will have greater 
+sensitivity for those lesions located closer to the detector [9]. This is the same imaging 
+geometry used to acquire bitewing radiographs. Interproximal lesions, the lesions located 
+at the proximal contact points in between teeth, can be imaged via all three imaging ge-
+ometries. Transillumination of the proximal contact points between teeth can also be ac-
+complished via occlusal transillumination by directing SWIR light below the crown while 
+imaging the occlusal surface [9,10] (see Figure 1). The latter approach that was used in this 
+study is capable of imaging occlusal lesions as well with high contrast [9]. The ﬁrst clinical 
+SWIR/NIR study was carried out in 2010; it was demonstrated that interproximal lesions 
+that appeared on radiographs could be detected in vivo using proximal and occlusal trans-
+illumination imaging at 1310 nm with similar sensitivity [10]. Currently, the only clinical 
+systems that are available operate at shorter NIR wavelengths at 830 and 780 nm [11–14]. 
+The use of shorter wavelength 830 nm NIR light was ﬁrst investigated more than 20 years 
+ago when it was found that the contrast between sound and demineralized enamel was 
+higher at longer SWIR wavelengths [9]. Shorter wavelengths allow the use of less expen-
+sive silicon-based detectors. However, longer wavelength SWIR light has signiﬁcant ad-
+vantages, stains interfere signiﬁcantly at wavelengths less than 1200 nm [5] and the con-
+trast between sound and demineralized enamel is markedly higher at wavelengths be-
+yond 1400 nm in reﬂectance measurements [9]. 
+ 
+Figure 1. (A) Occlusal transillumination diagram, (B) reﬂectance diagram, (C) 3D printed handpiece 
+attachment with insert (black) holding polarizing beam splitter cube. (D) Entire dual reﬂectance and 
+transillumination wrapped for infection control and ready for clinical imaging. 
+Figure 1. (A) Occlusal transillumination diagram, (B) reﬂectance diagram, (C) 3D printed handpiece
+attachment with insert (black) holding polarizing beam splitter cube. (D) Entire dual reﬂectance and
+transillumination wrapped for infection control and ready for clinical imaging.
+Studies over the past decade have indicated that transillumination performs best at
+1300 nm where the transparency of enamel is highest while the contrast of lesions on tooth
+surfaces imaged using reﬂectance continues to increase with increasing wavelength and
+is highest at 1950 nm [9]. Several studies have investigated multispectral measurements
+Diagnostics 2023, 13, 2824
+3 of 12
+using either one modality or combining transillumination and reﬂectance measurements.
+Zakian et al. [15,16] used multiple wavelengths of SWIR hyperspectral reﬂectance images
+to estimate the severity of occlusal lesions. Since multispectral SWIR reﬂectance and transil-
+lumination experiments have demonstrated that the tooth appears darker at wavelengths
+coincident with increased water absorption, multispectral images can be used to produce
+increased contrast between different tooth structures such as sound enamel and dentin,
+dental decay, and composite restorative materials [9,16]. Combining measurements from
+different SWIR imaging wavelengths and comparing them with concurrent measurements
+acquired by complementary imaging modalities should provide an improved assessment
+of lesion depth and severity. Radiographs markedly underestimate the depth and sever-
+ity of interproximal lesions and clinicians assume that lesions penetrate much deeper
+than indicated in radiographs [17–19]. SWIR occlusal transillumination and reﬂectance
+have been combined into a single probe and tested in vitro [20]. Different illumination
+wavelengths have been optimized for each imaging mode, namely SWIR wavelengths
+greater than 1400 nm for reﬂectance and 1300 nm for transillumination. Simon et al. [21]
+built a benchtop simultaneous SWIR reﬂectance and transillumination system with tun-
+able ﬁlters that ranged from 830–1700 nm and showed that the combined images have
+potential for the diagnosis of occlusal lesions and simulated cavitated and noncavitated in-
+terproximal lesions. The purpose of this study was to evaluate the diagnostic performance
+of a dual SWIR occlusal transillumination and reﬂectance device in vivo on teeth sched-
+uled for extraction for orthodontic reasons. This is the ﬁrst clinical study to employ dual
+SWIR transillumination and reﬂectance integrated into a single imaging device. In a prior
+SWIR clinical imaging study, separate occlusal and proximal imaging devices operating at
+1300 nm were used along with reﬂectance imaging at 1450 nm [22]. That study showed
+that occlusal transillumination and reﬂectance imaging both had higher performance than
+proximal transillumination. In addition to their higher performance, it is much easier to
+combine occlusal transillumination and reﬂectance imaging into a single device. That study
+also showed that each device performed as well as radiographs for proximal lesions and if
+multiple devices were combined the sensitivity was much higher than for radiography [22].
+Higher sensitivity may be of potential concern if it leads to over-treatment due to a high
+number of false positives. We hypothesize that the use of a single SWIR occlusal transillu-
+mination and reﬂectance imaging will increase the speciﬁcity and reduce the potential for
+false positives.
+2. Materials and Methods
+2.1. Participant Recruitment and Procedures
+Study participants (n = 40 with 139 premolars) aged 12–60 with 2–4 premolars sched-
+uled for extraction for orthodontic reasons were recruited from the UCSF Orthodontic
+Clinic by the study investigators (UCSF IRB 19-27656). One participant was lost to follow-
+up after the ﬁrst visit and was excluded from the study. A total of 39 participants (n = 39
+with 135 premolars) completed the study. Color images of each tooth were acquired using
+a FocusDent MD740 (Vilnius, Lithuania) 1280 × 960 pixel intraoral camera, and lesions
+were visually assessed. After extraction and before sectioning teeth were mounted in black
+Delrin blocks and imaged with digital radiographs using a CareStream 2200 System from
+Kodak (Rochester, NY, USA) operating at 60 kV. Radiographical contrast was calculated
+using (IS-IL)/IS for each proximal contact. Where IL is the lesion area and IS is the sound
+control area. Areas for each IL and IS measurement were selected using PLM and microCT.
+IL was measured as the mean intensity over the lesion area at each proximal contact and
+IS was selected at a position either directly below or directly above IL to ensure a similar
+enamel thickness. If no lesion was present the mean intensity was measured in an area of
+20 × 20 pixels at the contact area to serve as IL and an adjacent area was chosen for IS.
+Diagnostics 2023, 13, 2824
+4 of 12
+2.2. Design and Fabrication of the Dual Reﬂectance and Occlusal Transillumination SWIR Probe
+The dual probe design consists of a reﬂectance probe body and an occlusal transil-
+lumination attachment, shown in Figure 1. The reﬂectance probe body and the occlusal
+transillumination attachment were 3D printed and are autoclavable. There is an air nozzle
+near the mirror to prevent fogging of the mirror. The air nozzle can also be used to dry the
+lesion to increase lesion contrast and potentially assess lesion activity.
+The dual reﬂectance and occlusal transillumination SWIR probe was designed in
+Fusion 360 from Autodesk (San Francisco, CA, USA). The handpiece was fabricated using
+a Formlabs (Somerville, MA, USA) Form 3 Low Force Stereolithography 3D printer. The
+probe consists of two components, a main body containing the light source for reﬂectance
+and the light collection optics and a second attachment containing the transillumination
+light source. Details regarding the fabrication of the dual occlusal transillumination and
+reﬂectance imaging probe system and optical probe have been previously described [20].
+2.3. Image Acquisition and Analysis
+The SWIR images were captured using a 640 × 480 pixel micro-SWIR camera (SU640CSX)
+measuring only 32 × 32 × 28 mm from Sensors Unlimited (Princeton, NJ, USA). Two planocon-
+vex antireflection coated lenses of 60 and 100 mm focal length along with an adjustable aper-
+ture were placed between the handpiece and the InGaAs camera to provide a field of view of
+11 mm2 at the focus plane. A low-OH optical fiber of 1 mm diameter was used to deliver light
+from a 1604 nm superluminescent diode (SLD), Model ESL 1620-2111 from Exalos (Schlieren,
+Switzerland) with an output of 17 mW and a bandwidth of 46 nm. The intensity delivered
+to the tooth was 5 mW. The 1600 nm light passes through a polarizing beam-splitting cube
+before incidence on the tooth and a linear polarizer was placed before the camera to achieve
+cross-polarization for glare reduction. The transillumination light was delivered through
+two 0.4 mm diameter low-OH optical fibers. A 1314 nm (BW) SLD, Model DL-CS3452A-FP
+1620-2111 from Denselight (Singapore) with an output of 48 mW and a bandwidth of 33 nm
+was used as the source for transillumination. A 50/50 beam splitter was used to deliver light
+to each arm for transillumination. The output intensity of each arm was set at 10 mw before
+entering the Teflon plugs located at the end of each arm.
+Image processing of the images was performed by custom scripts written using
+MATLAB from Mathworks (Natick, MA, USA). The acquired 12 bit images (4096) were
+converted to 16 bit (65,535) by multiplying by 16 and subtracting 1 to facilitate processing
+using MATLAB. Contrast was calculated at 3 different lesion locations including occlusal
+grooves or ﬁssures and the proximal mesial and distal contacts. The contrast was calculated
+for each location using the formula (IL − IS)/IL for reﬂectance images and (IS − IL)/IS
+for transillumination images. IL was measured as the mean intensity over the lesion area.
+IS was selected at adjacent conﬁrmed sound locations [5]. IL was also measured at the
+proximal contact or occlusal ﬁssure even if no lesion was present in order to measure the
+contrast of sound areas for comparison. If no lesion was present the mean intensity was
+measured in an area of 20 × 20 pixels at the contact area to serve as IL and an adjacent area
+was chosen for IS. Lesion areas were conﬁrmed using the PLM and microCT images.
+2.4. Sectioning, Polarized Light Microscopy (PLM) and Microcomputed Tomography (microCT)
+The ﬁrst 40 extracted teeth were sectioned and examined with polarized light mi-
+croscopy (PLM). The remaining 95 teeth were examined intact using microcomputed X-ray
+tomography (microCT). The acquisition of an in-house microCT system mid-way through
+the study allowed us to switch to microCT. MicroCT does not require physical section-
+ing and avoids the risk of sample loss during sectioning. Samples (n = 40) were serially
+sectioned into ~200 µm thick mesiodistal slices using a linear precision saw, Isomet 5000
+(Buehler, Lake Buff, IL, USA). PLM was used for histological examination of the thin sec-
+tions using a Meiji Techno RZT microscope (Saitama, Japan) with an integrated digital
+camera, Canon EOS Digital Rebel XT (Tokyo, Japan). Sample sections were imbibed in
+Diagnostics 2023, 13, 2824
+5 of 12
+deionized water and examined in the bright ﬁeld mode with crossed-polarizers and a red I
+plate (550 nm retardation).
+Whole teeth (n = 95) were imaged using microCT with a 10 µm resolution. A Scanco
+MicroCT 50 from Scanco USA (Wayne, PA, USA) was used to acquire the images. Acquisi-
+tion parameters used for the microCT images were 90 kVP, 200 uA, 18 W, 20 FOV, 10 µm
+voxel size, 500 ms integration time, and an aluminum 0.5 mm ﬁlter.
+3. Results
+3.1. Imaged Teeth and Lesion Statistics
+A total of 40 patients were recruited from the UCSF Orthodontics clinic. A total number
+of 135 teeth were imaged with 135 occlusal surfaces and 270 proximal surfaces for a total of
+405 surfaces. However, 51 surfaces were excluded from the ﬁnal analysis for the following
+reasons: pre-existing sealants, composite restorations, orthodontic bonding adhesive, tooth
+restored with composite after imaging, and tooth severely damaged during extraction.
+Hence, the total number of surfaces that were included in the ﬁnal analysis totaled 354. The
+354 surfaces were categorized based on surface type (sound tooth structure, enamel and
+dentinal lesions, and surface location (occlusal or proximal)). PLM/microCT identiﬁed
+27 occlusal surfaces, 100 mesial proximal surfaces, and 86 distal proximal surfaces as sound
+tooth structures. Those surfaces are summarized in Table 1. There were 76 occlusal enamel
+lesions, 18 mesial enamel lesions, and 31 distal enamel lesions. Lesions penetrating the
+underlining dentin (dentinal lesions) were found on 11 occlusal surfaces, 3 mesial surfaces,
+and 2 distal surfaces. Cracks were found on 1 occlusal surface, 6 mesial surfaces, and
+4 distal surfaces. One single distal cavitation was discovered by the microCT analysis that
+was also classiﬁed as one of the ﬁve proximal dentinal lesions. Visual and radiographic
+assessment was carried out by three clinical examiners using the intraoral color images and
+radiographs taken of the extracted teeth. The diagnostic performance of these conventional
+methods is summarised in Table 2.
+Table 1. Summary of proximal and occlusal surfaces based on PLM and microCT.
+Surfaces
+Occlusal
+Proximal
+Sound
+27
+186
+Enamel Lesions
+76
+49
+Dentinal Lesions
+11
+5
+Total
+114
+240
+Rejected
+21
+30
+Table 2. Conventional visual and radiographic assessment of the lesions on the occlusal and proximal
+surfaces with three clinical examiners.
+Proximal (n = 54)
+Occlusal (n = 87)
+Radiography
+Mean Number of Detected Lesions
+12
+1
+Accuracy
+0.79
+0.24
+Sensitivity
+0.22
+0.01
+Speciﬁcity
+0.95
+0.99
+Interexaminer Reliability
+0.93
+0.99
+Visual Assessment
+Mean Number of Detected Lesions
+1
+25
+Accuracy
+0.78
+0.41
+Diagnostics 2023, 13, 2824
+6 of 12
+Table 2. Cont.
+Proximal (n = 54)
+Occlusal (n = 87)
+Sensitivity
+0.02
+0.29
+Speciﬁcity
+1
+0.81
+Interexaminer Reliability
+1
+0.85
+Images from one tooth from the study with two interproximal lesions are shown in
+Figure 2. The color image in Figure 2A shows a bicuspid with a sealant on the occlusal
+surface along with a visible lesion on the distal surface. Neither lesion is obvious in the
+radiograph in Figure 2B. Only one of the three clinical examiners detected the lesion on
+the distal surface in the radiograph and by visual examination and none identiﬁed the
+lesion on the mesial surface by radiograph or visual examination. After tooth extraction
+and sectioning, PLM in Figure 2C shows that lesions are present on the distal and mesial
+surfaces. The SWIR reﬂectance and occlusal transillumination images acquired with the
+dual probe are shown in Figure 2D,E and both lesions are visible in the yellow circles.
+Diagnostics 2023, 13, x FOR PEER REVIEW 
+6  of  11 
+ 
+ 
+Accuracy 
+0.78 
+0.41 
+Sensitivity 
+0.02 
+0.29 
+Specificity 
+1 
+0.81 
+Interexaminer Reliability 
+1 
+0.85 
+Images from one tooth from the study with two interproximal lesions are shown in 
+Figure 2. The color image in Figure 2A shows a bicuspid with a sealant on the occlusal 
+surface along with a visible lesion on the distal surface. Neither lesion is obvious in the 
+radiograph in Figure 2B. Only one of the three clinical examiners detected the lesion on 
+the distal surface in the radiograph and by visual examination and none identiﬁed the 
+lesion on the mesial surface by radiograph or visual examination. After tooth extraction 
+and sectioning, PLM in Figure 2C shows that lesions are present on the distal and mesial 
+surfaces. The SWIR reﬂectance and occlusal transillumination images acquired with the 
+dual probe are shown in Figure 2D,E and both lesions are visible in the yellow circles. 
+ 
+Figure 2. (A) Color image of a bicuspid with a sealant on the central ﬁssure; a lesion is visible at the 
+distal contact, while no lesion is visible at the mesial contact. (B) The radiograph shows no obvious 
+lesions. (C) PLM image of a section cut from the tooth after extraction shows proximal lesions on 
+both surfaces (yellow circles). (D) SWIR reﬂectance and (E) occlusal transillumination images show 
+lesions on both surfaces. 
+Images from a second tooth from the study are shown in Figure 3. The color image 
+in Figure 3A shows a bicuspid with hypomineralization and areas of high reﬂectivity near 
+the mesial and distal surfaces indicated by the green arrows. No lesions are obvious in the 
+radiograph in Figure 3B. Only one of the three clinical examiners detected the proximal 
+lesion on the distal surface in the radiograph and none identiﬁed it by visual assessment. 
+The SWIR occlusal transillumination and reﬂectance images acquired with the dual probe 
+are shown in Figure 3C,D and both images show occlusal and proximal lesions in the 
+positions of the yellow boxes. MicroCT images in Figure 3E,F show that lesions are present 
+in the same areas of the yellow boxes. It is interesting that the bright areas in the color 
+image  of  Figure  3A  do  not  correspond  to  lesion  areas.  It  is  likely  they  are  due  to 
+Figure 2. (A) Color image of a bicuspid with a sealant on the central ﬁssure; a lesion is visible at the
+distal contact, while no lesion is visible at the mesial contact. (B) The radiograph shows no obvious
+lesions. (C) PLM image of a section cut from the tooth after extraction shows proximal lesions on
+both surfaces (yellow circles). (D) SWIR reﬂectance and (E) occlusal transillumination images show
+lesions on both surfaces.
+Images from a second tooth from the study are shown in Figure 3. The color image
+in Figure 3A shows a bicuspid with hypomineralization and areas of high reﬂectivity
+near the mesial and distal surfaces indicated by the green arrows. No lesions are obvious
+in the radiograph in Figure 3B. Only one of the three clinical examiners detected the
+proximal lesion on the distal surface in the radiograph and none identiﬁed it by visual
+assessment. The SWIR occlusal transillumination and reﬂectance images acquired with the
+dual probe are shown in Figure 3C,D and both images show occlusal and proximal lesions
+in the positions of the yellow boxes. MicroCT images in Figure 3E,F show that lesions are
+present in the same areas of the yellow boxes. It is interesting that the bright areas in the
+color image of Figure 3A do not correspond to lesion areas. It is likely they are due to
+Diagnostics 2023, 13, 2824
+7 of 12
+hypomineralization. The SWIR reﬂectance image in Figure 3C shows the triangular-shaped
+lesion at the distal contact matching the microCT image and shows no increased reﬂectivity
+at the mesial contact.
+Diagnostics 2023, 13, x FOR PEER REVIEW 
+7  of  11 
+ 
+ 
+hypomineralization.  The  SWIR  reﬂectance  image  in  Figure  3C  shows  the  triangular-
+shaped lesion at the distal contact matching the microCT image and shows no increased 
+reﬂectivity at the mesial contact. 
+ 
+Figure 3. Images of a tooth with lesions on the occlusal and distal proximal surfaces The color image 
+in (A) shows several bright areas of high reﬂectivity near the mesial and distal surfaces indicated by 
+the green arrows that may be due to proximal lesions or hypomineralization. No lesions are visible 
+in the radiograph in (B). SWIR reﬂectance (C) and occlusal transillumination (D) images show oc-
+clusal and proximal lesions in the positions of the yellow boxes. MicroCT images show lesions on 
+the distal proximal surface (E) and the occlusal (F) surface as indicated by the red arrows. 
+There were 16 lesions that penetrated into dentin, 11 occlusal lesions, and 5 lesions 
+on proximal surfaces. None of the 11 occlusal dentinal lesions were detected by radiog-
+raphy. Radiography detected 3 out of 5 of the proximal lesions (mean of 3 examiners) and 
+only 1 out of the 5 proximal lesions had a radiographic contrast greater than 0.1. Visual 
+assessment (mean of 3 examiners) detected 1 out of 5 of the proximal lesions and 4 out of 
+the 11 occlusal lesions. SWIR reﬂectance (contrast > 0.1) detected 6 of the 11 occlusal le-
+sions and 5 out 5 of the proximal lesions while 8 of the 11 occlusal lesions and 3 out 5 of 
+the proximal lesions were detected by SWIR occlusal transillumination (contrast > 0.1). 
+3.2. Diagnostic Performance Based on Contrast Thresholds 
+A total of 87 occlusal lesions (enamel and dentinal) were identiﬁed from PLM/Mi-
+croCT. Only one occlusal lesion was identiﬁed on radiographs by the three clinical exam-
+iners. The mean contrast of the occlusal lesions for SWIR reﬂectance was 0.18 ± 0.14 and 
+that for occlusal transillumination was 0.16 ± 0.08. For both modalities, the contrast was 
+signiﬁcantly higher in lesion areas. 
+There were 54 proximal lesions that were detected using PLM/microCT and the mean 
+± (SD) of the radiographic contrast was 0.03 ± 0.04. The radiographic contrast for all the 
+Figure 3. Images of a tooth with lesions on the occlusal and distal proximal surfaces The color image
+in (A) shows several bright areas of high reﬂectivity near the mesial and distal surfaces indicated by
+the green arrows that may be due to proximal lesions or hypomineralization. No lesions are visible in
+the radiograph in (B). SWIR reﬂectance (C) and occlusal transillumination (D) images show occlusal
+and proximal lesions in the positions of the yellow boxes. MicroCT images show lesions on the distal
+proximal surface (E) and the occlusal (F) surface as indicated by the red arrows.
+There were 16 lesions that penetrated into dentin, 11 occlusal lesions, and 5 lesions on
+proximal surfaces. None of the 11 occlusal dentinal lesions were detected by radiography.
+Radiography detected 3 out of 5 of the proximal lesions (mean of 3 examiners) and only
+1 out of the 5 proximal lesions had a radiographic contrast greater than 0.1. Visual assess-
+ment (mean of 3 examiners) detected 1 out of 5 of the proximal lesions and 4 out of the
+11 occlusal lesions. SWIR reﬂectance (contrast > 0.1) detected 6 of the 11 occlusal lesions
+and 5 out 5 of the proximal lesions while 8 of the 11 occlusal lesions and 3 out 5 of the
+proximal lesions were detected by SWIR occlusal transillumination (contrast > 0.1).
+3.2. Diagnostic Performance Based on Contrast Thresholds
+A total of 87 occlusal lesions (enamel and dentinal) were identiﬁed from PLM/MicroCT.
+Only one occlusal lesion was identiﬁed on radiographs by the three clinical examiners.
+The mean contrast of the occlusal lesions for SWIR reﬂectance was 0.18 ± 0.14 and that
+for occlusal transillumination was 0.16 ± 0.08. For both modalities, the contrast was
+signiﬁcantly higher in lesion areas.
+There were 54 proximal lesions that were detected using PLM/microCT and the
+mean ± (SD) of the radiographic contrast was 0.03 ± 0.04. The radiographic contrast for
+all the proximal lesions that were detected by at least one of the three clinical examiners
+(n = 23) was 0.07 ± 0.08 and the radiographic contrast for the proximal lesions that were
+detected by all three of the clinical examiners was (n = 3) 0.11 ± 0.06. The mean contrast
+Diagnostics 2023, 13, 2824
+8 of 12
+for SWIR reﬂectance was 0.19 ± 0.15 and that for SWIR transillumination was 0.13 ± 0.08.
+These values are tabulated in Table 3.
+Table 3. Mean lesion contrast ± s.d. for radiography and SWIR occlusal transillumination and
+reﬂectance at the three potential lesion locations with and without lesions present. For columns with
+an asterisk, the mean contrast was signiﬁcantly higher for lesion areas (p < 0.05). For areas with no
+lesion present the contrast is the mean of the absolute value of the individual contrast values.
+Proximal
+Occlusal
+Radiography
+Reﬂectance
+Transillumination
+Reﬂectance
+Transillumination
+No Lesion
+0.021 ± 0.032
+0.057 ± 0.075
+0.10 ± 0.081
+0.048 ± 0.045
+0.088 ± 0.069
+Lesion
+0.030 ± 0.037
+* 0.19 ± 0.15
+* 0.13 ± 0.084
+* 0.18 ± 0.14
+* 0.16 ± 0.078
+Sensitivity, speciﬁcity, and accuracy were calculated for reﬂectance, transillumination,
+and both combined for varying contrast thresholds from 0.02 to 0.2. If the contrast was
+higher than that particular threshold it was considered a detected lesion. Plots of the
+accuracy versus contrast threshold are shown in Figure 4. An examination of Figure 4
+shows that the accuracy reaches a plateau for lesions on proximal surfaces after a contrast
+threshold of 0.1 and drops after 0.1 for occlusal lesions on occlusal surfaces. Therefore,
+we chose a contrast threshold of 0.1 to calculate the diagnostic performance of reﬂectance,
+transillumination and both combined and the results are tabulated in Table 4.
+Diagnostics 2023, 13, x FOR PEER REVIEW 
+8  of  11 
+ 
+ 
+proximal lesions that were detected by at least one of the three clinical examiners (n = 23) 
+was 0.07 ± 0.08 and the radiographic contrast for the proximal lesions that were detected 
+by all three of the clinical examiners was (n = 3) 0.11 ± 0.06. The mean contrast for SWIR 
+reﬂectance was 0.19 ± 0.15 and that for SWIR transillumination was 0.13 ± 0.08. These val-
+ues are tabulated in Table 3. 
+Table 3. Mean lesion contrast ± s.d. for radiography and SWIR occlusal transillumination and re-
+ﬂectance at the three potential lesion locations with and without lesions present. For columns with 
+an asterisk, the mean contrast was signiﬁcantly higher for lesion areas (p < 0.05). For areas with no 
+lesion present the contrast is the mean of the absolute value of the individual contrast values. 
+ 
+Proximal 
+Occlusal 
+ 
+Radiography 
+Reflectance 
+Transillumination 
+Reflectance 
+Transillumination 
+No Lesion 
+0.021 ± 0.032 
+0.057 ± 0.075 
+0.10 ± 0.081   
+0.048 ± 0.045   
+0.088 ± 0.069 
+Lesion 
+0.030 ± 0.037 
+* 0.19 ± 0.15 
+* 0.13 ± 0.084 
+* 0.18 ± 0.14 
+* 0.16 ± 0.078 
+Sensitivity, speciﬁcity, and accuracy were calculated for reﬂectance, transillumina-
+tion, and both combined for varying contrast thresholds from 0.02 to 0.2. If the contrast 
+was higher than that particular threshold it was considered a detected lesion. Plots of the 
+accuracy versus contrast threshold are shown in Figure 4. An examination of Figure 4 
+shows that the accuracy reaches a plateau for lesions on proximal surfaces after a contrast 
+threshold of 0.1 and drops after 0.1 for occlusal lesions on occlusal surfaces. Therefore, we 
+chose a contrast threshold of 0.1 to calculate the diagnostic performance of reﬂectance, 
+transillumination and both combined and the results are tabulated in Table 4. 
+ 
+Figure 4. Plots of the accuracy calculated for SWIR reﬂectance (red), SWIR transillumination (blue), 
+and the combined modalities (black) for the proximal (n = 54) occlusal lesions (n = 87) as a function 
+of the lesion contrast threshold. 
+Figure 4. Plots of the accuracy calculated for SWIR reﬂectance (red), SWIR transillumination (blue),
+and the combined modalities (black) for the proximal (n = 54) occlusal lesions (n = 87) as a function
+of the lesion contrast threshold.
+Diagnostics 2023, 13, 2824
+9 of 12
+Table 4. Diagnostic performance of SWIR reﬂectance, occlusal transillumination, and combined
+methods along with radiography using a diagnostic contrast threshold of 0.10.
+Accuracy
+Sensitivity
+Speciﬁcity
+Proximal Surfaces
+Reﬂectance
+0.83
+0.72
+0.86
+Transillumination
+0.63
+0.63
+0.62
+Combined
+0.81
+0.44
+0.93
+Radiography
+0.79
+0.08
+0.99
+Occlusal Surfaces
+Reﬂectance
+0.82
+0.80
+0.89
+Transillumination
+0.72
+0.75
+0.63
+Combined
+0.70
+0.62
+0.96
+4. Discussion
+In this study, the diagnostic performance of a dual SWIR occlusal transillumination and
+reflectance imaging device was assessed in vivo on teeth scheduled for extraction based on
+orthodontic reasons. Caries status was unknown prior to imaging and PLM and microCT
+were used as gold standards. In this study, most of the 141 lesions were small and confined to
+the enamel. There were only 16 lesions that penetrated into the dentin and there was only
+one severe lesion that was cavitated and penetrated into the inner half of the dentin. The
+diagnostic performance of the SWIR methods was compared with conventional visual and
+radiographic methods. The motivation for combining reflectance and transillumination was
+to increase diagnostic performance by reducing false positives and providing more accurate
+measurements of lesion severity. The specificity did increase to 0.93 for proximal surfaces
+and 0.96 for occlusal surfaces for combined SWIR imaging. However, the accuracy for the
+combined methods was lower than for SWIR reflectance alone.
+The posterior occlusal surfaces and interproximal surfaces between adjacent posterior
+teeth are challenging areas to detect early demineralization using radiography, due to the
+overlapping topography of the occlusal surface and the low sensitivity for detection of early
+proximal lesions that extend only into enamel. Visual detection of early demineralization
+on occlusal surfaces may also be confounded by staining in the occlusal ﬁssures that make
+it difﬁcult for clinicians to accurately pinpoint the areas of demineralization [5]. Stains
+also tend to make early lesions appear more severe. A thorough and complete removal
+of all stains from the pits and ﬁssures is not clinically feasible. Visual and radiographic
+assessments were performed on the teeth by three clinical examiners. Based on the poor
+agreement of conventional diagnosis for which the examiners have had many years of
+experience, we decided to measure and compare the radiographic lesion contrast and
+the SWIR lesion contrast. In addition, in our prior dual transillumination and reﬂectance
+in vitro SWIR imaging study, there was poor agreement among clinical examiners which
+can be attributed to limited experience with new technology [20].
+Prior studies have demonstrated that occlusal transillumination and reﬂectance imag-
+ing modalities using longer wavelengths may offer higher sensitivity regarding early
+lesion detection [11,12,14,22], but each individual imaging modality on its own has lower
+speciﬁcity than radiography and may lead to more false positives. We demonstrated
+in this study that it is possible to capture near-simultaneous occlusal transillumination
+(1300 nm) and reﬂectance (1600 nm) videos of lesions successfully in vivo, which has not
+been conducted prior to this study. Both imaging modalities, whether considered sepa-
+rately or when combined, had markedly higher sensitivity for lesions on both proximal
+and occlusal surfaces compared to conventional visual assessment and radiography. It is
+important to note that the teeth utilized in this study were subject to crowding and were
+extracted for orthodontic reasons. SWIR imaging was performed in vivo while radiography
+Diagnostics 2023, 13, 2824
+10 of 12
+was performed on the teeth after extraction and did not suffer interference from crowding.
+Therefore, we suspect that the diagnostic performance of radiography would likely be even
+lower if it was performed in vivo with many overlapping teeth.
+Higher sensitivity in detecting early lesions should be advantageous because clinicians
+can better assess the caries risk of the individual and intervene earlier with minimally
+invasive techniques to prevent such lesions from progressing further to avoid the need for
+surgical intervention. SWIR methods do not utilize ionizing radiation and are well suited
+for monitoring lesions over time to determine if they increase in severity.
+The performance of reﬂectance imaging at 1600 nm was higher than for transillumina-
+tion imaging at 1300 nm. One can argue that the performance of combined SWIR reﬂectance
+and transillumination was not any better than SWIR reﬂectance alone. Additional analysis
+needs to be performed to better assess the advantages of the combined imaging approach
+and fully evaluate the ability to assess lesion depth and severity. It was interesting that
+SWIR transillumination was most effective in detecting 8/11 of the deeper occlusal lesions
+that penetrated into the dentin.
+SWIR imaging is particularly well suited for use with artiﬁcial intelligence (AI).
+Casalegno et al. showed that AI could be used to analyze clinical near-IR transillumi-
+nation images at 780 nm [23]. The much higher lesion contrast of SWIR methods compared
+to radiography and the lack of interference due to stains are major advantages that can
+likely be exploited using AI approaches to identify lesions.
+This study suggests that SWIR Imaging methods offer high sensitivity for lesions on
+proximal and occlusal surfaces without the interference of stains that appear at wavelengths
+of less than 1200 nm. No SWIR methods are currently available in the commercial market
+due to high cost and security concerns, but we anticipate that this innovative technology
+will increasingly become more accessible for medical use. Commercial NIR imaging
+devices for caries detection operate at 780 and 850 nm, where studies show that there is
+still signiﬁcant interference from stains [5]. In addition, the contrast between sound and
+demineralized tooth structure has previously been shown to be markedly higher at longer
+SWIR wavelengths than it is at 780 or 850 nm [5,9]. The primary disadvantage of operating
+at longer SWIR wavelengths is that Si-based imaging technologies are only efﬁcient at
+wavelengths under 1000 nm. Alternative imaging technologies such as InGaAs and Ge-
+enhanced Si are still expensive. The limited use of these more innovative semiconductor
+technologies is a major reason for the high cost. However, with expanded use, those prices
+are expected to decrease. The cost has decreased signiﬁcantly in the past 10 years and the
+performance has increased markedly.
+5. Conclusions
+Combined SWIR occlusal transillumination and reﬂectance images yielded an increase
+in speciﬁcity for lesions on both occlusal and proximal surfaces. The sensitivity of the
+SWIR imaging methods was markedly higher than for conventional methods. The contrast
+of lesions in the occlusal pits and ﬁssures and the proximal contacts where most lesions
+are located was signiﬁcantly higher (p < 0.05) than sound areas for both SWIR occlusal
+transillumination and reﬂectance while there was no signiﬁcant difference in contrast
+between lesion and sound areas for radiography.
+Author Contributions: Conceptualization, D.F.; methodology, Y.Z., C.N. and D.F; formal analysis,
+Y.Z. and C.N.; investigation, Y.Z., C.N.; resources, D.F.; data curation, Y.Z., C.N., O.L., Y.-C.H.;
+writing—original draft preparation, D.F.; writing—review and editing, D.F.; project administra-
+tion, D.F.; funding acquisition, D.F. All authors have read and agreed to the published version of
+the manuscript.
+Funding: This research was funded by NIDCR/NIH, grant number R01-DE028295.
+Institutional Review Board Statement: The study was conducted in accordance with the Declaration
+of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of the University
+of California, San Francisco IRB 18-27656 01/07/2019.
+Diagnostics 2023, 13, 2824
+11 of 12
+Informed Consent Statement: Informed consent was obtained from all subjects involved in the study.
+Data Availability Statement: Not applicable.
+Acknowledgments: The authors would like to thank Cynthia Darling, Jacob Simon and Nai-Yuan
+Chang for their contribution to this work.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Dye, B.A.; Tan, S.; Lewis, B.G.; Barker, L.K.; Thornton-Evans, T.G.; Eke, P.I.; Beltrán-Aguilar, E.D.; Horowitz, A.M.; Li, C.H. Trends
+in Oral Health Status, United States, 1988–1994 and 1999–2004; Vital and Health Statistics. Series 11. No. 248; National Center for
+Health Statistics: Hyattsville, MA, USA, 2007; pp. 1–92.
+2.
+Dye, B.A.; Thornton-Evans, T.; Li, X.; Iafolla, T.J. Dental Caries and Tooth Loss in Adults in the United States, 2011–2012; Data Brief.
+No. 197; National Center for Health Statistics: Hyattsville, MA, USA, 2015.
+3.
+White, S.C.; Pharoah, M.J. Oral Radiology: Principles and Interpretation; Mosby: St. Louis, MO, USA, 2014.
+4.
+Yang, J.; Dutra, V. Utility of radiology, laser ﬂuorescence, and transillumination. Dent. Clin. N. Am. 2005, 49, 739–752. [CrossRef]
+[PubMed]
+5.
+Ng, C.; Almaz, E.C.; Simon, J.C.; Fried, D.; Darling, C.L. Near-infrared imaging of demineralization on the occlusal surfaces of
+teeth without the interference of stains. J. Biomed. Opt. 2019, 24, 036002. [CrossRef] [PubMed]
+6.
+Makhija, S.K.; Gilbert, G.H.; Funkhouser, E.; Bader, J.D.; Gordan, V.V.; Rindal, D.B.; Bauer, M.; Pihlstrom, D.J.; Qvist, V.; National
+Dental Practice-Based Research Network Collaborative Group. The prevalence of questionable occlusal caries: Findings from the
+Dental Practice-Based Research Network. J. Am. Dent. Assoc. 2012, 143, 1343–1350. [CrossRef] [PubMed]
+7.
+Makhija, S.K.; Gilbert, G.H.; Funkhouser, E.; Bader, J.D.; Gordan, V.V.; Rindal, D.B.; Pihlstrom, D.J.; Qvist, V.; National Dental
+PBRN Collaborative Group. Characteristics, detection methods and treatment of questionable occlusal carious lesions: Findings
+from the national dental practice-based research network. Caries Res. 2014, 48, 200–207. [CrossRef] [PubMed]
+8.
+Makhija, S.K.; Robinson, M.E.; Bader, J.D.; Shugars, D.A.; Litaker, M.S.; Im, H.R.; Rindal, D.B.; Pihlstrom, D.J.; Meyerowitz, C.;
+Gordan, V.V.; et al. Dentists’ decision strategies for suspicious occlusal caries lesions in a National Dental PBRN study. J. Dent.
+2018, 69, 83–87. [CrossRef] [PubMed]
+9.
+Fried, D. Near-Infrared Reﬂectance Imaging of Caries Lesions. In Detection and Assessment of Dental Caries: A Clinical Guide;
+Zandona, A., Longbottom, C., Eds.; Springer: Cham, Switzerland, 2019.
+10.
+Staninec, M.; Lee, C.; Darling, C.L.; Fried, D. In vivo near-IR imaging of approximal dental decay at 1310 nm. Lasers Surg. Med.
+2010, 42, 292–298. [CrossRef] [PubMed]
+11.
+Karlsson, L.; Maia, A.M.A.; Kyotoku, B.B.C.; Tranaeus, S.; Gomes, A.S.L.; Margulis, W. Near-infrared transillumination of teeth:
+Measurement of a system performance. J. Biomed. Opt. 2010, 15, 036001–036008. [PubMed]
+12.
+Kuhnisch, J.; Sochtig, F.; Pitchika, V.; Laubender, R.; Neuhaus, K.W.; Lussi, A.; Hickel, R. In vivo validation of near-infrared light
+transillumination for interproximal dentin caries detection. Clin. Oral. Investig. 2015, 20, 821–829. [CrossRef] [PubMed]
+13.
+Sochtig, F.; Hickel, R.; Kuhnisch, J. Caries detection and diagnostics with near-infrared light transillumination: Clinical experiences.
+Quintessence Int. 2014, 45, 531–538. [PubMed]
+14.
+Abdelaziz, M.; Krejci, I. DIAGNOcam—A Near Infrared Digital Imaging Transillumination (NIDIT) technology. Int. J. Esthet.
+Dent. 2015, 10, 158–165. [PubMed]
+15.
+Salsone, S.; Taylor, A.; Gomez, J.; Pretty, I.; Ellwood, R.; Dickinson, M.; Lombardo, G.; Zakian, C. Histological validation of
+near-infrared reﬂectance multispectral imaging technique for caries detection and quantiﬁcation. J. Biomed. Opt. 2012, 17, 076009.
+[CrossRef] [PubMed]
+16.
+Zakian, C.; Pretty, I.; Ellwood, R. Near-infrared hyperspectral imaging of teeth for dental caries detection. J. Biomed. Opt. 2009,
+14, 064047. [CrossRef] [PubMed]
+17.
+Kooistra, S.; Dennison, J.B.; Yaman, P.; Burt, B.A.; Taylor, G.W. Radiographic versus clinical extension of Class II carious lesions
+using an F-speed ﬁlm. Oper. Dent. 2005, 30, 719–726. [PubMed]
+18.
+Jessee, S.A.; Makins, S.R.; Bretz, W.A. Accuracy of proximal caries depth determination using two intraoral ﬁlm speeds. Gen.
+Dent. 1999, 47, 88–93. [PubMed]
+19.
+Bin-Shuwaish, M.; Dennison, J.B.; Yaman, P.; Neiva, G. Estimation of clinical axial extension of Class II caries lesions with
+ultraspeed and digital radiographs: An in-vivo study. Oper. Dent. 2008, 33, 613–621. [CrossRef] [PubMed]
+20.
+Zhu, Y.; Abdelaziz, M.; Simon, J.; Le, O.; Fried, D. Dual short wavelength infrared transillumination/reﬂectance mode imaging
+for caries detection. J. Biomed. Opt. 2021, 26, 043004. [CrossRef] [PubMed]
+21.
+Simon, J.C.; Curtis, D.A.; Darling, C.L.; Fried, D. Multispectral near-infrared reﬂectance and transillumination imaging of occlusal
+carious lesions: Variations in lesion contrast with lesion depth. In Lasers in Dentistry XXIV; SPIE: Bellingham, WC, USA, 2018;
+Volume 10473, pp. 18–24.
+Diagnostics 2023, 13, 2824
+12 of 12
+22.
+Simon, J.C.; Lucas, S.A.; Lee, R.C.; Staninec, M.; Tom, H.; Chan, K.H.; Darling, C.L.; Fried, D. Near-IR Transillumination and
+Reﬂectance Imaging at 1300 nm and 1500–1700 nm for in vivo Caries Detection. Lasers Surg. Med. 2016, 48, 828–836. [CrossRef]
+[PubMed]
+23.
+Casalegno, F.; Newton, T.; Daher, R.; Abdelaziz, M.; Lodi-Rizzini, A.; Schurmann, F.; Krejci, I.; Markram, H. Caries Detection with
+Near-Infrared Transillumination Using Deep Learning. J. Dent. Res. 2019, 98, 1227–1233. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

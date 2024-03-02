@@ -1,0 +1,532 @@
+Citation: Zhu, Y.; Kim, M.; Curtis, D.;
+Wang, J.; Le, O.; Fried, D. Active
+Surveillance of Root Caries in Vivo
+with CP-OCT. Diagnostics 2023, 13,
+465. https://doi.org/10.3390/
+diagnostics13030465
+Academic Editor: Fabiano Bini
+Received: 2 November 2022
+Revised: 19 January 2023
+Accepted: 21 January 2023
+Published: 27 January 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+diagnostics
+Article
+Active Surveillance of Root Caries in Vivo with CP-OCT
+Yihua Zhu, Minyoung Kim
+, Donald Curtis, Jing Wang, Oanh Le and Daniel Fried *
+Department of Preventive and Restorative Dental Sciences, University of California, San Francisco,
+707 Parnassus Ave, San Francisco, CA 9414, USA
+* Correspondence: daniel.fried@ucsf.edu
+Abstract: The active surveillance of root caries lesions to monitor potential remineralization or
+decay progression is challenging for the clinician, due to unreliable diagnostic information. The
+conventional visual and tactile methods for assessing the lesion activity are not reliable, and the
+clinician is often unable to determine if the lesion is progressing or has been arrested. An important
+marker of an arrested lesion is a highly mineralized transparent surface zone (TSL) that forms when
+the mineral is deposited in the outer layer of the lesion. The purpose of this study was to determine if
+cross-polarization optical coherence tomography (CP-OCT) could be used to detect changes in the
+lesion severity and activity during active monitoring. In total, 18 subjects with 22 suspected active root
+caries lesions were evaluated using CP-OCT at the baseline, 3 months, and 6 months. All subjects were
+instructed to use a high ﬂuoride dentifrice at the baseline. The results showed that CP-OCT was able
+to discriminate the active from the arrested lesions by identifying the presence of a TSL on arrested
+lesions. The results also indicated that the mean TSL thickness increased signiﬁcantly (p < 0.05) for
+the nine lesion areas. In addition, CP-OCT was able to show the progression of demineralization,
+erosion, and changes in gingival contours in scanned areas. CP-OCT was valuable for monitoring the
+activity and severity of root caries lesions in vivo. CP-OCT can be used to assess the activity of root
+caries lesions at a single time point by detecting the presence of a TSL at the lesion surface indicative
+of the lesion arrest.
+Keywords: root caries; optical coherence tomography; lesion activity; non-surgical intervention
+1. Introduction
+Root caries remains a clinical concern, especially in the elderly [1]. Their management
+remains challenging because the clinical diagnosis of root caries is subjective and is based
+on visual and tactile parameters. In contrast to coronal caries, root caries lack a valid
+diagnostic standard, such as radiography [2]. Investigators have not developed a reliable
+relationship between root caries’ appearance and activity [3,4]. Most experts agree that
+active root lesions are soft, yet tactile hardness assessments remain subjective and lack
+reliability [3]. Multifactorial root caries scoring systems have been developed with mixed
+success [5,6]. The International Caries Detection and Assessment System (ICDAS) coor-
+dinating committee proposed a system for assessing lesion activity [5,7]. Criteria include
+color; texture (smooth, rough); appearance (shiny, dull); tactile (soft, leathery, hard); loss
+of anatomical contour; and proximity to the gingival margin [8,9]. Histological analyses
+for lesion assessment, such as microradiography, requires the destruction of the tooth and
+are not suitable for use in vivo. Optical coherence tomography (OCT) is a noninvasive
+technique for creating cross-sectional images of the internal biological structure and is
+well-suited for imaging coronal and root surfaces in vivo [10–12]. Polarization sensitivity
+has proven to be valuable for enhancing the contrast of demineralization, reducing the
+strong specular reﬂection from tooth surfaces, and measuring birefringence [13–15]. Studies
+have demonstrated that CP-OCT can be used to quantify the loss of cementum and the
+severity of the demineralization on root surfaces [16,17]. OCT can be used to discriminate
+between non-carious cervical lesions and root caries in vivo [18]. Importantly, CP-OCT
+Diagnostics 2023, 13, 465. https://doi.org/10.3390/diagnostics13030465
+https://www.mdpi.com/journal/diagnostics
+Diagnostics 2023, 13, 465
+2 of 12
+can be used to monitor the formation of a highly mineralized transparent surface layer
+(TSL) on demineralized dentin after exposure to a remineralization solution [17,19]. The
+optical changes associated with the lesion dehydration have been investigated via thermal,
+ﬂuorescence, and SWIR imaging for lesions on enamel surfaces [20–24]. Thermal imaging
+during the lesion dehydration has been used to measure the lesion permeability [19,25–27].
+Decreased thermal emission from the lesion surface is indicative of reduced permeability
+and a drying rate that is consistent with an arrested lesion. During drying, lesion areas will
+cool due to the loss of water from porous areas and from the collapsed and unsupported
+collagen matrix of the demineralized cementum and dentin. Arrested lesions have min-
+eral ﬁlling the pores at the lesion surface due to the remineralization and the formation
+of a TSL, which inhibits water diffusion and permeability, resulting in less temperature
+change and shrinkage during drying. Lesions with a TSL have signiﬁcantly lower thermal
+emission [19,25–28].
+In a recent study, CP-OCT and thermal imaging were used to assess the activity of root
+caries lesions on 30 test subjects [27]. In that study, CP-OCT was used to measure the lesion
+structure and the presence of TSL formation indicative of arrested lesions at a single time
+point. The activity of those lesions was conﬁrmed with thermal imaging. The next step
+is to consider if CP-OCT can detect changes in the lesion activity over time during active
+monitoring. The purpose of this study was to monitor root caries lesions over a period
+of 6 months to determine if CP-OCT could be used to detect changes in lesion severity
+and activity. Subjects with root caries lesions that were clinically diagnosed as active were
+prescribed a high ﬂuoride dentifrice and monitored from baseline to 6 months.
+2. Materials and Methods
+2.1. Participant Recruitment and Procedures
+Thirty test subjects at the UCSF comprehensive clinics were recruited for this study
+with approval from the Human Protection Program Institutional Review Board of the
+University of California, San Francisco (IRB#18-24558, Approval Date: 27 March 2018).
+This study was a single-site longitudinal observational clinical study. Test subjects were
+aged 18–90 and had one root caries lesion that was diagnosed as active based on a visual
+and tactile assessment by an experienced clinician using the ICDAS II root caries lesion
+activity criteria [7]. Test subjects were prescribed and instructed to use a high ﬂuoride
+(5000 ppm) dentifrice, Prevident 5000 Plus (Colgate, NY, USA). Test subjects were imaged
+at baseline, 3 months, and 6 months with CP-OCT after beginning brushing with a high
+ﬂuoride toothpaste. Color images were acquired at the baseline and 6 months using a
+FocusDent MD740 (Vilnius, Lithuania) 1280 × 960-pixel intraoral camera. The sample size
+of 30 was based on an in vitro study of the remineralization of simulated dentin lesions,
+with the mean transparent surface layer (TSL) thickness increased from 0 to 53.8 ± 13.3 µm
+after 12 days of remineralization [19]. Therefore, based on an average SD of 6.65 µm for the
+TSL thickness with a two-sided signiﬁcance level of 0.05, a study with 30 subjects would
+have a 90% power to detect an increase in the TSL thickness of 5.7 µm.
+2.2. Cross-Polarization Optical Coherence Tomography (CP-OCT)
+The cross-polarization OCT system used for this study was the Model IVS-3000-
+CP, purchased from Santec (Komaki, Aichi, Japan). This system acquires only the cross-
+polarization image (CP-OCT), not the simultaneous cross and co-polarization images
+(PS-OCT). This is a 3D system with a right-angle dental handpiece capable of acquiring
+complete tomographic images of a volume of 6 × 6 × 7 mm in approximately 3 s. This
+system has been used for multiple in vivo caries imaging studies [29–31]. It operates at a
+wavelength of 1321 nm and a bandwidth of 111 nm, with a measured resolution in the air
+of 11.4 µm.
+An attachment with an internal air nozzle made of autoclavable Dental-SG resin was
+printed using a Formlabs 3D printer (Somerville, MA, USA) and attached to the OCT
+scanning handpiece. The air at 10 psi was connected to the probe to prevent the fogging of
+Diagnostics 2023, 13, 465
+3 of 12
+the imaging window and to dry the tooth surface. Images were acquired after drying for 30
+s. Images of the CP-OCT handpiece are shown with and without the 3D printed attachment
+in Figure 1. The entire handpiece assembly was covered with polypropylene ﬁlm for
+infection control prior to the imaging, as shown in Figure 1. Entire (3D) CP-OCT cross-
+polarization images of each lesion were acquired at each of the three timepoints. Image
+preprocessing was applied using ORS Dragonﬂy (Montreal, QC, Canada) to despeckle and
+smooth the images before image registration [32,33]. Image segmentation was performed
+with 90% intensity thresholding, followed by the application of a 3D median ﬁlter with a
+kernel size 3 for noise reduction and smoothing, while preserving the potential transparent
+surface layer (TSL). Image registration was ﬁrst performed using manual rotation and
+translation to achieve an initial rough alignment. It was followed by the application of ORS
+Dragonﬂy’s automatic image registration function. It automatically tests the registration
+by introducing miniature steps of rotation as small as 0.5 degrees and the translation of
+1 voxel with a linear type of interpolation until the mobile image is superimposed to the
+ﬁxed image. The alignment is assessed by the sum of squared differences (SSD) method. It
+is important to note that OCT measures the optical path length and not the physical path
+length, so some distortion is expected for images acquired at different angles.
+Figure 1. (A) CP-OCT handpiece used for these studies, and (B) a closeup of the handpiece with the
+added 3D printed attachment and covered by polypropylene wrap for infection control.
+For quantitative measurements, rulers with a diameter of 100 µm were created in ORS
+Dragonﬂy representing the respective intensity proﬁles orthogonal to the tooth surface at
+positions in each lesion area. Positive TSL detection was conﬁrmed with two signiﬁcant
+consecutive intensity peaks detected at the beginning of the ruler, and the TSL thickness
+was measured as the distance between the two peaks. The lesion depth (Ld) was measured
+as the overall length of the ruler’s non-zero intensity proﬁle. To prepare for the integrated
+reﬂectivity (∆R) measurement, an intensity histogram of the cylindrical ruler was exported
+from Dragonﬂy, and analyzed with a custom script written with MATLAB from Mathworks
+(Natick, MA, USA) to identify the median intensity over the lesion depth that was later
+used as an intensity normalization correction factor. Each OCT scan has a different intensity
+proﬁle due to the variation in the angle and position of the imaging and other environmental
+factors, so normalization was necessary for accurate ∆R comparison across all three co-
+registered images. Furthermore, ∆R was then calculated as the sum of the intensity over
+the lesion depth divided by the normalization correction factor.
+Diagnostics 2023, 13, 465
+4 of 12
+3. Results
+In this study, only 22 of the 30 test subjects initially recruited completed all three visits.
+The COVID-19 pandemic greatly interfered with the study. Test subject visits at UCSF for
+clinical studies considered nonessential for patient health were banned during part of the
+pandemic. Images from 18 of the test subjects were successfully co-registered, while data
+from 4 of the test subjects were discarded due to the inability to co-register the images at the
+baseline, 3 months, and 6 months. Four subjects presented with both clinically appearing
+active and arrested caries on the same tooth, based on the presence of a transparent surface
+zone (TSL), so that twenty-two lesion areas were included for analysis from the 18 test
+subjects. Eight of the lesion sites were arrested at the baseline, as shown by a visible TSL,
+and only one active lesion became arrested during the 6 months of the study, according to
+CP-OCT. Therefore, 9 of the 22 lesion sites had a measurable TSL at month 6, indicating
+those lesion areas were arrested. Interestingly, many of the arrested lesions showed an
+increase in the TSL thickness from baseline to 6 months. All the lesions were initially
+classiﬁed as active lesions based on the clinical assessment and the multiple ICDAS II lesion
+activity criteria. Of the 22 lesion sites analyzed, 8 were dark and 14 were light-colored at
+the baseline, and 10 appeared rough and 12 appeared smooth. Digital images of the lesions
+at the baseline and 6 months were shown to two clinicians after the completion of the study,
+and they were asked to score the caries status and the activity of the lesions at the two time
+points based on digital photographs. Table 1 is a contingency table comparing the caries
+status (caries present or not present) and caries activity (active and arrested) assessed by
+the visual examination of the images with CP-OCT assessment, in which the presence of a
+TSL indicated the lesion was arrested, while the presence of demineralization without a
+TSL indicated an active lesion. CP-OCT indicated that demineralization was present for all
+lesion sites conﬁrming root caries presence.
+Table 1. Contingency table comparing visual assessment of the digital images of the 22 lesion areas
+to the CP-OCT images at baseline and at 6 months. The diagonal elements (bold) of the contingency
+table show the number of visual assessments that match the CP-OCT analysis.
+CP-OCT (Baseline)
+CP-OCT (Month 6)
+No
+Lesion
+Active
+Lesion
+Arrested
+Lesion
+Total
+No
+Lesion
+Active
+Lesion
+Arrested
+Lesion
+Total
+Visual
+No Lesion
+0
+5
+1
+6
+0
+6
+1
+7
+Active
+Lesion
+0
+9
+7
+16
+0
+5
+8
+13
+Arrested
+Lesion
+0
+0
+0
+0
+0
+2
+0
+2
+Total
+0
+14
+8
+22
+0
+13
+9
+22
+At the baseline, 9 of the 14 active lesions were visually classiﬁed correctly, while none
+of the 8 arrested lesions were correctly visually classiﬁed as arrested. At month 6, only
+5 of the 13 active lesions were visually classiﬁed correctly, while none of the 9 arrested
+lesions were correctly visually classiﬁed as arrested. The two lesions that were classiﬁed as
+arrested by the clinicians at month 6 were shown to be active in CP-OCT images at month 6.
+An example of an arrested lesion with minimal change after 6 months is shown in the
+color and CP-OCT images of Figure 2. In the color images, the lesion area looks similar,
+however, the exposed root surface appears to have decreased due to growth of the gingival
+margin. A surface rendering (3D) of the entire CP-OCT scan taken at the baseline is also
+shown, with the yellow line showing the position of the extracted CP-OCT b-scans. The
+CP-OCT scan at the baseline shows the gingiva on the left and the exposed root surface
+on the right. The lesion appears with a lesion body of higher intensity covered by a thin
+transparent layer (dark zone) that indicates the TSL. The TSL has a very thin layer of higher
+intensity that represents reﬂectance from the tooth surface. The lesion does not appear to
+change in depth or severity after 6 months.
+Diagnostics 2023, 13, 465
+5 of 12
+Figure 2. Color pictures at baseline and 6 months are shown for an arrested lesion. The dashed red
+lines show the likely position of the three CP-OCT b-scans shown at baseline, 3 months, and 6 months.
+The white dashed arrow in the OCT b-scan is directed from the root to the crown. A surface rendering
+(3D) of the entire CP-OCT scan taken at baseline is also shown, with the yellow line showing the
+position of the extracted b-scans. The position of the gingiva (G) and the lesion body (LB) with the
+TSL located on top of the lesion are indicated. Little change has occurred for the lesion over 6 months.
+A second lesion that is active with advancing cavitation is shown in Figure 3. In the
+color image, a shadow is visible just above the exposed lesion area at the baseline and that
+area is no longer visible at month 6. It is hard to determine from the color images whether
+or not the lesion area is larger. The surface renderings of the CP-OCT scans that are shown
+at the baseline and 6 months show that the area of cavitation is larger, and that the area
+near the top of the lesion has collapsed. The CP-OCT scan at the baseline extracted at the
+position of the yellow line shows the gingiva on the left and a cavitated lesion area on the
+right, along with the mostly transparent sound enamel. A small lesion area (LB) is visible
+just below the enamel, demarcated by the orange arrows. That lesion area between the
+orange arrows becomes cavitated after 6 months in the lesion area. The depth lost was
+measured to be 151 µm from 0–3 months and 296 µm from 3–6 months.
+Diagnostics 2023, 13, 465
+6 of 12
+Figure 3. Color pictures at baseline and 6 months are shown for an active lesion with advancing
+cavitation. The dashed red lines show the likely position of the three CP-OCT b-scans shown at
+baseline, 3 months, and 6 months. The white dashed arrow in the OCT b-scan is directed from the
+root to the crown. Surface renderings (3D) of the entire CP-OCT scans taken at baseline and 6 months
+are also shown, with the yellow lines showing the position of the extracted b-scans. The position of
+the gingiva (G) and enamel (E) along with the lesion body (LB) are indicated. After 6 months, the
+demineralized area encompassing the lesion body between the two arrows has eroded, leaving a
+cavitated region (CAV).
+A third representative lesion that appears initially active at the baseline and appears to
+become arrested at month 6 is shown in Figure 4. The color images show little change after
+6 months. The CP-OCT b-scan at the baseline extracted at the position of the yellow line in
+the CP-OCT surface rendering shows a highly reﬂective, slightly cavitated, active lesion
+located between the enamel and the gingiva. In this scan, the gingiva is on the right and
+the enamel is on the left. The lesion also extends into the enamel above the exposed root
+surface. Between the baseline and month 6, the reﬂectivity of the lesion body decreases
+from both the enamel and dentin lesion (exposed root) areas, and a distinct TSL forms over
+the lesion.
+Diagnostics 2023, 13, 465
+7 of 12
+Figure 4. Color pictures at baseline and 6 months are shown for an active lesion that has undergone
+increasing remineralization and has a TSL after 6 months. The dashed red lines show the likely
+position of the three CP-OCT b-scans shown at baseline, 3 months, and 6 months. The white dashed
+arrow in the OCT b-scan is directed from the root to the crown. A surface rendering (3D) of the
+entire CP-OCT scan taken at 0 months is also shown, with the yellow line showing the position of the
+extracted b-scans. The position of the gingiva (G), enamel (E), and underlying dentin (D) are shown,
+and the lesion body (LB) is indicated. After 6 months, the intensity of reﬂectivity from the lesion
+body has decreased, and a distinct TSL is visible at the lesion surface.
+A fourth lesion is shown in Figure 5. Color images show a large area of the exposed
+root surface at baseline that becomes almost completely covered by inﬂamed gingiva after
+6 months. CP-OCT surface renderings also shown at the baseline and 6 months show
+dramatic hypertrophy of the gingival tissues. CP-OCT b-scans extracted at the position
+of the yellow line show that the tooth is covered by a crown, and that there is an exposed
+cavitated area of the root surface located between the gingival (left) and the crown (CR) on
+the right, located between the two orange areas. The CP-OCT scan also shows that there is
+some shallow demineralization on the exposed root surface, but it is localized and very
+shallow. The month 3 and 6 CP-OCT scans show that the gingiva expands to cover much of
+the exposed root surface, and that the lesion is much smaller at month 6. The lesion depth,
+integrated reﬂectivity over the lesion depth (∆R), and the thickness of the transparent
+surface zone if present (TSL) were measured from the co-registered CP-OCT scans. Values
+were calculated for 22 lesion areas from 18 teeth, and the mean ± S.D. are plotted for all
+Diagnostics 2023, 13, 465
+8 of 12
+three values in Figure 6. Both the mean lesion depth and the mean ∆R increased slightly
+from the baseline to month 6, but the changes were not signiﬁcant (p > 0.05), n = 22. The
+mean TSL thickness increased from the baseline to month 6, and the increase was signiﬁcant
+(p < 0.05) for the nine lesion areas that showed measurable TSLs.
+Figure 5. Color pictures at baseline and 6 months of an exposed root surface that becomes completely
+covered by inﬂamed gingiva after 6 months. The dashed red lines show the likely position of the three
+CP-OCT b-scans shown at baseline, 3 months, and 6 months. The white dashed arrow in the OCT
+b-scan is directed from the root to the crown. Surface renderings (3D) of the entire CP-OCT scans
+taken at baseline and 6 months are also shown, with the yellow lines showing the position of the
+extracted b-scans. The position of the gingiva (G) and the attached crown (CR) are indicated. After
+6 months, the exposed root surface indicated by the position between the two arrows has contracted
+markedly and the 3D surface rendering shows most of the root surface that was exposed at baseline
+is now covered by the expanded gingiva.
+Diagnostics 2023, 13, 465
+9 of 12
+Figure 6. Bar graphs for mean ± S.D. for the CP-OCT measurements of the lesion depth, integrated
+reﬂectivity over the lesion depth (∆R), and the TSL thickness. Bars of the same color are statistically
+similar (p > 0.05). There were 22 samples for the lesion depth and ∆R, and 9 samples that had
+measurable TSLs.
+4. Discussion
+The goal of this study was to demonstrate that CP-OCT could monitor changes in
+the lesion activity and severity over time during active monitoring. We anticipated seeing
+initially active lesions in the CP-OCT images with no TSLs at the baseline transition to
+arrested lesions with TSLs at month 6. Unfortunately, only 1 of the 22 lesion sites exhibited
+that ideal behavior. It is disappointing that most of the lesion sites did not improve with the
+use of 1.1% NaF, however, it is important to point out that this study was not a clinical trial
+on the remineralization performance of high ﬂuoride dentifrices, nor could we control the
+compliance and hygiene of the participants. CP-OCT was able to show changes in many of
+the lesions over time, and this study demonstrated that those lesion sites that appeared
+initially arrested with the presence of a measurable TSL did not progress further in lesion
+severity. Therefore, the presence of a measurable TSL present on the lesion in CP-OCT
+images appears to be a key indicator that the lesion is arrested and did not progress during
+the six-month study. CP-OCT detected the presence of a TSL in a single measurement
+so lesion activity could be assessed at a single time point in vivo. The use of the highly
+Diagnostics 2023, 13, 465
+10 of 12
+mineralized transparent surface zone as our “benchmark” for an arrested lesion surface
+is supported by several in vitro and in vivo studies, and the histopathology of active vs.
+arrested lesions [31,33,34]. Before the introduction of the optical coherence tomography,
+a tooth had to be extracted, sectioned, and imaged with polarized light microscopy or
+transverse microradiography to detect and measure the thickness of a transparent surface
+zone [6,35]. Of those methods, only OCT can be used clinically.
+In this study, CP-OCT was also able to monitor changes in the dimensions of the
+gingival tissues. We did not anticipate that the gingiva in some patients would change
+so dramatically in 6 months. For example, in Figure 5 the gingival margin appears to
+advance more than a millimeter from the baseline to 6 months to nearly cover the pre-
+viously exposed root surface. Such changes are challenging for the image registration
+since the gingival margin cannot be used as a ﬁxed reference. Since active root lesions
+are soft, considerable erosion is expected and CP-OCT was able to show that at multiple
+sites, the demineralized dentin was preferentially eroded/abraded away over time. The
+severity of the demineralization can be quantiﬁed using CP-OCT by the measurement
+of the lesion depth and the integrated reﬂectivity over the lesion depth (∆R). However,
+this approach is problematic when considerable erosion is present, as can be the case for
+root lesions. For example, the lesion site in Figure 3 shows large drops in the lesion depth
+and ∆R after 6 months. This is not due to remineralization but because the softer areas
+of demineralization were likely abraded/eroded away. The mean lesion depth and ∆R
+increased slightly over 6 months but neither increase was statistically signiﬁcant. However,
+considering the inﬂuence of the erosion discussed above, it is likely that, with the exception
+of the nine lesions that manifested a TSL at 6 months, most of the lesions progressed and
+increased in severity.
+This study and our prior study [27] further demonstrate that, not only is it difﬁcult to
+visually assess the activity of root caries, but it is also difﬁcult to visually identify whether
+or not demineralization is present on the exposed root surfaces, or if the lesion is actually
+located on the root surface. The dentinal enamel junction (DEJ) and the cementum enamel
+junction (CEJ) are easy to identify in OCT images, but are often very difﬁcult to visually
+identify, particularly in lesion areas. For many of the lesions encountered in this study, the
+location of demineralization in OCT images did not correspond to where it was anticipated
+based on the lesion color and texture. Tactile assessments of root caries lesions are more
+reliable, however, tactile assessments and aggressive probing with the explorer risks further
+damage to lesion areas and the use of the sharp explorer is discouraged. It is also important
+to note that OCT has limited access to subgingival lesion areas.
+5. Conclusions
+This was the ﬁrst clinical study to show that CP-OCT can be used to monitor changes
+in lesion structure and activity over time during active monitoring. It demonstrates the
+ability of CP-OCT to identify and monitor the activity of root caries in adults, and shows
+the limitations of diagnosis by visual inspection, as compared to CP-OCT. CP-OCT imaging
+has great potential for lesion activity assessment in a single visit. In addition, CP-OCT was
+able to monitor the erosion of the root surface, loss of the cementum layer, changes in the
+gingival tissues, and provide anatomic landmarks of the DEJ and CEJ. The therapeutic
+relevance of the study is that it shows that CP-OCT can be used to monitor the efﬁcacy
+of chemical intervention and can potentially be used in clinical trials to establish the
+effectiveness of potential treatment options for root caries.
+Author Contributions: Conceptualization, D.C. and D.F.; methodology, D.C. and D.F.; test subject
+recruitment, D.C., J.W. and O.L.; clinical imaging and data acquisition, Y.Z., D.C., J.W. and O.L.;
+formal analysis, Y.Z. and M.K.; resources, D.F.; writing—original draft preparation, Y.Z., D.C. and D.F.;
+writing—review and editing, Y.Z., D.C. and D.F.; project administration, D.F.; funding acquisition,
+D.C. and D.F. All authors have read and agreed to the published version of the manuscript.
+Funding: This research was funded by NIDCR/NIH, grant number R01-DE027335.
+Diagnostics 2023, 13, 465
+11 of 12
+Institutional Review Board Statement: The study was conducted in accordance with the Declaration
+of Helsinki, and approved by the Human Protection Program Institutional Review Board of the
+University of California, San Francisco (IRB#18-24558, Approval Date: 27 March 2018).
+Data Availability Statement: Not applicable.
+Acknowledgments: The authors would like to thank Cynthia Darling, Jacob Simon, and Nai-Yuan
+Chang for their contributions to this work.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Dye, B.A.; Thornton-Evans, T.; Li, X.; Iafolla, T.J. Dental Caries and Tooth Loss in Adults in the United States, 2011–2012. In NCHS
+Data Brief, #197; Centers for Disease Control and Prevention: Atlanta, GA, USA, 2015.
+2.
+Banting, D.W. Diagnosis of Root Caries. In NIH Consensus Statement; 18; National Institutes of Health: Bethesda, MD, USA, 2001;
+pp. 1–24.
+3.
+Banting, D.W. Diagnosis and prediction of root caries. Adv. Dent. Res. 1993, 7, 80–86. [CrossRef] [PubMed]
+4.
+Schaeken, M.; Keltjens, H.; Van der Hoeven, J. Effects of ﬂuoride and chlorhexidine on the microﬂora of dental root surfaces and
+progression of root-surface caries. J. Dent. Res. 1991, 70, 150–153. [CrossRef] [PubMed]
+5.
+Ekstrand, K.; Martignon, S.; Holm-Pedersen, P. Development and evaluation of two root caries controlling programmes for
+home-based frail people older than 75 years. Gerodontology 2008, 25, 67–75. [CrossRef] [PubMed]
+6.
+Fejerskov, O.; Luan, W.M.; Nyvad, B.; Budtz-Jorgensen, E.; Holm-Pedersen, P. Active and inactive root surface caries lesions in a
+selected group of 60- to 80-year-old Danes. Caries Res. 1991, 25, 385–391. [CrossRef]
+7.
+Ismail, A.I.; Sohn, W.; Tellez, M.; Amaya, A.; Sen, A.; Hasson, H.; Pitts, N.B. The International Caries Detection and Assessment
+System (ICDAS): An integrated system for measuring dental caries. Community Dent. Oral Epidemiol. 2007, 35, 170–178. [CrossRef]
+[PubMed]
+8.
+Lynch, E.; Beighton, D. A comparison of primary root caries lesions classiﬁed according to colour. Caries Res. 1994, 28, 233–239.
+[CrossRef]
+9.
+Pitts, N. (Ed.) Detection, Assessment, Diagnosis and Monitoring of Caries; Karger: Basel, Switzerland, 2009; Volume 21.
+10.
+Bouma, B.E.; Tearney, G.J. Handbook of Optical Coherence Tomography, 21 August 2002 ed.; Marcel Dekker: New York, NY, USA, 2002.
+11.
+Feldchtein, F.I.; Gelikonov, G.V.; Gelikonov, V.M.; Iksanov, R.R.; Kuranov, R.V.; Sergeev, A.M.; Gladkova, N.D.; Ourutina, M.N.;
+Warren, J.A.; Reitze, D.H. In vivo OCT imaging of hard and soft tissue of the oral cavity. Opt. Express 1998, 3, 239–251. [CrossRef]
+12.
+Colston, B.; Everett, M.; Da Silva, L.; Otis, L.; Stroeve, P.; Nathel, H. Imaging of hard and soft tissue structure in the oral cavity by
+optical coherence tomography. Appl. Opt. 1998, 37, 3582–3585. [CrossRef]
+13.
+Wang, X.J.; Zhang, J.Y.; Milner, T.E.; Boer, J.F.d.; Zhang, Y.; Pashley, D.H.; Nelson, J.S. Characterization of Dentin and Enamel by
+use of Optical Coherence Tomography. Appl. Opt. 1999, 38, 586–590. [CrossRef]
+14.
+Baumgartner, A.; Dicht, S.; Hitzenberger, C.K.; Sattmann, H.; Robi, B.; Moritz, A.; Sperr, W.; Fercher, A.F. Polarization-sensitive
+optical optical coherence tomography of dental structures. Caries Res. 2000, 3459–3469. [CrossRef]
+15.
+Fried, D.; Xie, J.; Shaﬁ, S.; Featherstone, J.D.B.; Breunig, T.; Lee, C.Q. Early detection of dental caries and lesion progression with
+polarization sensitive optical coherence tomography. J. Biomed. Opt. 2002, 7(4), 618–627. [CrossRef] [PubMed]
+16.
+Lee, C.; Darling, C.; Fried, D. Polarization Sensitive Optical Coherence Tomographic Imaging of Artiﬁcial Demineralization on
+Exposed Surfaces of Tooth Roots. Dent. Mater. 2009, 25, 721–728. [CrossRef] [PubMed]
+17.
+Manesh, S.K.; Darling, C.L.; Fried, D. Polarization-sensitive optical coherence tomography for the nondestructive assessment of
+the remineralization of dentin. J. Biomed. Opt. 2009, 14, 044002. [CrossRef]
+18.
+Wada, I.; Shimada, Y.; Ikeda, M.; Sadr, A.; Nakashima, S.; Tagami, J.; Sumi, Y. Clinical assessment of non carious cervical lesion
+using swept-source optical coherence tomography. J. Biophotonics 2015, 8, 846–854. [CrossRef] [PubMed]
+19.
+Lee, R.C.; Darling, C.L.; Fried, D. Activity assessment of root caries lesions with thermal and near-infrared imaging methods. J.
+Biophotonics 2016, 10, 433–445. [CrossRef] [PubMed]
+20.
+Kaneko, K.; Matsuyama, K.; Nakashima, S. Quantiﬁcation of Early Carious Enamel Lesions by using an Infrared Camera in Vitro,
+Early Detection of Dental Caries II. In Proceedings of the 4th Annual Indiana Conference, Indianapolis, IN, USA, 19–22 May 1999;
+Indiana University School of Dentistry: Indianapolis, IN, USA, 2000; Volume 4, pp. 83–99.
+21.
+Usenik, P.; Burmen, M.; Fidler, A.; Pernus, F.; Likar, B. Near-infrared hyperspectral imaging of water evaporation dynamics for
+early detection of incipient caries. J. Dent. 2014, 42, 1242–1247. [CrossRef]
+22.
+Ando, M.; Sharp, N.; Adams, D. Pulse thermography for quantitative nondestructive evaluation of sound, de-mineralized and
+re-mineralized enamel. In Health Monitoring of Structural and Biological Systems; SPIE: Bellingham, WA, USA, 2012; Volume 8348,
+p. 83480S.
+23.
+Zakian, C.M.; Taylor, A.M.; Ellwood, R.P.; Pretty, I.A. Occlusal caries detection by using thermal imaging. J. Dent. 2010, 38,
+788–795. [CrossRef] [PubMed]
+24.
+Ando, M.; Ferreira-Zandona, A.G.; Eckert, G.J.; Zero, D.T.; Stookey, G.K. Pilot clinical study to assess caries lesion activity using
+quantitative light-induced ﬂuorescence during dehydration. J. Biomed. Opt. 2017, 22, 35005. [CrossRef]
+Diagnostics 2023, 13, 465
+12 of 12
+25.
+Lee, R.C.; Darling, C.L.; Fried, D. Assessment of remineralization via measurement of dehydration rates with thermal and near-IR
+reﬂectance imaging. J. Dent. 2015, 43, 1032–1042. [CrossRef]
+26.
+Lee, R.C.; Staninec, M.; Le, O.; Fried, D. Infrared methods for assessment of the activity of natural enamel caries lesions. IEEE J.
+Sel. Top. Quant. Elect. 2014, 22, 6803609. [CrossRef]
+27.
+Yang, V.; Zhu, Y.; Curtis, D.; Le, O.; Chang, N.; Fried, W.; Simon, J.C.; Banan, P.; Darling, C.; Fried, D. Thermal Imaging of Root
+Caries In Vivo. J. Dent. Res. 2020, 99, 1502–1508. [CrossRef] [PubMed]
+28.
+Lee, R.C.; Kang, H.; Darling, C.L.; Fried, D. Automated assessment of the remineralization of artiﬁcial enamel lesions with
+polarization-sensitive optical coherence tomography. Biomed. Opt. Express 2014, 5, 2950–2962. [CrossRef] [PubMed]
+29.
+Nee, A.; Chan, K.; Kang, H.; Staninec, M.; Darling, C.L.; Fried, D. Longitudinal monitoring of demineralization peripheral to
+orthodontic brackets using cross polarization optical coherence tomography. J. Dent. 2014, 42, 547–555. [CrossRef] [PubMed]
+30.
+Simon, J.C.; Kang, H.; Staninec, M.; Jang, A.T.; Chan, K.H.; Darling, C.L.; Lee, R.C.; Fried, D. Near-IR and CP-OCT imaging of
+suspected occlusal caries lesions. Lasers Surg. Med. 2017, 49, 215–224. [CrossRef]
+31.
+Chan, K.H.; Tom, H.; Lee, R.C.; Kang, H.; Simon, J.C.; Staninec, M.; Darling, C.L.; Pelzner, R.B.; Fried, D. Clinical monitoring of
+smooth surface enamel lesions using CP-OCT during nonsurgical intervention. Lasers Surg. Med. 2016, 48, 915–923. [CrossRef]
+32.
+Yang, V.B.; Fried, D. Measurement of the shrinkage of natural and simulated lesions on root surfaces with CP-OCT. J. Dent. 2019,
+90, 103213. [CrossRef]
+33.
+Jones, R.S.; Fried, D. Remineralization of enamel caries can decrease optical reﬂectivity. J. Dent. Res. 2006, 85, 804–808. [CrossRef]
+34.
+Kang, H.; Darling, C.L.; Fried, D. Nondestructive monitoring of the repair of enamel artiﬁcial lesions by an acidic remineralization
+model using polarization-sensitive optical coherence tomography. Dent. Mater. 2012, 28, 488–494. [CrossRef]
+35.
+Kidd, E.A. The histopathology of enamel caries in young and old permanent teeth. Br. Dent J 1983, 155, 196–198. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

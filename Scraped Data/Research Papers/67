@@ -1,0 +1,1376 @@
+Hyperbolic vs Euclidean Embeddings in Few-Shot Learning:
+Two Sides of the Same Coin
+Gabriel Moreira
+Language Technologies Institute
+Carnegie Mellon University
+gmoreira@cs.cmu.edu
+Manuel Marques
+Institute for Systems and Robotics
+Instituto Superior T´ecnico
+manuel@isr.tecnico.ulisboa.pt
+Jo˜ao Paulo Costeira
+Institute for Systems and Robotics
+Instituto Superior T´ecnico
+jpc@isr.tecnico.ulisboa.pt
+Alexander Hauptmann
+Language Technologies Institute
+Carnegie Mellon University
+alex@cs.cmu.edu
+Abstract
+Recent research in representation learning has shown
+that hierarchical data lends itself to low-dimensional and
+highly informative representations in hyperbolic space.
+However, even if hyperbolic embeddings have gathered at-
+tention in image recognition, their optimization is prone to
+numerical hurdles. Further, it remains unclear which appli-
+cations stand to benefit the most from the implicit bias im-
+posed by hyperbolicity, when compared to traditional Eu-
+clidean features. In this paper, we focus on prototypical
+hyperbolic neural networks. In particular, the tendency of
+hyperbolic embeddings to converge to the boundary of the
+Poincar´e ball in high dimensions and the effect this has on
+few-shot classification. We show that the best few-shot re-
+sults are attained for hyperbolic embeddings at a common
+hyperbolic radius. In contrast to prior benchmark results,
+we demonstrate that better performance can be achieved by
+a fixed-radius encoder equipped with the Euclidean metric,
+regardless of the embedding dimension.
+1. Introduction
+Hyperbolic embeddings first appeared in machine learn-
+ing as an inductive bias for representing data assumed to
+have a latent hierarchical structure [3, 5, 20], outperform-
+ing Euclidean-based approaches in community detection,
+link prediction and word embedding benchmarks [7]. Not
+long after, they were enthusiastically adopted by the com-
+puter vision community, finding applications in classifica-
+tion [12], zero-shot/few-shot learning [13, 16], contrastive
+learning [9,15,28], segmentation [10] and VAEs [17,19,24].
+The theoretical motivation underlying their use stems from
+reff
+1
+√−k
+O
+O
+Figure 1. Hyperbolic image embeddings in the Poincar´e ball: ex-
+pectation (left) versus reality (right). In high-dimensional hyper-
+bolic space, the volume of a ball is concentrated near its surface
+where the hyperbolic metric varies monotonically with the angle.
+Thus, the hierarchy-revealing property of hyperbolic space is lost.
+the fact that hyperbolic geometry can theoretically capture
+complex hierarchical features that are otherwise elusive in
+low-dimensional Euclidean space [3,20,21].
+In spite of the promising empirical results reported in the
+computer vision literature thus far, ascertaining which tasks
+can benefit the most from hyperbolic geometry is not yet
+clear. Up until recently, even classical cross-entropy based
+image classification in the Poincar´e ball model of hyper-
+bolic space was hardly on par with its Euclidean counter-
+part, much less competing with successful non-computer
+vision applications. Recent research [12] has linked this
+performance gap to embeddings converging towards the
+boundary of the ball. There, the Riemannian gradient van-
+ishes, which effectively brings the optimization to a halt.
+It is known that the hyperboloid model outperforms the
+Poincar´e ball partly because it circumvents many such nu-
+merical issues when learning low-dimensional word embed-
+arXiv:2309.10013v1  [cs.CV]  18 Sep 2023
+dings [21]. In image recognition applications, where repre-
+sentations are high-dimensional, a possible fix is to clip the
+embeddings’ magnitude [12], which prevents the gradient
+underflow. Despite producing better classifiers, this tech-
+nique does not prevent the embeddings from saturating all
+at the boundary of the smaller ‘clipped’ ball. Such a struc-
+tural fact was obscured by performance indicators.
+Our insight is that hyperbolic prototypical networks with
+a high-dimensional output space, typically in the order of
+103 in few-shot learning, tend to produce embeddings with
+the largest possible magnitude, as illustrated in Fig. 1. In
+other words, instead of populating the entire space of the
+ball as expected, we observe that top performers place the
+visual embeddings near the border. In fact, the prototypical
+loss [25] is unbounded below.
+We show that the hyperbolic measure of a high-
+dimensional ball is concentrated at its boundary, similarly
+to what happens in Euclidean space. This is corroborated
+by our experiments in popular few-shot datasets, which
+demonstrate that, regardless of magnitude clipping, in high-
+dimensional hyperbolic space, image embeddings lie at the
+maximum radius allowed. Thus, even if we employ a hyper-
+bolic metric, the representations are restricted to a sphere
+where the distance between points varies monotonically
+with the angle between them. Such a scenario can be mir-
+rored in Euclidean space since, in this case, there is no
+evidence of the property that sets hyperbolic space apart:
+its ability to encode hierarchical information in low dimen-
+sions.
+In summary, we make a threefold contribution: 1) We
+show that, in high-dimensional hyperbolic space, the vol-
+ume of a ball is concentrated at its boundary. This phe-
+nomenon, well established in Euclidean space, is often
+linked to the curse of dimensionality; 2) We demonstrate
+empirically that the boundary saturation is actually the con-
+figuration wherein the current best hyperbolic few-shot re-
+sults are attained; 3) Since the boundary of the space where
+embeddings lie is a hyperbolic sphere, we show that a fixed-
+radius Euclidean encoder is able to match and even improve
+the hyperbolic classification accuracy without any of the in-
+tricacies of Riemannian optimization.
+Prior benchmarks did not perform such a comparison,
+leading to the belief that hyperbolic embeddings were bet-
+ter suited towards few-shot recognition than traditional Eu-
+clidean features, by a considerable margin. Our findings
+present a stark contrast with previous Euclidean versus hy-
+perbolic benchmarks [12, 13], where a considerable differ-
+ence between the two geometries was observed.
+Intuitively, our results suggest that individual images are
+simply instances of visual semantic relations and do not
+convey higher level concepts represented by a semantic hi-
+erarchy. In fact, while thinking of a concept, say a bird, we
+have great difficulty in finding one single image that con-
+stitutes a ‘parent’ of the whole class. In this view, the best
+classifier should represent all images as leaves of a tree, in
+other words, at the same radius in the Poincar´e ball.
+2. Related work
+The use of hyperbolic space in machine learning can be
+traced back to earlier works [2, 14] that set forth the hy-
+pothesis that complex networks may be thought of as dis-
+crete observations of a latent smooth metric space.
+For
+data points which are semantically meaningful and thus,
+amenable to being hierarchically categorized, hyperbolic
+geometry arises naturally as a consequence of node simi-
+larity distances. This duality between hierarchies, or more
+generally trees, and hyperbolic geometry was also shown
+by Sarkar [23] who proposed a combinatorial algorithm for
+embedding any tree in the Poincar´e ball, while preserving
+the finite graph metric.
+Symbolic data
+As a means to circumvent the limitations
+of Euclidean space in capturing complex symbolic patterns,
+Chamberlain et al. [3] described a hyperbolic version of
+the celebrated word2vec architecture [18] in the Poincar´e
+ball model. The authors showed that community detection
+and node attribute prediction in low-dimensional hyperbolic
+space outperforms methods based on higher-dimensional
+Euclidean embeddings.
+Nickel and Kiela [20], adopting
+a similar model, reported similar findings for WordNet re-
+construction and link prediction tasks. Unlike the former
+approach however, the authors derived a stochastic Rie-
+mannian optimization method. Subsequent work [21], mo-
+tivated by the numerical hurdles presented by optimiza-
+tion in the Poincar´e ball, proposed supplanting it for the
+Lorentz model, also known as the hyperboloid model. It
+was through the use of this model that Sala et al. [22] de-
+rived a matrix factorization-based hyperbolic multidimen-
+sional scaling algorithm (MDS) and Chami et al. designed
+hyperbolic graph convolutions [5].
+Image recognition
+In image recognition, hyperbolic rep-
+resentation spaces have been employed with different end
+goals. One of them being the case wherein a hierarchy is es-
+tablished before-hand and the desiderata is for the represen-
+tation space to be structured accordingly. Such was the basis
+for the zero-shot architecture proposed by Liu et al. [16],
+where WordNet was used as prior hierarchical knowledge
+of ImageNet, and its embeddings interpreted as class proto-
+types. Conversely, actual hyperbolic prototypical learning
+approaches have been set forth, such as ideal hyperbolic
+prototypes, proposed by Atigh et al. [1], making use of
+Busemann functions. More closely related to the original
+prototypical learning paper [25] is the work by Khrulkov
+et al. [13], where the authors retain the entire architecture,
+xd+1
+Hd
+k
+xd+1 = z
+Rd,1
+1
+√−k
+−1
+√−k
+P d
+k
+xd+1 = 0
+Π
+Hyperboloid
+Stereographic
+Poincar´e ball
+Minkowski space
+Figure 2. Minkowski ambient space Rd,1, hyperboloid Hd
+k, stere-
+ographic projection Π and Poincar´e ball model P d
+k .
+replacing simply the Euclidean metric by the Poincar´e one,
+which yielded superior results. Advances have also been
+made in classical image classification. Based on empirical
+evidence suggesting that hyperbolic networks were not on
+par with their Euclidean counterparts, Guo et al. [12] at-
+tributed this to gradient underflow arising from the inverse
+Riemannian metric tensor and proposed clipping the magni-
+tude of the Euclidean features before these are projected to
+the hyperbolic manifold. Finally, hyperbolic space has also
+been applied to image segmentation [10], VAEs [17,19,24]
+and contrastive learning [9,15,28].
+The remainder of this paper is organized as follows. In
+Section 3 we lay out a brief summary of hyperbolic geome-
+try, namely the hyperboloid and Poincar´e ball models. In
+Section 4 we put forward the reasoning behind why we
+should expect hyperbolic image encoders to behave simi-
+larly to fixed-radius Euclidean ones. Finally, we present
+empirical results to validate our approaches in Section 5 and
+draw concluding remarks subsequently.
+3. Hyperbolic space
+Much like Euclidean space, hyperbolic space is isotropic
+and completely defined by its constant curvature, which un-
+like the former is negative everywhere. Several isomorphic
+models of hyperbolic space exist and in the machine learn-
+ing literature, the most commonly adopted are the hyper-
+boloid, also known as the Lorentz model [5, 7, 21], and the
+Poincar´e ball [1,3,12,13,20], obtained from a stereographic
+projection of the former.
+Throughout this paper we will be working with the
+Poincar´e ball model of hyperbolic space, which can be de-
+rived from the hyperboloid model as follows.
+Consider
+the Minkowski space Rd,1 := {x = (x1, . . . , xd+1) ∈
+Rd × R}, together with the bilinear form (Lorentz pseu-
+dometric)
+⟨x, y⟩L :=
+d
+X
+i=1
+xiyi − xd+1yd+1.
+(1)
+The form ⟨x, x⟩L is known as a Lorentz quadratic form.
+While not positive-definite everywhere in Rd,1 and thus, not
+a metric, it is positive-definite when restricted to the upper
+sheet of the d-hyperboloid
+Hd
+k :=
+
+x ∈ Rd,1 | ⟨x, x⟩L = 1
+k , xd+1 > 0
+
+,
+(2)
+with curvature k < 0. We can write Hd
+k in local coordinates
+u1, . . . , ud via the inclusion map ϕ : Hd
+k → Rd,1
+ϕ(u) :=
+ 
+u1, . . . , ud,
+r
+∥u∥2
+2 − 1
+k
+!
+.
+(3)
+Poincar´e model
+The Poincar´e ball model with sectional
+curvature k < 0, denoted as P d
+k , is obtained via the stere-
+ographic projection Π : Hd
+k → P d
+k of the d-hyperboloid
+through the origin (see Figure 2)
+Π(x) :=
+
+x1
+1 +
+√
+−kxd+1
+, . . . ,
+xd
+1 +
+√
+−kxd+1
+
+.
+(4)
+This yields the ball
+Bd
+k = Π(Hd
+k) =
+
+x ∈ Rd : ∥x∥2
+2 < −1
+k
+
+,
+(5)
+where the boundary corresponds to infinity. The metric ten-
+sor in the canonical basis of Rd is λ(u)2Id, with λ(u) =
+2/(1 + k∥u∥2
+2). The inverse projection Π−1 : P d
+k → Hd
+k
+takes the form
+Π−1(u) =
+
+λ(u)u,
+1
+√
+−k (λ(u) − 1)
+
+.
+(6)
+Since λ(u) → ∞ as ∥u∥2 → 1/
+√
+−k, for numerical rea-
+sons the effective radius of the ball is usually capped [8,13]
+i.e. for ϵ > 0,
+reff := 1 − ϵ
+√
+−k .
+(7)
+The Poincar´e exponential map at the origin Exp0(v) :
+TP d
+k → P d
+k allows us to project a tangent vector back to
+the ball. This map is the element responsible for converting
+an Euclidean neural network to a hyperbolic one and reads
+Exp0(v) = tanh
+√
+−k∥v∥2
+
+v
+√
+−k∥v∥2
+.
+(8)
+Finally, the Poincar´e geodesic (shortest-path) distance be-
+tween any x and y ∈ P d
+k is given by
+dP d
+k (x, y) :=
+2
+√
+−k atanh
+√
+−k∥ − x ⊕ y∥2
+
+,
+(9)
+where ⊕ denotes the M¨obius addition,
+x ⊕ y = (1 − 2k⟨x, y⟩ − k∥y∥2
+2)x + (1 + k∥x∥2
+2)y
+1 − 2k⟨x, y⟩ + k2∥x∥2
+2∥y∥2
+2
+.
+(10)
+Poincar´e image encoder
+Given an Euclidean backbone f
+with parameters θ, we consider hyperbolic image encoders
+of the type
+h(x; θ) = ExpP
+0 (f(x; θ)) .
+(11)
+The clipping strategy put forward in [12] consists of
+setting a maximum magnitude c for f(x; θ), restricting
+the Poincar´e ball to a ball with effective radius reff =
+tanh(
+√
+−kc)/
+√
+−k.
+During training, for a suitable loss
+function L, and letting z := h(x; θ) ∈ P d
+k , the Euclidean
+gradient ∇zL may be backpropagated as is (see implemen-
+tation by [13]), or it may be converted to a Riemannian gra-
+dient via scaling by the inverse metric tensor gradzL =
+λ(z)−2∇zL(z), as in [12].
+4. Few-shot in the boundary
+It is known that in hyperbolic neural networks, embed-
+dings are prone to converge to the boundary of P d
+k (in prac-
+tice, the effective radius reff). We focus on the fact that,
+from a measure concentration argument, at the dimensions
+typically employed in few-shot learning, hyperbolic em-
+beddings should concentrate at the boundary, regardless of
+whether their magnitude is clipped.
+Hyperbolic prototypical learning
+We assume an image
+dataset I with C semantic classes. If M is a manifold and
+fθ : I → M an image encoder parameterized by θ, a typ-
+ical prototypical learning approach [25] models the proba-
+bility of zi being of class c as
+p(c|zi) =
+exp(−dM(wc, f(zi; θ)))
+P
+k exp(−dM(wk, f(zi; θ)),
+(12)
+where wc ∈ M is the centroid of the c-th class. In classi-
+cal prototypical networks, the squared Euclidean norm ℓ2
+2 is
+chosen as dM [25]. In Poincar´e networks, the geodesic dis-
+tance (9) is used instead. For simplicity, let xi = f(zi; θ)
+and assume we are optimizing over x instead of θ. The neg-
+ative log-likelihood associated with the i-th image is then
+Li = dM (wc, xi) + log
+X
+k
+e−dM(wk,xi)
+(13)
+and the loss is L = P
+i Li. We can easily verify that L is
+unbounded below. Pick C directions in Rd, one for each
+class centroid wc. Then set the direction of each embed-
+ding to match that of its class xi = rwc for a certain r > 0.
+The first term of (13) is automatically zero and the sec-
+ond goes to −∞ as the embeddings approach the boundary
+r → 1/
+√
+−k. This justification could just as well be ap-
+plied to Euclidean space, with the difference that we would
+require the output of the encoder to be unbounded. This is
+not necessary in the Poincar´e model. In fact, the Poincar´e
+exponential map at the origin (8) used to map points from
+the tangent space Rd back to the manifold, is a scaling fac-
+tor that allows us to approach the boundary at an exponen-
+tial rate.
+High-dimensional hyperbolic space
+In d-dimensional
+Euclidean space, the ratio of the volume over the area of a
+ball decreases with 1/d i.e., in high-dimensional Euclidean
+space the volume is concentrated close to the surface. In
+hyperbolic space, the same thing happens.
+Proposition 1 (Hyperbolic measure concentration). For
+large d, the volume of a hyperbolic ball is concentrated
+close to its boundary .
+Proof. From III.4 [6], the volume of a hyperbolic ball of
+(hyperbolic) radius r is
+Vk(r) = 2πd/2
+Γ(d/2)
+Z r
+0
+sinh(
+√
+−kt)
+√
+−k
+d−1
+dt
+(14)
+and its area is given by
+Ak(r) = 2πd/2
+Γ(d/2)
+sinh(
+√
+−kr)
+√
+−k
+d−1
+.
+(15)
+Hence,
+Vk(r)
+Ak(r) =
+sinh(
+√
+−kr)
+√
+−k
+1−d Z r
+0
+sinh(
+√
+−kt)
+√
+−k
+d−1
+dt
+=
+Z r
+0
+ sinh(
+√
+−kt)
+sinh(
+√
+−kr)
+d−1
+dt.
+(16)
+For any d > 1, the function sinh(√−kt)
+sinh(√−kr) is convex for t > 0,
+and thus, for t ∈ [0, r], it is bounded above by t/r. From
+0 ≤
+ sinh(
+√
+−kt)
+sinh(
+√
+−kr)
+d−1
+≤ td−1
+rd−1 ,
+(17)
+the integral can be bounded above as
+Vk(r)
+Ak(r) ≤
+Z r
+0
+td−1
+rd−1 dt = r
+d.
+(18)
+Thus, Vk(r)
+Ak(r) → 0 as d → ∞.
+Note that this result holds for hyperbolic space in gen-
+eral, namely the Poincar´e ball and the hyperboloid models
+commonly employed in machine learning. These arguments
+lead us to our hypothesis: given the high dimensionality of
+the Poincar´e ball used in the hyperbolic few-shot literature,
+embeddings should lie at, or close to, reff. If this holds, it
+brings into question the hyperbolicity of the learnt represen-
+tation space. In fact, a hyperbolic (d−1)-sphere containing
+embeddings at reff from the origin is isometric to an Eu-
+clidean (d − 1)-sphere of radius
+2/
+√
+−k + 2reff
+1/
+√
+−k − reff
+.
+(19)
+This can be shown by attending to the fact that any (d −
+1)-sphere in hyperbolic space with hyperbolic radius r
+is isometric to an Euclidean (d − 1)-sphere with radius
+1
+√−k sinh(r
+√
+−k). If embeddings lie at reff from the ori-
+gin, their hyperbolic radius is
+1
+√
+−k log
+1/
+√
+−k + reff
+1/
+√
+−k − reff
+
+(20)
+and (19) follows. This isometry, in turn, implies that the
+representation space is not negatively curved.
+The Euclidean vs hyperbolic disparity
+Assume our hy-
+pothesis holds and the embeddings all concentrate at reff.
+While the metric (9) employed in prior work [11,13] is hy-
+perbolic, it only encodes the angular distance. In fact, con-
+sider two embeddings x, y in P d
+k such that ∥x∥2 = ∥y∥2 =
+reff and ∠(x, y) = α. The hyperbolic distance between
+them is
+dP d
+k (x, y) =
+1
+√
+−k acosh (a + b cos(α)) ,
+(21)
+where b =
+4kr2
+eff
+(1+kr2
+eff)2 and a =
+
+1−kr2
+eff
+1+kr2
+eff
+2
+(see supplemen-
+tal material), which up to a multiplicative factor, depends
+only on θ and kr2
+eff. A comparison between this metric, the
+ℓ2 and the ℓ2
+2 is shown in Fig. 3. As we observe on the
+rightmost plot, the derivative of dP d
+k at α → 0 surges as
+we approach the boundary. As this happens, the penalty ap-
+plied to the angular distance α increases. Surprisingly, the
+Euclidean metric ℓ2 (center plot) is not that different from
+the hyperbolic. In fact, it becomes a good approximation
+far from the boundary. In contrast, consider the squared Eu-
+clidean distance ℓ2
+2 depicted in the leftmost plot, often em-
+ployed in prototypical networks since it defines a Bregman
+divergence [25]. Its derivative approaches 0 as α → 0.
+Prior work conducted on hyperbolic prototypical learn-
+ing benchmarked Euclidean space via ℓ2
+2. Based on the pre-
+vious paragraph, we propose instead fixed-radius Euclidean
+embeddings with the ℓ2 ∝
+p
+1 − cos(α) metric. Given a
+radius hyperparameter r = 1/
+√
+k (k > 0 is a spherical
+curvature), and the Euclidean backbone f(·; θ), the embed-
+dings fed to the prototypical loss (13) are computed as
+r
+f(x; θ)
+∥f(x; θ)∥2
+.
+(22)
+As our experiments show, this Euclidean architecture is
+ahead of the hyperbolic few-shot state-of-the-art in most of
+the experiments conducted.
+5. Experiments
+We conducted our empirical evaluation in the CUB-
+200-2011 [27] and MiniImageNet [26] few-shot recognition
+tasks, in a prototypical learning regime.
+Architecture
+We used a 4-layer ConvNet as backbone,
+with variable output dimension equal to d. These embed-
+dings were then projected to the Poincar´e ball through the
+exponential map at the origin (8) and through magnitude
+rescaling in the Euclidean case (22). In the latter, the radius
+is a hyperparameter, similarly to the curvature in the former.
+In the 5-shot 5-way setting, Poincar´e centroids are com-
+puted through the Einstein midpoint closed-form expression
+set forth in [13]. In the Euclidean and the fixed-radius case,
+the Euclidean centroid was used. In terms of preprocessing,
+instead of cropping a centered square patch and resizing it
+to 84 × 84 during inference as done in [13], we padded the
+cropped bounding boxes in the case of CUB, and the origi-
+nal images in MiniImageNet, so as to obtain a square image
+and then resized them. All other data augmentations were
+the same and can be consulted in the supplemental material.
+Training
+All encoders were trained for 200 episodes,
+where each episode consisted of 15 queries, each of which
+associated with s-shot and w-way images. Adam was used
+with an initial learning rate of 10−3 on CUB and 5×10−3 on
+MiniImageNet. Similarly to prior work, a step LR scheduler
+was used (see supplemental material). Both on the CUB
+dataset and on MiniImageNet, we used the train-validation-
+test split from [13]. In the former, 100 classes were used
+for training, 50 for validation and 50 for testing, and the
+shot-way was the same for training and inference i.e., 1-
+shot 5-way and 5-shot 5-way. In the latter, the 100 class
+split was 64-16-20. The 1-shot 5-way model was trained in
+a 1-shot 30-way regime, and the 5-shot 5-way model in a
+1-shot 20-way setting.
+Results
+The CUB 200 2011 results are shown in Tables
+1 and 2. Those of MiniImageNet are presented in Tables 3
+and 4. Given that hyperbolic space is often praised for its
+ability to encode information in few dimensions, for each
+0 
+0.5 
+1 
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+2 distance
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0 
+0.5 
+1 
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+1.75
+2.00
+2 distance
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0 
+0.5 
+1 
+0
+1
+2
+3
+4
+5
+6
+7
+Pd
+k distance
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Figure 3. Comparison of metrics at different distances from the origin from 0 to reff = 0.99 (color encodes fraction of reff). Left: squared
+Euclidean distance (ℓ2
+2). Middle: Euclidean distance (ℓ2). Right: Poincar´e distance (dP d
+k ) for k = −1.
+dataset we present the test accuracy computed for four em-
+bedding dimensions d = 128, 256, 512 and 1024. For hy-
+perbolic and fixed-radius architectures the minimum, av-
+erage and maximum ℓ2 embedding norms are reported as
+rmin, ravg and rmax, respectively. The traditional Euclidean
+architecture used in the literature as the Euclidean baseline
+(ProtoNet) is denoted as (Rd, ℓ2
+2), the Poincar´e ball with
+curvature k reads as P d
+k and the proposed fixed-radius Eu-
+clidean embeddings as (Sd, ℓ2). The curvatures used in the
+latter were 0.006, 0.002 in 1s5w, 5s5w (CUB) and 0.002,
+0.0002 in 1s5w, 5s5w (Mini), respectively.
+As posited, when d increases the Poincar´e embeddings
+approach the effective radius. In fact, plugging ϵ = 0.01
+in (7) we obtain reff = 4.47 for k = −0.05, reff = 9.99
+for k = −0.01 and reff = 14.13 for k = −0.005. In the
+CUB dataset, the 5s5w training configuration avoids bound-
+ary saturation up to d = 512, however, the results are worse
+than the fixed-radius Euclidean architecture for the same di-
+mensions. In MiniImageNet 5s5w, we observe embeddings
+not at the boundary for the largest dimension d = 1024 con-
+sidered. That being the case, the test accuracy is higher than
+that obtained in lower dimensions with embeddings farther
+from reff. Note that in the two datasets considered, we ob-
+served the same Euclidean versus hyperbolic ProtoNet few-
+shot accuracy gap reported in prior work [12,13], especially
+in the 1s5w setting. However, the empirical advantage of
+hyperbolic representations no longer holds once normal-
+ized Euclidean embeddings together with the ℓ2-norm are
+introduced in the benchmark. In fact, even when Poincar´e
+embeddings yield better results, the difference w.r.t fixed-
+radius embeddings is minor. Further, this is verified across
+all the dimensions considered, unlike e.g., graph or word
+embeddings where, in low dimensions, hyperbolic space of-
+fers a sizeable advantage.
+Finally, results on the effect of magnitude clipping in
+high-dimensions for the CUB dataset are shown in Table
+5.
+These experiments were performed for d = 1024,
+k = −0.05 and using Riemannian gradient as mentioned
+d
+Space
+Test acc
+rmin
+ravg
+rmax
+27
+(Rd, ℓ2
+2)
+59.94 ± 0.23
+-
+-
+-
+P d
+−0.05
+64.08 ± 0.23
+4.47
+4.47
+4.47
+P d
+−0.01
+56.46 ± 0.22
+9.98
+9.99
+9.99
+(Sd, ℓ2)
+66.13 ± 0.23
+12.91
+12.91
+12.91
+28
+(Rd, ℓ2
+2)
+56.27 ± 0.23
+-
+-
+-
+P d
+−0.05
+65.70 ± 0.23
+4.47
+4.47
+4.47
+P d
+−0.01
+59.74 ± 0.22
+9.99
+9.99
+9.99
+(Sd, ℓ2)
+66.47 ± 0.23
+12.91
+12.91
+12.91
+29
+(Rd, ℓ2
+2)
+56.71 ± 0.23
+-
+-
+-
+P d
+−0.05
+66.65 ± 0.23
+4.47
+4.47
+4.47
+P d
+−0.01
+61.52 ± 0.23
+9.99
+9.99
+9.99
+(Sd, ℓ2)
+67.90 ± 0.23
+12.91
+12.91
+12.91
+210
+(Rd, ℓ2
+2)
+55.64 ± 0.23
+-
+-
+-
+P d
+−0.05
+67.21 ± 0.23
+4.47
+4.47
+4.47
+P d
+−0.01
+63.85 ± 0.23
+9.99
+9.99
+9.99
+(Sd, ℓ2)
+67.92 ± 0.23
+12.91
+12.91
+12.91
+Table 1. CUB 200 2011 1-shot 5-way test results, 95% confi-
+dence intervals and embedding radii.
+in the original paper. For each clipping value c, the corre-
+sponding effective ball radius can be obtained by plugging
+c in the exponential map (8) and taking the ℓ2-norm. Thus,
+for c = 2, 3 and 4 we have 1.877, 2.618 and 3.191, respec-
+tively. We see the saturation effect occurring, especially for
+larger clipping values, where the test accuracy is coinciden-
+tally higher.
+6. Discussion
+As evidence by our results, in few-shot recognition, Eu-
+clidean embeddings do not perform worse than hyperbolic
+ones, as previously assumed. In fact, they can fare even bet-
+ter. This disparity with respect to the state-of-the-art can be
+d
+Space
+Test acc
+rmin
+ravg
+rmax
+27
+(Rd, ℓ2
+2)
+78.95 ± 0.16
+-
+-
+-
+P d
+−0.05
+79.17 ± 0.17
+4.35
+4.47
+4.47
+P d
+−0.01
+82.30 ± 0.15
+8.07
+9.59
+9.87
+(Sd, ℓ2)
+83.13 ± 0.14
+22.36
+22.36
+22.36
+28
+(Rd, ℓ2
+2)
+80.14 ± 0.16
+-
+-
+-
+P d
+−0.05
+80.58 ± 0.16
+4.33
+4.47
+4.47
+P d
+−0.01
+84.51 ± 0.14
+9.89
+9.99
+9.99
+(Sd, ℓ2)
+85.01 ± 0.14
+22.36
+22.36
+22.36
+29
+(Rd, ℓ2
+2)
+79.95 ± 0.15
+-
+-
+-
+P d
+−0.05
+81.04 ± 0.16
+4.46
+4.47
+4.47
+P d
+−0.01
+84.60 ± 0.14
+9.90
+9.99
+9.99
+(Sd, ℓ2)
+85.18 ± 0.14
+22.36
+22.36
+22.36
+210
+(Rd, ℓ2
+2)
+78.83 ± 0.15
+-
+-
+-
+P d
+−0.05
+81.06 ± 0.16
+4.47
+4.47
+4.47
+P d
+−0.01
+84.70 ± 0.14
+9.99
+9.99
+9.99
+(Sd, ℓ2)
+85.37 ± 0.14
+22.36
+22.36
+22.36
+Table 2. CUB 200 2011 5-shot 5-way test results, 95% confi-
+dence intervals and embedding radii.
+d
+Space
+Test acc
+rmin
+ravg
+rmax
+27
+(Rd, ℓ2
+2)
+49.11 ± 0.20
+-
+-
+-
+P d
+−0.005
+49.10 ± 0.20
+3.78
+5.85
+7.41
+P d
+−0.01
+49.60 ± 0.20
+2.78
+3.53
+4.15
+(Sd, ℓ2)
+50.24 ± 0.20
+22.36
+22.36
+22.36
+28
+(Rd, ℓ2
+2)
+49.14 ± 0.20
+-
+-
+-
+P d
+−0.005
+49.25 ± 0.20
+8.77
+9.93
+10.44
+P d
+−0.01
+47.07 ± 0.19
+7.54
+8.05
+9.43
+(Sd, ℓ2)
+50.36 ± 0.20
+22.36
+22.36
+22.36
+29
+(Rd, ℓ2
+2)
+48.84 ± 0.20
+-
+-
+-
+P d
+−0.005
+45.59 ± 0.18
+14.12
+14.13
+14.13
+P d
+−0.01
+48.71 ± 0.19
+9.98
+9.99
+9.99
+(Sd, ℓ2)
+50.97 ± 0.19
+22.36
+22.36
+22.36
+210
+(Rd, ℓ2
+2)
+49.10 ± 0.20
+-
+-
+-
+P d
+−0.005
+49.19 ± 0.19
+14.13
+14.13
+14.13
+P d
+−0.01
+51.37 ± 0.20
+9.99
+9.99
+9.99
+(Sd, ℓ2)
+51.36 ± 0.20
+22.36
+22.36
+22.36
+Table 3. MiniImageNet 1-shot 5-way test results, 95% confi-
+dence intervals and embedding radii.
+attributed to the fact that the benchmarks conducted in pre-
+vious papers considered Euclidean networks endowed with
+the squared ℓ2-norm as a distance function, as originally
+proposed by Snell et al. [25]. We, on the other hand, used
+the ℓ2-norm and normalized the embeddings’ magnitude,
+d
+Space
+Test acc
+rmin
+ravg
+rmax
+27
+(Rd, ℓ2
+2)
+67.32 ± 0.16
+-
+-
+-
+P d
+−0.005
+67.87 ± 0.16
+12.40
+13.42
+13.69
+(Sd, ℓ2)
+68.57 ± 0.16
+70.71
+70.71
+70.71
+28
+(Rd, ℓ2
+2)
+67.32 ± 0.16
+-
+-
+-
+P d
+−0.005
+69.40 ± 0.16
+13.03
+13.78
+13.93
+(Sd, ℓ2)
+69.10 ± 0.16
+70.71
+70.71
+70.71
+29
+(Rd, ℓ2
+2)
+66.83 ± 0.16
+-
+-
+-
+P d
+−0.005
+70.20 ± 0.16
+14.06
+14.13
+14.13
+(Sd, ℓ2)
+69.95 ± 0.16
+70.71
+70.71
+70.71
+210
+(Rd, ℓ2
+2)
+67.92 ± 0.16
+-
+-
+-
+P d
+−0.005
+70.76 ± 0.16
+14.06
+14.13
+14.13
+(Sd, ℓ2)
+70.48 ± 0.16
+70.71
+70.71
+70.71
+Table 4. MiniImageNet 5-shot 5-way test results, 95% confi-
+dence intervals and embedding radii.
+Clipping value
+Test acc
+rmin
+ravg
+rmax
+2.0
+62.21 ± 0.24
+1.873
+1.877
+1.877
+3.0
+65.04 ± 0.24
+2.618
+2.618
+2.618
+4.0
+66.26 ± 0.23
+3.191
+3.191
+3.191
+Table 5. Effect of feature clipping before the exponential map.
+CUB 200 2011 1-shot 5-way test results, 95% confidence inter-
+vals and embedding radii in P d
+k for d = 1024 and k = −0.05.
+resulting in a chordal metric on a sphere.
+In order to interpret these results in light of the suc-
+cess that hyperbolic embeddings have had in other areas,
+one must take into account that the dimensions required
+to have reasonable few-shot classification accuracies, (typ-
+ically d > 103 [12, 13]), are much higher than those
+used to embed words [3, 20], taxonomies or graphs [4, 5]
+in general.
+In addition, while in natural language one
+may argue that hyperbolicity arises naturally from the co-
+occurrence of symbols and hence the graph-like nature of
+the data, this property does not translate directly to the im-
+ages. For instance, ImageNet is endowed with a taxonomy,
+inherited from the hypernymy and hyponymy relations in
+WordNet. The latter has been successfully embedded in
+low-dimensional hyperbolic space given its symbolic na-
+ture [16, 20, 21]. However, there may not be a unique vi-
+sual representation of the abstract concepts in high-levels
+of this hierarchy. Only labels in leaf-nodes can be ascribed
+a unique image. In the case of balanced hierarchies or trees,
+from a symmetry standpoint, the embeddings of these leaf
+nodes are expected to lie at the same distance from the ori-
+gin, akin to what is obtained for the image embeddings.
+7. Conclusion
+In this paper we set out to demonstrate that, contrary
+to widespread belief, hyperbolic embeddings are not nec-
+essarily better than Euclidean ones in few-shot learning.
+We showed that, in high-dimensional Poincar´e balls, em-
+beddings tend to saturate at the effective boundary. Con-
+sequently, the hierarchy-encoding property of hyperbolic
+space is lost and, in this situation, whatever accuracy hy-
+perbolic few-shot classifiers have, can be ascribed to the
+angular separation of their representations. Based on this,
+we presented empirical results demonstrating that hyper-
+bolic performance on two popular few-shot learning tasks
+can actually be matched and even improved upon via tra-
+ditional Euclidean encoders with fixed-radius embeddings.
+We believe this work can open up new research directions
+on the design of more effective benchmarks for hyperbolic
+embeddings, as well as on the identification of computer vi-
+sion applications wherein hyperbolic geometry presents an
+unambiguous advantage over Euclidean space.
+Acknowledgments
+The authors would like to thank the
+reviewers for their comments and suggestions. This work
+was funded by Fundac¸˜ao para a Ciˆencia e Tecnologia
+(FCT), within the scope of the CMU-Portugal Program
+[iFetch project - LISBOA-01-0247-FEDER-045920] and
+UIDB/50009/2020.
+G Moreira was supported by FCT
+grant contract BL216/2023 IST-ID and M Marques was
+supported by the SmartRetail project [PRR - C645440011-
+00000062], through IAPMEI - Agˆencia para a Competitivi-
+dade e Inovac¸˜ao.
+References
+[1] Mina Ghadimi Atigh, Martin Keller-Ressel, and Pascal
+Mettes. Hyperbolic Busemann Learning with Ideal Proto-
+types. In Advances in Neural Information Processing Sys-
+tems, pages 103–115, 6 2021. 2, 3
+[2] Marian Boguna, Dmitri Krioukov, and kc claffy. Naviga-
+bility of complex networks. Nature Physics, 5(1):74–80, 9
+2009. 2
+[3] Benjamin Paul Chamberlain, James Clough, and Marc Pe-
+ter Deisenroth. Neural embeddings of graphs in hyperbolic
+space. Technical report, 5 2017. 1, 2, 3, 7
+[4] Ines Chami, Albert Gu, Vaggos Chatziafratis, and Christo-
+pher R´e. From trees to continuous embeddings and back:
+hyperbolic hierarchical clustering. In Advances in Neural
+Information Processing Systems, pages 15065–15076, 2020.
+7
+[5] Ines Chami, Rex Ying, Christopher R´e, and Jure Leskovec.
+Hyperbolic Graph Convolutional Neural Networks. In Ad-
+vances in Neural Information Processing Systems, 2019. 1,
+2, 3, 7
+[6] Isaac Chavel. Riemannian Geometry: A Modern Introduc-
+tion. Cambridge University Press, 2006. 4
+[7] Weize Chen, Xu Han, Yankai Lin, Hexu Zhao, Zhiyuan Liu,
+Peng Li, Maosong Sun, and Jie Zhou. Fully Hyperbolic Neu-
+ral Networks. In Proceedings of the 30th ACM International
+Conference on Information & Knowledge Management, 5
+2021. 1, 3
+[8] Octavian-Eugen Ganea, Gary B´ecigneul, and Thomas Hof-
+mann. Hyperbolic Neural Networks. In Advances in Neural
+Information Processing Systems, 5 2018. 3
+[9] Songwei Ge, Shlok Mishra, Simon Kornblith, Chun-Liang
+Li, and David Jacobs. Hyperbolic Contrastive Learning for
+Visual Representations beyond Objects. In IEEE/CVF Con-
+ference on Computer Vision and Pattern Recognition, pages
+6840–6849, 12 2022. 1, 3
+[10] Mina GhadimiAtigh, Julian Schoep, Erman Acar, Nanne van
+Noord, and Pascal Mettes. Hyperbolic Image Segmentation.
+In IEEE/CVF Conference on Computer Vision and Pattern
+Recognition, pages 4453–4462, 3 2022. 1, 3
+[11] Albert Gu, Frederic Sala, Beliz Gunel, and Christopher
+R´e. Learning mixed-curvature representations in products
+of model spaces. In International Conference on Learning
+Representations, 2019. 5
+[12] Yunhui Guo, Xudong Wang, Yubei Chen, and Stella X Yu.
+Clipped Hyperbolic Classifiers Are Super-Hyperbolic Clas-
+sifiers. In IEEE/CVF Conference on Computer Vision and
+Pattern Recognition, 2022. 1, 2, 3, 4, 6, 7
+[13] Valentin Khrulkov, Leyla Mirvakhabova, Evgeniya Usti-
+nova, Ivan Oseledets, and Victor Lempitsky. Hyperbolic Im-
+age Embeddings.
+In IEEE/CVF Conference on Computer
+Vision and Pattern Recognition, 4 2019. 1, 2, 3, 4, 5, 6, 7
+[14] Dmitri Krioukov, Fragkiskos Papadopoulos, Maksim Kitsak,
+Amin Vahdat, and Marian Boguna. Hyperbolic geometry of
+complex networks. Physics Review E, 82(3), 6 2010. 2
+[15] Fangfei Lin, Bing Bai, Kun Bai, Yazhou Ren, Peng Zhao,
+and Zenglin Xu. Contrastive Multi-view Hyperbolic Hierar-
+chical Clustering. In arXiv:2205.02618, 5 2022. 1, 3
+[16] Shaoteng Liu, Jingjing Chen, Liangming Pan, Chong-Wah
+Ngo, Tat-Seng Chua, and Yu-Gang Jiang. Hyperbolic Vi-
+sual Embedding Learning for Zero-Shot Recognition.
+In
+IEEE/CVF Conference on Computer Vision and Pattern
+Recognition, 2020. 1, 2, 7
+[17] Emile Mathieu, Charline Le Lan, Chris J. Maddison, Ryota
+Tomioka, and Yee Whye Teh. Continuous hierarchical rep-
+resentations with Poincar´e variational auto-encoders. In Ad-
+vances in Neural Information Processing Systems, 1 2019. 1,
+3
+[18] Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean.
+Distributed Representations of Words and Phrases and their
+Compositionality. In Advances in Neural Information Pro-
+cessing Systems, 2013. 2
+[19] Yoshihiro Nagano, Shoichiro Yamaguchi, Yasuhiro Fujita,
+and Masanori Koyama. A Wrapped Normal Distribution on
+Hyperbolic Space for Gradient-Based Learning. In Interna-
+tional Conference on Machine Learning, pages 4693–4702,
+2 2019. 1, 3
+[20] Maximilian Nickel and Douwe Kiela. Poincar´e embeddings
+for learning hierarchical representations.
+In Advances in
+Neural Information Processing Systems, 5 2017. 1, 2, 3, 7
+[21] Maximilian Nickel and Douwe Kiela.
+Learning continu-
+ous hierarchies in the Lorentz model of hyperbolic geome-
+try. In International Conference on Machine Learning, pages
+3779–3788, 2018. 1, 2, 3, 7
+[22] Frederic Sala, Christopher De Sa, Albert Gu, and Christo-
+pher R´e.
+Representation tradeoffs for hyperbolic embed-
+dings. In International Conference on Machine Learning,
+pages 4460–4469, 2018. 2
+[23] Rik Sarkar.
+Low distortion Delaunay embedding of trees
+in hyperbolic plane. In International Symposium on Graph
+Drawing, pages 355–366, 2011. 2
+[24] Ondrej
+Skopek,
+Octavian-Eugen
+Ganea,
+and
+Gary
+B´ecigneul.
+Mixed-curvature variational autoencoders.
+In International Conference on Learning Representations,
+2020. 1, 3
+[25] Jake Snell, Kevin Swersky, and Richard Zemel. Prototypi-
+cal Networks for Few-shot Learning. In Advances in Neural
+Information Processing Systems, 2017. 2, 4, 5, 7
+[26] Oriol Vinyals, Charles Blundell, Timothy Lillicrap, Koray
+Kavukcuoglu, and Daan Wierstra. Matching Networks for
+One Shot Learning. Advances in Neural Information Pro-
+cessing Systems, 29, 6 2016. 5
+[27] Catherine Wah, Steve Branson, Peter Welinder, Pietro Per-
+ona, and Serge Belongie.
+The Caltech-UCSD Birds-200-
+2011 Dataset, 2011. 5
+[28] Yun Yue, Fangzhou Lin, Kazunori D Yamada, and Ziming
+Zhang. Hyperbolic Contrastive Learning. 2 2023. 1, 3
+

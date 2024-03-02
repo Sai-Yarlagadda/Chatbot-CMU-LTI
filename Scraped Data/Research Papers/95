@@ -1,0 +1,1092 @@
+Citation: Huang, W.; Lei, L.; Fang, G.
+Optimizing Heat Treatment to
+Improve the Microstructures and
+Mechanical Properties of 5CrNiMoV
+Steel. Metals 2023, 13, 1263. https://
+doi.org/10.3390/met13071263
+Academic Editor: Koh-ichi Sugimoto
+Received: 28 June 2023
+Revised: 9 July 2023
+Accepted: 10 July 2023
+Published: 13 July 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+metals
+Article
+Optimizing Heat Treatment to Improve the Microstructures and
+Mechanical Properties of 5CrNiMoV Steel
+Wanhui Huang, Liping Lei and Gang Fang *
+State Key Laboratory of Tribology in Advanced Equipment (SKLT), Department of Mechanical Engineering,
+Tsinghua University, Beijing 100084, China; huangwh17@tsinghua.org.cn (W.H.)
+* Correspondence: fangg@tsinghua.edu.cn
+Abstract: A strategy combining intercritical quenching, pre-tempering, and tempering processes
+was implemented to optimize the microstructures and mechanical properties of 5CrNiMoV steel.
+By intercritically quenching at 1050 ◦C, pr-tempering at 600 ◦C, and tempering at 550 ◦C, the steel
+exhibited a comprehensive performance with a yield strength of 1120 MPa, an ultimate tensile
+strength of 1230 MPa, and an elongation of 8.2%. The high strength of the steel is attributed to the
+presence of tempered martensite and abundant secondary carbides. The favorable ductility is mainly
+provided by the pearlite inherited from intercritical quenching and tempering. Additionally, the
+precipitation of secondary carbides not only enhances precipitation strengthening, but also reduces
+the dislocation density and lattice strain of the matrix, thereby enhancing strength and ductility. This
+study offers a scheme for producing strong and ductile 5CrNiMoV steel.
+Keywords: heat treatment; microstructure; 5CrNiMoV; die steel; precipitation
+1. Introduction
+5CrNiMoV is a low alloy martensitic die steel that is commonly used in the man-
+ufacturing of tools for forging, extrusion, and die-casting processes [1,2]. Tools made
+from this steel are exposed to high pressure, friction, and multiple thermal cycles during
+the hot forming of materials. These harsh operating conditions often lead to a limited
+lifespan for tools [3,4]. Therefore, it is necessary to enhance the mechanical properties of
+5CrNiMoV steel.
+As is well known, the microstructure of steel and alloys plays a crucial role in deter-
+mining their mechanical properties, and this is widely recognized. In the case of 5CrNiMoV
+steel, the microstructure typically consists of martensite and dispersed secondary carbides
+that are formed during the process of quenching-tempering (QT) heat treatment. It is im-
+portant to note that the type, morphology, distribution, and average size of these secondary
+carbides signiﬁcantly impact the operational lifespan and reliability of the die steel [4–6].
+In recent years, several researchers have investigated the impact of heat treatment
+on the microstructure and secondary carbides of die steels, as well as its effect on their
+mechanical properties [7–10]. During the QT treatment, the prior austenite grain size
+(PAGS) and volume fraction of carbides are inﬂuenced by the quenching temperature, while
+the martensite morphology and secondary carbides size are inﬂuenced by the tempering
+temperature [7]. It has been observed that increasing the tempering temperature leads to the
+precipitation and coarsening of spherical carbides in the martensite lath [8]. Additionally,
+Zhu et al. [9] proposed that the pre-tempering process can reﬁne the tempered martensite
+and carbides of H13 die steel. The ﬁndings indicate that ﬁne grains, lath martensite, and
+carbides contribute to the ductility and strength of H13 die steel [9,10].
+Moreover, recent research has reported that steel containing a microstructure consist-
+ing of at least two distinct transformation products can attain both high strength and high
+ductility [11–13]. Sun et al. [11] demonstrated that a layered structure of martensite and
+Metals 2023, 13, 1263. https://doi.org/10.3390/met13071263
+https://www.mdpi.com/journal/metals
+Metals 2023, 13, 1263
+2 of 16
+ultraﬁne-grained ferrite can circumvent the strength-toughness trade-off typically observed
+in low-alloyed steel. The ﬁndings reveal that in comparison to a tempered martensitic
+microstructure, the martensite and ultraﬁne-grained ferrite layered microstructure exhibit
+a signiﬁcant enhancement in impact toughness. Furthermore, He et al. [12] and Li et al. [13]
+successfully developed medium-manganese steels featuring a reﬁned austenite and marten-
+site structure. This advanced medium-manganese steel boasts an ultimate tensile strength
+exceeding 2000 MPa and an elongation surpassing 20%.
+Gaining a comprehensive understanding of the microstructural evolution of 5CrN-
+iMoV steel is of paramount importance. However, limited efforts have been made to
+elucidate the methodology for controlling the tempered martensitic microstructure in
+5CrNiMoV steel. Consequently, this study aims to propose an optimal heat treatment
+route to enhance its microstructures and mechanical properties. An intercritical quenching
+process—followed by high-temperature pre-tempering and low-temperature tempering—
+is developed. Furthermore, employing optical microscope (OM) and scanning electron
+microscope (SEM) observations, along with X-ray diffraction (XRD) and energy dispersive
+spectroscopy (EDS) analyses, the microstructure evolution and precipitation behavior of
+secondary carbides during the heat treatment of 5CrNiMoV steel are thoroughly examined
+and discussed.
+2. Materials and Methods
+2.1. Materials
+Table 1 lists the chemical compositions of the 5CrNiMoV die steel, which was taken
+from an as-forged billet.
+Table 1. Chemical compositions of the 5CrNiMoV steel (wt.%).
+Element
+C
+Si
+Mn
+Cr
+Ni
+Mo
+V
+P
+S
+wt.%
+0.54
+0.25
+0.72
+0.96
+1.58
+0.36
+0.074
+0.012
+0.003
+Phase transformation temperatures of the 5CrNiMoV steel were investigated using
+differential scanning calorimetry (DSC) measurements (STA 449F3 Jupiter). During the
+measurement, the specimen was heated from 25 ◦C to 1100 ◦C at a rate of 10 ◦C/s, and the
+heat ﬂow rate to the specimen was monitored. In addition, a quenching and deformation
+dilatometer (DIL 805, TA instruments, New Castle, DE, USA) was used to carry out the
+thermal expansion tests of the steel. The specimens used for the thermal expansion test
+are 10 mm in height and 4 mm in diameter. During the test, the specimens were heated to
+950 ◦C, 1050 ◦C, and 1100 ◦C, respectively, at a heating rate of 10 ◦C/s, kept for 5 min, and
+then cooled at a linear rate of 50 ◦C/s. The results of the dilatometer tests show that the Ms
+temperature is 240 ◦C and the Mf is lower than room temperature.
+2.2. Heat Treatment Process
+Firstly, the specimens were heated to either 1050 ◦C or 1100 ◦C and held at these
+temperatures for 30 min. Subsequently, they were quenched in oil, as shown in Figure 1a.
+After the quenching process, the specimens underwent pre-tempering and tempering
+treatments. In the pre-tempering stage, the specimen was reheated to a temperature of
+either 550 or 600 ◦C and hold for 120 min, followed by air cooling. Subsequently, the
+specimen was reheated to a temperature that was equal to or lower than the pre-tempering
+temperature (550 or 600 ◦C). Then, an intercritical quenching method was proposed to
+produce a mixed structure of pearlite and martensite in the 5CrNiMoV steel. This method
+involves quenching the specimen after isothermal holding at 1050 ◦C for 30 min. The
+quenching process was performed by rapidly immersing the specimen into a quenching
+oil at a temperature of about 100 ◦C for a duration of 10 s. Subsequently, the intercritically
+quenched specimen underwent pre-tempering and tempering treatments, as shown in
+Figure 1b.
+Metals 2023, 13, 1263
+3 of 16
+Metals 2023, 13, x FOR PEER REVIEW 
+3 of 19 
+ 
+ 
+oil at a temperature of about 100 °C for a duration of 10 s. Subsequently, the intercritically 
+quenched specimen underwent pre-tempering and tempering treatments, as shown in 
+Figure 1b. 
+ 
+Figure 1. Schematic diagrams of heat treatments: (a) quenching and tempering, (b) intercritical 
+quenching and tempering. 
+Additionally, the strength of 5CrNiMoV steel is inﬂuenced by precipitation strength-
+ening, which is caused by the formation of secondary carbides. To determine the appro-
+priate tempering conditions, the researchers referred to the equilibrium phase diagram of 
+the 5CrNiMoV steel, as depicted in Figure 2. It was observed that due to the low silicon 
+content, the formation of cementite is more favorable compared to other carbides [14]. 
+However, in terms of contributing to the strength of the die steel, the carbides MC and 
+M23C6 play a more signiﬁcant role than cementite. Based on the information provided in 
+Figure 2, it was found that the carbides M23C6 and MC remain stable within the tempera-
+ture range of 550 °C to 650 °C. Therefore, for this research, the tempering temperature was 
+selected from a range of 550 °C to 600 °C. 
+Figure 1. Schematic diagrams of heat treatments: (a) quenching and tempering, (b) intercritical
+quenching and tempering.
+Additionally, the strength of 5CrNiMoV steel is inﬂuenced by precipitation strengthen-
+ing, which is caused by the formation of secondary carbides. To determine the appropriate
+tempering conditions, the researchers referred to the equilibrium phase diagram of the
+5CrNiMoV steel, as depicted in Figure 2. It was observed that due to the low silicon content,
+the formation of cementite is more favorable compared to other carbides [14]. However,
+in terms of contributing to the strength of the die steel, the carbides MC and M23C6 play
+a more signiﬁcant role than cementite. Based on the information provided in Figure 2, it
+was found that the carbides M23C6 and MC remain stable within the temperature range of
+550 ◦C to 650 ◦C. Therefore, for this research, the tempering temperature was selected from
+a range of 550 ◦C to 600 ◦C.
+Metals 2023, 13, x FOR PEER REVIEW 
+4 of 19 
+ 
+ 
+Figure 2. Equilibrium phase diagram of the 5CrNiMoV steel (calculated using JMatPro V. 7.0 soft-
+ware). 
+2.3. Microstructure and Mechanical Properties Characterization 
+The experimental setup for the tensile tests and the dimensions of the tensile speci-
+mens are shown in Figure 3. Two tensile specimens were prepared for each heat-treated 
+sample. The tensile tests were conducted at room temperature using a material testing 
+hi
+(Shi
+d
+AGX V)
+ith
+l
+di
+t
+f 0 005
+/
+T
+t l
+Figure 2. Equilibrium phase diagram of the 5CrNiMoV steel (calculated using JMatPro V. 7.0 software).
+Metals 2023, 13, 1263
+4 of 16
+2.3. Microstructure and Mechanical Properties Characterization
+The experimental setup for the tensile tests and the dimensions of the tensile specimens
+are shown in Figure 3. Two tensile specimens were prepared for each heat-treated sample.
+The tensile tests were conducted at room temperature using a material testing machine
+(Shimadzu AGX-V) with a loading rate of 0.005 mm/s. To accurately measure the strain
+of the tensile specimen, the digital image correlation method was employed [15]. The
+resolution of the camera was 300 × 1000 = 300,000 pixels. The hardness of the quenched
+specimens was tested using a Rockwell hardness tester (HRS-150).
+ 
+ 
+Figure 2. Equilibrium phase diagram of the 5CrNiMoV steel (calculated using JMatPro V. 7.0 soft-
+ware). 
+2.3. Microstructure and Mechanical Properties Characterization 
+The experimental setup for the tensile tests and the dimensions of the tensile speci-
+mens are shown in Figure 3. Two tensile specimens were prepared for each heat-treated 
+sample. The tensile tests were conducted at room temperature using a material testing 
+machine (Shimadzu AGX−V) with a loading rate of 0.005 mm/s. To accurately measure 
+the strain of the tensile specimen, the digital image correlation method was employed [15]. 
+The resolution of the camera was 300 × 1000 = 300,000 pixels. The hardness of the quenched 
+specimens was tested using a Rockwell hardness tester (HRS−150). 
+ 
+Figure 3. (a) Tensile testing equipment; (b) dimensions of the tensile specimen. 
+The microstructures of the specimens were examined using an OM (Zeiss, Jena, Ger-
+many, Axio Observer Z1M) and an SEM (Zeiss, Sigma 300) equipped with an EDS system. 
+Prior to observations, all specimens were mechanically polished, ground, and subse-
+quently chemically etched using 4% nital. Furthermore, the micro-strain and dislocation 
+of the heat-treated specimens were estimated by the XRD (Bruker, Billerica, MA, USA, D8 
+Discover). The size and volume fraction of carbides were measured using Image-Pro Plus 
+software. 
+3. Results and Discussion 
+3.1. Dissolution of Carbides 
+As shown in Figure 4a, the transformation temperatures of Ac1 (750 °C) and Ac3 
+(770 °C) of the 5CrNiMoV steel were determined according to the heating dilatation curve. 
+Figure 3. (a) Tensile testing equipment; (b) dimensions of the tensile specimen.
+The microstructures of the specimens were examined using an OM (Zeiss, Jena, Ger-
+many, Axio Observer Z1M) and an SEM (Zeiss, Sigma 300) equipped with an EDS system.
+Prior to observations, all specimens were mechanically polished, ground, and subsequently
+chemically etched using 4% nital. Furthermore, the micro-strain and dislocation of the heat-
+treated specimens were estimated by the XRD (Bruker, Billerica, MA, USA, D8 Discover).
+The size and volume fraction of carbides were measured using Image-Pro Plus software.
+3. Results and Discussion
+3.1. Dissolution of Carbides
+As shown in Figure 4a, the transformation temperatures of Ac1 (750 ◦C) and Ac3
+(770 ◦C) of the 5CrNiMoV steel were determined according to the heating dilatation curve.
+The DSC curve, shown in Figure 4b, exhibits two endothermic valleys. Previous studies
+have reported that the transformation of ferrite to austenite, carbide dissolution, and grain
+growth are all endothermic processes [16,17]. Therefore, the ﬁrst endothermic valley in the
+DSC curve corresponds to the austenite transformation, while the second one corresponds
+to the grain growth and dissolution of carbides.
+Metals 2023, 13, x FOR PEER REVIEW 
+5 of 19 
+ 
+The DSC curve, shown in Figure 4b, exhibits two endothermic valleys. Previous studies 
+have reported that the transformation of ferrite to austenite, carbide dissolution, and grain 
+growth are all endothermic processes [16,17]. Therefore, the ﬁrst endothermic valley in 
+the DSC curve corresponds to the austenite transformation, while the second one corre-
+sponds to the grain growth and dissolution of carbides. 
+ 
+Figure 4. Transformation temperatures test. (a) The dilatometry curve and (b) the DSC curve of the 
+5CrNiMoV steel. 
+It is worth noting that the DSC curve does not exhibit an exothermic reaction until 
+the temperature reaches approximately 1050 °C. This suggests that the complete dissolu-
+tion of carbides only occurs when the temperature reaches 1050 °C. 
+Figure 5 displays the martensite of specimens quenched at various temperatures. As 
+illustrated in Figure 5a, undissolved particles can be observed on the martensite matrix of 
+the specimen quenched at 950 °C, as indicated by the yellow arrows. To further investigate 
+these particles, the chemical element variations along the line crossing them were charac-
+terized using EDS as shown in Figure 5b The results reveal that the undissolved particle
+Figure 4. Transformation temperatures test. (a) The dilatometry curve and (b) the DSC curve of the
+5CrNiMoV steel.
+Metals 2023, 13, 1263
+5 of 16
+It is worth noting that the DSC curve does not exhibit an exothermic reaction until the
+temperature reaches approximately 1050 ◦C. This suggests that the complete dissolution of
+carbides only occurs when the temperature reaches 1050 ◦C.
+Figure 5 displays the martensite of specimens quenched at various temperatures. As
+illustrated in Figure 5a, undissolved particles can be observed on the martensite matrix of
+the specimen quenched at 950 ◦C, as indicated by the yellow arrows. To further investigate
+these particles, the chemical element variations along the line crossing them were charac-
+terized using EDS, as shown in Figure 5b. The results reveal that the undissolved particle
+is a chromium (Cr) -rich carbide. In contrast, no such undissolved particles are observed in
+Figure 5c,d for specimens quenched at 1050 ◦C and 1100 ◦C, respectively.
+Metals 2023, 13, x FOR PEER REVIEW 
+6 of 19 
+ 
+ 
+ 
+Figure 5. SEM micrographs of the 5CrNiMoV steel quenched at (a) 950 °C, (c) 1050 °C, and (d) 
+1100 °C. (b) EDS line results of the particle in (a). 
+The presence of undissolved Cr-rich carbide reduces the chromium content in the 
+matrix structure, leading to an inhomogeneous microstructure. This inhomogeneity is det-
+rimental to the strength of steel. As depicted in Figure 6, the specimen quenched at 950 °C 
+exhibits the lowest hardness, measuring at (52 ± 1) HRC. This decrease in hardness is at-
+tributed to the undissolved carbides (Figure 5a), which reduce the alloying elements 
+within the quenching martensite, consequently resulting in a decrease in martensitic hard-
+ness. Upon quenching at 1050 °C, the martensitic hardness reaches its peak, measuring at 
+(59 ± 1) HRC. However, when quenched at 1100 °C, the hardness declines to (57 ± 1) HRC. 
+This reduction in hardness is associated with excessive quenching temperature, which 
+leads to the coarsening of prior austenite grains and subsequently decreases the hardness 
+of the specimen. The results indicate that the presence of undissolved Cr-rich carbides in 
+specimens quenched at lower temperatures results in an inhomogeneous microstructure 
+and a decrease in hardness. Conversely, excessive quenching temperature causes prior 
+austenite grain coarsening and a subsequent decline in hardness. Therefore, a quenching 
+temperature of 1050 °C is considered reasonable for 5CrNiMoV steel. 
+Figure 5. SEM micrographs of the 5CrNiMoV steel quenched at (a) 950 ◦C, (c) 1050 ◦C, and (d) 1100 ◦C.
+(b) EDS line results of the particle in (a).
+The presence of undissolved Cr-rich carbide reduces the chromium content in the
+matrix structure, leading to an inhomogeneous microstructure. This inhomogeneity is
+detrimental to the strength of steel. As depicted in Figure 6, the specimen quenched at
+950 ◦C exhibits the lowest hardness, measuring at (52 ± 1) HRC. This decrease in hardness
+is attributed to the undissolved carbides (Figure 5a), which reduce the alloying elements
+within the quenching martensite, consequently resulting in a decrease in martensitic hard-
+ness. Upon quenching at 1050 ◦C, the martensitic hardness reaches its peak, measuring at
+(59 ± 1) HRC. However, when quenched at 1100 ◦C, the hardness declines to (57 ± 1) HRC.
+This reduction in hardness is associated with excessive quenching temperature, which
+leads to the coarsening of prior austenite grains and subsequently decreases the hardness
+of the specimen. The results indicate that the presence of undissolved Cr-rich carbides in
+specimens quenched at lower temperatures results in an inhomogeneous microstructure
+and a decrease in hardness. Conversely, excessive quenching temperature causes prior
+Metals 2023, 13, 1263
+6 of 16
+austenite grain coarsening and a subsequent decline in hardness. Therefore, a quenching
+temperature of 1050 ◦C is considered reasonable for 5CrNiMoV steel.
+Metals 2023, 13, x FOR PEER REVIEW 
+7 of 19 
+ 
+ 
+Figure 6. Martensitic hardness of the 5CrNiMoV steel quenched at diﬀerent temperatures. 
+3.2. Mechanical Properties 
+The engineering stress−strain curves of the heat-treated specimens are depicted in 
+Figure 7. Furthermore, the ultimate tensile strength (UTS), yield strength (YS), and elon-
+gation to rupture (EL) of various specimens are provided in Table 2. The numbers in the 
+legend denote the conditions of heat treatment. For instance, 1050-550-550 signiﬁes that 
+the quenching, pre-tempering, and tempering temperatures are 1050 °C, 550 °C, and 
+550 °C, respectively. Moreover, 1050L-600-550 indicates the implementation of intercriti-
+cal quenching, where the specimen was intercritically quenched at 1050 °C, followed by 
+pre-tempering at 600 °C and tempering at 550 °C. 
+Table 2. Tensile properties of the 5CrNiMoV steel heat-treated under diﬀerent conditions. 
+Specimen 
+UTS 
+(MPa) 
+YS 
+(MPa) 
+EL 
+(%) 
+1100-550-550 
+1330 ± 15 
+1200 ± 15 
+3.0 ± 0.5 
+1050-550-550 
+1375 ± 25 
+1290 ± 12 
+4.0 ± 0.8 
+1050-600-600 
+1090 ± 10 
+670 ± 8 
+7.0 ± 0.6 
+1050-600-550 
+1230 ± 20 
+1120 ± 10 
+7.0 ± 0.5 
+1050L-600-550 
+1220 ± 16 
+1110 ± 10 
+8.2 ± 0.3 
+Figure 6. Martensitic hardness of the 5CrNiMoV steel quenched at different temperatures.
+3.2. Mechanical Properties
+The engineering stress-strain curves of the heat-treated specimens are depicted in
+Figure 7. Furthermore, the ultimate tensile strength (UTS), yield strength (YS), and elon-
+gation to rupture (EL) of various specimens are provided in Table 2. The numbers in
+the legend denote the conditions of heat treatment. For instance, 1050-550-550 signiﬁes
+that the quenching, pre-tempering, and tempering temperatures are 1050 ◦C, 550 ◦C, and
+550 ◦C, respectively. Moreover, 1050L-600-550 indicates the implementation of intercriti-
+cal quenching, where the specimen was intercritically quenched at 1050 ◦C, followed by
+pre-tempering at 600 ◦C and tempering at 550 ◦C.
+Metals 2023, 13, x FOR PEER REVIEW 
+8 of 19 
+ 
+ 
+Figure 7. Engineering stress-strain curves of diﬀerent heat-treated specimens. 
+Specimen (S) 1050-550-550 demonstrates superior strength and ductility compared to 
+S1100-550-550. It is observed that with an increase in quenching temperature, the UTS and 
+YS decline from 1375 MPa to 1330 MPa and 1290 MPa to 1200 MPa, respectively. Simulta-
+neously, the EL decreases from 4.0% to 3.0%. This can be attributed to two factors. Firstly, 
+the PAGS and martensite block size augment with an increase in quenching temperature, 
+Figure 7. Engineering stress-strain curves of different heat-treated specimens.
+Metals 2023, 13, 1263
+7 of 16
+Table 2. Tensile properties of the 5CrNiMoV steel heat-treated under different conditions.
+Specimen
+UTS
+(MPa)
+YS
+(MPa)
+EL
+(%)
+1100-550-550
+1330 ± 15
+1200 ± 15
+3.0 ± 0.5
+1050-550-550
+1375 ± 25
+1290 ± 12
+4.0 ± 0.8
+1050-600-600
+1090 ± 10
+670 ± 8
+7.0 ± 0.6
+1050-600-550
+1230 ± 20
+1120 ± 10
+7.0 ± 0.5
+1050L-600-550
+1220 ± 16
+1110 ± 10
+8.2 ± 0.3
+Specimen (S) 1050-550-550 demonstrates superior strength and ductility compared
+to S1100-550-550. It is observed that with an increase in quenching temperature, the UTS
+and YS decline from 1375 MPa to 1330 MPa and 1290 MPa to 1200 MPa, respectively.
+Simultaneously, the EL decreases from 4.0% to 3.0%. This can be attributed to two factors.
+Firstly, the PAGS and martensite block size augment with an increase in quenching temper-
+ature, thereby diminishing the YS of the quenched steel as per the Hall–Petch relation [18].
+Secondly, the coarsened grains of the prior austenite and martensite blocks are suscepti-
+ble to initiating micro-cracks during tensile tests, leading to intergranular fracture, and
+consequently reducing the EL [19,20].
+Upon comparing S1050-550-550 and S1050-600-600, it is evident that as the pre-
+tempering and tempering temperatures increase, the EL also increases. Concurrently,
+the UTS and YS decreased signiﬁcantly. This is linked to the aggregation and coarsening of
+the secondary carbides and decomposition of the tempered martensite induced by elevated
+tempering temperatures. Despite S1050-600-600 possessing high EL, the low YS severely
+hampers the application of the 5CrNiMoV steel.
+Tempering is an effective method to modify precipitation behavior for enhancing the
+mechanical properties of die steels. By modulating the tempering conditions, S1050-600-550
+exhibits exceptional mechanical properties, with an UTS of 1230 MPa, YS of 1120 MPa, and
+EL of 7.0%. Additionally, based on the aforementioned optimized parameters, the EL is
+further ameliorated with intercritical quenching. As delineated in Table 2, S1050L-600-550
+boasts the highest EL of 8.2%, with an UTS of 1220 MPa and YS of 1110 MPa, showing
+better mechanical properties and can meet diverse engineering requirements.
+3.3. Microstructures
+Figure 8 illustrates the OM and SEM micrographs of S1100-550-550 and S1050-550-550,
+which have been quenched at varying temperatures. The microstructure is comprised of
+ferrite, tempered martensite, and secondary carbides. As shown in Figure 8a,b, a small
+amount of ferrite is distributed along the austenite grain boundaries, which is an important
+reference substance to measure the PAGS. Post-measurement, the PAGS of the specimens
+quenched at 1050 ◦C and 1100 ◦C are (156 ± 8) µm and (188 ± 16) µm, respectively.
+The migration ability of grain boundaries is enhanced at higher temperatures, thereby
+promoting grain growth. Consequently, the PAGS of S1100-550-550 is larger than that of
+S1050-550-550. During tempering, grain boundaries become the preferred nucleation sites
+for carbide precipitation [20]. Figure 8c,d reveals that the tempered martensite is composed
+of martensitic lath and secondary carbides. The secondary carbide size of S1050-550-550
+is small (Figure 8c). Figure 8d demonstrates that with the rise in quenching temperature,
+the lath structure becomes more distinct due to the PAGS increase. Film-like carbides
+precipitate along the lath boundaries, forming numerous hard boundaries between the
+tempered martensite laths. Given that the hardness of the tempered martensite matrix
+is inferior to that of secondary carbides, the stress concentration at the lath boundaries
+intensiﬁes during tensile deformation [21]. It causes micro-cracks to form and propagate
+along the lath boundaries, resulting in the swift fracture of S1100-550-550. Hence, the EL of
+S1100-550-550 is exceedingly low.
+Metals 2023, 13, 1263
+8 of 16
+ 
+size of S1050-550-550 is small (Figure 8c). Figure 8d demonstrates that with the rise in 
+quenching temperature, the lath structure becomes more distinct due to the PAGS increase. 
+Film-like carbides precipitate along the lath boundaries, forming numerous hard bound-
+aries between the tempered martensite laths. Given that the hardness of the tempered 
+martensite matrix is inferior to that of secondary carbides, the stress concentration at the 
+lath boundaries intensiﬁes during tensile deformation [21]. It causes micro-cracks to form 
+and propagate along the lath boundaries, resulting in the swift fracture of S1100-550-550. 
+Hence, the EL of S1100-550-550 is exceedingly low. 
+ 
+Figure 8. OM and SEM micrographs of the 5CrNiMoV steel. (a,c) S1050-550-550, and (b,d) S1100-
+550-550. 
+Figure 9 presents OM and SEM micrographs of S1050-600-600 and S1050-600-550, 
+which have been tempered at diﬀerent temperatures. Owing to the identical quenching 
+temperatures, the average diameters of PAGBs of S1050-600-600 and S1050-600-550 are 
+closely similar: (161 ± 10) µm and (165 ± 7) µm, respectively (Figure 9a,b). However, the 
+morphology and average size of the secondary carbides vary with the tempering temper-
+ature. Figure 9c shows that when both the pre−tempering and tempering temperatures 
+are 600 °C, the secondary carbides noticeably aggregated and coarse. Additionally, the 
+decomposition of tempered martensite laths is also clearly observed. These factors con-
+tribute to a decline in the YS of S1050-600-600, which is 670 MPa. Figure 9d indicates that 
+with a reduction in tempering temperature, the secondary carbide size signiﬁcantly de-
+creases. Furthermore, secondary carbides are observed not only along lath boundaries but 
+also within martensitic laths. This suggests that pre−tempering at 600 °C promotes the 
+Figure 8. OM and SEM micrographs of the 5CrNiMoV steel. (a,c) S1050-550-550, and (b,d) S1100-550-550.
+Figure 9 presents OM and SEM micrographs of S1050-600-600 and S1050-600-550,
+which have been tempered at different temperatures. Owing to the identical quenching
+temperatures, the average diameters of PAGBs of S1050-600-600 and S1050-600-550 are
+closely similar: (161 ± 10) µm and (165 ± 7) µm, respectively (Figure 9a,b). However, the
+morphology and average size of the secondary carbides vary with the tempering tempera-
+ture. Figure 9c shows that when both the pre-tempering and tempering temperatures are
+600 ◦C, the secondary carbides noticeably aggregated and coarse. Additionally, the decom-
+position of tempered martensite laths is also clearly observed. These factors contribute
+to a decline in the YS of S1050-600-600, which is 670 MPa. Figure 9d indicates that with
+a reduction in tempering temperature, the secondary carbide size signiﬁcantly decreases.
+Furthermore, secondary carbides are observed not only along lath boundaries but also
+within martensitic laths. This suggests that pre-tempering at 600 ◦C promotes the precipita-
+tion nucleation of carbides. Subsequent tempering at 550 ◦C not only continues to promote
+precipitation, but also inhibits the coarsening of the carbides. Therefore, S1050-600-550
+exhibits a favorable combination of ductility and strength (Figure 7).
+Figure 10 displays OM and SEM micrographs of S1050L-600-550, which underwent
+intercritical quenching at 1050 ◦C, pre-tempering at 600 ◦C, and subsequent tempering
+at 550 ◦C. Figure 10a reveals that the microstructure of S1050L-600-500 consists of tem-
+pered martensite and pearlite. Due to intercritical quenching, only a portion of austenite is
+transformed into martensite, while the remainder is converted into pearlite during the sub-
+sequent tempering process. Figure 10b illustrates the interface of the tempered martensite
+and pearlite. The detailed structures of the tempered martensite and pearlite are shown in
+Figure 10c,d.
+Metals 2023, 13, 1263
+9 of 16
+Metals 2023, 13, x FOR PEER REVIEW 
+10 of 19 
+ 
+ 
+precipitation nucleation of carbides. Subsequent tempering at 550 °C not only continues 
+to promote precipitation, but also inhibits the coarsening of the carbides. Therefore, S1050-
+600-550 exhibits a favorable combination of ductility and strength (Figure 7). 
+ 
+Figure 9. OM and SEM micrographs of the 5CrNiMoV steel. (a,c) S1050-600-600, and (b,d) S1050-
+600-550. 
+Figure 10 displays OM and SEM micrographs of S1050L-600-550, which underwent 
+intercritical quenching at 1050 °C, pre-tempering at 600 °C, and subsequent tempering at 
+550 °C. Figure 10a reveals that the microstructure of S1050L-600-500 consists of tempered 
+martensite and pearlite. Due to intercritical quenching, only a portion of austenite is trans-
+formed into martensite, while the remainder is converted into pearlite during the subse-
+quent tempering process. Figure 10b illustrates the interface of the tempered martensite 
+and pearlite. The detailed structures of the tempered martensite and pearlite are shown 
+in Figure 10c,d. 
+Figure 9. OM and SEM micrographs of the 5CrNiMoV steel. (a,c) S1050-600-600, and (b,d) S1050-600-550.
+Metals 2023, 13, x FOR PEER REVIEW 
+11 of 19 
+ 
+ 
+Figure 10. OM and SEM micrographs of S1050L-600-550. (a) Martensite and pearlite, (b) tempered 
+martensite/pearlite interface, and detail of (c) tempered martensite, and (d) pearlite. 
+Figure 11 aims to quantitatively analyze the secondary carbides in 5CrNiMoV steel 
+by counting the volume fraction and average size. As indicated in Figure 11a,b, S1050-600-
+550 achieves not only a high-volume fraction (26%) of the precipitated carbides, but also 
+suppresses carbide coarsening ((0.12 ± 0.03) µm). Regarding other specimens, S1050-550-
+550 has the smallest average size of the secondary carbides, which is (0.09 ± 0.02) µm. 
+Figure 10. OM and SEM micrographs of S1050L-600-550. (a) Martensite and pearlite, (b) tempered
+martensite/pearlite interface, and detail of (c) tempered martensite, and (d) pearlite.
+Metals 2023, 13, 1263
+10 of 16
+Figure 11 aims to quantitatively analyze the secondary carbides in 5CrNiMoV steel
+by counting the volume fraction and average size. As indicated in Figure 11a,b, S1050-
+600-550 achieves not only a high-volume fraction (26%) of the precipitated carbides, but
+also suppresses carbide coarsening ((0.12 ± 0.03) µm). Regarding other specimens, S1050-
+550-550 has the smallest average size of the secondary carbides, which is (0.09 ± 0.02)
+µm. However, the lower tempering temperature is not conducive to carbide precipitation.
+Thus, in S1050-550-550, the volume fraction of the secondary carbides is merely 11%. In
+S1100-550-550, the precipitation of a large number of strip-like carbides leads to an increase
+in both the average size and volume fraction of the secondary carbides. In S1050-600-600,
+the coarsened secondary carbides are caused by a higher tempering temperature, which is
+detrimental to the mechanical properties of die steel and should be avoided.
+Metals 2023, 13, x FOR PEER REVIEW 
+12 of 
+ 
+ 
+Figure 11. (a) Average size and (b) volume fraction of the secondary carbides. 
+3.4. Precipitation Strengthening 
+Due to the interaction of carbides and dislocations, precipitation strengthening 
+mainly related to the average size and volume fraction of the secondary carbides, whic
+are important strengthening mechanisms of die steels [22]. According to the Ashby−Oro
+wan model, the contribution to the YS (Δ𝜎୮) of the secondary carbides is proportional t
+the 1/2 power of the volume fraction (𝑓୮) and inversely proportional to the average siz
+(𝑑୮) of the secondary carbides [23]. It indicates that ﬁne precipitates with ﬁne grain siz
+and high-volume fraction are beneﬁcial for improving the contribution of precipitatio
+strengthening to the YS of the 5CrNiMoV steel. The calculation formula of precipitatio
+strengthening according to the Ashby–Orowan model is written as [23,24]: 
+1
+2
+p
+p
+p
+p
+0.538G
+ln 2
+bf
+d
+d
+b
+σ
+
+
+Δ
+=
+
+
+
+
+ 
+(
+where Δ𝜎୮ is the contribution of YS caused by precipitation strengthening, G is the shea
+modulus of 5CrNiMoV steel (80.26 GPa), fp is the volume fraction of the precipitated ca
+bides, dp is the average size of the precipitated carbides, and b is the Burgers vector. 
+Based on the information provided in Figure 11 regarding the volume fraction an
+average size of the secondary carbides, we have calculated the contribution of precipita
+tion strengthening to the YS of diﬀerent heat-treated specimens. Figure 12 illustrates tha
+the contribution of precipitation strengthening to YS ranges from 190 MPa to 255 MP
+Among the specimens, S1050-600-550 exhibits the highest precipitation strengthenin
+contribution, reaching 255 MPa. This ﬁnding is consistent with the observations made o
+the microstructure. Specimen 1050-600-550 possesses a higher volume fraction of second
+ary carbides and has a relatively ﬁne carbide size, which results in a favorable combinatio
+of strength and ductility. 
+Figure 11. (a) Average size and (b) volume fraction of the secondary carbides.
+3.4. Precipitation Strengthening
+Due to the interaction of carbides and dislocations, precipitation strengthening is
+mainly related to the average size and volume fraction of the secondary carbides, which are
+important strengthening mechanisms of die steels [22]. According to the Ashby-Orowan
+model, the contribution to the YS (∆σp) of the secondary carbides is proportional to the
+1/2 power of the volume fraction (fp) and inversely proportional to the average size (dp) of
+the secondary carbides [23]. It indicates that ﬁne precipitates with ﬁne grain size and high-
+volume fraction are beneﬁcial for improving the contribution of precipitation strengthening
+to the YS of the 5CrNiMoV steel. The calculation formula of precipitation strengthening
+according to the Ashby–Orowan model is written as [23,24]:
+∆σp = 0.538Gb f
+1
+2p
+dp
+ln
+dp
+2b
+
+(1)
+where ∆σp is the contribution of YS caused by precipitation strengthening, G is the shear
+modulus of 5CrNiMoV steel (80.26 GPa), f p is the volume fraction of the precipitated
+carbides, dp is the average size of the precipitated carbides, and b is the Burgers vector.
+Based on the information provided in Figure 11 regarding the volume fraction and
+average size of the secondary carbides, we have calculated the contribution of precipitation
+strengthening to the YS of different heat-treated specimens. Figure 12 illustrates that
+the contribution of precipitation strengthening to YS ranges from 190 MPa to 255 MPa.
+Among the specimens, S1050-600-550 exhibits the highest precipitation strengthening
+contribution, reaching 255 MPa. This ﬁnding is consistent with the observations made on
+the microstructure. Specimen 1050-600-550 possesses a higher volume fraction of secondary
+carbides and has a relatively ﬁne carbide size, which results in a favorable combination of
+strength and ductility.
+Metals 2023, 13, 1263
+11 of 16
+Metals 2023, 13, x FOR PEER REVIEW 
+13 of 19 
+ 
+ 
+ 
+Figure 12. Contributions of precipitation strengthening to yield strength. 
+Figure 13 shows the XRD pattern of the heat-treated specimens. The results show that 
+all the specimens are primarily composed of ferrite and martensite phases, and no obvious 
+residual austenite peak is detected in the diﬀraction pattern. 
+ 
+Figure 13. XRD patterns of the heat-treated specimens. 
+In the XRD analysis, the instrumental broadening has been corrected with the stand-
+ard broadening data of polycrystalline Al2O3. The crystallite size and lattice strain aﬀect 
+the Bragg peak width. They are important parameters to determine mechanical properties. 
+In the ferrite phase with BCC structure, the relationship between the lattice constant (a), 
+the Miller indices ({h k l}), and the plane spacing (d) is shown as the following [25]. 
+2
+2
+2
+2
+2
+1
+h
+k
+l
+d
+a
++
++
+=
+ 
+(2)
+Figure 12. Contributions of precipitation strengthening to yield strength.
+Figure 13 shows the XRD pattern of the heat-treated specimens. The results show that
+all the specimens are primarily composed of ferrite and martensite phases, and no obvious
+residual austenite peak is detected in the diffraction pattern.
+Metals 2023, 13, x FOR PEER REVIEW 
+13 of 19 
+ 
+ 
+ 
+Figure 12. Contributions of precipitation strengthening to yield strength. 
+Figure 13 shows the XRD pattern of the heat-treated specimens. The results show that 
+all the specimens are primarily composed of ferrite and martensite phases, and no obvious 
+residual austenite peak is detected in the diﬀraction pattern. 
+ 
+Figure 13. XRD patterns of the heat-treated specimens. 
+In the XRD analysis, the instrumental broadening has been corrected with the stand-
+ard broadening data of polycrystalline Al2O3. The crystallite size and lattice strain aﬀect 
+the Bragg peak width. They are important parameters to determine mechanical properties. 
+In the ferrite phase with BCC structure, the relationship between the lattice constant (a), 
+the Miller indices ({h k l}), and the plane spacing (d) is shown as the following [25]. 
+2
+2
+2
+2
+2
+1
+h
+k
+l
+d
+a
++
++
+=
+ 
+(2)
+Figure 13. XRD patterns of the heat-treated specimens.
+In the XRD analysis, the instrumental broadening has been corrected with the standard
+broadening data of polycrystalline Al2O3. The crystallite size and lattice strain affect the
+Bragg peak width. They are important parameters to determine mechanical properties. In
+the ferrite phase with BCC structure, the relationship between the lattice constant (a), the
+Miller indices ({h k l}), and the plane spacing (d) is shown as the following [25].
+1
+d2 = h2 + k2 + l2
+a2
+(2)
+According to Bragg’s law λ = 2dsinθ and Equation (2), the value of a is calculated by:
+a = λ
+√
+h2 + k2 + k2
+2 sin(θ)
+(3)
+Metals 2023, 13, 1263
+12 of 16
+where θ is the Bragg angle and λ is the X-ray wavelength.
+As shown in Figure 14, the average values of the lattice constant for the heat-treated
+specimens range from 2.8669 to 2.8681 Å. Notably, the lattice constant value exhibits an
+inverse relationship with the volume fraction of the secondary carbides. This observation
+is consistent with the information presented in Figures 11b and 14, where it is evident that
+a higher volume fraction of secondary carbides corresponds to a smaller lattice constant.
+The increase in the volume fraction of secondary carbides with a decrease in the lattice
+constant can be attributed to the reduction in the content of solid solution alloying elements
+within the α-Fe matrix. As the volume fraction of secondary carbides increases, the amount
+of solid solution alloying elements decreases, leading to a reduction in lattice distortion.
+Consequently, the lattice constant decreases accordingly. In the case of S1050L-600-550, it
+undergoes intercritical quenching and tempering treatment, resulting in the formation of
+microstructures consisting of tempered martensite and pearlite. This speciﬁc heat treatment
+process promotes the precipitation of a signiﬁcant number of carbides, leading to a smaller
+lattice constant.
+ 
+According to Bragg’s law 𝜆 = 2𝑑𝑠𝑖𝑛𝜃 and Equation (2), the value of a is calculated 
+by: 
+2
+2
+2
+2sin( )
+h
+k
+k
+a
+λ
+θ
++
++
+=
+ 
+(3)
+where 𝜃 is the Bragg angle and 𝜆 is the X-ray wavelength. 
+As shown in Figure 14, the average values of the lattice constant for the heat-treated 
+specimens range from 2.8669 to 2.8681 Å. Notably, the lattice constant value exhibits an 
+inverse relationship with the volume fraction of the secondary carbides. This observation 
+is consistent with the information presented in Figure 11b and Figure 14, where it is evi-
+dent that a higher volume fraction of secondary carbides corresponds to a smaller lattice 
+constant. The increase in the volume fraction of secondary carbides with a decrease in the 
+lattice constant can be attributed to the reduction in the content of solid solution alloying 
+elements within the α−Fe matrix. As the volume fraction of secondary carbides increases, 
+the amount of solid solution alloying elements decreases, leading to a reduction in lattice 
+distortion. Consequently, the lattice constant decreases accordingly. In the case of S1050L-
+600-550, it undergoes intercritical quenching and tempering treatment, resulting in the 
+formation of microstructures consisting of tempered martensite and pearlite. This speciﬁc 
+heat treatment process promotes the precipitation of a signiﬁcant number of carbides, 
+leading to a smaller lattice constant. 
+ 
+Figure 14. Lattice constant of the heat-treated specimens. 
+After obtaining the lattice constant, the average crystallite size is calculated using the 
+Debye–Scherrer equation [26]. 
+K
+=
+cos
+D
+λ
+β
+θ
+ 
+(4)
+where 𝜃 is the Bragg angle, 𝜆 (0.154 nm) is the X-ray wavelength, β is the full width at 
+half maximum (FWHM), and K is a constant equal to 0.89. 
+In addition, the lattice strain (𝜀 ) is determined according to the Williamson−Hall 
+method [26,27]. Therefore, according to the results of average crystallite size and lattice 
+strain, the dislocation density is calculated using the following equation [28–31]. 
+2 3
+Db
+ε
+ρ =
+ 
+(5)
+where 𝜌  is the dislocation density, b is the Burgers vector—which for BCC metals, 
+b = (√3/2) a—and a is the lattice constant as shown in Figure 14. 
+Figure 14. Lattice constant of the heat-treated specimens.
+After obtaining the lattice constant, the average crystallite size is calculated using the
+Debye–Scherrer equation [26].
+D =
+Kλ
+β cos θ
+(4)
+where θ is the Bragg angle, λ (0.154 nm) is the X-ray wavelength, β is the full width at half
+maximum (FWHM), and K is a constant equal to 0.89.
+In addition, the lattice strain (ε) is determined according to the Williamson-Hall
+method [26,27]. Therefore, according to the results of average crystallite size and lattice
+strain, the dislocation density is calculated using the following equation [28–31].
+ρ = 2
+√
+3ε
+Db
+(5)
+where ρ is the dislocation density, b is the Burgers vector—which for BCC metals,
+b = (
+√
+3/2)a—and a is the lattice constant as shown in Figure 14.
+Figure 15 enumerates the computed values of the crystallite size, lattice strain, and
+dislocation density for all heat-treated specimens. The ﬁndings suggest that these pa-
+rameters are signiﬁcantly inﬂuenced by the pre-tempering temperature rather than the
+quenching temperatures. As shown in Figure 15a, the crystallite size increases with an
+increase in the pre-tempering temperature, while the lattice strain decreases. This reduction
+in lattice strain subsequently leads to a decrease in the dislocation density within the
+martensite matrix (Figure 15b,c). Furthermore, there is a negligible difference in the lattice
+strain, crystallite size, and dislocation density between S1050-600-550 and S1050-600-600.
+Metals 2023, 13, 1263
+13 of 16
+This observation demonstrates that these parameters are predominantly inﬂuenced by
+the pre-tempering temperature. As shown in Figures 11b and 15, a higher pre-tempering
+temperature promotes the precipitation of carbides, thereby diminishing the lattice strain
+and dislocation density of the matrix, which is beneﬁcial for enhancing the ductility of the
+5CrNiMoV steel. Additionally, tempering following the pre-tempering process further en-
+hances the precipitation of carbides. To prevent coarsening of the precipitated carbides, it is
+necessary to lower the tempering temperature. Consequently, in S1050-600-550, the higher
+volume fraction and ﬁner size of secondary carbides (Figure 11) contribute to an increase
+in precipitation strengthening, leading to a relatively high YS. Moreover, the reduction in
+lattice strain and dislocation density also enhances the ductility of the specimen. Regarding
+S1050L-600-550, the primary microstructures present are tempered martensite and pearlite.
+Consequently, the values listed for the parameters in Figure 15 for S1050L-600-550 represent
+a combination of the characteristics exhibited by these two structures.
+ 
+dislocation density for all heat-treated specimens. The ﬁndings suggest that these param-
+eters are signiﬁcantly inﬂuenced by the pre−tempering temperature rather than the 
+quenching temperatures. As shown in Figure 15a, the crystallite size increases with an 
+increase in the pre-tempering temperature, while the lattice strain decreases. This reduc-
+tion in lattice strain subsequently leads to a decrease in the dislocation density within the 
+martensite matrix (Figure 15b,c). Furthermore, there is a negligible diﬀerence in the lattice 
+strain, crystallite size, and dislocation density between S1050-600-550 and S1050-600-600. 
+This observation demonstrates that these parameters are predominantly inﬂuenced by the 
+pre-tempering temperature. As shown in Figure 11b and Figure 15, a higher pre-temper-
+ing temperature promotes the precipitation of carbides, thereby diminishing the lattice 
+strain and dislocation density of the matrix, which is beneﬁcial for enhancing the ductility 
+of the 5CrNiMoV steel. Additionally, tempering following the pre-tempering process fur-
+ther enhances the precipitation of carbides. To prevent coarsening of the precipitated car-
+bides, it is necessary to lower the tempering temperature. Consequently, in S1050-600-550, 
+the higher volume fraction and ﬁner size of secondary carbides (Figure 11) contribute to 
+an increase in precipitation strengthening, leading to a relatively high YS. Moreover, the 
+reduction in lattice strain and dislocation density also enhances the ductility of the speci-
+men. Regarding S1050L-600-550, the primary microstructures present are tempered mar-
+tensite and pearlite. Consequently, the values listed for the parameters in Figure 15 for 
+S1050L-600-550 represent a combination of the characteristics exhibited by these two 
+structures. 
+ 
+Figure 15. Average crystallite size (a), lattice strain (b), and dislocation density (c) of the heat-treated 
+specimens. 
+3.5. Tensile Fracture 
+Figure 16 illustrates the tensile fracture morphologies of S1100-550-550 and S1050-
+550-550. As shown in Figure 16a and its detailed view in Figure 16b, the fractography of 
+S1100-550-550 exhibits a brittle fracture model. As denoted by the yellow arrows, numer-
+ous micro-cracks are present on the cleavage facets, which contribute to crack propagation 
+and fracture during tensile deformation [32–34]. Figure 16c,d reveals that, in addition to 
+the intergranular fracture facets, local plastic deformation zones exist on the fracture sur-
+face. Consequently, there is a slight increase in the EL of S1050-550-550. 
+Figure 15. Average crystallite size (a), lattice strain (b), and dislocation density (c) of the heat-treated
+specimens.
+3.5. Tensile Fracture
+Figure 16 illustrates the tensile fracture morphologies of S1100-550-550 and S1050-
+550-550. As shown in Figure 16a and its detailed view in Figure 16b, the fractography of
+S1100-550-550 exhibits a brittle fracture model. As denoted by the yellow arrows, numerous
+micro-cracks are present on the cleavage facets, which contribute to crack propagation and
+fracture during tensile deformation [32–34]. Figure 16c,d reveals that, in addition to the
+intergranular fracture facets, local plastic deformation zones exist on the fracture surface.
+Consequently, there is a slight increase in the EL of S1050-550-550.
+Metals 2023, 13, x FOR PEER REVIEW 
+16 of 19 
+ 
+ 
+Figure 16. Fracture morphologies of (a,b) S1100−550−550 and (c,d) S1050−550−550. 
+Figure 17 presents the fracture morphologies of S1050-600-600 and S1050-600-550, 
+characterized by a combination of ductile and brittle fractures. The fracture surfaces ex-
+hibit a multitude of intergranular facets, suggesting that brittle fracture is the predominant 
+fracture model. However, as demonstrated in Figure 17a,c and their magniﬁed views in 
+Figure 17b d numerous ﬁne dimples are visible indicative of ductile fracture [34] There
+Figure 16. Fracture morphologies of (a,b) S1100-550-550 and (c,d) S1050-550-550.
+Metals 2023, 13, 1263
+14 of 16
+Figure 17 presents the fracture morphologies of S1050-600-600 and S1050-600-550,
+characterized by a combination of ductile and brittle fractures. The fracture surfaces exhibit
+a multitude of intergranular facets, suggesting that brittle fracture is the predominant
+fracture model. However, as demonstrated in Figure 17a,c and their magniﬁed views
+in Figure 17b,d, numerous ﬁne dimples are visible, indicative of ductile fracture [34].
+Therefore, S1050-600-600 and S1050-600-550 exhibit better ductility than S1050-550-550.
+ 
+ 
+Figure 16. Fracture morphologies of (a,b) S1100−550−550 and (c,d) S1050−550−550. 
+Figure 17 presents the fracture morphologies of S1050-600-600 and S1050-600-550, 
+characterized by a combination of ductile and brittle fractures. The fracture surfaces ex-
+hibit a multitude of intergranular facets, suggesting that brittle fracture is the predominant 
+fracture model. However, as demonstrated in Figure 17a,c and their magniﬁed views in 
+Figure 17b,d, numerous ﬁne dimples are visible, indicative of ductile fracture [34]. There-
+fore, S1050-600-600 and S1050-600-550 exhibit better ductility than S1050-550-550. 
+ 
+Figure 17. Fracture morphologies of (a,b) S1050−600−600 and (c,d) S1050−600−550. 
+Figure 18 displays the fracture morphology of S1050L-600-550, comprised of dimples, 
+cleavage facets, and micro-cracks, and demonstrating a ductile-brittle mixed mode [32,35]. 
+Furthermore, a notable increase in the number of dimples in Figure 18a compared to Fig-
+ure 17a,c suggests a growing proportion of ductile fracture in S1050L-600-550. Addition-
+ally, as shown in Figure 18b, many deep dimples are formed by the pearlite during tensile 
+deformation, which subsequently delays crack propagation and enhances the EL of the 
+specimen. Therefore, S1050L-600-550 exhibits a relatively high EL. 
+Figure 17. Fracture morphologies of (a,b) S1050-600-600 and (c,d) S1050-600-550.
+Figure 18 displays the fracture morphology of S1050L-600-550, comprised of dimples,
+cleavage facets, and micro-cracks, and demonstrating a ductile-brittle mixed mode [32,35].
+Furthermore, a notable increase in the number of dimples in Figure 18a compared to
+Figure 17a,c suggests a growing proportion of ductile fracture in S1050L-600-550. Addition-
+ally, as shown in Figure 18b, many deep dimples are formed by the pearlite during tensile
+deformation, which subsequently delays crack propagation and enhances the EL of the
+specimen. Therefore, S1050L-600-550 exhibits a relatively high EL.
+Metals 2023, 13, x FOR PEER REVIEW 
+17 of 19 
+ 
+ 
+Figure 18. Fracture morphologies of S1050L-600-550. (a) Low magniﬁcation and (b) high magniﬁca-
+tion. 
+4. Conclusions 
+This study reveals that by controlling processing parameters, microstructures can be 
+tuned to achieve comprehensive mechanical properties. The key conclusions are as fol-
+lows: 
+(1) Proper heat treatment enhances the mechanical properties of 5CrNiMoV. A balance 
+of strength and ductility is achieved with a UTS of 1230 MPa and an EL of 7.0% after 
+quenching at 1050 °C, pre-tempering at 600 °C, and tempering at 550 °C. Furthermore, 
+intercritical quenching at 1050 °C, pre-tempering at 600 °C, and tempering at 550 °C 
+results in a higher EL of 8.2% with a UTS of 1220 MPa. 
+(2) Pre-tempering at 600 °C and tempering at 550 °C not only promotes the precipitation 
+of carbides, but also inhibits their coarsening, eﬀectively enhancing precipitation 
+strengthening and contributing to a 255 MPa increase in the YS. Additionally, the 
+decrease in the solid solution of C and Cr elements in the α−Fe matrix due to in-
+creased carbide precipitation reduces the lattice micro-strain and dislocation density,
+Figure 18. Fracture morphologies of S1050L-600-550. (a) Low magnification and (b) high magnification.
+4. Conclusions
+This study reveals that by controlling processing parameters, microstructures can be
+tuned to achieve comprehensive mechanical properties. The key conclusions are as follows:
+(1)
+Proper heat treatment enhances the mechanical properties of 5CrNiMoV. A balance of
+strength and ductility is achieved with a UTS of 1230 MPa and an EL of 7.0% after
+quenching at 1050 ◦C, pre-tempering at 600 ◦C, and tempering at 550 ◦C. Furthermore,
+intercritical quenching at 1050 ◦C, pre-tempering at 600 ◦C, and tempering at 550 ◦C
+results in a higher EL of 8.2% with a UTS of 1220 MPa.
+(2)
+Pre-tempering at 600 ◦C and tempering at 550 ◦C not only promotes the precipitation
+of carbides, but also inhibits their coarsening, effectively enhancing precipitation
+Metals 2023, 13, 1263
+15 of 16
+strengthening and contributing to a 255 MPa increase in the YS. Additionally, the
+decrease in the solid solution of C and Cr elements in the α-Fe matrix due to increased
+carbide precipitation reduces the lattice micro-strain and dislocation density, thereby
+improving ductility.
+(3)
+After intercritical quenching and tempering, the microstructure is composed of tem-
+pered martensite and pearlite. The high strength can be ascribed to the tempered
+martensite. The enhanced ductility is attributed to the decrease in micro-strain and dis-
+location density, as well as the mixed structures of tempered martensite and pearlite,
+which serve to hinder crack propagation during tensile deformation.
+Author Contributions: W.H.: Methodology, Data curation, Visualization, Investigation, Writing—
+original draft, Writing—review and editing. L.L.: Project administration, Funding acquisition,
+Conceptualization. G.F.: Supervision, Conceptualization, Writing—review and editing. All authors
+have read and agreed to the published version of the manuscript.
+Funding: This research was funded by the National Key Research and Development Program of
+China (grant number 2017YFB0701801).
+Data Availability Statement: The data presented in this study are available within the article.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Huang, W.; Lei, L.; Fang, G. Microstructure evolution of hot work tool steel 5CrNiMoV throughout heating, deformation and
+quenching. Mater. Charact. 2020, 163, 110307. [CrossRef]
+2.
+Hu, Z.; Wang, K. Evolution of Dynamic Recrystallization in 5CrNiMoV Steel during Hot Forming. Adv. Mater. Sci. Eng. 2020,
+2020, 4732683. [CrossRef]
+3.
+Jiang, W.; Wang, S.; Deng, Y.; Guo, X. Microstructure stability and high temperature wear behavior of an austenite aging steel
+coating by laser cladding. Mater. Charact. 2022, 184, 111700. [CrossRef]
+4.
+Kundu, A.; Field, D.P. Inﬂuence of microstructural heterogeneity and plastic strain on geometrically necessary dislocation
+structure evolution in single-phase and two-phase alloys. Mater. Charact. 2020, 170, 110690. [CrossRef]
+5.
+Dobrzanski, L.; Mazurkiewicz, J.; Hajduczek, E. Effect of thermal treatment on structure of newly developed 47CrMoWVTiCeZr16-
+26-8 hot-work tool steel. J. Mater. Process. Technol. 2004, 157, 472–484. [CrossRef]
+6.
+Wang, H.; Li, J.; Shi, C.B.; Li, J.; He, B. Evolution of Carbides in H13 Steel in Heat Treatment Process. Mater. Trans. 2017, 58,
+152–156. [CrossRef]
+7.
+Yu, X.-S.; Wu, C.; Shi, R.-X.; Yuan, Y.-S. Microstructural evolution and mechanical properties of 55NiCrMoV7 hot-work die steel
+during quenching and tempering treatments. Adv. Manuf. 2021, 9, 520–537. [CrossRef]
+8.
+Zhou, Q.; Wu, X.; Shi, N.; Li, J.; Min, N. Microstructure evolution and kinetic analysis of DM hot-work die steels during tempering.
+Mater. Sci. Eng. A 2011, 528, 5696–5700. [CrossRef]
+9.
+Zhu, J.; Zhang, Z.; Xie, J. Improving strength and ductility of H13 die steel by pre-tempering treatment and its mechanism. Mater.
+Mater. Sci. Eng. A 2019, 752, 101–114. [CrossRef]
+10.
+Kang, C.; Liu, F.; Jiang, Z.; Zhang, H.; Ding, S. Effect of nitrogen content on solidiﬁcation behaviors and morphological
+characteristics of the precipitates in 55Cr17Mo1VN plastic die steel. Mater. Charact. 2022, 194, 112340. [CrossRef]
+11.
+Sun, J.; Wang, H.; Xu, B.; Jiang, L.; Guo, S.; Sun, X.; Yu, D.; Liu, F.; Liu, Y. Making low-alloyed steel strong and tough by designing
+a dual-phase layered structure. Acta Mater. 2022, 227, 117701. [CrossRef]
+12.
+He, B.B.; Hu, B.; Yen, H.W.; Cheng, G.J.; Wang, Z.K.; Luo, H.W.; Huang, M.X. High dislocation density-induced large ductility in
+deformed and partitioned steels. Science 2017, 357, 1029–1032. [CrossRef]
+13.
+Li, Y.; Yuan, G.; Li, L.; Kang, J.; Yan, F.; Du, P.; Raabe, D.; Wang, G. Ductile 2-GPa steels with hierarchical substructure. Science
+2023, 379, 168–173. [CrossRef] [PubMed]
+14.
+da Silva, E.P.; Xu, W.; Fojer, C.; Houbaert, Y.; Sietsma, J.; Petrov, R.H. Phase transformations during the decomposition of austenite
+below M-s in a low-carbon steel. Mater. Charact. 2014, 95, 85–93. [CrossRef]
+15.
+Shuai, J.; Zhao, J.; Lei, L.; Zeng, P.; Wu, X.; Sun, L. Characterization of crack propagation of Incoloy 800H by the combination of
+DIC and XFEM. Nucl. Eng. Des. 2020, 364, 110683. [CrossRef]
+16.
+Ivanisenko, Y.; Wunderlich, R.; Valiev, R.; Fecht, H. Annealing behaviour of nanostructured carbon steel produced by severe
+plastic deformation. Scr. Mater. 2003, 49, 947–952. [CrossRef]
+17.
+Cheng, T.; Wang, Y.; Zhao, Y.; Lv, L.; Hu, Q.; Ma, D. Effect of remelting solution heat treatment on microstructure evolution of
+nickel-based single crystal superalloy DD5. Mater. Charact. 2022, 192, 112186. [CrossRef]
+18.
+Chen, J.; Kan, Q.; Li, Q.; Yin, H. Effects of grain size on acoustic emission of nanocrystalline superelastic NiTi shape memory
+alloys during fatigue crack growth. Mater. Lett. 2019, 252, 300–303. [CrossRef]
+Metals 2023, 13, 1263
+16 of 16
+19.
+Rack, H. Role of prior austenite grain-size on the tensile ductility and fracture-toughness. Scr. Metall. 1979, 13, 577–582. [CrossRef]
+20.
+Li, J.; Zhang, C.; Liu, Y. Inﬂuence of carbides on the high-temperature tempered martensite embrittlement of martensitic
+heat-resistant steels. Mater. Mater. Sci. Eng. A 2016, 670, 256–263. [CrossRef]
+21.
+Du, N.; Liu, H.; Cao, Y.; Fu, P.; Sun, C.; Liu, H.; Li, D. In situ investigation of the fracture of primary carbides and its mechanism
+in M50 steel. Mater. Charact. 2022, 186, 111822. [CrossRef]
+22.
+Wang, K.; Guo, Z.; Sha, W.; Glicksman, M.; Rajan, K. Property predictions using microstructural modeling. Acta Mater. 2005, 53,
+3395–3402. [CrossRef]
+23.
+Niu, T.; Kang, Y.L.; Gu, H.W.; Yin, Y.Q.; Qiao, M.L. Precipitation Behavior and Its Strengthening Effect of X100 Pipeline Steel.
+J. Iron Steel Res. Int. 2010, 17, 73–78. [CrossRef]
+24.
+Gladman, T. Precipitation hardening in metals. Mater. Sci. Technol. 1999, 15, 30–36. [CrossRef]
+25.
+Cullity, B.D.; Stock, S.R. Elements of X-ray Diffraction, 3rd ed.; Addison-Wesley Publishing: Boston, MA, USA, 2001.
+26.
+Mote, V.; Purushotham, Y.; Dole, B. Williamson-Hall analysis in estimation of lattice strain in nanometer-sized ZnO particles.
+J. Theor. Appl. Phys. 2012, 6, 6. [CrossRef]
+27.
+Sarkar, A.; Bhowmik, A.; Suwas, S. Microstructural characterization of ultraﬁne-grain interstitial-free steel by X-ray diffraction
+line proﬁle analysis. Appl. Phys. A 2009, 94, 943–948. [CrossRef]
+28.
+Zhao, Y.; Horita, Z.; Langdon, T.; Zhu, Y. Evolution of defect structures during cold rolling of ultraﬁne-grained Cu and Cu-Zn
+alloys: Inﬂuence of stacking fault energy. Mater. Sci. Eng. A 2008, 474, 342–347. [CrossRef]
+29.
+Chen, J.; Lei, L.; Fang, G. Grain-size effects on the temperature-dependent elastocaloric cooling performance of polycrystalline
+NiTi alloy. J. Alloys Compd. 2022, 927, 166951. [CrossRef]
+30.
+Sun, W.; Xu, C.; Qiao, X.; Zheng, M.; Kamado, S.; Gao, N.; Starink, M. Evolution of microstructure and mechanical properties of
+an as-cast Mg-8.2Gd-3.8Y-1.0Zn-0.4Zr alloy processed by high pressure torsion. Mater. Sci. Eng. A 2017, 700, 312–320. [CrossRef]
+31.
+Zhao, Y.; Bingert, J.; Topping, T.; Sun, P.; Liao, X.; Zhu, Y.; Lavernia, E. Mechanical behavior, deformation mechanism and
+microstructure evolutions of ultraﬁne-grained Al during recovery via annealing. Mater. Sci. Eng. A 2020, 772, 138706. [CrossRef]
+32.
+Huang, W.; Zhong, H.; Lei, L.; Fang, G. Microstructure and mechanical properties of multi-pass forged and annealed 42CrMo
+steel. Mater. Sci. Eng. A 2022, 831, 142191. [CrossRef]
+33.
+Chen, J.; Yin, H.; Sun, Q. Effects of grain size on fatigue crack growth behaviors of nanocrystalline superelastic NiTi shape
+memory alloys. Acta Mater. 2020, 195, 141–150. [CrossRef]
+34.
+Wang, J.; Zhao, Y.; Zhou, W.; Zhao, Q.; Huang, S.; Zeng, W. In-situ investigation on tensile deformation and fracture behaviors of
+a new metastable beta titanium alloy. Mater. Sci. Eng. A 2021, 799, 140187. [CrossRef]
+35.
+Chen, X.; Zhao, G.; Xu, X.; Wang, Y. Effects of heat treatment on the microstructure, texture and mechanical property anisotropy
+of extruded 2196 Al-Cu-Li alloy. J. Alloys Compd. 2021, 862, 158102. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

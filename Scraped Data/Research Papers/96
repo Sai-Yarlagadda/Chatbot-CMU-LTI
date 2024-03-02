@@ -1,0 +1,1265 @@
+Citation: Kayoumu, M.; Iqbal, A.;
+Muhammad, N.; Li, X.; Li, L.; Wang,
+X.; Gui, H.; Qi, Q.; Ruan, S.; Guo, R.;
+et al. Phosphorus Availability Affects
+the Photosynthesis and Antioxidant
+System of Contrasting Low-P-
+Tolerant Cotton Genotypes.
+Antioxidants 2023, 12, 466. https://
+doi.org/10.3390/antiox12020466
+Academic Editors: Cristiano Soares,
+Fernanda Fidalgo and Anket Sharma
+Received: 28 October 2022
+Revised: 8 February 2023
+Accepted: 11 February 2023
+Published: 12 February 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+antioxidants
+Article
+Phosphorus Availability Affects the Photosynthesis and
+Antioxidant System of Contrasting Low-P-Tolerant
+Cotton Genotypes
+Mirezhatijiang Kayoumu 1,†, Asif Iqbal 1,2,3,†
+, Noor Muhammad 1,†, Xiaotong Li 1, Leilei Li 4, Xiangru Wang 1,
+Huiping Gui 1, Qian Qi 1, Sijia Ruan 1, Ruishi Guo 1, Xiling Zhang 1,*, Meizhen Song 1,2,* and Qiang Dong 1,2,*
+1
+Institute of Cotton Research of Chinese Academy of Agricultural Sciences/Zhengzhou Research Base,
+State Key Laboratory of Cotton Biology/School of Agricultural Sciences, Zhengzhou University,
+Anyang 455000, China
+2
+Western Agricultural Research Center of Chinese Academy of Agricultural Sciences, Changji 831100, China
+3
+Department of Agriculture, Hazara University, Mansehra 21120, Pakistan
+4
+Rice Cultivation Laboratory, Rice Research Institute, Sichuan Agricultural University, Chengdu 611130, China
+*
+Correspondence: hainan1571@163.com (X.Z.); songmeizhencaas@163.com (M.S.); dongqiang@caas.cn (Q.D.);
+Tel.: +86-0372-2562-308 (Q.D.)
+†
+These authors contributed equally to this work.
+Abstract: Phosphorus (P) is an essential macronutrient, and an important component of plant
+metabolism. However, little is known about the effects of low P availability on P absorption, the
+photosynthetic electron transport chain, and the antioxidant system in cotton. This study used
+cotton genotypes (sensitive FJA and DLNTDH and tolerant BX014 and LuYuan343) with contrasting
+low-P tolerance in a hydroponic experiment under 15 µM, 50 µM, and 500 µM P concentrations.
+The results showed that low P availability reduced plant development and leaf area, shoot length,
+and dry weight in FJA and DLNADH, compared to BX014 and LuYuan343. The low P availability
+decreased the gas-exchange parameters such as the net photosynthetic rate, transpiration rate, and
+stomatal conductance, and increased the intercellular CO2 concentration. Chlorophyll a ﬂuorescence
+demonstrated that the leaves’ absorption and trapped-energy ﬂux were largely steady. In contrast,
+considerable gains in absorption and trapped-energy ﬂux per reaction center resulted from decreases
+in the electron transport per reaction center under low-P conditions. In addition, low P availability
+reduced the activities of antioxidant enzymes and increased the content of malondialdehyde in the
+cotton genotypes, especially in FJA and DLNTDH. Moreover, low P availability reduced the activity
+of PEPC and generated a decline in the content of ATP and NADPH. Our research can provide a
+theoretical physiological basis for the growth and tolerance of cotton under low-P conditions.
+Keywords: cotton; P availability; photosynthesis; chlorophyll fluorescence; OJIP curves; antioxidant
+enzymes
+1. Introduction
+Phosphorus (P) is necessary for the plant metabolism of adenosine triphosphate (ATP),
+nicotinamide adenine dinucleotide phosphate hydrogen (NADPH), nucleic acids, and
+phospholipids, because they all have signiﬁcant roles to play in plant growth, production,
+signal transduction, and photosynthesis [1,2]. Therefore, the need for input of P in agri-
+culture is projected to increase, due to the requirement for increased food production and
+improved crop yields [3]. Estimates suggest that almost 30% of the world’s arable soils
+lack P and need to be fertilized with this element to increase yields [4]. Because of the
+limited availability of P in the soil and its limited transportation, plants are frequently
+vulnerable to P nutritional stress in both natural and agricultural ecosystems [1]. Moreover,
+P fertilizer has a much lower efﬁciency of usage. Typically, plants only absorb 10–25% of
+Antioxidants 2023, 12, 466. https://doi.org/10.3390/antiox12020466
+https://www.mdpi.com/journal/antioxidants
+Antioxidants 2023, 12, 466
+2 of 23
+the P fertilizer applied, whereas the residual P fertilizer leads to the deterioration of soil
+ecology [5]. Understanding the physiological and metabolic mechanisms of plants under
+different P availability to improve the utilization of P fertilizers is the key to solving the
+above problems.
+Photosynthesis is an essential process that generates energy to support plant growth.
+Components participating in photosynthetic machinery, such as photosynthetic pigments,
+photosystems, electron-transport systems, gas-exchange processes, and enzymes involved
+in carbon metabolism, are important for photosynthetic efﬁciency [6,7]. Photosynthesis
+commonly declines under P deﬁciency, since P is involved in several cellular processes,
+including energy conservation, metabolic regulation, and signal transduction [8]. P deﬁ-
+ciency can reduce the stomatal opening. With less stomatal opening, less CO2 is captured
+and reduced to triose phosphate, signiﬁcantly reducing the recycling of ATP and NADPH,
+thus inhibiting plants’ photosynthetic capacity and growth [9]. Under P deﬁciency, pho-
+tosynthesis is generally reduced, due to feedback inhibition resulting from reduced leaf
+growth. These decreases in photosynthetic activity might increase photosynthetic P-use
+efﬁciency and may also decrease the leaf-mass-per-unit leaf area. [10]. Plant species, and
+even genotypes of certain species, differ in their ability to maintain their photosynthetic
+activity under P limitation. Signiﬁcant interspeciﬁc and intraspeciﬁc variation exists for
+photosynthetic P-use efﬁciency under low P availability [11,12].
+Photosynthetic pigments play a central role in absorbing light and transmitting en-
+ergy [13]. A deﬁciency of P also decreases photosynthetic-pigment contents of the leaf,
+such as carotenoids and chlorophyll (Chl) [14]. A previous study showed that P deﬁciency
+decreases the activity of ribulose-1,5-bisphosphate carboxylase/oxygenase (Rubisco) in
+diatom (Phaeodactylum tricornutum) and cotton (Gossypium hirsutum L.) [15,16]. Most studies
+claim that a shortage of P results in a decrease in net CO2 assimilation, which, in most
+instances, results in a decrease in stomatal conductance [17]. Phosphoenolpyruvate carboxy-
+lase (PEPC) is not only a key enzyme of C4 photosynthesis; other PEPC isoforms are also
+involved in a variety of metabolic processes in both photosynthetic and non-photosynthetic
+tissues of all plants, e.g., replenishment of the tricarboxylic-acid-cycle intermediates, par-
+ticipation in pH maintenance and regulation of guard-cell movement [18]. The low P
+availability reduces photosynthetic capacity by affecting the activities of enzymes involved
+in the Calvin cycle and ATP and NADP(H) [19,20]. This also results in a decreased use of
+reduction, NADP(H), and decreased ferredoxin Fdred as a result of the decrease in Calvin-
+cycle activity. A low P availability also limits the electron transport chain (ETC), which,
+combined with an increase in the acidiﬁcation of lumen pH induced by the decrease in
+ATP production, leads to the buildup of decreased electron carriers, such as plastoquinone.
+They also play a negative role in controlling the expression of enzymes in the Calvin-cycle
+enzyme and components of photosynthesis and ETC [21].
+The chlorophyll-ﬂuorescence (ChlF) parameters can change, which reﬂects how light
+energy is absorbed, used, transmitted, and dissipated by photosystem I (PSI) and photosys-
+tem II (PSII) [22]. The multiple reduction stages of the electron transport chain are reﬂected
+in the ChlF OJIP transient [23]. Previous studies have shown that the latent P deﬁciency
+can be revealed by using ChlF, which causes a change in the OJIP transient to form around
+the I-step [8]. Recently, a correlation was identiﬁed between the plant’s bioactive P pool
+and the appearance of the I-phase OJIP transient [8].
+Chloroplasts convert light energy to energy for chemical bonds. Light absorption by
+the Chl molecules of PSI and PSII triggers a sequence of redox reactions along the thylakoid
+membrane. These reactions result in the oxidation of water, reduction of NADP+ to NADPH,
+and formation of a proton gradient across the thylakoid membrane. Reactive oxygen species
+(ROS) can be interconverted by interaction with redox-active compounds of the chloroplast,
+and ROS are produced both via O2-mediated primary ROS-generation mechanisms and
+ROS-mediated interconversion reactions [24]. ROS are unfavorable for chloroplast func-
+tions, because ROS cause oxidative damage by reacting with biomolecules [25]. Similar
+to other abiotic stresses, P deﬁciency inevitably leads to an increase in the production
+Antioxidants 2023, 12, 466
+3 of 23
+of ROS, a by-product of photosynthesis. Through the feedback-inhibition mechanism of
+sugar accumulation, the utilization of the ETC is reduced [26]. Plants have developed
+various defensive and remedial measures against this photooxidative stress, as well as
+major modiﬁcations to chloroplast biochemistry, such as highly regulated enzyme and
+non-enzyme mechanisms, including antioxidant enzymes, such as superoxide dismutase
+(SOD), peroxidase (POD) and catalase (CAT), to eliminate ROS and maintain the balance
+between ROS production and elimination [27]. The activity of these antioxidant enzymes
+will decrease under low-P-availability conditions [26,28]. Malondialdehyde (MDA) is a
+biomarker of lipid peroxidation found in plants or isolated chloroplasts, reﬂecting photoox-
+idative damage to the lipids in the chloroplast membrane. It was found that the content of
+MDA increased under low-P conditions [29].
+Cotton is a vital crop for the global economy that produces natural ﬁber for the
+textile industry. The agronomic properties of cotton are dramatically inﬂuenced by the
+low P availability. Although research on photosynthesis has been conducted in various
+plants [30], there have been few studies on the physiological mechanisms that affect the
+ETC in cotton, challenged by low P availability. In this study, even a slight shortage
+of P had a noticeable impact on photosynthetic electron transport. Low P availability
+affected the I-phase in the ETC, based on a study of ChlF OJIP transients. It is possible
+to use the change in ﬂuorescence-transient curvature to measure the bioactive amount
+of P in plants. The objectives of this study were as follows: (1) To examine the effect of
+low P availability on growth parameters, antioxidant-enzymatic activities, photosynthetic
+parameters, Chl content, ChlF parameters, PEPC activity, and the contents of ATP and
+NADP(H) among different low-P-tolerant genotypes. (2) To explore the correlation between
+physiological indexes and PPUE under low P availability. The results of this study will
+help to better understand the possible inﬂuence of the mechanism of low P availability
+on cotton growth and development, photosynthesis, and antioxidant system, and provide
+a theoretical and physiological basis for the growth and tolerance of cotton under low-P-
+availability conditions.
+2. Materials and Methods
+2.1. Materials and Growth Conditions of Plants
+Based on our unpublished data, four cotton genotypes were used, including BX014
+and LuYuan343 (LP tolerant), FJA and DLNTDH (LP sensitive). Hydroponically cultured
+plants were grown at the Cotton Research Institute of the Chinese Academy of Agricultural
+Sciences, Anyang, China.
+Healthy seeds were surface sterilized with ethanol (70% v/v) for 10 min and disin-
+fected with 3% sodium hypochlorite (v/v) for 20 min. The seeds were then rinsed ﬁve times
+with distilled water. Both cotton genotypes were incubated in a growth chamber in a com-
+bination of sand and vermiculite (w/w). This study was conducted using nutrient-solution
+hydroponics. The seedlings were transplanted into 8 L plastic boxes after germination. The
+plants were grown under natural light in a greenhouse at 25/20 ◦C (day/night) tempera-
+tures and 60% humidity. Each genotype was sown in seven replicates for each P treatment,
+each plant as a repeat. The seedlings were treated with various nutrient supplies at the
+two true-leaf stages. After transplantation, the seedlings were provided with 1/2-strength
+Hoagland solution for one week, followed by full-strength Hoagland solution until the
+end of the experiment. The plants were provided with 100 mL of dH2O daily, to replenish
+the water lost by transpiration. Each plant’s location was changed randomly each week to
+counteract the impact of the positioning [31].
+The conventional nutrient solution was as follows: 0.1 mmol/L EDTA·Fe·Na, 1 mmol/L
+MgSO4·7H2O, 2 µMol/L ZnSO4·7H2O, 46 µMol/L H3BO3, 4 µMol/L MnCl2·4H2O, 0.3 µmol/L
+CuSO4·5H2O, 0.12 µMol/L (NH4)6Mo7O24·4H2O, 2.5 mmol/L Ca (NO3)2·4H2O, and com-
+binations of three different P concentrations, including 15 µM and 50 µM (low P) and
+500 µM (normal P), supplied as KH2PO4 in hydroponic culture. The nutrient solutions were
+continuously aerated with an electric pump, the airflow rate was 2 L/min, and the pH was
+Antioxidants 2023, 12, 466
+4 of 23
+maintained at 5.8 ± 0.5. The nutrient solutions were changed every seven days and aerated.
+The whole test period was 28 days, and the plants showed obvious signs of P deficiency;
+seven plants from each treatment were collected for further physiological measurements.
+2.2. Measurement Traits and Methods
+2.2.1. Measurements of the Leaf Area and Gas-Exchange Parameters
+The gas exchanges were measured from 9:00 to 11:00, using an LI-6800 portable photo-
+synthetic system (LI-COR, Lincoln, NE, USA) equipped with a CO2 control module and a
+red–blue LED-light source. The photosynthetic-photon-ﬂux density of the leaf chamber
+was set to 700 µMol m–2 s–1. The airﬂow rate in the leaf chamber was set as 700 µMol s–1.
+The concentration of CO2 in the reference chamber was set at 400 µMol mol–1 for the
+measurements. The net photosynthetic rate (Pn), stomatal conductance (Gs), transpiration
+rate (E), intercellular CO2 concentration (Ci), and CO2 concentration in the leaf chamber
+(Ca) were simultaneously recorded from seven seedlings per treatment.
+The leaf used to measure the gas-exchange parameters were collected, promptly
+immersed in N2, and stored at −80 ◦C. The leaves were positioned with the main veins
+cut out on A4 paper, and a 4 × 4 cm piece of green cardboard was added as a control.
+Leaf images were obtained with a digital camera (7D, Canon, Inc., Tokyo, Japan), and
+image software (Media Cybernetics, Silver Spring, MD, USA) was utilized to measure the
+leaf area.
+2.2.2. Chlorophyl-a-Fluorescence Measurements
+The youngest fully developed leaves were used to collect ChlF transients using a
+Handy PEA chlorophyll ﬂuorometer (Hansatech Instruments, King’s Lynn, UK). After
+30 min of dark adaptation, the leaves were continuously illuminated with 3000 µMol
+(photons) m−2 s−1 of red light to induce a fast ChlF curve. The ﬂuorescence transients were
+recorded for 10 s, using a PIN photodiode. The graphic representations of the transients
+were all double-normalized.
+The OJIP ﬂuorescence-induction kinetics were recorded using a Handy Plant Efﬁciency
+Analyser (PEA; Hansatech Instruments). All the measurements were conducted in triplicate.
+The OJIP-curve red-light treatment was applied, to create 3000 µMol (photons) m−2 s−1
+for 2 s. F0, FK, FJ, and FI represent the ﬂuorescence intensity at 20 µs, 300 µs, 2 ms, and
+30 ms, respectively. We also used the fast-ﬂuorescence-curve OJIP to calculate the following:
+Vt = (Ft − Fo)/(Fm − Fo) for O-P standardization, WOJ = (Ft − Fo)/(FJ − Fo) for O-J
+standardization, and WOI = (Ft − Fo)/(FI − Fo) for O-I standardization. The descriptions
+of the parameters and their calculation formulae are shown in Table S1.
+2.2.3. Measurement of Malondialdehyde and Assays of Antioxidant Enzymes
+The content of MDA was determined by the thiobarbituric-acid reaction [32]. After
+the samples were weighed and ground to a powder in liquid nitrogen, a 0.5 g sample
+of frozen leaves was used to determine the activity of antioxidant enzymes. Moreover,
+10 mL of 50 mmol·L−1 sodium phosphate buffer (pH 7.8) was added, which contained 1%
+of polyvinylpyrrolidone (PVP), 0.2 mmol·L−1 of EDTA, and 10 mmol·L−1 of magnesium
+chloride, and was then centrifuged at 10,000× g for 15 min at 4 ◦C as previously described,
+with modiﬁcations [33]. The activities of SOD (20220916), POD (20220929), CAT (20220902),
+and the content of MDA (20220915) were detected spectrophotometrically using Solarbio
+assay kits, following the manufacturer’s instructions (Solarbio, Beijing, China).
+2.2.4. Determination of ATP, NADP(H), and the Activity of Phosphopyruvate Carboxylase
+A total of 0.1 g of fresh samples was homogenized in TEA-EDTA-saturated phenol
+(phenol-TEA; 0.6% triethylamine-phosphoric acid, pH 8.0 and 1 mmol L−1 EDTA, added to
+saturation in the phenol). The homogenate was then assayed spectrophotometrically, using
+the ATP (20220921) content assay kit (Solarbio, Beijing, China), following the manufacturer’s
+instructions. A total of 0.1 g of fresh leaves were homogenized with a pestle with 1 mL of
+Antioxidants 2023, 12, 466
+5 of 23
+50 mM Tris–HCl (pH 8.0). The homogenate was centrifuged at 8000× g for 15 min, at 4 ◦C.
+The activity of PEPC (20220929) and the content of NADP(H) (20220915) were determined
+with detection kits (Solarbio, Bejing, China), according to the manufacturer’s instructions.
+2.2.5. Measurements of P Concentrations and Use of Efﬁciency Traits
+After they had been ground to a ﬁne powder, dried samples of the leaves were
+weighed to approximately 0.12 g each, after digestion with H2SO4-H2O2 at 360 ◦C for
+3 h. The concentrations of P were measured using a Bran + Luebbe Continuous-Flow
+AutoAnalyzer III (AA3; Bran + Luebbe GmbH, Norderstedt, Germany). The deﬁnitions of
+P-use efﬁciency (PUE) for the cotton genotypes grown at various P concentrations were
+also included, and calculated as previously described [34], with minor modiﬁcations:
+P accumulation (PA) = the P concentration determined by multiplying the plant
+dry weight;
+P-uptake efﬁciency (PUtE) = the plant dry weight divided by P concentration;
+P-use efﬁciency (PUE) = PA divided by dry weight;
+Photosynthesis-P-use efﬁciency (PPUE) = the ratio of the maximum photosynthetic
+rate per unit P.
+2.2.6. Determination of the Contents of Chlorophyll and Carotenoids
+The pigments were extracted from the leaves, and 0.5 g of the uppermost unfolded
+leaf was weighed, cut into pieces, and placed in 15 mL of a mixture of acetone and ethanol
+(v/v; 1:1). The leaf was kept at room temperature (25 ◦C) and incubated in the dark for 24 h.
+A UV–Vis spectrophotometer (UV-1280; Shimadzu, Kyoto, Japan) was used to determine
+the absorbance at 663, 645, and 470 nm. In addition, Chl a and b were used to compute the
+total Chl and the Chl a/b ratio [35], and the total carotenoid concentration was determined
+as previously described [35].
+2.2.7. Statistical Analysis
+All the data were analyzed for normality (Kolmogorov–Smirnov test) and tested for
+homogeneity of variance using SPSS 24.0 (SPSS, Chicago, IL, USA). A two-way analysis
+of variance (ANOVA) was used to evaluate the data, and the means were separated using
+a Tukey’s test at 5% level of signiﬁcance. The morphophysiological traits were used to
+calculate the correlation of relationships in Microsoft Excel 2021 (Redmond, WA, USA). The
+ﬁgures were drawn with GraphPad Prism 9.0 (GraphPad, San Diego, CA, USA). All the
+data were expressed as the mean ± standard error (SE) of seven replicates; *, **, and ***
+represent p ≤ 0.05, 0.01, 0.001, respectively, and ns stands for not signiﬁcant.
+3. Results
+3.1. Gas-Exchange Parameters among the Cotton Genotypes in Response to Differences in the
+Availability of P
+Different treatments of P dramatically impacted the parameters of leaf exchange of
+gases (Figure 1). Our results showed that the values for Pn, Gs, and E decreased in parallel
+with the level of P supplied (Figure 1). However, the extent of reduction differed among
+the cotton genotypes, with the responses of FJA and DLNTDH slightly lower than those of
+BX014 and LuYuan343 under conditions of low P (Figure 1). The Pn of BX014, LuYuan343,
+FJA, and DLNTDH were reduced by 52.47%, 56.16%, 72.47%, and 71.26%, respectively,
+under conditions of 15 µM P, and by 31.68%, 37.45%, 47.0% and 46.56%, respectively, under
+conditions of 50 µM P, compared with those of 500 µM P (Figure 1A, Table S3). The trend in
+the changes in E was similar to that in the Pn, and the effect of the low conditions of P was
+reduced (Figure 1D, Table S3). With the increase in P concentration in cotton leaves, the
+Ci/Ca ratio decreases, but there is no signiﬁcant difference among genotypes (Figure 1C).
+Antioxidants 2023, 12, 466
+6 of 23
+respectively, under conditions of 15 µM P, and by 31.68%, 37.45%, 47.0% and 46.56%, 
+respectively, under conditions of 50 µM P, compared with those of 500 µM P (Figure 1A, 
+Table S3). The trend in the changes in E was similar to that in the Pn, and the effect of the 
+low conditions of P was reduced (Figure 1D, Table S3). With the increase in P 
+concentration in cotton leaves, the Ci/Ca ratio decreases, but there is no significant 
+difference among genotypes (Figure 1C). 
+ 
+Figure 1. Effects of different P treatments on gas-exchange parameters. (A) Pn (net photosynthesis 
+rate), (B) Ci (intercellular CO2 concentration), (C) Ci/Ca (ratio of intercellular-ambient-CO2 
+concentrations), and (D) E (transpiration-rate) content in the cotton genotypes, fully expanded 
+barley leaves. The results are expressed as means ± SE (n = 7). Statistically significant changes are 
+indicated by different letters, using the two-way ANOVA and multiple-comparison test (p ≤ 0.05). 
+p-values of the ANOVAs of genotypes (G), phosphorus level (P), and their interaction (G×P) are 
+indicated as ns, not significant; *: p < 0.05, **: p < 0.01, ***: p < 0.001. 
+Notably, compared with conditions of 15 µM P, the Ci in BX014 and LuYuan343 
+decreased by 19.56%, 2.18%, 10.47%, and 18.22% in conditions of 50 µM and 500 µM P, 
+respectively, but there was no difference among the different P treatments in FJA and 
+DLNTDH (Figure 1D, Table S3). As expected, there was no discernible difference in gas-
+exchange parameters between these genotypes under 500 µM P (Figure 1). 
+3.2. Difference in the Growth Parameters among Cotton Genotypes in Response to Different 
+Availabilities of P  
+Figure 1. Effects of different P treatments on gas-exchange parameters. (A) Pn (net photosynthesis
+rate), (B) Ci (intercellular CO2 concentration), (C) Ci/Ca (ratio of intercellular-ambient-CO2 concen-
+trations), and (D) E (transpiration-rate) content in the cotton genotypes, fully expanded barley leaves.
+The results are expressed as means ± SE (n = 7). Statistically signiﬁcant changes are indicated by
+different letters, using the two-way ANOVA and multiple-comparison test (p ≤ 0.05). p-values of the
+ANOVAs of genotypes (G), phosphorus level (P), and their interaction (G×P) are indicated as ns, not
+signiﬁcant; *: p < 0.05, **: p < 0.01, ***: p < 0.001.
+Notably, compared with conditions of 15 µM P, the Ci in BX014 and LuYuan343
+decreased by 19.56%, 2.18%, 10.47%, and 18.22% in conditions of 50 µM and 500 µM P,
+respectively, but there was no difference among the different P treatments in FJA and
+DLNTDH (Figure 1D, Table S3). As expected, there was no discernible difference in gas-
+exchange parameters between these genotypes under 500 µM P (Figure 1).
+3.2. Difference in the Growth Parameters among Cotton Genotypes in Response to Different
+Availabilities of P
+The P treatments differentially affected the development of cotton seedlings (Figure 2A).
+With the decrease in P supply, the plant height and dry weight were drastically reduced.
+However, the degree of reduction varied in different genotypes (Figure 2A).
+Compared with 500 µM P, the shoot length of BX014 and LuYuan343 decreased by
+29.41% and 28.31%, respectively, under 15 µM P, and by 17.18% and 14.07%, respectively,
+under 50 µM P (Figure 2B, Table S2). The shoot length decreased by 40.71% and 44.71%,
+respectively, under 15 µM P, and by 22.56% and 21.32%, respectively, under 50 µM P in
+FJA and DLNTDH, compared with the 500 µM conditions of P (Figure 2B, Table S2). The
+dry weight decreased by 50.59% and 47.90%, respectively, under15 µM P, and by 23.81%
+and 22.16%, respectively, under 50 µM P in BX014 and LuYuan343, compared with 500 µM
+P (Figure 2C, Table S2). The dry weight of FJA and DLNTDH decreased by 71.69% and
+71.01%, respectively, in 15 µM conditions of P, and by 40.36% and 42.01%, respectively,
+under 50 µM conditions of P, as compared with 500 µM conditions of P, (Figure 2C, Table S2).
+Antioxidants 2023, 12, 466
+7 of 23
+In particular, the shoot length and dry weight of the LP-sensitive genotypes (FJA and
+DLNTDH) decreased considerably more than those of the two LP-tolerant genotypes
+(BX014 and LuYuan343) in both conditions of low P.
+respectively, under 15 µM P, and by 22.56% and 21.32%, respectively, under 50 µM P in 
+FJA and DLNTDH, compared with the 500 µM conditions of P (Figure 2B, Table S2). The 
+dry weight decreased by 50.59% and 47.90%, respectively, under15 µM P, and by 23.81% 
+and 22.16%, respectively, under 50 µM P in BX014 and LuYuan343, compared with 500 
+µM P (Figure 2C, Table S2). The dry weight of FJA and DLNTDH decreased by 71.69% 
+and 71.01%, respectively, in 15 µM conditions of P, and by 40.36% and 42.01%, 
+respectively, under 50 µM conditions of P, as compared with 500 µM conditions of P, 
+(Figure 2C, Table S2). In particular, the shoot length and dry weight of the LP-sensitive 
+genotypes (FJA and DLNTDH) decreased considerably more than those of the two LP-
+tolerant genotypes (BX014 and LuYuan343) in both conditions of low P. 
+ 
+Figure 2. (A) Phenotypes of varieties with different P efficiency under different P treatments; (B) 
+shoot length, and (C) dry weight at 28 days after various P treatments. The results are expressed as 
+means ± SE (n = 7). Statistically significant changes are indicated by different letters using the two-
+way ANOVA and multiple-comparison test (p ≤ 0.05). p-values of the ANOVAs of genotypes (G), 
+phosphorus level (P), and their interaction (G×P) are indicated as ns, not significant; ***: p < 0.001. 
+3.3. Physiological Differences among Cotton Genotypes in Response to Different P Availability 
+There were distinct differences in PA, PC, PUE, and PUtE leaf area, and in PPUE 
+among the four genotypes, in response to P treatment (Figure 3). In comparison with the 
+500 µM condition of P, all the genotypes that were treated with 15 µM and 50 µM P 
+accumulated lower concentrations of P (Figures 3A and S1A). Overall, there was little 
+genotypic variation regarding P concentration. The genotypes that were tolerant to low 
+LP had significantly (p ≤ 0.05) higher parameters than the LP-sensitive genotypes under 
+the 15 µM and 50 µM conditions of P (Figure 2A,B). In contrast, in comparison with 500 
+µM P, the PUE increased 5.24-, 5.57-, 2.31-, and 2.12-fold at 15 µM P, and 1.52-, 1.63-, 1.09- 
+and 1.02- fold under 50 µM P, in BX014, LuYuan343, FJA, and DLNTDH, respectively 
+(Figure 3B, Table S2). Simultaneously, the PUtE increased 11.58-, 11.80-, 10.59-, and 9.80- 
+fold under 15 µM conditions of P, and 2.31-, 2.41-, 2.52-, and 2.31-fold under 50 µM 
+Figure 2. (A) Phenotypes of varieties with different P efﬁciency under different P treatments; (B) shoot
+length, and (C) dry weight at 28 days after various P treatments. The results are expressed as
+means ± SE (n = 7). Statistically signiﬁcant changes are indicated by different letters using the
+two-way ANOVA and multiple-comparison test (p ≤ 0.05). p-values of the ANOVAs of genotypes (G),
+phosphorus level (P), and their interaction (G×P) are indicated as ns, not signiﬁcant; ***: p < 0.001.
+3.3. Physiological Differences among Cotton Genotypes in Response to Different P Availability
+There were distinct differences in PA, PC, PUE, and PUtE leaf area, and in PPUE
+among the four genotypes, in response to P treatment (Figure 3). In comparison with
+the 500 µM condition of P, all the genotypes that were treated with 15 µM and 50 µM
+P accumulated lower concentrations of P (Figures 3A and S1A). Overall, there was little
+genotypic variation regarding P concentration. The genotypes that were tolerant to low LP
+had signiﬁcantly (p ≤ 0.05) higher parameters than the LP-sensitive genotypes under the
+15 µM and 50 µM conditions of P (Figure 2A,B). In contrast, in comparison with 500 µM P,
+the PUE increased 5.24-, 5.57-, 2.31-, and 2.12-fold at 15 µM P, and 1.52-, 1.63-, 1.09- and
+1.02- fold under 50 µM P, in BX014, LuYuan343, FJA, and DLNTDH, respectively (Figure 3B,
+Table S2). Simultaneously, the PUtE increased 11.58-, 11.80-, 10.59-, and 9.80- fold under
+15 µM conditions of P, and 2.31-, 2.41-, 2.52-, and 2.31-fold under 50 µM conditions of P in
+BX014, LuYuan343, FJA, and DLNTDH, respectively, as compared with 500 µM conditions
+of P (Figure 3C, Table S2).
+Antioxidants 2023, 12, 466
+8 of 23
+Antioxidants 2023, 12, 466 
+8 o
+ 
+conditions of P in BX014, LuYuan343, FJA, and DLNTDH, respectively, as compared w
+500 µM conditions of P (Figure 3C, Table S2). 
+ 
+Figure 3. Changes in (A) P concentration, (B) PUE (P-use efficiency), (C) PUtE (P-uptake efficien
+and (D) PPUE (Photosynthetic P-use efficiency) in cotton, under different treatments. The res
+are expressed as means ± SE (n = 7). Statistically significant changes are indicated by different let
+using the two-way ANOVA and multiple-comparison test (p ≤ 0.05). p-values of the ANOVA
+genotypes (G), phosphorus level (P), and their interaction (G×P) are indicated as ns, not signific
+*: p < 0.05, ***: p < 0.001. 
+3.4. Contents of Chlorophyll Pigments among Cotton Genotypes in Response to Different 
+Availabilities of P 
+Both the 15 and 50 µM conditions of P reduced the leaf area of all the cot
+genotypes (Figure S1B, Table S2). Compared with FJA, DLNTDH, BX014, and LuYuan3
+the leaf areas were reduced less under the 15 µM and 50 µM conditions of P (Figure S
+Table S2). As shown in Figure 2E, the leaf area decreased by 34.52%, 34.59%, 47.64%, 
+46.62% under the 15 µM conditions of P and by 20.30%, 19.54%, 29.51%, and 29.76% un
+the 50 µM conditions of P in BX014, LuYuan343, FJA, and DLNTDH, respectiv
+compared with the conditions of 500 µM P (Figure S1B, Table S1). In contrast, the val
+for the PPUE of BX014, LuYuan343, FJA, and DLNTDH increased 6.91-, 6.18-, 4.96-, 
+4.70-fold, respectively, under the 15 µM conditions of P, and 1.37-, 1.23-, 1.23- and 1
+fold, respectively, under the 50 µM conditions of P, compared with those under conditi
+of 500 µM P (Figure 3D, Table S2). However, there was no variation in the PPUE am
+these genotypes when the conditions were 50 µM and 500 µM P. 
+The contents of Chl a in BX014, LuYuan343, FJA, and DLNTDH decreased by 50.9
+49.63%, 29.73%, and 27.11%, respectively, under conditions of 15 µM, and by 29.6
+32.61%, 6.76%, and 11.11%, respectively, under conditions of 50 µM P, compared w
+Figure 3. Changes in (A) P concentration, (B) PUE (P-use efﬁciency), (C) PUtE (P-uptake efﬁciency),
+and (D) PPUE (Photosynthetic P-use efﬁciency) in cotton, under different treatments. The results are
+expressed as means ± SE (n = 7). Statistically signiﬁcant changes are indicated by different letters
+using the two-way ANOVA and multiple-comparison test (p ≤ 0.05). p-values of the ANOVAs of
+genotypes (G), phosphorus level (P), and their interaction (G×P) are indicated as ns, not signiﬁcant;
+*: p < 0.05, ***: p < 0.001.
+3.4. Contents of Chlorophyll Pigments among Cotton Genotypes in Response to Different
+Availabilities of P
+Both the 15 and 50 µM conditions of P reduced the leaf area of all the cotton genotypes
+(Figure S1B, Table S2). Compared with FJA, DLNTDH, BX014, and LuYuan343, the leaf
+areas were reduced less under the 15 µM and 50 µM conditions of P (Figure S1B, Table S2).
+As shown in Figure 2, the leaf area decreased by 34.52%, 34.59%, 47.64%, and 46.62% under
+the 15 µM conditions of P and by 20.30%, 19.54%, 29.51%, and 29.76% under the 50 µM
+conditions of P in BX014, LuYuan343, FJA, and DLNTDH, respectively, compared with the
+conditions of 500 µM P (Figure S1B, Table S1). In contrast, the values for the PPUE of BX014,
+LuYuan343, FJA, and DLNTDH increased 6.91-, 6.18-, 4.96-, and 4.70-fold, respectively,
+under the 15 µM conditions of P, and 1.37-, 1.23-, 1.23- and 1.24-fold, respectively, under
+the 50 µM conditions of P, compared with those under conditions of 500 µM P (Figure 3D,
+Table S2). However, there was no variation in the PPUE among these genotypes when the
+conditions were 50 µM and 500 µM P.
+The contents of Chl a in BX014, LuYuan343, FJA, and DLNTDH decreased by 50.99%,
+49.63%, 29.73%, and 27.11%, respectively, under conditions of 15 µM, and by 29.62%,
+32.61%, 6.76%, and 11.11%, respectively, under conditions of 50 µM P, compared with
+those of 500 µM P (Figure S2A, Table S3). The contents of Chl b in these genotypes under
+conditions of 15 µM and 50 µM P also decreased, compared with the conditions of 500 µM P.
+Notably, the contents of Chl a and b among these genotypes did not differ under conditions
+of 500 µM P (Figure S2A,B).
+Antioxidants 2023, 12, 466
+9 of 23
+Simultaneously, a reduction in Chl, carotenoids, and Chl /carotenoid in all the geno-
+types was observed under 15 µM and 50 µM P, compared with those at 500 µM. However,
+the ratio of Chl a/b among these genotypes did not differ from each other under all the P
+treatments (Figure S2C–F). Notably, the contents of pigments indicators, except for Chl a/b
+in the two LP-tolerant genotypes BX014 and LuYuan343, were greater than those of the two
+LP-sensitive genotypes FJA and DLNTDH by a substantial margin, under low conditions
+of 15 µM and 50 µM P (Figure S2).
+3.5. Genotypic Variation in Antioxidant Activities and the Content of MDA in Response to
+Different Availabilities of P
+In our study, low conditions of P reduced the activities of CAT, POD, and SOD in
+the cotton leaves (Figure 4). The activity of SOD, BX014, LuYuan343, FJA, and DLNTDH
+decreased by 51.56%, 52.38%, 24.91%, and 24.36%, respectively, under conditions of 15 µM
+P, and by 24.91%, 24.36%, 12.55%, and 14.22%, respectively, under conditions of 50 M
+P, compared with those of 500µM P (Figure 4A, Table S4). The activity of POD in the
+different P treatments showed a similar trend, which was a decrease, with a reduction in
+the concentration of P (Figure 4B). In comparison with the conditions of 500 µM P, the
+activity of CAT decreased remarkably, by 27.29%, 23.24%, 48.24%, and 39.08% in BX014,
+LuYuan343, FJA, and DLNTDH, respectively, under conditions of 15 µM P, but there was
+no variation or difference among these genotypes under conditions of 50 µM P (Figure 4C,
+Table S4). However, compared with conditions of 500 µM P, those at 15 µM increased the
+content of MDA by 28.41%, 35.66%, 78.49%, and 80.47% in BX014, LuYuan343, FJA, and
+DLNTDH, respectively, while conditions of 50 µM P also increased it, by 31.10% and 43.04%
+for FJA and DLNTDH, respectively; however, BX014 and LuYuan343 did not differ in the
+conditions of 50 µM and 500 µM P (Figure 4D, Table S4).
+Antioxidants 2023, 12, 466 
+9 o
+ 
+those of 500µM P (Figure S2A, Table S3). The contents of Chl b in these genotypes un
+conditions of 15 µM and 50 µM P also decreased, compared with the conditions of 500 
+P. Notably, the contents of Chl a and b among these genotypes did not differ un
+conditions of 500 µM P (Figure S2A,B).  
+Simultaneously, a reduction in Chl, carotenoids, and Chl /carotenoid in all 
+genotypes was observed under 15 µM and 50 µM P, compared with those at 500 µ
+However, the ratio of Chl a/b among these genotypes did not differ from each other un
+all the P treatments (Figure S2C–F). Notably, the contents of pigments indicators, exc
+for Chl a/b in the two LP-tolerant genotypes BX014 and LuYuan343, were greater th
+those of the two LP-sensitive genotypes FJA and DLNTDH by a substantial margin, un
+low conditions of 15 µM and 50 µM P (Figure S2). 
+3.5. Genotypic Variation in Antioxidant Activities and the Content of MDA in Response to 
+Different Availabilities of P 
+In our study, low conditions of P reduced the activities of CAT, POD, and SOD in
+cotton leaves (Figure 4). The activity of SOD, BX014, LuYuan343, FJA, and DLNT
+decreased by 51.56%, 52.38%, 24.91%, and 24.36%, respectively, under conditions of
+µM P, and by 24.91%, 24.36%, 12.55%, and 14.22%, respectively, under conditions of 50
+P, compared with those of 500µM P (Figure 4A, Table S4). The activity of POD in 
+different P treatments showed a similar trend, which was a decrease, with a reduction
+the concentration of P (Figure 4B). In comparison with the conditions of 500 µM P, 
+activity of CAT decreased remarkably, by 27.29%, 23.24%, 48.24%, and 39.08% in BX0
+LuYuan343, FJA, and DLNTDH, respectively, under conditions of 15 µM P, but there w
+no variation or difference among these genotypes under conditions of 50 µM P (Fig
+4C, Table S4). However, compared with conditions of 500 µM P, those at 15 µM increa
+the content of MDA by 28.41%, 35.66%, 78.49%, and 80.47% in BX014, LuYuan343, F
+and DLNTDH, respectively, while conditions of 50 µM P also increased it, by 31.10% a
+43.04% for FJA and DLNTDH, respectively; however, BX014 and LuYuan343 did 
+differ in the conditions of 50 µM and 500 µM P (Figure 4D, Table S4). 
+ 
+Figure 4. Various P treatments’ effects on antioxidant substances. (A) SOD (superoxide-dismutase)
+activity, (B) POD (peroxidase activity, (C) CAT (catalase) activity, and (D) MDA (malondialdehyde)
+content in the cotton genotypes, fully expanded barley leaves. The results are expressed as means ± SE
+(n = 7). Statistically signiﬁcant changes are indicated by different letters, using the two-way ANOVA
+and multiple-comparison test (p ≤ 0.05). p-values of the ANOVAs of genotypes (G), phosphorus level
+(P), and their interaction (G×P) are indicated as ns, not signiﬁcant; **: p < 0.01, ***: p < 0.001.
+Antioxidants 2023, 12, 466
+10 of 23
+3.6. The Contents of ATP and NADP(H) and PEPC Activity among Cotton Genotypes in Response
+to Different Availabilities of P
+The results showed that the content of ATP in BX014, LuYuan343, FJA, and DLNTDH
+decreased by 60.85%, 58.54%, 71.70%, and 73.42%, respectively, under conditions of 15 µM
+P, and by 32.62%, 33.50%, 50.02%, and 51.30%, respectively, under conditions of 50 µM P,
+(Figure 5A, Table S4). Similarly, the low conditions of P decreased the content of NADP+ in
+the LP-tolerant genotypes, compared with those of the genotypes subjected to conditions
+of 500 µM P (Figure 5B).
+Figure 4. Various P treatments’ effects on antioxidant substances. (A) SOD (superoxide-dismutase) 
+activity, (B) POD (peroxidase activity, (C) CAT (catalase) activity, and (D) MDA (malondialdehyde) 
+content in the cotton genotypes, fully expanded barley leaves. The results are expressed as means± 
+SE (n = 7). Statistically significant changes are indicated by different letters, using the two-way 
+ANOVA and multiple-comparison test (p ≤ 0.05). p-values of the ANOVAs of genotypes (G), 
+phosphorus level (P), and their interaction (G×P) are indicated as ns, not significant; **: p < 0.01, ***: 
+p < 0.001. 
+3.6. The contents of ATP and NADP(H) and PEPC Activity among Cotton Genotypes in 
+Response to Different Availabilities of P 
+The results showed that the content of ATP in BX014, LuYuan343, FJA, and DLNTDH 
+decreased by 60.85%, 58.54%, 71.70%, and 73.42%, respectively, under conditions of 15 
+µM P, and by 32.62%, 33.50%, 50.02%, and 51.30%, respectively, under conditions of 50 
+µM P, (Figure 5A, Table S4). Similarly, the low conditions of P decreased the content of 
+NADP+ in the LP-tolerant genotypes, compared with those of the genotypes subjected to 
+conditions of 500 µM P (Figure 5B).  
+ 
+Figure 5. Effects of different P treatments on the availability and quantity of photosynthesis-related 
+enzymes. (A) ATP (adenosine-triphosphate) content, (B) NADP+ (nicotinamide-adenine- 
+dinucleotide-phosphate) content, (C) NADPH/NADP+, and (D) PEPC (phosphopyruvate-
+carboxylase) activity in the cotton genotypes, fully expanded barley leaves. The results are 
+expressed as means ± SE (n = 7). Statistically significant changes are indicated by different letters, 
+using the two-way ANOVA and multiple-comparison test (p ≤ 0.05). p-values of the ANOVAs of 
+genotypes (G), phosphorus level (P), and their interaction (G×P) are indicated as ns, not significant; 
+*: p < 0.05, **: p < 0.01, ***: p < 0.001. 
+3.7. The Fluorescence-Increase-Kinetics OJIP Curves among Cotton Genotypes in Response to 
+Different Availabilities of P 
+The ratio of NADPH/NADP+ in BX014, LuYuan343, FJA, and DLNTDH increased by 
+31.75%, 34.07%, 44.28%, and 62.21%, respectively, under conditions of 15 µM P, and by 
+15.98%, 21.44%, 13.06%, and 18.62%, respectively, under conditions of 50 M P, compared 
+Figure 5. Effects of different P treatments on the availability and quantity of photosynthesis-related en-
+zymes. (A) ATP (adenosine-triphosphate) content, (B) NADP+ (nicotinamide-adenine- dinucleotide-
+phosphate) content, (C) NADPH/NADP+, and (D) PEPC (phosphopyruvate-carboxylase) activity in
+the cotton genotypes, fully expanded barley leaves. The results are expressed as means ± SE (n = 7).
+Statistically signiﬁcant changes are indicated by different letters, using the two-way ANOVA and
+multiple-comparison test (p ≤ 0.05). p-values of the ANOVAs of genotypes (G), phosphorus level (P),
+and their interaction (G×P) are indicated as ns, not signiﬁcant; *: p < 0.05, **: p < 0.01, ***: p < 0.001.
+3.7. The Fluorescence-Increase-Kinetics OJIP Curves among Cotton Genotypes in Response to
+Different Availabilities of P
+The ratio of NADPH/NADP+ in BX014, LuYuan343, FJA, and DLNTDH increased
+by 31.75%, 34.07%, 44.28%, and 62.21%, respectively, under conditions of 15 µM P, and by
+15.98%, 21.44%, 13.06%, and 18.62%, respectively, under conditions of 50 M P, compared
+with those of 500 µM P (Figure 5C). Compared with conditions of 500 µM P, the activity of
+PEPC decreased dramatically, by 36.58%, 35.72%, 54.22%, and 51.69%, and 19.30%, 19.98%,
+32.72%, and 28.45% with respect to BX014, LuYuan343, FJA, and DLNTDH, respectively,
+under conditions of l5 µM and 50 µM P, respectively. (Figure 5D, Table S4).
+To more clearly observe how P treatments affect transient dynamics, the curves have
+been represented on the graph based on the relative variable ﬂuorescence, Vt = (Ft − Fo)/
+(FM − Fo) (Figure 6). All the genotypes in this study showed a different typical polyphasic
+rise in the OJIP-transient curve under conditions of 15 µM and 50 µM P (Figure 6). A
+recognizable increase in the O-J-I phase in the OJIP-transient curve was observed in FJA
+and DLNTDH under conditions of 15 µM and 50 µM P, but as the concentration of P
+increased, this increase was observed to decline (Figure 6C,D). The application of 15 µM and
+Antioxidants 2023, 12, 466
+11 of 23
+50 µM P also increased the J-I-P phase of the OJIP-transient curve in BX014 and LuYuan343
+(Figure 6A,B). However, the rate of increase in the OJIP-transient curve represented by the
+genotypes sensitive to LP was higher than those tolerant to LP (Figure 6).
+Antioxidants 2023, 12, 466 
+12 of 23 
+ 
+ 
+Figure 6. Variations in OJIP-kinetics ChlF rise of cotton leaves after different P treatment. ((A) 
+BX014, (B) LuYuan343, (C) FJA, and (D) DLNTDH, Vt = (Ft − F0)/(Fm − F0)), and the comparative 
+variations of ChlF ((E) (BX014), (F) (LuYuan343), (G) FJA, and (H) DLNTDH, ∆Vt = Vt (treatments 
+of 15µM and 50µM) − Vt (treatments of 500µM) in each genotype), third row of leaves, fully 
+developed. Each curve represents the seven replicate averages. 
+Figure 6. Variations in OJIP-kinetics ChlF rise of cotton leaves after different P treatment. ((A) BX014,
+(B) LuYuan343, (C) FJA, and (D) DLNTDH, Vt = (Ft − F0)/(Fm − F0)), and the comparative variations
+of ChlF ((E) (BX014), (F) (LuYuan343), (G) FJA, and (H) DLNTDH, ∆Vt = Vt (treatments of 15 µM and
+50 µM) − Vt (treatments of 500 µM) in each genotype), third row of leaves, fully developed. Each
+curve represents the seven replicate averages.
+Antioxidants 2023, 12, 466
+12 of 23
+Calculating the relative variable ﬂuctuations in the ﬂuorescence curve enabled re-
+searchers to determine changes in the increase in OJIP-ﬂuorescence kinetics. They were
+created by deducting the values of normalized ﬂuorescence (between O and P) in all the
+genotypes (∆V = Vt [15 µM and 50 µM P] − Vt [500 µM P]) (Figure 6). Positive ∆Vt values
+indicated lower rates of electron transportation, i.e., with negative values. The electron
+transport efﬁciency (ETE) decreased. At conditions of 15 µM P, a positive ∆K (at 0.3 ms),
+∆J (at 2 ms), and negative ∆I (at 30 ms) were established, and then turned into positive
+∆P peaks on BX014 and LuYuan343 at 100 ms (Figure 6E,F). The curves under conditions
+of 50 µM P in these genotypes changed in a manner similar to those under conditions of
+15 µM P, but the amplitude was less than those in the 15 µM conditions of P (Figure 6E,F).
+At the 15 µM P conditions of FJA and DLNTDH, a positive ∆K was created at 0.15 ms
+and a ∆J peak at 2 ms; the value then turned to produce a negative ∆I peak at 30 ms,
+and the value was also negative in ∆P (Figure 6G,H). There was a similar trend in the
+conditions of genotypes sensitive to LP at 50 µM P, but the amplitude was less than that
+at conditions of 15 µM P (Figure 6G,H). These ﬁndings demonstrated a disruption in the
+photosynthetic-electron-transport cycle under low-P conditions in which the LP-tolerant
+genotypes could retard this damage, in contrast to the LP-sensitive genotypes.
+3.8. The O-J-I-P Phase among Cotton Genotypes in Response to Different Availabilities of P
+Additional normalizations and associated subtractions were made to assess the events
+captured by the OK, OJ, OI, and IP phases (difference kinetics). In addition, the ﬂuorescence-
+increase-kinetics curves are shown (Figure S3). The ﬂuorescence-increase-kinetics data of
+different P treatments were double-normalized by O (20 µs) and K-step (300 µs) to show
+the L-band as WOK and ∆WOK, as described in Table S1. The unit groupings of PSII or
+the energetic connectedness between the antenna and PSII RCs are known to be indicated
+by the L-band. It was observed most clearly that at the 50 µM conditions of P the L-band
+increased, and the conditions of 15 µM and 500 µM P slightly increased the L-band of all
+the genotypes (Figure S3B). It was clear that the WL and ∆WL values of FJA and DLNTDH
+increased under the 15 µM and 50 µM conditions of P, but those of BX014 and LuYuan343
+did not increase, compared with the 500 µM conditions of P (Figure S3B). This suggested
+that low-P conditions caused an increase in the L-band, owing to the increase in the J-step
+(Figure S3B).
+The increases in the ChlF kinetics were standardized to ensure that the effects of varied
+P treatments on the K-step were as expected by the O-step (20 µs) and J-step (2 ms), and
+are shown in Figure S3C. WOJ and ∆WOJ are described in Table S1. The curves of ∆WOJ
+indicated that low conditions of P induced the occurrence of the K-band, particularly for
+FJA and DLNTDH (Figure S3C). Only the conditions of 15 and 50 µM P increased the
+value of WK (Figure S3A), which corroborated the fact that low conditions of P can indeed
+damage some of the operating OEC facilities.
+In addition, the ﬂuorescence-kinetics curves between the O-step and I-step (30 ms)
+were standardized, and WOI and ∆WOI are also described in Table S1, as well as WOI ≥ 1,
+which was plotted in the linear 30–270 ms time range, to show the IP phase (Figure S3D).
+∆WOI was altered to show the effects of different P treatments on the J-step, and the results
+were similar to those of ∆Vt (Figure S3D). The 15 µM and 50 µM conditions of P decreased
+the amplitude of WOI curves to various P treatments (Figure S3D). Another ﬂuorescence-
+increase-kinetics normalization, WIP, (normalized by the I- and P-step) is presented in
+Figure S3E.
+The time point at WIP = 0.5 (half-time of the increased curves) can be used to reﬂect
+the rate of reduction of PSI and the pool of electron acceptors. It is clear that the half-rise
+time values of 15 µM P (approximately 90 ms) and 50 µM P (approximately 70 ms) of
+BX014 and LuYuan343 were greater than those of FJA and DLTDH at the same treatments
+of P (Figure S3E). This suggests that low-P conditions lower the end-electron-acceptor
+reduction rates of PSI, and the LP-sensitive genotypes gave higher results than the LP-
+tolerant genotypes.
+Antioxidants 2023, 12, 466
+13 of 23
+3.9. The JIP-Test Equations Produce the PSII Biophysical Parameter
+All the ﬂuorescence parameter values were standardized to the values in the radar
+graphic that represents the JIP-Test parameters (Figure 7). The majority of the values of
+parameters that deﬁne PSII functioning are depicted in the spider plot, and show how all
+the cotton genotypes responded to low conditions of P, compared with those at 500 µM P
+(Figure 7). The nutritional stress of plants can be evaluated using Fv/Fm, which reﬂects
+the maximal quantum yield of the primary photochemistry of PSII. The Fv/Fm of each
+genotype decreased dramatically under 15 µM and 50 µM P, compared with those at
+500 µM P, but values for the LP-tolerant genotypes were higher than those of the LP-
+sensitive genotypes at conditions of 15 µM and 50 µM P (Figure 7, Table S5).
+Antioxidants 2023, 12, 466 
+14 of 23 
+ 
+ 
+Figure 7. Spider plot of Chl a fluorescence of cotton leaves, the value of 500µM P set 1. (A) BX014, 
+(B) LuYuan343, (C) FJA, (D) DLNTDH, at different P treatments. The results are expressed as means 
+± SE (n = 7). Statistically significant changes are indicated by different letters, using the one-way 
+ANOVA and multiple-comparison test (p ≤ 0.05). 
+The absorption flux, trapped-energy flux, and electron-transport flux per reaction 
+center are denoted as ABS/RC, TRo/RC, and DIo/RC, respectively. There were increases 
+in ABS/RC, TRo/ RC, and DIo/RC under the conditions of 15 µM and 50 µM P, compared 
+with those at 500 µM P (Figure 7, Table S5). The flux model shows the change in energy 
+flux (Figure S4). In addition, the electron flow per active reaction center (REo/RC) 
+decreased under 15 and 50 µM P, compared with the conditions of 500 µM P of the LP-
+sensitive genotypes. In contrast, the electron transport per reaction center (ETo/RC) of 
+BX014 and LuYuan343 decreased slightly under conditions of 15 µM P, and the 
+distribution of energy became more balanced (Figure 7, Figure S4). Conditions of 15 and 
+50 µM P had the lowest specific-energy-flux dissipation in each genotype, and higher 
+specific-energy-flux transfer to electron acceptors was used to achieve the maximum 
+electron flux at the end of PSI (Figure S4). 
+φPo, φEo, and ѰEo are the ratios beyond the QA-triggered electron transfer. More 
+electron acceptors in the electron transport chain by exciton occupancy in the excitons are 
+caught by the reaction center, which enables it to intuitively represent the light-energy-
+transfer efficiency of the PSII reaction center. There were reductions in these parameters 
+under conditions of 15 µM and 50 µM P, compared with those in the 500 µM P conditions 
+of FJA and DLNTDH, whereas those in BX014 and LuYuan343 decreased slightly (Figure 
+7, Table S5). 
+3.10. Relationship between PPUE and Morphophysiological Variables 
+To better understand the relationship between the morphological and physiological
+Figure 7. Spider plot of Chl a ﬂuorescence of cotton leaves, the value of 500µM P set 1. (A) BX014, (B)
+LuYuan343, (C) FJA, (D) DLNTDH, at different P treatments. The results are expressed as means ± SE
+(n = 7). Statistically signiﬁcant changes are indicated by different letters, using the one-way ANOVA
+and multiple-comparison test (p ≤ 0.05).
+The absorption ﬂux, trapped-energy ﬂux, and electron-transport ﬂux per reaction
+center are denoted as ABS/RC, TRo/RC, and DIo/RC, respectively. There were increases
+in ABS/RC, TRo/ RC, and DIo/RC under the conditions of 15 µM and 50 µM P, compared
+with those at 500 µM P (Figure 7, Table S5). The ﬂux model shows the change in energy ﬂux
+(Figure S4). In addition, the electron ﬂow per active reaction center (REo/RC) decreased
+under 15 and 50 µM P, compared with the conditions of 500 µM P of the LP-sensitive
+genotypes. In contrast, the electron transport per reaction center (ETo/RC) of BX014 and
+LuYuan343 decreased slightly under conditions of 15 µM P, and the distribution of energy
+became more balanced (Figure 7, Figure S4). Conditions of 15 and 50 µM P had the lowest
+speciﬁc-energy-ﬂux dissipation in each genotype, and higher speciﬁc-energy-ﬂux transfer
+to electron acceptors was used to achieve the maximum electron ﬂux at the end of PSI
+(Figure S4).
+ϕPo, ϕEo, and ΨEo are the ratios beyond the QA-triggered electron transfer. More
+electron acceptors in the electron transport chain by exciton occupancy in the excitons are
+caught by the reaction center, which enables it to intuitively represent the light-energy-
+transfer efﬁciency of the PSII reaction center. There were reductions in these parameters
+under conditions of 15 µM and 50 µM P, compared with those in the 500 µM P conditions
+Antioxidants 2023, 12, 466
+14 of 23
+of FJA and DLNTDH, whereas those in BX014 and LuYuan343 decreased slightly (Figure 7,
+Table S5).
+3.10. Relationship between PPUE and Morphophysiological Variables
+To better understand the relationship between the morphological and physiological
+parameters of cotton seedlings and the key parameters of the ETC under low availabilities
+of P, we analyzed the correlation between parameters in this study (Figure 8). Our results
+showed that the cotton genotypes positively correlated in the PUE and PPUE (Figure 8).
+In addition, the antioxidant substances had a strong positive correlation with the growth
+parameter of cotton seedlings and a negative correlation with PUE and PUtE. There was a
+negative correlation between Pn with PUE, PUtE, and PPUE, in all genotypes (Figure 8).
+It is worth noting that there is a positive correlation between antioxidant-enzyme activity
+and gas-exchange parameters with dry weight. There is also a positive correlation be-
+tween photosynthetic pigment and dry matter. Pearson’s correlation analysis revealed that
+antioxidant-enzyme activity, photosynthetic pigment, and Pn were signiﬁcantly high and
+positively correlated.
+Antioxidants 2023, 12, 466
+15 of 23
+Antioxidants 2023, 12, 466 
+15 of 23 
+ 
+and gas-exchange parameters with dry weight. There is also a positive correlation 
+between photosynthetic pigment and dry matter. Pearson’s correlation analysis revealed 
+that antioxidant-enzyme activity, photosynthetic pigment, and Pn were significantly high 
+and positively correlated. 
+ 
+ 
+Figure 8. Correlation analysis among measurement indicators in the (A) LP-sensitive genotypes and
+(B) LP-tolerant genotypes. Asterisk shows signiﬁcant differences at p < 0.05. Chl a,b (Chl a,b), net
+photosynthetic rate (Pn), intercellular CO2 (Ci), the ratio of intercellular-ambient-CO2 concentrations
+(Ci/Ca), and transpiration rate (E), the maximal quantum efﬁciency of PSII photochemistry (Fv/Fm),
+P concentrations (PC), P accumulation (TPA), P-use efﬁciency (PUE), P-uptake efﬁciency (PUtE),
+photosynthetic-P-utilization efﬁciency (PPUE), SPAD (SPAD value), dry weight (DW), superoxide
+dismutase (SOD), peroxidase (POD), catalase (CAT), malondialdehyde content (MDA), phospho-
+enolpyruvate carboxylase (PEPC) adenosine triphosphate (ATP), nicotinamide adenine dinucleotide
+phosphate (NADP+), and nicotinamide adenine dinucleotide phosphate (NADP). *: p < 0.05.
+Antioxidants 2023, 12, 466
+16 of 23
+4. Discussion
+Our results show that P availability is a main factor that limits cotton growth, which is
+consistent with other studies [1]. In this study, the availability of low P affected the physio-
+logical and biochemical parameters of four cotton genotypes, and this change is described
+in (Figure 9). Previous studies have shown that a shortage of P prevents photosynthe-
+sis [8]. However, little is known about the effects of low P availability on P absorption,
+photosynthesis, and the antioxidant system in cotton.
+p
+y
+(
+),
+(
+),
+(Ci/Ca), and transpiration rate (E), the maximal quantum efficiency of PSII photochemistry (Fv/Fm), 
+P concentrations (PC), P accumulation (TPA), P-use efficiency (PUE), P-uptake efficiency (PUtE), 
+photosynthetic-P-utilization efficiency (PPUE), SPAD (SPAD value), dry weight (DW), superoxide 
+dismutase (SOD), peroxidase (POD), catalase (CAT), malondialdehyde content (MDA), 
+phosphoenolpyruvate carboxylase (PEPC) adenosine triphosphate (ATP), nicotinamide adenine 
+dinucleotide phosphate (NADP+), and nicotinamide adenine dinucleotide phosphate (NADP). *: p 
+< 0.05 
+4. Discussion 
+Our results show that P availability is a main factor that limits cotton growth, which 
+is consistent with other studies [1]. In this study, the availability of low P affected the 
+physiological and biochemical parameters of four cotton genotypes, and this change is 
+described in (Figure 9). Previous studies have shown that a shortage of P prevents 
+photosynthesis [8]. However, little is known about the effects of low P availability on P 
+absorption, photosynthesis, and the antioxidant system in cotton. 
+ 
+Figure 9. Pictorial representations of photosynthetic-electron-transport changes and feedback 
+mechanisms responsible for low P availability. Processes that appear to be down-regulated are 
+indicated by red arrows, while green arrows indicate processes that appear to be up-regulated. Unit 
+size and font size represent the activities of the organelle components. 
+4.1. Effects of the Low Availability of P on the Enzymes Related to the Photosynthesis System 
+Photosynthesis commonly declines under P deficiency, since P is involved in several 
+cellular processes, including energy conservation, metabolic regulation, and signal 
+transduction [8]. In this study, Pn, Gs, and E decreased under low P conditions. 
+Nevertheless, an increase in Ci in this result demonstrates a clear dawn inhibition of 
+photosynthesis, due to the lack of P carriers, strongly evidencing that the stomatal 
+limitation is not imposing any barrier to the entry of CO2. Previous studies have shown 
+that the reduction in the stomatal conductance limits the diffusion of CO2 necessary for 
+carboxylation reactions, thus reducing Pn [36].  
+A P shortage has previously been demonstrated to immediately affect the ETC, 
+because of its crucial roles [8]. Based on our results, low P inhibited the contents of ATP 
+and NADP(H) in cotton leaves. A previous study also found that low P reduces the 
+contents of ATP and NADP(H) in barley [8]. Low P stress reduces the ETC protein 
+complex, including PSII, Cytb6f, and PSI [37]. As a response, a deficiency in P limited 
+Figure 9. Pictorial representations of photosynthetic-electron-transport changes and feedback mecha-
+nisms responsible for low P availability. Processes that appear to be down-regulated are indicated by
+red arrows, while green arrows indicate processes that appear to be up-regulated. Unit size and font
+size represent the activities of the organelle components.
+4.1. Effects of the Low Availability of P on the Enzymes Related to the Photosynthesis System
+Photosynthesis commonly declines under P deﬁciency, since P is involved in several
+cellular processes, including energy conservation, metabolic regulation, and signal trans-
+duction [8]. In this study, Pn, Gs, and E decreased under low P conditions. Nevertheless,
+an increase in Ci in this result demonstrates a clear dawn inhibition of photosynthesis, due
+to the lack of P carriers, strongly evidencing that the stomatal limitation is not imposing
+any barrier to the entry of CO2. Previous studies have shown that the reduction in the
+stomatal conductance limits the diffusion of CO2 necessary for carboxylation reactions,
+thus reducing Pn [36].
+A P shortage has previously been demonstrated to immediately affect the ETC, because
+of its crucial roles [8]. Based on our results, low P inhibited the contents of ATP and
+NADP(H) in cotton leaves. A previous study also found that low P reduces the contents of
+ATP and NADP(H) in barley [8]. Low P stress reduces the ETC protein complex, including
+PSII, Cytb6f, and PSI [37]. As a response, a deﬁciency in P limited photosynthesis by
+decreasing the efﬁciency of ETC and that of ATP, NADP(H), and biosynthesis [38]. These
+studies demonstrated that ATP-synthase activity was controlled in response to metabolic
+or physiological circumstances, which enabled control over assimilatory responses [39].
+The levels of NADP+ serve as a substrate for the synthesis of NADP(H). In this study,
+their levels were also dramatically reduced by a shortage of P, which demonstrates that a
+larger proportion of NADP+ is still in the reduced form, NADP (H), owing to its inability
+to be used in the Calvin cycle because of ATP limitations and greater PSI activity [38].
+The C3-type PEPC exists in all plants, and participates in many physiological functions,
+such as the supply of intermediates in the tricarboxylic-acid cycle, the synthesis of OAA,
+and the subsequent synthesis of malic acid and its derivatives [40]. Relevant research on
+Antioxidants 2023, 12, 466
+17 of 23
+cotton found that PEPC enzyme activity is conducive to the synthesis, transportation, and
+decomposition of photosynthetic products, promoting ﬁber development and improving
+yield [41,42]. The activity of PEPC in this study was signiﬁcantly (p ≤ 0.05) reduced by a
+deﬁciency of P. The growth of -P plants has been reported to be enhanced by overexpressing
+PEPC in rice and citrate synthase in cotton [43]. Our results demonstrate that the decrease
+in PEPC activity under low-P conditions could be one of the important limiting conditions
+for reducing the photosynthetic rate.
+Severe P deﬁciency or toxicity can alter the photosynthetic apparatus and photo-
+systems, thus causing photo-oxidative stress [38]. As is well-known, the early stages of
+photosynthetic reactions are strongly related to ChlF. Changes in the fundamental responses
+that alter PSII are effectively represented by the ChlF parameter, which serves as an ef-
+fective index when the plant is under stress [44]. A potent non-invasive technique for
+tracking changes in photochemical efﬁciency and photosynthetic electron transport is the
+measurement of ChlF transients [45]. Depletion of the I-step from the fast OJIP portion of
+the ChlF transient can be used to identify a shortage of P [46]. The reaction can be used
+to precisely forecast the bioavailable P in both monocots and dicots, since it is so sensitive
+to the P content in leaf tissue [47]. Our study of cotton genotypes showed a difference
+in typical OJIP-transient and ChlF measurements among different availability conditions
+of P. It is possible that the higher Fo, rather than the decreased ﬂuorescence, caused the
+decreased IP phase in P-deﬁcient leaves from t = 30 ms to t = 300 ms (I step to P step). This
+showed that the plastocyanin had degraded, and the electrons were transferred from the
+FeS clusters to ferredoxin. Similar ﬁndings were also observed under a P deﬁcit in barley
+and pomelo [48]. An impeded electron ﬂow from the OEC to the secondary electron donor
+of PSII can be used to explain the positive K-band, and a decrease in the turnover of QA
+subsequently slowed [49]. Our results showed that at approximately 0.15 ms, a positive
+L-band was visible, indicating that in P-deﬁcient leaves, the PSII units were less clustered
+or that the movement of energy between independent PSII units was hampered. A similar
+result has also been previously described [48].
+Our ﬁndings showed that cotton genotypes under low-P stress had lower Fv/Fm
+values than those under normal P condition. As a result, the P shortage impacted the
+PSII-response centers. A previous study showed that, owing to the feedback inhibition of
+photosynthesis, a severe P deﬁcit reduces the Fv/Fmand results in Chl loss [23]. Our results
+showed that, despite the higher photon-energy-capture RC and CSo under conditions of P
+deﬁciency, as shown by the increase in ABS/RC, DIo/RC, and TRo/RC, a lack of P reduced
+the efﬁciency of electron transport from the donor side of PSII to the ﬁnal acceptor side of
+PSI. This was revealed by a decrease in ψEo, ϕEo, and ϕRo, which led to reduced CO2
+assimilation in cotton genotypes deﬁcient in P. Similarly, in wheat leaves, reduced energy
+trapping and electron transport per excited cross section were observed with increasing
+salt concentrations, indicating a decreased energy-absorption efﬁciency of PSII [50]. Some
+previous studies showed impaired electron transport from the donor side of PSII to the
+ﬁnal acceptor side of PSI when P is lacking [8].
+4.2. Effects of the Low Availability of P on the Enzymes Related to the Antioxidant System
+Photosynthesis involves the conversion of sunlight energy into stored chemical energy,
+which is realized through the electronic transmission of a series of oxidation–reduction
+reactions. Due to the risk of molecular-oxygen reduction, excessive photosynthetic elec-
+tron transport may be dangerous, resulting in excessive accumulation of ROS [51]. To
+avoid excessive ROS generation, it is necessary to coordinate the electron-transfer rate
+with the capacity of the electron acceptor in the chloroplast matrix. The imbalance be-
+tween the donor and the receptor sides of PSI can lead to inactivation, which is called
+PSI photoinhibition. Therefore, the instantaneous or continuous generation of ROS may
+occur. The photosynthetic membrane protein complexes (PS II, the b6/f complex, and PS
+I) can produce ROS under speciﬁc conditions. Possible sources of ROS in PS II and PS I
+are the Chl-containing, light-harvesting arrays in both photosystems. ROS can oxidatively
+Antioxidants 2023, 12, 466
+18 of 23
+damage proteins, pigments, lipids, and nucleic acids [52]. A previous study showed that
+low P levels could also induce ROS production by compromising the use of light energy
+harvested by reaction centers and synthesizing ATP and NADPH [53], which results in
+electron-transport-chain overload [44].
+Previous studies have shown that a deﬁciency or excess of macronutrients can cause
+the overproduction of ROS in plants and rapidly trigger the oxidative defense reaction [54].
+When the stress reaches a certain intensity, the balance between ROS and the antioxidant
+system is broken. Antioxidant substances are widely found in aerobic or oxygen-resistant
+organisms. They have been proven to catalyze the reaction of superoxide anions to reduce
+or eliminate excessive ROS produced during metabolic processes [38]. In this study, the
+conditions of 15 µM and 50 µM P substantially reduced the activities of SOD, POD, and
+CAT. Previous research has shown that the activity of ROS-scavenging enzymes increases
+in response to low-P stress, to shield chloroplasts from the photooxidative damage induced
+by low P and to maintain redox homeostasis [44]. Some studies found that the enzyme
+activities of SOD, POD and CAT would decrease under a low-P environment, which is
+consistent with our results [26,28].
+The MDA is the production of lipid peroxide inside cells. Its content could reﬂect
+the degrees of the lipid peroxide of the organism, and be enhanced under P-deﬁciency
+stress [55]. A previous study showed that a P shortage could result in increased contents
+of MDA in the stems of lentils (Lens culinaris Medik.) [56]. Our results showed that low P
+availability increased the MDA content of leaves, which indicated that low P availability
+aggravated the lipid peroxidation of plant membranes. However, the MDA content of
+low-P-tolerant genotypes was lower than that of low-P-sensitive genotypes. Therefore,
+the amount of MDA may be a response indicator of the physiological mechanism of the
+low-P-tolerant genotypes to adapt to low P availability.
+4.3. Low Availability of P Affects Growth Parameters, Phosphorus Utilization, and PPUE
+Photosynthesis is fundamental for plant growth and total-biomass production. Ma-
+nipulating photosynthetic performance can optimize growth and biomass. Therefore, the
+photosynthesis condition is considered the major factor inﬂuencing yield in modern agri-
+cultural production [57]. Plant photosynthetic capacity depends on the net photosynthetic
+rate and photosynthetic area of the plant [58]. Chl content, especially Chl b content, and
+stomatal conductance are key factors that greatly affect the Pn [59]. A previous study
+showed that P deﬁciency caused stunted growth and resulted in early leaf senescence, with
+severely decreased leaf area and photosynthesis [60].
+In this study, cotton seedlings cultured under P-deﬁcient conditions were dwarfed,
+with low pigment content. The reason may be that both ROS generated by P deﬁciency
+promote Chl degradation and limit photosynthesis and cotton growth. Our studies have
+demonstrated a signiﬁcant positive correlation between P efﬁciency and photosynthetic-
+related traits in cotton genotypes, particularly under low-P conditions. We have also
+observed that leaves differed greatly in morphology under low-P conditions, with leaves
+grown under P deﬁciency showing a smaller leaf area compared with those treated with
+normal P; this is consistent with other research [61], and this result suggests that P deﬁciency
+may decrease photosynthesis and ultimately affect plant growth and biomass. These
+ﬁndings were also observed in other studies [62]. In this study, the dry weight decreased
+under low-P-availability conditions. The lower dry weight may be caused by the decrease
+in Chl content, which is consistent with previous studies [63]. In addition, there was a
+signiﬁcant correlation between Chl a content and dry weight of cotton leaves and the
+relevant ﬂuorescence parameters (Figure 8). This suggests that ChlF parameters are to
+some extent a response to the growth status of the plant.
+An increasing amount of research shows that achieving relatively fast rates of pho-
+tosynthesis with high PPUE requires a delicate balance in investment among foliar-P
+fractions [64]. For instance, some plants suffering from P deﬁciency can decrease their
+overall requirement for foliar P by reducing investment in non-metabolite-P fractions to
+Antioxidants 2023, 12, 466
+19 of 23
+different degrees, thus buffering the direct P restriction of photosynthesis [11]. Plant species,
+and even genotypes of certain species, differ in their ability to maintain their photosynthetic
+activity under P limitation. Signiﬁcant interspeciﬁc and intraspeciﬁc variation exists for
+PPUE under low-P stress [11]. However, our understanding of the biochemical basis for
+differences in PPUE among and within species is still in its infancy. This study showed
+that the cotton seedling PPUE under low-P conditions was higher than that under normal
+treatment, and the cotton genotypes with low-P tolerance showed higher PPUE under
+low-P conditions. We also found a signiﬁcant negative correlation between PPUE and P
+content in leaves. This increases the PPUE under low-P conditions.
+In our study, the concentrations of leaf P in the different cotton genotypes were im-
+pacted differently by low P. Previous studies have demonstrated that, compared with
+the low-P-sensitive cotton genotypes, the low-P-tolerant cotton varieties improved the P
+absorption and root P accumulation, establishing a stable percentage of stem P accumula-
+tion, the total biomass of leaves and seedlings, seed cotton yield and ﬁber length [65,66].
+However, in another study, it was found that the low-P-tolerant variety showed higher ﬁber
+strength, ﬁber ﬁneness, ﬁber uniformity, and ﬁber elongation, although it was found that
+different P concentrations had no direct impact on ﬁber quality [67]. Several reports have
+shown that, compared with the low-P sensitive cultivar, the low-P-tolerant cultivar had high
+cotton-seed weight, cotton-seed yield, and dry biomass, and accumulated more P [68–71].
+Other studies have shown that low-phosphorus conditions will also have a greater impact
+on the content of large amounts, and of the micronutrients in cottonseed [72].
+5. Conclusions
+Low P availability reduced leaf area, shoot length, and dry weight, particularly in
+low-P-sensitive genotypes. Similarly, low P decreased pigment content and net photosyn-
+thetic rate, and P-use efﬁciency of cotton genotypes, especially low-P-sensitive genotypes.
+The activity of the PSII, ATP, and NADP(H) content decreased under low-P conditions.
+Moreover, the analysis of ChlF parameters showed that low P availability impairs the
+electron transport from the donor side of the PSII to the receptor side of the PSI terminal,
+which has a greater impact on the performance of the PSII donor side than the PSII and
+the PSI receptor side. Low P availability increased the content of malondialdehyde in
+leaves but decreased the activities of superoxide dismutase and catalase, especially in low-
+sensitive genotypes. Based on these results, we concluded that low P availability affects
+nutrient absorption, reduces photosynthetic performance, and leads to ROS production.
+Different low-P-tolerant cotton genotypes showed differences in their adaptability to low P
+availability. This may be the key reason for the difference in low-P tolerance among these
+cotton genotypes. Moreover, this research conﬁrms that under stress conditions, the fall in
+the I-step of the induction curve for the early diagnosis of P deﬁcit in cotton is a unique
+physiological bioindicator. Our ﬁndings may help to better understand the theoretical basis
+of the effect of low P availability on the photosynthesis and antioxidant system in cotton.
+Supplementary Materials: The following supporting information can be downloaded at https:
+//www.mdpi.com/article/10.3390/antiox12020466/s1, Figure S1: Changes in (A) P accumulation,
+(B) leaf area in cotton leaves under different P treatments; Figure S2: Changes in (A) chlorophyll
+a, (B) chlorophyll b, (C) total chlorophyll, (D) chlorophyll a/b ratio, (E), carotenoid and (F) total
+chlorophyll/carotenoid ratio in cotton leaves under different P treatments; Figure S3: Effects of
+different P treatments on O-J-I-P phase among cotton genotypes; Figure S4: Pipeline models showing
+relative changes in energy ﬂows per reaction center (left panel) and per active-leaf cross section (right
+panel) after 15, 50, and 500 µM P content treatment of a cotton seedling leaf. Table S1: Formulae
+and explanation of the technical data of the OJIP curves and the selected JIP-test parameters used in
+this study; Table S2: Growth parameters, PUE parameters, and PPUE under different phosphorus
+treatments; Table S3: Antioxidants, PEPC-enzyme activities, and MDA, ATP, NADP(H) content under
+different phosphorus treatments; Table S4: Gas-exchange parameters and contents of chlorophyll
+and carotene under different phosphorus treatments; Table S5: Chlorophyll-ﬂuorescence parameters
+Antioxidants 2023, 12, 466
+20 of 23
+under different phosphorus treatments. Table S6: Global ANOVA of various characteristics in
+different phosphorus conditions.
+Author Contributions: Conceptualization, M.K. and Q.D.; methodology, M.K. and A.I.; software,
+X.L. and N.M.; validation, L.L., X.W. and H.G.; formal analysis, Q.Q. and S.R.; investigation, R.G.;
+resources, X.Z.; data curation, M.K.; writing—original draft preparation, M.K.; writing—review and
+editing, Q.D. and M.S.; visualization, Q.D. and M.S.; supervision, Q.D.; project administration, M.S.;
+funding acquisition, M.S. and Q.D. All authors have read and agreed to the published version of
+the manuscript.
+Funding: We are very grateful for the ﬁnancial assistance provided by the Natural Science Foundation
+of Xinjiang Uygur Autonomous Region (Grant number 2020D01B61), the Central Public-Interest Scien-
+tiﬁc Institution Basal Research Fund, CAAS, the State Key Laboratory of Cotton Biology (CB2021C10),
+and the Institute of Cotton Research (Y2021XK12).
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Data Availability Statement: Data are contained within the article and Supplementary Materials.
+Acknowledgments: We thank Meizhen Song and Qiang Dong for their valuable guidance with this
+article. We are also thankful to Asif Iqbal and Noor Muhammad for their valuable assistance in
+grammar editing during the preparation of this manuscript.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Hong, L.; Fei, W.; Wang, Y.; Lin, R.; Wang, Z.; Chuanzao, M. Molecular mechanisms and genetic improvement of low-phosphorus
+tolerance in rice. Plant Cell Environ. 2022. [CrossRef]
+2.
+Hammond, J.P.; White, P.J. Sucrose transport in the phloem: Integrating root responses to phosphorus starvation. J. Exp. Bot. 2008,
+59, 93–109. [CrossRef] [PubMed]
+3.
+Zou, T.; Zhang, X.; Davidson, E.A. Global trends of cropland phosphorus use and sustainability challenges. Nature 2022, 611,
+81–87. [CrossRef] [PubMed]
+4.
+MacDonald, G.K.; Bennett, E.M.; Potter, P.A.; Ramankutty, N. Agronomic phosphorus imbalances across the world’s croplands.
+J. Exp. Bot. 2011, 108, 3086–3091. [CrossRef] [PubMed]
+5.
+Hopkins, B.G.; Hansen, N.C. Phosphorus Management in High-Yield Systems. J. Environ. Qual. 2019, 48, 1265–1280. [CrossRef]
+[PubMed]
+6.
+Ashraf, M.; Harris, P. Photosynthesis under stressful environments: An overview. Photosynthetica 2013, 51, 163–190. [CrossRef]
+7.
+Li, L.; Qi, Q.; Zhang, H.; Dong, Q.; Iqbal, A.; Gui, H.; Kayoumu, M.; Song, M.; Zhang, X.; Wang, X. Ameliorative Effects of Silicon
+against Salt Stress in Gossypium hirsutum L. Antioxidants 2022, 11, 1520. [CrossRef]
+8.
+Carstensen, A.; Herdean, A.; Schmidt, S.B.; Sharma, A.; Spetea, C.; Pribil, M.; Husted, S. The Impacts of Phosphorus Deﬁciency
+on the Photosynthetic Electron Transport Chain. Plant Physiol. 2018, 177, 271–284. [CrossRef]
+9.
+Neocleous, D.; Savvas, D. The effects of phosphorus supply limitation on photosynthesis, biomass production, nutritional quality,
+and mineral nutrition in lettuce grown in a recirculating nutrient solution. Sci. Hortic. 2019, 252, 379–387. [CrossRef]
+10.
+Ghannoum, O.; Phillips, N.G.; Sears, M.A.; Logan, B.A.; Lewis, J.D.; Conroy, J.P.; Tissue, D.T. Photosynthetic responses of two
+eucalypts to industrial-age changes in atmospheric [CO2] and temperature. Plant Cell Environ. 2010, 33, 1671–1681. [CrossRef]
+11.
+Wen, Z.; Pang, J.; Wang, X.; Gille, C.E.; De Borda, A.; Hayes, P.E.; Clode, P.L.; Ryan, M.H.; Siddique, K.H.M.; Shen, J.; et al.
+Differences in foliar phosphorus fractions, rather than in cell-speciﬁc phosphorus allocation underlie contrasting photosynthetic
+phosphorus-use efﬁciency among chickpea genotypes. J. Exp. Bot. 2022. [CrossRef] [PubMed]
+12.
+Pang, J.Y.; Zhao, H.X.; Bansal, R.; Bohuon, E.; Lambers, H.; Ryan, M.H.; Siddique, K.H.M. Leaf transpiration plays a role in
+phosphorus acquisition among a large set of chickpea genotypes. Plant Cell Environ. 2018, 41, 2069–2079. [CrossRef] [PubMed]
+13.
+Kume, A.; Akitsu, T.; Nasahara, K.N. Why is chlorophyll b only used in light-harvesting systems? J. Plant Res. 2018, 131, 961–972.
+[CrossRef]
+14.
+Niu, J.; Chen, Z.; Guo, Z.; Xu, N.; Sui, X.; Roy, M.; Kareem, H.A.; Hassan, M.U.; Cui, J.; Wang, Q. Exogenous melatonin promotes
+the growth of alfalfa (Medicago sativa L.) under NaCl stress through multiple pathways. Ecotoxicol. Environ. Saf. 2022, 242, 113938.
+[CrossRef] [PubMed]
+15.
+Alipanah, L.; Winge, P.; Rohloff, J.; Najaﬁ, J.; Brembu, T.; Bones, A.M. Molecular adaptations to phosphorus deprivation
+and comparison with nitrogen deprivation responses in the diatom Phaeodactylum tricornutum. PLoS ONE 2018, 13, e0193335.
+[CrossRef]
+16.
+Liu, J.; Peng, J.; Xia, H.; Li, P.; Li, Z.; Sun, M.; Zheng, C.; Dong, H. High Soil Available Phosphorus Favors Carbon Metabolism in
+Cotton Leaves in Pot Trials. J. Plant Growth Regul. 2021, 40, 974–985. [CrossRef]
+Antioxidants 2023, 12, 466
+21 of 23
+17.
+Nguyen, V.L.; Palmer, L.; Stangoulis, J. Higher Photochemical Quenching and Better Maintenance of Carbon Dioxide Fixation
+Are Key Traits for Phosphorus Use Efﬁciency in the Wheat Breeding Line, RAC875. Front. Plant Sci. 2021, 12, 816211. [CrossRef]
+18.
+Latzko, E. The many-faced function of phosphoenolpyruvate carboxylase in C_3 plants. Physiol. Veg. 1983, 21, 805–815.
+19.
+Schlüter, U.; Colmsee, C.; Scholz, U.; Bräutigam, A.; Weber, A.P.; Zellerhoff, N.; Bucher, M.; Fahnenstich, H.; Sonnewald, U.
+Adaptation of maize source leaf metabolism to stress related disturbances in carbon, nitrogen and phosphorus balance. BMC
+Genom. 2013, 14, 442. [CrossRef]
+20.
+Chu, S.; Li, H.; Zhang, X.; Yu, K.; Chao, M.; Han, S.; Zhang, D. Physiological and Proteomics Analyses Reveal Low-Phosphorus
+Stress Affected the Regulation of Photosynthesis in Soybean. Int. J. Mol. Sci. 2018, 19, 1688. [CrossRef]
+21.
+Michelet, L.; Zaffagnini, M.; Morisse, S.; Sparla, F.; Perez-Perez, M.E.; Francia, F.; Danon, A.; Marchand, C.H.; Fermani, S.; Trost,
+P.; et al. Redox regulation of the Calvin-Benson cycle: Something old, something new. Front. Plant Sci. 2013, 4, 470. [CrossRef]
+[PubMed]
+22.
+Carstensen, A.; Szameitat, A.E.; Frydenvang, J.; Husted, S. Chlorophyll a ﬂuorescence analysis can detect phosphorus deﬁciency
+under ﬁeld conditions and is an effective tool to prevent grain yield reductions in spring barley (Hordeum vulgare L.). Plant Soil
+2018, 434, 79–91. [CrossRef]
+23.
+Ben Hamed, S.; Leﬁ, E.; Chaieb, M. Effect of phosphorus concentration on the photochemical stability of PSII and CO2 assimilation
+in Pistacia vera L. and Pistacia atlantica Desf. Plant Physiol. Biochem. 2019, 142, 283–291. [CrossRef] [PubMed]
+24.
+Khorobrykh, S.; Havurinne, V.; Mattila, H.; Tyystjarvi, E. Oxygen and ROS in Photosynthesis. Plants (Basel) 2020, 9, 91. [CrossRef]
+[PubMed]
+25.
+Weisz, D.A.; Gross, M.L.; Pakrasi, H.B. Reactive oxygen species leave a damage trail that reveals water channels in Photosystem
+II. Sci. Adv. 2017, 3, eaao3013. [CrossRef] [PubMed]
+26.
+Sun, T.; Zhang, J.; Zhang, Q.; Li, X.; Li, M.; Yang, Y.; Zhou, J.; Wei, Q.; Zhou, B. Transcriptome and metabolome analyses
+revealed the response mechanism of apple to different phosphorus stresses. Plant Physiol. Biochem. 2021, 167, 639–650. [CrossRef]
+[PubMed]
+27.
+Pintó-Marijuan, M.; Munné-Bosch, S. Photo-oxidative stress markers as a measure of abiotic stress-induced leaf senescence:
+Advantages and limitations. J. Exp. Bot. 2014, 65, 3845–3857. [CrossRef]
+28.
+Ren, P.; Ma, X.; Li, B.; Meng, Y.; Lai, Y.; Si, E.; Wang, J.; Yao, L.; Yang, K.; Shang, X.; et al. Identiﬁcation and selection of
+low-phosphate-tolerant germplasm in barley (Hordeum vulgare L.). Soil Sci. Plant Nutr. 2016, 62, 471–480. [CrossRef]
+29.
+Xia, Z.; Zhang, S.; Wang, Q.; Zhang, G.; Fu, Y.; Lu, H. Effects of Root Zone Warming on Maize Seedling Growth and Photosynthetic
+Characteristics Under Different Phosphorus Levels. Front. Plant Sci. 2021, 12, 746152. [CrossRef]
+30.
+Guo, Y.; Zhang, Y.; Lu, Y.; Shi, J.; Chen, S.; Strasser, R.J.; Qiang, S.; Hu, Z. Special issue in honour of Prof. Reto J. Strasser-Effect of
+AtLFNR1 deﬁciency on chlorophyll a ﬂuorescence rise kinetics OJIP of Arabidopsis. Photosynthetica 2020, 58, 391–398. [CrossRef]
+31.
+Iqbal, A.; Qiang, D.; Zhun, W.; Xiangru, W.; Huiping, G.; Hengheng, Z.; Nianchang, P.; Xiling, Z.; Meizhen, S. Growth and
+nitrogen metabolism are associated with nitrogen-use efﬁciency in cotton genotypes. Plant Physiol. Biochem. 2020, 149, 61–74.
+[CrossRef]
+32.
+Heath, R.L.; Packer, L. Photoperoxidation in isolated chloroplasts. I. Kinetics and stoichiometry of fatty acid peroxidation. Arch.
+Biochem. Biophys. 1968, 125, 189–198. [CrossRef] [PubMed]
+33.
+Chu, S.; Zhang, X.; Xiao, J.; Chen, R. Dynamic nutrient removal potential of a novel submerged macrophyte Rotala rotundifolia,
+and its growth and physiological response to reduced light available. J. Environ. Manag. 2021, 293, 112965. [CrossRef] [PubMed]
+34.
+Iqbal, A.; Gui, H.; Zhang, H.; Wang, X.; Pang, N.; Dong, Q.; Song, M. Genotypic Variation in Cotton Genotypes for Phosphorus-Use
+Efﬁciency. Agronomy 2019, 9, 689. [CrossRef]
+35.
+Porra, R.J.; Thompson, W.A.; Kriedemann, P.E. Determination of accurate extinction coefﬁcients and simultaneous equations for
+assaying chlorophylls a and b extracted with four different solvents: Veriﬁcation of the concentration of chlorophyll standards by
+atomic absorption spectroscopy. Biochim. Biophys. Acta (BBA)-Bioenerg. 1989, 975, 384–394. [CrossRef]
+36.
+Wang, S.; Zheng, S.; Bian, T.; Wu, T.; Li, X.; Fu, H.; Sun, Z.; Li, T. Photosynthetic characteristics combined with metabolomics
+analysis revealed potential mechanisms of cucumber (Cucumis sativus) yield reduction induced by different phosphorus stresses.
+Sci. Hortic. 2022, 302, 111156. [CrossRef]
+37.
+Zhang, Z.; Liao, H.; Lucas, W.J. Molecular mechanisms underlying phosphate sensing, signaling, and adaptation in plants. J.
+Integr. Plant Biol. 2014, 56, 192–220. [CrossRef]
+38.
+Hernandez, I.; Munne-Bosch, S. Linking phosphorus availability with photo-oxidative stress in plants. J. Exp. Bot. 2015, 66,
+2889–2900. [CrossRef]
+39.
+Song, K.; Baumgartner, D.; Hagemann, M.; Muro-Pastor, A.M.; Maass, S.; Becher, D.; Hess, W.R. AtpTheta is an inhibitor of F0F1
+ATP synthase to arrest ATP hydrolysis during low-energy conditions in cyanobacteria. Curr. Biol. 2022, 32, 136–148. [CrossRef]
+40.
+O’Leary, B.; Park, J.; Plaxton, W.C. The remarkable diversity of plant PEPC (phosphoenolpyruvate carboxylase): Recent insights
+into the physiological functions and post-translational controls of non-photosynthetic PEPCs. Biochem. J. 2011, 436, 15–34.
+[CrossRef]
+41.
+Asif, I.; Dong, Q.; Wang, X.; Gui, H.; Zhang, H.; Pang, N.; Zhang, X.; Song, M. Genotypic variation in root morphology, cotton
+subtending leaf physiology and ﬁber quality against nitrogen. J. Cotton Res. 2021, 4, 1–4. [CrossRef]
+Antioxidants 2023, 12, 466
+22 of 23
+42.
+Iqbal, A.; Dong, Q.; Wang, X.; Gui, H.; Niu, J.; Li, L.; Zhang, H.; Pang, N.; Zhang, X.; Song, M. N-efﬁcient cotton genotype grown
+under low nitrogen shows relatively large root system, high biomass accumulation and nitrogen metabolism. Agron. J. 2022, 114,
+582–600. [CrossRef]
+43.
+Wang, Z.A.; Li, Q.; Ge, X.Y.; Yang, C.L.; Luo, X.L.; Zhang, A.H.; Xiao, J.L.; Tian, Y.C.; Xia, G.X.; Chen, X.Y.; et al. The mitochondrial
+malate dehydrogenase 1 gene GhmMDH1 is involved in plant and root growth under phosphorus deﬁciency conditions in cotton.
+Sci. Rep. 2015, 5, 10343. [CrossRef] [PubMed]
+44.
+Li, P.; Weng, J.; Zhang, Q.; Yu, L.; Yao, Q.; Chang, L.; Niu, Q. Physiological and Biochemical Responses of Cucumis melo L.
+Chloroplasts to Low-Phosphate Stress. Front. Plant Sci. 2018, 9, 1525. [CrossRef]
+45.
+Kalaji, H.M.; Baba, W.; Gediga, K.; Goltsev, V.; Samborska, I.A.; Cetner, M.D.; Dimitrova, S.; Piszcz, U.; Bielecki, K.; Karmowska,
+K.; et al. Chlorophyll ﬂuorescence as a tool for nutrient status identiﬁcation in rapeseed plants. Photosynth. Res. 2018, 136, 329–343.
+[CrossRef]
+46.
+Lin, Z.H.; Chen, L.S.; Chen, R.B.; Zhang, F.Z.; Jiang, H.X.; Tang, N. CO2 assimilation, ribulose-1,5-bisphosphate carboxy-
+lase/oxygenase, carbohydrates and photosynthetic electron transport probed by the JIP-test, of tea leaves in response to
+phosphorus supply. BMC Plant Biol. 2009, 9, 43. [CrossRef]
+47.
+Frydenvang, J.; van Maarschalkerweerd, M.; Carstensen, A.; Mundus, S.; Schmidt, S.B.; Pedas, P.R.; Laursen, K.H.; Schjoerring,
+J.K.; Husted, S. Sensitive Detection of Phosphorus Deﬁciency in Plants Using Chlorophyll a Fluorescence. Plant Physiol. 2015, 169,
+353–361. [CrossRef]
+48.
+Meng, X.; Chen, W.W.; Wang, Y.Y.; Huang, Z.R.; Ye, X.; Chen, L.S.; Yang, L.T. Effects of phosphorus deﬁciency on the absorption
+of mineral nutrients, photosynthetic system performance and antioxidant metabolism in Citrus grandis. PLoS ONE 2021,
+16, e0246944. [CrossRef]
+49.
+Schansker, G. Determining photosynthetic control, a probe for the balance between electron transport and Calvin-Benson cycle
+activity, with the DUAL-KLAS-NIR. Photosynth. Res. 2022, 153, 191–204. [CrossRef]
+50.
+Zushi, K.; Matsuzoe, N. Using of chlorophyll a ﬂuorescence OJIP transients for sensing salt stress in the leaves and fruits of
+tomato. Sci. Hortic. 2017, 219, 216–221. [CrossRef]
+51.
+Lima-Melo, Y.; Alencar, V.; Lobo, A.K.M.; Sousa, R.H.V.; Tikkanen, M.; Aro, E.M.; Silveira, J.A.G.; Gollan, P.J. Photoinhibition of
+Photosystem I Provides Oxidative Protection During Imbalanced Photosynthetic Electron Transport in Arabidopsis thaliana.
+Front. Plant Sci. 2019, 10, 916. [CrossRef]
+52.
+Kale, R.S.; Seep, J.L.; Sallans, L.; Frankel, L.K.; Bricker, T.M. Oxidative modiﬁcation of LHC II associated with photosystem II and
+PS I-LHC I-LHC II membranes. Photosynth. Res. 2022, 152, 261–274. [CrossRef] [PubMed]
+53.
+Croft, H.; Chen, J.M.; Luo, X.Z.; Bartlett, P.; Chen, B.; Staebler, R.M. Leaf chlorophyll content as a proxy for leaf photosynthetic
+capacity. Glob. Change Biol. 2017, 23, 3513–3524. [CrossRef]
+54.
+Parvin, K.; Nahar, K.; Hasanuzzaman, M.; Bhuyan, M.; Mohsin, S.M.; Fujita, M. Exogenous vanillic acid enhances salt tolerance of
+tomato: Insight into plant antioxidant defense and glyoxalase systems. Plant Physiol. Biochem. 2020, 150, 109–120. [CrossRef]
+55.
+Qiu, Z.B.; Guo, J.L.; Zhang, M.M.; Lei, M.Y.; Li, Z.L. Nitric oxide acts as a signal molecule in microwave pretreatment induced
+cadmium tolerance in wheat seedlings. Acta Physiol. Plant. 2013, 35, 65–73. [CrossRef]
+56.
+Sarker, B.C.; Karmoker, J.L. Effects of phosphorus deﬁciency on accumulation of biochemical compounds in lentil (Lens culinaris
+Medik.). Bangl. J. Bot. 2011, 40, 23–27. [CrossRef]
+57.
+Yamori, W.; Kondo, E.; Sugiura, D.; Terashima, I.; Suzuki, Y.; Makino, A. Enhanced leaf photosynthesis as a target to increase
+grain yield: Insights from transgenic rice lines with variable Rieske FeS protein content in the cytochrome b6 /f complex. Plant
+Cell Environ. 2016, 39, 80–87. [CrossRef] [PubMed]
+58.
+Hu, W.; Lu, Z.; Meng, F.; Li, X.; Cong, R.; Ren, T.; Sharkey, T.D.; Lu, J. The reduction in leaf area precedes that in photosynthesis
+under potassium deﬁciency: The importance of leaf anatomy. New Phytol. 2020, 227, 1749–1763. [CrossRef] [PubMed]
+59.
+Tang, C.-J.; Luo, M.-Z.; Zhang, S.; Jia, G.-Q.; Tang, S.; Jia, Y.-C.; Zhi, H.; Diao, X.-M. Variations in chlorophyll content, stomatal
+conductance and photosynthesis in Setaria EMS mutants. J. Integr. Agric. 2022, in press. [CrossRef]
+60.
+Singh, S.K.; Badgujar, G.B.; Reddy, V.R.; Fleisher, D.H.; Timlin, D.J. Effect of Phosphorus Nutrition on Growth and Physiology of
+Cotton Under Ambient and Elevated Carbon Dioxide. J. Agron. Crop Sci. 2013, 199, 436–448. [CrossRef]
+61.
+Zhang, D.; Zhang, H.; Chu, S.; Li, H.; Chi, Y.; Triebwasser-Freese, D.; Lv, H.; Yu, D. Integrating QTL mapping and transcriptomics
+identiﬁes candidate genes underlying QTLs associated with soybean tolerance to low-phosphorus stress. Plant Mol. Biol. 2017, 93,
+137–150. [CrossRef] [PubMed]
+62.
+Zhang, K.; Liu, H.; Song, J.; Wu, W.; Li, K.; Zhang, J. Physiological and comparative proteome analyses reveal low-phosphate
+tolerance and enhanced photosynthesis in a maize mutant owing to reinforced inorganic phosphate recycling. BMC Plant Biol.
+2016, 16, 129. [CrossRef] [PubMed]
+63.
+Guo, T.-r.; Yao, P.-c.; Zhang, Z.-d.; Wang, J.-j.; Wang, M. Involvement of Antioxidative Defense System in Rice Seedlings Exposed
+to Aluminum Toxicity and Phosphorus Deﬁciency. Rice Sci. 2012, 19, 207–212. [CrossRef]
+64.
+Hayes, P.E.; Nge, F.J.; Cramer, M.D.; Finnegan, P.M.; Fu, P.; Hopper, S.D.; Oliveira, R.S.; Turner, B.L.; Zemunik, G.; Zhong, H.; et al.
+Traits related to efﬁcient acquisition and use of phosphorus promote diversiﬁcation in Proteaceae in phosphorus-impoverished
+landscapes. Plant Soil 2021, 462, 67–88. [CrossRef]
+Antioxidants 2023, 12, 466
+23 of 23
+65.
+Li, H.; Wang, J.; Ali, S.; Iqbal, B.; Zhang, H.; Wang, S.; Chen, B.; Zhou, Z. Agronomic traits at the seedling stage, yield, and ﬁber
+quality in two cotton (Gossypium hirsutum L.) cultivars in response to phosphorus deﬁciency. Soil. Sci. Plant. Nutr. 2020, 66,
+308–316. [CrossRef]
+66.
+Wang, J.; Li, H.; Huang, X.; Hu, W.; Wang, S.; Zhou, Z. Phosphorus application affected cottonseed kernel yield and nutritional
+quality by improving oil yield and quality of two cotton (Gossypium hirsutum L.) cultivars differing in phosphorus sensitivity.
+Field Crops Res. 2023, 291, 108778. [CrossRef]
+67.
+Saleem, M.F.; Cheema, M.A.; Bilal, M.F.; Anjum, S.A.; Khurshid, I. Fiber quality of cotton (Gossypium hirsutum. L) cultivars under
+different phosphorus levels. J. Anim. Plant Sci. 2011, 21, 26–30.
+68.
+Yuan, F.; Ma, D.; Zhao, K.; Shamuhebieke, ·A.; Kai., Z. Effect of Phosphorus Fertilization Rate on Cotton Field Phosphorus
+Condition, Yield and Phosphorus Balance in Xinjiang. Southwest China J. Agric. Sci. 2021, 34, 1033–1041. (In Chinese) [CrossRef]
+69.
+Wang, J.; Li, H.; Wang, Q.; Huang, X.; Hu, W.; Wang, S.; Zhou, Z. Effects of phosphorus application on carbohydrate metabolism in
+cottonseed kernel during the key development period provided a new insight for phosphorus management in cotton production.
+Ind. Crops Prod. 2023, 191, 115972. [CrossRef]
+70.
+Iqbal, A.; Qiang, D.; Xiangru, W.; Huiping, G.; Hengheng, Z.; Xiling, Z.; Meizhen, S. Low phosphorus tolerance in cotton
+genotypes is regulated by root morphology and physiology. J. Plant Growth Regul. 2022, 1–19. [CrossRef]
+71.
+Iqbal, A.; Qiang, D.; Xiangru, W.; Huiping, G.; Hengheng, Z.; Xiling, Z.; Meizhen, S. Integrative physiological, transcriptome and
+metabolome analysis reveals the involvement of carbon and ﬂavonoid biosynthesis in low phosphorus tolerance in cotton. Plant
+Physio. Biochem. 2023, 196, 302–317. [CrossRef] [PubMed]
+72.
+He, Z.; Zhang, H.; Fang, D.D.; Zeng, L.; Jenkins, J.N.; McCarty, J.C. Effects of inter-species chromosome substitution on cottonseed
+mineral and protein nutrition proﬁles. Agron. J. 2020, 112, 3963–3974. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

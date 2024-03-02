@@ -1,0 +1,758 @@
+Original research
+Dentistry
+Maria Jacinta Rosario Romero(a)
+ 
+Sávio José Cardoso Bezerra(a)
+ 
+Daniel Fried(b)
+ 
+Frank Lippert(a)
+ 
+George Joseph Eckert(c)
+ 
+Anderson Takeo Hara(a)
+ 
+(a) Indiana University, School of Dentistry, 
+Department of Cariology, Operative 
+Dentistry and Dental Public Health, 
+Indianapolis, IN, USA.
+ 
+(b) University of California, San Francisco 
+School of Dentistry, Department of 
+Preventive and Restorative Dental Sciences, 
+San Francisco, CA, USA.
+ 
+(c) Indiana University, School of Medicine, 
+Department of Biostatistics and Health Data 
+Science, Indianapolis, IN, USA.
+Longitudinal assessment of dental 
+erosion-abrasion by cross-polarization 
+optical coherence tomography in vitro
+Abstract: This study tested a novel in vitro dental erosion-abrasion 
+model and the performance of cross-polarization optical coherence 
+tomography (CP-OCT) in longitudinally monitoring the simulated 
+lesions. Thirty human enamel specimens were prepared and 
+randomized to receive three dental erosion-abrasion (EA) protocols: 
+severe (s-EA, lemon juice/pH:2.5/4.25%w/v citric acid), moderate 
+(m-EA, grapefruit juice/pH:3.5/1.03%w/v citric acid) and no-EA (water, 
+control). EA challenge was performed by exposing the specimens to 
+acidic solutions 4x/day and to brushing 2x/day with 1:3 fluoridated 
+toothpaste slurry, for 14 days. Enamel thickness measurements were 
+obtained using CP-OCT at baseline (D0), 7 (D7) and 14 days (D14) and 
+micro-computed tomography (micro-CT) at D14. Enamel surface loss 
+was measured with both CP-OCT and optical profilometry at D0, D7 
+and D14. Data was analyzed with repeated-measures ANOVA and 
+Pearson’s correlation (r) (α = 0.05). CP-OCT enamel thickness decreased 
+over time in the s-EA group (D0 >D7 > D14, p < 0.001) and m-EA group 
+(D0 > D14, p = 0.019) but did not change in the no-EA group (p = 0.30). 
+Overall, CP-OCT and micro-CT results at D14 correlated moderately 
+(r = 0.73). CP-OCT surface loss was highest for s-EA (p <0.001) but did 
+not differ between moderate and no-EA (p = 0.25). Enamel surface 
+loss with profilometry increased with severity (no-EA>m-EA>s-EA, 
+p < 0.001). D14 surface loss was higher than D7 for both methods except 
+for the no-EA group with profilometry. CP-OCT and profilometry had 
+moderate overall correlation (r = 0.70). Our results revealed that the 
+currently proposed in vitro dental erosion-abrasion model is valid and 
+could simulate lesions of different severities over time. CP-OCT was a 
+suitable method for monitoring the EA lesions. 
+Keywords: Tooth Wear; Dental Enamel; Tomography, Optical 
+Coherence.
+Introduction
+The irreversible nature of erosive tooth wear (ETW) substantiates the 
+need for emphasis on the early detection, monitoring and use of specific 
+preventive measures.1 This is because in its advanced stages, the treatment 
+of ETW could become more difficult and case prognosis could become 
+poorer. However, the differential diagnosis of early ETW lesions and their 
+Declaration of Interests: The authors 
+certify that they have no commercial or 
+associative interest that represents a conflict 
+of interest in connection with the manuscript.
+Corresponding Author:
+Anderson Takeo Hara 
+E-mail: ahara@iu.edu
+https://doi.org/10.1590/1807-3107bor-2023.vol37.0081
+Submitted: November 24, 2021 
+Accepted for publication: May 17, 2022 
+Last revision: June 2, 2022
+1
+Braz. Oral Res. 2023;37:e081
+Longitudinal assessment of dental erosion-abrasion by cross-polarization optical coherence tomography in vitro
+clinical monitoring can be difficult,2 mostly due to the 
+multitude of factors involved in their development 
+and the lack of objective outcome measures.1
+From a clinical standpoint, ETW is predominantly 
+a surface phenomenon and its diagnostic procedure 
+as well as progression assessment is traditionally 
+done by visual examination, which is limited by its 
+subjective nature.3 The use of objective methods for 
+the clinical assessment of ETW has been suggested,4 
+and among them optical coherence tomography 
+(OCT) stands out.5,6 OCT allows for quick, safe, 
+non-destructive, and repetitive measurements of 
+enamel thickness;7 and previous studies have shown 
+promising results.5,6,8,9 In order to improve some 
+limitations on this method, such as surface reflection, 
+variations of OCT were developed.7 Polarization-
+sensitive OCT allows for higher contrast between 
+sound and demineralized enamel, as well as for 
+better dentin-enamel junction identification (DEJ).7
+Along with the advances in ETW diagnosis and 
+monitoring, there is still a need to improve research 
+methods for the development and evaluation of 
+anti-ETW agents. Previously, our group has proposed 
+an in situ ETW model10 that could reliably be used 
+for such purpose. More recently, it was confirmed 
+that cross-polarization optical coherence tomography 
+(CP-OCT) was suitable for monitoring ETW lesions 
+of different severities formed using the said  
+in situ model.11 
+Nevertheless, while in situ studies are undoubtedly 
+more clinically relevant than in vitro experiments, 
+not all research laboratories are equipped to conduct 
+such types of studies. Moreover, when evaluating 
+experimental or novel anti-ETW agents, in vitro 
+models would be more suitable in certain cases. 
+The incorporation of mucin in artificial saliva has 
+been found to produce in vitro lesions of similar 
+surface loss with that of human saliva.12 However, 
+most previous in vitro models  usually only involved 
+short-term protocols.6,8 It is then necessary to also 
+develop longer-term in vitro models of dental 
+erosion and abrasion that could better simulate 
+clinical ETW and provide more reliable conditions 
+for the evaluation of agents that may be used for  
+preventive strategies.
+In this study, we tested the performance of CP-OCT 
+in assessing ETW lesions of different severities 
+simulated using a novel in vitro dental erosion-
+abrasion (EA) model that mimicked the conditions of 
+our previous in situ ETW model.11 Objective outcome 
+measures used were enamel thickness and enamel 
+surface loss validated by micro-computed tomography 
+(micro-CT) and optical profilometry, respectively. 
+Methodology
+Study design
+This study followed a blind, randomized 3 × 3 
+factorial design wherein; EA lesion severity groups: 1)
+severe (s-EA, lemon juice/pH:2.5/4.25%w/v citric acid), 
+2) moderate (m-EA, grapefruit juice/pH: 3.5/1.03% 
+w/v citric acid), and 3) no-EA (water, control) were 
+assessed at time points: 1) baseline (D0), 2) Day 7 (D7), 
+3) Day 14 (D14). Human enamel specimens (n = 10)  
+were prepared and submitted to the longitudinal 
+development of EA lesions simulating different 
+severities by exposure to the different test solutions. 
+The specimens were measured with CP-OCT and 
+profilometry for all time points (D0, D7, D14) and 
+micro-CT at D14. Outcome measures were enamel 
+thickness (CP-OCT and micro-CT) and enamel surface 
+loss (CP-OCT and Profilometry). Figure presents a 
+schematic summary of the study procedures and 
+representative CP-OCT images of a specimen from 
+the s-EA group over time with corresponding enamel 
+thickness measured from the enamel surface to the DEJ. 
+Specimen preparation 
+Round-shaped human enamel slabs (of 3 mm 
+diameter and 2 mm thickness) were cut from extracted 
+permanent molars that were cleaned and kept in 
+0.1% thymol solution at 4°C. A total of thirty enamel 
+specimens were prepared as previously described.10 
+Briefly, the pulpal side of the cut enamel slabs were 
+ground flat to a uniform thickness of 1.8 ± 0.2 mm. 
+The top side (enamel) of the slab was then flattened 
+and serially polished using 1,200- to 4,000-grit paper 
+followed by 1-µm diamond polishing suspension to 
+a final thickness of 1.5 ± 0.1 mm, with at least 1 mm 
+of which was enamel. The sides of the slabs were 
+cut with a precision cutting machine, so that their 
+2
+Braz. Oral Res. 2023;37:e081
+Romero MJR, Bezerra SJC, Fried D, Lippert F, Eckert GJ, Hara AT
+width was 1.5 mm. The enamel slabs were then 
+cleaned under sonication and examined using a 
+stereomicroscope. Slabs that were free from cracks, 
+defects, or white spots were selected and glued into 
+stainless steel holders using cyanoacrylate adhesive 
+for medical use (Prism 4541; Loctite; Henkel, Rocky 
+Hill, USA), with primer and accelerator (Prism 7701, 
+713; Loctite). The grinding and polishing procedures 
+were repeated, so that the surfaces of the enamel 
+and the metal holders were leveled, flattened, and 
+highly polished. Baseline surface loss measurements 
+were taken using optical profilometry (details below) 
+and specimens that showed vertical differences of 
+> 1 µm between enamel and metal surfaces were 
+further rejected. Accepted specimens were randomly 
+assigned to the different groups (n = 10).
+Dental erosion-abrasion lesion simulation
+A summary of the daily cycling protocol involving 
+erosion-abrasion procedures can be seen in Table 1. 
+Both pH and titratable acidities of the erosive solutions 
+were measured in triplicate prior to the start of the 
+experiment. Erosive challenge was done 4x/day for 
+14 days by immersion of the dental specimens for  
+5 minutes in 10 ml, per specimen, of their respective 
+acidic solutions:  pure lemon juice (Organic Pure 
+Lemon Juice; Santa Cruz Natural Inc., Chico, USA) 
+for the s-EA group; pure grapefruit juice (100% white 
+grapefruit juice; Ocean Spray Cranberries, Lakeville-
+Middleboro, USA) for the m-EA group, and bottled 
+water (Drinking Water, Kroger Co., Cincinnati, 
+USA) for the negative control, no-EA group. The 
+enamel specimens were manually brushed twice 
+daily (after the first and last acid immersion) for 15 
+s using a soft-bristled manual toothbrush (Oral-B, 
+Procter & Gamble, Cincinnati, USA) and 45 ml, per 
+specimen, of 1:3 slurry of fluoridated toothpaste 
+(Crest Cavity Protection (0.243% NaF/ 0.15%w/v 
+F-), Procter & Gamble, Cincinnati, USA) to simulate 
+usual toothbrushing regimen. All the brushing 
+procedures were performed by a single operator. The 
+total exposure time of the specimens to the slurries 
+was 2 min.  After brushing, the specimens were 
+rinsed with deionized water. When not subjected 
+to the erosive and abrasive procedures, specimens 
+were kept in a remineralization solution (1.45 mM 
+Ca, 5.4 mM PO4, 0.1 M Tris buffer, 2.2 g/L porcine 
+gastric mucin, pH 7.0)12 under slight agitation at 
+room temperature. The remineralization solution 
+was renewed after every 24 h cycle.
+E: enamel; D: dentin; *: reference metal specimen holder.
+Figure. Schematic summary of the study procedures and CP-OCT analysis. 
+3 mm round human enamel slabs
+Flattened, polished and cut
+enamel slabs (1.5 mm width)
+Completed specimen, enamel
+slab glued to metal holder
+Baseline
+a
+Day 7
+a
+Day 14
+a,b
+Artificial saliva
+Demineralization solution
+1:3 fluoride toothpaste slurry
+Specimen Preparation
+Erosion-abrasion cycling
+(14 days)
+Cross-polarization Optical
+Coherence Tomography (CP-OCT)
+Validated with:
+a. Optical profilometry
+b. Micro-CT
+E
+E
+E
+D
+D
+D
+0.98 mm 
+0.90 mm 
+0.85 mm 
+*
+*
+*
+*
+*
+*
+3
+Braz. Oral Res. 2023;37:e081
+Longitudinal assessment of dental erosion-abrasion by cross-polarization optical coherence tomography in vitro
+Enamel thickness measurement
+CP-OCT scanning and analysis
+The specimens were kept moist in a container 
+and were taken out and gently blotted dry prior to 
+scanning to prevent dehydration. The specimens 
+were then scanned and analyzed using a dental 
+CP-OCT system (Santec Inner Vision IVS-300-S-L-C; 
+Santec Corp, Komaki, Japan). Parameters similar to 
+those previously used6,8,13 were adopted. In brief, 
+the CP-OCT system used a swept laser light with 
+a center wavelength of 1,310 nm, a-scan rate of 30 
+kHz and imaging depth range (in air) of > 4 mm. 
+Axial and lateral resolutions (in air) were ≤ 12 μm 
+and 30 μm, respectively. The specimen to be scanned 
+was positioned on an X-Y and Z translation stage 
+and under the CP-OCT sensor, which was fixed in 
+a positioning arm. The refractive index was set at 
+1.6 for enamel. 3D scans were acquired using the 
+scanning probe which had a lateral scanning area 
+of 5 × 5 mm and working distance of 1 mm. Central 
+b-scans (2D image) in the X direction were selected 
+from each 3D scan and saved for measurements. All 
+saved 2D image files were then randomized for blind 
+analyses in terms of both time and severity. 
+Enamel thickness measurements (from DEJ to 
+surface of the specimen) on the 2D images were 
+performed using Santec Inner Vision IVS-300 software 
+(Santec Corp, Komaki, Japan) as previously described.6 
+The measurement position was identified at the 
+center of the enamel width with the aid of a screen 
+ruler (A Ruler for Windows v3.3, Rob Latour). The 
+distance in mm between the depths of the highest 
+light intensity peaks at the enamel surface and DEJ 
+areas was then calculated from the a-scan. CP-OCT 
+scanning and enamel thickness measurements were 
+performed at D0, D7 and D14.
+Micro-CT scanning and analysis 
+The enamel specimens were removed from 
+the metal specimen holders after D14 and were 
+scanned with a micro-computed tomography scanner 
+(SkyScan1172; Bruker microCT, Kontich, Belgium) to 
+produce high-resolution 3D models. The specimens 
+were then mounted on a rotary stage and scanned at 59 
+kV and 167µA with an X-ray beam perpendicular to the 
+long axis of the specimen. A 0.5 mm aluminum filter 
+was used for beam-hardening correction. Data were 
+acquired and reconstructed applying previously used 
+specifications.5,6 Scan reconstruction was performed 
+using NRecon v1.7.3.1 (Skyscan, Bruker microCT) 
+and viewed on the associated software (DataViewer 
+v1.5.6.2, Skyscan, Bruker microCT) to obtain the central 
+X-Z image that corresponds to the CP-OCT 2D scan 
+position. The saved central X-Z images were then 
+converted to bitmap (CT analyzer v1.17.7.2+, Skyscan, 
+Bruker microCT) and were opened in Image J (ImageJ 
+1.52a, NIH) for enamel thickness measurements. 
+Measurement positions were determined by locating 
+the midline of the enamel width using the screen 
+Table 1. Daily erosion-abrasion cycling schedule.
+Variable
+Sequence
+Procedures
+1
+Demineralization
+5 min 
+Manual brushing/slurry exposure
+15 s (toothpaste slurry)
+Remineralization 
+60 min
+2
+Demineralization
+5 min 
+Remineralization 
+60 min
+3
+Demineralization
+5 min 
+Remineralization 
+60 min
+4
+Demineralization
+5 min 
+Manual brushing/slurry exposure
+15 s (toothpaste slurry)
+Remineralization 
+60 min
+5
+Remineralization 
+Overnight storage to complete 24 h
+4
+Braz. Oral Res. 2023;37:e081
+Romero MJR, Bezerra SJC, Fried D, Lippert F, Eckert GJ, Hara AT
+ruler (A Ruler for Windows v3.3.3). Enamel thickness 
+was measured as the distance between the enamel 
+surface and DEJ in mm using the straight-line tool 
+at the measuring position.
+Enamel surface loss measurement
+CP-OCT analysis
+Enamel surface loss with CP-OCT was determined 
+as the subtracted difference of enamel thickness 
+measurements at D7 and D14 from baseline values.
+Optical profilometry scanning and analysis
+Optical profilometry scans were obtained at D0, 
+D7, and D14. The specimens were fixed on acrylic 
+blocks with wax and then scanned using an optical 
+profilometer (Proscan 2000; Scantron, Taunton, UK) 
+with an accuracy of 0.1%, a precision (SD) of ± 0.06 
+µm, and a detection limit of < 0.3 µm. The step size 
+was set at 0.01 mm and the number of steps at 200 in 
+the (x) axle; and 0.1 mm and 10, respectively, in the 
+(y) axle. A surface area of 2 × 1 mm was scanned, 
+comprising the reference metal and enamel surfaces. 
+Using a dedicated software (Proscan 2000; Scantron), 
+the depth of the treated enamel area was calculated 
+in relation to the reference surfaces. A three-point 
+height tool was used, which allowed the selection 
+of a 1 × 1 mm area on the center of the enamel and 
+two 1 × 0.5 mm areas on the adjacent metal surfaces. 
+Measurements taken at D0, D7 and at the end of EA 
+cycling, D14, were performed in a similar manner 
+by an analyst blinded to the treatment regimens. 
+Surface loss was calculated for each specimen based 
+on the reference surfaces.
+Statistical analysis
+The effects of EA (s-EA, m-EA, no-EA) and time 
+(D0, D7, D14) on CP-OCT enamel thickness and enamel 
+surface loss and optical profilometry surface loss were 
+analyzed using ANOVA models with repeated days 
+within specimen. The effect of treatment on micro-CT 
+enamel thickness at D14 was analyzed using one-way 
+ANOVA. A natural logarithm transformation was 
+used for the CP-OCT and optical profilometry surface 
+loss analyses. Pearson’s correlation coefficients (r) and 
+scatterplots were used to examine the relationships 
+between the measurements. A 5% significance level 
+was used for all tests.
+Results
+A significant interaction was observed between 
+EA severity and days for CP-OCT enamel thickness 
+(p < 0.001). Results for enamel thickness assessed 
+with CP-OCT and micro-CT and their correlations 
+are shown in Table 2. For s-EA, enamel thickness 
+decreased from D0 to D7 to D14 (p<0.001). For moderate 
+EA, enamel thickness decreased from D0 to D14 
+(p=0.019), but D7 was not different from D0 (p = 0.10) 
+or D14 (p = 0.46). There was no significant difference 
+Table 2. Mean (standard error) of enamel thickness (mm) with CP-OCT and µ-CT for each erosion-abrasion (EA) severity and 
+their correlation coefficients (r).
+EA Severity
+Days
+CP-OCT
+Micro-CT
+r
+Overall r
+None (no-EA)
+0
+0.89 (0.09)a
+ 
+ 
+0.73*
+ 
+7
+0.89 (0.09)a
+ 
+ 
+ 
+14
+0.88 (0.09)a
+0.90 (0.09)
+0.98†
+Moderate (m-EA)
+0
+0.95 (0.09)a
+ 
+ 
+ 
+7
+0.93 (0.09)ab
+ 
+ 
+ 
+14
+0.92 (0.09)b
+0.95 (0.10)
+0.88†
+Severe (s-EA)
+0
+1.05 (0.09)a
+ 
+ 
+ 
+7
+0.97 (0.08)b
+ 
+ 
+ 
+14
+0.92 (0.09)c
+0.94 (0.07)
+0.30
+*Similar lowercase letters indicate no difference among the days (0, 7 and 14) within each EA severity (p > 0.05); there were no differences 
+among EA severities within any of the study days; *with p-values < 0.001
+5
+Braz. Oral Res. 2023;37:e081
+Longitudinal assessment of dental erosion-abrasion by cross-polarization optical coherence tomography in vitro
+among days for no-EA (p = 0.30). There were no 
+differences in enamel thickness among the three 
+EA groups (p = 0.76), regardless of treatment time. 
+CP-OCT enamel thickness and micro-CT enamel 
+thickness at D14 were moderately positively correlated 
+overall (highly correlated for no-EA and m-EA but 
+only weakly correlated for s-EA). 
+CP-OCT surface loss results revealed no significant 
+interaction between EA severity and days (p = 0.10). 
+CP-OCT surface loss was significantly higher for 
+s-EA than m-EA (p < 0.001) and no-EA (p < 0.001) 
+while m-EA and no-EA were not different from each 
+other (p = 0.25). D7 had significantly less surface 
+loss than D14 (p = 0.002). On the other hand, a 
+significant interaction between EA severity and days 
+was observed for optical profilometry surface loss 
+measurements (p < 0.001). For D7 and D14, optical 
+profilometry surface loss increased with EA severity 
+(no-EA<m-EA<s-EA, p < 0.001). No significant optical 
+profilometry surface loss difference was found 
+between days for no-EA (p = 0.92), but for moderate 
+and severe EA, D7 had significantly less surface loss 
+than D14 (p < 0.001). CP-OCT surface loss and optical 
+profilometry surface loss were moderately correlated 
+overall (r = 0.70, p < 0.001) and when grouped according 
+to days (D7: r = 0.66; D14: r = 0.72) but poorly to 
+moderately correlated when grouped according to 
+severity and severity per day (r = 0.08–0.56). Table 3 
+shows surface loss values for CP-OCT and profilometry 
+for the different ETW severities and time points and 
+their specific correlation coefficients. Correlations 
+between surface loss and enamel thickness were 
+generally negligible (between +/- 0.3).
+Discussion
+This study tested a novel model for the in vitro 
+simulation of dental erosion-abrasion, adopted from 
+our in situ ETW model.10,11 Moreover, it tested the 
+performance of CP-OCT in detecting and monitoring 
+the progression of the simulated in vitro lesions 
+longitudinally. Two objective outcomes were studied: 
+enamel thickness and enamel surface loss, calculated 
+as the change in enamel thickness over time. Previous 
+studies have already reported that CP-OCT was useful 
+in assessing these parameters both in vitro6,8 and in 
+situ.11 Nevertheless, earlier in vitro studies have only 
+used short-term protocols.6,8
+The current in vitro model simulated ETW lesions 
+similar to those in the more clinically relevant  
+in situ model.10-,1 Such a model would be useful for 
+practical and more reliable laboratory development 
+and evaluation of anti-ETW agents. It involved the 
+use of mucin-containing artificial saliva, which 
+has been reported to lead to similar surface loss 
+results with that of human saliva in enamel erosion-
+abrasion models in vitro.12 The addition of mucin 
+has allowed the simulation of some functions of the 
+pellicle.  The organic layer it formed on the tooth 
+surface has been reported to provide protection 
+against enamel surface demineralization,14 as well as 
+interfered with remineralization12 similar to that of  
+human saliva.  
+However, even if the currently used conditions 
+mimicked that of the in situ study,11 the magnitude of 
+enamel surface loss (measured by optical profilometry) 
+observed in vitro was higher than in situ (in vitro 
+Table 3. Mean (standard error) surface loss with CP-OCT and OP (µm) after 7 and 14 days for each erosion-abrasion (EA) severity 
+with corresponding correlation coefficients (r).
+EA Severity
+Days
+CP-OCT
+   OP
+r
+Severity (r)
+Days (r)
+Overall (r)
+None (no-EA)
+7
+-1.59 (7.85)aA
+2.29 (0.21)aA
+0.18
+0.23
+Day 7:
+0.70†
+14
+16.96(11.28)bA
+2.31 (0.25)aA
+0.28
+0.66*
+Moderate (m-EA)
+7
+22.02 (10.84)aA
+12.58 (0.53)aB
+0.08
+-0.07
+ 
+14
+31.65 (15.62)bA
+22.61 (0.94)bB
+-0.56
+Day 14:
+Severe (s-EA)
+7
+81.03 (18.91)aB
+70.86 (0.89)aC
+0.23
+0.52*
+0.72*
+14
+137.67 (14.86)bB
+134.09 (2.53)bC
+0.28
+ 
+*Similar lowercase letters indicate no difference between the days (7 and14) within  each EA severity (p > 0.05); similar uppercase letters 
+indicate no difference among EA severities within the same study day (7 or 14); 8with p-values < 0.05.
+6
+Braz. Oral Res. 2023;37:e081
+Romero MJR, Bezerra SJC, Fried D, Lippert F, Eckert GJ, Hara AT
+vs. in situ, at D14: none: 2.31 vs. 0.62 µm; moderate: 
+22.61 vs. 18.80 µm; severe: 134.09 vs. 98.78 µm). This 
+result was not surprising because even if mucin 
+was present in the artificial saliva used, different 
+biologic factors could not be simulated. As such, 
+other salivary proteins from the acquired pellicle,15 
+the saliva buffering and clearing capacities as well 
+as the absence of oral mucosal surfaces for greater 
+fluoride substantivity were not present and is thus 
+a limitation of this in vitro study. 
+Our results for the CP-OCT enamel thickness 
+showed a lack of EA treatment severity effect. This 
+could be attributed to the high variation in enamel 
+thickness among the specimens. Effect of time, 
+on the other hand, was evident for both moderate 
+and severe EA groups but not for the no-EA group, 
+corroborating the results of our in situ study.11 Enamel 
+thickness decreased significantly after every time 
+point with the s-EA group and between D0 and D14 
+for the m-EA group. There was no difference over 
+time with the no-EA group. These findings suggest 
+that while CP-OCT may not be able to differentiate 
+EA severities cross-sectionally, it can be useful for 
+the longitudinal monitoring the progression of EA 
+lesions within the same tooth. 
+Overall, the enamel thickness measurements 
+with CP-OCT at D14 correlated moderately with 
+micro-CT. More specifically, a strong correlation 
+was observed for the no-EA and m-EA groups, 
+but a weak correlation existed for the s-EA group. 
+This could be due to the difficulty in locating the 
+actual DEJ in CP-OCT images, especially in several 
+specimens in the s-EA group. Previous studies 
+have similarly found loss of DEJ details in some 
+of their scans.8,16,17 It was reported that the degree 
+of demineralization and surface micromorphology 
+do not affect CP-OCT measurements.8 However, 
+differences likely existed in the lesion characteristics 
+of the enamel specimens in the present study from 
+those that had been previously examined.6,8,11 Present 
+study conditions could have effects on both de- 
+and remineralization, which could respectively 
+increase or decrease enamel surface reflectivity 
+with OCT.18 Enamel porosity also increases with 
+demineralization and results to  higher scattering 
+coefficients.19 These factors could then affect the 
+OCT optical penetration depth and ultimately, the 
+capability of CP-OCT in assessing enamel thickness 
+and enamel surface loss. Likewise, the hydration 
+state of enamel affects its optical properties.20,21 
+Dehydration of demineralized specimens would 
+then cause a greater increase in light scattering due 
+to refractive index mismatch, consequently resulting 
+in higher attenuation and a poorer resolution of 
+the DEJ.16 Thus, interpretation of results for the 
+s-EA group must be taken with caution due to 
+these limitations. 
+Similar to CP-OCT, micro-CT offers a non-
+destructive method that can take repeated 
+measurements from the same position in the 
+specimen.6,8,22 However, micro-CT tomograms were 
+done only at D14 after the enamel slab was detached 
+from the metal specimen holder, due to the inherent 
+limitations of using metal with a radiographic method. 
+Metal holders were utilized in order to have reliable 
+and stable reference surfaces over the extended period 
+of erosion-abrasion challenges.
+The enamel surface loss measured by optical 
+profilometry increased with EA severity (no-EA<m-
+EA<s-EA), for both D7 and D14, similarly to our in 
+situ study.11 Likewise, no increase in surface loss 
+over time was observed for the no-EA group in both 
+studies, validating this dental erosion-abrasion in 
+vitro model. These findings were generally similar 
+to the trends observed with CP-OCT. A moderate 
+overall correlation was observed between our 
+CP-OCT and optical profilometry enamel surface 
+loss results, which was also consistent with our in 
+situ findings.11 Nevertheless, specific correlations 
+according to severity and severity per day were 
+only poor to moderate. Differences in the sensitivity 
+between CP-OCT and optical profilometry have 
+been pointed out before as a possible reason.8 The 
+axial resolution of CP-OCT at ≤ 12 μm produces 
+less accurate measurements compared to optical 
+profilometry. The smaller range of measurements per 
+group in comparison to the overall range across all 
+severities as well as the lower number of specimens 
+per group in this study compared to the previous 
+in situ study11 could have contributed to the poor 
+individual group correlation but better overall 
+correlation between the two methods. 
+7
+Braz. Oral Res. 2023;37:e081
+Longitudinal assessment of dental erosion-abrasion by cross-polarization optical coherence tomography in vitro
+Conclusions
+Our results confirm the validity of this novel in 
+vitro erosion-abrasion model, which can potentially 
+be used for future testing of anti-erosion-abrasion 
+agents in the laboratory. Even if the values obtained 
+with CP-OCT were not directly interchangeable with 
+micro-CT and optical profilometry, CP-OCT reflected 
+similar trends for both enamel thickness and enamel 
+surface loss parameters. These findings are consistent 
+with our previous in situ study11 and indicates that 
+CP-OCT can be used to longitudinally monitor the 
+erosion-abrasion lesions formed within the same 
+tooth in this in vitro model. Caution however should 
+be exercised when handling specimens of the severe 
+EA group as their propensity for dehydration might 
+negatively affect the CP-OCT applicability for this 
+specific EA model.
+Acknowledgments
+This research was supported by the National 
+Institute of Dental and Craniofacial Research of the 
+National Institutes of Health (R21DE026844). The 
+content of this work is solely the authors’ responsibility 
+and does not necessarily represent the official views 
+of the National Institutes of Health.
+1. Hara AT, Livengood SV, Lippert F, Eckert GJ, Ungar PS. Dental surface texture characterization based on erosive tooth wear processes.  
+J Dent Res. 2016 May;95(5):537-42. https://doi.org/10.1177/0022034516629941
+2. Bartlett DW, Shah P. A critical review of non-carious cervical (wear) lesions and the role of abfraction, erosion, and abrasion. J Dent Res. 
+2006 Apr;85(4):306-12. https://doi.org/10.1177/154405910608500405
+3. Ganss C, Lussi A. Diagnosis of erosive tooth wear. Monogr Oral Sci. 2014;25:22-31. 
+https://doi.org/10.1159/000359935 PMID:24993255
+4. Huysmans MC, Chew HP, Ellwood RP. Clinical studies of dental erosion and erosive wear. Caries Res. 2011;45(s1 Suppl 1):60-8. 
+https://doi.org/10.1159/000325947
+5. Algarni A, Kang H, Fried D, Eckert GJ, Hara AT. Enamel thickness determination by optical coherence tomography: in vitro validation. 
+Caries Res. 2016;50(4):400-6. https://doi.org/10.1159/000446779
+6. Alghilan MA, Lippert F, Platt JA, Eckert GJ, González-Cabezas C, Fried D, et al. In vitro longitudinal evaluation of enamel  
+wear by cross-polarization optical coherence tomography. Dent Mater. 2019 Oct;35(10):1464-70. 
+https://doi.org/10.1016/j.dental.2019.07.018
+7. Attin T, Wegehaupt FJ. Methods for assessment of dental erosion. Monogr Oral Sci. 2014;25:123-42. 
+https://doi.org/10.1159/000360355
+8. Alghilan MA, Lippert F, Platt JA, Eckert GJ, González-Cabezas C, Fried D, et al. Impact of surface micromorphology and 
+demineralization severity on enamel loss measurements by cross-polarization optical coherence tomography. J Dent. 2019 Feb;81:52-8. 
+https://doi.org/10.1016/j.jdent.2018.12.009
+9. Wilder-Smith CH, Wilder-Smith P, Kawakami-Wong H, Voronets J, Osann K, Lussi A. Quantification of dental erosions in patients with 
+GERD using optical coherence tomography before and after double-blind, randomized treatment with esomeprazole or placebo. Am J 
+Gastroenterol. 2009 Nov;104(11):2788-95. https://doi.org/10.1038/ajg.2009.441  
+10. Hara AT, Barlow AP, Eckert GJ, Zero DT. Novel in-situ longitudinal model for the study of dentifrices on dental erosion-abrasion. Eur J 
+Oral Sci. 2014 Apr;122(2):161-7. https://doi.org/10.1111/eos.12108
+11. Romero MJ, Bezerra SJ, Fried D, Yang V, Lippert F, Eckert GJ, et al. Cross-polarization optical coherence tomographic assessment of in 
+situ simulated erosive tooth wear. J Biophotonics. 2021 Sep;14(9):e202100090. https://doi.org/10.1002/jbio.202100090
+12. Hara AT, González-Cabezas C, Creeth J, Zero DT. The effect of human saliva substitutes in an erosion-abrasion cycling model. Eur J 
+Oral Sci. 2008 Dec;116(6):552-6. https://doi.org/10.1111/j.1600-0722.2008.00575.x
+13. Chan KH, Tom H, Lee RC, Kang H, Simon JC, Staninec M, et al. Clinical monitoring of smooth surface enamel lesions using CP-OCT 
+during nonsurgical intervention. Lasers Surg Med. 2016 Dec;48(10):915-23. https://doi.org/10.1002/lsm.22500
+14. Nieuw Amerongen AV, Oderkerk CH, Driessen AA. Role of mucins from human whole saliva in the protection of tooth enamel against 
+demineralization in vitro. Caries Res. 1987;21(4):297-309. https://doi.org/10.1159/000261033
+15. Baumann T, Kozik J, Lussi A, Carvalho TS. Erosion protection conferred by whole human saliva, dialysed saliva, and artificial saliva.  
+Sci Rep. 2016 Oct;6(1):34760. https://doi.org/10.1038/srep34760
+References
+8
+Braz. Oral Res. 2023;37:e081
+Romero MJR, Bezerra SJC, Fried D, Lippert F, Eckert GJ, Hara AT
+16. Chan KH, Chan AC, Darling CL, Fried D. Methods for monitoring erosion using optical coherence tomography. Proc SPIE Int Soc Opt 
+Eng. 2013 Mar 25;8566:856606. https://doi.org/10.1117/12.2011013
+17. Aden A, Anthony A, Brigi C, Merchant MS, Siraj H, Tomlins PH. Dynamic measurement of the optical properties of bovine 
+enamel demineralization models using four-dimensional optical coherence tomography. J Biomed Opt. 2017 Jul;22(7):76020. 
+https://doi.org/10.1117/1.JBO.22.7.076020
+18. Popescu DP, Sowa MG, Hewko MD, Choo-Smith LP. Assessment of early demineralization in teeth using the signal attenuation in optical 
+coherence tomography images. J Biomed Opt. 2008 Sep-Oct;13(5):054053. https://doi.org/10.1117/1.2992129
+19. Darling CL, Huynh GD, Fried D. Light scattering properties of natural and artificially demineralized dental enamel at 1310 nm. J Biomed 
+Opt. 2006 May-Jun;11(3):34023. https://doi.org/10.1117/1.2204603
+20. Shimamura Y, Murayama R, Kurokawa H, Miyazaki M, Mihata Y, Kmaguchi S. Influence of tooth-surface hydration conditions on optical 
+coherence-tomography imaging. J Dent. 2011 Aug;39(8):572-7. https://doi.org/10.1016/j.jdent.2011.06.004
+21. Nazari A, Sadr A, Campillo-Funollet M, Nakashima S, Shimada Y, Tagami J, et al. Effect of hydration on assessment of early enamel 
+lesion using swept-source optical coherence tomography. J Biophotonics. 2013 Feb;6(2):171-7. https://doi.org/10.1002/jbio.201200012
+22. Hamba H, Nakamura K, Nikaido T, Tagami J, Muramatsu T. Remineralization of enamel subsurface lesions using 
+toothpaste containing tricalcium phosphate and fluoride: an in vitro µCT analysis. BMC Oral Health. 2020 Oct;20(1):292. 
+https://doi.org/10.1186/s12903-020-01286-1
+9
+Braz. Oral Res. 2023;37:e081
+
