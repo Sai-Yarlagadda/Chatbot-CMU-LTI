@@ -1,0 +1,3148 @@
+USING IMPLICIT FEEDBACK TO IMPROVE QUESTION
+GENERATION
+Hugo Rodrigues
+Instituto Superior Técnico, Universidade de Lisboa
+INESC-ID
+Language Technologies Institute, Carnegie Mellon University
+hugo.p.rodrigues@tecnico.ulisboa.pt
+Eric Nyberg
+Language Technologies Institute, Carnegie Mellon University
+ehn@cs.cmu.edu
+Luisa Coheur
+Instituto Superior Técnico, Universidade de Lisboa
+INESC-ID
+luisa.coheur@tecnico.ulisboa.pt
+ABSTRACT
+Question Generation (QG) is a task of Natural Language Processing (NLP) that aims at automatically
+generating questions from text. Many applications can beneﬁt from automatically generated questions,
+but often it is necessary to curate those questions, either by selecting or editing them. This task is
+informative on its own, but it is typically done post-generation, and, thus, the effort is wasted. In
+addition, most existing systems cannot incorporate this feedback back into them easily. In this work,
+we present a system, GEN, that learns from such (implicit) feedback. Following a pattern-based
+approach, it takes as input a small set of sentence/question pairs and creates patterns which are then
+applied to new unseen sentences. Each generated question, after being corrected by the user, is used
+as a new seed in the next iteration, so more patterns are created each time. We also take advantage
+of the corrections made by the user to score the patterns and therefore rank the generated questions.
+Results show that GEN is able to improve by learning from both levels of implicit feedback when
+compared to the version with no learning, considering the top 5, 10, and 20 questions. Improvements
+go up from 10%, depending on the metric and strategy used.
+1
+Introduction
+QG is the Natural Language Processing task of automatically generating questions from unseen sentences/text. Manually
+creating questions is a time-consuming task, and many different scenarios could beneﬁt from automatically created
+questions. Educational settings, in which teachers have to create questions to assess their students, and the creation of
+a knowledge base for a chatbot that performs, for instance, customer support, are a few examples of how QG can be
+applied. In a real QG setting, users are likely required to correct at least some of the obtained questions. Typically,
+these corrections are wasted, although being informative. In other words, they can be seen as implicit feedback on the
+system’s performance. In this work we explore the concept of taking advantage of this implicit feedback to improve the
+performance of our proposed QG system.
+To make use of such data, the system needs to be capable of incorporating it online. Neural networks have recently
+drawn some attention in the QG ﬁeld [Serban et al., 2016, Du et al., 2017, Wang et al., 2017], but they can hardly
+beneﬁt from such small learning increments. The more traditional approaches to QG rely in rules or patterns, which
+arXiv:2304.13664v1  [cs.CL]  26 Apr 2023
+Running Title for Header
+are used to transform input sentences into new questions [Kalady et al., 2010, Heilman and Smith, 2010, Ali et al.,
+2010, Varga and Ha, 2010]. However, most of them utilize hand-crafted patterns, which not only requires linguists to
+create them, but also do not give room to adapting the systems on the long term. In other ﬁelds, like relation extraction,
+some works studied automatic acquisition of patterns [Ravichandran and Hovy, 2002, Velardi et al., 2013], a strategy
+employed, to the best of our knowledge, by a single work in QG: The Mentor [Curto et al., 2011]. Inspired by it, we
+designed a pattern-based QG system that automatically learns patterns from question/sentence seeds, which are used to
+generate questions from new sentences. We expand the original idea by employing multiple matching strategies and
+semantic features, while including the concept of using implicit feedback as well.
+In this paper, we present GEN1, our QG system, which is able to take advantage of the implicit feedback given by the
+expert when editing the generated questions, incorporating it back on the system in two ways. First, the edited questions,
+along with their source sentence, are used as new seeds, thus enlarging the pool of available patterns. Secondly, the
+corrections made by the expert are used as a tool to score the corresponding patterns, which are used indirectly to rank
+the generated questions. Contrasting with deep learning methods that typically require larger datasets for training, GEN
+only needs a small set of question/sentence seeds to be bootstraped. In addition, short loops of human feedback can
+improve its performance, unlike state of the art counterparts.
+The paper is organized as follows: in Section 2 we present related work, and in Section 3 we describe our system, GEN.
+In Section 4 we detail the experimental setup and in Sections 5 through 8 we report our experiments and results. Finally,
+we highlight the main conclusions and suggest future work in Section 9.
+2
+Related Work
+In what concerns QG systems, most rely on hand-crafted rules [Ali et al., 2010, Varga and Ha, 2010, Pal et al., 2010] or
+tree operations on parse trees to transform sentences into questions [Kalady et al., 2010, Heilman and Smith, 2010, 2009,
+Wyse and Piwek, 2009]. Examples of the former approach include the systems introduced by Mazidi and Nielsen [2015],
+Mannem et al. [2010], Ali et al. [2010], or Varga and Ha [2010] which take advantage of hand-crafted patterns. For
+example, a designed rule like NP1 VB NP2 → Wh-word VB NP2? transforms a simple subject-verb-object sentence
+into a question about the subject of that sentence. Most of these systems rely on constituent parsers, but some take
+a step further. For instance, Mazidi and Nielsen [2015] use lexico-syntactic patterns based in dependency parsers,
+while Mannem et al. [2010] take advantage of a Semantic Role Labeler (SRL). Approaches based on tree operations
+are illustrated by the work described by Heilman and Smith [2010], directly operating on the parse trees to transform
+the sentences into questions. This system also adopts a strategy of over-generation, ranking the generated questions
+afterwards. Also following in the hand-crafted paradigm, the system presented in Labutov et al. [2015] asks the crowd
+to create questions that are likely to generalize, regarding entities of type Person and Locations.
+A totally different approach was followed by THE-MENTOR [Mendes et al., 2011, Curto et al., 2012] and GEN
+[Rodrigues et al., 2018], which automatically learn patterns from a set of sentence/question/answer triples (the seeds). In
+both systems, the pattern is created from the sentences that contain both the question and answer terms, and the shared
+tokens among the sentence and the question tell how one can be transformed into the other, generating questions of the
+original type. While THE-MENTOR only uses syntactic cues, GEN allows different types of pattern matching, from
+syntactic to semantic. This type of approach is based in similar strategies used in other domains, like QA [Ravichandran
+and Hovy, 2002].
+More recently, with the technological advancement of GPUs, and the creation of large datasets (like SQuAD [Rajpurkar
+et al., 2016]) to help them, neural networks gained popularity in different domains, putting state of the art results. When
+it comes to QG, it became possible to successfully train large neural networks with the goal of generating questions
+[Serban et al., 2016, Indurthi et al., 2017, Du et al., 2017, Wang et al., 2017, Zhou et al., 2018, Subramanian et al., 2018,
+Sun et al., 2018, Murakhovs’ka et al., 2022]. These works apply a sequence-to-sequence approach [Sutskever et al.,
+2014], with most of them requiring the answer span as an input of the network [Yuan et al., 2017, Zhou et al., 2018,
+Liu et al., 2019, Subramanian et al., 2018]. Other works use more structured inputs, like ontology triples that describe
+factual relationships between two entities [Serban et al., 2016, Indurthi et al., 2017, Han et al., 2022]. However, this
+imposes a limitation on the applicability of the approach, given that such data (ontology triples) is not widely available.
+Some works take a single sentence or paragraph alone as input. The work of Du et al. [2017] show how to generate
+questions from unstructured text without requiring the answer span as an input. This approach is more realistic and
+mimics better what previous QG systems did in the past, as the answer span is typically not available. The authors
+exploit a sentence- and a paragraph-level model, where the latter encodes context information to better inform the
+generation process. Kumar et al. [2018] also use a similar approach, with the difference being that the loss function
+1This paper deeply expands our previous work [Rodrigues et al., 2018], where we showed a preliminary architecture and results
+of GEN.
+2
+Running Title for Header
+is adapted to integrate typical evaluation metrics like ROUGE and BLEU. The additional input of the answer is also
+behind dual strategies, that train a model aimed at solving two tasks jointly. In this case, Question Answering (QA)
+is the joint problem chosen, given the similarity between the task and QG. Despite their distinct research areas, QG
+and QA are seen as complementary aspects of the same problem. In fact, QA has a long tradition in NLP research on
+its own, contributing with widely know systems as Wolfram Alpha2, IBM Watson [Ferrucci et al., 2010], and others
+[Soubbotin, 2001, Mendes, 2013, Fader et al., 2014, Baudiš and Šedivý, 2015], including more recent neural network
+models, like BERT [Devlin et al., 2018]3. Thus, for instance, Wang et al. [2017] use an encoder-decoder model that
+is conditioned on a secondary input, either the answer (QG), or the question (QA), which is used to solve both tasks,
+iteratively. Another example, by Tang et al. [2017], looks at QA as a ranking problem, i.e., it uses the answer selection
+task only, while the QG part of the model does use the answer as an input, while trying to minimize a common loss
+function for both tasks.
+Attention mechanisms, widely used in typical sequence-to-sequence models, have been used to create Transformers
+[Vaswani et al., 2017]. This is also a sequence-to-sequence model that discards the recurrent units of the previous
+models (LSTM [Hochreiter and Schmidhuber, 1997] or GRU [Cho et al., 2014]), implementing a stack of attention
+mechanisms instead, overcoming some of their limitations, both conceptual (long input sequences) and technical
+(training resources needed). Transformers established a new standard on neural networks state of the art, being the base
+for BERT [Devlin et al., 2018], a model that can be successfully ﬁne-tuned for a variety of tasks, and that was recently
+used in QG Chan and Fan [2019]. Currently, we can ﬁnd neural QG being applied to a panoply of scenarios, such as
+education settings [Wang et al., 2022], conversations [Ling et al., 2022] or speciﬁc languages [Liu and Zhang, 2022].
+Two recent surveys are also available, one focusing in QG in general terms [Zhang et al., 2021], the other targeting
+neural QG [Dong et al., 2022].
+3
+GEN
+In this section we will describe GEN, our pattern-based QG system that automatically learns patterns from question/sen-
+tence seeds. Then, these patterns are used to generate questions from new sentences. Figure 1 depicts the overall idea.
+In a ﬁrst step, semantic patterns are created based on the seeds, in the Pattern Acquisition step (B, in the bottom left of
+Figure 1). This step is detailed in Section 3.1. The top left part of the ﬁgure (A) respects to the application of those
+patterns to new unseen sentences, resulting in new generated questions (Section 3.2). In Figure 1, on the right (C),
+is also depicted the idea of using the implicit feedback from experts to create new seeds and weigh patterns across
+multiple iterations. This happens along the generation process, and is discussed in Section 3.3.
+3.1
+Pattern Acquisition
+We deﬁne a pattern P(Q, A, S) as a tuple < Q/A, PA(S),
+\
+align(Q/A, S) >, where:
+• Q, A and S belong to a seed and correspond to the Q/A pair and the answer sentence, respectively;
+• PA(S) is a predicate-argument structure that captures the different information about the answer sentence S;
+•
+\
+align(Q/A, S) is the alignment between the tokens in Q/A and S.
+This tuple contains all the needed information to create a new question Q′ from a new unseen sentence S′, as we will
+see in next section. In the following subsections we detail how these patterns are generated.
+3.1.1
+Sentence Annotation and Predicate-Arguments
+As for sentence annotation, each sentence is enriched with information from multiple sources. At the token level, each
+token t is annotated with the following:
+• Named Entities: if a word or multi-word expression is detected as a Named Entity (NE) (we used regular
+expressions to extract dates in addition to the Stanford Named Entity Recognizer [Finkel et al., 2005]), it will
+be collapsed into a single token, and will be tagged with the NE type (for instance, Person or Location);
+• WordNet: GEN identiﬁes the synsets to which each token belongs, given by WordNet [Miller, 1995];
+2https://www.wolframalpha.com
+3There is also signiﬁcant research on non-factoid QA [Bilotti et al., 2007, Higashinaka and Isozaki, 2008, Surdeanu et al., 2011],
+but it is out of the scope of this paper to explore that topic in detail.
+3
+Running Title for Header
+Seeds 
+Q/A 
+Answer Sentence
+Patterns
+User Feedback
+Pattern Application
+Text
+Sentence Annotation
+Pattern Creation
+Q/A 
+Answer Sentence 
+pairs
+Fixed 
+Q/A pairs
+Pattern Weighing
+Question Generation
+Pattern Acquisition
+Pattern Improvement
+A
+B
+C
+Figure 1: Proposed solution for GEN, depicting all steps of the process: Pattern Acquisition (B), Question Generation
+(A), and Pattern Improvement (C).
+• Verb Sense: if the token is a verb, its frame and/or class is noted, according to FrameNet [Baker et al., 2003]
+and VerbNet [Kipper et al., 2000], respectively;
+• Part of Speech (POS): the token is labeled with its POS tag (parsed by the Stanford parser);
+• Word Embedding: the token is associated with its word embedding vector (by using Word2Vec [Mikolov et al.,
+2013]).
+Then, at the sentence level, we use Stanford constituent and dependency parsers [Klein and Manning, 2003, de Marneffe
+et al., 2006] to create both constituent and dependency trees, and Senna SRL [Collobert et al., 2011] to obtain the
+semantic roles. The SRL provides us predicate-argument structures that we use to capture the semantic information of
+the answer sentence. That is, each predicate identiﬁed by the SRL in the answer sentence will generate a triple (the
+“predicate-argument structure”) composed of:
+• the root of the predicate (a verb);
+• a set of arguments (associated to that verb);
+• a set of subtrees, extracted from both the constituent and dependency trees, so that each subtree captures the
+arguments of the predicate.
+Consider Figure 2 and the answer sentence S, Alexander Graham Bell is credited with inventing the telephone.
+According to the SRL, the predicate credited will lead to the predicate-argument:
+< credited, {A1, A2}, ST(A1) ∪ ST(A2) >,
+where ST(A1) contains all the subtrees that capture argument A1 (Alexander Graham Bell) and ST(A2) contains the
+subtrees that capture argument A2 (with inventing the telephone). For instance, examples of the latter are the following
+subtrees:
+• (PP (IN with) (S (VP (VBG inventing) (NP (DT the) (NN telephone))))),
+• (S (VP (VBG inventing) (NP (DT the) (NN telephone)))),
+• inventing
+dobj
+−−→ telephone,
+det
+−→ the.
+4
+Running Title for Header
+(a)
+(b)
+Alexander Graham Bell is credited with inventing the telephone .
+A1
+A0
+A1
+A2
+(c)
+Figure 2: Parse trees for the answer sentence Alexander Graham Bell is credited with inventing the telephone obtained
+with (a) Stanford syntactic parser, (b) Stanford dependency parser, (c) Senna Semantic Role Labeler.
+Alexander Graham Bell is credited with inventing the telephone .
+Who created the telephone ? / Alexander Graham Bell
+inventing
+Alexander Graham Bell
+the telephone
+who?
+what?
+NP
+Alexander Graham Bell
+the telephone
+NP
+VP
+inventing the telephone
+is credited with inventing the telephone
+VP
+credited
+Alexander Graham Bell
+inventing the telephone
+for?
+who?
+auxpass
+credited
+is
+dobj
+inventing
+telephone
+det
+telephone
+the
+Figure 3: An alignment between the Q/A pair (Who created the telephone?/Alexander Graham Bell) and the answer
+sentence Alexander Graham Bell is credited with inventing the telephone.
+3.1.2
+Question-Answer Alignment
+In what concerns the alignment between the Q/A pair and the answer sentence, Figure 3 depicts this idea, by showing
+an alignment between the tokens of the Q/A pair with the ones of the answer sentence. Notice that the Wh-word is
+not aligned with the answer sentence. As we will see, this is why we need the Q/A pair in the pattern, so that the Q/A
+structure guides the generation of the new question. To perform such alignment, we require that:
+R1: the content of one sentence is included into the other. Without loss of generality, consider that the content of
+the Q/A seed is contained in the answer sentence S;
+R2: all tokens in Q/A are aligned with one and only one token in S;
+R3: no token in S is associated with more than one token in Q/A.
+We ﬁnd the best alignment between the Q/A pair and the answer sentence S,
+\
+align(Q/A, S), among all possible
+alignments, by satisfying Equation 1.
+\
+align(Q/A, S) = arg max
+a∈A
+score(a),
+(1)
+where A is the set of all possible alignments between Q/A and S that respect the previous requirements (R1 − R3), and
+score(a) is the score given to alignment a. This score is given by the sum of the scores of each individual alignment,
+token-wise:
+score(a) =
+X
+ti∈TQ/A,tj∈TS
+score(align(ti, tj)),
+(2)
+5
+Running Title for Header
+where align(ti, tj) is an alignment between tokens ti and tj, and TQ/A and TS are the set of tokens in Q/A and S,
+respectively.
+The alignment
+\
+align(Q/A, S) maximizes the alignment between the tokens from Q/A and S. As virtually any token
+in Q/A could align with a token in S, choosing the best set of token alignments is similar to the assignment problem, in
+which one is aiming at optimizing an utility function over a set of assignments. So, being M a matrix of dimension
+|tQ/A| × |tS|, each position Mij contains the alignment score for align(ti, tj).
+The Hungarian algorithm [Kuhn, 1955] is a combinatorial optimization algorithm designed to solve the assignment
+problem. We adapted the Hungarian algorithm to our problem. The original problem tries to minimize the utility
+function, while we are trying to maximize the value of the overall alignment. To make for this adaptation, we convert
+the values to have a minimization problem instead, replacing each cell by max − Mij, where max is the maximum
+value present in the whole matrix.
+Notice that for both Q/A and S we only consider for alignment tokens that are not stopwords, as the exact stopwords
+are unlikely to appear in the a new given sentence and are, thus, irrelevant to establish a relationship between them.
+3.1.3
+Token Matching
+The missing piece for the alignment process is how tokens themselves are aligned and scored. We designed a set of
+functions to this end that compare two tokens and give a score on their similarity based on the different tokens’ features,
+from the annotation process previously mentioned. Generically, these functions are referred to as function equiv, and
+its outcome is used to score token alignments in align(ti, tj). They are deﬁned as follows:
+Lexical
+The ﬁrst one, equivL, performs a lexical comparison of the two tokens:
+equivL(ti, tj) =
+
+
+
+1
+if ti = tj
+0.75
+if ti ̸= tj ∧ lemma(ti) = lemma(tj)
+0
+otherwise
+(3)
+Verb sense
+equivV B compares the sense of two tokens if they are both verbs and are related according to SemLink4.
+This resource is a mapping between PropBank [Palmer et al., 2005], VerbNet and FrameNet. If the two tokens belong
+to the same set in any of the resources, they are considered to match.
+equivV B(ti, tj) =
+0.75
+if sense(ti) = sense(tj)
+0
+otherwise
+(4)
+For example, make and build both belong to the frame Building of FrameNet, which would make the function return
+0.75 for those tokens.
+Named Entity
+equivNE compares the tokens’ content, if both tokens are NEs of the same type5.
+equivNE(ti, tj) =
+
+
+
+1
+if ti = tj
+0.9
+includes(ti, tj)
+0
+otherwise
+(5)
+The function includes(ti, tj) uses a set of rules (based on regular expressions) to determine if two tokens are referring
+to the same entity, or if two tokens represent the same date. For instance, both Obama and D01 M01 Y2014 are included
+in Barack Obama and M01 Y2014, respectively.
+WordNet
+equivW N matches two tokens if their path distance traversing WordNet synsets is below a manually deﬁned
+threshold. We compute the path distance by traversing the synsets upwards until ﬁnding the least common subsumer
+[Resnik, 1995]. For each node up, a decrement of 0.1 is awarded, starting at 1.0.
+equivW N(ti, tj) =
+
+
+
+
+
+
+
+1
+if syn(ti) = syn(tj)
+x
+if syn
+ hyp(ti)
+
+⊃ hyp(tj)
+x
+if hyp(ti) ⊂ syn
+ hyp(tj)
+
+0
+otherwise,
+(6)
+4http://verbs.colorado.edu/semlink
+5At generation time the function is replaced by type(ti) = type(tj), as are not trying to align the same entity, but rather to ﬁnd
+an entity of the same type.
+6
+Running Title for Header
+Table 1: Scores obtained during the alignment process between the seed components: Q/A (column) and answer
+sentence (row). For clarity, only the best scores leading to the alignment are shown.
+Alex. ... Bell
+credited
+inventing
+telephone
+created
+..
+..
+0.75
+..
+telephone
+..
+..
+..
+1.0
+Alex. ... Bell
+1.0
+..
+..
+..
+where syn(t) gives the synset of the token t, hyp(t) gives the hypernyms of t, and x = 1 − max(n × 0.1, m × 0.1),
+with n and m being the number of nodes traversed in the synsets of ti and tj respectively. If no concrete common
+subsumer is found, then 0 is the result returned. For example, feline and cat have the common synset feline, one node
+above where cat belongs, thus returning 1 − 0.1 = 0.9. Dog and cat result in 1 − 0.2, as one needs to go up two nodes
+for both tokens to ﬁnd the common synset carnivore. We do not go up to generic synsets, like artifact or item.
+Word2Vec
+equivW 2V computes the cosine similarity between the vector embeddings representing the two tokens ti
+and tj:
+equivW 2V (ti, tj) = cos
+ emb(ti), emb(tj)
+
+,
+(7)
+where emb(t) is the vector representing the word embedding for the token t. We use the Google News word2vec
+models available [Mikolov et al., 2013]6. If the token is composed by more than one word (in the case of a NE for
+example), their vectors are added before computing the cosine similarity. For example, car and vehicle obtain a cosine
+similarity of 0.78, while car and New York result in a score of 0.07.
+3.1.4
+Full Example
+In order to illustrate the whole alignment process, consider again the seed composed of the Q/A pair Who created the
+telephone?/Alexander Graham Bell, and the answer sentence Alexander Graham Bell is credited with inventing the
+telephone. Matrix M, in Table 1, contains:
+• as rows, the tokens (that are not stopwords) from Q/A;
+• in the columns the non-stopword tokens from S.
+Each cell contains the similarity score obtained by the equiv functions for that pair of tokens. In the end, the preferred
+alignment is the one seen in the previously shown Figure 3, chosen by the Hungarian algorithm, consisting on the cells
+seen in the matrix.
+Finally, before creating the pattern, the predicate-arguments of S are checked for two conditions considering the
+alignment found. First, all tokens in PA(S) must belong to the alignment found, or the pattern is not created. Then,
+arguments can only contain tokens from either the question or the answer, but never both. These two are enforced to
+make sure the arguments only have information about the Q/A pair and to be possible to distinguish the answer chunk
+from the rest of the question in the answer sentence. If the predicate-argument respects those conditions, then a pattern
+is created: < Q/A, PA(S),
+\
+align(Q/A, S) >.
+Taking our running example, there are two predicate-arguments: one for credited and another for inventing. The ﬁrst
+one contains the token credited itself, which is not part of the chosen alignment, so it is discarded. For the other, all
+tokens in the PA belong to the alignment, and each argument contains tokens from either only the question or answer.
+Therefore, a pattern is created.
+3.2
+Question Generation
+In this section we detail how GEN takes the previously learned patterns and applies them to new unseen sentences,
+generating new questions. In order to apply a pattern to a new sentence, the latter needs to be “similar” to the answer
+sentence originating the pattern, so that a match occurs and a question is generated. In short, a pattern contains all
+information necessary to transform a new sentence S′ into a new question Q′:
+6https://code.google.com/archive/p/word2vec/
+7
+Running Title for Header
+1. PA(S) is used to test how similar the new sentence S′ and S are. If a match is found between PA(S) and
+a predicate-argument structure taken from S′, PA(S′), then S and S′ are considered to be similar and the
+pattern can be applied to S′;
+2. If the pattern can be applied to S′, then
+\
+align(Q/A, S), along with Q, establishes how to transform S′ into
+the new Q-like question Q′.
+3.2.1
+Predicate-Argument Matching
+Let P(Q/A, S) = < Q/A, PA(S),
+\
+align(Q/A, S) > be a pattern as previously described, and S′ a new unseen
+sentence7. GEN “matches” the two sentences if there is a predicate-argument resulting from S′ (from now on PA(S′))
+that “matches” PA(S). Following the previous deﬁnition of predicate-arguments (predicate’s root, set of arguments,
+and set of subtrees), let these be deﬁned as follows:
+PA(S) =
+< pS, {A1
+S, ..., An
+S}, ST(A1
+S) ∪ ... ∪ ST(An
+S) >,
+and
+PA(S′) =
+< pS′, {A1
+S′, ..., Am
+S′}, ST(A1
+S′) ∪ ... ∪ ST(Am
+S′) >
+The pattern P(Q/A, S) can only be applied to S′ if the following conditions are veriﬁed:
+C1 : equiv(pS, pS′) ̸= 0;
+C2 : {A1
+S, ..., An
+S} ⊆ {A1
+S′, ..., Am
+S′};
+C3 : ∀sts ∈ ST(Ai
+S) ∃sts′ ∈ ST(Aj
+S′) : match(sts, sts′) ̸= false.
+In other words, the predicate roots must be equivalent (Condition C1), all arguments of PA(S) must be present in
+PA(S′) (Condition C2), and for each one of those arguments, the corresponding subtrees must match (Condition C3).
+If these condition are met, then S′ is transformed into a new question Q′ by replacing the tokens in Q with the new
+tokens from S′, as we will see below. Function equiv is the same introduced in last section for Pattern Acquisition.
+Function match captures the equivalence between two (sub)trees, so that the system decides if a pattern should be
+applied or not. Two (sub)trees match if they are structurally similar and their tokens match (according to the previous
+equiv function). We created several versions of the match function, some more ﬂexible than others. This ﬂexibility is
+not only associated with the equiv function, but also with the match performed over the subtrees representing parts of
+the sentences.
+Strict Tree Matching
+Algorithm 1 details the matching process, where n.c represents the children of node n (a
+subtree or a token). It starts by comparing the roots of the two (sub)trees (Line 5). If the roots are equivalent – using the
+equiv function – and the number of children is the same, the algorithm is recursively applied to their children (Line 10).
+If the two trees are successfully matched recursively through their entire structure, an alignment between the two trees
+is returned, collected during its execution (Lines 8 and 15).
+Subtree Matching
+This version is more relaxed than the previous one, as it accepts that arguments of PA(S′) can
+have more elements in their subtrees when compared to the ones from S. In other words, instead of looking for a match
+in the subtree ST(Am
+S′), for a given argument Am, we look for a match in all subtrees of that subtree. For example, if a
+noun phrase is accompanied by an adjective, and the pattern only expects a noun phrase alone, GEN will be able to
+ignore the adjective and match the noun phrase subtree.
+Subtree Flex Matching
+Here we are relaxing match a step further. While in the above scenario we are still looking
+for structurally equivalent subtrees, with the Subtree Flex Matching we are looking to ﬁnd subtrees that are just
+“similar”. To do so, we use Tregrex [Levy and Andrew, 2006] to create a ﬂexible regular expression for tree nodes
+(for instance, N* matches NN). Each subtree belonging to a pattern is transformed into a template that is used in the
+matching process. For instance, in the last section we created a pattern where the predicate-argument in the pattern
+had its argument A1 represented by two subtrees. Taking NP (DT (the)) (NN (telephone)) as an example, the
+following expression would be generated: /N* « ( /D* $ /N* ). This expression ﬁnds a subtree that starts with a
+noun (N*) that contains, as children at any level, a determinant and a noun (D* and N*, respectively). Considering again
+the recurring example, and a new given sentence Vasco Da Gama discovered the sea route to India, the chunk the sea
+route would be matched against the telephone.
+7The same annotation process applied to S in the Pattern Acquisition step is applied here to new sentences S′.
+8
+Running Title for Header
+Algorithm 1 Algorithm for tree matching.
+1: match(T1, T2)
+2: align ← []
+3: n1 = T1.root
+4: n2 = T2.root
+5: if equiv(n1, n2) ≤ 0 ∨ |n1.c| ̸= |n2.c| then
+6:
+return []
+7: else
+8:
+align ← align(n1, n2)
+9: end if
+10: for all i ∈ n1.c do
+11:
+a ← match(ni
+1, ni
+2)
+12:
+if a = [] then
+13:
+return []
+14:
+else
+15:
+align ← a
+16:
+end if
+17: end for
+18: return align
+Argument Matching
+Finally, we designed a more extreme solution in which the match function is true for any
+subtree. The idea here is that, for each argument in a pattern, the system should try to create a question by replacing the
+whole argument with the new one, ignoring the structure of the subtrees of either the pattern or the new sentence. Using
+Vasco da Gama example, the whole argument the sea route to India would match the telephone and, thus, replace it in
+the original question Q.
+In any case, if the argument being tested corresponds to the answer A in the pattern, GEN checks for NEs on both
+subtrees being matched. If they exist, they need to be of the same type, or the generation process stops. If no NE is
+found in either, then the generation process proceeds as normal. The idea is to make sure that the new question is
+appropriately targeting as answer the same kind of data, while not limiting GEN if the Named Entity Recognition (NER)
+fails to ﬁnd a NE (or it does not exist).
+3.2.2
+Token Replacement for new Question
+Putting all together, to generate a question, if the predicate-arguments PA(S) and PA(S′) match, then the new sentence
+S′ can be used to create a question, by following the alignment between S and Q/A. The transformation of S′ into a
+new question Q′ (of the type Q) is done with the help of the alignments align returned by the previous deﬁned match
+function. Each token aligned between S′ and S can then be mapped to Q by following the alignment between S and
+Q/A in the pattern, replacing the corresponding tokens in Q. In other words, each token tk ∈ S′ that was aligned with
+a token tj ∈ S that is mapped to a token ti in the original question Q will take its place in the generated question. This
+means, thus, that non mapped tokens in Q will remain. For example, Wh-words in questions will not be mapped to
+tokens in S, being kept in the ﬁnal new question and providing the same type of question.
+This replacement is straightforward for both Strict Tree Matching and Subtree Matching. For the other two,
+which are more ﬂexible, there might not be a direct alignment between tokens in S and S′ (the system can match longer
+chunks in the new sentence). Therefore, for these two approaches, for each argument matched in the predicate-argument,
+we replace all tokens from Q which are aligned to tokens in S belonging to that argument.
+Finally, we make an exception for the predicate-argument verb, which is the main verb of the question Q as well.
+Here, we conjugate the auxiliary verb in the question in the same mode of the new matched token (from Condition 1),
+adjusting the main verb accordingly. This is an attempt to adjust the question formulation to the current sentence S′
+conjugation used. For instance, if the pattern contains a question regarding a past event but the new sentence regards
+something yet to happen, it makes sense that the new question does not use the past sentence.
+3.2.3
+Full Example
+Considering again the running example and the new given sentence Vasco Da Gama discovered the sea route to India,
+because discovered and inventing are related (equivV B function), and both have two arguments in their sentences,
+A0 and A1, the sentences will match. Then, what remains to be tested are the subtrees that cover both arguments of
+9
+Running Title for Header
+each predicate. The tokens themselves will also match through semantic function equiv. For instance, Vasco Da
+Gama and Alexander Graham Bell are both NEs of the same type, so they are considered to match. This will result in
+generating different questions, depending on the tree matching strategy employed. It will not produce results using
+the Strict Tree Matching, as the subtrees representing each argument A1 are not structurally identical, but will
+generate questions for the other strategies. For instance, the question Who discovered the sea route to India?/Vasco Da
+Gama is generated with the Argument Matching strategy, by replacing the tokens in the original question with the
+ones from the new sentence’s corresponding arguments.
+3.3
+Improving Generation with Expert’s Feedback
+The main contribution of GEN relies in using the implicit feedback of the user, as we previously stated. Often, there
+is the need for the user to manually curate the generated questions, not only selecting the most appropriate, but also
+correcting them of any mistake they might contain. As a consequence of this task, every pair constituted by a sentence
+plus a generated question can be used by the system, after the corrections, as a new seed. This allows the system to
+enlarge its pool of available patterns, increasing its generation power. Nevertheless, this might also lead to a possible
+problem of over-generation. If a user needs to parse dozens of questions to ﬁnd a good one (whatever their evaluation
+criteria are), then the system’s usefulness might not be that interesting. Some QG systems, such as the one described by
+Heilman [2011], already rank the generated questions, pushing the better ones to the top, although not taking advantage
+of human feedback. In this section we show how we take advantage of the experts’ feedback, not only to create new
+seeds, but also to indirectly evaluate how well the patterns are behaving. The main idea is to use the corrections made
+by humans as a mean to evaluate the quality of the pattern that generated the edited question. Questions needing major
+ﬁxes are probably from worse patterns, while questions not requiring much editing are likely to come from well behaved
+patterns. Meanwhile, all generated questions with previous patterns can be used to augment the pool of available seeds.
+This section is divided into two parts: the ﬁrst corresponds to the validation of the generated Q/A pairs to be used by the
+system in a new pattern acquisition step. The second discusses the evaluation of the patterns used by the system. This
+part of the work borrows ideas from previous works [Pantel and Pennacchiotti, 2006, Mendes, 2013, Shima, 2015],
+discussed in the Related Work (Section 2).
+3.3.1
+Learning New Seeds
+Although the task of learning new seeds can be done with no quality control at all, it might be useful to guarantee the
+correctness of the generated Q/A pairs (as well as the answer sentence) before adding them to the new set of seeds to be
+used. Having a human rating the system’s output is costly, but necessary because there is no right question to ask about
+a given text or sentence, but rather multiple questions can be valid. Therefore, the questions and answer sentence are
+presented to the user, who assesses them. Given this feedback, the system gets to know what questions were correctly
+generated and, thus, are a good source to be a new seed.
+Each pair of new Q/A and answer sentence S can then be used as a new seed pair, feeding the system into a new
+Pattern Acquisition step. As typically the new sentences are different from the original, and the questions themselves
+can be edited in such a way they become different from the patterns’ questions, this will lead to the creation of new
+patterns. These might be close to the previous patterns sometimes, but they still introduce variability to the pool of
+patterns, capturing this way new question formulations and enlarging the pool of available patterns.
+3.3.2
+Pattern Scoring
+Given an expert in the loop we can take their feedback to score the patterns. Let w(P) be a function that returns the
+score wt of a pattern P at moment t. This score starts at 1.0 (w0 = 1) and it is adjusted along the way, in function of
+the generation task, considering the previous score of the pattern, wt−1, a new generated question Q′, and its edited
+version Q′′ to compute a new score. This step requires two things:
+• a method that evaluates the difference between the generated question, Q′, and its edited version, Q′′,
+• a way to incorporate that into wt.
+We use lexical metrics to measure how similar both questions are. Then, to update the score, we apply the Weighted
+Majority Algorithm [Littlestone and Warmuth, 1994], or Exponentially Weighed Average Forecast [Cesa-Bianchi and
+Lugosi, 2006]. The original concept for these strategies cannot be replicated, but we adapted them to our scenario.
+We treat each pattern as an expert, and the generated questions as guesses from the experts. The better the guesses
+(that is, the more successful the generation of questions is), the better rating the expert (the pattern) will have. The
+10
+Running Title for Header
+successfulness of a pattern is determined by the similarity between the questions it generates and their corrected
+versions:
+successful(Q′, Q′′) =
+1
+if sim(Q′, Q′′) > th
+0
+otherwise
+,
+(8)
+where th is a threshold and sim a similarity function. For sim, we considered Overlap and a normalized version of
+Levenshtein [1966]. The latter gives an intuitive way to evaluate the editing effort of the human annotator in correcting a
+question. In speciﬁc, it gives us the edit cost considering the following operations at word level: (a) adding a new word;
+(b) eliminating a word; (c) transforming/replacing a word. We set the same cost for the three operations. We opted to
+use Levenshtein’s normalized version, that takes into consideration the size of the longest question (the Levenshtein
+value is divided by the size of the longest question), which normalizes the scores into the range [0-1].
+The score of a pattern is updated at each step based on its previous score and the technique used, as described below.
+Weighted Majority Algorithm
+This technique penalizes a pattern if it is not successful in the generated questions
+and rewards it otherwise:
+w(P)(Q′,Q′′) =
+
+
+
+1
+if t = 0
+wt−1(1 − b)−1
+if successful(Q’, Q”)
+wt−1(1 − l)
+otherwise
+(9)
+where l is the loss penalty for a non successful generation and b the bonus reward for a successful generation. If b is set
+to 0, then no bonus is awarded, becoming the score a decaying factor only.
+Exponentially Weighed Average Forecast
+Here the score of a pattern is updated by a decaying factor relative to its
+successfulness, i.e., the better it performs, the less its score is penalized:
+w(P)(Q′,Q′′) =
+(
+1
+if t = 0
+wt−1 ∗ e−l∗
+1
+sim(Q′,Q′′)
+otherwise
+(10)
+where l is the loss penalty and sim is the similarity function presented before.
+This process is applied to each question generated by each pattern at each time.
+4
+Experimental Setup
+In this section we describe our experimental setup, as well as the metrics used in the evaluation process.
+4.1
+Evaluation
+To compare GEN with state of the art systems, before incorporating the implicit feedback and study its impact, we used
+two QG systems covering two different approaches to the problem. The ﬁrst one is the work of Heilman and Smith
+[2009], from now on H&S, and employs a rule based approach. The second one is the work of Du et al. [2017], from
+now on D&A, and is a neural network system. We set up H&S to prefer Wh-questions and limit questions to 30 tokens
+(–prefer-wh –max-length 30), and retrieved the top questions with a score above 2.5. Considering D&A, we trained the
+network with the same conﬁguration as the authors. The model generates a question for each input sentence, in both
+the sentence- and paragraph-level models. We chose the sentence-level model to keep all systems equal, and, also, to
+mimic the annotators who only had access to the individual sentences. To bootstrap GEN, we used 8 seeds (Table 2), as
+suggested by Rodrigues et al. [2018]. We also use all tree matching strategies together, reporting overall results only.
+As for the evaluation process, we used a publicly available library containing different lexical and semantic metrics. The
+Maluuba project [Sharma et al., 2017]8 contains lexical metrics typically used, like BLEU, METEOR, and ROUGE,
+and other metrics based on word embeddings: Embedding Average Cosine Similarity (EACS), SkipThought Cosine
+Similarity (STCS), Vector Extrema Cosine Similarity (VECS), and Greedy Matching Score (GMS):
+8https://github.com/Maluuba/nlg-eval
+11
+Running Title for Header
+Table 2: Seeds used in the Pattern Acquisition phase of GEN.
+Support Sentence
+Question
+Leonardo da Vinci was born on April 15, 1452.
+When was Leonardo da Vinci born?
+Lee Harvey Oswald was assassinated by Jack Ruby.
+Who killed Lee Harvey Oswald?
+Paris is located in France.
+Where is Paris located?
+Porto is located 313 km from Lisbon.
+How far is Lisbon from Porto?
+Yesterday, Bob took butter from the fridge.
+Where did Bob take butter from?
+John baked cookies in the oven.
+What did John bake in the oven?
+Cooking is the art, technology, science and craft of preparing food for
+consumption.
+What is cooking?
+Science is a systematic enterprise that builds and organizes knowledge
+in the form of testable explanations and predictions about the universe.
+What is a systematic enterprise that builds and or-
+ganizes knowledge in the form of testable explana-
+tions and predictions about the universe?
+• BLEU [Papineni et al., 2002] is typically used to evaluate machine translation systems and has also been used
+for QG, as it compares a candidate sentence with a reference of acceptable hypothesis. The BLEU score is
+computed by calculating a modiﬁed precision on the shared n-grams between the candidate and the reference.
+The values employed for n are typically between 1 and 4.
+• METEOR [Banerjee and Lavie, 2005] is a metric that is supposed to correlate better with human evaluations.
+It aligns the candidate sentence with a reference sentence by performing token alignment. The precision and
+recall of those alignments are used to compute a F-score that will lead to the ﬁnal score.
+• ROUGE [Lin, 2004] is another lexical metric that also computes a F-score between the candidate sentence and
+the reference hypothesis. In the Maluuba library ROUGE_L is used, which is based on the Longest Common
+Subsequence between the two sentences.
+• EACS computes the cosine similarity of two sentence embeddings. The sentence embedding is formed by
+averaging the word embeddings of each of the sentences’ tokens.
+• STCS also computes the cosine similarity between two sentence embeddings. However, it is based on the
+Skip-Thought model [Kiros et al., 2015], a recurrent network trained to predict the next and previous sentence
+of the input sentence, which is encoded into a sentence embedding. These embeddings showed to have good
+performance in semantic relatedness, and are used here as an alternative to averaging the sentence’s token
+embeddings.
+• VECS [Forgues et al., 2014] also computes the cosine similarity between two sentence embeddings, but in this
+case each embedding is created by taking the most extreme (maximum) value among all token embeddings,
+for each dimension.
+• GMS is the only embedding-based score that does not use sentence embeddings. Instead, it takes each token
+embedding in the candidate and maximizes its similarity with a token on the reference, summing all those
+scores for all tokens. Then it performs the same task inverting the candidate and reference hypothesis roles,
+and averages both scores [Rus and Lintean, 2012].
+4.2
+Obtaining Feedback
+In order to capture the effects of the implicit feedback over time, we simulate the iteration process of system-user
+interaction by batching the input source. Therefore, instead of using a single target corpus as a one-time input, we batch
+it in multiple smaller inputs, allowing the system to evolve over time by using feedback obtained in previous batches.
+For this purpose, one of the authors, playing the teacher’s role, corrected the generated questions, or discarded them if
+no reasonable ﬁx could be found, for each batch. Questions corrected to a different type would still be used as new
+seeds, but were considered as discarded for weighing purposes.
+Algorithm 2 shows the pseudo-code for the iterative process. Being given an original set of seeds, patterns are created as
+previously described in Section 3.1 (line 5). The learning materials are divided in batches of sentences to which patterns
+are applied, resulting in new questions (line 8). Every generated question is presented to the user to be corrected or
+discarded (line 10). After being corrected by the user, each question is associated with the sentence that originated
+it and added to the set of seeds, allowing the creation of new patterns (line 12), and also used to score the pattern
+that generated it (line 14). Finally, the patterns that generated only discarded questions are removed from the pool of
+patterns, reducing the number of ill questions to be generated in future batches (line 16). The process repeats for all
+batches (lines 4-18).
+As each pattern leads to many questions, that might be discarded or not, it is not trivial to illustrate the end-to-end
+process on how new patterns are generated and the new question’s scores are calculated. However, in Table 3, we
+12
+Running Title for Header
+Algorithm 2 Iterative loop for online learning with GEN.
+1: seeds ← {(s1, q1), ..., (sn, qn)}
+2: Batches ← {Batch1, ..., Batchm}
+3: P ← {}
+4: for all b ∈ Batches do
+5:
+P ← P ∪ generatePatterns(seeds)
+6:
+seeds ← {}
+7:
+for all s ∈ B do // s is a single sentence in the batch b
+8:
+Q ← generateQuestions(s, P)
+9:
+for all q ∈ Q do
+10:
+q′ ← correctQuestion(q)
+11:
+if q′ ̸= null then
+12:
+seeds ← seeds ∪ {(s, q′)}
+13:
+end if
+14:
+P ← weighPattern(q, q′, P)
+15:
+end for
+16:
+P ← discardPatterns(P)
+17:
+end for
+18: end for
+Table 3: Example of questions’ contributions (among many others) to the evolution of pattern scores, from the ﬁrst to
+the second iteration of one of the experimental runs.
+Score
+Question
+Sentence
+Matching
+Original Pattern Q
+Result
+0.0
+What did de Visme
+build?
+The
+effective
+acquisition
+of the property took place
+in 1863, with the architect
+James Knowles beginning the
+work of transforming what
+remained of the house built by
+de Visme.
+FLEX_SUBTREE
+What
+did
+Kafka
+write?
+Question kept
+New pattern
+Leading to better
+score of original pat-
+tern
+0.0
+When was the sur-
+rounding
+gardens
+had?
+Over the years, the surround-
+ing gardens have welcomed
+plant species from all over the
+world.
+FLEX_SUBTREE
+When
+was
+Leonardo da Vinci
+born?
+Question
+dis-
+carded
+No new pattern
+Leading to lower
+score of original pat-
+tern
+2.75
+What did the Por-
+tuguese State buy?
+The estate and the Palace
+were bought by the Portuguese
+State in 1949.
+FLEX_SUBTREE
+What
+did
+Kafka
+write?
+-
+0.67
+When was The Park
+Palace
+Monserrate
+been?
+The Park and Palace of Mon-
+serrate were classiﬁed as a
+Property of Public Interest in
+1993, and were included in the
+Cultural Landscape of Sintra,
+which has been classiﬁed by
+UNESCO as World Heritage
+since 1995.
+FLEX_SUBTREE
+When
+was
+Leonardo da Vinci
+born?
+-
+demonstrate a case from the ﬁrst to the second iteration of one of the experimental runs. In the table we can see on the
+last column what happened to the generated question and how that inﬂuences the pattern’s score and, thus, the score of
+the questions generated in the next iteration, pushing a good question to the top.
+4.3
+Corpora
+We used MONSERRATE in these experiments [Rodrigues et al., 2021], as it is an extensive reference that allows an
+easier automatic validation of the results. It contains 73 source sentences to generate questions from, and over 2k
+questions as reference. The batches for Algorithm 2 were created by splitting the corpus in equal parts. We tried three
+different sizes: 7 (leading to roughly 10 batches), 10 (7 batches), and 12 (6 batches). Note that batches should neither
+be too large (user’s experience), nor too small (many batches lead to smaller learning increments).
+13
+Running Title for Header
+Table 4: Parametrization of the different variables in the weighing strategies, WMA and EWAF: function sim, its
+threshold th, penalties and bonus values.
+sim
+th
+penalty
+bonus
+WMA
+Overlap, Lev
+0.9, 0.8
+0.1, 0.2
+0.1, 0.3, 0.5
+EWAF
+Overlap, Lev
+-
+0.1, 0.2
+-
+Table 5: Overall scores obtained with automatic metrics on MONSERRATE, for H&S, D&A and GEN.
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+H&S
+69.00
+46.38
+83.71
+45.56
+92.51
+86.11
+73.26
+77.92
+D&A
+63.71
+37.58
+77.40
+26.63
+92.52
+85.51
+74.47
+77.54
+GEN SubT
+60.60
+30.67
+95.93
+28.45
+86.40
+80.38
+60.28
+74.07
+GEN FlexSubT
+64.66
+40.63
+86.91
+35.25
+90.10
+84.14
+67.09
+77.96
+GEN Args
+65.81
+46.44
+81.80
+40.61
+92.25
+85.86
+71.17
+80.89
+GEN All
+63.13
+41.09
+77.90
+34.33
+90.52
+83.97
+67.60
+77.90
+To evaluate the generated questions against the reference we use the metrics presented before, but at top N, i.e., N is a
+cut to the top questions in the list of all questions. In these experiments we use N = 5, N = 10 and N = 20, as if the
+user would be only presented those top N questions.
+4.4
+Pattern Scoring and Baselines
+From Section 3.3, we mentioned two techniques to update the score of a given pattern: Weighed Majority Algorithm
+(WMA) and Exponentially Weighed Average Forecast (EWAF). Each has speciﬁc values that need to be set, like the
+loss penalty. In either case, they require successful function to dictate if a pattern was successful, which relies in a
+similarity function sim. We run different parameterizations for the weighing techniques described. Besides the different
+sim functions described before (Section 3.3), we also set the penalties and bonus for both. As both strategies were
+adapted to our problem, we empirically chose these values. For WMA we set the following weights for penalty and
+bonus parameters, respectively, to: 0.1, 0.2, and 0.1, 0.3, 0.5. The threshold th (Equation 8) for sim function was set
+to 0.9 and 0.8. For EWAF we set the penalty to values of 0.1 and 0.2 – the threshold th and bonus parameters are not
+applicable. Table 4 summarizes this information.
+We also set two baselines. The ﬁrst (original patterns) corresponds to the original patterns applied to all batches
+(i.e., there is no learning of patterns with new batches). Because there is no ranking of the generated questions, and to
+get a more accurate baseline, we average three different random orderings for this baseline. The second baseline
+corresponds to the algorithm of learning patterns from new seeds, but with no weighing strategy in place. Again, the
+generated questions in each batch are not ordered, so all the reported results correspond to the average of three different
+random orderings as well.
+5
+Results
+In this section we report the results obtained by GEN, comparing ﬁrst its non-learning version with two state of the art
+systems, and then how it improves using the strategies and setup discussed in last section.
+5.1
+Without Using Implicit Feedback
+Being given the 73 sentences from the MONSERRATE corpus, H&S system generated 108 questions (after discarding
+more than 200 questions below the 2.5 score threshold), and GEN 209 questions. As D&A is limited to one question
+per sentence, 73 questions were generated. Table 5 shows the obtained results.
+Results show GEN performs overall better than D&A, but without surpassing H&S, which has the best overall results.
+Some conﬁgurations of GEN surpass H&S in some metrics (highlighted), but all together GEN does not surpass H&S.
+We can also observe that semantic metrics are less prone to distinguish the systems as lexical ones.
+14
+Running Title for Header
+Table 6: Comparison of the weighing strategies against the baselines, measured by automatic metrics on MONSERRATE,
+at top 5, 10, and 20. Scores normalized by the best score obtained in each metric. Overall results for batches of size 10
+(7 batches) – averaged on all but ﬁrst batch.
+@5
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.74
+0.62
+0.83
+0.48
+0.94
+0.84
+0.76
+0.82
+Baseline
+0.92
+0.81
+1.00
+0.67
+0.99
+0.91
+0.86
+1.00
+EWAF-Overlap-01
+1.00
+1.00
+0.96
+1.00
+1.00
+1.00
+0.96
+0.99
+WMA-Lev-08-02
+0.97
+0.82
+0.99
+0.88
+0.99
+0.91
+0.93
+0.99
+@10
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.74
+0.68
+0.82
+0.53
+0.95
+0.84
+0.78
+0.83
+Baseline
+0.94
+0.93
+1.00
+0.83
+0.99
+0.92
+0.90
+1.00
+EWAF-Overlap-01
+1.00
+0.99
+0.99
+1.00
+1.00
+1.00
+0.96
+0.99
+WMA-Lev-08-02
+0.98
+1.00
+0.98
+0.92
+0.99
+0.92
+0.97
+1.00
+@20
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.76
+0.75
+0.81
+0.65
+0.96
+0.85
+0.85
+0.85
+Baseline
+0.89
+0.93
+0.96
+0.87
+0.98
+0.91
+0.97
+0.95
+EWAF-Overlap-01
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+WMA-Lev-08-02
+0.90
+0.94
+0.94
+0.83
+0.98
+0.91
+1.00
+0.97
+5.2
+Using Implicit Feedback
+In this section we study how GEN beneﬁts from incorporating implicit feedback, and use all of GEN’s conﬁgurations
+together. The combination of all different parameters from Table 4 leads to a large number of possible combinations.
+After inspection of the results obtained, we concluded that some conﬁgurations tend to perform similarly, if not equally
+to others. Therefore, we omitted most conﬁgurations from the tables and discussion, for sake of readability, presenting
+the overall best results, analyzed at large, i.e., the conﬁgurations that consistently showed the best results across all runs:
+EWAF-Overlap-01 and WMA-Lev-08-02. The names indicate the conﬁguration following the same order of Table 4.
+For instance, WMA-Lev-08-02 corresponds to using WMA as weighing strategy, with sim function being Levenshtein,
+the threshold th 0.8, and the penalty 0.2.
+The results are normalized along each column by the best score obtained. We opted to present results this way so it is
+easier to understand to what degree strategies can improve over others. A score of 1.00 thus represents the best obtained
+score for that metric among all strategies, including both baselines. Because we omitted many conﬁgurations, it is
+possible that a 1.00 score is not shown in the tables for some metrics, but note that this is an exception, not the norm.
+In the following tables, highlighted results correspond to improvements against the baseline for that strategy, but not
+necessarily the best result attained overall (which will always be 1.00). Italicized values correspond to results worse
+than the baseline. Finally, non-highlighted results are better than the baseline, but not the best results for that strategy.
+For instance, in Table 6, the fourth row corresponds to the results obtained using conﬁguration WMA-Lev-08-02 for
+top 5 questions, and it surpasses the baseline for all metrics except BLEU1 and VECS (in italic), although it does not
+surpass EWAF-Overlap-01 in any metric, being the best of all WMA conﬁgurations (not shown) on METEOR and
+STCS, reason why those results are highlighted in that row.
+The ﬁrst iteration was run for batches of size 10 (7 batches). Table 6 shows the results for the top N questions ranked,
+with N equal to 5, 10, and 20, and for the two conﬁgurations selected, averaging the results obtained in all but the ﬁrst
+batch, as the learning phase only starts after acquiring data from the ﬁrst batch.
+Analyzing the results per strategy for all cuts of N, the ﬁrst thing to note is that the baseline improves over the
+original patterns (from 17% up for lexical measures), which means that learning new seeds alone already improves
+the original GEN. When considering the weighing strategies, results were improved even more, with EWAF-Overlap-01
+being the more consistent strategy, improving in different proportions depending on the metric, N, and baselines
+considered.
+15
+Running Title for Header
+Table 7: Comparison of the weighing strategies against the baselines, measured by automatic metrics on MONSERRATE,
+at top 5, 10, and 20. Scores normalized by the best score obtained in each metric. Overall results for batches of size 7
+(10 batches) – averaged on all but ﬁrst batch.
+@5
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.85
+0.73
+0.85
+0.52
+0.95
+0.93
+0.87
+0.85
+Baseline
+0.95
+0.91
+1.00
+0.68
+1.00
+1.00
+0.97
+0.99
+EWAF-Overlap-01
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+0.98
+1.00
+WMA-Lev-08-02
+0.95
+0.97
+0.97
+0.92
+0.99
+0.98
+1.00
+0.96
+@10
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.99
+0.87
+0.89
+1.00
+0.97
+0.97
+0.89
+0.91
+Baseline
+0.91
+0.88
+0.95
+0.71
+0.98
+0.98
+0.95
+0.97
+EWAF-Overlap-01
+1.00
+1.00
+1.00
+0.94
+1.00
+1.00
+0.98
+1.00
+WMA-Lev-08-02
+0.98
+0.96
+0.99
+0.88
+1.00
+1.00
+0.98
+0.97
+@20
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.91
+0.85
+0.86
+0.88
+0.94
+0.91
+0.85
+0.87
+Baseline
+0.93
+0.92
+0.95
+0.82
+0.99
+0.98
+0.97
+0.97
+EWAF-Overlap-01
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+0.99
+1.00
+WMA-Lev-08-02
+0.99
+0.98
+0.98
+0.91
+1.00
+1.00
+1.00
+1.00
+Table 7 shows the same evaluation procedure for the top 5, 10 and top 20 ranked questions for the same experiment with
+batches of size 7 (10 batches). For N = 5 results for WMA show few gains compared to the baselines, while the EWAF
+conﬁguration still surpasses them. For greater values of N, the pattern witnessed in the previous experiment (7 batches)
+occurs as well: EWAF strategy shows the best improvements, but WMA also shows improvements across all metrics.
+Finally, we did the same experiment for larger batches of 12 sentences each, leading to 6 batches. Table 8 shows the
+results obtained with the two conﬁgurations. The trend previously seen also applies here, with the most improvements
+being witnessed at top 5 and top 10 across all metrics, specially for EWAF conﬁgurations. For top 20, improvements are
+less pronounced, while the baseline still improves over the original patterns.
+To summarize, we can see that our approach is successful in two ends. First, learning new patterns leads to improvements
+compared to using the original patterns, even if not using the implicit feedback of the user to weigh the patterns. Then,
+by using the implicit feedback to the full extent, we are able to score the patterns to improve the results obtained even
+further, by ranking the generated questions. However, considering the obtained results, although probable, we cannot
+claim that questions needing major ﬁxes result from worse patterns, while questions not requiring much editing come
+from well behaved patterns.
+The results obtained improved across all metrics for different cuts of N (5, 10, 20), for the conﬁgurations shown. Even
+with semantic metrics, which are not as discriminative, the strategy showed some improvements. In addition, both
+ROUGE and METEOR show gains when compared to the two baselines, although at different extents, indicating the
+effectiveness of this approach.
+BLEU, on the other hand, is the metric with more erratic behavior – mostly BLEU1 but also applies to BLEU4. It
+shows less improvements overall for the weighing strategies when compared to both baselines, sometimes even scoring
+below the baseline. This could be explained by the nature of the BLEU metric, as it uses the whole reference instead of
+each of the hypotheses in it alone. For example, the question What designs the palace?, generated from The palace was
+designed by the architects Thomas James Knowles (father and son) and built in 1858, having been commissioned by
+Sir Francis Cook, Viscount of Monserrate obtains a high score of 0.75, when the reference is composed of: 1) Who
+designed the palace? 2) When was the palace built? 3) Who commissioned the construction of the palace? 4) What was
+Sir Francis Cook noble tittle?. This means that the baseline is not punished for having ill-formulated questions on the
+top as much as it should when using BLEU as a metric, contributing to the contradictory results.
+16
+Running Title for Header
+Table 8: Comparison of the weighing strategies against the baselines, measured by automatic metrics on MONSERRATE,
+at top 5, 10, and 20. Scores normalized by the best score obtained in each metric. Overall results for batches of size 12
+(6 batches) – averaged on all but ﬁrst batch.
+@5
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.84
+0.79
+0.90
+0.66
+0.94
+0.91
+0.80
+0.90
+Baseline
+0.93
+0.89
+0.93
+0.88
+0.97
+0.95
+0.90
+0.94
+EWAF-Overlap-01
+1.00
+1.00
+0.94
+1.00
+0.97
+0.95
+1.00
+0.99
+WMA-Lev-08-02
+0.96
+0.90
+0.91
+0.85
+0.96
+0.94
+0.98
+0.96
+@10
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.90
+0.86
+0.94
+0.75
+0.96
+0.94
+0.87
+0.92
+Baseline
+0.94
+0.92
+0.97
+0.81
+0.98
+0.97
+0.95
+0.98
+EWAF-Overlap-01
+0.99
+1.00
+0.95
+1.00
+0.98
+0.97
+1.00
+1.00
+WMA-Lev-08-02
+1.00
+0.99
+0.95
+0.95
+0.98
+0.98
+1.00
+1.00
+@20
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.88
+0.81
+0.90
+0.74
+0.98
+0.94
+0.88
+0.89
+Baseline
+0.97
+0.93
+1.00
+0.87
+0.99
+0.99
+1.00
+0.98
+EWAF-Overlap-01
+1.00
+0.99
+0.98
+0.97
+1.00
+1.00
+0.97
+1.00
+WMA-Lev-08-02
+1.00
+0.99
+0.98
+0.97
+1.00
+1.00
+0.97
+1.00
+Table 9: Comparison of results obtained with automatic metrics on MONSERRATE, for H&S, D&A, GEN All, and the
+batched runs.
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+H&S
+69.00
+46.38
+83.71
+45.56
+92.51
+86.11
+73.26
+77.92
+D&A
+63.71
+37.58
+77.40
+26.63
+92.52
+85.51
+74.47
+77.54
+GEN All
+63.13
+41.09
+77.90
+34.33
+90.52
+83.97
+67.60
+77.90
+@5 size 7
+65.92
+45.20
+78.95
+44.16
+90.01
+84.10
+72.92
+79.82
+@10 size 7
+63.79
+42.04
+78.83
+34.67
+90.23
+83.76
+72.00
+79.21
+@20 size 7
+61.74
+38.91
+79.32
+31.05
+89.96
+83.92
+69.74
+78.28
+@5 size 10
+65.93
+47.97
+77.04
+47.18
+91.28
+91.28
+75.04
+79.56
+@10 size 10
+66.16
+44.14
+80.26
+40.07
+91.28
+91.28
+72.49
+79.79
+@20 size 10
+66.81
+42.47
+82.32
+35.43
+91.60
+91.60
+70.11
+80.67
+@5 size 12
+61.12
+41.53
+74.22
+33.16
+89.86
+81.88
+75.94
+77.42
+@10 size 12
+58.06
+38.26
+72.69
+32.61
+88.98
+81.57
+69.96
+75.77
+@20 size 12
+57.26
+38.34
+73.02
+28.76
+89.42
+82.67
+65.52
+76.51
+To ﬁnalize, Table 9 compiles the results obtained by GEN All and one of the best parameterizations used in the batches
+(EWAF-Overlap-01). Note that the batch results: 1. only consider the top N questions; 2. are an average of all batches.
+6
+Evolution over Batches
+As seen before, results show gains in all metrics against the baselines, although to different extents, proving that the
+technique is effective, even for different batching sizes. However, we must note that there is a clear trade-off between
+the batches’ sizes: if they are too small, there is not enough data to learn new patterns and update the weights; if they
+are too large, there is more data to learn the weights, but less time to see the impact of that training.
+The results presented in the previous section respect to the average results across all but the ﬁrst batch, but do not show
+how GEN performs along time. Tables 10 to 12 show the number of patterns and questions per batch for the different
+runs, along with the number of questions discarded by the expert, and the average normalized Levenshtein distance
+17
+Running Title for Header
+Table 10: Number of patterns and questions per batch, along with the number of questions discarded by the expert, and
+the average question editing, for batches of size 12 (6 batches), on MONSERRATE.
+Size 12
+1
+2
+3
+4
+5
+6
+Patterns
+11
+24
+33
+39
+47
+42
+New
+-
+16
+10
+11
+17
+8
+Questions
+132
+176
+266
+267
+191
+503
+Unique
+52
+41
+54
+72
+77
+111
+Discarded
+23
+74
+55
+71
+26
+31
+%
+17.42
+42.05
+20.68
+26.59
+13.61
+6.16
+Edit Avg
+0.36
+0.40
+0.40
+0.45
+0.43
+0.44
+Table 11: Number of patterns and questions per batch, along with the number of questions discarded by the expert, and
+the average question editing, for batches of size 10 (7 batches), on MONSERRATE.
+Size 10
+1
+2
+3
+4
+5
+6
+7
+Patterns
+11
+24
+22
+28
+30
+36
+33
+New
+-
+16
+6
+9
+6
+13
+7
+Questions
+121
+175
+67
+215
+155
+108
+379
+Unique
+50
+35
+25
+54
+56
+52
+95
+Discarded
+23
+74
+1
+56
+27
+11
+28
+%
+19.01
+42.29
+1.49
+26.05
+17.42
+10.19
+7.39
+Edit Avg
+0.35
+0.45
+0.42
+0.37
+0.43
+0.45
+0.44
+Table 12: Number of patterns and questions per batch, along with the number of questions discarded by the expert, and
+the average question editing, for batches of size 7 (10 batches), on MONSERRATE.
+Size 7
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Patterns
+11
+26
+21
+20
+28
+31
+30
+32
+32
+43
+New
+-
+26
+3
+1
+8
+6
+2
+6
+-
+16
+Questions
+210
+237
+37
+46
+213
+85
+120
+0
+236
+369
+Unique
+50
+42
+10
+14
+51
+24
+37
+-
+70
+90
+Discarded
+36
+108
+3
+1
+62
+24
+34
+-
+7
+27
+%
+17.14
+45.57
+8.11
+2.17
+29.11
+28.24
+28.33
+-
+2.97
+7.32
+Edit Avg
+0.36
+0.40
+0.36
+0.37
+0.36
+0.44
+0.43
+-
+0.48
+0.40
+between the generated questions and their corrections. When looking at Table 12, concerning 10 batches of size 7, we
+can see that the sentences in the batches inﬂuence the number of questions generated: it appears that some sentences are
+better sources of questions than others, which will lead to different outcomes, including not generating any questions or
+less than 20 questions (highlighted), which means top 20 results are meaningless for those batches.
+Nevertheless, results point to a overall increase of patterns and generated questions, with the number of questions
+discarded increasing at ﬁrst but then diminishing with time. The edit cost, measured by normalized Levenshtein, seems
+to be more or less constant across all batches but the ﬁrst, with tendency to increase over time.
+Given that each batch seems to lead to different performances based on its content, it is also interesting to analyze their
+results individually, instead of looking at the overall average score. As noted before, with semantic metrics it is hard to
+understand how much the performance changes, so we look at the lexical metrics only (ROUGE, METEOR, BLEU1,
+BLEU4).
+In Figures 4 to 6 it is shown the evolution for EWAF-Overlap-01 and WMA- Lev-08-02 for all 3 runs – batches of
+size 10, 7, and 12 (7, 10 and 6 batches, respectively). The ﬁgures presented depict the difference in score between the
+baseline scores and the ones obtained with the given strategy, for each of the batches individually, that is, the graph
+is not a cumulative evolution of the scores. The ﬁgures are sequentially in pairs; for instance, for batches of size 10,
+Figure 4 shows the evolution for EWAF-Overlap-01 and WMA-Lev-08-02 at top and bottom, respectively, for top N 5,
+10, and 20, from left to right.
+18
+Running Title for Header
+-50.0
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+60.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-50.0
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+Figure 4:
+Difference between the baseline score and the score obtained by EWAF-Overlap-01 (top) and
+WMA-Lev-08-02 (bottom), over all but the ﬁrst batch. Analysis for batches of size 10 (7 batches), at top 5 (left),
+10 (middle), and 20 (right).
+-50.0
+-30.0
+-10.0
+10.0
+30.0
+50.0
+70.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-50.0
+-30.0
+-10.0
+10.0
+30.0
+50.0
+70.0
+90.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+Figure 5:
+Difference between the baseline score and the score obtained by EWAF-Overlap-01 (top) and
+WMA-Lev-08-02 (bottom), over all but the ﬁrst batch. Analysis for batches of size 7 (10 batches), at top 5 (left),
+10 (middle), and 20 (right).
+In all cases we can see batches that surpass the baseline and others that do not. However, we can see that the gains
+surpass the losses, seen by how often and by how much the lines stand over the zero axis.
+We take a closer look at Figure 5, which depicts the evolution for batches of size 7 (10 batches). We can see, at top
+20, that almost no loss is happening (almost all points are positive, i.e., they are above the axis). In one hand, because
+the batches generate less questions (sometimes close or even less than 20), there is less room to lose points to the
+baseline. On the other hand, that room still exists and it is being avoided, that is, the system is able to consistently
+improve the ordering of the questions without committing mistakes. However, this does not happen for smaller values
+of N. For instance, top 5 shows more losses except for a few batches.
+We believe larger batches have greater impact on the performance of these strategies. The sweet spot might not be easy
+to ﬁnd but, if the corpus is large (MONSERRATE is large on the reference side, but not in number of sentences), batches
+of 10 sentences should be good enough to make a difference. Additionally, the contents of the batches can impact the
+perceived performance of these strategies but, in the end, the gains outweigh the losses, as seen by the overall scores.
+Therefore, one cannot make conclusions based on a single iteration but should, rather, look to apply these strategies
+on the long term. In sum, we found out that the batching experiment had a few more variables that make it hard to
+evaluate our hypothesis, but results still point towards the scores of the patterns being positively impactful, which means
+our hypothesis holds: patterns with better scores are, by deﬁnition, better behaved, and those are used to rank better
+questions to the top.
+19
+Running Title for Header
+-50.0
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+2
+3
+4
+5
+6
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+2
+3
+4
+5
+6
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+2
+3
+4
+5
+6
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-50.0
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+2
+3
+4
+5
+6
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+2
+3
+4
+5
+6
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+2
+3
+4
+5
+6
+BLEU1
+BLEU4
+METEOR
+ROUGE
+Figure 6:
+Difference between the baseline score and the score obtained by EWAF-Overlap-01 (top) and
+WMA-Lev-08-02 (bottom), over all but the ﬁrst batch. Analysis for batches of size 12 (6 batches), at top 5 (left),
+10 (middle), and 20 (right).
+Table 13: Number of patterns and questions per batch, along with the number of questions discarded by the expert, and
+the average question editing, for batches of size 10 (7 batches), on MONSERRATE (shufﬂed order).
+Size 10 (v2)
+1
+2
+3
+4
+5
+6
+7
+Patterns
+11
+23
+31
+35
+38
+53
+41
+New
+-
+13
+12
+9
+9
+20
+7
+Questions
+51
+130
+268
+290
+432
+123
+519
+Unique
+32
+52
+98
+87
+111
+26
+115
+Discarded
+4
+25
+74
+25
+50
+41
+84
+%
+7.84
+19.23
+27.61
+8.62
+11.57
+33.33
+16.18
+Edit Avg
+0.40
+0.42
+0.46
+0.37
+0.44
+0.49
+0.42
+-50.0
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-50.0
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+40.0
+50.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+2
+3
+4
+5
+6
+7
+BLEU1
+BLEU4
+METEOR
+ROUGE
+Figure 7:
+Difference between the baseline score and the score obtained by EWAF-Overlap-01 (top) and
+WMA-Lev-08-02 (bottom), over all batches but the ﬁrst. Analysis for 7 batches (shufﬂed), at top 5 (left), 10 (middle),
+and 20 (right).
+7
+Ordering of Input
+The experiments presented split the corpus in the same order, which may introduce bias into the equation. It is feasible
+that a lucky ordering of inputs lead to learning better weights, showing an apparent improvement. In this section we
+repeat the experiment for batches created from a shufﬂed version of the corpus. We chose 7 new batches of 10 sentences
+each for this second version of the experiment.
+20
+Running Title for Header
+Table 14: Comparison of the weighing strategies against the baselines, measured by automatic metrics on MONSERRATE
+(shufﬂed order), at top 5, 10, and 20. Scores normalized by the best score obtained in each metric. Overall results for
+batches of size 10 (7 batches) – averaged on all but ﬁrst batch.
+@5
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.91
+0.87
+0.91
+0.61
+1.00
+0.98
+0.89
+0.95
+Baseline
+0.89
+0.79
+0.90
+0.65
+0.99
+0.98
+0.92
+0.94
+EWAF-Overlap-01
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+0.97
+1.00
+WMA-Lev-08-02
+0.89
+0.90
+0.90
+0.86
+0.99
+0.97
+0.95
+0.97
+@10
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+0.96
+0.94
+0.99
+0.79
+0.99
+0.98
+0.89
+0.96
+Baseline
+0.94
+0.90
+0.97
+0.77
+0.99
+0.99
+0.92
+0.96
+EWAF-Overlap-01
+0.97
+0.96
+0.97
+0.91
+0.99
+0.99
+0.97
+0.99
+WMA-Lev-08-02
+0.95
+0.97
+0.95
+0.98
+0.99
+0.99
+0.99
+0.99
+@20
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Original Patterns
+1.00
+0.97
+1.00
+0.89
+0.99
+0.98
+0.93
+0.97
+Baseline
+0.97
+0.94
+0.96
+0.83
+0.99
+0.99
+0.96
+0.98
+EWAF-Overlap-01
+0.97
+0.98
+0.94
+0.94
+0.99
+0.99
+0.99
+0.99
+WMA-Lev-08-02
+0.98
+0.99
+0.93
+1.00
+1.00
+1.00
+1.00
+1.00
+Results are presented in Table 14. Although with different gains, we can see that there are gains for all metrics for the
+same strategies and conﬁgurations, for all values of N (with less effectiveness on top 20).
+The evolution of the learning process, however, is completely different, as seen in Table 13 and Figure 7. Comparing
+both runs of 7 batches we can see that the trend is completely different, which means that the performance of the system
+also depends on the content seen. As suggested before, the ordering impacts the content of the batches and, directly,
+their outcomes. Thus, these differences are expected. However, in the end, the average results improve when compared
+to the baselines. Therefore, it is hard to reach a conclusion on how the system evolves over time, and if later batches
+perform better, as they depend on the previous ones, but we can at least say that the overall performance is improved
+with these strategies, independently of the ordering.
+8
+Learning New Seeds on SQuAD
+SQuAD Rajpurkar et al. [2016] is a widely used corpus, mainly in QA and QG settings. SQuAD is a large corpus, but
+as a reference it has a few limitations (only a single reference hypothesis associated to each sentence, for instance),
+reason why we performed the whole experiment in this work using MONSERRATE, as it becomes easier to use automatic
+metrics to perform the evaluation. However, to understand how GEN would perform in a different corpus, we decided
+to repeat the experiment on SQuAD.
+Due to the high cost of correcting questions, this time we executed a single attempt using bathes of size 10, showing
+the results to the two best weighing techniques also resported in the previous sections (EWAF-Overlap-01 and
+WMA-Lev-08-02). The whole process is identical to the one presented in Section 4. Because SQuAD is a larger corpus,
+it will lead to many batches of size 10. On MONSERRATE it is possible to do 7 batches, so here we extended to 10
+batches in order to explore what happens when more batches are possible. Note that using automatic metrics with
+SQuAD is suboptimal, because having only one question hypothesis in the reference punishes not generating a similar
+question to the one expected.
+Table 15 shows the results obtained for both weighing strategies (EWAF-Overlap-01 and WMA-Lev-08-02), using the
+same thresholds for N – top 5, 10, and 20. Table 16 contains the statistics on the evolution of the batches regarding the
+number of patterns, questions generated and discarded, and the average edit cost measured by normalized Levenshtein.
+Figure 8 depicts the gains obtained by each of the strategies against the baseline, for each batch but the ﬁrst.
+21
+Running Title for Header
+Table 15: Comparison of the weighing strategies against the baseline, measured by automatic metrics on SQuAD, at top
+5, 10, and 20. Scores normalized by the best score obtained in each metric. Overall results for batches of size 10 (10
+batches) – averaged on all but ﬁrst batch.
+@5
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Baseline
+0.87
+0.81
+0.86
+0.26
+0.99
+0.97
+0.88
+1.00
+EWAF-Overlap-01
+0.80
+0.79
+0.82
+0.41
+0.98
+0.95
+0.87
+1.00
+WMA-Lev-08-02
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+0.97
+@10
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Baseline
+0.97
+0.87
+0.93
+0.66
+0.98
+1.00
+0.91
+0.94
+EWAF-Overlap-01
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+0.99
+1.00
+WMA-Lev-08-02
+0.98
+0.95
+0.95
+0.89
+0.99
+1.00
+1.00
+1.00
+@20
+ROUGE
+METEOR
+BLEU1
+BLEU4
+EACS
+GMS
+STCS
+VECS
+Baseline
+0.97
+0.87
+0.91
+0.67
+0.99
+1.00
+0.94
+0.96
+EWAF-Overlap-01
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+WMA-Lev-08-02
+0.99
+0.92
+0.95
+0.66
+1.00
+1.00
+1.00
+0.99
+Table 16: Number of patterns and questions per batch, along with the number of questions discarded by the expert, and
+the average question editing, for batches of size 10 (10 batches), on SQuAD.
+Size 7
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Patterns
+11
+21
+38
+44
+66
+81
+108
+116
+121
+126
+Questions
+41
+142
+125
+267
+394
+435
+541
+265
+457
+411
+Unique
+25
+82
+40
+108
+107
+103
+144
+49
+95
+92
+Discarded
+6
+27
+10
+33
+63
+40
+204
+45
+51
+101
+%
+14.63
+19.01
+8.00
+12.36
+15.99
+9.20
+37.71
+16.98
+11.16
+24.57
+Edit Avg.
+0.43
+0.49
+0.40
+0.39
+0.39
+0.37
+0.36
+0.47
+0.42
+0.49
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-20.0
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-40.0
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-30.0
+-20.0
+-10.0
+0.0
+10.0
+20.0
+30.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+-15.0
+-10.0
+-5.0
+0.0
+5.0
+10.0
+15.0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+BLEU1
+BLEU4
+METEOR
+ROUGE
+Figure 8:
+Difference between the baseline score and the score obtained by EWAF-Overlap-01 (top) and
+WMA-Lev-08-02 (bottom), over all batches but the ﬁrst. Analysis for 10 batches of size 10 on SQuAD, at top 5
+(left), 10 (middle), and 20 (right).
+Results show a similar trend to the previous experiment (with exception for EWAF-
+Overlap-01 at top 5), both in overall results and per batch, with gains in most batches that overcome those with losses,
+corroborating the ﬁnds in last sections.
+22
+Running Title for Header
+9
+Conclusions and Future Work
+In this work we studied the concept of using implicit feedback as means to improve a QG system. To accomplish that,
+we proposed GEN, a pattern-based QG system that automatically learns patterns from seeds composed of Q/A pairs and
+a sentence where the answer can be found. GEN uses a ﬂexible pattern matching strategy based on lexical, syntactic,
+and semantic cues to create new questions from unseen sentences. Being able to automatically learn patterns from
+seeds is the reason why it is possible to incorporate feedback that comes directly from the user into the system. Users
+typically have to correct the generated questions to be used in their application, and this effort is usually wasted. These
+corrections can be useful, and are used in this work in two ways: ﬁrst, they are used as trustful sources of new seeds to
+learn new patterns from; secondly, the correction of the questions themselves are used as a function of how well the
+generation process performed. This, indirectly, establishes how good the pattern that generated a given question is, and
+that is used to score the pattern and, therefore, future questions coming from that same pattern.
+We studied how GEN evolved over time, by batching MONSERRATE corpus and evaluating the performance of the
+system as new patterns were learned and past ones were weighed. Results with automatic metrics showed that GEN
+was able to obtain higher overall scores across all metrics, in different parameterizations for the weighing strategies
+applied, when compared with the two baselines set: original patterns with no learning, and learning new patterns but
+not scoring them. The success of this approach was also visible when using SQuAD, although to a different extent due
+to the nature of that corpus.
+We also established that, although overall scores were higher, results for single batches may vary. We showed that
+sequencing can inﬂuence the results obtained on a given batch, and, for that reason, we cannot claim that there is a
+unique best way to apply these weighing strategies. Rather, results point to overall gains in the long term, independently
+of the size of the batches and corpora used, with improvements going up from 10%, depending on the metric and strategy
+used. Moreover, results suggest that batches of at least size 10 are large enough to use these strategies successfully.
+As for future work, we would like to extend the impact of the user feedback, by having more ﬁne grained scores and
+how those are incorporated. For instance, the type of matching used could result in different rewards/penalties, and
+those could also change throughout time instead of being predeﬁned from start.
+Human evaluation could also be conducted to better support our claims. However, we should note that the focus of this
+work was to evaluate the gains obtained by using the implicit feedback and how that translates on the performance of
+the system against itself. In addition, MONSERRATE gives more reliability to using automatic metrics in the evaluation
+procedure, and, thus, more conﬁdence on the results obtained.
+Finally, a similar study conducted on another domain could provide a better analysis on the batching schema to be
+employed.
+Aknowledgements
+Hugo Rodrigues was supported by the Carnegie Mellon-Portugal program (SFRH/BD/51916/
+2012). This work was also supported by national funds through Fundação para a Ciência e Tecnologia (FCT) with
+reference UIDB/50021/2020, and by FEDER, Programa Operacional Regional de Lisboa, Agência Nacional de Inovação
+(ANI), and CMU Portugal, under the project Ref. 045909 (MAIA).
+References
+Husam Ali, Yllias Chali, and Sadid A. Hasan. Automation of question generation from sentences. In Proceedings of
+QG2010: The Third Workshop on Question Generation, June 2010.
+Collin F. Baker, Charles J. Fillmore, and Beau Cronin. The structure of the FrameNet database. International Journal
+of Lexicography, 16(3):281–296, 2003.
+Satanjeev Banerjee and Alon Lavie. METEOR: An automatic metric for MT evaluation with improved correlation with
+human judgments. In Proceedings of the ACL Workshop on Intrinsic and Extrinsic Evaluation Measures for Machine
+Translation and/or Summarization, pages 65–72, Ann Arbor, Michigan, June 2005. Association for Computational
+Linguistics.
+Petr Baudiš and Jan Šedivý. Modeling of the question answering task in the yodaqa system. In Josanne Mothe,
+Jacques Savoy, Jaap Kamps, Karen Pinel-Sauvagnat, Gareth Jones, Eric San Juan, Linda Capellato, and Nicola
+Ferro, editors, Experimental IR Meets Multilinguality, Multimodality, and Interaction, pages 222–228, Cham, 2015.
+Springer International Publishing. ISBN 978-3-319-24027-5.
+23
+Running Title for Header
+Matthew Bilotti, Paul Ogilvie, Jamie Callan, and Eric Nyberg. Structured retrieval for question answering. In
+Proceedings of the 30th Annual International ACM SIGIR Conference on Research and Development in Information
+Retrieval, SIGIR ’07, pages 351–358, New York, NY, USA, 07 2007. Association for Computing Machinery.
+Nicolo Cesa-Bianchi and Gabor Lugosi. Prediction, Learning, and Games. Cambridge University Press, USA, 2006.
+ISBN 0521841089.
+Ying-Hong Chan and Yao-Chung Fan. BERT for question generation. In Proceedings of the 12th International
+Conference on Natural Language Generation, pages 173–177, Tokyo, Japan, October–November 2019. Association
+for Computational Linguistics. doi: 10.18653/v1/W19-8624. URL https://aclanthology.org/W19-8624.
+Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Dzmitry Bahdanau, Fethi Bougares, Holger Schwenk, and
+Yoshua Bengio. Learning phrase representations using rnn encoder-decoder for statistical machine translation, 2014.
+Ronan Collobert, Jason Weston, Léon Bottou, Michael Karlen, Koray Kavukcuoglu, and Pavel Kuksa. Natural language
+processing (almost) from scratch. J. Mach. Learn. Res., 12:2493–2537, November 2011.
+Sérgio Curto, Ana Cristina Mendes, and Luísa Coheur. Exploring linguistically-rich patterns for question generation.
+In Proceedings of the UCNLG+Eval: Language Generation and Evaluation Workshop, UCNLG+EVAL ’11, pages
+33–38, Stroudsburg, PA, USA, 2011. Association for Computational Linguistics.
+Sérgio Curto, Ana Cristina Mendes, and Luísa Coheur. Question generation based on lexico-syntactic patterns learned
+from the web. Dialogue & Discourse, 3(2):147–175, March 2012.
+Marie-Catherine de Marneffe, Bill MacCartney, and Christopher D. Manning. Generating typed dependency parses
+from phrase structure parses. In Proceedings of the International Conference on Language, Resources and Evaluation
+(LREC), pages 449–454, 2006.
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: Pre-training of deep bidirectional
+transformers for language understanding, 2018.
+Chenhe Dong, Yinghui Li, Haifan Gong, Miaoxin Chen, Junxin Li, Ying Shen, and Min Yang. A survey of natural
+language generation. ACM Comput. Surv., jul 2022. ISSN 0360-0300. doi: 10.1145/3554727. URL https:
+//doi.org/10.1145/3554727. Just Accepted.
+X. Du, J. Shao, and C. Cardie. Learning to ask: Neural question generation for reading comprehension. CoRR, 2017.
+Anthony Fader, Luke Zettlemoyer, and Oren Etzioni. Open question answering over curated and extracted knowledge
+bases. In Proceedings of the 20th ACM SIGKDD International Conference on Knowledge Discovery and Data
+Mining, KDD ’14, page 1156–1165, New York, NY, USA, 2014. Association for Computing Machinery.
+David A. Ferrucci, Eric W. Brown, Jennifer Chu-Carroll, James Fan, David Gondek, Aditya Kalyanpur, Adam Lally,
+J. William Murdock, Eric Nyberg, John M. Prager, Nico Schlaefer, and Christopher A. Welty. Building watson: An
+overview of the deepqa project. AI Magazine, 31(3):59–79, 2010.
+Jenny Rose Finkel, Trond Grenager, and Christopher Manning. Incorporating non-local information into information
+extraction systems by gibbs sampling. In Proceedings of the 43rd Annual Meeting on Association for Computational
+Linguistics, ACL ’05, page 363–370, USA, 2005. Association for Computational Linguistics. doi: 10.3115/1219840.
+1219885.
+Gabriel Forgues, Joelle Pineau, Jean-Marie Larchevêque, and Réal Tremblay. Bootstrapping dialog systems with word
+embeddings. In Nips, modern machine learning and natural language processing workshop, volume 2, 2014.
+Kelvin Han, Thiago Castro Ferreira, and Claire Gardent. Generating questions from wikidata triples. In Proceedings
+of the Language Resources and Evaluation Conference, pages 277–290, Marseille, France, June 2022. European
+Language Resources Association. URL https://aclanthology.org/2022.lrec-1.29.
+Michael Heilman. Automatic Factual Question Generation from Text. PhD thesis, School of Computer Science,
+Carnegie Mellon University, Pittsburgh, PA, 2011.
+Michael Heilman and Noah A. Smith. Question generation via overgenerating transformations and ranking. Technical
+report, School of Computer Science, Carnegie Mellon University, Pittsburgh, PA, 2009.
+Michael Heilman and Noah A. Smith. Good question! statistical ranking for question generation. In Human Language
+Technologies: The 2010 Annual Conference of the North American Chapter of the Association for Computational
+Linguistics, HLT ’10, pages 609–617, Stroudsburg, PA, USA, 2010. Association for Computational Linguistics.
+Ryuichiro Higashinaka and Hideki Isozaki. Corpus-based question answering for why-questions. In Proceedings of the
+Third International Joint Conference on Natural Language Processing: Volume-I, 2008.
+Sepp Hochreiter and Jürgen Schmidhuber. Long short-term memory. Neural computation, 9:1735–80, 12 1997.
+24
+Running Title for Header
+Sathish Indurthi, Dinesh Raghu, Mitesh M. Khapra, and Sachindra Joshi. Generating natural language question-answer
+pairs from a knowledge graph using a RNN based question generation model. In EACL, pages 376–385. Association
+for Computational Linguistics, 2017.
+Saidalavi Kalady, Ajeesh Illikottil, and Rajarshi das. Natural language question generation using syntax and keywords.
+In Proceedings of QG2010: The Third Workshop on Question Generation, June 2010.
+Karin Kipper, Hoa Trang Dang, and Martha Palmer. Class-based construction of a verb lexicon. In Proceedings of the
+Seventeenth National Conference on Artiﬁcial Intelligence and Twelfth Conference on Innovative Applications of
+Artiﬁcial Intelligence, pages 691–696. AAAI Press, 2000.
+Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba, Raquel Urtasun, and Sanja Fidler.
+Skip-thought vectors. CoRR, abs/1506.06726, 2015.
+Dan Klein and Christopher D. Manning. Fast exact inference with a factored model for natural language parsing. In In
+Advances in Neural Information Processing Systems 15 (NIPS, pages 3–10. MIT Press, 2003.
+H. W. Kuhn. The hungarian method for the assignment problem. Naval Research Logistics Quarterly, 2(1-2):83–97,
+1955.
+Vishwajeet Kumar, Ganesh Ramakrishnan, and Yuan-Fang Li. A framework for automatic question generation from
+text using deep reinforcement learning. ArXiv, abs/1808.04961, 2018.
+Igor Labutov, Sumit Basu, and Lucy Vanderwende. Deep questions without deep understanding. In Proceedings of
+ACL, July 2015.
+V. I. Levenshtein. Binary Codes Capable of Correcting Deletions, Insertions and Reversals. Soviet Physics Doklady, 10:
+707–710, February 1966.
+Roger Levy and Galen Andrew. Tregex and tsurgeon: tools for querying and manipulating tree data structures. In In 5th
+International Conference on Language Resources and Evaluation, 2006.
+Chin-Yew Lin. ROUGE: A package for automatic evaluation of summaries. In Text Summarization Branches Out,
+pages 74–81, Barcelona, Spain, July 2004. Association for Computational Linguistics.
+Yanxiang Ling, Fei Cai, Jun Liu, Honghui Chen, and Maarten de Rijke. Generating relevant and informative questions
+for open-domain conversations. ACM Transactions on Information Systems (TOIS), 2022.
+N. Littlestone and M.K. Warmuth. The weighted majority algorithm. Information and Computation, 108(2):212 – 261,
+1994. ISSN 0890-5401.
+Bang Liu, Mingjun Zhao, Di Niu, Kunfeng Lai, Yancheng He, Haojie Wei, and Yu Xu. Learning to generate questions
+by learning what not to generate. CoRR, abs/1902.10418, 2019.
+Ming Liu and Jinxu Zhang. Chinese neural question generation: Augmenting knowledge into multiple neural encoders.
+Applied Sciences, 12(3), 2022. ISSN 2076-3417. doi: 10.3390/app12031032. URL https://www.mdpi.com/
+2076-3417/12/3/1032.
+Prashanth Mannem, Rashmi Prasad, and Aravind Joshi. Question generation from paragraphs at upenn: Qgstec system
+description. In Proceedings of QG2010: The Third Workshop on Question Generation, pages 84–91, 2010.
+Karen Mazidi and Rodney D. Nielsen. Leveraging multiple views of text for automatic question generation. In
+Artiﬁcial Intelligence in Education - 17th International Conference, AIED 2015, Madrid, Spain, June 22-26, 2015.
+Proceedings, pages 257–266, 2015.
+Ana Cristina Mendes. When the Answer comes into Question in Question-Answering. PhD thesis, Instituto Superior
+Técnico, Universidade de Lisboa, Lisbon, Portugal, 2013.
+Ana Cristina Mendes, Sérgio Curto, and Luísa Coheur. Bootstrapping multiple-choice tests with the-mentor. In
+Alexander F. Gelbukh, editor, Computational Linguistics and Intelligent Text Processing, pages 451–462, Berlin,
+Heidelberg, 2011. Springer Berlin Heidelberg. ISBN 978-3-642-19400-9.
+Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. Efﬁcient estimation of word representations in vector
+space. CoRR, abs/1301.3781, 2013.
+George A. Miller. Wordnet: a lexical database for english. Commun. ACM, 38:39–41, November 1995.
+Lidiya Murakhovs’ka, Chien-Sheng Wu, Philippe Laban, Tong Niu, Wenhao Liu, and Caiming Xiong. MixQG:
+Neural question generation with mixed answer types. In Findings of the Association for Computational Linguistics:
+NAACL 2022, pages 1486–1497, Seattle, United States, July 2022. Association for Computational Linguistics. doi:
+10.18653/v1/2022.ﬁndings-naacl.111. URL https://aclanthology.org/2022.findings-naacl.111.
+Santanu Pal, Tapabrata Mondal, Partha Pakray, Dipankar Das, and Sivaji Bandyopadhyay. Qgstec system description–
+juqgg: A rule based approach. Boyer & Piwek (2010), pages 76–79, 2010.
+25
+Running Title for Header
+Martha Palmer, Daniel Gildea, and Paul Kingsbury. The proposition bank: An annotated corpus of semantic roles.
+Comput. Linguist., 31(1):71–106, March 2005.
+Patrick Pantel and Marco Pennacchiotti. Espresso: Leveraging generic patterns for automatically harvesting semantic
+relations. In Proceedings of the 21st International Conference on Computational Linguistics and the 44th Annual
+Meeting of the Association for Computational Linguistics, ACL-44, pages 113–120, Stroudsburg, PA, USA, 2006.
+Association for Computational Linguistics.
+Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu.
+Bleu: a method for automatic evaluation of
+machine translation. In Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics,
+pages 311–318, Philadelphia, Pennsylvania, USA, July 2002. Association for Computational Linguistics. doi:
+10.3115/1073083.1073135.
+Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. Squad: 100, 000+ questions for machine
+comprehension of text. CoRR, abs/1606.05250, 2016.
+D. Ravichandran and Eduard Hovy. Learning surface text patterns for a question answering system. In Proceedings of
+the 40th ACL conference. Philadelphia, PA., 2002.
+Philip Resnik. Using information content to evaluate semantic similarity in a taxonomy. In Proceedings of the 14th
+International Joint Conference on Artiﬁcial Intelligence - Volume 1, IJCAI’95, pages 448–453, San Francisco, CA,
+USA, 1995. Morgan Kaufmann Publishers Inc.
+Hugo Rodrigues, Luísa Coheur, and Eric Nyberg. Improving question generation with the teacher’s implicit feedback.
+In International Conference on Artiﬁcial Intelligence in Education, pages 301–306. Springer, 2018.
+Hugo Rodrigues, Eric Nyberg, and Luisa Coheur. Towards the benchmarking of question generation: introducing the
+monserrate corpus. Language Resources and Evaluation, 2021. doi: 10.1007/s10579-021-09545-5.
+Vasile Rus and Mihai Lintean. A comparison of greedy and optimal assessment of natural language student input using
+word-to-word similarity metrics. In Proceedings of the Seventh Workshop on Building Educational Applications
+Using NLP, pages 157–162, Montréal, Canada, June 2012. Association for Computational Linguistics.
+Iulian Vlad Serban, Alberto García-Durán, Caglar Gulcehre, Sungjin Ahn, Sarath Chandar, Aaron Courville, and
+Yoshua Bengio. Generating factoid questions with recurrent neural networks: The 30M factoid question-answer
+corpus. In Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1:
+Long Papers), pages 588–598, Berlin, Germany, August 2016. Association for Computational Linguistics. doi:
+10.18653/v1/P16-1056. URL https://aclanthology.org/P16-1056.
+Shikhar Sharma, Layla El Asri, Hannes Schulz, and Jeremie Zumer. Relevance of unsupervised metrics in task-oriented
+dialogue for evaluating natural language generation. CoRR, abs/1706.09799, 2017. URL http://arxiv.org/abs/
+1706.09799.
+Hideki Shima. Paraphrase Pattern Acquisition by Diversiﬁable Bootstrapping. PhD thesis, School of Computer Science,
+Carnegie Mellon University, Pittsburgh, PA, 2015.
+M. M. Soubbotin. Patterns of potential answer expressions as clues to the right answers. In Text REtrieval Conference,
+2001.
+Sandeep Subramanian, Tong Wang, Xingdi Yuan, Saizheng Zhang, Adam Trischler, and Yoshua Bengio. Neural
+models for key phrase extraction and question generation. In QA@ACL, pages 78–88. Association for Computational
+Linguistics, 2018.
+Xingwu Sun, Jing Liu, Yajuan Lyu, Wei He, Yanjun Ma, and Shi Wang. Answer-focused and position-aware neural
+question generation. In Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing,
+pages 3930–3939, Brussels, Belgium, October-November 2018. Association for Computational Linguistics. doi:
+10.18653/v1/D18-1427. URL https://aclanthology.org/D18-1427.
+M. Surdeanu, Massimiliano Ciaramita, and H. Zaragoza. Learning to rank answers to non-factoid questions from web
+collections. Computational Linguistics, 37:351–383, 2011.
+Ilya Sutskever, Oriol Vinyals, and Quoc V Le. Sequence to sequence learning with neural networks. In Z. Ghahramani,
+M. Welling, C. Cortes, N. D. Lawrence, and K. Q. Weinberger, editors, Advances in Neural Information Processing
+Systems 27, pages 3104–3112. Curran Associates, Inc., 2014.
+Duyu Tang, Nan Duan, Tao Qin, and Ming Zhou. Question answering and question generation as dual tasks. CoRR,
+abs/1706.02027, 2017.
+Andrea Varga and Le An Ha. Wlv: A question generation system for the qgstec 2010 task b. In Proceedings of QG2010:
+The Third Workshop on Question Generation, June 2010.
+26
+Running Title for Header
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia
+Polosukhin. Attention is all you need, 2017.
+Paola Velardi, Stefano Faralli, and Roberto Navigli. Ontolearn reloaded: A graph-based algorithm for taxonomy
+induction. Computational Linguistics, 39(3):665–707, 2013.
+Tong Wang, Xingdi Yuan, and Adam Trischler. A joint model for question answering and question generation. CoRR,
+abs/1706.01450, 2017.
+Zichao Wang, Jakob Valdez, Debshila Basu Mallick, and Richard G. Baraniuk. Towards human-like educational
+question generation with large language models. In Maria Mercedes Rodrigo, Noburu Matsuda, Alexandra I. Cristea,
+and Vania Dimitrova, editors, Artiﬁcial Intelligence in Education, pages 153–166, Cham, 2022. Springer International
+Publishing. ISBN 978-3-031-11644-5.
+Brendan Wyse and Paul Piwek. Generating questions from openlearn study units. In AIED 2009 Workshop Proceedings
+Volume 1: The 2nd Workshop on Question Generation, 2009.
+Xingdi Yuan, Tong Wang, Caglar Gulcehre, Alessandro Sordoni, Philip Bachman, Saizheng Zhang, Sandeep Subrama-
+nian, and Adam Trischler. Machine comprehension by text-to-text neural question generation. In Proceedings of the
+2nd Workshop on Representation Learning for NLP, pages 15–25, Vancouver, Canada, August 2017. Association for
+Computational Linguistics.
+Ruqing Zhang, Jiafeng Guo, Lu Chen, Yixing Fan, and Xueqi Cheng.
+A review on question generation from
+natural language text. ACM Trans. Inf. Syst., 40(1), sep 2021. ISSN 1046-8188. doi: 10.1145/3468889. URL
+https://doi.org/10.1145/3468889.
+Qingyu Zhou, Nan Yang, Furu Wei, Chuanqi Tan, Hangbo Bao, and Ming Zhou. Neural question generation from text:
+A preliminary study. In Xuanjing Huang, Jing Jiang, Dongyan Zhao, Yansong Feng, and Yu Hong, editors, Natural
+Language Processing and Chinese Computing, pages 662–671, Cham, 2018. Springer International Publishing.
+27
+

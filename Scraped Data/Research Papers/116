@@ -1,0 +1,1195 @@
+Multimodal Fusion Interactions: 
+A Study of Human and Automatic Qantification 
+Paul Pu Liang 
+Yun Cheng 
+Carnegie Mellon University 
+Carnegie Mellon University 
+Pittsburgh, PA, USA 
+Pittsburgh, PA, USA 
+pliang@cs.cmu.edu 
+yuncheng@cs.cmu.edu 
+Ruslan Salakhutdinov 
+Louis-Philippe Morency 
+Carnegie Mellon University 
+Carnegie Mellon University 
+Pittsburgh, PA, USA 
+Pittsburgh, PA, USA 
+ABSTRACT 
+In order to perform multimodal fusion of heterogeneous signals, 
+we need to understand their interactions: how each modality in-
+dividually provides information useful for a task and how this 
+information changes in the presence of other modalities. In this 
+paper, we perform a comparative study of how humans annotate 
+two categorizations of multimodal interactions: (1) partial labels,
+where diferent annotators annotate the label given the frst, second, 
+and both modalities, and (2) counterfactual labels, where the same
+annotator annotates the label given the frst modality before asking 
+them to explicitly reason about how their answer changes when 
+given the second. We further propose an alternative taxonomy 
+based on (3) information decomposition, where annotators annotate
+the degrees of redundancy: the extent to which modalities individu-
+ally and together give the same predictions, uniqueness: the extent
+to which one modality enables a prediction that the other does 
+not, and synergy: the extent to which both modalities enable one to
+make a prediction that one would not otherwise make using individ-
+ual modalities. Through experiments and annotations, we highlight 
+several opportunities and limitations of each approach and propose 
+a method to automatically convert annotations of partial and coun-
+terfactual labels to information decomposition, yielding an accurate 
+and efcient method for quantifying multimodal interactions. 
+CCS CONCEPTS 
+• Computing methodologies → Machine Learning.
+KEYWORDS 
+Multimodal interactions; Multimodal fusion; Afective computing 
+ACM Reference Format: 
+Paul Pu Liang, Yun Cheng, Ruslan Salakhutdinov, and Louis-Philippe Morency. 
+2023. Multimodal Fusion Interactions: A Study of Human and Automatic sQuan-
+tifcation. In INTERNATIONAL CONFERENCE ON MULTIMODAL INTER-
+ACTION (ICMI ’23), October 09–13, 2023, Paris, France. ACM, New York, NY, 
+USA, 11 pages. https://doi.org/10.1145/3577190.3614151 
+This work is licensed under a Creative Commons Attribution International 
+4.0 License. 
+ICMI ’23, October 09–13, 2023, Paris, France 
+© 2023 Copyright held by the owner/author(s). 
+ACM ISBN 979-8-4007-0055-2/23/10. 
+https://doi.org/10.1145/3577190.3614151 
+Partial
+labels
+Counterfactual
+labels
+Information
+decomposition
+Video
+(faces)
+Language
+(spoken)
+Automatic
+PID
+Figure 1: We study human annotation of multimodal fusion 
+interactions via three categorizations: (1) partial labels in 
+which diferent randomly assigned annotators annotate the 
+task given the frst (�1), second (�2), and both modalities (�12), 
+(2) counterfactual labels, where the same annotator is tasked
+to annotate the label given the frst modality (�1), before
+asking them to reason about how their answer chances when
+given the second (�1+2), and vice versa (�2 and �2+1), and (3)
+information decomposition where annotators annotate the
+degrees of modality redundancy, uniqueness, and synergy in
+predicting the task. Finally, we also propose a scheme based
+on PID [66] to automatically convert annotations of partial
+and counterfactual labels to information decomposition.
+1 INTRODUCTION 
+A core challenge in multimodal machine learning lies in under-
+standing the ways that diferent modalities interact with each other 
+in combination for a given prediction task [35]. We defne the study 
+of multimodal fusion interactions as the categorization and mea-
+surement of how each modality individually provides information 
+useful for a task and how this information changes in the presence of 
+other modalities [14, 42, 46]. Learning complex interactions are of-
+ten quoted as motivation for many successful multimodal modeling 
+paradigms in the machine learning and multimodal interaction com-
+munities, such as contrastive learning [29, 47], modality-specifc 
+representations [57, 70], and higher-order interactions [26, 33, 71]. 
+Despite progress in new models that seem to better capture vari-
+ous interactions from increasingly complex real-world multimodal 
+datasets [26, 71], formally quantifying and measuring the inter-
+actions that are necessary to solve a multimodal task remains a 
+fundamental research question [24, 34, 35]. 
+425
+ICMI ’23, October 09–13, 2023, Paris, France 
+Paul Pu Liang, Yun Cheng, Ruslan Salakhutdinov, and Louis-Philippe Morency 
+In this paper, we perform a comparative study of how reliably 
+human annotators can be leveraged to quantify diferent interac-
+tions in real-world multimodal datasets (see Figure 1). We frst start 
+with a conventional method which we term partial labels, where 
+diferent randomly assigned annotators annotate the task given 
+only the frst modality (�1), only the second modality (�2), and 
+both modalities (�12) [14, 42, 46, 48]. Beyond partial labels, we ex-
+tend this idea to counterfactual labels, where the same annotator 
+is tasked to annotate the label given the frst modality (�1), before 
+giving them the second modality and asking them to explicitly 
+reason about how their answer changes (�1+2), and vice versa (�2 
+and �2+1) [50]. Additionally, we propose an alternative taxonomy 
+of multimodal interactions grounded in information theory [31, 66], 
+which we call information decomposition: decomposing the total 
+information two modalities provide about a task into redundancy, 
+the extent to which individual modalities and both in combina-
+tion all give similar predictions on the task, uniqueness, the extent 
+to which the prediction depends only on one of the modalities 
+and not the other, and synergy, the extent to which task predic-
+tion changes with both modalities as compared to using either 
+modality individually [31, 66]. Information decomposition has an 
+established history in understanding feature interactions in neuro-
+science [45, 55, 64, 65], physics [16, 22], and biology [10, 12] since 
+it exhibits desirable properties such as disentangling redundancy 
+and synergy, normalization with respect to the total information 
+two features provide towards a task, and established methods for 
+automatic computation. 
+However, it remains a challenge to scale information decom-
+position to real-world high-dimensional and continuous modal-
+ities [7, 31, 32], which has hindered its application in machine 
+learning and multimodal interaction where complex video, audio, 
+text, and other sensory modalities are prevalent. To quantify infor-
+mation decomposition for real-world multimodal tasks, we propose 
+a new human annotation scheme where annotators provide esti-
+mates of redundancy, uniqueness, and synergy when presented with 
+both modalities and the label. We fnd that this method works sur-
+prisingly well with strong annotator agreement and self-reported 
+annotator confdence. Finally, given the promises of information 
+decomposition [15, 26, 31], we additionally propose a scheme to 
+automatically convert annotations of partial and counterfactual la-
+bels to information decomposition using an information-theoretic 
+method [7, 66], which makes it compatible with existing methods 
+of annotating interactions [14, 42, 46, 48]. Through comprehensive 
+experiments on multimodal analysis of sentiment, humor, sarcasm, 
+and question-answering, we compare these methods of quantify-
+ing multimodal interactions and summarize our key fndings. We 
+release our data and code at https://github.com/pliang279/PID. 
+2 RELATED WORK 
+Multimodal fusion interactions have been studied based on the 
+dimensions of response, information, and mechanics [35]. We defne 
+and highlight representative works in each category: 
+Interaction response studies how the inferred response changes 
+when two or more modalities are fused [35] (see Figure 2). For 
+example, two modalities create a redundant response if the fused 
+response is the same as responses from either modality or enhanced 
+Figure 2: Categories of interaction response: redundancy hap-
+pens when using either and both modalities give similar task 
+predictions, uniqueness studies whether prediction depends 
+on one of the modalities and not the other, and synergy mea-
+sures how prediction changes with both modalities as com-
+pared to using either modality individually. 
+if the fused response displays higher confdence. Non-redundant 
+interactions such as modulation or emergence can also happen [43]. 
+Many of these terms actually started from research in human and 
+animal communicative modalities [17, 43, 44, 48] and multime-
+dia [5, 37]. Inspired by these ideas, a common measure of interaction 
+response redundancy is defned as the distance between prediction 
+logits using either feature [38]. This defnition is also commonly 
+used in minimum-redundancy feature selection [3, 68, 69]. Research 
+in multimedia has also categorized interactions into divergent, par-
+allel, and additive [5, 30, 73]. Finally, human annotations have been 
+leveraged to identify redundant modalities via a proxy of cognitive 
+load [48]. This paper primarily focuses on interaction response 
+since it is the one easiest understood and annotated by humans, 
+but coming up with formal defnitions and measures of other inter-
+actions are critical directions for future work. 
+Interaction information investigates the nature of information 
+overlap between multiple modalities. The information important 
+for a task can be shared in both modalities, unique to one modality, 
+or emerge only when both are present [35]. Information-theoretic 
+measures naturally provide a mathematical formalism in the study 
+of interaction information, for example through the mutual in-
+formation between two variables [54, 56]. In the presence of two 
+modalities and a label, extensions of mutual information to three 
+variables, such as through total correlation [19, 63] interaction in-
+formation [39, 53], or partial information decomposition [7, 66] 
+have been proposed, and recent work has explored their estima-
+tion on large-scale real-world multimodal datasets [31, 32]. From 
+a semantic perspective, research in multimedia has studied vari-
+ous relationships that can exist between images and text [37, 41], 
+which has also inspired work in representing shared information 
+through contrastive learning [47]. While interaction information 
+and response are naturally related, interaction response can be 
+more fne-grained with respect to individual datapoints. 
+426
+Multimodal Fusion Interactions: A Study of Human and Automatic Qantification 
+ICMI ’23, October 09–13, 2023, Paris, France 
+(a) Sample user interface for annotating par-
+tial labels of the video modality. 
+(b) Sample user interface for annotating partial labels of the language modality. 
+(c) Sample user interface for annotating how the label changes from observing the video modality and then language by the same annotator. 
+(d) Sample user interface for annotating information decomposition of redundancy, uniqueness, and synergy. 
+Figure 3: User interfaces for annotating partial labels (a, b), counterfactual labels (c), and information decomposition (d). 
+Finally, the study of interaction mechanics studies how mathe-
+matical operators can be used to capture interactions during 
+multimodal fusion. For example, interaction mechanics can be 
+expressed as additive [18], multiplicative [26], tensor [71], non-
+linear [40], and recurrent [33] forms, as well as logical, causal, 
+or temporal operations [61]. By making assumptions on a spe-
+cifc functional form of interactions (e.g., additive vs non-additive), 
+prior work has been able to quantify their presence or absence [51, 
+59, 60] in real-world multimodal datasets and models through 
+studies of architecture-specifc attention and parameter weights, 
+model-agnostic gradient-based visualizations [34, 36, 62], and pro-
+jections into simpler models [24, 67]. 
+3 ANNOTATING MULTIMODAL 
+INTERACTIONS 
+In order to study interaction response during multimodal fusion, we 
+frst review the estimation of partial labels via random assignment, 
+before discussing an alternative approach through counterfactual 
+labels. Finally, we motivate information decomposition into redun-
+dancy, uniqueness, and synergy, which ofers a diferent perspective 
+and new benefts for studying multimodal interactions. 
+427
+ICMI ’23, October 09–13, 2023, Paris, France 
+Paul Pu Liang, Yun Cheng, Ruslan Salakhutdinov, and Louis-Philippe Morency 
+3.1 Annotating partial labels 
+The standard approach involves tasking randomly assigned anno-
+tators to label their prediction of the label when presented with 
+only the frst modality (�1), the label when presented with only 
+the second modality (�2), and the label when presented with both 
+modalities (�12) [14, 42, 46]. Annotators are typically randomly 
+assigned to each modality so that their labeling process is not in-
+fuenced by observing other modalities, resulting in independently 
+annotated partial labels. In this setup, the instructions given are: 
+(1) �1: Show modality 1, and ask the annotator to predict the label. 
+(2) �2: To another annotator, show only modality 2, and ask the 
+annotator to predict the label. 
+(3) �12: To yet another annotator, show both modalities, and ask 
+the annotator to predict the label. 
+After reporting each partial label, the annotators are also asked to 
+report confdence on a 0-5 scale (0: no confdence, 5: high conf-
+dence). We show a screenshot of a sample user interface in Figure 3 
+(top) and provide more annotation details in Appendix A.1. 
+3.2 Annotating counterfactual labels 
+As another alternative to random assignment, we draw insight from 
+counterfactual estimation where the same annotator annotates the 
+label given a single modality, before giving them the second modal-
+ity and asking them to reason about how their answer changes. 
+The instructions provided to the frst annotator are: 
+(1) �1: Show modality 1, and ask them to predict the label. 
+(2) �1+2: Now show both modalities and ask if their predicted label 
+explicitly changes after seeing both modalities. 
+To a separate annotator, we provide the following instructions: 
+(1) �2: Show modality 2, and ask them to predict the label. 
+(2) �2+1: Now show both modalities and ask if their predicted label 
+explicitly changes after seeing both modalities. 
+The annotators also report confdence on a 0-5 scale (see sample 
+user interface in Figure 3 (middle) and exact annotation procedures 
+in Appendix A.2). While the frst method by random assignment 
+estimates the average efect of each modality on the label as is 
+commonly done in randomized control trials [6] (since estimates of 
+partial labels for each modality are done separately in expectation 
+over all users), this counterfactual approach measures the actual 
+causal efect of seeing the second modality towards the label for 
+the same user [1, 21, 28]. 
+3.3 Annotating information decomposition 
+Finally, we propose an alternative categorization of multimodal 
+interactions based on information theory, which we call information 
+decomposition: decomposing the total information two modalities 
+provide about a task into redundancy, the extent to which individual 
+modalities and both in combination all give similar predictions on 
+the task, uniqueness, the extent to which the prediction depends 
+only on one of the modalities and not the other, or synergy, the 
+extent to which task prediction changes with both modalities as 
+compared to using either modality individually [31, 66]. 
+This view of interactions is useful since it has a formal ground-
+ing in information theory [49] and information decomposition [66]. 
+Information theory formalizes the amount of information that a 
+Partial Information Decomposition
+Explains why 
+negative!
+Figure 4: Partial information decomposition gives a prin-
+cipled way to estimate the interactions that are redundant 
+between 2 modalities, unique to one modality, and synergis-
+tic only when both modalities are present. 
+variable (� ) provides about another (� ), and is quantifed by Shan-
+non’s mutual information (MI): 
+∫ 
+� (�1, �2)
+� (�1; �2) = 
+� (�1, �2) log 
+��1��2, 
+(1)
+� (�1)� (�2) 
+which measures the amount of information (in bits) obtained about 
+�1 by observing �2. By extension, conditional MI is the expected 
+value of the MI of two random variables (e.g., �1 and �2) given the 
+value of a third (e.g., � ): 
+∫ 
+� (�1, �2 |�)
+� (�1; �2 |� ) = 
+� (�1, �2,�) log 
+��1��2��. 
+(2)
+� (�1 |�)� (�2 |�) 
+3.3.1 Multivariate information theory. While information theory 
+works well in two variables, the extension of information theory to 
+measure redundancy and other interactions requires its extension 
+to three or more variables, which remains an open challenge. The 
+most natural extension, through interaction information [39, 53], 
+has often been indirectly used as a measure of redundancy in co-
+training [4, 8, 11] and multi-view learning [52, 54, 56, 58]. It is 
+defned for three variables as the diference in mutual information 
+and conditional mutual information: 
+� (�1; �2; � ) = � (�1; �2) − � (�1; �2 |� ), 
+(3) 
+and can be defned inductively for more than three variables. How-
+ever, interaction information has some signifcant shortcomings: 
+� (�1; �2; � ) can be both positive and negative, leading to consider-
+able difculty in its interpretation when redundancy as an infor-
+mation quantity is negative [25, 31]. Furthermore, the total infor-
+mation is only equal to redundancy and uniqueness (� (�1, �2; � ) = 
+� (�1; �2; � ) + � (�1; � |�2) + � (�2; � |�1)), and there is no measure-
+ment of synergy in this framework. 
+3.3.2 Information decomposition. Partial information decompo-
+sition (PID) [66] was designed to solve some of the issues with 
+multivariate information theory. PID is a class of defnitions for 
+redundancy � between �1 and �2, unique information �1 in �1 and 
+�2 in �2, and synergy � when both �1 and �2 are present such that 
+428
+Multimodal Fusion Interactions: A Study of Human and Automatic Qantification 
+ICMI ’23, October 09–13, 2023, Paris, France 
+the following equations hold (see Figure 4 for a visual depiction): 
+� + �1 = � (�1; � ), 
+� + �2 = � (�2; � ), 
+(4) 
+�1 + � = � (�1; � |�2), �2 + � = � (�2; � |�1), 
+(5) 
+� − � = � (�1; �2; � ). 
+(6) 
+PID resolves the issue of negative � (�1; �2; � ) in conventional infor-
+mation theory by separating � and � such that � − � = � (�1; �2; � ), 
+identifying that prior redundancy measures confound actual redun-
+dancy and synergy. Furthermore, if � (�1; �2; � ) = 0 then existing 
+frameworks are unable to distinguish between positive values of 
+true � and � canceling each other out, while PID separates and can 
+estimate non-zero (but equal) values of both � and �. 
+3.3.3 Annotating information decomposition. While information 
+decomposition has a formal defnition and exhibits nice proper-
+ties, it remains a challenge to scale information decomposition 
+to real-world high-dimensional and continuous modalities [7, 31]. 
+To quantify information decomposition for real-world tasks, we 
+investigate whether human judgment can be used as a reliable esti-
+mator. We propose a new annotation scheme where we show both 
+modalities and the label and ask each annotator to annotate the 
+degree of redundancy, uniqueness, and synergy on a scale of 0-5 
+using the following defnitions inspired by the formal defnitions 
+in information decomposition: 
+(1) �: The extent to which using the modalities individually and 
+together gives the same predictions on the task, 
+(2) �1: The extent to which �1 enables you to make a prediction 
+about the task that you would not if using �2, 
+(3) �2: The extent to which �2 enables you to make a prediction 
+about the task that you would not if using �1, 
+(4) �: The extent to which only both modalities enable you to make 
+a prediction about the task that you would not otherwise make 
+using either modality individually, 
+alongside their confdence in their answers on a scale of 0-5. We 
+show a sample user interface for the annotations in Figure 3 (bot-
+tom) and include exact annotation procedures in Appendix A.3. 
+4 CONVERTING PARTIAL LABELS TO PID 
+Finally, we propose a method to automatically convert partial labels, 
+which are present in many existing multimodal datasets [14, 42, 
+46], into information decomposition interaction values. Defne the 
+multimodal label � as �12 in the case of partial labels and the average 
+of�1+2 and�2+1 in the case of counterfactual labels. Then, the partial 
+and counterfactual labels are related to redundancy, uniqueness, 
+and synergy in the following ways: 
+(1) � is high when �1, �2, and � are all close to each other, 
+(2) �1 is high when �1 is close to � but �2 is far from �, 
+(3) �2 is high when �2 is close to � but �1 is far from �, 
+(4) � is high when �1,�2 are both far from �. 
+While these partial labels are intuitively related to information 
+decomposition, coming up with a concrete equation to convert 
+�1, �2, and � to actual interaction values is surprisingly difcult 
+and involves many design decisions. For example, what distance 
+measure do we use to measure closeness in label space? Further-
+more, computing � depends on 3 distances, �1 and �2 depend on 2 
+distances but inversely on 1 distance, and � depends on 2 distances. 
+How do we obtain interaction values that lie on comparable scales 
+so that they can be compared reliably? 
+4.1 Automatic conversion 
+Our key insight is that the aforementioned issues are exactly what 
+inspired much of the research in information theory and decompo-
+sition in the frst place: in information theory, the lack of a distance 
+measure is solved by working with probability distributions where 
+information-theoretic distances like KL-divergence are well-defned 
+and standardized, the issues of normalization are solved using a 
+standardized unit of measure (bits in log-base 2), and the issues of 
+incomparable scales are solved by the consistency equations (4)-(6) 
+relating PID values to each other and to the total task-relevant 
+information in both modalities. 
+Armed with these formalisms of information theory and infor-
+mation decomposition, we propose a method to convert human-
+annotated partial predictions into redundancy, uniqueness, and syn-
+ergy (see Figure 5 for an overview). To do so, we treat the dataset of 
+partial predictions 
+D = {(�1,�2,�)� 
+} 
+ 
+�=1 as a joint distribution with 
+�1 and �2 as ‘multimodal inputs’ sampled over the label support Y, 
+and the target label � as the ‘output’ also over Y. Following this, we 
+adopt a precise defnition of redundancy, uniqueness, and synergy 
+used by Bertschinger et al. [7], where the interactions are defned 
+as the solution to the optimization problems: 
+� = max �� (�1; �2; � ), 
+(7) 
+� ∈Δ� 
+�1 = min �� (�1; � |�2), 
+�2 = min �� (�2; � |�1), 
+(8) 
+� ∈Δ� 
+� ∈Δ� 
+� = �� (�1, �2; � ) − min �� (�1, �2; � ), 
+(9) 
+� ∈Δ� 
+where Δ� = {� ∈ Δ : �(�� ,�) = � (��,�) ∀�� ,� ∈ Y, � ∈ {1, 2}} and 
+the notation �� (·) and �� (·) disambiguates MI under joint distribu-
+tions � and � respectively. The key diference in this defnition of 
+PID lies in optimizing � ∈ Δ� to satisfy the marginals �(��,�) = 
+� (��,�), but relaxing the coupling between �1 and �2: �(�1,�2)
+need not be equal to � (�1,�2). The intuition behind this is that 
+one should be able to infer redundancy and uniqueness given only 
+access to separate marginals � (�1,�) and � (�2,�), and therefore 
+they should only depend on � ∈ Δ� which match these marginals. 
+Synergy, however, requires knowing the coupling � (�1,�2), and 
+this is refected in equation (9) depending on the full � distribution. 
+4.2 Estimating information decomposition 
+These optimization problems can be solved accurately and ef-
+ciently using convex programming. Importantly, the � ∗ that solves 
+(7)-(9) can be rewritten as the solution to the max-entropy optimiza-
+tion problem: �∗ = arg max� ∈Δ� �� (� |�1, �2) [7]. Since the support 
+of the label space Y is usually small and discrete for classifcation, or 
+small and continuous for regression, we can represent all valid joint 
+distributions �(�1,�2,�) as a set of tensors � of shape |Y|×|Y|×|Y| 
+with each entry representing � [�, �,�] = �(�1 = �, �2 = �, � = �). 
+The problem then boils down to optimizing over tensors � that 
+are valid joint distributions and that match marginals over each 
+modality and the label (i.e., making sure � ∈ Δ� ). 
+Given a tensor parameter �, our objective is �� (� |�1,�2), which 
+is concave. This is therefore a convex optimization problem and the 
+429
+ICMI ’23, October 09–13, 2023, Paris, France 
+Paul Pu Liang, Yun Cheng, Ruslan Salakhutdinov, and Louis-Philippe Morency 
+Video (faces)
+Language (spoken)
+Convex programming 
+with linear constraints
+CVXPY
+Video
+(faces)
+Language
+(spoken)
+Partial labels
+Information
+decomposition
+Figure 5: Overview of our proposed method to convert partial or counterfactual labels to information decomposition values. 
+We treat the dataset of partial labels D = {(�1,�2,�)�
+� 
+=1} as a joint distribution with �1 and �2 as ‘multimodal inputs’ and the 
+target label � as the ‘output’. Estimating response redundancy, uniqueness, and synergy then boils down to solving a convex 
+optimization problem with marginal constraints, which can be done accurately and efciently. This method is applicable to 
+many annotated multimodal datasets and yields consistent, comparable, and standardized interaction estimates. 
+Table 1: Collection of datasets used for our study of multimodal fusion interactions covering diverse modalities, tasks, and 
+research areas in multimedia and afective computing. 
+Datasets 
+Modalities 
+Size 
+Prediction task 
+Research Area 
+VQA 2.0 [20] 
+{image, question} 1, 100, 000 
+QA 
+Multimedia 
+CLEVR [27] 
+{image, question} 
+853, 554 
+QA 
+Multimedia 
+MOSEI [72] 
+{text, video, audio} 
+22, 777 
+sentiment, emotions Afective Computing 
+UR-FUNNY [23] {text, video, audio} 
+16, 514 
+humor 
+Afective Computing 
+MUStARD [9] 
+{text, video, audio} 
+690 
+sarcasm 
+Afective Computing 
+marginal constraints can be written as linear constraints. Given a 
+dataset � = 
+{(�1,�2,�)� 
+1}, � (�1,�) and 
+� (� �
+=
+2, ) are frst 
+�
+estimated 
+before enforcing �(�1,�) = � (�1,�) and �(�2,�) = � (�2,�) through 
+linear constraints: the 3D-tensor � summed over the second di-
+mension gives �(�1,�) and summed over the frst dimension gives 
+�(�2,�). Our fnal optimization problem is given by 
+arg max �� (� |�1, �2), 
+(10) 
+� 
+∑ 
+∑ 
+such that 
+� = � (�1, �)
+� = � (�2,�), 
+(11) 
+�2 
+�
+∑
+1
+ 
+ 
+� ≥ 0, 
+� = 1. 
+(12) 
+�1,�2,� 
+Since this is a convex optimization problem with linear constraints, 
+CVXPY [13] returns the exact answer �∗ efciently. Plugging the 
+learned �∗ into equations (7)-(9) yields the desired estimates for 
+redundancy, uniqueness, and synergy. 
+Therefore, this estimator can automatically convert partial or 
+counterfactual labels annotated by humans in existing multimodal 
+datasets [14, 42, 46] into information decomposition interactions, 
+yielding consistent, comparable, and standardized estimates. 
+5 EXPERIMENTS 
+In this section, we design experiments to compare the annotation 
+of multimodal interactions via randomized partial labels, counter-
+factual labels, and information decomposition into redundancy, 
+uniqueness, and synergy. 
+5.1 Experimental setup 
+5.1.1 Datasets and tasks. Our experiments involve a large collec-
+tion of datasets spanning the language, visual, and audio modalities 
+across afective computing and multimedia. We summarize the 
+datasets used in Table 1 and provide more details here: 
+1. VQA 2.0 [20] is a balanced version of the popular VQA [2] 
+dataset by collecting complementary images such that every ques-
+tion is associated with a pair of similar images that result in two 
+diferent answers to the same question. This reduces the occurrence 
+of spurious correlations in the dataset and enables the training of 
+more robust models. 
+2. CLEVR [27] is a dataset for studying the ability of multi-
+modal systems to perform visual reasoning. It contains 100, 000 
+rendered images and about 853, 000 unique automatically gener-
+ated questions that test visual reasoning abilities such as counting, 
+comparing, logical reasoning, and memory. 
+3. MOSEI [72] is a collection of 22, 000 opinion video clips an-
+notated with labels for subjectivity and sentiment intensity. The 
+dataset includes per-frame, and per-opinion annotated visual fea-
+tures, and per-milliseconds annotated audio features. Sentiment 
+intensity is annotated in the range [−3, +3]. Videos are collected 
+from YouTube with a focus on video blogs which refect real-world 
+speakers expressing their behaviors through monologue videos. 
+4. UR-FUNNY [23]: Humor is an inherently multimodal com-
+municative tool involving the efective use of words (text), accom-
+panying gestures (visual), and prosodic cues (acoustic). UR-FUNNY 
+430
+Multimodal Fusion Interactions: A Study of Human and Automatic Qantification 
+ICMI ’23, October 09–13, 2023, Paris, France 
+Table 2: Annotator agreement and average confdence scores 
+of human annotations for: (1) partial labels via random as-
+signment, (2) counterfactual labels, and (3) information de-
+composition into redundancy, uniqueness, and synergy. 
+Task 
+Agreement 
+Confdence 
+Measure 
+�1 
+�2 
+�12 
+�1 
+�2 
+�12 
+Partial labels 0.53 0.73 0.72 2.96 2.17 4.68 
+Task 
+Agreement 
+Confdence 
+Measure 
+�1 
+�1+2 
+�2 
+�2+1 
+�1 
+�1+2 
+�2 
+�2+1 
+Counterfactual 0.44 0.69 0.52 0.70 2.19 4.31 2.33 4.53 
+Task 
+Agreement 
+Confdence 
+Measure 
+� 
+�1 
+�2 
+� 
+� 
+�1 
+�2 
+� 
+Info. decomposition 0.43 0.47 0.54 0.49 4.51 4.38 4.46 4.48 
+consists of more than 16, 000 video samples from TED talks anno-
+tated for humor, and covers speakers from various backgrounds, 
+ethnic groups, and cultures. 
+5. MUStARD [9] is a multimodal video corpus for research 
+in sarcasm detection compiled from popular TV shows including 
+Friends, The Golden Girls, The Big Bang Theory, and Sarcasma-
+holics Anonymous. MUStARD consists of 690 audiovisual utter-
+ances annotated with sarcasm labels. Sarcasm requires careful mod-
+eling of complementary information, particularly when the infor-
+mation from each modality does not agree with each other. 
+Overall, the datasets involved in our experiments cover diverse 
+modalities such as images, video, audio, and text, with prediction 
+tasks spanning humor, sarcasm sentiment, emotions, and question-
+answering from afective computing and multimedia. 
+5.1.2 Annotation details. Participation in all annotations was fully 
+voluntary and we obtained consent from all participants prior to 
+annotations. The authors manually took anonymous notes on all re-
+sults and feedback in such a manner that the identities of annotators 
+cannot readily be ascertained directly or through identifers linked 
+to the subjects. Participants were not the authors nor in the same 
+research groups as the authors, but they all hold or are working 
+towards a graduate degree in a STEM feld and have knowledge of 
+machine learning. None of the participants knew about this project 
+before their session and each participant only interacted with the 
+setting they were involved in. 
+We sample 50 datapoints from each of the 5 datasets in Table 1 
+and give them to a total of 12 diferent annotators: 
+• 3 annotators for direct annotation of interactions, 
+• 3 annotators for partial labeling of �1, �2, and �12, 
+• 3 annotators for counterfactual, labeling �1 frst then �1+2, 
+• 3 annotators for counterfactual, labeling �2 frst then �2+1. 
+We summarize the results and key fndings: 
+5.2 Annotating partial and counterfactual labels 
+We show the agreement scores of partial and counterfactual labels 
+in Table 2 and note some observations below: 
+• Comparing partial with counterfactual labels: Counterfac-
+tual label agreement (0.70) is similar to randomized label agree-
+ment (0.72). In particular, annotating the video-only modality 
+(�1) for video datasets in the randomized setting appears to be 
+confusing with an agreement of only 0.51. We hypothesize that 
+this is due to the challenge of detecting sentiment, sarcasm, and 
+humor in videos without audio and when no obvious facial ex-
+pression or body language is shown. Furthermore, we observe 
+similar confdence in predicting the label when adding the sec-
+ond modality in the counterfactual setting versus showing both 
+modalities upfront in the randomized setting: 4.42 vs 4.68. 
+• Agreement and confdence datasets: We examined the agree-
+ment for each dataset in the randomized and counterfactual set-
+tings respectively. In both settings, we found MOSEI is the easiest 
+dataset with the highest agreement of 0.75, 0.60, 0.65 for anno-
+tating �1, �2, and �12 and 0.88, 0.66, 0.83, 0.91 for annotating �1, 
+�1+2, �2, and �2+1. Meanwhile, MUStARD is the hardest, with 
+the agreement as low as −0.21, 0.04, and 0.17 in the randomized 
+setting. The average confdence for annotating partial labels is 
+actually high (above 3.5) for all datasets except unimodal pre-
+dictions for VQA and CLEVR, which is as low as 0.43 and 0.33. 
+This is understandable since these two image-based question-
+answering tasks are quite synergistic and cannot be performed 
+using only one of the modalities, whereas annotator confdence 
+when seeing both modalities is a perfect 5/5. 
+• Efect of counterfactual order: Apart from a slight decrease in 
+agreement in labeling �1 frst then �1+2 and the slight increase 
+in agreement in �2 then �2+1, we do not observe a signifcant 
+diference caused by the counterfactual order. This is confrmed 
+by the qualitative feedback from annotators: one responded that 
+they found no diference between both orders and gave mostly 
+similar responses to both. 
+Overall, we fnd that while both partial and counterfactual labels 
+are reasonable choices for quantifying multimodal interactions, the 
+annotation of counterfactual labels yields higher agreement and 
+confdence than partial labels via random assignment. 
+5.3 Annotating information decomposition 
+We now turn our attention to annotating information decompo-
+sition. Referencing the average annotated interactions in Table 3 
+with agreement scores in Table 2, we explain our fndings regard-
+ing annotation quality and consistency. We also note qualitative 
+feedback from annotators regarding any challenges they faced. 
+• General observations on interactions, agreement, and con-
+fdence: The annotated interactions align with prior intuitions on 
+these multimodal datasets and do indeed explain the interactions 
+between modalities, such as VQA and CLEVR with signifcantly 
+high synergy, as well as language being the dominant modality 
+in sentiment, humor, and sarcasm (high �1 values). Overall, the 
+Krippendorf’s alpha for inter-annotator agreement in directly 
+annotating the interactions is quite high (roughly 0.5 for each 
+interaction) and the average confdence scores are also quite 
+high (above 4 for each interaction), indicating that the human-
+annotated results are reasonably reliable. 
+• Uniqueness vs synergy in video datasets: There was some 
+confusion between uniqueness in the language modality and 
+synergy in the video datasets, resulting in cases of low agreement 
+in annotating �1 and �: −0.09, −0.07 for MOSEI, −0.14, −0.03 
+for UR-FUNNY and −0.08, −0.04 for MUStARD respectively. 
+We believe this is due to subjectivity in interpreting whether 
+431
+ICMI ’23, October 09–13, 2023, Paris, France 
+Paul Pu Liang, Yun Cheng, Ruslan Salakhutdinov, and Louis-Philippe Morency 
+Table 3: Comparing (1) direct human annotation of information decomposition, (2) converting human-annotated partial labels 
+to interactions via PID, and (3) converting human-annotated counterfactual labels to interactions via PID. 
+Task 
+VQA 2.0: image+text CLEVR: image+text MOSEI: video+text UR-FUNNY: video+text MUStARD: video+text 
+Measure 
+� 
+�1 
+�2 
+� 
+� 
+�1 �2 
+� 
+� 
+�1 
+�2 
+� 
+� 
+�1 
+�2 
+� 
+� 
+�1 
+�2 
+� 
+Info. decomposition 
+0 
+0 
+0 
+4.97 
+0 
+0 
+0 
+4.76 3.37 2.07 1.57 1.51 2.12 2.86 1.83 
+2.39 
+2.12 2.74 0.58 2.08 
+Partial+PID 
+Counterfactual+PID 
+0.12 0.56 1.68 4.46 
+0.32 0.46 0.68 3.98 
+0.66 0.1 0.66 4.10 
+0.10 0 0.48 4.50 
+0.49 0.54 0.11 0.34 
+0.42 0.38 0.27 0.31 
+0.12 0.20 0.13 
+0.20 
+0.04 0.29 0.05 
+0.08 
+0.13 0.36 0.01 0.32 
+0.09 0.21 0.07 0.16 
+sentiment, humor, and sarcasm are present in the language only 
+or present only when contextualizing both language and video. 
+• Information decomposition in non-video datasets: On non-
+video datasets, there are cases of disagreement due to the subjec-
+tive defnitions of information decomposition. For example, there 
+was some confusion regarding VQA and CLEVR, where images 
+are the primary source of information that must be selectively 
+fltered by the question. This results in response synergy but 
+information uniqueness. One annotator consistently annotated 
+high visual uniqueness as the dominant interaction, while the 
+other two recognized synergy as the dominant interaction, so 
+the agreement of annotating synergy was low (−0.04). 
+• On presence vs absence of an attribute: We further investi-
+gated the diference between agreement and confdence in the 
+presence or absence of an attribute (e.g., humor or sarcasm). Intu-
+itively, the presence of an attribute is clearer: taking the example 
+of synergy, humans can judge that there is no inference of sar-
+casm from text only and there is no inference of sarcasm from the 
+visual modality only, but there is sarcasm when both modalities 
+interact together [9]. Indeed, we examined videos that show and 
+do not show an attribute separately and found in general, hu-
+mans reached higher agreement on annotating attribute-present 
+videos. The agreement of annotating � is 0.13 when the attribute 
+is present, compared to −0.10 when absent. 
+Overall, we fnd that while annotating information decomposition 
+can perform well, there are some sources of confusion regarding 
+certain interactions and during the absence of an attribute. 
+5.4 Converting partial and counterfactual labels 
+to information decomposition 
+Finally, we present results on converting partial and counterfactual 
+labels into interactions using our information-theoretic method 
+(PID). We report these results in Table 3 in the rows called Par-
+tial+PID and Counterfactual+PID, and note the following: 
+• Partial+PID vs counterfactual+PID: In comparing conversions 
+on both partial and counterfactual labels, we fnd that the fnal 
+interactions are very consistent with each other: the highest 
+interaction is always the same across the datasets and the relative 
+order of interactions is also maintained. 
+• Comparing with directly annotated interactions: In compar-
+ison to the interaction that human annotators rate as the highest, 
+PID also assigns the largest magnitude to the same interaction (� 
+for VQA 2.0 and CLEVR, �1 for UR-FUNNY and MUStARD), so 
+there is strong agreement. For MOSEI there is a small diference: 
+both � and �1 are annotated as equally high by humans, while 
+PID estimates � as the highest. 
+• Normalized comparison scale: Observe that the converted 
+results fall into a new scale and range, especially for the MOSEI, 
+UR-FUNNY, and MUStARD video datasets. This is expected since 
+PID conversion inherits the properties of information theory 
+where � +�1 +�2 +� add up to the total information that the two 
+modalities provide about a task, indicating that the three video 
+datasets are more subjective and are harder to predict. 
+• Propagation of subjectivity: On humor and sarcasm, the sub-
+jectivity in initial human partial labeling can be propagated when 
+we subsequently apply automatic conversion - after all, we do 
+not expect the automatic conversion to change the relative order 
+apart from estimating interactions in a principled way. 
+Therefore, we believe that the conversion method we proposed is a 
+stable method for estimating information decomposition, combin-
+ing human-in-the-loop labeling of partial labels (which shows high 
+agreement and scales to high-dimensional data) with information-
+theoretic conversion which enables comparable scales, normalized 
+values, and well-defned distance metrics. 
+5.5 An overall guideline 
+Given these fndings, we summarize the following guidelines for 
+quantifying multimodal fusion interactions: 
+• For modalities and tasks that are more objective (e.g., visual ques-
+tion answering), direct annotation of information decomposition 
+is a reliable alternative to conventional methods of partial and 
+counterfactual labeling to study multimodal interactions. 
+• For modalities and tasks that may be subjective (e.g., sarcasm, 
+humor), it is useful to obtain counterfactual labels before using 
+PID conversion to information decomposition values, since coun-
+terfactual labeling exhibits higher annotator agreement while 
+PID conversion is a principled method to obtain interactions. 
+6 CONCLUSION 
+Our work aims to quantify various categorizations of multimodal 
+interactions using human annotations. Through a comprehensive 
+study of partial labels, counterfactual labels, and information de-
+composition, we elucidated several pros and cons of each approach 
+and proposed a hybrid estimator that can convert partial and coun-
+terfactual labels to information decomposition interaction estimates. 
+On real-world multimodal fusion tasks, we show that we can esti-
+mate interaction values accurately and efciently which paves the 
+way towards a deeper understanding of these multimodal datasets. 
+Limitations and future work: The annotation schemes in this 
+work are limited by the subjectivity of the modalities and task. Au-
+tomatic conversion of partial labels to information decomposition 
+requires the label space to be small and discrete (i.e., classifcation), 
+and does not yet extend to regression or text answers unless approx-
+imate discretization is frst performed. Future work can also scale 
+432
+Multimodal Fusion Interactions: A Study of Human and Automatic Qantification 
+ICMI ’23, October 09–13, 2023, Paris, France 
+up human annotations to more datapoints and fusion tasks, and 
+ask annotators to provide their explanations for ratings that have 
+low agreement. Finally, we are aware of challenges in evaluating in-
+teraction estimation and emphasize that they should be interpreted 
+as a relative sense of which interaction is most important and a 
+guideline to inspire model selection and design. 
+ACKNOWLEDGMENTS 
+This material is based upon work partially supported by Meta, 
+National Science Foundation awards 1722822 and 1750439, and Na-
+tional Institutes of Health awards R01MH125740, R01MH132225, 
+R01MH096951 and R21MH130767. PPL is partially supported by 
+a Facebook PhD Fellowship and a Carnegie Mellon University’s 
+Center for Machine Learning and Health Fellowship. RS is sup-
+ported in part by ONR N000141812861, ONR N000142312368 and 
+DARPA/AFRL FA87502321015. Any opinions, fndings, conclusions, 
+or recommendations expressed in this material are those of the 
+author(s) and do not necessarily refect the views of the NSF, NIH, 
+Meta, CMLH, ONR, DARPA, or AFRL, and no ofcial endorsement 
+should be inferred. We are grateful to the anonymous reviewers for 
+their valuable feedback. Finally, we would also like to acknowledge 
+NVIDIA’s GPU support. 
+REFERENCES 
+[1] Ehsan Abbasnejad, Damien Teney, Amin Parvaneh, Javen Shi, and Anton van den 
+Hengel. 2020. Counterfactual vision and language learning. In Proceedings of the 
+IEEE/CVF conference on computer vision and pattern recognition. 10044–10054. 
+[2] Aishwarya Agrawal, Jiasen Lu, Stanislaw Antol, Margaret Mitchell, C. Lawrence 
+Zitnick, Devi Parikh, and Dhruv Batra. 2017. VQA: Visual Question Answering. 
+International Journal of Computer Vision (2017). 
+[3] Benjamin Aufarth, Maite López, and Jesús Cerquides. 2010. Comparison of 
+redundancy and relevance measures for feature selection in tissue classifcation 
+of CT images. In Industrial conference on data mining. Springer, 248–262. 
+[4] Maria-Florina Balcan, Avrim Blum, and Ke Yang. 2004. Co-training and expansion: 
+Towards bridging theory and practice. Advances in neural information processing 
+systems 17 (2004). 
+[5] John Bateman. 2014. Text and image: A critical introduction to the visual/verbal 
+divide. Routledge. 
+[6] Kjell Benson and Arthur J Hartz. 2000. A comparison of observational studies 
+and randomized, controlled trials. New England Journal of Medicine 342, 25 (2000), 
+1878–1886. 
+[7] Nils Bertschinger, Johannes Rauh, Eckehard Olbrich, Jürgen Jost, and Nihat Ay. 
+2014. Quantifying unique information. Entropy 16, 4 (2014), 2161–2183. 
+[8] Avrim Blum and Tom Mitchell. 1998. Combining labeled and unlabeled data with 
+co-training. In Proceedings of the eleventh annual conference on Computational 
+learning theory. 92–100. 
+[9] Santiago Castro, Devamanyu Hazarika, Verónica Pérez-Rosas, Roger Zimmer-
+mann, Rada Mihalcea, and Soujanya Poria. 2019. Towards Multimodal Sarcasm 
+Detection (An _Obviously_ Perfect Paper). In ACL. 4619–4629. 
+[10] Thalia E Chan, Michael PH Stumpf, and Ann C Babtie. 2017. Gene regulatory 
+network inference from single-cell data using multivariate information measures. 
+Cell systems 5, 3 (2017), 251–267. 
+[11] C Mario Christoudias, Raquel Urtasun, and Trevor Darrell. 2008. Multi-view 
+learning in the presence of view disagreement. In Proceedings of the Twenty-Fourth 
+Conference on Uncertainty in Artifcial Intelligence. 88–96. 
+[12] Nigel Colenbier, Frederik Van de Steen, Lucina Q Uddin, Russell A Poldrack, 
+Vince D Calhoun, and Daniele Marinazzo. 2020. Disambiguating the role of blood 
+fow and global signal with partial information decomposition. Neuroimage 213 
+(2020), 116699. 
+[13] Steven Diamond and Stephen Boyd. 2016. CVXPY: A Python-embedded modeling 
+language for convex optimization. Journal of Machine Learning Research 17, 83 
+(2016), 1–5. 
+[14] Sidney K D’mello and Jacqueline Kory. 2015. A review and meta-analysis of 
+multimodal afect detection systems. ACM computing surveys (CSUR) 47, 3 (2015), 
+1–36. 
+[15] Sidney D’Mello, Arvid Kappas, and Jonathan Gratch. 2018. The afective comput-
+ing approach to afect measurement. Emotion Review 10, 2 (2018), 174–183. 
+[16] Benjamin Flecker, Wesley Alford, John M Beggs, Paul L Williams, and Randall D 
+Beer. 2011. Partial information decomposition as a spatiotemporal flter. Chaos: 
+An Interdisciplinary Journal of Nonlinear Science 21, 3 (2011), 037104. 
+[17] Ross Flom and Lorraine E Bahrick. 2007. The development of infant discrimina-
+tion of afect in multimodal and unimodal stimulation: The role of intersensory 
+redundancy. Developmental psychology 43, 1 (2007), 238. 
+[18] Jerome H Friedman and Bogdan E Popescu. 2008. Predictive learning via rule 
+ensembles. The annals of applied statistics 2, 3 (2008), 916–954. 
+[19] Wendell R Garner. 1962. Uncertainty and structure as psychological concepts. 
+(1962). 
+[20] Yash Goyal, Tejas Khot, Douglas Summers-Stay, Dhruv Batra, and Devi Parikh. 
+2017. Making the v in vqa matter: Elevating the role of image understanding in 
+visual question answering. In Proceedings of the IEEE Conference on Computer 
+Vision and Pattern Recognition. 6904–6913. 
+[21] Yash Goyal, Ziyan Wu, Jan Ernst, Dhruv Batra, Devi Parikh, and Stefan Lee. 
+2019. Counterfactual visual explanations. In International Conference on Machine 
+Learning. PMLR, 2376–2384. 
+[22] Malte Harder, Christoph Salge, and Daniel Polani. 2013. Bivariate measure of 
+redundant information. Physical Review E 87, 1 (2013), 012130. 
+[23] Md Kamrul Hasan, Wasifur Rahman, AmirAli Bagher Zadeh, Jianyuan Zhong, 
+Md Iftekhar Tanveer, Louis-Philippe Morency, and Mohammed Ehsan Hoque. 
+2019. UR-FUNNY: A Multimodal Language Dataset for Understanding Humor. 
+In EMNLP. 2046–2056. 
+[24] Jack Hessel and Lillian Lee. 2020. Does my multimodal model learn cross-modal 
+interactions? It’s harder to tell than you might think!. In EMNLP. 
+[25] Aleks Jakulin and Ivan Bratko. 2003. Quantifying and visualizing attribute 
+interactions: An approach based on entropy. (2003). 
+[26] Siddhant M. Jayakumar, Wojciech M. Czarnecki, Jacob Menick, Jonathan Schwarz, 
+Jack Rae, Simon Osindero, Yee Whye Teh, Tim Harley, and Razvan Pascanu. 2020. 
+Multiplicative Interactions and Where to Find Them. In International Conference 
+on Learning Representations. https://openreview.net/forum?id=rylnK6VtDH 
+[27] Justin Johnson, Bharath Hariharan, Laurens Van Der Maaten, Li Fei-Fei, C 
+Lawrence Zitnick, and Ross Girshick. 2017. Clevr: A diagnostic dataset for 
+compositional language and elementary visual reasoning. In Proceedings of the 
+IEEE conference on computer vision and pattern recognition. 2901–2910. 
+[28] Divyansh Kaushik, Eduard Hovy, and Zachary C Lipton. 2019. Learning the difer-
+ence that makes a diference with counterfactually-augmented data. International 
+Conference on Learning Representations (2019). 
+[29] Wonjae Kim, Bokyung Son, and Ildoo Kim. 2021. Vilt: Vision-and-language trans-
+former without convolution or region supervision. In International Conference on 
+Machine Learning. PMLR, 5583–5594. 
+[30] Julia Kruk, Jonah Lubin, Karan Sikka, Xiao Lin, Dan Jurafsky, and Ajay Divakaran. 
+2019. Integrating Text and Image: Determining Multimodal Document Intent in 
+Instagram Posts. In Proceedings of the 2019 Conference on Empirical Methods in 
+Natural Language Processing and the 9th International Joint Conference on Natural 
+Language Processing (EMNLP-IJCNLP). 4622–4632. 
+[31] Paul Pu Liang, Yun Cheng, Xiang Fan, Chun Kai Ling, Suzanne Nie, Richard 
+Chen, Zihao Deng, Faisal Mahmood, Ruslan Salakhutdinov, and Louis-Philippe 
+Morency. 2023. Quantifying & Modeling Feature Interactions: An Information 
+Decomposition Framework. arXiv preprint arXiv:2302.12247 (2023). 
+[32] Paul Pu Liang, Chun Kai Ling, Yun Cheng, Alex Obolenskiy, Yudong Liu, Rohan 
+Pandey, Alex Wilf, Louis-Philippe Morency, and Ruslan Salakhutdinov. 2023. 
+Multimodal Learning Without Labeled Multimodal Data: Guarantees and Appli-
+cations. arXiv preprint arXiv:2306.04539 (2023). 
+[33] Paul Pu Liang, Ziyin Liu, AmirAli Bagher Zadeh, and Louis-Philippe Morency. 
+2018. Multimodal Language Analysis with Recurrent Multistage Fusion. In 
+Proceedings of the 2018 Conference on Empirical Methods in Natural Language 
+Processing. 150–161. 
+[34] Paul Pu Liang, Yiwei Lyu, Gunjan Chhablani, Nihal Jain, Zihao Deng, Xingbo 
+Wang, Louis-Philippe Morency, and Ruslan Salakhutdinov. 2023. MultiViz: 
+Towards Visualizing and Understanding Multimodal Models. In International 
+Conference on Learning Representations. https://openreview.net/forum?id=i2_ 
+TvOFmEml 
+[35] Paul Pu Liang, Amir Zadeh, and Louis-Philippe Morency. 2022. Foundations and 
+recent trends in multimodal machine learning: Principles, challenges, and open 
+questions. arXiv preprint arXiv:2209.03430 (2022). 
+[36] Yiwei Lyu, Paul Pu Liang, Zihao Deng, Ruslan Salakhutdinov, and Louis-Philippe 
+Morency. 2022. DIME: Fine-Grained Interpretations of Multimodal Models via 
+Disentangled Local Explanations (AIES ’22). Association for Computing Machin-
+ery, New York, NY, USA, 455–467. https://doi.org/10.1145/3514094.3534148 
+[37] Emily E Marsh and Marilyn Domas White. 2003. A taxonomy of relationships 
+between images and text. Journal of documentation (2003). 
+[38] Alessio Mazzetto, Dylan Sam, Andrew Park, Eli Upfal, and Stephen Bach. 2021. 
+Semi-Supervised Aggregation of Dependent Weak Supervision Sources With 
+Performance Guarantees. In Proceedings of The 24th International Conference on 
+Artifcial Intelligence and Statistics (Proceedings of Machine Learning Research, 
+Vol. 130), Arindam Banerjee and Kenji Fukumizu (Eds.). PMLR, 3196–3204. https: 
+//proceedings.mlr.press/v130/mazzetto21a.html 
+[39] William McGill. 1954. Multivariate information transmission. Transactions of the 
+IRE Professional Group on Information Theory 4, 4 (1954), 93–111. 
+433
+ICMI ’23, October 09–13, 2023, Paris, France 
+Paul Pu Liang, Yun Cheng, Ruslan Salakhutdinov, and Louis-Philippe Morency 
+[40] Jiquan Ngiam, Aditya Khosla, Mingyu Kim, Juhan Nam, Honglak Lee, and An-
+drew Y Ng. 2011. Multimodal deep learning. In Proceedings of the 28th international 
+conference on machine learning (ICML-11). 689–696. 
+[41] Christian Otto, Matthias Springstein, Avishek Anand, and Ralph Ewerth. 2020. 
+Characterization and classifcation of semantic image-text relations. International 
+Journal of Multimedia Information Retrieval 9 (2020), 31–45. 
+[42] Maja Pantic, Nicu Sebe, Jefrey F Cohn, and Thomas Huang. 2005. Afective 
+multimodal human-computer interaction. In Proceedings of the 13th annual ACM 
+international conference on Multimedia. 669–676. 
+[43] Sarah Partan and Peter Marler. 1999. Communication goes multimodal. Science 
+283, 5406 (1999), 1272–1273. 
+[44] Sarah R Partan and Peter Marler. 2005. Issues in the classifcation of multimodal 
+communication signals. The American Naturalist 166, 2 (2005), 231–245. 
+[45] Giuseppe Pica, Eugenio Piasini, Houman Safaai, Caroline Runyan, Christopher 
+Harvey, Mathew Diamond, Christoph Kayser, Tommaso Fellin, and Stefano Panz-
+eri. 2017. Quantifying how much sensory information in a neural code is relevant 
+for behavior. Advances in Neural Information Processing Systems 30 (2017). 
+[46] Emily Mower Provost, Yuan Shangguan, and Carlos Busso. 2015. UMEME: Uni-
+versity of Michigan emotional McGurk efect data set. IEEE Transactions on 
+Afective Computing 6, 4 (2015), 395–409. 
+[47] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, 
+Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, 
+et al. 2021. Learning transferable visual models from natural language supervision. 
+In International Conference on Machine Learning. PMLR, 8748–8763. 
+[48] Natalie Ruiz, Ronnie Taib, and Fang Chen. 2006. Examining the redundancy of 
+multimodal input. In Proceedings of the 18th Australia conference on Computer-
+Human Interaction: Design: Activities, Artefacts and Environments. 389–392. 
+[49] Claude Elwood Shannon. 1948. A mathematical theory of communication. The 
+Bell system technical journal 27, 3 (1948), 379–423. 
+[50] Mohammad Soleymani, Maja Pantic, and Thierry Pun. 2011. Multimodal emotion 
+recognition in response to videos. IEEE transactions on afective computing 3, 2 
+(2011), 211–223. 
+[51] Daria Sorokina, Rich Caruana, Mirek Riedewald, and Daniel Fink. 2008. Detecting 
+statistical interactions with additive groves of trees. In Proceedings of the 25th 
+international conference on Machine learning. 1000–1007. 
+[52] Karthik Sridharan and Sham M Kakade. 2008. An information theoretic frame-
+work for multi-view learning. In Conference on Learning Theory. 
+[53] Han Te Sun. 1980. Multiple mutual informations and multiple interactions in 
+frequency data. Inf. Control 46 (1980), 26–45. 
+[54] Yonglong Tian, Chen Sun, Ben Poole, Dilip Krishnan, Cordelia Schmid, and Phillip 
+Isola. 2020. What makes for good views for contrastive learning? Advances in 
+Neural Information Processing Systems 33 (2020), 6827–6839. 
+[55] Nicholas M Timme, Shinya Ito, Maxym Myroshnychenko, Sunny Nigam, 
+Masanori Shimono, Fang-Chin Yeh, Pawel Hottowy, Alan M Litke, and John M 
+Beggs. 2016. High-degree neurons feed cortical computations. PLoS computational 
+biology 12, 5 (2016), e1004858. 
+[56] Christopher Tosh, Akshay Krishnamurthy, and Daniel Hsu. 2021. Contrastive 
+learning, multi-view redundancy, and linear models. In Algorithmic Learning 
+Theory. PMLR, 1179–1206. 
+[57] Yao-Hung Hubert Tsai, Paul Pu Liang, Amir Zadeh, Louis-Philippe Morency, and 
+Ruslan Salakhutdinov. 2019. Learning Factorized Multimodal Representations. In 
+International Conference on Learning Representations. 
+[58] Yao-Hung Hubert Tsai, Yue Wu, Ruslan Salakhutdinov, and Louis-Philippe 
+Morency. 2020. Self-supervised Learning from a Multi-view Perspective. In 
+International Conference on Learning Representations. 
+[59] Michael Tsang, Dehua Cheng, Hanpeng Liu, Xue Feng, Eric Zhou, and Yan 
+Liu. 2019. Feature Interaction Interpretability: A Case for Explaining Ad-
+Recommendation Systems via Neural Interaction Detection. In International 
+Conference on Learning Representations. 
+[60] Michael Tsang, Dehua Cheng, and Yan Liu. 2018. Detecting Statistical Inter-
+actions from Neural Network Weights. In International Conference on Learning 
+Representations. 
+[61] Len Unsworth and Chris Cléirigh. 2014. Multimodality and reading: The con-
+struction of meaning through image-text interaction. Routledge. 
+[62] Xingbo Wang, Jianben He, Zhihua Jin, Muqiao Yang, Yong Wang, and Huamin 
+Qu. 2021. M2Lens: Visualizing and explaining multimodal models for sentiment 
+analysis. IEEE Transactions on Visualization and Computer Graphics 28, 1 (2021), 
+802–812. 
+[63] Satosi Watanabe. 1960. Information theoretical analysis of multivariate correla-
+tion. IBM Journal of research and development 4, 1 (1960), 66–82. 
+[64] Michael Wibral, Joseph T Lizier, and Viola Priesemann. 2015. Bits from brains 
+for biologically inspired computing. Frontiers in Robotics and AI 2 (2015), 5. 
+[65] Michael Wibral, Viola Priesemann, Jim W Kay, Joseph T Lizier, and William A 
+Phillips. 2017. Partial information decomposition as a unifed approach to the 
+specifcation of neural goal functions. Brain and cognition 112 (2017), 25–38. 
+[66] Paul L Williams and Randall D Beer. 2010. Nonnegative decomposition of multi-
+variate information. arXiv preprint arXiv:1004.2515 (2010). 
+[67] Torsten Wörtwein, Lisa Sheeber, Nicholas Allen, Jefrey Cohn, and Louis-Philippe 
+Morency. 2022. Beyond Additive Fusion: Learning Non-Additive Multimodal 
+Interactions. In Findings of the Association for Computational Linguistics: EMNLP 
+2022. 4681–4696. 
+[68] Lei Yu and Huan Liu. 2003. Efciently handling feature redundancy in high-
+dimensional data. In Proceedings of the ninth ACM SIGKDD international confer-
+ence on Knowledge discovery and data mining. 685–690. 
+[69] Lei Yu and Huan Liu. 2004. Efcient feature selection via analysis of relevance 
+and redundancy. The Journal of Machine Learning Research 5 (2004), 1205–1224. 
+[70] Xin Yuan, Zhe Lin, Jason Kuen, Jianming Zhang, Yilin Wang, Michael Maire, 
+Ajinkya Kale, and Baldo Faieta. 2021. Multimodal contrastive training for visual 
+representation learning. In Proceedings of the IEEE/CVF Conference on Computer 
+Vision and Pattern Recognition. 6995–7004. 
+[71] Amir Zadeh, Minghai Chen, Soujanya Poria, Erik Cambria, and Louis-Philippe 
+Morency. 2017. Tensor Fusion Network for Multimodal Sentiment Analysis. In 
+EMNLP. 
+[72] AmirAli Bagher Zadeh, Paul Pu Liang, Soujanya Poria, Erik Cambria, and Louis-
+Philippe Morency. 2018. Multimodal language analysis in the wild: Cmu-mosei 
+dataset and interpretable dynamic fusion graph. In ACL. 
+[73] Mingda Zhang, Rebecca Hwa, and Adriana Kovashka. 2018. Equal But Not The 
+Same: Understanding the Implicit Relationship Between Persuasive Images and 
+Text. In British Machine Vision Conference (BMVC). 
+A HUMAN ANNOTATION DETAILS 
+Participation in all annotations was fully voluntary and we obtained 
+consent from all participants prior to annotations. The authors 
+manually took anonymous notes on all results and feedback in 
+such a manner that the identities of annotators cannot readily be 
+ascertained directly or through identifers linked to the subjects. 
+Participants were not the authors nor in the same research groups 
+as the authors, but they all hold or are working towards a graduate 
+degree in a STEM feld and have knowledge of machine learning. 
+None of the participants knew about this project before their session 
+and each participant only interacted with the setting they were 
+involved in. 
+We sample 50 datapoints from each of the 5 datasets in Table 1 
+and give them to a total of 18 diferent annotators: 
+• 3 annotators for direct annotation of interactions, 
+• 3 annotators for partial labeling of �1, �2, and �12, 
+• 3 annotators for counterfactual, labeling �1 frst then �1+2, 
+• 3 annotators for counterfactual, labeling �2 frst then �2+1. 
+All annotations were performed via google spreadsheets. 
+A.1 Annotating partial labels 
+We asked 3 annotators to predict the partial labels in a randomized 
+setting. For each annotator, we asked them to annotate �1 then 
+�2 given only modality 1 or 2 respectively, and fnally � given 
+both modalities. This completion order is designed on purpose to 
+minimize possible memorization of the data so that the annotators 
+can provide completely independent unimodal and multimodal 
+predictions on the label. When annotating the visual modality of 
+the video datasets, we explicitly require the annotators to mute 
+the audio and predict the partial labels based only on the video 
+frames. After that, all annotators are asked to provide a confdence 
+score on a scale of 0 (no confdence) to 5 (high confdence) about 
+their annotations. The confdence scale is applied to all annotation 
+settings below. We aggregated annotator �’s �1 response, annotator 
+�’s �2 response, and annotator �’s � response as one set of complete 
+partial labels. Similarly, we collected �’s �1, �’s �2, and �’s � as the 
+second set, �’s �1, �’s �2, and �’s � as the third set. 
+434
+Multimodal Fusion Interactions: A Study of Human and Automatic Qantification 
+A.2 Annotating counterfactual labels 
+We asked 6 annotators to predict the counterfactual labels in this 
+setting. For each group of 2 annotators, we asked the frst anno-
+tator to annotate partial labels �1 given only the frst modality 
+and provide confdence scores, then presented them with the other 
+modality and asked for their new predictions �1+2 and correspond-
+ing confdence ratings. We asked the second annotator to predict 
+�2 similarly with only the second modality and then �2+1 with both 
+modalities presented. 
+A.3 Annotating information decomposition 
+We asked 3 annotators to directly annotate the information decom-
+position values. Given both modalities, each annotator is asked to 
+provide a rating on a scale of 0 (none at all) to 5 (large extent) for the 
+following questions that correspond to �, �1, �2, and � respectively: 
+(1) The extent to which both modalities enable them to make 
+the same predictions about the task; 
+(2) The extent to which modality 1 enables them to make a 
+prediction that they would not if using modality 2; 
+(3) The extent to which modality 2 enables them to make a 
+prediction that they would not if using modality 1; 
+(4) The extent to which both modalities enable them to make 
+a prediction that they would not if using either modality 
+individually. 
+Finally, they are asked to rate their confdence for each rating they 
+provided, on a scale of 0 (no confdence) to 5 (high confdence). 
+ICMI ’23, October 09–13, 2023, Paris, France 
+A.4 Video and audio presentation 
+Annotators were provided with the full video link which opens up 
+in a separate video player. They asked to either annotate based 
+on all modalities in the video (i.e., video + audio), or asked to 
+mute the videos themselves when annotating based on vision only, 
+or are not provided the video at all when annotating based only 
+on the transcript. We did not completely remove the audio from 
+videos because in all tasks, annotators have to use video only (with 
+mute), followed by audio+transcripts, and fnally with all modalities 
+(video+audio+transcripts). In the counterfactual setting they may 
+see video only (with mute), before playing the entire video with 
+audio. Hence, we instructed the annotators to mute the videos for 
+video-only prediction, and unmute the video for predictions that 
+involve audio. We specifcally checked with the annotators and 
+they strictly followed these guidelines. 
+A.5 Label space for QA tasks 
+For VQA and CLEVR datasets, annotators were requested to write 
+the answer themselves. For CLEVR the answer is always yes/no. 
+For VQA we let the users write their own answer, but we post-hoc 
+modify these answers to defne a similarity with the fnal answer 
+�: whether �1 or �2 are the same as multimodal �, or otherwise 
+diferent. This binary distance function is sufcient to distinguish 
+diferent interactions. 
+435
+

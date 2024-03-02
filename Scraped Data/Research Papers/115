@@ -1,0 +1,895 @@
+Expanding the Role of Afective Phenomena 
+in Multimodal Interaction Research 
+Leena Mathur 
+Maja J Matarić 
+Louis-Philippe Morency 
+School of Computer Science 
+Department of Computer Science 
+School of Computer Science 
+Carnegie Mellon University 
+University of Southern California 
+Carnegie Mellon University 
+lmathur@cs.cmu.edu 
+mataric@usc.edu 
+morency@cs.cmu.edu 
+ABSTRACT 
+In recent decades, the feld of afective computing has made sub-
+stantial progress in advancing the ability of AI systems to recognize 
+and express afective phenomena, such as afect and emotions, dur-
+ing human-human and human-machine interactions. This paper 
+describes our examination of research at the intersection of multi-
+modal interaction and afective computing, with the objective of 
+observing trends and identifying understudied areas. We examined 
+over 16,000 papers from selected conferences in multimodal inter-
+action, afective computing, and natural language processing: ACM 
+International Conference on Multimodal Interaction, AAAC Inter-
+national Conference on Afective Computing and Intelligent Inter-
+action, Annual Meeting of the Association for Computational Lin-
+guistics, and Conference on Empirical Methods in Natural Language 
+Processing. We identifed 910 afect-related papers and present our 
+analysis of the role of afective phenomena in these papers. We 
+fnd that this body of research has primarily focused on enabling 
+machines to recognize or express afect and emotion; there has been 
+limited research on how afect and emotion predictions might, in 
+turn, be used by AI systems to enhance machine understanding of 
+human social behaviors and cognitive states. Based on our analysis, 
+we discuss directions to expand the role of afective phenomena in 
+multimodal interaction research. 
+CCS CONCEPTS 
+• Human-centered computing → Interaction paradigms; • Ap-
+plied computing → Psychology; • Computing methodologies 
+→ Artifcial intelligence; 
+KEYWORDS 
+afect; emotion; afective computing; social signals; artifcial social 
+intelligence; human-centered AI 
+ACM Reference Format: 
+Leena Mathur, Maja J Matarić, and Louis-Philippe Morency. 2023. Expanding 
+the Role of Afective Phenomena in Multimodal Interaction Research. In 
+INTERNATIONAL CONFERENCE ON MULTIMODAL INTERACTION (ICMI 
+’23), October 09–13, 2023, Paris, France. ACM, New York, NY, USA, 8 pages. 
+https://doi.org/10.1145/3577190.3614171 
+This work is licensed under a Creative Commons Attribution International 
+4.0 License. 
+ICMI ’23, October 09–13, 2023, Paris, France 
+© 2023 Copyright held by the owner/author(s). 
+ACM ISBN 979-8-4007-0055-2/23/10. 
+https://doi.org/10.1145/3577190.3614171 
+1 INTRODUCTION 
+In recent decades, research in psychology and neuroscience has 
+highlighted the importance of afective phenomena in understand-
+ing, explaining, and predicting how humans behave and think dur-
+ing real-world social interactions [21, 22]. This body of research has 
+demonstrated explanatory relationships among afective phenom-
+ena (e.g., afect and emotion), cognitive processes (e.g,. memory, 
+attention, perception, and decision-making), and behavioral pro-
+cesses (e.g., habits, adaptation, stimulus-response actions) [21]. In 
+addition, afective states have been shown to regulate the dynamics 
+of human social behaviors (e.g., communicative social signals) and 
+cognitive states (e.g., attitudes) during social interactions [15, 30, 46]. 
+In parallel to the aforementioned progress in the afective sci-
+ences, recent decades of computer science research have laid foun-
+dations in afective computing [20, 50, 53], with substantial progress 
+in advancing the ability of AI systems to estimate afective phenom-
+ena in humans. After afective phenomena have been predicted by 
+an AI system, we believe those predictions can be used to enhance 
+the system’s understanding of human social behaviors and cogni-
+tive states, towards more socially-intelligent AI. We were, therefore, 
+motivated to explore the question: How, and to what extent, have 
+afective phenomena been used by AI systems in multimodal 
+interaction research to enhance machine understanding of 
+human social behaviors and cognitive states? Prior reviews 
+have primarily focused on approaches for detecting afective phe-
+nomena and have not addressed our question [55, 71, 74]. 
+To begin answering this question, we scoped a study to examine 
+trends in how multimodal interaction research has treated the role 
+of afect and emotion in over 16,000 papers selected from leading 
+conferences that represent communities in multimodal interaction, 
+afective computing, and natural language processing (NLP): ACM 
+International Conference on Multimodal Interaction (ICMI), AAAC 
+International Conference on Afective Computing and Intelligent 
+Interaction (ACII), Annual Meeting of the Association for Compu-
+tational Linguistics (ACL), and Conference on Empirical Methods 
+in Natural Language Processing (EMNLP). 
+Our paper makes three contributions. First, we identify 910 pa-
+pers related to afect and emotion from past proceedings at ICMI, 
+ACII, ACL, and EMNLP and categorize the role of afect and emo-
+tion in these papers. Second, we quantify and analyze the extent 
+to which afect and emotion have been used by AI systems to en-
+hance AI system understanding of human social behaviors and 
+cognitive states in these 910 papers. Third, based on our analysis, 
+we ofer insights into future directions to expand the role of afect 
+and emotion in multimodal interaction research. 
+253
+ICMI ’23, October 09–13, 2023, Paris, France 
+Leena Mathur, Maja J Matarić, and Louis-Philippe Morency 
+Figure 1: An AI system that predicts afect and emotion in a human 
+can use those predictions to inform models of human social behav-
+iors and cognitive states. 
+2 AFFECTIVE PHENOMENA, SOCIAL 
+BEHAVIORS, AND COGNITIVE STATES 
+The study of relationships among afective phenomena, social be-
+haviors, and cognitive states is a growing research area in psy-
+chology and neuroscience [21]. The term afective phenomena en-
+compasses sub-phenomena of emotions, feelings, moods, attitudes, 
+afective style, and temperament [19]. Findings suggest that afec-
+tive phenomena drive human social behavior and social cognition 
+[1, 5, 32, 48]. Afective processes can infuence how people remem-
+ber social information [40], make decisions [22, 31], and perceive 
+others during interpersonal social interactions; for example, a per-
+son’s afective state before an interpersonal interaction can infu-
+ence whether or not they end up favourably perceiving another 
+person (the reinforcement-afect model) [12, 14]. Prominent models 
+backed by empirical fndings include the afect-as-information the-
+ory (the perspective that humans directly query their afective state 
+when making judgements) [13, 16], the afect priming theory (the 
+perspective that afect primes connections across concepts during 
+reasoning and choice of behaviors in social situations) [35], and 
+the afect infusion model (defnes social contexts in which afect 
+infuences the choice of social behavior) [23]. These relationships 
+among afective phenomena, social behaviors, and cognitive states 
+can be leveraged by AI systems during real-world interactions. As 
+conceptualized in Figure 1, an AI system that uses behavioral cues 
+to predict a human’s afective state can, then, use those predictions 
+to model the human’s social behaviors and cognitive states. 
+3 SELECTING AND CATEGORIZING PAPERS 
+Data were accessed from available online conference proceedings. 
+Our search yielded 16,966 papers: 1161 ICMI papers from 2002-
+20221, 786 ACII papers from 2009-20222, and 15019 ACL/EMNLP 
+papers from 1979-2022 (ACL Anthology Corpus dataset3). 
+We applied an initial flter to select papers in which the title or 
+abstract contained at least one of the following keywords: afective, 
+afect-aware, valence, arousal, positive afect, negative afect, emo-
+tion, emotions, emotion-aware, emotional. We assume that papers 
+disseminating fndings applicable to afective phenomena during 
+social interactions will include at least one of these terms in the title 
+or abstract; this approach should efectively capture afect-related 
+research (papers that address afect and emotion). This yielded 910 
+papers (129 ICMI papers, 547 ACII papers, 234 ACL/EMNLP pa-
+pers). We, then, examined and categorized these papers into the 
+following 7 groups, based on the primary focus of each paper in its 
+treatment of afect and emotion. 
+(1) Recognizing Afect and Emotion: This category includes 
+papers on modeling eforts to predict afect and emotion. For exam-
+ple, a paper that proposes a method to predict valence and arousal 
+labels for speakers in a video dataset would be in this category. 
+(2) Expressing Afect and Emotion: This category includes 
+papers that focus on techniques to enable virtual and embodied 
+AI agents to express afect and emotion. For example, a paper that 
+proposes a method to express facial emotions in virtual human 
+avatars would be in this category. 
+(3) Recognizing and Expressing Afect and Emotion: This 
+category includes papers that perform both recognition and ex-
+pression of afect and emotion, warranting a separate category. For 
+example, a paper that proposes a method to recognize emotional 
+states in a human speaker and uses that method to inform a virtual 
+avatar’s expressed emotion would be in this category. 
+(4) Using Afect and Emotion for Enhanced Machine Un-
+derstanding of Human Social Behaviors and Cognitive States: 
+This category includes papers that explore the role of afect and 
+emotion to enhance machine understanding of human social be-
+haviors and cognitive states during interactions. For example, a 
+paper that uses the outputs of an afect prediction model to predict 
+human social behaviors would be in this category. 
+(5) Afect and Emotion Frameworks and Analysis: This 
+category includes conceptual work and psychology studies of hu-
+mans during interactions. For example, a paper analyzes students’ 
+emotions while playing a game would be in this category. 
+(6) Tools, Interfaces, and Datasets: This category includes 
+papers that discuss data collection tools, papers on interfaces for 
+facilitating interactions, and papers that introduce datasets. 
+(7) Miscellaneous: This category includes papers that did not 
+ft into prior categories. For example, a paper on video retrieval 
+that briefy mentioned emotion would be in this category. 
+1https://dl.acm.org/conference/icmi-mlmi/proceedings 
+2https://ieeexplore.ieee.org/xpl/conhome/1002992/all-proceedings 
+3https://huggingface.co/datasets/ACL-OCL/acl-anthology-corpus 
+254
+Expanding the Role of Afective Phenomena in Multimodal Interaction Research 
+ICMI ’23, October 09–13, 2023, Paris, France 
+4 DISTRIBUTION OF RESEARCH FOCUS IN 
+THE AFFECT-RELATED PAPERS 
+All 910 afect-related papers were published between 1994-2022. 
+The number of these papers published across time at the studied 
+venues is visualized in Figure 2. We observe a substantial increase 
+in the number of papers during the past decade at ICMI and ACII, 
+and during the past 5 years at ACL/EMNLP. We note that this 
+increased interest in studying afective phenomena complements 
+the acceleration of research activity in afective phenomena across 
+psychology, neuroscience, humanities, and social sciences [21]. 
+The distribution of research focus in the 910 papers is visualized 
+in Figure 3. We fnd that across these papers, the large proportion 
+focused on techniques for machines to recognize and express afect 
+and emotion (41% and 9%, respectively); an additional 1% focused 
+on both these challenges. Only 6% (52 papers) discussed research 
+that investigated using afect and emotion to enhance machine 
+understanding of human social behaviors and cognitive states. We 
+analyze this subset of 52 papers in Section 5 for insights about this 
+understudied area. Among the remaining papers, 17% focused on 
+afect-related frameworks and analysis, 9% on new tools, interfaces, 
+and datasets, and 17% on miscellaneous topics (e.g., video retrieval 
+in papers that happened to mention emotion). 
+5 USE OF AFFECT AND EMOTION FOR 
+ENHANCED MACHINE UNDERSTANDING 
+We analyzed the 52 papers that used afect and emotion to enhance 
+machine understanding of social behaviors and cognitive states 
+(listed in Appendix Table 1). These papers used afective phenom-
+ena in three primary ways: as a feature, in an auxiliary task, and 
+as a latent state. All 52 papers were published between 2009-2022; 
+54% of them were published in the last 4 years. The accelerating 
+increase in papers, visualized in Figure 4, demonstrates a growing 
+interest across multimodal interaction, afective computing, and 
+NLP communities in this understudied research area. We observed 
+a steady increase in papers using afective phenomena as a feature, 
+a slower increase in papers using afective phenomena as a latent 
+state, and (in the past 5 years) a sharp increase in the number of 
+papers using afective phenomena in an auxiliary task. 
+Afective Phenomena as Features: 29 of the 52 papers used 
+afective phenomena as features to predict human social behaviors 
+and cognitive states. In these papers, afective phenomena were 
+used to predict the following social behaviors and social signal 
+dynamics in human-human and human-machine interaction: head 
+nods [38], humor [77], idiom and metaphor expression [33, 52], 
+non-cooperative behavior [70], deception [43], fake communica-
+tion [9], self-disclosure [3], intimacy [44], dialogue acts [7], and 
+negotiation dialogue dynamics [25]. Afective phenomena were also 
+used to predict cognitive states such as personality traits [6, 68], 
+working memory [24], cognitive task performance (especially tasks 
+that require high cognitive-overload) [34], and perceptions of other 
+individuals [45, 67]. The main application domains were health-
+care and education. Papers with healthcare applications used 
+afective phenomena to predict depression severity [65], suicidal 
+ideation [61–63]), schizophrenic behavior [28], patient satisfaction 
+with doctor communication styles [66], and multimodal distress 
+assessment in patients during patient-clinician interactions, where 
+Figure 2: Accumulation of afect-related papers at ACII, ICMI, and 
+ACL/EMNLP over time. 
+Figure 3: Distribution of research focus in afect-related papers. 
+Figure 4: Accumulation of papers that used afective phenomena for 
+enhanced machine understanding, split across use as a feature, in 
+auxiliary tasks, and as a latent state. 
+afective context of clinician questions was taken into account [26]. 
+Papers with education applications used afective phenomena to 
+predict students’ pronunciation ability in an educational reading 
+context [69] and cognitive strategies during learning [17]). Other 
+papers used afective features to predict presentation profciency 
+[57], speaker reliability [51], and other afective states [54]. 
+Afective Phenomena in an Auxiliary Task: 13 of the 52 
+papers used afective phenomena in auxiliary modeling tasks (e.g., 
+255
+ICMI ’23, October 09–13, 2023, Paris, France 
+Leena Mathur, Maja J Matarić, and Louis-Philippe Morency 
+emotion prediction) to improve performance in downstream tasks 
+modeling human social behaviors and cognitive states; 10 of these 
+were from NLP venues. Afective phenomena were used in auxiliary 
+tasks during pretraining, multi-task learning, and fne-tuning; mod-
+els with these auxiliary tasks achieved improved performance in pre-
+dicting the following states: stress [72, 78], dialogue acts,[59, 60, 64], 
+abusive behavior (e.g., harassment) [56], stance [80], sarcasm, [8], 
+metaphor expression [18], group cohesion [42], rhetorical behavior 
+(e.g., critical, supportive rhetoric) [29], formality [10], frustration 
+[10], and politeness [10]. One paper used multi-task learning for 
+both emotion shift prediction and dialogue act recognition, to im-
+prove emotion recognition in multi-party conversations [58]. 
+Afective Phenomena as Latent States: 10 of the 52 papers 
+treated afective phenomena as a latent state in models of human so-
+cial behaviors and cognitive states. Afective information was used 
+as a latent variable in a Markov decision process to model dyadic 
+human interactions, with applications in tutoring systems [27]. 
+Some papers defned interpersonal emotion networks as graphs 
+capturing relationship dynamics in multi-party settings [36] and 
+modeled emotion under the premise of emotion states modulating 
+dyadic human behavior [76]. Others viewed afective phenomena 
+as latent states in models for personality [73], moral conficts [39], 
+creative performance [47], human sarcasm perception [49], toxicity 
+perception [37], and decision-making [4], as well as engagement, in-
+teractivity, impatience, refectivity, and cognitive learning outcomes 
+during online education [2]. 
+6 SUMMARY AND FUTURE DIRECTIONS 
+In this paper, we explore how, and to what extent, research at the 
+intersection of multimodal interaction and afective computing 
+has treated the role of afective phenomena in AI systems. In our 
+sample of over 16,000 papers from ICMI, ACII, ACL, and EMNLP, 
+we identify 910 papers related to afective phenomena (afect and 
+emotion) and fnd that this body of research has primarily focused 
+on enabling machines to recognize and express afect and emotion. 
+We fnd that the use of afect and emotion to enhance machine 
+understanding of human social behaviors and cognitive states has 
+been understudied (52 of the 910 papers). However, we observe an 
+emerging interest in this direction. We ofer insights into future 
+directions to expand the role of afective phenomena in AI systems. 
+(1) Expanding the Roles of Afective Phenomena in Mul-
+timodal Interaction Models: We identify an emerging area of 
+research using afective phenomena as features, in auxiliary tasks, 
+and as latent states to improve downstream models of social be-
+haviors and cognitive states. We acknowledge that there may be 
+a selection bias infuencing the publication of papers with posi-
+tive results. We recommend that future research eforts replicate 
+and validate past empirical fndings on the usefulness of afective 
+phenomena in these modeling contexts. We found that 10 of the 
+13 papers that used afective phenomena in auxiliary tasks were 
+from experiments in unimodal text-only settings. We recommend 
+that future research eforts explore afective signals in auxiliary 
+tasks to include afective context in multimodal models of human 
+social behaviors and cognitive states during diferent stages of the 
+modeling process (e.g., pretraining, fne-tuning, co-learning [79]). 
+In addition, we suggest that future multimodal interaction research 
+explore the inclusion of explicit and implicit afective signals as 
+rewards under the reinforcement learning from human feedback 
+framework [11, 41]), to adapt and expand AI system understanding 
+of human social behaviors and cognitive states. 
+(2) Cognitively and Neurally-Inspired Models that Refect 
+the Complex Interaction of Afect, Behavior, and Cognition: 
+The use of afective phenomena in AI models of human social behav-
+iors and cognitive states can be motivated by existing relationships 
+among these three constructs in humans [1, 5, 21, 32, 48]. The ex-
+istence of these theorized and empirically-validated relationships 
+in psychology and neuroscience (e.g., afect-as-information, afect 
+priming, and afect infusion theories [13, 16, 23, 35]) have the po-
+tential to inform the science of multimodal interaction research. 
+We recommend that future research eforts explore how to lever-
+age these theories to build computational models that refect the 
+complex interaction among these three constructs. We believe that 
+cognitively and neurally-inspired models have the potential to ad-
+vance the ability of AI systems to use afective phenomena in order 
+to better understand human social behaviors and cognitive states. 
+(3) Expanding Multimodal Social Interaction Contexts: We 
+fnd that a majority of the papers in our sample focus on monadic 
+contexts, with a limited focus on challenges present in dyadic and 
+multi-party contexts. We recommend that future research eforts 
+explore how AI systems can better integrate afective state predic-
+tions from multiple people and multiple contexts to inform models 
+of social behaviors and cognitive states in group-level dynamics. 
+For example, how can an AI system integrate its afect predictions 
+of both people in a dyad in order to predict their synchrony (group-
+level behavior) [75]? How can afective state predictions of one 
+person in a multi-party interaction inform an AI system’s under-
+standing of behavior and cognition in other participants? 
+(4) Expanding Application Areas: We fnd that several of 
+the papers successfully used afective phenomena to model social 
+behaviors and cognitive states in the domains of healthcare (e.g., 
+modeling depression, doctor-patient communication dynamics) [26, 
+61–63, 65, 66, 72, 78] and education (e.g., modeling student learning 
+dynamics) [2, 17, 69]. We recommend that future research eforts 
+further explore how afective phenomena can be used as features, 
+auxiliary tasks, and latent states to improve AI systems that support 
+human health, education, and well-being through applications and 
+empirical validation in additional populations and social contexts. 
+Since it is possible that afective phenomena might not be useful to 
+inform models in all settings, we recommend that future research 
+explore techniques to enable AI systems to efciently estimate 
+when they need to query afective state information from their 
+environment in order to improve their understanding of the social 
+behaviors and cognitive states of the people around them. 
+ACKNOWLEDGMENTS 
+This material is based upon work supported by the National Science 
+Foundation (NSF) Graduate Research Fellowship Program under 
+Grant No. DGE2140739. Any opinions, fndings, and conclusions or 
+recommendations expressed in this material are those of the authors 
+and do not necessarily refect the views of the NSF. Figure 1. includes 
+three icons made by Freepik and Smashicons from faticon.com. 
+256
+Expanding the Role of Afective Phenomena in Multimodal Interaction Research 
+ICMI ’23, October 09–13, 2023, Paris, France 
+REFERENCES 
+[1] Ralph Adolphs and Antonio R Damasio. 2001. The interaction of afect and 
+cognition: A neurobiological perspective. (2001). 
+[2] Shazia Afzal, Bikram Sengupta, Munira Syed, Nitesh Chawla, G Alex Ambrose, 
+and Malolan Chetlur. 2017. The ABC of MOOCs: Afect and its inter-play with 
+behavior and cognition. In 2017 Seventh International Conference on Afective 
+Computing and Intelligent Interaction (ACII). IEEE, 279–284. 
+[3] JinYeong Bak, Suin Kim, and Alice Oh. 2012. Self-disclosure and relationship 
+strength in twitter conversations. In Proceedings of the 50th Annual Meeting of 
+the Association for Computational Linguistics (Volume 2: Short Papers). 60–64. 
+[4] Matthew Barthet, Ahmed Khalifa, Antonios Liapis, and Georgios N Yannakakis. 
+2022. Play with Emotion: Afect-Driven Reinforcement Learning. In 2022 10th 
+International Conference on Afective Computing and Intelligent Interaction (ACII). 
+IEEE, 1–8. 
+[5] Antoine Bechara, Antonio R Damasio, Hanna Damasio, and Steven W Anderson. 
+1994. Insensitivity to future consequences following damage to human prefrontal 
+cortex. Cognition 50, 1-3 (1994), 7–15. 
+[6] Joan-Isaac Biel, Lucía Teijeiro-Mosquera, and Daniel Gatica-Perez. 2012. Face-
+Tube: Predicting Personality from Facial Expressions of Emotion in Online 
+Conversational Video. In Proceedings of the 14th ACM International Confer-
+ence on Multimodal Interaction (Santa Monica, California, USA) (ICMI ’12). 
+Association for Computing Machinery, New York, NY, USA, 53–56. 
+https: 
+//doi.org/10.1145/2388676.2388689 
+[7] Kristy Boyer, Joseph F Grafsgaard, Eun Young Ha, Robert Phillips, and James 
+Lester. 2011. An afect-enriched dialogue act classifcation model for task-oriented 
+dialogue. In Proceedings of the 49th Annual Meeting of the Association for Compu-
+tational Linguistics: Human Language Technologies. 1190–1199. 
+[8] Dushyant Singh Chauhan, SR Dhanush, Asif Ekbal, and Pushpak Bhattacharyya. 
+2020. Sentiment and emotion help sarcasm? a multi-task learning framework for 
+multi-modal sarcasm, sentiment and emotion analysis. In Proceedings of the 58th 
+Annual Meeting of the Association for Computational Linguistics. 4351–4360. 
+[9] Kushal Chawla, Rene Clever, Jaysa Ramirez, Gale Lucas, and Jonathan Gratch. 
+2021. Towards emotion-aware agents for negotiation dialogues. In 2021 9th 
+International Conference on Afective Computing and Intelligent Interaction (ACII). 
+IEEE, 1–8. 
+[10] Kushal Chawla, Sopan Khosla, Niyati Chhaya, and Kokil Jaidka. 2019. Pre-trained 
+afective word representations. In 2019 8th International Conference on Afective 
+Computing and Intelligent Interaction (ACII). IEEE, 1–7. 
+[11] Paul F Christiano, Jan Leike, Tom Brown, Miljan Martic, Shane Legg, and Dario 
+Amodei. 2017. Deep reinforcement learning from human preferences. Advances 
+in neural information processing systems 30 (2017). 
+[12] Gerald L Clore and Donn Byrne. 1974. A reinforcement-afect model of attraction. 
+Foundations of interpersonal attraction (1974), 143–170. 
+[13] Gerald L Clore, Karen Gasper, and Erika Garvin. 2001. Afect as information. 
+Handbook of afect and social cognition (2001), 121–144. 
+[14] Gerald L Clore and John B Gormly. 1974. Knowing, feeling, and liking a psy-
+chophysiological study of attraction. Journal of Research in Personality 8, 3 (1974), 
+218–230. 
+[15] Gerald L Clore and Jesse Pappas. 2007. The afective regulation of social interac-
+tion. Social Psychology Quarterly 70, 4 (2007), 333–339. 
+[16] Gerald L Clore, Robert S Wyer, Bruce Dienes, Karen Gasper, Carol Gohm, and 
+Linda Isbell. 2013. Afective feelings as feedback: Some cognitive consequences. 
+In Theories of mood and cognition. Psychology Press, 27–62. 
+[17] Elizabeth B Cloude, Franz Wortha, Daryn A Dever, and Roger Azevedo. 2021. 
+Negative emotional dynamics shape cognition and performance with MetaTutor: 
+toward building afect-aware systems. In 2021 9th International Conference on 
+Afective Computing and Intelligent Interaction (ACII). IEEE, 1–8. 
+[18] Verna Dankers, Marek Rei, Martha Lewis, and Ekaterina Shutova. 2019. Modelling 
+the interplay of metaphor and emotion through multitask learning. In Proceedings 
+of the 2019 Conference on Empirical Methods in Natural Language Processing and 
+the 9th International Joint Conference on Natural Language Processing (EMNLP-
+IJCNLP). 2218–2229. 
+[19] Richard J Davidson, Klaus R Sherer, and H Hill Goldsmith. 2009. Handbook of 
+afective sciences. Oxford University Press. 
+[20] Sidney K D’mello and Jacqueline Kory. 2015. A review and meta-analysis of 
+multimodal afect detection systems. ACM computing surveys (CSUR) 47, 3 (2015), 
+1–36. 
+[21] Daniel Dukes, Kathryn Abrams, Ralph Adolphs, Mohammed E Ahmed, Andrew 
+Beatty, Kent C Berridge, Susan Broomhall, Tobias Brosch, Joseph J Campos, Zanna 
+Clay, et al. 2021. The rise of afectivism. Nature human behaviour 5, 7 (2021), 
+816–820. 
+[22] Joseph P Forgas. 2012. Afect in social thinking and behavior. Psychology Press. 
+[23] Joseph P Forgas. 2013. The afect infusion model (AIM): An integrative theory 
+of mood efects on cognition and judgments. In Theories of mood and cognition. 
+Psychology Press, 99–134. 
+[24] Daniel Gabana, Laurissa Tokarchuk, Emily Hannon, and Hatice Gunes. 2017. 
+Efects of valence and arousal on working memory performance in virtual reality 
+gaming. In 2017 Seventh International Conference on Afective Computing and 
+Intelligent Interaction (ACII). IEEE, 36–41. 
+[25] Bilal Ghanem, Simone Paolo Ponzetto, Paolo Rosso, and Francisco Rangel. 2021. 
+Fakefow: Fake news detection by modeling the fow of afective information. 
+arXiv preprint arXiv:2101.09810 (2021). 
+[26] Sayan Ghosh, Moitreya Chatterjee, and Louis-Philippe Morency. 2014. A multi-
+modal context-based approach for distress assessment. In Proceedings of the 16th 
+International Conference on Multimodal Interaction. 240–246. 
+[27] Jesse Hoey, Tobias Schroder, and Areej Alhothali. 2013. Bayesian afect control 
+theory. In 2013 Humaine Association Conference on Afective Computing and 
+Intelligent Interaction. IEEE, 166–172. 
+[28] Kai Hong, Christian G Kohler, Mary E March, Amber A Parker, and Ani Nenkova. 
+2012. Lexical diferences in autobiographical narratives from schizophrenic 
+patients and healthy controls. In Proceedings of the 2012 Joint Conference on 
+Empirical Methods in Natural Language Processing and Computational Natural 
+Language Learning. 37–47. 
+[29] Pere-Lluís Huguet-Cabot, David Abadi, Agneta Fischer, and Ekaterina Shutova. 
+2021. Us vs. them: a dataset of populist attitudes, news bias and emotions. arXiv 
+preprint arXiv:2101.11956 (2021). 
+[30] Alice M Isen. 1987. Positive afect, cognitive processes, and social behavior. In 
+Advances in experimental social psychology. Vol. 20. Elsevier, 203–253. 
+[31] Alice M Isen and Barbara Means. 1983. The infuence of positive afect on 
+decision-making strategy. Social cognition 2, 1 (1983), 18–31. 
+[32] Tifany A Ito and John T Cacioppo. 2001. Afect and attitudes: A social neuro-
+science approach. (2001). 
+[33] Hyeju Jang, Yohan Jo, Qinlan Shen, Michael Miller, Seungwhan Moon, and Car-
+olyn Rose. 2016. Metaphor detection with topic transition, emotion and cognition 
+in context. In Proceedings of the 54th Annual Meeting of the Association for Com-
+putational Linguistics (Volume 1: Long Papers). 216–225. 
+[34] Apostolos Kalatzis, Vishnunarayan Girishan Prabhu, Saidur Rahman, Mike Wittie, 
+and Laura Stanley. 2022. Emotions Matter: Towards Personalizing Human-System 
+Interactions Using a Two-layer Multimodal Approach. In Proceedings of the 2022 
+International Conference on Multimodal Interaction. 63–72. 
+[35] Karl Christoph Klauer and Jochen Musch. 2003. Afective priming: Findings and 
+theories. The psychology of evaluation: Afective processes in cognition and emotion
+7 (2003), 49. 
+[36] Shiro Kumano, Kazuhiro Otsuka, Dan Mikami, and Junji Yamato. 2009. Recog-
+nizing Communicative Facial Expressions for Discovering Interpersonal Emo-
+tions in Group Meetings. In Proceedings of the 2009 International Conference 
+on Multimodal Interfaces (Cambridge, Massachusetts, USA) (ICMI-MLMI ’09). 
+Association for Computing Machinery, New York, NY, USA, 99–106. https: 
+//doi.org/10.1145/1647314.1647333 
+[37] Allison Lahnala, Charles Welch, Béla Neuendorf, and Lucie Flek. 2022. Mitigating 
+toxic degeneration with empathetic data: Exploring the relationship between 
+toxicity and empathy. arXiv preprint arXiv:2205.07233 (2022). 
+[38] Jina Lee, Helmut Prendinger, Alena Neviarouskaya, and Stacy Marsella. 2009. 
+Learning models of speaker head nods with afective information. In 2009 3rd 
+international conference on afective computing and intelligent interaction and 
+workshops. IEEE, 1–6. 
+[39] Minha Lee, Jaebok Kim, Khiet Truong, Yvonne de Kort, Femke Beute, and Wij-
+nand IJsselsteijn. 2017. Exploring moral conficts in speech: multidisciplinary 
+analysis of afect and stress. In 2017 Seventh International Conference on Afective 
+Computing and Intelligent Interaction (ACII). IEEE, 407–414. 
+[40] Elizabeth A Lemerise and William F Arsenio. 2000. An integrated model of emo-
+tion processes and cognition in social information processing. Child development 
+71, 1 (2000), 107–118. 
+[41] Jinying Lin, Zhen Ma, Randy Gomez, Keisuke Nakamura, Bo He, and Guangliang 
+Li. 2020. A Review on Interactive Reinforcement Learning From Human Social 
+Feedback. IEEE Access 8 (2020), 120757–120765. https://doi.org/10.1109/ACCESS. 
+2020.3006254 
+[42] Lucien Maman, Mohamed Chetouani, Laurence Likforman-Sulem, and Giovanna 
+Varni. 2021. Using Valence Emotion to Predict Group Cohesion’s Dynamics: 
+Top-down and Bottom-up Approaches. In 2021 9th International Conference on 
+Afective Computing and Intelligent Interaction (ACII). IEEE, 1–8. 
+[43] Leena Mathur and Maja J Matarić. 2020. Introducing representations of facial 
+afect in automated multimodal deception detection. In Proceedings of the 2020 
+International Conference on Multimodal Interaction. 305–314. 
+[44] Kazuyuki Matsumoto, Kyosuke Akita, Minoru Yoshida, Kenji Kita, and Fuji Ren. 
+2015. Estimate the intimacy of the characters based on their emotional states for 
+application to non-task dialogue. In 2015 International Conference on Afective 
+Computing and Intelligent Interaction (ACII). IEEE, 327–333. 
+[45] Daniel McDuf, Rana El Kaliouby, Evan Kodra, and Rosalind Picard. 2013. Measur-
+ing voter’s candidate preference based on afective responses to election debates. 
+In 2013 Humaine Association Conference on Afective Computing and Intelligent 
+Interaction. IEEE, 369–374. 
+[46] Bert S Moore and Alice M Isen. 1990. Afect and social behavior. Cambridge 
+University Press. 
+257
+ICMI ’23, October 09–13, 2023, Paris, France 
+Leena Mathur, Maja J Matarić, and Louis-Philippe Morency 
+[47] Robert R Morris, Mira Dontcheva, Adam Finkelstein, and Elizabeth Gerber. 2013. 
+Afect and creative performance on crowdsourcing platforms. In 2013 Humaine 
+Association Conference on Afective Computing and Intelligent Interaction. IEEE, 
+67–72. 
+[48] Paula M Niedenthal, Jamin B Halberstadt, Jonathan Margolin, and Åse H Innes-
+Ker. 2000. Emotional state and the detection of change in facial expression of 
+emotion. European journal of social psychology 30, 2 (2000), 211–222. 
+[49] Silviu Vlad Oprea, Steven Wilson, and Walid Magdy. 2022. Should a Chatbot 
+be Sarcastic? Understanding User Preferences Towards Sarcasm Generation. 
+In Proceedings of the 60th Annual Meeting of the Association for Computational 
+Linguistics (Volume 1: Long Papers). 7686–7700. 
+[50] Maja Pantic and Leon JM Rothkrantz. 2003. Toward an afect-sensitive multimodal 
+human-computer interaction. Proc. IEEE 91, 9 (2003), 1370–1390. 
+[51] Srinivas Parthasarathy and Carlos Busso. 2017. Predicting speaker recognition 
+reliability by considering emotional content. In 2017 Seventh International Con-
+ference on Afective Computing and Intelligent Interaction (ACII). IEEE, 434–439. 
+[52] Jing Peng, Anna Feldman, and Ekaterina Vylomova. 2018. Classifying idiomatic 
+and literal expressions using topic models and intensity of emotions. arXiv 
+preprint arXiv:1802.09961 (2018). 
+[53] Rosalind W Picard. 2000. Afective computing. MIT press. 
+[54] Kosmas Pinitas, Konstantinos Makantasis, Antonios Liapis, and Georgios N. 
+Yannakakis. 2022. Supervised Contrastive Learning for Afect Modelling. In 
+Proceedings of the 2022 International Conference on Multimodal Interaction (Ben-
+galuru, India) (ICMI ’22). Association for Computing Machinery, New York, NY, 
+USA, 531–539. https://doi.org/10.1145/3536221.3556584 
+[55] Soujanya Poria, Erik Cambria, Rajiv Bajpai, and Amir Hussain. 2017. A review of 
+afective computing: From unimodal analysis to multimodal fusion. Information 
+fusion 37 (2017), 98–125. 
+[56] Santhosh Rajamanickam, Pushkar Mishra, Helen Yannakoudakis, and Ekaterina 
+Shutova. 2020. Joint modelling of emotion and abusive language detection. arXiv 
+preprint arXiv:2005.14028 (2020). 
+[57] Vikram Ramanarayanan, Chee Wee Leong, Lei Chen, Gary Feng, and David 
+Suendermann-Oeft. 2015. Evaluating speech, face, emotion and body move-
+ment time-series features for automated multimodal presentation scoring. In 
+Proceedings of the 2015 acm on international conference on multimodal interaction. 
+23–30. 
+[58] Sandratra Rasendrasoa, Alexandre Pauchet, Julien Saunier, and Sébastien Adam. 
+2022. Real-Time Multimodal Emotion Recognition in Conversation for Multi-
+Party Interactions. In Proceedings of the 2022 International Conference on Multi-
+modal Interaction (Bengaluru, India) (ICMI ’22). Association for Computing Ma-
+chinery, New York, NY, USA, 395–403. https://doi.org/10.1145/3536221.3556601 
+[59] Tulika Saha, Aditya Patra, Sriparna Saha, and Pushpak Bhattacharyya. 2020. 
+Towards emotion-aided multi-modal dialogue act classifcation. In Proceedings of 
+the 58th Annual Meeting of the Association for Computational Linguistics. 4361– 
+4372. 
+[60] Tulika Saha, Apoorva Upadhyaya, Sriparna Saha, and Pushpak Bhattacharyya. 
+2021. Towards sentiment and emotion aided multi-modal speech act classifcation 
+in twitter. In Proceedings of the 2021 Conference of the North American Chapter 
+of the Association for Computational Linguistics: Human Language Technologies. 
+5727–5737. 
+[61] Ramit Sawhney, Harshit Joshi, Lucie Flek, and Rajiv Shah. 2021. Phase: Learn-
+ing emotional phase-aware representations for suicide ideation detection on 
+social media. In Proceedings of the 16th conference of the European Chapter of the 
+Association for Computational Linguistics: main volume. 2415–2428. 
+[62] Ramit Sawhney, Harshit Joshi, Saumya Gandhi, and Rajiv Shah. 2020. A time-
+aware transformer based model for suicide ideation detection on social media. 
+In Proceedings of the 2020 conference on empirical methods in natural language 
+processing (EMNLP). 7685–7697. 
+[63] Ramit Sawhney, Harshit Joshi, Rajiv Shah, and Lucie Flek. 2021. Suicide ideation 
+detection via social and temporal user representations using hyperbolic learning. 
+In Proceedings of the 2021 conference of the North American Chapter of the Associ-
+ation for Computational Linguistics: human language technologies. 2176–2190. 
+[64] Ramit Sawhney, Puneet Mathur, Taru Jain, Akash Kumar Gautam, and Rajiv Shah. 
+2021. Multitask learning for emotionally analyzing sexual abuse disclosures. In 
+Proceedings of the 2021 Conference of the North American Chapter of the Association 
+for Computational Linguistics: Human Language Technologies. 4881–4892. 
+[65] Stefan Scherer, Giota Stratou, and Louis-Philippe Morency. 2013. Audiovisual 
+behavior descriptors for depression assessment. In Proceedings of the 15th ACM 
+on International conference on multimodal interaction. 135–140. 
+[66] Taylan Sen, Mohammad Rafayet Ali, Mohammed Ehsan Hoque, Ronald Epstein, 
+and Paul Duberstein. 2017. Modeling doctor-patient communication with afec-
+tive text analysis. In 2017 seventh international conference on afective computing 
+and intelligent interaction (ACII). IEEE, 170–177. 
+[67] Behjat Siddiquie, Dave Chisholm, and Ajay Divakaran. 2015. Exploiting mul-
+timodal afect and semantics to identify politically persuasive web videos. In 
+Proceedings of the 2015 ACM on International Conference on Multimodal Interaction. 
+203–210. 
+[68] Gizem Sogancioglu, Heysem Kaya, and Albert Ali Salah. 2021. Can mood primi-
+tives predict apparent personality?. In 2021 9th International Conference on Afec-
+tive Computing and Intelligent Interaction (ACII). IEEE, 1–8. 
+[69] Samuel Spaulding and Cynthia Breazeal. 2019. Frustratingly Easy Personalization 
+for Real-time Afect Interpretation of Facial Expression. In 2019 8th International 
+Conference on Afective Computing and Intelligent Interaction (ACII). 531–537. 
+https://doi.org/10.1109/ACII.2019.8925515 
+[70] Giota Stratou, Rens Hoegen, Gale Lucas, and Jonathan Gratch. 2015. Emotional 
+signaling in a social dilemma: An automatic analysis. In 2015 International Con-
+ference on Afective Computing and Intelligent Interaction (ACII). IEEE, 180–186. 
+[71] Jianhua Tao and Tieniu Tan. 2005. Afective computing: A review. In International 
+Conference on Afective computing and intelligent interaction. Springer, 981–995. 
+[72] Elsbeth Turcan, Smaranda Muresan, and Kathleen McKeown. 2021. Emotion-
+infused models for explainable psychological stress detection. In Proceedings of the 
+2021 conference of the North American Chapter of the Association for Computational 
+Linguistics: human language technologies. 2895–2909. 
+[73] Julia Wache, Ramanathan Subramanian, Mojtaba Khomami Abadi, Radu-
+Laurentiu Vieriu, Nicu Sebe, and Stefan Winkler. 2015. Implicit user-centric 
+personality recognition based on physiological responses to emotional videos. In 
+Proceedings of the 2015 ACM on International Conference on Multimodal Interaction. 
+239–246. 
+[74] Yan Wang, Wei Song, Wei Tao, Antonio Liotta, Dawei Yang, Xinlei Li, Shuyong 
+Gao, Yixuan Sun, Weifeng Ge, Wei Zhang, et al. 2022. A systematic review on af-
+fective computing: Emotion models, databases, and recent advances. Information 
+Fusion 83 (2022), 19–52. 
+[75] Adrienne Wood, Jennie Lipson, Olivia Zhao, and Paula Niedenthal. 2021. Forms 
+and functions of afective synchrony. Handbook of embodied psychology: Thinking, 
+feeling, and acting (2021), 381–402. 
+[76] Zhaojun Yang, Boqing Gong, and Shrikanth Narayanan. 2017. Weighted geodesic 
+fow kernel for interpersonal mutual infuence modeling and emotion recogni-
+tion in dyadic interactions. In 2017 Seventh International Conference on Afective 
+Computing and Intelligent Interaction (ACII). IEEE, 236–241. 
+[77] Zixiaofan Yang, Shayan Hooshmand, and Julia Hirschberg. 2021. CHoRaL: Col-
+lecting humor reaction labels from millions of social media users. In Proceedings 
+of the 2021 Conference on Empirical Methods in Natural Language Processing. 
+4429–4435. 
+[78] Yiqun Yao, Michalis Papakostas, Mihai Burzo, Mohamed Abouelenien, and Rada 
+Mihalcea. 2021. Muser: Multimodal stress detection using emotion recognition 
+as an auxiliary task. arXiv preprint arXiv:2105.08146 (2021). 
+[79] Amir Zadeh, Paul Pu Liang, and Louis-Philippe Morency. 2020. Foundations of 
+multimodal co-learning. Information Fusion 64 (2020), 188–193. 
+[80] Bowen Zhang, Min Yang, Xutao Li, Yunming Ye, Xiaofei Xu, and Kuai Dai. 2020. 
+Enhancing cross-target stance detection with transferable semantic-emotion 
+knowledge. In Proceedings of the 58th Annual Meeting of the Association for 
+Computational Linguistics. 3188–3197. 
+258
+Expanding the Role of Afective Phenomena in Multimodal Interaction Research 
+ICMI ’23, October 09–13, 2023, Paris, France 
+A APPENDIX 
+The 52 papers that use afect or emotion to enhance machine understanding of social behaviors and cognitive states are listed on the next 
+page in Table 1. 
+Table 1: The 52 papers that use afect or emotion to enhance machine understanding of social behaviors and cognitive states. 
+Year 
+Venue 
+Title 
+Use 
+2009 
+ACII 
+Learning models of speaker head nods with afective information [38] 
+Feature 
+2009 
+ICMI 
+Recognizing communicative facial expressions for discovering interpersonal emotions in group 
+meetings [36] 
+Latent State 
+2011 
+ACL 
+An Afect-Enriched Dialogue Act Classifcation Model for Task-Oriented Dialogue [7] 
+Feature 
+2012 
+ICMI 
+FaceTube: predicting personality from facial expressions of emotion in online conversational video 
+[6] 
+Feature 
+2012 
+ACL 
+Self-Disclosure and Relationship Strength in Twitter Conversations [3] 
+Feature 
+2012 
+EMNLP 
+Lexical Diferences in Autobiographical Narratives from Schizophrenic Patients and Healthy Controls 
+[28] 
+Feature 
+2013 
+ACII 
+Afect and Creative Performance on Crowdsourcing Platforms [47] 
+Latent State 
+2013 
+ACII 
+Bayesian Afect Control Theory [27] 
+Latent State 
+2013 
+ACII 
+Measuring Voter’s Candidate Preference Based on Afective Responses to Election Debates [45] 
+Feature 
+2013 
+ICMI 
+Audiovisual behavior descriptors for depression assessment [65] 
+Feature 
+2014 
+ICMI 
+A Multimodal Context-based Approach for Distress Assessment [26] 
+Feature 
+2014 
+EMNLP 
+Classifying Idiomatic and Literal Expressions Using Topic Models and Intensity of Emotions [52] 
+Feature 
+2015 
+ACII 
+Emotional signaling in a social dilemma: An automatic analysis [70] 
+Feature 
+2015 
+ACII 
+Estimate the intimacy of the characters based on their emotional states for application to non-task 
+dialogue [44] 
+Feature 
+2015 
+ICMI 
+Evaluating Speech, Face, Emotion and Body Movement Time-series Features for Automated Multi-
+modal Presentation Scoring [57] 
+Feature 
+2015 
+ICMI 
+Exploiting Multimodal Afect and Semantics to Identify Politically Persuasive Web Videos [67] 
+Feature 
+2015 
+ICMI 
+Implicit User-centric Personality Recognition Based on Physiological Responses to Emotional Videos 
+[73] 
+Latent State 
+2016 
+ACL 
+Metaphor Detection with Topic Transition, Emotion and Cognition in Context [33] 
+Feature 
+2017 
+ACII 
+Efects of valence and arousal on working memory performance in virtual reality gaming [24] 
+Feature 
+2017 
+ACII 
+Modeling doctor-patient communication with afective text analysis [66] 
+Feature 
+2017 
+ACII 
+Weighted geodesic fow kernel for interpersonal mutual infuence modeling and emotion recognition 
+in dyadic interactions [76] 
+Latent State 
+2017 
+ACII 
+The ABC of MOOCs: Afect and its inter-play with behavior and cognition [2] 
+Latent State 
+2017 
+ACII 
+Exploring moral conficts in speech: Multidisciplinary analysis of afect and stress [39] 
+Latent State 
+2017 
+ACII 
+Predicting speaker recognition reliability by considering emotional content [51] 
+Feature 
+2019 
+ACII 
+Pre-trained Afective Word Representations [10] 
+Auxiliary Task 
+2019 
+ACII 
+Frustratingly Easy Personalization for Real-time Afect Interpretation of Facial Expression [69] 
+Feature 
+2019 
+EMNLP 
+Modelling the interplay of metaphor and emotion through multitask learningn [18] 
+Auxiliary Task 
+2020 
+EMNLP 
+A Time-Aware Transformer Based Model for Suicide Ideation Detection on Social Media [62] 
+Feature 
+2020 
+ACL 
+Towards Emotion-aided Multi-modal Dialogue Act Classifcation [59] 
+Auxiliary Task 
+2020 
+ACL 
+Joint Modelling of Emotion and Abusive Language Detection [56] 
+Auxiliary Task 
+2020 
+ACL 
+Enhancing Cross-target Stance Detection with Transferable Semantic-Emotion Knowledge [80] 
+Auxiliary Task 
+2020 
+ACL 
+Sentiment and Emotion help Sarcasm? A Multi-task Learning Framework for Multi-Modal Sarcasm, 
+Sentiment and Emotion Analysis [8] 
+Auxiliary Task 
+2020 
+ICMI 
+Introducing Representations of Facial Afect in Automated Multimodal Deception Detection [43] 
+Feature 
+2021 
+ACII 
+Towards Emotion-Aware Agents For Negotiation Dialogues [9] 
+Feature 
+2021 
+ACII 
+Using Valence Emotion to Predict Group Cohesion’s Dynamics: Top-down and Bottom-up Ap-
+proaches [42] 
+Auxiliary Task 
+2021 
+ACII 
+Negative emotional dynamics shape cognition and performance with MetaTutor: Toward building 
+afect-aware systems [17] 
+Feature 
+2021 
+ACII 
+Can mood primitives predict apparent personality? [68] 
+Feature 
+2021 
+EMNLP 
+CHoRaL: Collecting Humor Reaction Labels from Millions of Social Media Users [77] 
+Feature 
+2021 
+ACL 
+MUSER: MUltimodal Stress detection using Emotion Recognition as an Auxiliary Task [78] 
+Auxiliary Task 
+2021 
+ACL 
+Us vs. Them: A Dataset of Populist Attitudes, News Bias and Emotions [29] 
+Auxiliary Task 
+259
+ICMI ’23, October 09–13, 2023, Paris, France 
+Leena Mathur, Maja J Matarić, and Louis-Philippe Morency 
+Table 1: (continued) The 52 papers that use afect or emotion to enhance machine understanding of social behaviors and cognitive states. 
+Year 
+Venue 
+Title 
+Use 
+2021 
+ACL 
+Towards Sentiment and Emotion aided Multi-modal Speech Act Classifcation in Twitter [60] 
+Auxiliary Task 
+2021 
+ACL 
+Multitask Learning for Emotionally Analyzing Sexual Abuse Disclosures [64] 
+Auxiliary Task 
+2021 
+ACL 
+Emotion-Infused Models for Explainable Psychological Stress Detection [72] 
+Auxiliary Task 
+2021 
+ACL 
+PHASE: Learning Emotional Phase-aware Representations for Suicide Ideation Detection on Social 
+Feature 
+Media [61] 
+2021 
+ACL 
+Fake Flow: Fake News Detection by Modeling the Flow of Afective Information [25] 
+Feature 
+2021 
+ACL 
+Suicide Ideation Detection via Social and Temporal User Representations using Hyperbolic Learning 
+Feature 
+[63] 
+2022 
+ACII 
+Play with Emotion: Afect-Driven Reinforcement Learning [4] 
+Latent State 
+2022 
+ACL 
+Should a Chatbot be Sarcastic? Understanding User Preferences Towards Sarcasm Generation [49] 
+Latent State 
+2022 
+ACL 
+Mitigating Toxic Degeneration with Empathetic Data: Exploring the Relationship Between Toxicity 
+Latent State 
+and Empathy [37] 
+2022 
+ICMI 
+Emotions Matter: Towards Personalizing Human-System Interactions Using a Two-layer Multimodal 
+Feature 
+Approach [34] 
+2022 
+ICMI 
+Real-Time Multimodal Emotion Recognition in Conversation for Multi-Party Interactions [58] 
+Auxiliary Task 
+2022 
+ICMI 
+Supervised Contrastive Learning for Afect Modelling [54] 
+Feature 
+260
+

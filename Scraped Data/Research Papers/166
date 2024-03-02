@@ -1,0 +1,205 @@
+ Published online: 20 September 2023 
+Intern. J. Comput.-Support. Collab. Learn (2023) 18:323–327
+© International Society of the Learning Sciences, Inc. 2023
+ 
+ Carolyn P. Rosé
+cp3a@andrew.cmu.edu
+Sanna Järvelä
+sanna.jarvela@oulu.fi
+1 
+Carnegie Mellon University Language Technologies Institute and HCI Institute, Pittsburgh, 
+PA, USA
+2 
+University of Oulu, Oulu, Finland
+Enhancing student learning and achievement through 
+orchestration of group processes and group composition
+Carolyn P. Rosé1 · Sanna Järvelä2
+https://doi.org/10.1007/s11412-023-09408-x
+Introduction
+Fall is a time of new beginnings, when we consider the academic calendar, and yet it is 
+also the time of year when we become aware of closings on the horizon as the year begins 
+to draw to a close. Because of that, the Fall is an excellent time for reflection, and in this 
+September issue of the International Journal of Computer-Supported Collaborative Learn-
+ing, we reflect on the importance of productive collaborative processes, with an emphasis 
+on feedback processes, and the scaffolding that upholds and promotes productive learning 
+processes, whether it is explicit or implicit. In particular, this issue features four full articles, 
+two of which focus directly on intervention studies with a focus on promoting productive 
+collaborative processes through explicit scaffolding, and two of which focus on differen-
+tial effects of feedback based on features of the feedback, in one case informing design of 
+implicit scaffolding of processes through orchestration of group composition.
+The impact of supportive interventions promoting positive group 
+processes
+In the first article entitled “Exploring the Impact of Chat-Based Collaborative Activities and 
+SRL Focused Interventions on Students’ Self-Regulation Profiles, Participation in Collab-
+orative Activities, Retention, and Learning in MOOCs”, Georgios Psathas, Stergios Tegos, 
+Stavros N. Demetriadis and Thrasyvoulos Tsiatsos present an investigation into a three con-
+dition intervention study situated within a Massive Open Online Course (MOOC) for teach-
+1 3
+C. P. Rosé, S. Järvelä
+ing computer programming. Though MOOCs are of great interest to the CSCL community 
+(Wise & Schwarz, 2017), and though they have been the topic of papers at our conferences 
+as well as discussions in symposia, this is the first ijCSCL article presenting an analysis of 
+data from an intervention study embedded within a MOOC. It is an excellent example of a 
+valid experimental design embedded within a MOOC, where there are difficult challenges 
+with respect to experimental control. As a twist on a prior approach to addressing attrition 
+challenges by waiting for group assignment until after students have completed some indi-
+vidual work (Wen et al., 2017), the investigators were clever in waiting until students had 
+completed a questionnaire, which not only addressed the attrition issue but also enabled 
+identifying four common latent student profiles and then performing a stratified random 
+assignment of students to conditions, with equal representation of the latent student profiles 
+across conditions. This careful setup afforded an elaborate analysis of learning and retention 
+as it related to important measures of Self-Regulated Learning (SRL) and participation in 
+collaborative activities.
+The goal of the study was to investigate the interplay between personal characteris-
+tics of students and supportive interventions on student participation in chat activities and 
+subsequently their retention in the course. MOOC students were assigned to one of three 
+conditions, namely: control, general intervention, and personalized intervention. The exper-
+imental manipulation happened outside of the collaborative-chat activities and determined 
+the kind of support, if any, offered through email messages that occurred at regular intervals 
+throughout the course. Students were all offered the opportunity to participate in chat-based 
+collaborative activities regardless of condition. While prior work investigating the impact 
+of chat activities on retention in MOOCs demonstrated that participation in the collabora-
+tive activities promoted retention, the majority of students in that past study did not choose 
+to participate in the chat activities (Tomar et al., 2016). Thus, this current study that dem-
+onstrates the impact of an intervention outside of the chat activities that promotes student 
+participation in the chat activities themselves is an important landmark.
+The second article, by Yuyao Tong and Carol K. K. Chan, is entitled “Promoting 
+Knowledge Building through Meta-Discourse and Epistemic Discourse Understanding”. 
+This article presented a quasi-experimental design contrasting two classrooms, both using 
+Knowledge Forum, but under different conditions. This study is one in a long history of 
+Knowledge Forum studies featured in this journal (e.g., Zhang et al., 2020; van Aalst, 2009). 
+While a great many past studies of Knowledge Forum presented analyses that focused on 
+classroom communities where everyone experienced the same intervention, this study offers 
+the opportunity for statistical contrast between students in a class where the intervention is 
+present within the Knowledge Forum and a class where it was not present. The experimental 
+contrast focused on enrichment of meta-discourse in the midst of knowledge building. An 
+interesting aspect of the meta-discourse that students participated in was that they expressed 
+their ideas about the discourse graphically through drawings.
+A wide variety of data were collected throughout the study, including video, tests, and 
+the discourse itself from Knowledge Forum. Analysis of the discourse collected during the 
+study was supported through an analytics-based tool used in past studies of Knowledge 
+Forum, referred to as KBDeX (Oshima et al., 2012). The analysis provides the opportunity 
+to view through rich, qualitative analysis the impact of metacognitive reflection, principle-
+based inquiry, and idea development on inquiry in Knowledge Forum. Though study of 
+discourse processes, how they can be scaffolded, and how they promote learning and other 
+1 3
+ 324
+Enhancing student learning and achievement through orchestration of…
+collaborative outcomes is frequent in the CSCL literature, far less has focused on meta-level 
+understanding of discourse or meta-discourse processes. This study demonstrates a clear 
+impact of meta-discourse on collaboration that widened over time, which makes a compel-
+ling argument for the importance of this work to the community.
+Group composition effects on supportive feedback processes
+The second pair of articles in this September issue focus on features of feedback that affect 
+the quality and impact of the feedback, for example, in one case the type and depth of feed-
+back, and the other case the source of feedback in terms of the relative skill level of provider 
+and recipient of the feedback. In the first case, the feedback under investigation occurred 
+between members of different collaborative groups within the same classroom, as part of a 
+computer-supported collaborative learning activity. In the second study, the data came from 
+a peer review activity within a classroom that occurred after individual students completed 
+a writing assignment on their own. Considering these articles together, we are reminded that 
+feedback between students is valuable both in collaborative and individual learning settings. 
+In both cases students offer cognitive scaffolding to one another in their interaction, even if 
+the interaction is not synchronous (i.e., through peer feedback on writing, where each con-
+tribution to the discussion occurs at a distinct time point, namely, the time of article writing, 
+the time of feedback writing, and the time of feedback receipt).
+The first of this second pair of articles is by Jesmine S. H. Tan, Wenli Chen, Junzhu Su 
+and Guo Su, entitled “The Mechanism and Effect of Classwide Peer Feedback on Concep-
+tual Knowledge Improvement: Does Different Feedback Type Matter?”. In that article a 
+qualitative analysis of feedback processes is conducted as an exploratory case study after a 
+CSCL activity employing the Spiral Model of collaboration (Chen et al., 2021), which was 
+determined to be successful in producing significant pre-to-posttest gains in knowledge as 
+measured by a test. During the activity, students offered feedback to one another through a 
+structured, peer critique interface. The connection between feedback, knowledge improve-
+ment, and learning is investigated in the analysis. A script prompts students to push for 
+deeper and deeper feedback and discussion. Results showed that feedback that probed for 
+deeper conceptual understanding were particularly effective, though they were cognitively 
+more demanding.
+The final article of this September issue is by Zheng Zong and Christian D. Schunn, enti-
+tled “Does Matching Peers at Finer-Grained Levels of Prior Performance Enhance Gains in 
+Task Performance from Peer Review?”. In this article, a secondary data analysis simulating 
+an experimental study is presented of data collected from 3 large classrooms where a peer 
+review activity with the Peerceptiv system (Wu & Schunn, 2022) was conducted. Results 
+from the study could inform development of an automated algorithm to group students for 
+interaction based on a policy considering skill level of the students, in this case to offer one 
+another feedback on writing. As in the Tan et al. study, feedback was offered through a struc-
+tured peer feedback interface, which is a form of explicit scaffolding for processes. How-
+ever, in contrast, interventions that group students in order to promote productive learning 
+processes can be regarded as implicit scaffolding for collaboration (Wang et al., 2017).
+The research aimed to identify the optimal level of detail regarding assessment of skill 
+for the purpose of assigning students to effective pairings. Past work on pairing based on 
+1 3
+325
+C. P. Rosé, S. Järvelä
+skill level with a coarse grained approach failed to demonstrate an impact of this intentional 
+pairing. In this study, both a coarse grained and a fine grained approach were evaluated and 
+then contrasted. The analysis of results demonstrated that fine grained matching is needed in 
+order to yield a significant effect. An interesting feature of the analysis of results is that the 
+impact of the intervention was evaluated both at the whole class level as well as at the subset 
+level (e.g., within ability level groupings). Since fine-grained matching by ability level was 
+demonstrated to be optimal except in pairs where both are at the very low ability level, it is 
+necessary to consider the relationship between effects of differently nuanced policies from 
+the receiver level and the giver level, as measured within ability level groupings and over 
+the class as a whole in order to make an informed decision for a specific class, with its own 
+unique distribution of skill levels across students.
+Conclusion
+The four articles of this September issue of the International Journal of Computer-Supported 
+Collaborative Learning are interesting as a set in that they highlight a multiplicity of dif-
+ferent research methodologies employed by CSCL researchers. These methodologies span 
+from quantitative to qualitative to mixed-methods approaches, in most cases with new data, 
+but sometimes including secondary data analysis, as in the final paper of this issue. Types 
+of data include the gamut from video, to drawings, to tests and questionnaires. Within this 
+diversity of methodological practices, common themes related to student learning through 
+the cognitive scaffolding they offer each other run throughout this issue.
+References
+Chen, W., Tan, J. S., & Pi, Z. (2021). The spiral model of collaborative knowledge improvement: An explor-
+atory study of a networked collaborative classroom. International Journal of Computer-Supported Col-
+laborative Learning, 16, 7–35. https://doi.org/10.1007/s11412-021-09338-6. https://link.springer.com/
+article/.
+Oshima, J., Oshima, R., & Matsuzawa, Y. (2012). Knowledge building discourse explorer: A social network 
+analysis application for knowledge building discourse. Educational Technology Research and Develop-
+ment, 60, 903–921. https://doi.org/10.1007/s11423-012-9265-2. https://link.springer.com/article/.
+Psathas, G., Tegos, S., Demetriadis, S. N., & Tsiatsos, T. (this issue). Exploring the Impact of Chat-Based 
+Collaborative Activities and SRL Focused Interventions on Students’ Self-Regulation Profiles, Par-
+ticipation in Collaborative Activities, Retention, and Learning in MOOCs, International Journal of 
+Computer-Supported Collaborative Learning https://link.springer.com/article/https://doi.org/10.1007/
+s11412-023-09394-0.
+Tan, J., Chen, W., Su, J., & Su, G. (this issue). The Mechanism and Effect of Classwide Peer Feedback on 
+Conceptual Knowledge Improvement: Does Different Feedback Type Matter? International Journal of 
+Computer-Supported Collaborative Learning https://link.springer.com/article/https://doi.org/10.1007/
+s11412-023-09390-4.
+Tomar, G., Sankaranaranayan, S., Wang, X., & Rosé, C. P. (2016). Coordinating Collaborative Chat in 
+Massive Open Online Courses, In Proceedings of the international conference of the learning sci-
+ences (pp. 607– 614). International Society of the Learning Sciences https://arxiv.org/ftp/arxiv/
+papers/1704/1704.05543.pdf.
+Tong, Y., & Chan, C. K. K. (this issue).Promoting Knowledge Building through Meta-Discourse and Epis-
+temic Discourse Understanding, International Journal of Computer-Supported Collaborative Learning 
+https://link.springer.com/article/10.1007/s11412-023-09403-2.
+1 3
+ 326
+Enhancing student learning and achievement through orchestration of…
+Van Aalst, J. (2009). Distinguishing knowledge-sharing, knowledge-construction, and knowledge-creation 
+discourses. International Journal of Computer-Supported Collaborative Learning, 4, 259–287.https://
+link.springer.com/article/10.1007/s11412-009-9069-5.
+Wang, X., Wen, M., & Rosé, C. (2017). Contrasting explicit and implicit support for transactive exchange in 
+team oriented project based learning. International Society of the Learning Sciences.
+Wen, M., Maki, K., Dow, S., Herbsleb, J. D., & Rosé, C. (2017). Supporting virtual team formation through 
+community-wide deliberation. Proceedings of the ACM on Human-Computer Interaction (PACMHCI), 
+Volume 1(Issue CSCW Article No.: 109), 1–19. https://doi.org/10.1145/3134744.
+Wise, A. F., & Schwarz, B. B. (2017). Visions of CSCL: Eight provocations for the future of the field. Interna-
+tional Journal of Computer-Supported Collaborative Learning, 12, 423–467.https://link.springer.com/
+article/10.1007/s11412-017-9267-5.
+Wu, Y., & Schunn, C. D. (2022, November). A Review of Empirical Studies on Peerceptiv. In 2022 20th 
+International Conference on Information Technology Based Higher Education and Training (ITHET) 
+(pp. 1–6). IEEE.
+Zhang, J., Yuan, G., & Bogouslavsky, M. (2020). Give student ideas a larger stage: Support cross-community 
+interaction for knowledge building. International Journal of Computer-Supported Collaborative Learn-
+ing, 15, 389–410. https://doi.org/10.1007/s11412-020-09332-4. https://link.springer.com/article/.
+Zong, Z., & Schunn, C. (this issue). Does matching peers at finer-grained levels of prior performance enhance 
+gains in Task performance from peer review? International Journal of Computer-Supported Collabora-
+tive Learning. https://doi.org/10.1007/s11412-023-09401-4.
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+1 3
+327
+

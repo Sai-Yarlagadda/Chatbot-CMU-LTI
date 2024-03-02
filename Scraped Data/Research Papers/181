@@ -1,0 +1,1477 @@
+Transformer Working Memory Enables Regular Language Reasoning
+And Natural Language Length Extrapolation
+Ta-Chung Chi
+Carnegie Mellon University
+tachungc@andrew.cmu.edu
+Ting-Han Fan
+Princeton University
+tinghanf@princeton.edu
+Alexander I. Rudnicky
+Carnegie Mellon University
+air@cs.cmu.edu
+Peter J. Ramadge
+Princeton University
+ramadge@princeton.edu
+Abstract
+Unlike recurrent models, conventional wis-
+dom has it that Transformers cannot per-
+fectly model regular languages.
+Inspired
+by the notion of working memory, we pro-
+pose a new Transformer variant named Regu-
+larGPT. With its novel combination of Weight-
+Sharing, Adaptive-Depth, and Sliding-Dilated-
+Attention, RegularGPT constructs working
+memory along the depth dimension, thereby
+enabling efﬁcient and successful modeling of
+regular languages such as PARITY. We fur-
+ther test RegularGPT on the task of natural
+language length extrapolation and surprisingly
+ﬁnd that it rediscovers the local windowed at-
+tention effect deemed necessary in prior work
+for length extrapolation.
+1
+Introduction
+It is long believed that Working Memory (WM),
+a term coined in 1960s to liken human minds to
+computers, plays an important role in humans’ rea-
+soning ability and the guidance of decision-making
+behavior (Baddeley and Hitch, 1974; Baddeley,
+1992; Ericsson and Kintsch, 1995; Cowan, 1998;
+Miyake et al., 1999; Oberauer, 2002; Diamond,
+2013; Adams et al., 2018). While no single deﬁni-
+tion encompasses all applications of WM (Adams
+et al., 2018), the following one should be shared by
+all of the theories of interest:
+Working memory is a system of compo-
+nents that holds a limited amount of in-
+formation temporarily in a heightened
+state of availability for use in ongoing
+processing. - Adams et al. (2018)
+WM is instantiated in the two major driving
+forces of sequence modeling:
+Recurrent neu-
+ral networks’(RNN) (Elman, 1990; Jordan, 1997;
+Hochreiter and Schmidhuber, 1997) short term
+memory modulated by their recurrent nature and
+gate design (Rae and Razavi, 2020a; Nematzadeh
+et al., 2020; Armeni et al., 2022), and Transform-
+ers’ (Vaswani et al., 2017) salient tokens height-
+ened by self-attention.
+In
+reality,
+self-attention
+often
+attends
+broadly (Clark et al., 2019),
+violating the
+limited amount of information notion of WM. Our
+hypothesis is that such violation is to blame for
+Transformers’ failure on algorithmic reasoning of
+regular languages (Deletang et al., 2023; Liu et al.,
+2023) such as PARITY, a seemingly simple task
+that checks if the number of 1s in a bit string is
+even. Surprisingly, a Transformer can only count
+the number of 1s correctly when the sequence
+length is held ﬁxed at training sequence length Ttr,
+and it fails miserably when the testing sequence
+length extrapolates to Tex > Ttr (Hahn, 2020;
+Bhattamishra et al., 2020; Chiang and Cholak,
+2022; Deletang et al., 2023; Liu et al., 2023). In
+contrast, an RNN can extrapolate perfectly.
+The goal of this work is therefore to enable
+Transformers’ WM by limiting the amount of ac-
+cessible information at a time. Existing attempt
+that uses a combination of scratchpad and recency
+biases (Wei et al., 2022; Nye et al., 2022; Anil
+et al., 2022; Liu et al., 2023) is not optimal as it
+completely foregoes the parallelization property of
+a Transformer, making it as computationally inefﬁ-
+cient as an RNN.
+This begs the question: Does there exist a more
+efﬁcient Transformer working memory design? The
+answer is afﬁrmative thanks to the proposed Reg-
+ularGPT, which boils down to the three design
+choices: Weight-Sharing, Adaptive-Depth, and
+Sliding-Dilated-Attention; Each of them has been
+proposed previously but it is the unique combina-
+tion that sparks the successful and efﬁcient learning
+of regular languages. We will further demonstrate
+its: 1) similar recursive parallel structure as linear
+RNN (Orvieto et al., 2023), resulting in a log Ttr,ex
+number of layers, and 2) generalizability by show-
+ing strong performances on the task of Transformer
+arXiv:2305.03796v1  [cs.CL]  5 May 2023
+natural language length extrapolation (Press et al.,
+2022; Chi et al., 2022a,b).
+In this work, we use [N] to denote the list of
+non-negative integers [0, . . . , N − 1]. The Trans-
+former model used in this work is always causal. It
+takes in an input sequence of T ≤ Ttr units (can
+be tokens or bits) σi∈[T], passes them through a
+ﬁxed amount of L transformer layers, and ﬁnally
+computes the distribution over the vocabulary V
+via the prediction head Wo.
+2
+Background
+2.1
+Regular Language and Algorithmic
+Reasoning
+The Chomsky hierarchy (Chomsky, 1956b) clas-
+siﬁes formal languages into different hierarchies
+based on their increasing complexity. Each hierar-
+chy represents a family of formal languages that
+can be solved by the corresponding automaton. At
+the lowest level resides the family of regular lan-
+guages, which can be expressed using a ﬁnite state
+automaton (FSA), a computational model compris-
+ing a set of states and transitions connecting them.
+Our primary objective is to enhance the algorith-
+mic reasoning of the Transformer model on regular
+languages by testing its language transduction ca-
+pability under the extrapolation setting. Concretely,
+the model is trained only to predict desired outputs
+on a set of short length-T sequences with T ≤ Ttr.
+Still, it must also predict the correct outputs for
+longer testing sequences of length Tex ≫ Ttr. It
+is worth noting that we evaluate our model via
+language transduction following recent work (Dele-
+tang et al., 2023; Liu et al., 2023), instead of the
+conventional language recognition protocol. Both
+settings are equally hard as they are underpinned
+by the same ﬁnite state semiautomaton. Interested
+readers may refer to Deletang et al. (2023) for fur-
+ther details regarding the two evaluation protocols.
+We also reveal the connection between RegularGPT
+and ﬁnite state semiautomaton later in §7.
+2.2
+Failure Mode and An Inefﬁcient Fix
+The PARITY task involves a length T bit string
+σ1σ2 · · · σT where each bit σi is randomly sampled
+from a Bernoulli distribution with P(σi = 1) =
+0.5. The goal is to determine whether the sequence
+contains an even or odd number of 1s.
+It has been observed that a Transformer is inca-
+pable of performing length extrapolation on PAR-
+ITY, but what could be its potential failure mode?
+Previous work sheds light on this by showing that
+a Transformer might settle on the naive-summation
+approach (Anil et al., 2022; Deletang et al., 2023;
+Liu et al., 2023). Concretely, it sums up all the
+bits and outputs the summation modulo 2. This ap-
+proach fails since unseen summations will be pro-
+duced when the model takes sequences of length
+Tex > T as input or P(Si) deviates from 0.5.
+To the best of our knowledge, the existing rem-
+edy (Liu et al., 2023; Anil et al., 2022) is to use
+scratchpad (Wei et al., 2022; Nye et al., 2022) along
+with recency biases (Press et al., 2022) to enforce
+the correct learning: They create a scratchpad that
+interleaves the sequence of input bits and interme-
+diate answers (σ1, q1, σ2, q2, · · · , σT , qT ), where
+qi = solve(σ1 · · · σi). The model is trained to pre-
+dict all the σi∈[T]. Recency biases play the role of
+limiting a Transformer’s receptive ﬁeld to only a
+few most recent σ and q at every timestep i. This is
+to prevent self-attention from ignoring q and giving
+the same naive-summation solution.
+Scratchpad and recency biases jointly create the
+notion of WM along the temporal dimension simi-
+lar to RNNs, thereby enabling successful extrapo-
+lation on regular languages. Nevertheless, we note
+that this ﬁx is inefﬁcient during inference since all
+the intermediate answers qi have to be generated
+sequentially before reaching the ﬁnal answer qT .
+A desirable ﬁx should only take in the input bits
+(σ1, σ2, · · · , σn) and directly generate the ﬁnal an-
+swer qT . In other words, our goal is to ﬁnd an
+efﬁcient WM design for a Transformer.
+2.3
+A Desirable Fix for PARITY (Figure 1)
+An alternative solution to the PARITY problem is
+based on the spirit of divide-and-conquer, where
+we ﬁrst divide the sequence into T/C chunks with
+each chunk of length C < T, and we compose
+the ﬁnal answer by recursively merging the chunk
+outputs. This approach does not suffer from the
+unseen summation issue as the model was trained
+to handle a ﬁxed amount of C bits at a time in
+its WM (chunk). It then recursively applies the
+already-seen results to compose the ﬁnal solution
+when it encounters longer sequences during infer-
+ence. More importantly, it is more efﬁcient than
+the scratchpad and recency biases approach since
+it only requires logC T layers of parallel computa-
+tions instead of 2T steps of sequential decoding.
+1
+0
+1
+1
+0
+0
+0
+𝐿𝑎𝑦𝑒𝑟 = 0
+0
+1
+0
+0
+0
+0
+1
+1
+𝐹𝐹𝑁
+𝐹𝐹𝑁
+𝑡ℎ𝑖𝑐𝑘𝑛𝑒𝑠𝑠
+𝐿𝑎𝑦𝑒𝑟 = 1
+𝐿𝑎𝑦𝑒𝑟 = 2
+𝐹𝐹𝑁
+Figure 1: This is the divide-and-conquer approach that solves the PARITY problem. The lightly shaded blue cells
+represent M (l)
+mn in eq. (1). The darkened blue cells represent the routing path to solve the result for the last bit
+speciﬁcally. As we can see, this approach requires at most log2 T layers to obtain the result for a length T input
+sequence, rendering it a more efﬁcient approach compared to the combination of scratchpad and recency biases.
+3
+Proposed Architecture of RegularGPT
+We present our modiﬁcations to the vanilla Trans-
+former below. Only the related operations will be
+expanded, and we follow all the other details of
+GPT2 (Radford et al., 2019).
+3.1
+Sliding-Dilated-Attention
+A Transformer layer at layer l consists of a self-
+attention operation denoted as SA(l) and feed-
+forward network denoted as FFN(l). Originally,
+SA(l) computes the inter-token relationships across
+all T units. Instead, we set the chunk size to C
+and produce T/C non-overlapping chunks;1 Only
+the units within the same chunk inter-attend with
+each other. In practice, this can be achieved by
+an attention mask M(l) ∈ RT×T at layer l. M(l)
+shares the same shape as the self-attention matrix
+(see Figure 1) and is deﬁned as:
+M(l)
+mn =
+(
+r(m−n)/Cℓ,
+if m−n
+Cl
+∈ [C]
+− inf,
+otherwise
+(1)
+Note that M is a lower triangular matrix due to the
+causal nature of our model. ri’s with i ∈ [C] are
+learnable relative positional scalars. To be precise,
+each attention head has a different set of learnable
+biases ri’s. Here, we drop the dependency on the
+head for notational simplicity.
+The use of ri’s is similar to the positional scalars
+of T5 (Rae and Razavi, 2020a) except that we do
+not use the log-binning strategy over m − n. It is
+to facilitate the extraction of global information
+instead of enforcing the windowed-attention ef-
+fect (Raffel et al., 2020; Press et al., 2022; Chi
+1Whenever T is not divisible by C, we pad the input se-
+quence such that its length is a multiple of C.
+et al., 2022a,b).
+M will then be added to the
+original self-attention matrix, creating the pro-
+posed Sliding-Dilated-Attention effect. The out-
+put of SA(l) will be transformed by the positional-
+independent FFN(l) to produce o(l)
+i∈[T].
+The case of C = 2 is used as a possible construc-
+tion of Theorem 1 in Liu et al. (2023). However,
+their focus is not on length extrapolation, hence
+lacking the below two proposed modiﬁcations.
+3.2
+Adaptive-Depth and Weight-Sharing
+Since our Sliding-Dilated-Attention limits the num-
+ber of accessible tokens at a time, we need an adap-
+tive depth ¯L = logC T so that the ﬁnal output
+can utilize every single piece of input information.
+However, when Tex > Ttr, the depth during infer-
+ence will be higher than that during training. The
+simplest way to solve this challenge without further
+parameter updating is to perform Weight-Sharing
+across layers. To account for the possible perfor-
+mance loss due to Weight-Sharing, we ﬁrst thicken
+the model by K times, resulting in a total number
+of K · ¯L layers. Next, we share the weights across
+the K · ¯L layers in the following way for k ∈ [K]:
+SA(l·K+k) =SA(k) for l ∈ [¯L]
+FFN(l·K+k) =FFN(k) for l ∈ [¯L]
+It can be equivalently interpreted as stacking more
+SA and FFN components within every Transformer
+layer, and the same thickened layer is reused ¯L
+times. This layer thickening design is only used in
+the natural language modeling experiments in §6.
+3.3
+Where is the WM Notion?
+Instead of instantiating WM along the temporal
+dimension as the combination of scratchpad and
+𝑣!
+𝑣"
+𝑣#
+𝑣$
+𝐴𝑣! + 𝑣"
+𝐴𝑣# + 𝑣$
+𝐴" 𝐴𝑣! + 𝑣" + 𝐴𝑣# + 𝑣$
+𝐴#𝑣! + 𝐴"𝑣" + 𝐴𝑣# + 𝑣$ 𝐴$ +
+𝐴#𝑣% + 𝐴"𝑣& + 𝐴𝑣' + 𝑣(
+𝑣%
+𝑣&
+𝑣'
+𝑣(
+𝐴𝑣% + 𝑣&
+𝐴𝑣' + 𝑣(
+𝐴" 𝐴𝑣% + 𝑣& + 𝐴𝑣' + 𝑣(
+Figure 2: This is the parallel scan algorithm that can
+accelerate a linear RNN. In this example, we visualize
+the routing path for computing x8. Blocks at the same
+layer can be computed in parallel on GPUs.
+recency biases, RegularGPT limits the amount of
+information along the depth dimension. As we
+have seen, the idea of breaking T units into several
+chunks limits the amount of accessible informa-
+tion at each layer, thereby enabling the WM no-
+tion. A similar argument was made by Yogatama
+et al. (2021) in a sense that they categorized Long-
+former (Beltagy et al., 2020), a transformer variant
+with local attention pattern, as a model of working
+memory. Finally, thanks to modern accelerators
+such as GPU, all chunks at a layer can be processed
+concurrently, and this further makes RegularGPT
+more favorable over the scratchpad and recency
+biases approach.
+3.4
+Complexity Analysis
+The sparse attention pattern of RegularGPT sug-
+gests it might enjoy the same speedup provided
+by sparsiﬁed Transformers. The complexity of our
+model is O(TCK logC T) where TC is the com-
+plexity of each self-attention module and K logC T
+is the total number of layers. On the other hand,
+the vanilla Transformer follows O(T 2L). To il-
+lustrate the possible speedup, if T = 512 and
+C = 128, then 512 · 128 · K log128 512 < 5122L
+when K <
+512L
+128 log128 512 ≈ 3.11L. Namely, as long
+as K < 3L, our model is likely to be more efﬁcient
+than a vanilla Transformer.
+4
+Connection to Prior Work
+Sliding-Dilated-Attention
+This special atten-
+tion pattern dates back to pre-Transformer era such
+as Wavenet (van den Oord et al., 2016) with dilated
+convolution. It can also be viewed as a special
+form of Longformer attention pattern with system-
+atic dilation (Beltagy et al., 2020).2 Limiting the
+2The original Longformer also adopts dilated attention on
+a few heads at higher layers but without the systematic pattern
+range of attention in lower layers of a Transformer
+is also corroborated in Rae and Razavi (2020b),
+where they ﬁnd such design does not deteriorate
+the performance.
+Adaptive-Depth
+and
+Weight-Sharing
+AL-
+BERT (Lan et al., 2020) and Universal Trans-
+former (Dehghani et al., 2019) share the parameters
+across layers. The weight sharing design makes
+them compatible with the idea of Adaptive
+Computation Time (Graves et al., 2014) and
+Dynamic Halting (Dehghani et al., 2019; Elbayad
+et al., 2020), which allocate different compu-
+tational budget depending on the complexity
+of tasks (Simoulin and Crabbé, 2021; Csordás
+et al., 2022).
+However, they lack the special
+Sliding-Dilated-Attention design that is necessary
+for ruling out naive solutions.
+Linear RNN
+Given x0 = 0 ∈ RN and the in-
+put vectors u1 · · · uT , a linear RNN (Orvieto et al.,
+2023) for k ∈ [T] can be written as:
+xk = Axk−1+Buk =
+k−1
+X
+j=0
+AjBuk−j =
+k−1
+X
+j=0
+Ajvk−j,
+where we set vk−j = Buk−j. The operation can be
+accelerated by the parallel scan algorithm that per-
+mits efﬁcient cumulative sum (Ladner and Fischer,
+1980; Blelloch, 1990; Lakshmivarahan and Dhall,
+1994; Martin and Cundy, 2018; Liu et al., 2023;
+Smith et al., 2023). As we can see in Figure 2,
+the routing path speciﬁed by the parallel scan algo-
+rithm is the same as our Sliding-Dilated-Attention
+illustrated in Figure 1.
+5
+Regular Language Experiments
+5.1
+Language Transduction and
+Extrapolation
+First, we want to know if endowing a Transformer
+with the notion of WM really improves its length
+extrapolation capability on regular languages. We
+test RegularGPT and all the baselines on two sets of
+regular languages from prior work (Deletang et al.,
+2023; Bhattamishra et al., 2020).3 Prior work often
+reports the maximum score across different hyper-
+parameter settings and random seeds because their
+used in this work.
+3Our implementation is based on the codebase of Deletang
+et al. (2023) at: https://github.com/deepmind/
+neural_networks_chomsky_hierarchy. We addi-
+tionally implement the regular languages in the second section
+of Table 1.
+Task
+RNN
+Transformer
+RegularGPT
+C = 2
+C = 3
+1) Deletang et al.
+Even Pairs
+100.0 / 100.0
+99.7 / 73.2
+100.0 / 89.3 100.0 / 96.6
+Modular Arithmetic
+100.0 / 100.0
+21.9 / 20.3
+96.4 / 82.6
+21.2 / 20.5
+Parity Check
+100.0 / 98.9
+52.3 / 50.1
+100.0 / 100.0 100.0 / 88.7
+Cycle Navigation
+100.0 / 100.0
+21.7 / 20.6
+100.0 / 100.0 100.0 / 78.6
+2) Bhattamishra et al.
+D2
+100.0 / 100.0 100.0 / 80.1 100.0 / 100.0
+99.8 / 96.5
+D3
+100.0 / 100.0 100.0 / 77.8 100.0 / 99.7
+98.6 / 93.0
+D4
+100.0 / 100.0 100.0 / 82.6 100.0 / 98.7
+97.7 / 91.6
+D12
+100.0 / 100.0 100.0 / 80.3 100.0 / 99.8
+94.1 / 90.4
+Tomita 3
+100.0 / 100.0 100.0 / 94.4 100.0 / 99.7 100.0 / 99.9
+Tomita 4
+100.0 / 100.0 100.0 / 70.0 100.0 / 99.8 100.0 / 99.3
+Tomita 5
+100.0 / 100.0
+74.5 / 74.5 100.0 / 99.8
+98.2 / 84.1
+Tomita 6
+100.0 / 100.0
+50.0 / 50.0 100.0 / 98.5 100.0 / 65.7
+Table 1: Length generalization results on Regular Languages (Max/Avg). All models in the ﬁrst section (Dele-
+tang et al.) are trained on sequences of length 40. The reported numbers are the average of length extrapolation
+results from 41 to 500. Each result is an average over 3 seeds. All models in the second section (Bhattamishra et al.)
+are trained on sequences of length 50. The reported numbers are the average of length extrapolation results from
+51 to 100. Each result is an average over 3 seeds. Please refer to Appendix A for the detailed hyperparameters.
+goal is to know if a model can extrapolate at all.
+We additionally report the average scores since we
+want to know if the model can consistently obtain
+good performance. The baseline models we com-
+pare against are an RNN and vanilla Transformer
+with Transformer-XL style relative positional em-
+bedding (Dai et al., 2019). Table 1 shows that
+RegularGPT with C = 2 acheives similar perfor-
+mance as an RNN and substantially outperforms a
+vanilla Transformer.
+5.2
+The Effect of Chunk Size C
+We vary the chunk size C of RegularGPT to see
+its impact on the performance. The motivation
+for using a larger C is to reduce the number of
+layers (i.e., ¯L = logC T decreases in C) and in-
+crease the degree of parallelization. However, in
+Table 1, a larger C seems to pose a challenge to
+RegularGPT on the Modular Arithmetic task. Mod-
+ular Arithmetic is a hard task with far more states
+and complicated state transitions. Increasing C is
+likely to increase the task difﬁculty by composing
+more state transitions at once. We will have an
+in-depth discussion of the theoretical reasons in §7.
+5.3
+Robust to Probability Changes
+Other than the length extrapolation experiment, we
+alter the probability of sampling 1s of PARITY,
+i.e., set P(σi) ̸= 0.5. The results in Table 2 show
+Settings
+Probability P(σi = 1)
+0.1
+0.3
+0.5
+0.7
+0.9
+1) Same Length
+RegularGPT
+100
+100
+100
+100
+100
+RNN
+100
+100
+100
+100
+100
+Transformer
+98.4
+99.8
+99.6
+97.8
+77.2
+2) Extrapolation
+RegularGPT
+100
+100
+100
+100
+100
+RNN
+100
+100
+100
+100
+100
+Transformer
+50.1
+49.7
+50.3
+49.9
+50.0
+Table 2: We alter the probability P(σi = 1) used to
+sample 1s of PARITY. The same length setting is 40.
+The extrapolation setting is from 41 to 500. Each entry
+is an average over 3 seeds.
+that RegularGPT is robust to different sampling
+probabilities, indicating its successful modeling
+of the underlying regular language grammar. In
+contrast, a vanilla Transformer model struggles to
+achieve good performance even for the same length
+setting, again validating the fact that it only ﬁnds
+the naive-summation solution as discussed in §2.2.
+6
+Natural Language Experiments
+Given that RegularGPT has been battle-tested on
+the main experiment of regular languages, we now
+shift gear to benchmark its performance in the nat-
+ural language scenario. Given a model trained on
+sequences of length Ttr, we test it on much longer
+sequences of length Tex ≫ Ttr during inference,
+Lex
+KERPLE
+T5
+ALiBi
+RegularGPT (C/K)
+32 / 6
+64 / 6
+128 / 6 128 / 12 256 / 6
+512
+24.71
+24.50 24.53
+32.06
+30.17
+28.80
+26.37
+27.90
+1024
+24.42
+24.38 24.90
+32.03
+30.30
+28.94
+26.91
+34.38
+2048
+24.21
+25.01 25.08
+791.74
+30.56
+29.14
+27.08
+34.85
+4096
+24.53
+28.91 25.08
+812.00
+30.80
+29.25
+27.28
+35.11
+8192
+24.74
+39.08 25.08
+818.49 1175.91
+29.41
+27.39
+35.42
+Table 3: Natural language extrapolation results on OpenWebText2. The training length is 512. The numbers
+are averaged over three random seeds. Please refer to Appendix B for the detailed hyperparameters.
+and the goal is to observe similar perplexities. We
+ensure only the perplexity of the last token in a se-
+quence is used to compute the result so that we do
+not suffer from the early token curse (Press et al.,
+2022; Chi et al., 2022b). We average over 1,000 se-
+quences and report their averaged perplexities. We
+compare our model against the existing methods
+that are known to demonstrate the ability of length
+extrapolation including T5 (Raffel et al., 2020),
+ALiBi (Press et al., 2022), and KERPLE (Chi et al.,
+2022a).4 To counteract the loss of expressive power
+due to weight sharing, we thicken each layer of
+RegularGPT to K as detailed in §3.
+In Table 3, we ﬁrst observe exploding perplex-
+ities for C = 32 after Lex ≥ 2048. RegularGPT
+might only learn to model ⌈log32 512⌉ = 2 lay-
+ers during training, hence it fails to recursively
+model more than 322 = 1024 tokens during infer-
+ence. This is validated by C = 64 since this time
+it is able to extrapolate until 64⌈log64 512⌉ = 4096.
+While the above argument seems to suggest large
+C, setting C = 256 also deteriorates the perfor-
+mance. This might be due to the limited number
+of chunks (512/256 = 2) and ri’s (in Eq. (1)) ob-
+served at the second layer, making the learning of
+ri’s harder. Overall, C is a hyperparameter that
+needs to be carefully decided for RegularGPT on
+natural languages. We also observe that 128/12 per-
+forms better than 128/6, implying RegularGPT’s
+performance could be improved by stacking more
+layers to counteract the performance loss due to
+Weight-Sharing.
+It is worth noting that 128/12 performs relatively
+well and is close to previous methods designed
+speciﬁcally for the task of natural language extrapo-
+lation. We will analyze its inner workings in depth
+in Figure 4 and §7, in which we ﬁnd that Regu-
+4We
+use
+the
+nanoGPT
+codebase:
+https:
+//github.com/karpathy/nanoGPT, and the Open-
+WebText2
+dataset:
+https://huggingface.co/
+datasets/the_pile_openwebtext2.
+larGPT learns the similar local receptive ﬁeld as
+prior work, which is likely the key to its successful
+natural language extrapolation performance.
+7
+Discussion and Analysis
+7.1
+Regular Language and Finite State
+Semiautomaton
+Regular language is the type of formal language
+recognized by an FSA (Chomsky, 1956a), which
+is a 5-tuple (Q, Σ, δ, q0, F), where Q is a ﬁnite
+non-empty set of states, Σ is a ﬁnite non-empty
+set of symbols, q0 ∈ Q is an initial state, δ : Q ×
+Σ → Q is a transition function; F ⊆ Q is a set
+of ﬁnal states. However, some of our tasks are
+better modeled by a ﬁnite-state transducer (FST)
+as discussed in §2.1. To underpin both FSA and
+FST, we consider a semiautomation A = (Q, Σ, δ)
+(i.e., an FSA without q0 and F) and establish its
+connection to a Transformer model.
+Let σa:b be the sequence from position a (in-
+clusive) to b (exclusive) out of a length T input
+sequence (i.e., 0 ≤ a < b ≤ T). We deﬁne
+A(σa:b) : Q → Q as the (b − a)-step state transi-
+tion relation after receiving σa:b.
+A(σa:b) = δ(·|σb−1) ◦ · · · ◦ δ(·|σa),
+where f(·) ◦ g(·) = f(g(·)) denotes function
+composition. With abuse of notation, we deﬁne
+Aq(σa:b) ∈ Q as the state after receiving σa:b if
+starting at q ∈ Q.
+Aq(σa:b) = δ(·|σb−1) ◦ · · · ◦ δ(·|σa) ◦ q.
+7.2
+Modeling Transition Composition
+We want to show that the layers of RegularGPT
+with chunk size C = 2 can model the composition
+of two transition functions:
+A(σa:b) = A(σi:b)◦A(σa:i) for i ∈ [a+1, . . . , b).
+This way, the regular language problem can be
+solved recursively using the construction outlined
+in §3 and Figure 1. To formalize the statement,
+we ﬁrst observe that A(σa:b), A(σa:i), and A(σi:b)
+can be represented in R|Q|2:
+A(σa:b) =
+
+
+OneHot|Q|(Aq0(σa:b))
+OneHot|Q|(Aq1(σa:b))
+· · ·
+OneHot|Q|(Aq|Q|−1(σa:b))
+
+ ∈ R|Q|2,
+(2)
+where OneHot|Q|(i) is a one-hot vector of length
+|Q| with the i-th index being 1.
+The next step is to mix A(σa:i) and A(σi:b) to-
+gether and get A(σa:b). We show in Lemma 1 that
+a 2-layer ReLU network can learn (and so can a
+transformer layer) the composition. The proof of
+Lemma 1 is deferred to Appendix C.
+Lemma 1 (Approximation for Binary Matrix Prod-
+uct). Let A, B ∈ {0, 1}n×n be binary matrices of
+dimension n × n. Then, there exists a two-layer
+ReLU network such that
+fmlp([Flat(A), Flat(B)]) = Flat(AB),
+where Flat(X)(i−1)n+j = Xi,j
+for i, j ∈ [n] is
+the operation that ﬂattens a matrix into a vector.
+Now, we can relate Lemma 1 to the FFN lay-
+ers in RegularGPT. Following §3, when chuck size
+C = 2 and thickness K = 1, the output vector o(l)
+i
+depends on input sequence σi−2l+1+1:i+1. Also,
+o(l)
+i
+is computed from o(l−1)
+i−2l
+and o(l−1)
+i
+, which
+depend on input sequences σi−2l+1+1:i−2l+1 and
+σi−2l+1:i+1, respectively.
+This observation im-
+plies that o(l)
+i
+likely models the transition func-
+tion A(σi−2l+1+1:i+1), which we denote as o(l)
+i
+∼
+A(σi−2l+1+1:i+1). We will verify this assumption
+in §7.3.
+If o(l)
+i
+∼ A(σi−2l+1+1:i+1) is true, Lemma 1
+implies that RegularGPT’s FFN models the tran-
+sition function composition. This is immediate
+by setting o(l−1)
+i−2l
+∼ Flat(A(σi−2l+1+1:i−2l+1)),
+o(l−1)
+i
+∼ Flat(A(σi−2l+1:i+1)) and recognizing
+the fact that function composition is a matrix prod-
+uct under the representation of Eq. (2).
+The next step is to explain the use of self-
+attention layers in RegularGPT. Although Lemma 1
+has established a composition, it is unclear how
+the transitions are concatenated in the ﬁrst place
+(i.e., [Flat(A), Flat(B)]). With a two-head self-
+attention and the learnable relative positional
+scalars, it is possible to adjust them so that the
+attention output contains the concatenated informa-
+tion [Flat(A), Flat(B)].
+Recall in Eq. (1), each head has a different set of
+scalars ri’s. One concrete construction for concate-
+nation is setting r0 = 0 and the remaining −∞ for
+the ﬁrst head; r1 = 0 and the remaining −∞ for
+the second head. In other words, each head is only
+responsible for capturing one state transition. After
+the multi-head self-attention operation, we obtain
+the concatenation of two state transitions.
+Finally, when the prediction head reads out
+the answer, the operation is equivalent to a map-
+ping from A(σ0:T ) ∈ R|Q|×|Q| to Aq0(σ0:T ) =
+A(σ0:T ) ◦ q0 ∈ R|Q|. Since we assume that o(l)
+T−1
+models A(σ0:T ), the transduction readout is per-
+formed by a linear map on o(l)
+T−1 as Woo(l)
+T−1.
+7.3
+Veriﬁcation of Transition Modeling
+To verify whether our model learns the dynamics
+of a semiautomaton, we perform a clustering exper-
+iment to demystify the FFN output representations
+on the tasks of PARITY and Cycle Navigation. The
+two tasks are chosen as we can easily derive their
+state transition functions. For example, there are
+only two state transitions in PARITY:
+1
+0
+0
+1
+
+or
+0
+1
+1
+0
+
+and ﬁve state transitions in Cycle Navigation:
+
+
+OneHot5((0 + k)mod 5)
+OneHot5((1 + k)mod 5)
+OneHot5((2 + k)mod 5)
+OneHot5((3 + k)mod 5)
+OneHot5((4 + k)mod 5)
+
+
+, for k ∈ [0, ..., 4].
+e.g., k = 2 gives
+
+
+0
+0
+1
+0
+0
+0
+0
+0
+1
+0
+0
+0
+0
+0
+1
+1
+0
+0
+0
+0
+0
+1
+0
+0
+0
+
+
+.
+Given a testing input sequence of length 500
+that is much longer than the training length 40, we
+extract the output o(l)
+i
+of all layers l, perform dimen-
+sion reduction using PCA, and plot the dimension-
+reduced points on a 2D plane. Ideally, we want to
+see a limited number of clusters across all layers,
+indicating the model learns to capture the state tran-
+sition function. As we can see in Figure 3, PARITY
+has 2 clusters and Cycle Navigation has 5 clus-
+ters. The clear clustering effect demonstrates Reg-
+ularGPT’s correct learning of state transition func-
+15
+10
+5
+0
+5
+10
+15
+PCA1
+15
+10
+5
+0
+5
+10
+15
+PCA2
+0
+1
+(a) PARITY.
+15
+10
+5
+0
+5
+10
+15
+PCA1
+15
+10
+5
+0
+5
+10
+15
+PCA2
+0
+1
+2
+3
+4
+(b) Cycle Navigation.
+Figure 3: Clustering of FFN output vectors across all layers via PCA on the task of PARITY and Cycle Navigation.
+0
+100
+200
+300
+400
+500
+Position
+0.2
+0.4
+0.6
+0.8
+1.0
+(a) Regular Language - PARITY
+0
+500
+1000
+1500
+2000
+Position
+0.2
+0.4
+0.6
+0.8
+1.0
+(b) Natural Language - OpenWebText2
+Figure 4: Receptive ﬁeld of RegularGPT via the cumulative gradient analysis tool (Chi et al., 2022b).
+tions. This is in contrast to the naive-summation ap-
+proach learned by a vanilla Transformer as shown
+in Figure B.4 of Deletang et al. (2023).
+7.4
+Receptive Field Analysis
+We resort to the gradient analysis tool (Chi et al.,
+2022b) to inspect the receptive ﬁeld of RegularGPT
+on regular and natural languages. It computes a cu-
+mulative sum of the gradient norms starting from
+the most recent token to the earliest one. A large
+magnitude of slope at a position means the most re-
+cent token has a high dependency on that position.
+Ideally, we would like to see the receptive ﬁeld
+covering the whole input sequence for the case of
+regular languages because every single bit in the in-
+put sequence is important for the ﬁnal results. This
+is equivalent to a slanted line going from the lower
+right to the upper left, which is validated in Fig-
+ure 4a. As for natural language, we discover some-
+thing interesting in Figure 4b in that RegularGPT
+settles on the local windowed-attention pattern as
+those enforced manually in prior work (Press et al.,
+2022; Chi et al., 2022a,b). This suggests the task of
+natural language modeling mostly needs only local
+context to achieve good performance, which aligns
+with the common belief.
+8
+Conclusion
+This paper introduces RegularGPT, a novel variant
+of the Transformer architecture inspired by the no-
+tion of working memory that can effectively model
+regular languages with high efﬁciency. Theoretical
+explanations and accompanying clustering visual-
+izations are presented to illustrate how RegularGPT
+captures the essence of regular languages. More-
+over, RegularGPT is evaluated on the task of nat-
+ural language length extrapolation, revealing its
+intriguing rediscovery of the local windowed atten-
+tion effect previously observed in related research.
+Notably, RegularGPT establishes profound connec-
+tions with various existing architectures, thereby
+laying the groundwork for the development of fu-
+ture Transformer models that facilitate efﬁcient al-
+gorithmic reasoning and length extrapolation.
+Limitations
+Currently we set the chunk size C of RegularGPT
+to a constant. Can we make the chunk size more
+ﬂexible? A ﬂexible and data-driven C might fur-
+ther boost its performance on natural languages as
+they often demonstrate diverse patterns unlike reg-
+ular languages underpinned by simple grammars.
+This might also improve the performance of Regu-
+larGPT when C ̸= 128.
+References
+Eryn J Adams, Anh T Nguyen, and Nelson Cowan.
+2018.
+Theories of working memory: Differences
+in deﬁnition, degree of modularity, role of attention,
+and purpose. Language, speech, and hearing ser-
+vices in schools, 49(3):340–355.
+Cem Anil, Yuhuai Wu, Anders Johan Andreassen,
+Aitor Lewkowycz, Vedant Misra, Vinay Venkatesh
+Ramasesh, Ambrose Slone, Guy Gur-Ari, Ethan
+Dyer, and Behnam Neyshabur. 2022.
+Exploring
+length generalization in large language models. In
+Advances in Neural Information Processing Sys-
+tems.
+Kristijan Armeni, Christopher Honey, and Tal Linzen.
+2022.
+Characterizing verbatim short-term mem-
+ory in neural language models.
+In Proceedings
+of the 26th Conference on Computational Natural
+Language Learning (CoNLL), pages 405–424, Abu
+Dhabi, United Arab Emirates (Hybrid). Association
+for Computational Linguistics.
+Alan Baddeley. 1992.
+Working memory.
+Science,
+255(5044):556–559.
+Alan D Baddeley and Graham Hitch. 1974. Working
+memory. In Psychology of learning and motivation,
+volume 8, pages 47–89. Elsevier.
+Iz Beltagy, Matthew E. Peters, and Arman Cohan.
+2020. Longformer: The long-document transformer.
+arXiv:2004.05150.
+Satwik Bhattamishra, Kabir Ahuja, and Navin Goyal.
+2020. On the Ability and Limitations of Transform-
+ers to Recognize Formal Languages.
+In Proceed-
+ings of the 2020 Conference on Empirical Methods
+in Natural Language Processing (EMNLP), pages
+7096–7116, Online. Association for Computational
+Linguistics.
+Guy E Blelloch. 1990. Preﬁx sums and their applica-
+tions. School of Computer Science, Carnegie Mel-
+lon University Pittsburgh, PA, USA.
+Ta-Chung Chi, Ting-Han Fan, Peter Ramadge, and
+Alexander Rudnicky. 2022a. KERPLE: Kernelized
+relative positional embedding for length extrapola-
+tion. In Advances in Neural Information Processing
+Systems.
+Ta-Chung Chi, Ting-Han Fan, and Alexander I. Rud-
+nicky. 2022b.
+Receptive ﬁeld alignment enables
+transformer length extrapolation.
+David Chiang and Peter Cholak. 2022. Overcoming a
+theoretical limitation of self-attention. In Proceed-
+ings of the 60th Annual Meeting of the Association
+for Computational Linguistics (Volume 1: Long Pa-
+pers), pages 7654–7664, Dublin, Ireland. Associa-
+tion for Computational Linguistics.
+N. Chomsky. 1956a. Three models for the description
+of language. IRE Transactions on Information The-
+ory, 2(3):113–124.
+Noam Chomsky. 1956b. Three models for the descrip-
+tion of language. IRE Transactions on information
+theory, 2(3):113–124.
+Kevin Clark, Urvashi Khandelwal, Omer Levy, and
+Christopher D. Manning. 2019. What does BERT
+look at? an analysis of BERT’s attention. In Pro-
+ceedings of the 2019 ACL Workshop BlackboxNLP:
+Analyzing and Interpreting Neural Networks for
+NLP, pages 276–286, Florence, Italy. Association
+for Computational Linguistics.
+Nelson Cowan. 1998. Attention and memory: An inte-
+grated framework. Oxford University Press.
+Róbert Csordás, Kazuki Irie, and Jürgen Schmidhuber.
+2022. The neural data router: Adaptive control ﬂow
+in transformers improves systematic generalization.
+In International Conference on Learning Represen-
+tations.
+Zihang Dai, Zhilin Yang, Yiming Yang, Jaime Car-
+bonell, Quoc Le, and Ruslan Salakhutdinov. 2019.
+Transformer-XL: Attentive language models beyond
+a ﬁxed-length context. In Proceedings of the 57th
+Annual Meeting of the Association for Computa-
+tional Linguistics, pages 2978–2988, Florence, Italy.
+Association for Computational Linguistics.
+Mostafa Dehghani, Stephan Gouws, Oriol Vinyals,
+Jakob Uszkoreit, and Lukasz Kaiser. 2019. Univer-
+sal transformers.
+In International Conference on
+Learning Representations.
+Gregoire Deletang, Anian Ruoss, Jordi Grau-Moya,
+Tim Genewein, Li Kevin Wenliang, Elliot Catt,
+Chris Cundy, Marcus Hutter, Shane Legg, Joel Ve-
+ness, and Pedro A Ortega. 2023. Neural networks
+and the chomsky hierarchy. In International Confer-
+ence on Learning Representations.
+Adele Diamond. 2013. Executive functions. Annual
+review of psychology, 64:135–168.
+Maha Elbayad, Jiatao Gu, Edouard Grave, and Michael
+Auli. 2020. Depth-adaptive transformer. In Interna-
+tional Conference on Learning Representations.
+Jeffrey L Elman. 1990. Finding structure in time. Cog-
+nitive science, 14(2):179–211.
+K Anders Ericsson and Walter Kintsch. 1995. Long-
+term working memory.
+Psychological review,
+102(2):211.
+Alex Graves,
+Greg Wayne,
+and Ivo Danihelka.
+2014.
+Neural turing machines.
+arXiv preprint
+arXiv:1410.5401.
+Michael Hahn. 2020. Theoretical limitations of self-
+attention in neural sequence models. Transactions
+of the Association for Computational Linguistics,
+8:156–171.
+Sepp Hochreiter and Jürgen Schmidhuber. 1997.
+Long short-term memory.
+Neural computation,
+9(8):1735–1780.
+Michael I Jordan. 1997. Serial order: A parallel dis-
+tributed processing approach. In Advances in psy-
+chology, volume 121, pages 471–495. Elsevier.
+Richard E Ladner and Michael J Fischer. 1980. Parallel
+preﬁx computation.
+Journal of the ACM (JACM),
+27(4):831–838.
+Sivaramakrishnan Lakshmivarahan and Sudarshan K
+Dhall. 1994.
+Parallel computing using the preﬁx
+problem. Oxford University Press.
+Zhenzhong Lan, Mingda Chen, Sebastian Goodman,
+Kevin Gimpel, Piyush Sharma, and Radu Soricut.
+2020. Albert: A lite bert for self-supervised learning
+of language representations. In International Con-
+ference on Learning Representations.
+Bingbin Liu, Jordan T. Ash, Surbhi Goel, Akshay Kr-
+ishnamurthy, and Cyril Zhang. 2023. Transformers
+learn shortcuts to automata. In International Confer-
+ence on Learning Representations.
+Eric Martin and Chris Cundy. 2018. Parallelizing lin-
+ear recurrent neural nets over sequence length. In
+International Conference on Learning Representa-
+tions.
+Akira Miyake, Priti Shah, et al. 1999. Models of work-
+ing memory.
+Cambridge: Cambridge University
+Press.
+Aida Nematzadeh, Sebastian Ruder, and Dani Yo-
+gatama. 2020. On memory in human and artiﬁcial
+language processing systems.
+In Proceedings of
+ICLR Workshop on Bridging AI and Cognitive Sci-
+ence.
+Maxwell Nye, Anders Johan Andreassen, Guy Gur-Ari,
+Henryk Michalewski, Jacob Austin, David Bieber,
+David Dohan, Aitor Lewkowycz, Maarten Bosma,
+David Luan, Charles Sutton, and Augustus Odena.
+2022. Show your work: Scratchpads for intermedi-
+ate computation with language models.
+Klaus Oberauer. 2002. Access to information in work-
+ing memory: exploring the focus of attention. Jour-
+nal of Experimental Psychology: Learning, Memory,
+and Cognition, 28(3):411.
+Antonio Orvieto, Samuel L Smith, Albert Gu, Anushan
+Fernando, Caglar Gulcehre, Razvan Pascanu, and
+Soham De. 2023.
+Resurrecting recurrent neu-
+ral networks for long sequences.
+arXiv preprint
+arXiv:2303.06349.
+Oﬁr Press, Noah Smith, and Mike Lewis. 2022. Train
+short, test long: Attention with linear biases enables
+input length extrapolation. In International Confer-
+ence on Learning Representations.
+Alec Radford, Jeffrey Wu, Rewon Child, David Luan,
+Dario Amodei, Ilya Sutskever, et al. 2019.
+Lan-
+guage models are unsupervised multitask learners.
+OpenAI blog, 1(8):9.
+Jack Rae and Ali Razavi. 2020a. Do transformers need
+deep long-range memory?
+In Proceedings of the
+58th Annual Meeting of the Association for Compu-
+tational Linguistics, pages 7524–7529.
+Jack Rae and Ali Razavi. 2020b. Do transformers need
+deep long-range memory?
+In Proceedings of the
+58th Annual Meeting of the Association for Compu-
+tational Linguistics, pages 7524–7529, Online. As-
+sociation for Computational Linguistics.
+Colin Raffel, Noam Shazeer, Adam Roberts, Katherine
+Lee, Sharan Narang, Michael Matena, Yanqi Zhou,
+Wei Li, and Peter J Liu. 2020. Exploring the limits
+of transfer learning with a uniﬁed text-to-text trans-
+former. The Journal of Machine Learning Research,
+21(1):5485–5551.
+Antoine Simoulin and Benoit Crabbé. 2021.
+How
+many layers and why? An analysis of the model
+depth in transformers. In Proceedings of the 59th
+Annual Meeting of the Association for Computa-
+tional Linguistics and the 11th International Joint
+Conference on Natural Language Processing: Stu-
+dent Research Workshop, pages 221–228, Online.
+Association for Computational Linguistics.
+Jimmy T.H. Smith, Andrew Warrington, and Scott Lin-
+derman. 2023. Simpliﬁed state space layers for se-
+quence modeling.
+In The Eleventh International
+Conference on Learning Representations.
+Aäron van den Oord, Sander Dieleman, Heiga Zen,
+Karen Simonyan, Oriol Vinyals, Alexander Graves,
+Nal Kalchbrenner,
+Andrew Senior,
+and Koray
+Kavukcuoglu. 2016. Wavenet: A generative model
+for raw audio. In Arxiv.
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob
+Uszkoreit, Llion Jones, Aidan N Gomez, Ł ukasz
+Kaiser, and Illia Polosukhin. 2017. Attention is all
+you need. In Advances in Neural Information Pro-
+cessing Systems, volume 30. Curran Associates, Inc.
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten
+Bosma, brian ichter, Fei Xia, Ed H. Chi, Quoc V Le,
+and Denny Zhou. 2022. Chain of thought prompting
+elicits reasoning in large language models. In Ad-
+vances in Neural Information Processing Systems.
+Dani Yogatama, Cyprien de Masson d’Autume, and
+Lingpeng Kong. 2021.
+Adaptive Semiparametric
+Language Models. Transactions of the Association
+for Computational Linguistics, 9:362–373.
+A
+Hyperparameters for the Regular
+Language Experiments
+We report the hyperpamaters used in the regular
+language experiments (Table 1) in Table 4.
+B
+Hyperparameters for the Natural
+Language Experiments
+We report the hyperpamaters used in the natural
+language experiments (Table 3) in Table 5.
+C
+Proof of Lemma 1
+Lemma 1 (Approximation for Binary Matrix Prod-
+uct). Let A, B ∈ {0, 1}n×n be binary matrices of
+dimension n × n. Then, there exists a two-layer
+ReLU network such that
+fmlp([Flat(A), Flat(B)]) = Flat(AB),
+where Flat(X)(i−1)n+j
+=
+Xi,j
+for i, j
+∈
+[1, ..., n] is the operation that ﬂattens a matrix into
+a vector.
+Proof. Observe that a ReLU operation can per-
+fectly approximate the multiplication of two binary
+scalars:
+ReLU(a + b − 1) = a · b,
+for a, b ∈ {0, 1}.
+The binary matrix product AB is composed of n3
+binary scalar products of the form:
+AikBkj = x(i−1)n+kx(n+k−1)n+j
+for i, j, k ∈ [1, .., n],
+where x = [Flat(A), Flat(B)] is the concatenated
+ﬂattened input. Our goal is to construct two neural
+network layers. The ﬁrst layer computes all n3
+binary scalar products. The second layer sums
+these products into the form of matrix product; i.e.,
+Pn
+k=1 AikBkj.
+The ﬁrst layer’s binary weight matrix W (1) ∈
+{0, 1}2n2×n3 is constructed as:
+For z ∈ [1, ..., 2n2], i, j, k ∈ [1, ..., n],
+W (1)
+(z,(i−1)n2+(j−1)n+k =
+1
+if z = (i − 1)n + k or (n + k − 1)n + j
+0
+otherwise.
+(3)
+Then, the ﬁrst layer computes all n3 binary scalar
+products as follows:
+ReLU
+
+[Flat(A),Flat(B)]W (1)−1⊤
+n3
+
+(i−1)n2+(j−1)n+k
+= AikBkj
+for i, j, k ∈ [1, ..., n].
+To sum these n3 products into n2 results, the
+second layer’s binary weight matrix W (2)
+∈
+{0, 1}n3×n2 is constructed as:
+W (2) = In2 ⊗ 1n =
+
+
+1n
+0n
+0n
+. . .
+0n
+0n
+1n
+0n
+. . .
+0n
+...
+...
+0n
+. . .
+0n
+1n
+
+
+∈ {0, 1}n3×n2,
+where In2 is an n2 × n2 identity matrix, ⊗ is the
+Kronecker product, 0n is an n-dimensional column
+vector of all zeros, and 1n is an n-dimensional
+column vector of all ones. We arrive at a two-
+layer ReLU network that perfectly approximates
+the multiplication of two binary matrices:
+fmlp([Flat(A), Flat(B)])
+=ReLU
+
+[Flat(A),Flat(B)]W (1)−1⊤
+n3
+
+W (2)
+= Flat(AB).
+D
+Illustration of Lemma 1
+D.1
+Illustration of the Binary Weight
+Matrices
+We illustrate W (1) and W (2) of Lemma 1 as fol-
+lows:
+import numpy as np
+def get_W1 ( n ) :
+n2 = n*n
+W1 = np . zeros ((2* n*n ,
+n*n*n ) ,
+dtype= i n t )
+for
+i
+in
+range ( n ) :
+for
+j
+in
+range ( n ) :
+for k in
+range ( n ) :
+W1[ i *n+k , i *n2+ j *n+k ] = 1
+W1[ n2+k*n+j , i *n2+ j *n+k ] = 1
+return W1
+def get_W2 ( n ) :
+eye = np . eye ( n*n ,
+dtype= i n t )
+ones = np . ones ( ( n , 1 ) ,
+dtype= i n t )
+W2 = np . kron ( eye ,
+ones )
+return W2
+get_W1(2) gives:
+[ [ 1
+0 1 0 0 0 0 0]
+[0 1 0 1 0 0 0 0]
+[0 0 0 0 1 0 1 0]
+[0 0 0 0 0 1 0 1]
+[1 0 0 0 1 0 0 0]
+[0 0 1 0 0 0 1 0]
+[0 1 0 0 0 1 0 0]
+[0 0 0 1 0 0 0
+1 ] ]
+# Layers
+Hidden Size # Attention Heads Train Seq. Len. # Trainable Params.
+logC T
+256
+8
+40 or 50
+4.3 M
+Optimizer
+Batch Size
+Train Steps
+Precision
+Dataset
+Adam (lr 1e-4, 3e-4, 5e-4)
+128
+100,000
+ﬂoat32
+Regular Languages
+Table 4: Hyperparameters for the regular language experiments.
+# Layers
+Hidden Size # Attention Heads Train Seq. Len.
+# Trainable Params.
+K logC T
+768
+12
+512
+81M (K = 6) or 123M (K = 12)
+Optimizer
+Batch Size
+Train Steps
+Precision
+Dataset
+Adam (lr 6e-4)
+32
+50,000
+bﬂoat16
+OpenWebText2
+Table 5: Hyperparameters for the natural language experiments.
+get_W2(2) gives:
+[ [ 1
+0 0 0]
+[1 0 0 0]
+[0 1 0 0]
+[0 1 0 0]
+[0 0 1 0]
+[0 0 1 0]
+[0 0 0 1]
+[0 0 0
+1 ] ]
+D.2
+An Illustrative Example for n = 2
+Suppose the input matrices are:
+A =
+1
+0
+1
+0
+
+,
+B =
+0
+1
+1
+0
+
+.
+The concatenated ﬂattened input becomes:
+x = [Flat(A), Flat(B)] = [1 0 1 0 0 1 1 0].
+Then, Lemma 1 is veriﬁed as follows:
+ReLU
+
+xW (1) − 1⊤
+n3
+
+W (2)
+=ReLU ([1 1 2 0 1 1 2 0] − 1) W (2)
+=[0 0 1 0 0 0 1 0]W (2)
+=[0 1 0 1]
+=Flat
+0
+1
+0
+1
+
+= Flat (AB) .
+Here is the Python code for the above example:
+A = np . a r r a y ( [ [ 1 , 0 ] , [ 1 , 0 ] ] ) . reshape ( −1)
+B = np . a r r a y ( [ [ 0 , 1 ] , [ 1 , 0 ] ] ) . reshape ( −1)
+x = np . c o n c a t e n a t e ( [A, B ] ) . reshape (1 , −1)
+W1 = get_W1 ( 2 )
+W2 = get_W2 ( 2 )
+flat_AB = np . maximum ( x @ W1 −1 ,0) @ W2
+

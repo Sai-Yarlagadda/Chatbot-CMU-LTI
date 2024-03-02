@@ -1,0 +1,1564 @@
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary 
+Engagement in Math, Engineering, and Textiles 
+Samantha Speer 
+Ana P. Garcia-Alonzo 
+Joey Huang 
+Carnegie Mellon University 
+Carnegie Mellon University 
+University of California, Irvine 
+Pittsburgh, PA, USA 
+Pittsburgh, PA, USA 
+Irvine, CA, USA 
+snspeer@andrew.cmu.edu 
+apaola.005@gmail.com 
+chujenh@uci.edu 
+Nickolina Yankova 
+Carolyn Rose 
+Kylie Peppler 
+University of California, Irvine 
+Carnegie Mellon University 
+University of California, Irvine 
+Irvine, CA, USA 
+Pittsburgh, PA, USA 
+Irvine, CA, USA 
+nyankova@uci.edu 
+cp3a@andrew.cmu.edu 
+kpeppler@uci.edu 
+James McCann 
+Melisa Orta Martinez 
+Carnegie Mellon University 
+Carnegie Mellon University 
+Pittsburgh, PA, USA 
+Pittsburgh, PA, USA 
+jmccann@andrew.cmu.edu 
+mortamar@andrew.cmu.edu 
+warp yarn
+(vertical)
+weft yarn
+(horizontal)
+warp 
+beam
+reed
+linear actuators
+tensioning
+system
+creel
+Figure 1: Semi-automated Pattern Executing Educational Robotic Loom (SPEERLoom): An open-source robotic Jacquard loom 
+kit for use in interdisciplinary collegiate classrooms 
+ABSTRACT 
+Weaving is a fabrication process that is grounded in mathematics 
+and engineering: from the binary, matrix-like nature of the pat-
+tern drafts weavers have used for centuries, to the punch card 
+programming of the frst Jacquard looms. This intersection of dis-
+ciplines provides an opportunity to ground abstract mathematical 
+concepts in a concrete and embodied art, viewing this textile art 
+through the lens of engineering. Currently, available looms are not 
+optimized to take advantage of this opportunity to increase mathe-
+matics learning by providing hands-on interdisciplinary learning 
+This work is licensed under a Creative Commons Attribution International 
+4.0 License. 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+© 2023 Copyright held by the owner/author(s). 
+ACM ISBN 979-8-4007-0132-0/23/10. 
+https://doi.org/10.1145/3586183.3606724 
+in collegiate classrooms. In this work, we present SPEERLoom: an 
+open-source, robotic Jacquard loom kit designed to be a tool for 
+interweaving cloth fabrication, mathematics, and engineering to 
+support interdisciplinary learning in the classroom. We discuss 
+the design requirements and subsequent design of SPEERLoom. 
+We also present the results of a pilot study in a post-secondary 
+class fnding that SPEERLoom supports hands-on, interdisciplinary 
+learning of math, engineering, and textiles. 
+CCS CONCEPTS 
+• Applied computing → Interactive learning environments; • 
+Computer systems organization → Robotics; • Human-centered 
+computing → Interaction devices. 
+KEYWORDS 
+Embodied Interaction, Tangible Interfaces, Weaving, Mathematics, 
+Engineering, Interdisciplinary Learning 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Speer et al. 
+ACM Reference Format: 
+Samantha Speer, Ana P. Garcia-Alonzo, Joey Huang, Nickolina Yankova, 
+Carolyn Rose, Kylie Peppler, James McCann, and Melisa Orta Martinez. 2023. 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+in Math, Engineering, and Textiles. In The 36th Annual ACM Symposium on 
+User Interface Software and Technology (UIST ’23), October 29–November 01, 
+2023, San Francisco, CA, USA. ACM, New York, NY, USA, 15 pages. https: 
+//doi.org/10.1145/3586183.3606724 
+1 INTRODUCTION 
+Weaving is a fabrication process that is shaped by art, mathematics, 
+and engineering. For centuries, humans have used woven cloth 
+to create artistic expressions through material, color, pattern, and 
+weave [51]. These artistic expressions ofer an opportunity to ex-
+plore mathematical representations and models for patterns and 
+textiles. For example, weaving patterns can be represented mathe-
+matically through the binary, matrix-like nature of the pattern [22]. 
+The feel and drapability of the cloth can be analyzed geometrically 
+through an understanding of the yarn tension, weight, and how 
+the weaver interlaces the yarns together [12, 50]. Even the layering 
+of the cloth can be defned mathematically through the use of set 
+theory to group yarns into layers [12]. 
+In order to create high-quality, complex cloth, weavers follow a 
+process that mirrors the engineering design process [35]. They start 
+by designing or choosing a desired pattern and analyzing the fac-
+tors which will determine the feel and quality of their fnal product 
+(drapability, the tension of the loom, and the quality of the yarn). 
+They then plan a weaving strategy to achieve their desired fnal 
+product given the constraints of the tools available and iterate on 
+their design [37]. Weavers’ desire to create more complex patterns 
+and the industry’s desire to mass produce these products has led not 
+only to advancements in processes but also to multiple engineering 
+innovations [8]. For example, the development of modern automa-
+tion was driven by the introduction of punch cards to program the 
+frst Jacquard looms [14] which led to modern-day computers. 
+This connection between weaving, math, and engineering presents 
+an opportunity to bring interdisciplinary learning into the class-
+room [48, 49]. Interdisciplinarity brings together diferent disci-
+plines, providing an opportunity for students from diferent back-
+grounds to collaborate toward a shared goal. Interdisciplinary cur-
+ricula can also improve student outcomes in education as well as 
+support the learning of critical skills to bolster student success in 
+future careers [27]. 
+Past work has explored interdisciplinarity in primary and sec-
+ondary education using weaving to teach mathematics and com-
+putational thinking (e.g. [32, 39, 55]). However, the concepts being 
+taught and the supporting weaving technologies are limited. Most 
+used simple cardboard looms or even construction paper for stu-
+dent pattern creation, restricting the complexity of the patterns and 
+concepts that can be taught. 
+Our goal is to take advantage of the complex mathematical and 
+engineering relationships with weaving to create interdisciplinary 
+instruction for post-secondary classrooms. Toward this goal, we 
+developed SPEERLoom: an open-source Jacquard loom kit for sup-
+porting arts, mathematics, and engineering learning. SPEERLoom 
+supports the learning of mechatronic concepts and engineering 
+design principles through its open-source design and assembly. 
+SPEERLoom’s Jacquard capabilities allow it to create complicated 
+design patterns, afording the instruction of complex mathematical 
+concepts (e.g.linear algebra, vector calculus, and set theory). All of 
+our designs, assembly instructions, and software can be found at: 
+https://sites.google.com/view/speerloom. 
+The aim of this paper is to disseminate the design of SPEERLoom 
+and the results from an evaluation of SPEERLoom as a tool for 
+weaving and supporting students’ interdisciplinary learning of art, 
+mathematics, and engineering concepts in a post-secondary class. 
+2 RELATED WORK 
+Interdisciplinary learning in post-secondary classrooms ofers ben-
+efts beyond those of single-discipline education [4, 5, 23]. Weaving 
+provides an overlap of many disciplines but requires a loom specif-
+ically designed for classrooms. Below, we discuss previous work in 
+interdisciplinary learning, the interdisciplinarity of weaving, and 
+currently available looms. 
+2.1 Interdisciplinary Learning 
+The National Academy of Engineering named interdisciplinarity 
+as a key skill for future engineers [45]. Interdisciplinarity is the 
+ability to understand concepts within complex social, historical, 
+and cultural contexts, and to understand, evaluate, synthesize, and 
+apply knowledge from diverse felds [30]. 
+While research and careers in STEM felds increasingly embrace 
+interdisciplinarity, there remains a gap in post-secondary educa-
+tion to prepare students for this type of work [26, 34]. Traditional 
+disciplinary education in engineering and math focuses solely on 
+knowledge within domains without considering knowledge across 
+disciplinary boundaries [4, 23]. Interdisciplinary approaches can 
+help students gain critical thinking skills and the ability to apply 
+“discipline-specifc" knowledge to real-world problems [5]. 
+There are challenges to integrating interdisciplinarity in engi-
+neering education [31, 59]. Classrooms need support for integration, 
+which can come from technology [59]. The use of technology and ro-
+botics have increased interdisciplinary outcomes in post-secondary 
+classrooms [13, 19, 21, 29, 60], however, further research is needed. 
+2.2 Weaving as an Interdisciplinary Field 
+Both mathematical and engineering principles can be used to defne 
+cloth, categorize its properties, and shape its fabrication. Weaving 
+machines aford the re-contextualization of digital and computa-
+tion in a non-typical application [15]. Recently, weaving has been 
+explored as a way of fabricating electronics [11]. Applications have 
+explored the ability to weave conductive thread into cloth with 
+applications in sensing [61], actuation [62], and design [9, 17, 28]. 
+Not only can weaving be used in engineering, engineering is a 
+necessary component of weaving. 
+Cloth is fabricated by interlacing vertical warp yarns with hor-
+izontal weft yarns (Figure 1). Many mathematical principles are 
+illustrated in weaving paradigms, including the matrix represen-
+tations of pattern design. Weaving patterns are often represented 
+as weaving drafts (Figure 2) consisting of four major components: 
+Threading (which warp yarns are actuated by which shaft), Tie-up 
+(which shafts can be raised together by a single pedal), Treadling 
+(which pedal is pressed at a given time step), and Draw Down (fnal 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Figure 2: A weaving draft for a typical shaft loom. Drafts 
+describe how warp yarns connect to shafts (threading), how 
+shafts connect to pedals (tie-up) and how pedals are actuated 
+(treadling) to create the weaving pattern (draw down). 
+cloth pattern). Given the binary nature of weaving [22], we can 
+write each of the parts of the weaving draft as a binary matrix. 
+Multiplying these matrices results in the matrix representation of 
+the draw down, represented as: 
+� = �� × ��� × �ℎ. 
+(1) 
+Where � represents the draw down,�� the treadling,��� the tie-up 
+transposed, and �ℎ the threading (Figure 2). 
+Once the pattern is modeled as a binary matrix, vector difer-
+entiation can be used to count the interlacings of warp and weft 
+yarns. Each row (weft yarn) or column (warp yarn) of the binary 
+matrix representation of the cloth’s pattern can be diferentiated 
+and summed to count the interlacings. This defnes the “weave 
+factor" of the cloth [6] and can predict physical properties of the 
+cloth such as sturdiness and drapability. Another property that can 
+be mathematically modeled is the layering of the cloth [20]. The 
+mathematical defnition of interlacings allows for a defnition of 
+a singular cloth as a set of interlaced yarns, referred to as “cloth 
+integrity" in this paper. More details on the specifc mathematical 
+defnitions of these principles can be found in Appendix A 
+Once a cloth is designed, the weaver can use these mathemat-
+ical models, to iterate on their design to achieve the desired fnal 
+cloth, following a process like the engineering design process [35]. 
+Once their design is fnalized, weavers use a loom to fabricate their 
+textile product. Weavers must carefully ensure tension is evenly 
+held across warp yarns as the weft is interwoven into them to cre-
+ate cloth. Looms have been expertly engineered over centuries to 
+precisely achieve the perfect cloth [8]. Engineers must use systems 
+engineering skills when considering the textile constraints and 
+system interactions. Furthermore, they must use system construc-
+tion skills when considering the loom’s robustness and durability 
+enabling long-term use under tension. 
+2.3 Looms as Interdisciplinary Learning Tools 
+Weaving cloth using the concepts discussed in section 2.2 requires a 
+versatile loom. Diferent loom types ofer varying versatility at the 
+expense of increased cost. In this section, we explore this trade-of 
+and discuss the benefts and detriments of three loom types: rigid 
+heddle, shaft, and Jacquard. 
+Rigid heddle and shaft looms are less costly than Jacquard looms 
+but ofer less versatility with less control over individual warp 
+threads. Loom cost is proportional to the quality of its construction 
+and the number of heddles and shafts ofered. These looms range 
+from tens to several thousands of USD. While the less costly versions 
+are monetarily feasible for a collegiate classroom, they require 
+signifcant expertise and time to warp and thread (described in 
+Section 3.1). Changing patterns to explore diferent mathematical 
+and engineering concepts means repeating this lengthy process, 
+yielding low versatility and thus low classroom feasibility. 
+Jacquard looms ofer the most weaving versatility by actuating 
+each warp thread individually. Here we discuss two Jacquard loom 
+types: commercial and DIY. Commercial Jacquard looms provide 
+the highest quality cloth, but are costly. These looms are usually 
+covered machines designed to be plug-and-play limiting the abil-
+ity to "tinker" with them, thus limiting instructional support of 
+engineering design skills. DIY looms are signifcantly less costly 
+and allow for deeper exploration of engineering skills but produce 
+lower-quality cloth. These trade-ofs between cloth quality, educa-
+tional potential, and cost are important classroom considerations. 
+Two popular commercially available Jacquard looms are the 
+TC2 [44] and the Jacq3g [25]. Their cost is high – tens of thousands 
+of dollars – making them infeasible as classroom tools. While the 
+commercial availability of these looms afords more access to ex-
+ploring the mathematical principles of produced cloth, it restricts 
+the engineering skills that can be explored due to the opaqueness of 
+the product and the legal protection of novel design advancements. 
+To address the cost issue, many hobbyists and researchers have 
+made afordable, personal Jacquard looms [1, 33, 40, 42, 46, 56]. 
+Some [1, 42, 56] use serial actuation, reducing cost but increas-
+ing the warp actuation time (shedding time) which must be done 
+hundreds of times to produce a single cloth. Serial actuation looms 
+range from 32 [42] to 60 [56] warp yarns. Other DIY Jacquard looms 
+use parallel warp yarn actuation, decreasing shedding time, but 
+increasing cost [33, 40]. To reduce their cost, these looms typically 
+have fewer warp yarns (14 [33]–24 [40]), reducing cloth quality. 
+These DIY looms are optimized for personal use, sacrifcing qual-
+ity and efciency for lower cost. A loom specifcally designed for 
+classroom use needs to balance enough cloth quality to teach the 
+desired course topics, whilst being efcient, robust, and reasonably 
+priced. 
+DIY loom designs are openly available unlike their commer-
+cial counterparts, often with websites describing the engineering 
+processes [33, 40, 42, 56]. However, recreating the devices require 
+specifc expertise, restricting the ability of students to be active 
+participants in creating their own loom. 
+3 SPEERLOOM DESIGN REQUIREMENTS 
+A loom kit designed for interdisciplinary education in art, math, and 
+engineering must facilitate time- and labor-efcient interactions. 
+The loom must be robust, moderate cost, and relevant to weaving, 
+math, and engineering. These requirements are delineated below. 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Speer et al. 
+3.1 User Interaction 
+Ease-of-use and efciency are important design considerations for 
+human-tool interaction [38, 43, 63]. Classroom technologies must 
+also have these qualities to not distract from learning [52]. There are 
+two typical human interactions with looms: warping and weaving. 
+Each should be efcient, reducing non-educational work time. 
+3.1.1 Warping Eficiency. Warping a loom is a lengthy process that 
+consists of two stages: winding yarn onto the back warp beam, and 
+threading the yarn through the heddles of the loom [37]. Winding 
+requires the weaver to hold manual tension while stretching the 
+yarn across pegs of a warp frame. Then the yarn can be transferred 
+to the back warp beam where tension must be held manually as 
+the yarn is rolled on. From here, the back warp beam is attached to 
+the loom and the threading process can begin. Threading requires 
+taking each warp yarn through the correct heddle carefully so as 
+to not make mistakes, or the process must be repeated. To reduce 
+the expenditure of classroom time on non-learning related tasks, a 
+well-designed classroom loom should be easy and quick to warp 
+and allow for corrections in the process should errors occur. 
+3.1.2 Weaving Eficiency. A loom designed for classroom use should 
+ensure there are as few as possible interruptions during the weav-
+ing process to lessen distractions from learning. Weaving time on 
+the loom should feel productive and efcient, requiring the shed-
+ding time be as quick as possible. In an interdisciplinary classroom, 
+student weavers will be novices and will inevitably make mistakes, 
+e.g., a single warp yarn losing tension or breaking. These problems 
+should be quick and easy to correct. 
+3.2 Accessibility 
+To be accessible for classroom use, the cost of the loom must remain 
+low enough that multiple looms could be purchased by schools [18]. 
+The accessibility of a device can also be increased through open-
+sourcing the design [47], allowing users to customize the device to 
+ft their specifc needs. 
+3.3 Interdisciplinary Relevance 
+As an educational tool for textiles, engineering, and math learning, 
+the loom should be designed to aid in combining these interdisci-
+plinary concepts without becoming a distraction [52]. Furthermore, 
+the loom must support beginner- through higher-level concepts as 
+students will have various backgrounds in each discipline. 
+3.3.1 Weaving. To support novice student weavers, the loom should 
+be able to produce a high enough quality cloth to weave beginner 
+projects such as coasters, wall hangings, small pouches, scarves, and 
+headbands [37]. To pattern these cloths with high enough fdelity, 
+the loom should have at least 24 warp yarns [37]. Sufcient-quality 
+hand-woven cloth is usually in the range of ≈8-36 ends per inch 
+(EPI) [37], so the loom must support this warp density. For the pur-
+poses of this paper, we will describe a cloth with at least 24 warp 
+yarns and at least 8 EPI as quality cloth. The loom must be able to 
+weave with minimal warp yarn breaking while keeping tension at 
+≈50g-250g [37]. 
+3.3.2 Mathematics. To facilitate the interdisciplinary learning of 
+post-secondary math concepts through weaving, the loom should be 
+able to weave patterns designed using mathematical concepts such 
+as matrix algebra [22], weave factor [6], and cloth integrity [20], [50] 
+(Appendix A). For students to see the results of matrix operations in 
+their cloth, the loom should also be able to weave patterns with high 
+enough fdelity. The defnition of quality cloth in the above section 
+satisfes this requirement as 24 warp yarns at 8 EPI is high enough 
+fdelity to see complex cloth patterns clearly [37]. Additionally, 
+the loom should allow students to explore weave factor and cloth 
+integrity (Appendix A.2) through the comparison of values for 
+diferent weave structures (e.g., plain weave, twill weaves, satin 
+weaves) and more complex weaves (e.g. Jacquard patterns) in the 
+design and production stages. 
+3.3.3 Engineering. The loom should support students as they ex-
+plore the engineering design process [35]. It should allow them 
+to consider systems engineering principles (designing under con-
+straints and understanding system behaviors and interactions) [58], 
+system construction principles (robustness and durability) [24], and 
+engineering validation methods (modeling and testing) [24]. 
+For students to explore concepts of systems engineering and 
+construction, the loom should be uncovered. An uncovered design 
+allows students to see the mechanisms, components, and their 
+interactions. For example, students will be able to see an actuator’s 
+behavior, consider what constraints lead to the selection of that 
+actuator (e.g. cost, force), and see how that actuator interacts with 
+other components (e.g. electronics, warp yarns). 
+Designing a loom to be manufactured and assembled by students 
+gives students the opportunity to see how system construction 
+principles (i.e. robustness and durability) afect material choice and 
+performance. For example, weaving requires the loom to hold a 
+considerable amount of tension between warp beams, requiring 
+sturdy materials to support this force. 
+To support validation methods the loom should allow students to 
+model and test diferent weaving drafts. Iterative testing of design 
+will help students rapidly evaluate whether the fnal product will 
+meet the intended form, ft, and function. 
+4 SPEERLOOM DESIGN 
+To our knowledge, SPEERLoom is the only open-source robotic 
+loom kit created for and tested in higher education settings. In the 
+following sections, we explain how the design of our loom meets 
+our aforementioned requirements. 
+4.1 Hardware 
+We designed SPEERLoom (Figure 1) in accordance with the design 
+requirements outlined in Section 3. We chose to make SPEERLoom 
+a Jacquard loom that individually actuates each warp yarn to in-
+crease the fexibility of possible weaving patterns and allow for the 
+exploration of more mathematical concepts (Req. 3.3.2). Although 
+matrix multiplication only relates to shaft loom weaving (as defned 
+in A.1), artifcial constraints can be created through software to 
+simulate a shaft loom using the Jacquard mechanism. This setup 
+allows students to switch shaft loom patterns with no re-threading 
+and minimal re-warping (Req. 3.1.1). 
+SPEERLoom’s frame is made of t-slotted aluminum, ensuring 
+that it is light, robust, and easy to assemble by novices (Req. 3.3.3). 
+There are three main components of the loom: the front warp 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+beam, the heddles, and the tensioning system and creel, shown in 
+Figure 1. Aside from the t-slotted aluminum, components consist of 
+3D-printed and laser-cut parts so the kit can be open source, easily 
+manufactured, and lower cost (Req. 3.2). 
+SPEERLoom is capable of individually actuating 40 warp yarns, 
+balancing the cost of the actuators with the ability to produce qual-
+ity cloth (Req. 3.3.1 and 3.2). The larger the number of warp yarns, 
+the more complex a pattern can be. We chose to use more warp 
+yarns than required by Req. 3.3.1 to allow more pattern exploration 
+by students. Each warp yarn is threaded through a heddle which is 
+rigidly attached to a linear actuator allowing simultaneous warp 
+yarn movement, and decreasing shedding time and mechanical 
+complexity over serial actuation designs (Req. 3.1.2). The cost of 
+the linear stepper motor is lower than that of counterparts used in 
+professional Jacquard looms but, due to its size, the heddles cannot 
+be spaced as closely together as they would on a commercial loom. 
+To overcome this issue, we divide the actuators into diferent planes 
+in the frame design and ofset them to decrease the gap between 
+heddles, achieving 12 EPI (Req. 3.3.1). 
+From the heddles, the warp yarns pass into SPEERLoom’s ten-
+sioning system and creel, described in the following sections. 
+Figure 3: SPEERLoom’s novel tensioning system and creel. 
+The creel has 40 individual cases with bobbins holding ≈ 
+6 meters of yarn. The yarns are then passed through the 
+tensioning system. Each frame has its own tensioning rod. 
+(a)
+(b)
+Figure 4: SPEERLoom’s tensioning mechanism consisting 
+of (a) two tensioning disks, a conical spring, and a spacer 
+with the yarn (red) wrapped around the rod. (b) Model of the 
+tension of the system. 
+4.1.1 Tensioning System. To produce quality cloth it is important 
+to maintain uniform tension in the warp yarns (Req. 3.3.1). In most 
+looms, uniform tension is established by the weaver feeling the 
+tension on yarns by hand. Correcting uneven tension is usually very 
+time-consuming and the fxes can range from having to re-thread 
+portions of the warp to having to place weights or cardboard pieces 
+in parts of the creel. To optimize the warping process and minimize 
+error recovery time for beginners (Req. 3.1.1 and Req. 3.1.2), we 
+designed a novel tensioning mechanism that allows for individual 
+setup, tensioning, and adjustment for each warp yarn. 
+SPEERLoom’s tension system uses a passive mechanism to keep 
+cost low (Req. 3.2). Each warp yarn passes through a set of tension-
+ing disks forced together by a spring and held in place by a rod and 
+spacer (Figure 3). The tension on the yarn is then dependent on 
+the coefcient of friction between the yarn and the disks, �1, the 
+coefcient of friction of the yarn on the stainless steel rod, �2, the 
+force of the spring, � , and the angle of the yarn around the rod, �1. 
+We approximate the tension on the yarn by modeling the system 
+as in Figure 4. The normal force of the system is dependent on 
+the spring constant, �, and the compression of the spring, Δ�. The 
+tension on the yarn after passing through the tensioning device 
+can then be expressed as: 
+�� = (�� − �1�Δ�)��2�2 − �1�Δ� 
+(2) 
+The warp yarns are then redirected by a rod to align them horizon-
+tally with the front warp beam, increasing the tension to produce a 
+fnal tension, �� , dependent on the initial tension, �� , of the yarn 
+and the compression of the spring, Δ�: 
+�� = �� ��2 (�1+�2 ) − �1�Δ� (��2�2 + ��2 (�1 +�2 )) 
+(3) 
+Figure 5: Diferent warp yarn positions in SPEERLoom. Each 
+heddle can be either raised or lowered, with the same amount 
+of tension pulled on the warp yarn in either position. Yarns 
+(blue and red) pass through the tensioning system and over 
+the guiding rods before going through the heddles. 
+After the tensioning system, the yarn passes through the heddles. 
+The guiding rods and front warp beam are horizontally aligned, 
+and the heddle frame is positioned such that the raised and lowered 
+heddle confgurations are vertically equidistant from the front warp 
+beam (Figure 5). This means that the total yarn length is nearly1 
+equivalent regardless of the heddle position (up or down), ensuring 
+reasonably uniform tension in the raised and lowered positions. 
+1Distances vary slightly at the back, because the front-most guide rod contacts all 
+warp yarns when heddles are lowered, and only the front-most yarns when heddles 
+are raised. We considered adding an upper guide rod but found that, in practice, the 
+tension was uniform enough (see Section 5.2.1). 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Speer et al. 
+Note that the total bobbin-to-beam lengths difer between individ-
+ual warp yarns (owing to both heddle frame position and lateral 
+defection to reach the reed); but this is not an obstacle to uniform 
+tensioning because of our individually-tensioned creel. 
+The passiveness of the system means yarns could lose tension 
+while students are weaving on the loom (e.g., if they pull on a 
+warp yarn accidentally when inserting the weft). This problem is 
+easily fxed by novice weavers (Req. 3.1.2) requiring minimal efort 
+(pulling the yarn and reeling it back into its bobbin) and minimal 
+time (≈ 1 sec.). To recreate proper tension, the weaver need only 
+reel the yarn back into its bobbin. 
+4.1.2 Creel and Warping Routine. We designed SPEERLoom with 
+a creel system (individual bobbins) rather than a warp beam (one 
+unifed spool for all the warp yarns) that is typical for looms and 
+used in all looms listed in Sec. 2.2. The creel eliminates the need to 
+wind a back warp beam and makes threading easier to change (e.g., 
+to fx mistakes) (Req. 3.1.1). To warp SPEERLoom, the weaver winds 
+individual bobbins2, places them in cases, and installs the cases into 
+the creel. Then to thread the loom, the weaver simply unwinds 
+yarn from the bobbins one-at-a-time and threads it through the 
+tension system, heddles, and reed, and then ties it down on the beam. 
+Individual bobbins of yarn allow for quick partial warp exchanges 
+if the weaver wishes to (e.g.) change half of the warp yarns for 
+double cloth, makes a mistake in the threading process, or if a 
+yarn breaks during weaving. This avoids a large potential source 
+of discouragement for novice weavers (Req. 3.1.1 and Req. 3.1.2). 
+4.2 Electronics 
+SPEERLoom is equipped with 40 linear actuators [2], which are 
+driven individually in parallel. SPEERLoom uses an Arduino Mega3 [3] 
+which is easily programmable by novices [10] (Req. 3.3.3). The Ar-
+duino commands 40 EasyDriver stepper motor drivers [57] through 
+a series of MCP23017 port expanders [36] communicating over 
+I2C. The frmware uses an interrupt system for driving the stepper 
+motors with custom commands for running the motors designed 
+for use by students from any background while remaining open for 
+more advanced programming exploration (Req. 3.3). 
+4.3 Software 
+SPEERLoom’s graphical user interface (GUI), shown in Figure 6, is a 
+Python program [53] that allows the user to create or load a pattern, 
+visualize and explore the integrity and weave factor of their pattern 
+(Req. 3.3.2), and control the loom (Req. 3.3.3). We chose Python 
+to program the GUI in because it is an accessible programming 
+language which then allows more advanced students to explore 
+SPEERLoom’s algorithms (Req. 3.3). 
+SPEERLoom currently has the capability to read in patterns as 
+matrices stored in CSV fles. However, many weaving draft soft-
+wares use the WIF fle type that must frst be converted to a CSV 
+before use. 
+After uploading a pattern, SPEERLoom’s GUI provides pattern 
+drafting feedback (Req. 3.3.2) through an illustration of the weave 
+factor of a given row or column (Figure 6) which helps novice 
+2In practice, one can do this in advance of a class. 
+3Though an Arduino Uno would be sufcient. 
+Figure 6: SPEERLoom’s graphical user interface. The inter-
+face allows the user to load a pattern, visualize the cloth, 
+explore the cloth properties by using the ‘Cloth Integrity’ 
+and ‘Weave Factor’ buttons, and weave the cloth by using the 
+‘Next Row’ and ‘Previous Row’ buttons. 
+weavers notice long stretches of yarns without interlacement that 
+create less sturdy cloth (Req. 3.3.3). The weave factor is calculated 
+using horizontal and vertical pixel diference edge detection on the 
+pattern matrix. This process is described in more detail in Appen-
+dix A.2. 
+Additionally, SPEERLoom’s software allows students to explore 
+cloth integrity employing a novel algorithm (detailed in Appen-
+dix B) to assess if a cloth meets the mathematical criteria for “falling 
+apart". This enables students to explore custom, complex patterns 
+not guaranteed to have good cloth integrity ( Req. 3.3.2). To our 
+knowledge, our algorithm is the only real-time algorithm to calcu-
+late cloth layering using Grunbaum and Shepard’s defnition [20] 
+explained in Appendix A.2 and B. 
+5 SYSTEM EVALUATION 
+To evaluate SPEERLoom’s weaving quality, warping and weaving 
+efciency, and cost we compared SPEERLoom against other com-
+mercial and hobbyist looms. Our methods and results are discussed 
+in the sections below. 
+5.1 Methods 
+We evaluated SPEERLoom on weaving quality (number of warp 
+yarns, EPI, and tension), warping efciency (winding and threading 
+time), weaving efciency (shedding time), and cost requirements 
+(Section 3). We compare these results to other Jacquard looms (two 
+commercial looms (the TC2 [44] and the Jacq3G [25]), one DIY loom 
+(Albaugh’s loom [1])) and a shaft loom (the Ashford Katie Table 
+Loom [16]). Warp winding and threading time were estimated based 
+on the time taken by non-experts (SPEERLoom, Albaugh’s loom, 
+Jacq3g, and Ashford) and estimated by loom experts for the case 
+of the TC2. Shedding time was timed for weaving basic patterns 
+where 50-58% of the warp yarns were raised. 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+(a)
+(b)
+(c)
+(d)
+Figure 7: Cloth woven on SPEERLoom: (a) Plain Weave, (b) 
+Twill Weave, (c) Satin Weave, (d) Custom Jacquard Weave. 
+For evaluation of SPEERLoom’s tension, we compare the mea-
+sured tension to the Ashford shaft loom to ensure comparable 
+variance in per-yarn tension to a standard two-warp beam ten-
+sioning mechanism. Additionally, we evaluate our tension model 
+through empirical measurements, ensuring the equation estimates 
+the fnal tension properly. We estimated �1 and �2 through aver-
+aged measurements of tension at diferent stages of the system in 
+Figure 4. We frst varied � and measured �2 and �� to fnd �1 by 
+averaging calculated values. We then varied �2 and measured �3 to 
+fnd �2 by averaging calculated values. All values of tension were 
+measured with a tensiometer4 for diferent stages of SPEERLoom’s 
+tensioning system and the Ashford loom’s yarns. 
+5.2 Results 
+The results of the quantitative measurements taken for various 
+looms are shown in Table 1 and discussed in the following sections. 
+5.2.1 Weaving Qality. As shown in Table 1, SPEERLoom meets 
+or exceeds the cloth properties (warp yarns and EPI) of other DIY 
+looms. While SPEERLoom produces cloth of lower quality than 
+commercial looms, we found that SPEERLoom is able to weave cloth 
+meeting design requirements 3.3.1 and 3.3.2, specifcally meeting the 
+defnition of quality cloth, as defned in Section 3.3.1 with regards 
+to EPI, number of warp yarns, and tension. 
+Figure 7 shows diferent cloths woven on SPEERLoom. SPEER-
+Loom is able to weave basic patterns as well as more complex 
+Jacquard patterns (Req. 3.3.2). These patterns were woven at 12 EPI, 
+giving a sufcient quality of cloth (Req. 3.3.1). While this EPI is 
+not as fne as commercial looms, it is more suitable for classroom 
+use than other DIY options(Table 1). The lower EPI of Albaugh’s 
+loom and other DIY looms results in lower fdelity of patterning, 
+reducing the complexity and visibility of patterns produced cloth. 
+Design requirements in Section 3.3 require SPEERLoom to be 
+suitable for novice and experienced weavers. Student weavers in 
+a class taught with SPEERLoom (see Section 6) had a range of 
+4A Checkline Tensiometer Model TX SP-30 was used 
+background experience with textiles, but were all able to accom-
+plish weaving cloth on SPEERLoom. The students created custom 
+patterns with matrix multiplication which can be clearly seen in 
+Figure 10. 
+Figure 8: A violin plot showing the measured tension of two 
+looms. The y-axis shows the tension on each warp yarn, the 
+x-axis shows the probability density of the measurements. 
+SPEERLoom’s variance in tension is smaller than that of the 
+Ashford loom. 
+Figure 8 shows the tension on SPEERLoom and the Ashford loom, 
+demonstrating that SPEERLoom’s variance in tension is comparable 
+to that of the Ashford loom. SPEERLoom has an average of ≈199g of 
+tension with a standard deviation of ≈10g (Req. 3.3.1). The Ashford 
+loom has ≈63g of average tension with a standard deviation of ≈28g. 
+While the average tension of the two is diferent, this can be adjusted 
+on either SPEERLoom (by changing the compression of the spring) 
+or the Ashford loom (by adjusting both warp beams) in order to 
+ft the needs of a specifc weaving project. The variance of tension 
+from yarn to yarn is something that cannot be easily adjusted on 
+a two-warp beam style loom, as it would require re-winding the 
+back warp beam. SPEERLoom’s yarns however can be individually 
+adjusted to create a more consistent tension across all yarns. This 
+shows SPEERLoom’s novel tensioning system is as consistent as 
+an example two-warp beam tensioning mechanism, while saving 
+time when adjusting individual yarn tension (Reqs. 3.3.1 and 3.1.1). 
+5.2.2 Warping and Weaving Eficiency. We found that SPEERLoom 
+was more efcient than all other looms with regards to warping 
+efciency (Req. 3.1.1). Weaving efciency on SPEERLoom exceeded 
+that of other the other DIY loom (Req. 3.1.2). 
+SPEERLoom’s tension system and creel were designed to elim-
+inate the need for winding a back warp beam to satisfy require-
+ment 3.1.1. This process can take ≈3-5 hours depending on ex-
+perience. SPEERLoom’s creel was assembled in 20 minutes by a 
+researcher. As shown in Table 1, SPEERLoom’s per warp time is 
+quicker than that of other looms satisfying requirement 3.1.1. This 
+saves students hours of warping time for each warp pattern they 
+wish to weave. 
+To further satisfy requirement 3.1.1, SPEERLoom is more efcient 
+or as efcient as other looms with regards to threading. When mea-
+suring threading time, beginners threaded the Ashford loom [16], 
+Jacq3g [25], and SPEERLoom. Threading time for the TC2 [44] 
+was reported by Digital Weaving Norway. All threading time is 
+reported per warp yarn to account for the diference in number of 
+warp threads. An important aspect of the loom threading process 
+for beginners is that a large amount of time is spent correcting 
+mistakes such as threading yarn onto the wrong heddle or in the 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Speer et al. 
+Table 1: Comparison of the diferent quantitative design requirements across a number of looms. All looms except the Ashford 
+Shaft Loom are Jacquard looms. In this work we use max EPI to mean the maximum achievable EPI of the loom with each 
+warp thread possibly individually actuatable. Winding and threading time are reported as minutes per warp yarn to account 
+for diferences in number of warp yarns. 
+Loom 
+Cloth 
+Warp Yarns 
+Max EPI 
+Winding (min/warp) 
+Efciency of Use 
+Threading (min/warp) 
+Shedding (sec) 
+Cost (USD) 
+SPEERLoom 
+40 
+12 
+≈0.25 
+≈0.75 
+6 
+$1097.17 
+TC2 [44] 
+440 
+180 
+≈0.5 
+≈0.75 
+1 
+$36,000.00 
+Jacq3G [25] 
+120 
+80 
+≈1.5 
+≈3 
+1 
+$31,449.50 
+Albaugh et al.’s Loom [1] 
+40 
+4 
+≈1.5 
+≈0.75 
+14 
+<$200.00 
+Ashford Shaft Loom [16] 
+320 
+40 
+≈2.25 
+≈2.25 
+5 
+$ 1,150.00 
+wrong order. During the threading process for each of the looms, 
+users made several mistakes. The diference we observed was in 
+the time it took to recover from those mistakes. Threading yarn in 
+the wrong heddle for the Ashford loom [16] or Jacq3g [25] meant 
+having to redo most of the threading process. 
+We observed novice student weavers threading SPEERLoom (see 
+Section 6) and saw that when students made a mistake in threading 
+their loom, it took them on the order of seconds to recover from their 
+mistake. This was due to SPEERLoom’s ability to control, place, and 
+tension each warp yarn individually, which enabled the students to 
+swap and re-tension the afected yarns without having to re-thread 
+any other warp yarns (Req. 3.1.1). In this regard SPEERLoom is an 
+improvement over the commercial and DIY alternatives. 
+As shown in Table 1, SPEERLoom’s shedding time is on par 
+with other looms and, while it is slower than commercial looms, 
+still satisfes requirement 3.1.2. The increase in shedding time over 
+commercial alternatives is a direct result of the reduction in cost 
+by a factor of 30. As compared to a serial mechanism in Albaugh et 
+al.’s loom, SPEERLoom has a much decreased shedding time. This 
+decreased shedding time is a direct result of the increased cost for 
+parallel actuation, but allows students to weave twice as fast. 
+SPEERLoom’s shedding time was not detrimental to students’ 
+ability to weave quickly. Students weavers in a collegiate class were 
+able to weave the projects shown in Figure 10 over the course of a 
+single week (see Section 6). This duration of weaving is comparable 
+to other looms. Additionally, students commented that they feel as if 
+they saved time weaving on SPEERLoom by having the opportunity 
+to mathematically explore their cloth properties, allowing for faster 
+testing without requiring weaving time. 
+5.2.3 Accessibility. SPEERLoom meets the accessibility require-
+ments stated in Section 3.2 through its moderate cost and open-
+source design. SPEERLoom is much less costly than the commercial 
+options, and somewhat more costly than Albaugh et al.’s Jacquard 
+loom [1] (Table 1). The cost diferential from the other Jacquard 
+looms comes at the trade-of of quality and efciency. SPEERLoom 
+has higher-quality cloth than Albaugh et al.’s Jacquard loom [1], but 
+lower than that of the TC2 and Jacq3G. Additionally, SPEERLoom 
+has a higher weaving efciency than Albaugh et al.’s loom which 
+comes at the expense of higher cost. 
+We designed SPEERLoom at a slightly higher price point to 
+ensure the kit components would be durable, reusable, and reliable. 
+Additionally, the open-source nature of SPEERLoom allows users to 
+swap components, potentially decreasing overall price and allowing 
+for singular components to be easily replaced. We also designed 
+SPEERLoom to have more warp yarns and EPI allowing for more 
+complex pattern exploration. Reducing the number of warp yarns 
+and EPI to the minimal viable setup as stated in requirement 3.3.1 
+would reduce the cost of SPEERLoom by ≈ $250 USD. 
+In order to make SPEERLoom more accessible, we are currently 
+working on reducing the cost of the frame (≈$270) by using more 
+laser-cut and 3D-printed components and the electronics (≈ $300) 
+by using diferent motor drivers. 
+6 CLASSROOM STUDY 
+6.1 Methods 
+To evaluate our hypotheses that SPEERLoom supports post-secondary 
+students’ interdisciplinary learning, we designed a course whose 
+curriculum teaches concepts in weaving, engineering, and matrix 
+math through the use of SPEERLoom. Course materials can be 
+found at: https://sites.google.com/view/speerloom. We designed the 
+course with input from engineering, math, and textiles instructors 
+at Carnegie Mellon University and University of California, Irvine. 
+Weaving curricula mirrored other courses [7, 41, 54], but focused 
+on the relationship of engineering and math principles to weaving. 
+The seven-week course was presented as a fipped classroom 
+in a collegiate-level class. The course consisted of fve synchro-
+nous in-person class sessions, each lasting three hours, and fve 
+sessions of asynchronous lecture videos, lasting less than two hours 
+each. During in-person class sessions, students worked in interdis-
+ciplinary groups of three or four based on their background (i.e. 
+textiles, math, or engineering expertise). 
+The course covered basics in weaving, math, and engineering, 
+aligning with requirement 3.3, and used SPEERLoom to support in-
+struction. During the frst week of class, lectures (1.3 hours) covered 
+the basics of textiles including weaving drafts, weave structures, 
+basic loom components, and culturally signifcant weaving. The 
+second week, lectures (1.5 hours) focused on mechatronic prin-
+ciples including electronics and electromechanical actuation and 
+their applications to SPEERLoom. During the in-person session, 
+students began building their SPEERLoom kits. Week three of the 
+course, lectures (2 hours) covered basics in linear algebra including 
+vectors, matrices, basic operations with matrices (addition, sub-
+traction, multiplication), and their applications to weaving drafts. 
+Students continued building SPEERLoom during the corresponding 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+System Design
+System 
+Construction
+Designing 
+Requirements
+Component Design
+“[we talked] about ‘is there 
+anything to replace a 
+component [of 
+SPEERLoom]’” - S5
+Materials and 
+Structural Support
+Application of 
+theory
+I remember sanding down 
+[components] because I 
+recognized friction would 
+be a problem - S10
+“It was [concepts] I knew 
+how to do, but for a 
+diﬀerent kind of project 
+than I’m used to” - S11
+“I had never really built 
+anything large scale … it 
+was really cool to see it 
+come together” - S2
+“... [I] thought about how to 
+make [SPEERLoom] in 
+diﬀerent ways” - S10
+“The whole process helped 
+with engineering and 
+thinking about interactive 
+design” - S8
+Achieving Design 
+Requirements
+High Level 
+Engineering 
+Concept
+Emergent 
+Low Level 
+Concept 
+Student 
+Quote
+Figure 9: A hierarchical organization of the concepts students reported learning in engineering while building SPEERLoom. The 
+top layer describes high-level concepts targeted by the curriculum, the middle level presents low-level concepts that emerged 
+through data analysis, and the bottom layer shows quotes supporting the low-level concepts. 
+in-person session. Week four (lectures totaling 1.5 hours) built upon 
+concepts taught in week three covering vector diferentiation and 
+its application to weave factor and cloth integrity. The in-person ac-
+tivities included weaving on SPEERLoom and getting familiar with 
+its operation and basic weaving paradigms. The fnal two weeks of 
+the class were dedicated to the student’s fnal projects. 
+As part of the assessment of students’ understanding of the 
+concepts, students completed a fnal project that required them to 
+design an interactive textile and weave their design on SPEERLoom. 
+Groups were observed during synchronous in-person meetings, 
+while they worked on projects, and during fnal presentations. 
+6.1.1 Participants. We recruited students from the class to partic-
+ipate in research approved by Carnegie Mellon University’s IRB. 
+Each student gave written informed consent to participate. The 
+study consisted of thirteen students, seven of which participated in 
+a post-interview. 
+Out of 13 participants, 2 were male, and 11 were female. Students 
+came from a variety of backgrounds: Fine Arts (n=7), Humanities 
+(n=2), Engineering (n=2), Computer Science (n=1), and Information 
+Systems (n=1), as well as class levels: Doctorate (n=2), Masters (n=2), 
+Undergraduate (Senior (n=3), Junior (n=1), Sophomore (n=5)). 
+6.1.2 Data Analysis. We gathered data from observations during 
+class, post-interviews, and anonymized classwork. Observations of 
+students were collected as semi-structured feld notes focusing on 
+group dynamics, engagement, student expression of afect or ability, 
+and physical interactions. Observations were collected during each 
+in-person class session by trained researchers. Only groups where 
+all students participated were observed (groups 2-4). Observational 
+notes were then collected and thematic analysis was performed 
+on the notes. Observations were categorized into groups based on 
+course activity (loom assembly, weaving, other course activities) 
+and topic of student expression (efcacy, learning, group dynamic). 
+Each category was summarized and recurring themes were noted. 
+We found themes pertaining to student engagement, student expres-
+sion of confdence or learning of art, math, or engineering skills, 
+and student perception of groupmates’ efcacy. 
+Students participated in 20-minute post-course interviews report-
+ing on efects on self- and other-efcacy, learning of art, math, and 
+engineering skills, and SPEERLoom interactions. Questions focused 
+on if and how the assembly of and interactions with SPEERLoom af-
+fected their skills in art, math, and engineering ("Did building your 
+loom afect your engineering skills?") and if they feel they learned 
+from these experiences ("Did you feel you learned anything about 
+math, engineering or art throughout the class?"). Thematic analysis 
+was performed on the interview data using the same categories and 
+themes as the observational data. 
+Collected coursework included surveys of student background, 
+student refections on activities, post-lecture quizzes, and fnal 
+project assessments. 
+Themes from observations, interviews and assignments (includ-
+ing the fnal project) were categorized into engineering learning 
+from assembly and interdisciplinary learning from other course 
+activities. These fndings are discussed in the sections below. 
+6.2 Engineering Learning During Assembly 
+We predicted students would learn system construction skills and 
+would consider systems engineering concepts while assembling 
+SPEERLoom. From our observations of student assembly and stu-
+dents’ refections on the assembly process during interviews, we 
+found they did explore these concepts. Six of the seven students 
+reported their engineering skills increased through the building in-
+teraction with SPEERLoom. The remaining student reported SPEER-
+Loom’s assembly was a new application of their skills. 
+Four students reported considering the systems engineering prin-
+ciples regarding the design of the loom during assembly (Req. 3.3.3). 
+Some students did not initially look at the assembly process as 
+learning because they were simply following instructions. How-
+ever, upon diving deeper into their interaction, they recall applying 
+problem-solving skills and considering design elements when they 
+struggled with the instructions. 
+It was more putting parts together rather than actually 
+messing with any of the things themselves... Can I take 
+back what I said about the engineering earlier? The 
+whole process helped with engineering and thinking 
+about interactive design. (S8) 
+SPEERLoom’s open design allowed students to refect on other 
+systems engineering aspects, i.e., the requirements of a loom, the de-
+sign decisions made to satisfy them, and component design within 
+the system (Req. 3.3.3). Students were observed misassembling the 
+loom, breaking components in the process. Students used these 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Speer et al. 
+points of friction as a learning exercise to understand the function 
+of the broken or misasembled part and brainstorm components that 
+achieve the same functionality. For example, one group struggled 
+to mount the rods on the back of the loom, but S10 was able to fnd 
+a diferent mounting method that could hold the same amount of 
+force. 
+Students also refected on SPEERLoom’s weaving capabilities 
+as well as design modifcations that could be made to increase 
+its capabilities (Figure 9). Students refected on component design 
+considering how diferent components could be redesigned within 
+the parameters of the machine. For example, we observed that 
+students in group 2 struggled with assembling the feet of the loom 
+and discussed changes that could be made to the 3D-printed parts 
+to improve the assembly process while still providing a sturdy base 
+for the loom. These refections increased their understanding of 
+engineering concepts and helped them complete the assembly. 
+Four students reported learning system construction skills (Req. 
+3.3.3). Some groups split into pairs during the assembly process, 
+lead by students more experienced in engineering. We observed less 
+experienced students learning about system construction from their 
+assembly partners. S5 reported learning a lot from a group member 
+with a mechanical engineering background because “[they] knew 
+a lot about how to build the loom so there were things [they were] 
+able to explain". More experienced students would note the applica-
+tion of diferent theoretical knowledge in engineering and how it 
+could apply to the real-world example of SPEERLoom, for example 
+a student’s application of their knowledge of friction (Figure 9). We 
+observed more experienced students in group 4 teaching S2 the 
+basics of fastening pieces together with screws and nuts in the be-
+ginning of the assembly. S2 commented on their lack of experience 
+(Figure 9) but by the end of the assembly they were completing 
+these tasks without help and reported they “were more confdent 
+in [their] ability to learn things". 
+6.3 Interdisciplinary Learning 
+During observations and interviews, students often referenced 
+learning art, engineering, or math in the context of other disciplines. 
+For example, students considered how the systems engineering of 
+SPEERLoom infuenced its creation of textile art and considered 
+how they could apply the engineering design process [35] to their 
+artistic designs (Figure 11). Additionally, students discussed learn-
+ing math and weaving together, speaking to the linear algebra skills 
+used to create and describe artistic expression in the form of textile 
+patterns. These fndings are further discussed in the sections below. 
+6.3.1 Engineering and Art. In accordance with requirement 3.3.3, 
+students were able to trace the weaving process from the computer 
+input to the electronics to the mechatronic actuators. In week 4, 
+when group 3 ran their SPEERLoom for the frst time, students 
+came together to use learned knowledge and prior experience to 
+holistically analyze the weaving process of SPEERLoom. S7 ex-
+plained to their group how the computer commanded the Arduino, 
+which controlled each motor. S11 then explained how the motors 
+are creating the shed on the loom by raising the warp yarns, allow-
+ing them to pass a shuttle through and create a row of weaving. 
+The team then discussed how the moving motors were impacting 
+their cloth design. In this interaction, novice students learned how 
+(1a)
+(2a)
+(3a)
+(1b)
+(2b)
+(3b)
+(1c)
+(2c)
+(3c)
+Figure 10: Participating student’s fnal class group projects’ 
+designs and prototypes (1,2,3). (a) Initial feasible designs or 
+models of the projects. (b) Revised design after testing the 
+mathematical principles of their design. (c) Final prototype. 
+mechatronic elements serve specifc purposes, applying general 
+engineering skills to weaving. 
+During the fnal project, students reported learning about weav-
+ing through the context of engineering challenges (Req. 3.3). Due 
+to the physicality of their produced cloth, students had to consider 
+constraints and change their artistic design through the use of 
+their engineering problem-solving skills. This happened in both 
+the feasible design steps and test model steps shown in Figure 11. 
+Our [fnal project] was iterated on in a way that felt 
+like engineering to me. It was kind of iterative, [we 
+would] talk about a solution and then pick it apart in 
+conversation and then go back to a new idea, iterating 
+in a problem-oriented way of thinking that usually 
+happens in engineering. (S7) 
+Another student reported that when designing their cloth for 
+the fnal project, their team originally designed something too 
+large and over ambitious for the timeline and cloth size constraints, 
+leading them to scale their project down to optimize for the physical 
+constraints they had. This is captured in Figure 11 as the transition 
+from blue sky design to feasible design. 
+Students also discussed other engineering considerations afect-
+ing weaving interactions and the “potential for the loom to make 
+more complicated things for them" (S15). S2 expressed that using 
+SPEERLoom’s software to visualize their fnal design enhanced 
+their artistic skills and allowed them to better picture how the cloth 
+would come together. 
+6.3.2 Math and art. In order to satisfy design requirement 3.3.2, 
+the curriculum included matrices and their basic operations as they 
+apply to weaving. All but one student reported in the interviews 
+that they learned math skills in the class. The singular student 
+who did not mention their math skills increased reported having 
+a strong background in math. Many students reported that the 
+contextualization of matrix multiplication in weaving was more 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Blue Sky Design
+Groups create artistic 
+designs from cultural 
+meaning
+Feasible Design
+Groups determine what type of 
+textile to make
+Groups consider constraints 
+(cloth width/ length)
+Model
+Groups create a weaving draft
+Groups use matrix 
+multiplication for draft creation
+Test Model
+Groups use matrix math to 
+calculate weave factor
+Groups consider the sturdiness 
+of their cloth
+Update Model
+Groups consider weaving 
+paradigms
+Groups consider structure of 
+diﬀerent weaving paradigms
+Produce Prototype
+Groups weave
+Some groups add electronics
+Art Skills
+Engineering Skills
+Math Skills
+Figure 11: Groups’ workfow for the interdisciplinary course’s fnal project. This workfow resembled the engineering design 
+process steps (larger blue bubbles). At each step of the larger process, students considered principles from art (pink), math 
+(green), and engineering (blue) and how they interacted in the context of their project. 
+meaningful to them than previous experiences learning linear al-
+gebra. S11 stated the interactions with SPEERLoom gave them “a 
+more nuanced understanding of the math". S15 even reported 
+The transfer of calculations back to a physical fabric 
+helps stimulate my brain in a diferent way and see 
+math in a physical fabric. 
+Students echoed this sentiment through their interviews saying 
+that the calculation of weave factor “refreshed those [matrix con-
+cepts]" (S5) and after “understanding the matrices and how it makes 
+[patterns] ... calculating the [weave factor] then calculating the ma-
+trices refreshed how to do those things" (S10). Although the weave 
+factor could be automatically calculated, students still made smaller 
+pattern calculations by hand, using the automatic calculation only 
+for verifcation. Students reported “learning about weaving drafts 
+was good for [their] math skills" (S8) and it was “cool to see how 
+math can make patterns" (S2). 
+The students demonstrated their learning and solidifed direct 
+connections between textile art and matrix math during the fnal 
+project. Students used matrices to create their fnal patterns (Fig-
+ure 11, model step) and the weave factor to determine the physical 
+properties of their cloth (Figure 11, test model step). Student calcu-
+lated the weave factor prior to weaving their cloth realizing their 
+cloth may not have the desired physical properties for the designed 
+application. For example, one group made a woven book with a 
+weaving pattern that would yield a loose cloth unsuitable to bind 
+into a book. They discovered this by calculating the weave fac-
+tor and then applied a diferent weaving paradigm to increase the 
+weave factor and strengthen their cloth. 
+Overall, interactions with SPEERLoom were reported to have 
+supported the student’s learning in the class. S8 captured the course’s 
+interdisciplinarity, reporting “Art-wise [interactions with SPEER-
+Loom] helped with thinking about patterns and how models and 
+prototypes are represented as actual things. With the weaving drafts 
+[SPEERLoom helped with] how they translate the 0s and 1s into an 
+6.4 Discussion 
+From observations, interviews, and students’ assignments we saw 
+students increase their understanding of engineering (systems engi-
+neering and construction), math (matrices and matrix operations), 
+textiles (weaving patterns and paradigms), and the intersection 
+of disciplines., i.e., connections between artistic and engineering 
+design, creation of textiles with matrix multiplication, and mathe-
+matical modeling of textiles (weave factor and cloth integrity). 
+SPEERLoom’s open-source kit design allowed students to explore 
+the system’s design and construction, thinking about component 
+function and diferent methods of satisfying system constraints. 
+This was seen during points of mechanical failure which students 
+used as learning opportunities. Commercial looms do not have 
+this afordance as their designs minimize set-up labor and user 
+interference with the device. To support engineering education, the 
+design of devices should allow for the exploration of engineering 
+design and application of engineering skills as SPEERLoom does. 
+SPEERLoom was also able to support an increase in student-
+reported interdisciplinary skills. During the fnal project, we ob-
+served all groups naturally approach the problem using a process 
+that mirrored engineering design. Students modeled their designs 
+mathematically, reporting that the contextualization of matrix math 
+in a hands-on application made the concepts more meaningful than 
+in other linear algebra classes. Using these models students pre-
+dicted the physical properties of their cloths and re-engineered 
+them to ft an artistic goal. This shows that SPEERLoom can sup-
+port an interdisciplinary curriculum combining weaving, math, and 
+engineering which contextualizes difcult concepts in new ways. 
+While students expressed satisfaction with the class, they also 
+reported areas for improvement, specifcally regarding the time 
+allotted for each section of the course. Students felt time constrained 
+while constructing their looms, and they had to spend ≈2 hours 
+on average building their looms outside of class. Students also 
+expressed a desire to have spent more than a week on each topic to 
+have more opportunities for practice and review. 
+Future course iterations will be expanded to a full semester and 
+take into consideration student feedback by allocating more time 
+actual design". 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Speer et al. 
+to each topic. These courses will also expand on math, engineer-
+ing, and weaving subject matter by, for example, increasing the 
+number of matrix operations covered and teaching the principles 
+behind linear optimization which have interesting ties to weaving 
+and weaving drafts. Additionally, SPEERLoom’s design afords easy 
+customization, allowing students to explore engineering principles 
+beyond the construction of a pre-designed machine. Finally, SPEER-
+Loom’s individually tensioned warp yarns allow students to weave 
+with less traditional materials and the continuous motors allow 
+weaving with a non-binary shed. With more course time, these 
+complex weaving concepts could be taught using SPEERLoom. 
+7 CONCLUSION 
+In this paper, we presented the design of SPEERLoom, an open-
+source, Jacquard loom kit for classroom use. SPEERLoom’s designs 
+and other materials are available at: https://sites.google.com/view/ 
+speerloom. We have listed a set of design requirements necessary 
+for a loom to be an efective classroom tool for supporting interdis-
+ciplinary learning including efcient user interaction, accessibility, 
+and interdisciplinary relevance. SPEERLoom satisfes these require-
+ments through its novel tensioning system and creel which create 
+efcient warping and weaving interactions for beginner weavers. 
+SPEERLoom is accessible to classrooms with its moderate cost and 
+open-source design. Finally, SPEERLoom was used in a collegiate 
+classroom to support students interdisciplinary learning in textiles, 
+math, and engineering. Students reported learning skills in these 
+disciplines and in the intersection of these disciplines. We conclude 
+that SPEERLoom supports efcient user interaction, is accessible for 
+the classroom, and supports interdisciplinary engagement. We have 
+shown that SPEERLoom supports learning for a few of the many 
+concepts within weaving, mathematics, and engineering. There are 
+still many concepts that bridge the disciplines of weaving, math, 
+and engineering that we will explore further in our future work. 
+ACKNOWLEDGMENTS 
+This work was supported by National Science Foundation grant 
+2100401. 
+REFERENCES 
+[1] Lea Albaugh, James McCann, Lining Yao, and Scott E. Hudson. 2021. Enabling 
+Personal Computational Handweaving with a Low-Cost Jacquard Loom. In Pro-
+ceedings of the 2021 CHI Conference on Human Factors in Computing Systems 
+(Yokohama, Japan) (CHI ’21). Association for Computing Machinery, New York, 
+NY, USA, Article 497, 10 pages. https://doi.org/10.1145/3411764.3445750 
+[2] AliExpress. 2023. 
+Stroke 80mm Linear Actuator. 
+AliExpress. 
+https:// 
+www.aliexpress.com/item/2255800220070257.html 
+[3] Arduino. 2021. Arduino Mega REV3. Arduino. https://store-usa.arduino.cc/ 
+products/arduino-mega-2560-rev3 
+[4] Iryna Ashby and Marisa Exter. 2018. Designing for Interdisciplinarity in higher 
+education: Considerations for Instructional Designers. TechTrends 63, 2 (2018), 
+202–208. https://doi.org/10.1007/s11528-018-0352-z 
+[5] ASHLEY BEAR and DAVID SKORTON. 2019. The World Needs Students with 
+Interdisciplinary Education. Issues in Science and Technology 35, 2 (2019), 60–62. 
+https://www.jstor.org/stable/26948993 
+[6] B. K. Behera, Jiri Militky, Rajesh Mishra, and Dana Kremenakova. 2012. Modeling 
+of Woven Fabrics Geometry and Properties. In Woven Fabrics, Han-Yong Jeon 
+(Ed.). IntechOpen, Rijeka, Chapter 1, 1–33. https://doi.org/10.5772/38723 
+[7] Emily Breidenbach. 2022. Introduction to frame loom weaving. 
+https: 
+//continuingstudies.saic.edu/introduction-frame-loom-weaving/1270-2409 
+[8] Eric Broudy. 2021. The book of looms a history of the handloom from Ancient Times 
+to the present. Brandeis University Press. 
+[9] Himani Deshpande, Haruki Takahashi, and Jeeeun Kim. 2021. EscapeLoom: 
+Fabricating New Afordances for Hand Weaving. In Proceedings of the 2021 CHI 
+Conference on Human Factors in Computing Systems (Yokohama, Japan) (CHI ’21). 
+Association for Computing Machinery, New York, NY, USA, Article 630, 13 pages. 
+https://doi.org/10.1145/3411764.3445600 
+[10] Kayla DesPortes and Betsy DiSalvo. 2019. Trials and Tribulations of Novices 
+Working with the Arduino. In Proceedings of the 2019 ACM Conference on In-
+ternational Computing Education Research (Toronto ON, Canada) (ICER ’19). 
+Association for Computing Machinery, New York, NY, USA, 219–227. https: 
+//doi.org/10.1145/3291279.3339427 
+[11] Laura Devendorf, Sasha de Koninck, and Etta Sandry. 2022. An Introduction 
+to Weave Structure for HCI: A How-to and Refection on Modes of Exchange. 
+In Designing Interactive Systems Conference (Virtual Event, Australia) (DIS ’22). 
+Association for Computing Machinery, New York, NY, USA, 629–642. https: 
+//doi.org/10.1145/3532106.3534567 
+[12] Frederick Thomas Peirce D.Sc., F.Inst.P., and F.T.I. 1937. 5—THE GEOMETRY OF 
+CLOTH STRUCTURE. Journal of the Textile Institute Transactions 28, 3 (1937), 
+T45–T96. https://doi.org/10.1080/19447023708658809 
+[13] Amy Eguchi. 2014. Educational Robotics for promoting 21st Century skills. 
+Journal of Automation, Mobile Robotics & Intelligent Systems 8, 1 (2014), 5–11. 
+https://doi.org/10.14313/jamris_1-2014/1 
+[14] James Essinger. 2010. Jacquard’s web: How a hand-loom led to the birth of the 
+information age. Oxford University Press. 
+[15] Ylva Fernaeus, Martin Jonsson, and Jakob Tholander. 2012. Revisiting the Jacquard 
+Loom: Threads of History and Current Patterns in HCI. In Proceedings of the 
+SIGCHI Conference on Human Factors in Computing Systems (Austin, Texas, USA) 
+(CHI ’12). Association for Computing Machinery, New York, NY, USA, 1593–1602. 
+https://doi.org/10.1145/2207676.2208280 
+[16] Paradise Fibers. 2023. Ashford Katie table loom. https://www.paradisefbers.com/ 
+products/ashford-katie-table-loom 
+[17] Mikhaila Friske, Shanel Wu, and Laura Devendorf. 2019. AdaCAD: Crafting 
+Software For Smart Textiles Design. In Proceedings of the 2019 CHI Confer-
+ence on Human Factors in Computing Systems (Glasgow, Scotland Uk) (CHI 
+’19). Association for Computing Machinery, New York, NY, USA, 1–13. https: 
+//doi.org/10.1145/3290605.3300575 
+[18] Michael Gafney. 2010. Enhancing teachers’ take-up of digital content: Factors and 
+design principles in technology adoption. Education Services Australia Ltd. 
+[19] Helen Gerretson, Elaine Howes, Scott Campbell, and Denisse Thompson. 2009. 
+Interdisciplinary Mathematics and Science Education Through Robotics Technol-
+ogy: Its Potential for Education for Sustainable Development (A Case Study from 
+the USA). Journal of Teacher Education for Sustainability 10, 2008 (2009), 32–41. 
+https://doi.org/10.2478/v10099-009-0023-4 
+[20] Banko Grünbaum and Geofrey C. Shephard. 1980. 
+Satins and Twills: 
+An Introduction to the Geometry of Fabrics. 
+Mathematics Magazine
+53, 3 (1980), 139–161. 
+https://doi.org/10.1080/0025570X.1980.11976845 
+arXiv:https://doi.org/10.1080/0025570X.1980.11976845 
+[21] Alla Gubenko, Christiane Kirsch, Jan Nicola Smilek, Todd Lubart, and Claude 
+Houssemand. 2021. Educational Robotics and Robot Creativity: An Interdisci-
+plinary Dialogue. Frontiers in Robotics and AI 8 (2021). https://doi.org/10.3389/ 
+frobt.2021.662030 
+[22] Ellen Harlizius-Klück. 2017. Weaving as Binary Art and the Algebra of Patterns. 
+TEXTILE 15, 2 (2017), 176–197. https://doi.org/10.1080/14759756.2017.1298239 
+arXiv:https://doi.org/10.1080/14759756.2017.1298239 
+[23] Karri A. Holley. 2017. Interdisciplinary curriculum and learning in higher educa-
+tion. Oxford Research Encyclopedia of Education (2017). https://doi.org/10.1093/ 
+acrefore/9780190264093.013.138 
+[24] Ken Hurst. 2004. Engineering design principles. John Wiley & Sons, Inc. 
+[25] AVL Looms Inc. 2023. Jacq3g jacquard loom. https://avllooms.com/products/ 
+jacq3g?variant=19975805206586 
+[26] David W. Johnson, Roger T. Johnson, and Karl Smith. 2007. The state of coopera-
+tive learning in postsecondary and professional settings. Educational Psychology 
+Review 19, 1 (2007), 15–29. https://doi.org/10.1007/s10648-006-9038-8 
+[27] Casey Jones. 2010. Interdisciplinary Approach - Advantages, Disadvantages, 
+and the Future Benefts of Interdisciplinary Studies. ESSAI 7 (Apr 2010). https: 
+//dc.cod.edu/cgi/viewcontent.cgi?article=1121&amp;context=essai 
+[28] Lee Jones and Audrey Girouard. 2022. Learning with Stitch Samplers: Exploring 
+Stitch Samplers as Contextual Instructions for E-Textile Tutorials. In Designing 
+Interactive Systems Conference (Virtual Event, Australia) (DIS ’22). Association for 
+Computing Machinery, New York, NY, USA, 949–965. https://doi.org/10.1145/ 
+3532106.3533488 
+[29] Renate G. Klaassen. 2018. Interdisciplinary education: a case study. European 
+Journal of Engineering Education 43, 6 (2018), 842–859. https://doi.org/10.1080/ 
+03043797.2018.1442417 
+[30] Lisa Lattuca, David Knight, and Inger Bergom. [n. d.]. Developing a measure 
+of interdisciplinary competence for Engineers. 2012 ASEE Annual Conference & 
+Exposition Proceedings ([n. d.]). https://doi.org/10.18260/1-2--21173 
+[31] Lisa R. Lattuca, David B. Knight, Hyun Kyoung Ro, and Brian J. Novoselich. 2017. 
+Supporting the Development of Engineers’ Interdisciplinary Competence. Journal 
+of Engineering Education 106, 1 (2017), 71–97. https://doi.org/10.1002/jee.20155 
+arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/jee.20155 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+[32] Victor R Lee and Heidee Vincent. 2019. An expansively-framed unplugged 
+weaving sequence intended to bear computational fruit of the loom. In Proceedings 
+of FabLearn 2019. 124–127. 
+[33] Pamela Liou. [n. d.]. 
+Home - Doti: The dot matrix loom. 
+http:// 
+dotilikestoweave.com/ 
+[34] Bernardo Vitor de Souza Marins, Hellen Costa Ramos, Geraldo Souza Ferreira, 
+Stella Regina Reis Costa, and Helder Gomes Costa. 2019. Interdisciplinarity in 
+Higher Education: A Cross-Sectional Analysis of the Literature in the period 
+2014-2018. Brazilian Journal of Operations & Production Management 16, 1 (Mar. 
+2019), 113–125. https://doi.org/10.14488/BJOPM.2019.v16.n1.a11 
+[35] Sandra May. 2017. Engineering design process. https://www.nasa.gov/audience/ 
+foreducators/best/edp.html 
+[36] Microchip. [n. d.]. MCP23017. 
+https://www.microchip.com/en-us/product/ 
+mcp23017 
+[37] Syne Mitchell. 2015. Inventive weaving on a little loom: Discover the full potential 
+of the rigid-heddle loom. Storey Publishing. 
+[38] S. M. Mizanoor Rahman. 2020. Metrics and Methods for Evaluating Learning 
+Outcomes and Learner Interactions in Robotics-Enabled STEM Education. In 
+2020 IEEE/ASME International Conference on Advanced Intelligent Mechatronics 
+(AIM). 2103–2108. https://doi.org/10.1109/AIM43001.2020.9158900 
+[39] Jennifer Moore, Joe Sanchez, and Alissa Tudor. 2021. Weaving a Storytelling 
+Tapestry Using Computational Thinking. In IASL Annual Conference Proceedings. 
+[40] Ilan E Moyer. [n. d.]. 24-bit friendship loom. http://web.mit.edu/imoyer/www/ 
+portfolio/jacquard/index.html 
+[41] Jerry Nevins. 2004. WEAVING. http://www.jnevins.com/weaving.htm 
+[42] Jerry Nicholls. 2018. Month: July 2018. https://r.jander.me.uk/index.php/2018/ 
+07/ 
+[43] Curtis W. Nielsen, David J. Bruemmer, Douglas A. Few, and David I. Gertman. 2008. 
+Framing and Evaluating Human-Robot Interactions. In Proceedings of Metrics 
+for Human-Robot Interaction A workshop at the Third ACM/IEEE International 
+Conference on Human-Robot Interaction (HRI08). 29–36. 
+[44] Digital Weaving Norway. 2023. Tc2 loom: Digital Weaving Machine. 
+https: 
+//digitalweaving.no/tc2-loom/ 
+[45] The National Academy of Engineering and The National Research Council. 2004. 
+The hydrogen economy. (2004). https://doi.org/10.17226/10922 
+[46] Daniëlle Ooms, Nick Voskuil, Kristina Andersen, and Hanna Ottilia Wallner. 
+2020. Ruta, a Loom for Making Sense of Industrial Weaving. In Companion 
+Publication of the 2020 ACM Designing Interactive Systems Conference (Eindhoven, 
+Netherlands) (DIS’ 20 Companion). Association for Computing Machinery, New 
+York, NY, USA, 337–340. https://doi.org/10.1145/3393914.3395815 
+[47] Joshua M. Pearce. 2015. Quantifying the value of open source hard-ware de-
+velopment. Modern Economy 06, 01 (2015), 1–11. 
+https://doi.org/10.4236/ 
+me.2015.61001 
+[48] Kylie Peppler, Erica Halverson, and Yasmin B. Kafai. 2016. Makeology makerspaces 
+as Learning Environments (volume 1). Taylor and Francis. 
+[49] Kylie A. Peppler. 2017. The sage encyclopedia of out-of-school learning. SAGE 
+reference. 
+[50] J. Pollitt. 1949. THE GEOMETRY OF CLOTH STRUCTURE. Journal of the 
+Textile Institute Proceedings 40, 1 (1949), P11–P22. 
+https://doi.org/10.1080/ 
+19447014908664605 
+[51] Virginia I. Postrel. 2021. The fabric of civilization how textiles made the world. 
+Basic Books. 
+[52] Luis P. Prieto. 2015. Classroom Technology Design Guidelines: A Focused Survey. 
+In Proceedings of the Orchestrated Collaborative Classroom Workshop 2015 co-
+located with 11th International Conference on Computer Supported Collaborative 
+Learning (CSCL 2015). 10–14. 
+[53] Python. 2023. Python release python 3.8.0. https://www.python.org/downloads/ 
+release/python-380/ 
+[54] Nellie Annie Reed. 1933. The book of school weaving. Evans Bros. 
+[55] Abeera Rehmat, Hoda Ehsan, and Monica Cardella. 2022. K-2nd Grade Teachers’ 
+Perceptions of Computational Thinking: Research Findings and Implications for 
+Integrating Engineering and Computational Thinking in Elementary Education. 
+In 2022 ASEE Annual Conference & Exposition. 
+[56] Kurt Schaefer. 2019. 
+Making a DIY computer controlled loom. 
+https: 
+//retrotechjournal.com/2019/06/17/making-a-diy-computer-controlled-loom/ 
+[57] Brian Schmalz. [n. d.]. 
+Easy Driver Stepper Motor Driver. 
+https:// 
+www.schmalzhaus.com/EasyDriver/ 
+[58] Albert Solberg. 2018. Systems engineering principles. https://www.nasa.gov/ 
+consortium/SystemsEngineeringPrinciples 
+[59] Antoine Van den Beemt, Miles MacLeod, Jan Van der Veen, Anne Van de Ven, 
+Sophie van Baalen, Renate Klaassen, and Mieke Boon. 2020. Interdisciplinary 
+engineering education: A review of vision, teaching, and support. Journal of 
+Engineering Education 109, 3 (2020), 508–555. https://doi.org/10.1002/jee.20347 
+arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/jee.20347 
+[60] Shahin Vassigh and Ali Mostafavi. 2016. Hybrid Technologies for Interdisciplinary 
+Education. Journal of Civil & Environmental Engineering 05 (01 2016). https: 
+//doi.org/10.4172/2165-784X.1000201 
+[61] Tony Wu, Shiho Fukuhara, Nicholas Gillian, Kishore Sundara-Rajan, and Ivan 
+Poupyrev. 2020. ZebraSense: A Double-Sided Textile Touch Sensor for Smart 
+Clothing. In Proceedings of the 33rd Annual ACM Symposium on User Inter-
+face Software and Technology (Virtual Event, USA) (UIST ’20). Association for 
+Computing Machinery, New York, NY, USA, 662–674. https://doi.org/10.1145/ 
+3379337.3415886 
+[62] Tony Wu, Shiho Fukuhara, Nicholas Gillian, Kishore Sundara-Rajan, and Ivan 
+Poupyrev. 2020. ZebraSense: A Double-Sided Textile Touch Sensor for Smart 
+Clothing. In Proceedings of the 33rd Annual ACM Symposium on User Inter-
+face Software and Technology (Virtual Event, USA) (UIST ’20). Association for 
+Computing Machinery, New York, NY, USA, 662–674. https://doi.org/10.1145/ 
+3379337.3415886 
+[63] James E. Young, JaYoung Sung, Amy Voida, Ehud Sharlin, Takeo Igarashi, Henrik I. 
+Christensen, and Rebecca E. Grinter. 2011. Evaluating Human-Robot Interaction. 
+International Journal of Social Robotics 3, 1 (01 Jan 2011), 53–67. https://doi.org/ 
+10.1007/s12369-010-0081-8 
+A MATHEMATICAL PRINCIPLES IN WEAVING 
+There are multiple mathematical concepts illustrated in weaving 
+and textile production. These concepts include the binary, matrix-
+like nature of weaving drafts [22], geometric analysis of yarn weight, 
+tension, and path [12, 50], and the mathematical defnition of cloth 
+layers through the use of set theory [12]. In this section, we explore 
+the specifc mathematical defnitions of these concepts. 
+A.1 Weaving and Matrix Multiplication 
+Woven cloth is created by the interlacing of warp and weft yarns 
+(Figure 12). Warp yarns run vertically through the loom and are 
+raised or lowered to control how the horizontal weft yarn is inter-
+laced by the weaver. Weaving patterns for shaft looms are often 
+presented as weaving drafts (Figure 2). These drafts use diferent 
+visual descriptors to show how a shaft loom is set up in a way that 
+will create the visualized pattern. These visualizations are threading 
+(which warp yarns are threaded through and actuated by which 
+shaft), tie-up (which shafts are tied together to a single pedal), tread-
+ling (which pedal the weaver should press at a given time step to 
+raise the shafts), and draw down (fnal cloth pattern). 
+WEFT
+WEFT
+WARP
+WARP
+WARP
+WARP
+WARP
+Figure 12: An illustration of plain weave cloth showing the 
+warp and weft yarns. 
+Given the binary nature of weaving [22], we can write each of 
+the parts of the weaving draft as a binary matrix (Figure 2). These 
+matrices are TR (treadling), Tu (tie-up), Th (threading), and D (draw 
+down) Multiplying these matrices as: 
+� = �� × ��� × �ℎ 
+(4) 
+results in the matrix representation of the draw down, where zero 
+represents the weft yarn showing in the cloth, and one represents 
+the warp yarn showing. 
+A visualization of the multiplication is shown in Figure 13. Mul-
+tiplying the treadling with the tie-up (� = �� ×��� ) yields a matrix 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Speer et al. 
+that describes which shafts will be raised at each time step (repre-
+sented as a row in the � matrix). Multiplying this result with the 
+threading (� = � × �ℎ) then describes what warp yarns will be 
+raised at each time step, telling the weaver for each row of their 
+cloth which warp yarns show and which are covered by weft yarns. 
+=
+X
+X
+Drawdown
+Treadling
+Tie-UpT
+Threading
+Figure 13: An image showing the matrix multiplication of 
+weaving draft elements for an example 2x2 twill pattern. 
+A.2 Mathematical Modeling of Cloth Properties 
+Cloth properties such as layering and drapability can be modeled 
+mathematically. The layering of the cloth is defned through con-
+structing a set of yarns in the layer through set theory and refer-
+enced as cloth integrity. The drapability of the cloth can be mathe-
+matically modeled through the weave factor. These defnitions are 
+discussed in the sections below. 
+A.2.1 Cloth Integrity. Grunbaum and Shephard [20] defne a key 
+requirement that a valid weaving pattern must not “fall apart", 
+meaning that one cloth forms a bound layer. If there exists a set of 
+yarns, �, that always go over a set of yarns, �, it will separate from 
+the � yarns and thus � and � are not the same layer of cloth. If a 
+cloth falls apart it does not have “cloth integrity" 
+We defne the � set as containing two subsets: the columns of 
+the � set (�� ), and the rows of the � set (�� ). We defne �� and 
+�� similarly. Representing the pattern as a binary matrix, we can 
+state this defnition mathematically by saying a cloth, � , will “fall 
+apart" if and only if there exists sets � = �� ∪ �� , �� ≠ ∅, �� ≠ 
+∅ and � = �� ∪ �� , �� ≠ ∅, �� ≠ ∅ such that � ∩ � = ∅ and 
+{� (�� , �� )}�� ∈�� ,�� ∈�� = {1} and {� (�� ,�� )}�� ∈�� ,�� ∈�� = {0}, 
+where the function � (�, �) is accessing the value of the pattern 
+matrix at row � and column �. An example pattern ftting this 
+defnition can be found in Figure 14. 
+A.2.2 Weave Factor. The cloth’s sturdiness and drapability can be 
+described through the cloth’s weave factor [6]. The weave factor of 
+a cloth accounts for the number of interlacings of warp and weft 
+yarns and is expressed as � = � 
+, a ratio of the number of yarns per 
+� 
+pattern repeat (�) to the number of times the pattern changes value 
+(� ). When the warp and weft interlacings are diferent, the weave 
+factor must be calculated for each warp and weft as �1 and �2 
+respectively. �1 is calculated by the ratio of the number of warp 
+yarns (�1), to the number of times a row switches values (�2). �2 
+is then the complement of this as the ratio of the number of weft 
+yarns (�2), to the number of times a column switches values (�1). 
+When the number of interlacings is not equal in a pattern’s repeat, 
+as is usual for Jacquard patterns, the irregular weave factor must
+Í 
+be calculated as � = Í� 
+� . 
+��1 = 0 
+��1 = 1 ��2 = 2 ��2 = 3 
+�� 1 = 0
+0 
+0 
+1 
+0 
+�� 1 = 1 
+0 
+1 
+1
+1 
+�� 2 = 2 
+1
+1 
+1 
+0 
+�� 2 = 3
+0 
+1 
+0 
+0 
+Figure 14: An example of a pattern that fts the mathematical 
+defnition of “falling apart". In this case �� = {�� 1, �� 2}, �� = 
+{��1, ��2}, �� = {�� 1,�� 2}, and �� = {��1,��2}. Blue highlighted 
+squares are instances of � (�� , �� ) for �� ∈ ��,�� ∈ �� . Orange 
+highlighted squares are instances of � (�� ,�� ) for �� ∈ �� , �� ∈ 
+�� . 
+B SPEERLOOM SOFTWARE 
+0
+5
+10
+15
+20
+25
+30
+35
+40
+Number of Columns in the Pattern
+10
+3
+10
+2
+10
+1
+100
+101
+102
+103
+Time (Seconds)
+Runtime Over 10 Iterations
+Brute Force
+SPEERLoom
+Figure 15: The graph shows the run time of each algorithm 
+over 10 iterations of the algorithm as the number of columns 
+in the pattern is increased. 
+SPEERLoom’s software uses a novel algorithm to determine a 
+cloth’s integrity. We use the defnition of cloth integrity as defned 
+in section A.2. The brute force method to determine if a pattern 
+has integrity is to examine all possible sets of A yarns and B yarns 
+and determine if any satisfy the defnition. This algorithm runs in 
+� (2� � ) time, for � columns and � rows. As shown by Figure 15, 
+this works for smaller patterns (number of warp yarns less than 12) 
+but takes too long to run for larger patterns, making it unfeasible 
+for student to use to explore SPEERLoom patterns of 40 warp yarns. 
+SPEERLoom’s algorithm, explained in Algorithm 1, examines 
+each column and iteratively attempts to fnd an � and � set, con-
+taining the current column, that are not in the same layer. If no 
+such set exists for any of the columns, we conclude the cloth is a 
+singular layer. This algorithm is able to run at interactive rates as 
+it has complexity � (� (� + � )). Even for large numbers of warp 
+SPEERLoom: An Open-Source Loom Kit for Interdisciplinary Engagement 
+yarns, the algorithm is able to run in less than one second, as shown 
+in Figure 15. 
+UIST ’23, October 29–November 01, 2023, San Francisco, CA, USA 
+Algorithm 1 SPEERLoom’s algorithm to determine if a cloth is a 
+singular layer. 
+�� , ��, �� , �� ← {} 
+for each column � in pattern do 
+insert � into �� 
+�� ← {� | pattern(�,�) == 0}
+append {� | pattern(�, �) == 0 for � ∈ �� } to �� 
+�� ← {� for � ∈ pattern\�� }
+�� ← {� for � ∈ pattern\�� }
+while �� and �� are not empty do 
+if all elements of pattern(�� , �� ) are 1 then 
+if all element of pattern(�� , �� ) are 0 then 
+return falls apart 
+end if 
+end if 
+append {� | 0 ∈ pattern(�, �� )} to �� 
+append {� | 1 ∈ pattern(�� , �)} to �� 
+�� ← {� for � ∈ pattern\�� }
+�� ← {� for � ∈ pattern\�� }
+end while 
+end for 
+return single layer 
+

@@ -1,0 +1,1302 @@
+Neural Mixed Efects for Nonlinear Personalized Predictions 
+Torsten Wörtwein 
+Nicholas B. Allen 
+Lisa B. Sheeber 
+twoertwe@cs.cmu.edu 
+nallen3@uoregon.edu 
+lsheeber@ori.org 
+Carnegie Mellon University 
+University of Oregon 
+Oregon Research Institute 
+Pittsburgh, PA, USA 
+Eugene, OR, USA 
+Springfeld, OR, USA 
+Randy P. Auerbach 
+Jefrey F. Cohn 
+Louis-Philippe Morency 
+rpa2009@cumc.columbia.edu 
+jefcohn@pitt.edu 
+morency@cs.cmu.edu 
+Columbia University 
+University of Pittsburgh 
+Carnegie Mellon University 
+New York, NY, USA 
+Pittsburgh, PA, USA 
+Pittsburgh, PA, USA 
+Mo
+Tu
+We
+Th
+Fr
+Sa
+Su
+Mo
+Tu
+We
+Th
+Fr
+Sa
+Su
+Mo
+Tu
+We
+Th
+Fr
+Sa
+Su
+Many
+People
+P1
+P2
+P3
+Mood
+Person-Generic
+Events:
+Person-Specific
+Events:
+Person-Specific
+Baseline Levels:
+high
+medium
+low
+time
+Weekend
+Weekend
+Weekend
+P1: Meeting
+P3: Socializing
+P1: Meeting
+P3: Socializing
+P1: Meeting
+P3: Socializing
+a
+b
+c
+Figure 1: Illustration of why combining both person-generic and person-specifc trends is important when learning personalized 
+prediction models. The illustrated example is for daily mood prediction. (a) Most people are happier on weekends when they do 
+not have to work. (b) Specifc individuals, in our case P1 and P3, may have weekly events impacting their mood, e.g., socializing 
+with friends can be positive, while a stressful meeting can be negative. (c) It is important to further know the baseline mood 
+level of each person, as it varies between people, as shown for P1, P2, and P3. 
+ABSTRACT 
+Personalized prediction is a machine learning approach that pre-
+dicts a person’s future observations based on their past labeled 
+observations and is typically used for sequential tasks, e.g., to pre-
+dict daily mood ratings. When making personalized predictions, a 
+model can combine two types of trends: (a) trends shared across 
+people, i.e., person-generic trends, such as being happier on week-
+ends, and (b) unique trends for each person, i.e., person-specifc 
+trends, such as a stressful weekly meeting. Mixed efect models are 
+popular statistical models to study both trends by combining person-
+generic and person-specifc parameters. Though linear mixed efect 
+models are gaining popularity in machine learning by integrating 
+them with neural networks, these integrations are currently limited 
+to linear person-specifc parameters: ruling out nonlinear person-
+specifc trends. In this paper, we propose Neural Mixed Efect (NME) 
+models to optimize nonlinear person-specifc parameters anywhere 
+in a neural network in a scalable manner1. NME combines the 
+efciency of neural network optimization with nonlinear mixed 
+1Our code is publicly available at https://github.com/twoertwein/NeuralMixedEfects. 
+This work is licensed under a Creative Commons Attribution International 
+4.0 License. 
+ICMI ’23, October 09–13, 2023, Paris, France 
+© 2023 Copyright held by the owner/author(s). 
+ACM ISBN 979-8-4007-0055-2/23/10. 
+https://doi.org/10.1145/3577190.3614115 
+efects modeling. Empirically, we observe that NME improves per-
+formance across six unimodal and multimodal datasets, including a 
+smartphone dataset to predict daily mood and a mother-adolescent 
+dataset to predict afective state sequences where half the moth-
+ers experience symptoms of depression. Furthermore, we evaluate 
+NME for two model architectures, including for neural conditional 
+random felds (CRF) to predict afective state sequences where the 
+CRF learns nonlinear person-specifc temporal transitions between 
+afective states. Analysis of these person-specifc transitions on the 
+mother-adolescent dataset shows interpretable trends related to 
+the mother’s depression symptoms. 
+CCS CONCEPTS 
+• Computing methodologies → Machine learning; • Math-
+ematics of computing → Probability and statistics; • Applied 
+computing → Health informatics. 
+KEYWORDS 
+mixed efect models, neural networks, personalization, machine 
+learning, afective computing 
+ACM Reference Format: 
+Torsten Wörtwein, Nicholas B. Allen, Lisa B. Sheeber, Randy P. Auerbach, 
+Jefrey F. Cohn, and Louis-Philippe Morency. 2023. Neural Mixed Efects for 
+Nonlinear Personalized Predictions. In INTERNATIONAL CONFERENCE ON 
+MULTIMODAL INTERACTION (ICMI ’23), October 09–13, 2023, Paris, France. 
+ACM, New York, NY, USA, 10 pages. https://doi.org/10.1145/3577190.3614115 
+445
+ICMI ’23, October 09–13, 2023, Paris, France 
+Wörtwein et al. 
++
++
++
++
+Input Features
+Output Label
+Person-Generic
+Parameters ( ¯𝜃)
+Person-Specific
+Parameters (𝜃𝑖)
+Legend
+(a) Linear Mixed Effects (LME) [28]
++
++
++
++
+Nonlinear Layer
+Input Features
+Output Labels
+(b)
+Nonlinear
+Mixed
+Effects
+(NLME) [9]
+Nonlinear Layer
+Nonlinear Layer
++
++
++
++
+Input Features
+Output Label
+(c) Neural Networks with Linear
+Mixed Effects (NN-LME) [59]
++
++
++
++
+Nonlinear Layer
++
++
++
++
+Nonlinear Layer
++
++
++
++
+Nonlinear Layer
+Input Features
+Output Labels
+(d) Neural Mixed Effects (NME),
+our approach
+Figure 2: Visual comparison of our approach, Neural mixed Efects (NME), and previous approaches. NME enables person-
+specifc parameters at any layer to represent nonlinear person-specifc trends. Person-generic (� ¯) and person-specifc (�� ) 
+parameters are combined by summing, i.e., � ¯ + �� . 
+1 INTRODUCTION 
+Personalized prediction is a machine learning approach that pre-
+dicts a person’s future observations based on their past labeled 
+observations. This type of model is typically used for sequential 
+tasks that would be difcult without knowledge of the person, such 
+as predicting daily mood from only smartphone data or predicting 
+afective state sequences where transitions between states might 
+be infuenced by depression [39, 44]. As illustrated in Figure 1, a 
+personalized model benefts by combining two types of trends (a) 
+person-generic trends shared across people, such as being happier 
+on weekends, and (b) unique person-specifc trends, such as stress-
+ful weekly meetings or weekly socializing with friends. Person-
+specifc trends can be challenging for machine learning models, 
+even when trained on data from these people, as they might aver-
+age out across people: as exemplifed in Figure 1 when the more 
+positive mood from a person’s socializing coincides with the more 
+negative mood of another person’s stressful meeting. 
+Mixed efect models2 are popular in statistics to study person-
+generic and person-specifc trends by combining person-generic 
+and person-specifc parameters [23]. Linear mixed efect (LME) 
+models have recently been gaining popularity in machine learn-
+ing for personalizing models [19, 25, 26, 31, 35, 48, 49, 52, 54, 59]. 
+Integrating LME with neural networks is currently limited to lin-
+ear person-specifc trends: person-specifc parameters can only be 
+in the last linear layer of a neural network as illustrated in Fig-
+ure 2c. This rules out person-specifc parameters in the remaining 
+layers, i.e., nonlinear person-specifc parameters. Separately from 
+work with neural networks, nonlinear mixed efect approaches 
+2In statistics, the person-generic trends are often referred to as fxed efects and the 
+person-specifc trends as random efects. The name mixed efects comes from mixing 
+both fxed and random efects. 
+were proposed, but their optimization does not scale to large neural 
+networks with many layers and parameters [9]. 
+In this paper, we propose Neural Mixed Efect (NME) models 
+to learn nonlinear person-specifc parameters in a scalable man-
+ner. Our NME models combine the efcient optimization of neural 
+networks with the person-specifc parameters of nonlinear mixed 
+efect models. NME learns nonlinear person-specifc parameters by 
+enabling them anywhere in a nonlinear neural network, as shown 
+in Figure 2d. We demonstrate integrating our NME approach into 
+two model architectures. We evaluate performance primarily on 
+Multi-Layer Perceptrons (MLPs) for better comparison with previ-
+ous MLP-LME work. To demonstrate NME for more complex models 
+that yet have some interpretable parameters, we integrate NME 
+with neural Conditional Random Fields (CRFs) to classify states 
+in a temporal sequence [12]. CRFs explicitly model a sequence’s 
+temporal dynamics and allow us to interpret the person-specifc 
+temporal transitions between states. 
+We evaluate NME on six unimodal and multimodal datasets, 
+including a smartphone dataset to predict daily mood and a mother-
+adolescent dataset to predict afective state sequences where half 
+the mothers experience symptoms of depression. We analyze the 
+interpretable person-specifc transition parameters in the CRF and 
+hypothesize that they difer between families where mothers expe-
+rience symptoms of depression. 
+2 TECHNICAL AND RELATED BACKGROUND 
+Mixed efect models were proposed in statistics for data that is not 
+independent and identically distributed, e.g., longitudinal data from 
+multiple people [23]. In statistics, the goal of mixed efect models 
+is often to study research questions about person-generic trends, 
+referred to as fxed efects, and person-specifc trends, referred to 
+446
+Neural Mixed Efects for Nonlinear Personalized Predictions 
+ICMI ’23, October 09–13, 2023, Paris, France 
+Linear Mixed Efects 
+Nonlinear Mixed Efects 
+Neural Networks with 
+Neural Mixed Efects 
+(LME) 
+(NLME) 
+Linear Mixed Efects (NN-LME) 
+(NME) 
+Nonlinear Model 
+✗
+✓ 
+✓* 
+✓ 
+Dataset Scalability 
+✗
+✓ 
+✗
+✓ 
+Model Scalability 
+✓
+✗ 
+✓
+✓ 
+Table 1: Comparison of NME with previous approaches. LME models do not scale well with too many observations per person. 
+The sampling-based optimization of NLME does not scale well with too many parameters. NN-LME has nonlinear person-generic 
+parameters, but it re-use the optimization of LME, which (*) limits NN-LME to linear person-specifc parameters and it does not 
+scale as well for large datasets. Our proposed NME combines the efcient optimization of neural networks with the nonlinear 
+persons-specifc parameters of mixed efect models. 
+as random efects. Mixed efect models include a penalty term to 
+regularize the person-specifc parameters (denoted as �� ) so that 
+they learn only what the person-generic parameters (denoted as
+¯ 
+� ) cannot learn. The technical challenge when optimizing mixed 
+efect models is to separate fxed and random efects since they 
+afect each other, e.g., a random bias term can afect the fxed slope 
+of linear mixed efect models [50]. 
+We briefy highlight the optimization of linear and nonlinear 
+mixed efect models, review related work that explored combina-
+tions of neural networks and mixed efect models, and then contrast 
+mixed models with multitask learning. 
+Linear Mixed Efects (LME): For an observation from the 
+�-th person represented by a feature vector �, a linear mixed ef-
+fects model infers the prediction as �ˆ = (� ¯ + �� )� �, see Figure 2a. 
+For efcient optimization, it is often assumed that the random ef-
+fects �� follow a multivariate normal distribution with zero mean 
+and covariance �. A popular method to optimize LME models is 
+an Expectation-Maximization (EM) algorithm that minimizes the 
+mean squared error [28]. The challenging part of this EM algo-
+rithm is that a matrix needs to be inverted for each person �, where 
+the matrix size is the number of observations for person �. This 
+makes it challenging to optimize LME models when a person has 
+many observations, i.e., LME models do not easily scale to large 
+datasets. 
+Nonlinear Mixed Efects (NLME): Nonlinear mixed efect 
+models are used to model nonlinear person-specifc trends, for ex-
+ample, in pharmacometrics [36]. As shown in Figure 2b, random 
+efects can be anywhere in a nonlinear model �ˆ = � (�; � ¯ + �� )
+making their optimization more challenging. While multiple opti-
+mization approaches exist for nonlinear mixed efects [4, 9, 29, 42], 
+most modern nonlinear mixed efect approaches fnd an approxi-
+mate solution using random walk Metropolis sampling [9, 18]. One 
+downside of this sampling approach is that it converges slowly for 
+large models with many parameters [18]. One upside, compared to 
+LME, is that this sampling approach scales well with many obser-
+vations as it does not require matrix inversions that depend on the 
+number of people or observations. 
+Neural Networks with Linear Mixed Efects (NN-LME): 
+LME models have been combined with neural networks to im-
+prove performance for tasks involving longitudinal data from mul-
+tiple people, such as for mood and mental health-related tasks [19, 
+31, 48, 49, 52, 54, 59]. All of these combinations follow the same 
+mathematical formulation of �ˆ = (� ¯ + �� )� � (�; �neural), see Fig-
+ure 2c, where �neural are the person-generic parameters of the 
+neural network. These combinations can be seen as simply plac-
+ing an LME model on top of a neural network. Most NN-LME 
+approaches use the same EM algorithm as LME models [28]. The 
+only diference is that the neural network parameters �neural be-
+come part of the fxed efects, meaning the neural network needs 
+to be trained until convergence within every E-step, which can 
+be slow for large neural networks. By re-using the same EM algo-
+rithm from LME models, its limitations apply: the random efects 
+will minimize the mean squared error and NN-LME will not easily 
+scale to large datasets. While two approaches extend beyond the 
+means squared error by fnding an approximate solution for binary 
+classifcation[48, 49], their work does not generalize to multiclass 
+classifcation. 
+Our proposed Neural Mixed Efects (NME) approach is a signif-
+cant generalization of previous work by allowing person-specifc pa-
+rameters, i.e., random efects, anywhere in neural networks where 
+even the last layer can be nonlinear. Our proposed NME model 
+is also scalable to large datasets and large models by efciently 
+optimizing the NLME objective with stochastic gradient descent. 
+We summarize this comparison in Figure 2 and Table 1 
+Multitask Models: Assuming not all model parameters have 
+a person-specifc component, mixed models are similar to multi-
+task models where each task corresponds to a person [8, 51]. The 
+two main diferences are 1) mixed models have a person-generic 
+("shared") component even for parameters that have a person-
+specifc component and 2) while multitask models can have an 
+additional explicit regularization between the task-specifc param-
+eters [13, 53], mixed models do not require a hyper-parameter to 
+determine the strength of this regularization as � is learned. 
+3 PROBLEM STATEMENT 
+Our main goal is personalized prediction: predicting a person’s 
+future observations by training on their past observations. The 
+problem of personalized prediction using mixed efects can be for-
+malized as follows. Given a training dataset with � people and �� 
+observations for the �-th person {(�� ,�� ) | � ∈ [1, �], � ∈ [1, �� ]} 
+� 
+� 
+and a test dataset with unseen observations from the same people, 
+the goal is to learn a function � (�� ; �) predicting �� where the
+� 
+� 
+parameters � are expressed as the sum of a person-generic � ¯ and a 
+person-specifc component �� . 
+447
+ICMI ’23, October 09–13, 2023, Paris, France 
+Wörtwein et al. 
+4 NEURAL MIXED EFFECT MODELS 
+Mixed efect models are gaining popularity in machine learning 
+for personalized predictions as they combine person-generic and 
+person-specifc parameters. In this section, we present our gen-
+eralization named Neural Mixed Efects (NME) model to better 
+integrate mixed efect models in neural networks through a more 
+scalable optimization and by allowing person-specifc parameters 
+anywhere. The advantage of our proposed NME approach is that it 
+enables any neural network architecture to have person-specifc 
+parameters �� as long as its original parameters (which we will 
+refer to as person-generic parameters �¯ ) can be optimized with 
+gradient descent. The only diference is that the person-specifc 
+components 
+ 
+�� also need to be stored and optimized. When making 
+predictions for person �, the neural network parameters become the 
+sum of these two components  
+ 
+�¯ + ��. Similar to multitask learning, 
+not all parameters need a person-specifc component. If parameters 
+have no person-specifc components, the parameters are equal to 
+the person-generic components �¯ . 
+We frst focus on the optimization process in subsection 4.1, 
+then show that NME is a nonlinear mixed efects model in subsec-
+tion 4.2, and fnally, we describe in subsection 4.3 how to predict 
+sequences using a neural Conditional Random Field (CRF) and how 
+we combine it with NME. 
++
++
++
++
+Nonlinear Layer
+Input
+Features
+Output
+Predictions
++
++
++
++
+Nonlinear Layer
++
++
++
++
+Nonlinear Layer
++
++
++
++
+Nonlinear Layer
+time
+𝑻1,1
+𝑻4,4
+𝑻1,4
+𝑻4,1
+𝑻1,1
+𝑻1,4
+𝑻4,1
+𝑻4,4
++
+Transition
+Matrices
+Figure 3: Illustration of the NME-CRF with person-specifc 
+parameters everywhere. An MLP predicts the initial output 
+predictions which are refned by the CRF using the transition 
+4.1 Optimization 
+matrix � . 
+The goal is to learn person-specifc parameters �� representing 
+person-specifc trends, i.e., that cannot be learned by the person-
+generic parameters � ¯. In addition to minimizing a downstream 
+for a person and helps prevent overftting for a person with only a 
+loss function �, mixed efect models separate person-generic and 
+few observations. 
+person-specifc trends by regularizing the person-specifc parame-
+Optimization of Equation 1 is performed with stochastic gradient 
+ters. This regularizing encourages the person-specifc parameters 
+descent in batches, where the regularization term on the right is 
+�� to only focus on what cannot be learned by the unregularized 
+scaled by how many observations a person has in the current batch 
+person-generic parameters � ¯. Following previous NN-LME work, 
+�. The right part of Equation 1 becomes 
+we regularized the person-specifc parameters by assuming that 
+they follow a multivariate normal distribution with zero mean
+Í 
+and covariance matrix � ∈ Rdim(�� )×dim(�� ) , where dim(�� ) is the 
+number of person-specifc parameters. � is the same for all people. 
+To make the regularization invariant to the scale of diferent down-
+stream loss functions, mixed efect models have, next to �, a second 
+weighting factor �2 that represents the average downstream loss. 
+The resulting loss function of NME is 
+1(� = �)
+�� ∈� 
+��� �−1�� 
+� 
+(2)
+�� 
+where the indicator function 1(� = �) is 1 when the observation 
+�� is from the �-th person, i.e., � = �.
+� 
+After each epoch of minimizing Equation 1, we update �2 to the 
+new average downstream loss � of the training set and � to the 
+sample covariance matrix of the person-specifc parameters �� . 
+Fortunately, it is common in mixed efect modeling to assume 
+that the person-specifc parameters are independent of each other [9, 
+ 
+� (��
+� , � (�� 
+� ; � ¯ + �� )) 
+ 
++ ��� �−1�� . 
+(1) 
+�
+∑ 
+��
+1 ∑ 
+�2 
+�=1 
+� =1 
+55], which reduces � to an easy-to-invert diagonal matrix. This 
+The left term of Equation 1 optimizes � ¯ + �� for best downstream 
+performance while the right term regularizes the person-specifc 
+parameters �� . As we have separate persons-specifc parameters �� 
+for each person � but apply the same regularization, we are likely 
+to learn larger person-specifc parameters when a person has many 
+observations: as the left term, the sum over the number of observa-
+tions for a person is more likely to outweigh the regularization term 
+on the right when a person has many observations. Intuitively, this 
+improves performance the most when we have many observations 
+allows us to efciently optimize Equation 1 even for large models 
+with many person-specifc parameters. NMEs with this assumption 
+are as fast as multitask models when having the same person/task-
+specifc parameters. As seen from Equation 1, the NME objective 
+scales linearly with the number of people and their observations 
+enabling NME to scale to even large datasets. 
+To summarize, 1) NME allows person-specifc parameters any-
+where in a neural network, 2) NME uses stochastic gradient descent 
+to optimize even large models with many person-specifc parame-
+ters efciently, and 3) NME scales linearly with the dataset size. 
+448
+Neural Mixed Efects for Nonlinear Personalized Predictions 
+ICMI ’23, October 09–13, 2023, Paris, France 
+Table 2: Dataset characteristics. With the calendar modality we refer to metadata including the year and the weekday. 
+Dataset 
+Tasks 
+Group 
+#Groups 
+#Observations 
+Modalities 
+Imdb [57] 
+Movie rating (regression) 
+Genre 
+383 
+83143 
+text 
+News [33] 
+Number of shares on Facebook (regression) 
+Outlet 
+598 
+60080 
+calendar, text 
+Spotify [32] 
+Danceability rating (regression) 
+Genre 
+58 
+26844 
+acoustic, calendar, text 
+IEMOCAP [7] 
+Arousal and valence ratings (regression) 
+Person 
+10 
+4784 
+acoustic, text, vision 
+MAPS [1] 
+Daily self-assessed mood ratings (regression) 
+Person 
+38 
+2122 
+calendar, GPS, text, typing 
+TPOT [56] 
+Four afective states (multiclass classifcation) 
+Person 
+195 
+15228 
+acoustic, text, vision 
+4.2 NME as a Nonlinear Mixed Efects Model 
+NME learns a nonlinear mixed efects model because its optimiza-
+tion procedure follows that of the nonlinear mixed efects solver 
+saemix [9]. saemix is designed to optimize nonlinear mixed ef-
+fect models in statistics using random walk Metropolis sampling. 
+However, sampling many parameters for neural networks is typ-
+ically computationally challenging, converges slowly, and might 
+lead to sub-optimal solutions [10, 18, 37]. NME replaces sampling 
+with gradient descent to scale to large neural networks with many 
+person-specifc parameters. 
+saemix is an approximation EM algorithm [11], which means the 
+expectation step (E-step) is not required to have converged before 
+continuing with the maximization step (M-step). When assuming 
+that the person-specifc parameters �� follow a multivariate nor-
+mal distribution with zero mean and covariance matrix �, saemix 
+incrementally minimizes Equation 1 during the E-step. During the 
+M-step, saemix updates �2 and �. Under general assumptions3, 
+saemix will converge to a mixed efects model. NME reduces Equa-
+tion 1 during each epoch, corresponding to the E-step. Updating �2 
+and � between epochs corresponds to the M-steps. As NME follows 
+the optimization procedure of saemix, NME will also converge to a 
+nonlinear mixed efects model. 
+4.3 NME Conditional Random Fields 
+When predicting states that have a temporal order, such as the 
+sequence of afective states on the mother-adolescent dataset, it can 
+be benefcial to account for temporal dynamics, e.g., how likely it 
+is to transition from one state to the next. Accounting for temporal 
+dynamics may not only improve performance, but it may also be 
+possible to interpret which transition the model infers as more or 
+less likely. If we can further learn person-specifc transitions, we 
+can interpret whether they difer, for example, between families 
+where mothers experience symptoms of depression. 
+Conditional Random Fields (CRFs) are graphical models that can 
+learn state transitions in an interpretable manner [22]. When the 
+transitions are assumed to be time-invariant, i.e., they are constant 
+across time, we can represent all possible transitions from one to the 
+next state through one matrix � ∈ R|states|×|states| where |states| is 
+the number of states. CRFs learn such a transition matrix � . While 
+CRFs have been combined with neural networks [12], they have 
+not been explored with person-specifc parameters, as done in the 
+3Assuming � (��
+� , � (�� ; � ¯ + � � ) are conditionally independent given the person � and
+� 
+follow a distribution in the exponential family. 
+NME approach. With our NME-CRF, we can learn person-specifc 
+transition matrices � = � + �� , which allows us to analyze them. 
+¯ 
+Besides a transition matrix � , a CRF needs to know how likely 
+each state is at time �, which we infer using an MLP. Figure 3 pro-
+vides an illustration of NME-CRF. The CRF model can be optimized 
+using gradient descent by minimizing the following loss function 
+ 
+exp 
+Í� � (�� ; � ¯ + �� )) + (� ¯ + �� )�� −1,�� 
+� 
+� 
+− 
+(3)
+� ([�1 
+� , . . . , �� ]) 
+� 
+where � is a normalization function. We use the forward-backward 
+algorithm to efciently calculate Equation 3 [5]. To combine the 
+CRF with NME, Equation 3 becomes the downstream loss � in Equa-
+tion 1. At inference time, we use the viterbi algorithm to efciently 
+determine the most likely state sequence [5]. 
+5 EXPERIMENTAL SETUP 
+We evaluate our NME approach on six unimodal and multimodal 
+datasets, including both regression and multiclass classifcation 
+tasks. For better comparison with previous approaches, we primar-
+ily integrate NME with MLPs. The mother-adolescent dataset has 
+temporal state sequences allowing us to evaluate the NME-CRF. 
+We perform a more detailed analysis of the learned parameters of 
+the NME-CRF since it learns interpretable state transitions. 
+5.1 Datasets 
+We conduct experiments on six datasets, summarized in Table 2. 
+Imdb [57], News [33], Spotify [32]: These are three public 
+datasets used by previous NN-LME work [49]. We follow their 
+experimental protocol and use the same features and labels. Instead 
+of people being the grouping variable on these datasets, we have 
+genres on Imdb and Spotify and outlets on the News datasets as a 
+grouping variable, i.e., we learn genre-specifc and outlet-specifc 
+parameters. Following previous work, we report the root mean 
+squared error (RMSE) for these three datasets. For easier comparison 
+across the three datasets, we normalize the RMSE by the standard 
+deviation of the ground truth labels on the test set (NRMSE). 
+IEMOCAP [7]: The IEMOCAP dataset [7] consists of dyadic 
+interactions of fve pairs of people, a total of ten people. Each pair 
+is asked to improvise a set of emotionally charged interactions 
+spontaneously. We separately predict arousal and valence ratings 
+for each person on short utterances using features extracted by 
+previous work [58], which includes statistics aggregated at the 
+utterance-level of OpenFace 2.0 [3], openSMILE’s eGeMaPs [14], 
+449
+ICMI ’23, October 09–13, 2023, Paris, France 
+Wörtwein et al. 
+Table 3: Performance on six datasets with person-specifc parameters in the last and all layers of the MLP. Best overall 
+performance is underlined while best performance for the last/all layers is in bold. When a baseline is signifcantly worse than 
+NME-MLP with person-specifc parameters in the last or all layers, � or � are in superscript. 
+Imdb 
+NRMSE ↓ 
+News 
+NRMSE ↓ 
+Spotify 
+NRMSE ↓ 
+IEMOCAP-A 
+CCC ↑ 
+IEMOCAP-V 
+CCC ↑ 
+MAPS 
+Pearon’s � ↑ 
+TPOT 
+Krippendorf � ↑ 
+Generic-MLP 
+0.927�� 
+0.841�� 
+0.711� 
+0.510� 
+0.518� 
+0.119 
+0.355 
+Last
+MLP-LME [59] 
+0.881� 
+0.630 
+0.685 
+0.455� 
+0.466� 
+0.143 
+— 
+Specifc-MLP 
+0.891� 
+0.646� 
+0.794� 
+0.431� 
+0.354� 
+0.074 
+0.347 
+NME-MLP (ours) 
+0.846 
+0.627 
+0.679 
+0.510 
+0.555 
+0.209 
+0.367 
+ll
+Specifc-MLP 
+0.886� 
+0.654� 
+0.770� 
+0.452� 
+0.443� 
+0.124 
+0.288� 
+A
+NME-MLP (ours) 
+0.856 
+0.629 
+0.690 
+0.558 
+0.559 
+0.138 
+0.367 
+and RoBERTa [30]. As is common for IEMOCAP, we use the concor-
+dance correlation coefcient (CCC) [24] as the evaluation metrics. 
+MAPS [1]: Mobile Assessment for the Prediction of Suicide 
+(MAPS) is a longitudinal dataset of smartphone data of adolescents 
+with daily mood self-assessments [1]. We predict the daily mood 
+self-assessments using their phone activity from the past 24h. In-
+spired by previous phone-based mood prediction work [2, 17, 27, 44], 
+we extracted the following features: LIWC dimensions [40] and 
+sentiment from Vader [16] of the typed text, the number of words, 
+total time typing, the mean and variance of the typing speed, the 
+weekday, the number of visited places based on GPS data as well as 
+distance traveled and the average walking speed. The evaluation 
+metric is Pearson’s correlation coefcient � , which is well suited 
+for evaluating how much of the mood variation we can predict. 
+TPOT [34]: The Transitions in Parenting of Teens (TPOT) dataset 
+contains video recordings of dyadic interactions between mothers 
+and their adolescents [34]. By design, mothers of half the dyads 
+exhibit at least moderate depression symptoms at recruitment time 
+and further had a treatment history for depression (referred to as 
+the depressed group). The other half of mothers exhibits at most 
+low symptoms, do not have a treatment history of depression, and 
+had further no mental health treatment a month before recruitment 
+(referred to as the non-depressed group). The interactions are typi-
+cally 15 minutes long and focus on resolving areas of disagreement, 
+such as participation in household chores. These interactions are 
+annotated for each person for a sequence of four afective states 
+(other, aggressive, dysphoric, and positive). These afective states are 
+closely related to Living in Familial Environments codes [15, 46]. 
+The afective state annotations are onset annotations, i.e., a state 
+is annotated when enough evidence is available to determine the 
+afective state and last until enough evidence is available for the 
+next onset. This annotation approach means that two consecutive 
+segments will not have the same label, e.g., positive will not follow 
+positive. When using the NME-MLP, we predict these segments 
+independently of each other. As the NME-CRF allows us to model 
+temporal dynamics, we jointly predict each person’s sequence of 
+segments. In both cases, we use the same features from previous 
+work [56], which are similar to the features on IEMOCAP but uses 
+LIWC [40] instead of RoBERTa. Following previous work, we report 
+Krippendorf’s � between the ground truth and the predicted labels. 
+5.2 NME Models and Baselines 
+Similar to previous work, we evaluate NME primarily in the con-
+text of MLPs (referred to as NME-MLP). Additionally, we evaluate 
+NME using neural CRFs for the sequence prediction task on TPOT 
+(referred to as NME-CRF). Since our NME approach allows person-
+specifc parameters anywhere in the model, we explore three ap-
+proaches: 1) having person-specifc parameters in only the last layer 
+(denoted as last), 2) for the CRF to additionally have person-specifc 
+parameters in its transition matrix � (denoted as last+� ), and 3) 
+having them everywhere in the model (denoted as all). Figure 3 
+depicts the NME-CRF with person-specifc parameters everywhere, 
+including the transition matrix � . 
+We compare NME-MLP and NME-CRF to three baselines. 
+Generic-MLP: Generic-MLP is either an MLP or a CRF (Generic-
+¯
+CRF) with only person-generic parameters, i.e., � = � . Generic-
+MLP corresponds to a conventional MLP that is directly optimized 
+with the downstream loss function �. 
+Specifc-MLP: Specifc-MLP is either an MLP or a CRF (Specifc-
+CRF) with only person-specifc parameters, i.e., � = �� . The person-
+specifc parameters are optimized with the downstream loss func-
+tion �, i.e., they do not follow the NME approach. When evaluating 
+person-specifc parameters in only the last layer, we use person-
+¯
+generic parameters in all the previous layers of the MLP, i.e., � = � 
+(the same as multitask learning with a task-specifc last layer). 
+MLP-LME [59]: Almost all previous MLP-LME work [31, 52, 54, 
+59] is based on the same EM algorithm [28]. We implement MLP-
+LME as described in previous work [59], which makes MLP-LME 
+a baseline for regression tasks with person-generic and person-
+specifc parameters in the last layer, i.e., � = � ¯ + �� . MLP-LME has 
+so far not been extended to multiclass classifcation, so we cannot 
+evaluate MLP-LME on TPOT. 
+5.3 Experimental Details 
+For all datasets we have a within-person split of 60% training, 20% 
+validation, and 20% testing. For IEMOCAP, MAPS, and TPOT, the 
+frst 60% of the observations per person are used for training, the 
+following observations for validation, and the last observations for 
+testing. This is done to avoid temporally correlated observations 
+that would invalidate the validation or test set. 
+450
+Neural Mixed Efects for Nonlinear Personalized Predictions 
+ICMI ’23, October 09–13, 2023, Paris, France 
+−2.5
+0.0
+2.5
+Z-Normalized Baseline Level
+−1
+0
+1
+𝜃𝑖
+bias
+Imdb
+News
+Spotify
+IEMOCAP-A
+IEMOCAP-V
+MAPS
+Figure 4: Correlation between the baseline level (ground truth 
+on the training set) and the last bias term �� 
+of NME-MLP. 
+bias 
+All models are implemented in PyTorch [38] and optimized with 
+Adam [20]. Their hyper-parameter are determined using a grid-
+search which includes the learning rate, the number of layers in 
+the MLP and their width, and L2 weight decay. Model validation is 
+based on the validation set performance. All models are trained on 
+consumer-level graphic cards, such as, the NVidia RTX 3080 Ti. 
+All input features are z-normalized on the training set. For re-
+gression tasks, the ground truth is also z-normalized based on the 
+training set. The mean squared error is the loss function � for all 
+regression tasks. For the MLP on TPOT, we minimize the cross 
+entropy loss, while the forward-backward algorithm is used for 
+the CRF on TPOT to minimize Equation 3. Features from diferent 
+modalities are combined through early fusion. 
+When reporting performance metrics, we frst calculate them 
+within each person and then report the average. This allows us 
+to focus on the within-person performance and avoids Simpson’s 
+paradox [50]. Signifcance tests are conducted with paired person-
+clustered bootstrapping [45] using � = 0.05 and 10,000 resamplings 
+at the person-level4. To determine the performance metrics reliably, 
+we need a large enough test set per person: we remove people from 
+all experiments if we have less than ten observations from them. 
+6 RESULTS AND DISCUSSION 
+We frst present the NME-MLP experiments across all six datasets 
+and then focus on analyzing the NME-CRF multiclass classifcation 
+experiments on the TPOT dataset. 
+6.1 NME-MLP Experiments 
+Last layer with person-specifc parameters: We frst evaluate 
+NME-MLP with person-specifc parameters in only the last layer 
+for a direct comparison with MLP-LME [59]. NME-MLP performs 
+numerically equal or better than all three baselines (Generic-MLP, 
+Specifc-MLP, and MLP-LME) on the six datasets, see the top half 
+of Table 3. While Specifc-MLP incurs a performance drop for the 
+two smaller datasets, i.e., IEMOCAP and MAPS, NME-MLP main-
+tains or improves performance indicating that it is important to 
+have both person-generic and person-specifc parameters. Unlike 
+4For each person, calculate the performance metric and take their diference between 
+two models. Then bootstrap the diferences by resampling 10,000 times with replace-
+ment to derive 95% confdence intervals using percentiles. 
+Table 4: Performance of the CRF on TPOT. Best overall perfor-
+mance is underlined while best performance for the last/all 
+layers is in bold. 
+Krippendorf � ↑ 
+Generic-CRF 
+0.467 
+Specifc-CRF 
+Last
+0.485 
+NME-CRF (ours) 
++ � 
+0.494 
+Specifc-CRF 
+ll
+0.317� 
+NME-CRF (ours) 
+A
+0.470 
+current MLP-LME implementations, NME-MLP can also be applied 
+to multiclass classifcation on the TPOT dataset. NME-MLP again 
+performs numerically better than its baselines. As indicated by the 
+superscripts in Table 3, NME performs in many cases statistically 
+signifcantly better compared to its baselines. 
+All layers with person-specifc parameters: As illustrated in 
+Figure 2d, NME enables person-specifc parameters anywhere in 
+a neural network. The bottom half of Table 3 summarizes the per-
+formance with person-specifc parameters everywhere. NME-MLP 
+numerically outperforms Specifc-MLP and Generic-MLP. Having 
+person-specifc parameters everywhere also leads to the best per-
+formance across all IEMOCAP experiments suggesting that people 
+in IEMOCAP may have nonlinear person-specifc trends. 
+Interpretation of baseline levels: NME-MLPs for regression 
+� + � ¯bias + �� 
+infer their prediction as �ˆ = (� ¯ + �� )� �� 
+bias where 
+�� is the representation learned by previous layers. It is possible 
+� 
+that � ¯bias + �� 
+bias will correspond to a person’s baseline level on the 
+training set. As can be observed in Figure 4, �� 
+bias is highly correlated 
+with the baseline level on all datasets, including IEMOCAP (� = 
+0.669 for arousal and � = 0.543 for valence). A potential explanation 
+for why the magnitude of �� 
+bias is very small on IEMOCAP could 
+be that the improvised dyads might be easier to predict, making it 
+unnecessary for the model to encode the baseline levels. 
+6.2 NME-CRF Experiments 
+NME-CRF improves performance: We study the temporal struc-
+ture of afective states on TPOT with the NME-CRF. While pre-
+vious MLP-LME [59] work does not generalize to temporal struc-
+tures, such as modeled by a CRF, our NME easily extends CRFs. 
+Table 4 shows that NME-CRF numerically improves over its base-
+lines, demonstrating that even more complex models beneft from 
+having person-specifc parameters and that the transition patterns 
+on TPOT depend on the person. 
+Interpretation of temporal transitions: The NME-CRF model 
+allows analyzing the learned person-specifc transition parameters. 
+We focus on whether they difer between families (both adolescents 
+and mothers) in the depressed and non-depressed group. We focus 
+on this balanced group for two reasons 1) transition patterns have 
+previously been linked to depression [46], and 2) already the ground 
+truth base rate of the four afective states is diferent between them 
+as indicated by the Chi-squared test �2 (3, 8946) = 61.0, � < 0.001. 
+451
+ICMI ’23, October 09–13, 2023, Paris, France 
+Wörtwein et al. 
+Transition Matrix 𝑻 𝒊
+Depressed
+Group
+Non-Depressed
+Group
+People
+Other
+Aggressive
+Dysphoric
+Positive
+Other
+Aggressive
+Dysphoric
+Positive
+Figure 5: Visualization of the person-specifc transition matri-
+ces. Half of the matrices belong to families where the mother 
+is in the depressed group. 
+Table 5: 95% confdence intervals of the learned transition 
+probability diferences between families in the depressed 
+and non-depressed group. Positive values indicate a higher 
+transition probability for families in the depressed group. 
+Intervals in bold are signifcantly diferent. 
+Model-implied 
+Into 
+Transitions 
+Other 
+Aggressive 
+Dysphoric 
+Positive 
+From 
+Other 
+[0.0, 
+1.8] 
+[0.7 
+4.9] 
+[-2.0 
+3.2] 
+[-7.4 
+-1.3] 
+Aggressive 
+[-1.2 
+2.8] 
+[-1.7 
+0.2] 
+[-0.4 
+3.4] 
+[-2.1 
+-0.4] 
+Dysphoric 
+[-5.5 
+1.1] 
+[-0.1 
+4.4] 
+[-0.9 
+0.5] 
+[-1.4 
+2.0] 
+Positive 
+[-8.3 
+-1.6]
+[0.3 
+2.2 ]
+[0.1 
+5.5 ] 
+[0.0, 
+1.8] 
+As visualized in Figure 5, we group the person-specifc transi-
+tion matrices and then compare their diferences. The multivari-
+ate Hilbert-Schmidt Independence Criterion (HSIC) [41]5 indicates 
+that the two groups have signifcantly diferent transition matrices 
+HSIC = 0.71, � = 0.006. 
+The 95% confdence intervals of the diferences in the transition 
+probabilities between families in the depressed and non-depressed 
+group shown in Table 5 indicate six signifcant diferences between 
+them. While families in the non-depressed group are more likely 
+to transition from positive to the majority class other, families in 
+the depressed group are more likely to transition to aggressive and 
+dysphoric. Similar trends are observed for transitions from other: 
+families in the non-depressed group are more likely to transition 
+to positive while families in the depressed group are more likely 
+to transition into aggressive. These observations seem plausible as 
+more aggressive and less positive behaviors have been associated 
+with depression [21, 46, 47]. As illustrated with the above analyses, 
+it is possible to interpret the learned person-specifc parameters 
+learned by NME. 
+5We use the implementation from the R package dHSIC. 
+Regularization term needed for many person-specifc pa-
+rameters and small datasets: To test in which situations the reg-
+ularization term of NME, i.e., the right part of Equation 1, is needed 
+for good performance, we train an unregularized NME (uNME) 
+that does not have the regularization term. We evaluate (u)NME 
+with 1) person-specifc parameters in diferent model parts of the 
+CRF, and 2) with less and less training data per person. Figure 6 
+indicates that the regularization term is needed for many person-
+specifc parameters and on smaller datasets. Even with little data, 
+NME-CRF always performs better than the Generic-CRF despite 
+having more parameters. As described in subsection 4.1, mixed 
+efect models tend to learn smaller person-specifc parameters for a 
+person with little data which helps avoid overftting. In the extreme 
+case of having very little data per person, the NME-CRF should 
+converge to the Generic-CRF as the person-specifc parameters will 
+barely be used [43]. This trend can be observed in Figure 6 as the 
+performance gap between NME-CRF and Generic-CRF narrows 
+with fewer observations per person. 
+7 CONCLUSION 
+We demonstrated that personalized models beneft by combining 
+two types of trends: (a) person-generic trends shared across people 
+and (b) unique person-specifc trends. Linear mixed efect models 
+are gaining popularity in machine learning for personalization as 
+they combine these two trends. We proposed Neural Mixed Efect 
+(NME) models to generalize previous work integrating linear mixed 
+efect models in neural networks. NME allows person-specifc pa-
+rameters anywhere in a neural network to learn nonlinear person-
+specifc trends. NME’s optimization is further scalable to large 
+datasets and large neural networks. NME achieved this by com-
+bining the efcient neural network optimization with the person-
+specifc parameters of nonlinear mixed efect models. We evaluated 
+NME on six unimodal and multimodal datasets covering regression 
+and classifcation tasks and observed numerical improvements on 
+all six datasets. Further, we showed that NME can be combined 
+with neural conditional random felds to learn interpretable person-
+specifc temporal transitions. Finally, we demonstrated that person-
+specifc parameters can be interpreted, for example, we observed 
+that the person-specifc transition matrices of the NME-CRF are 
+diferent for families in the depressed group. 
+When multiple group variables are known to be present, e.g., 
+people and diferent cultural backgrounds, it would be interesting 
+to extend NME to a multilevel model [6]. An additional future 
+direction, is evaluating which modalities, modal parts, or tasks 
+beneft the most from NME. 
+ACKNOWLEDGMENTS 
+This material is based upon work partially supported by Meta, 
+National Science Foundation awards 1722822 and 1750439, and 
+National Institutes of Health awards U01MH116923, R01HD081362, 
+R01MH125740, R01MH096951, R21MH130767 and R01MH132225. 
+Any opinions, fndings, conclusions, or recommendations expressed 
+in this material are those of the author(s) and do not necessarily 
+refect the views of the sponsors, and no ofcial endorsement should 
+be inferred. 
+452
+Neural Mixed Efects for Nonlinear Personalized Predictions 
+ICMI ’23, October 09–13, 2023, Paris, France 
+T
+last layer + T
+first layer + T
+all
+Model parts with person-specific parameters
+0.3
+0.4
+0.5
+Krippendorff 𝛼 →
+100%
+80%
+60%
+40%
+20%
+Training data per person
+0.3
+0.4
+0.5
+Krippendorff 𝛼 →
+Generic-CRF
+Specific-CRF
+NME-CRF
+uNME-CRF
+Figure 6: Performance on TPOT: (left) with person-specifc parameters in diferent model parts and (right) when trained on 
+smaller subset of data per person. 
+REFERENCES 
+[1] Randy P Auerbach, Ranqing Lan, Hanga Galfalvy, Kira lqueza, Jefrey F Cohn, 
+Ryan Crowley, Katherine Durham, Karla Joyce, Lauren E Kahn, Rahil Kamath, 
+Louis-Philippe Morency, Giovanna Porta, Apoorva Srinivasan, Jamie Zelazny, 
+David A Brent, and Nicholas B Allen. 2023. Intensive Longitudinal Assessment of 
+Adolescents to Predict Suicidal Thoughts and Behaviors. Journal of the American 
+Academy of Child and Adolescent Psychiatry (2023). 
+[2] Randy P Auerbach, Apoorva Srinivasan, Jaclyn S Kirshenbaum, J John Mann, 
+and Stewart A Shankman. 2022. Geolocation features diferentiate healthy from 
+remitted depressed adults. Journal of psychopathology and clinical science 131, 4 
+(2022), 341. 
+[3] Tadas Baltrusaitis, Amir Zadeh, Yao Chong Lim, and Louis-Philippe Morency. 
+2018. Openface 2.0: Facial behavior analysis toolkit. In 2018 13th IEEE International 
+Conference on Automatic Face & Gesture Recognition (FG 2018). IEEE, 59–66. 
+[4] Douglas Bates, Martin Mächler, Ben Bolker, and Steve Walker. 2015. Fitting 
+Linear Mixed-Efects Models Using lme4. Journal of Statistical Software 67, 1 
+(2015), 1–48. https://doi.org/10.18637/jss.v067.i01 
+[5] John Binder, Kevin Murphy, and Stuart Russell. 1997. Space-efcient inference in 
+dynamic probabilistic networks. Bclr 1 (1997), t1. 
+[6] Roel Bosker and Tom AB Snijders. 2011. Multilevel analysis: An introduction to 
+basic and advanced multilevel modeling. Multilevel analysis (2011), 1–368. 
+[7] Carlos Busso, Murtaza Bulut, Chi-Chun Lee, Abe Kazemzadeh, Emily Mower, 
+Samuel Kim, Jeannette N Chang, Sungbok Lee, and Shrikanth S Narayanan. 2008. 
+IEMOCAP: Interactive emotional dyadic motion capture database. Language 
+resources and evaluation 42, 4 (2008), 335–359. 
+[8] Rich Caruana. 1997. Multitask learning. Machine learning 28 (1997), 41–75. 
+[9] E Comets, A Lavenu, and M Lavielle. 2011. SAEMIX, an R version of the SAEM 
+algorithm. 20�ℎ meeting of the Population Approach Group in Europe, Athens, 
+Greece (2011). 
+[10] Joao FG de Freitas, Mahesan Niranjan, Andrew H. Gee, and Arnaud Doucet. 
+2000. Sequential Monte Carlo methods to train neural network models. Neural 
+computation 12, 4 (2000), 955–993. 
+[11] Bernard Delyon, Marc Lavielle, and Eric Moulines. 1999. Convergence of a 
+stochastic approximation version of the EM algorithm. Annals of statistics (1999), 
+94–128. 
+[12] Greg Durrett and Dan Klein. 2015. Neural CRF Parsing. In Proceedings of the 
+53rd Annual Meeting of the Association for Computational Linguistics and the 7th 
+International Joint Conference on Natural Language Processing. Association for 
+Computational Linguistics, 302–312. 
+[13] Theodoros Evgeniou and Massimiliano Pontil. 2004. Regularized multi–task 
+learning. In Proceedings of the tenth ACM SIGKDD international conference on 
+Knowledge discovery and data mining. 109–117. 
+[14] Florian Eyben, Klaus Scherer, Björn Schuller, Johan Sundberg, Elisabeth André, 
+Carlos Busso, Laurence Devillers, Julien Epps, Petri Laukka, Shrikanth Narayanan, 
+and Khiet Phuong Truong. 2016. The Geneva Minimalistic Acoustic Parameter 
+Set (GeMAPS) for Voice Research and Afective Computing. IEEE transactions on 
+afective computing 7, 2 (4 2016), 190–202. https://doi.org/10.1109/TAFFC.2015. 
+2457417 Open access. 
+[15] Hyman Hops, Betsy Davis, and Nancy Longoria. 1995. Methodological issues in 
+direct observation: Illustrations with the Living in Familial Environments (LIFE) 
+coding system. Journal of Clinical Child Psychology 24, 2 (1995), 193–203. 
+[16] Clayton Hutto and Eric Gilbert. 2014. Vader: A parsimonious rule-based model 
+for sentiment analysis of social media text. In Proceedings of the international 
+AAAI conference on web and social media, Vol. 8. 216–225. 
+[17] Nicholas C Jacobson and Yeon Joo Chung. 2020. Passive sensing of prediction of 
+moment-to-moment depressed mood among undergraduates with clinical levels 
+of depression sample using smartphones. Sensors 20, 12 (2020), 3572. 
+[18] Belhal Karimi, Marc Lavielle, and Eric Moulines. 2020. f-SAEM: A fast Stochastic 
+Approximation of the EM algorithm for nonlinear mixed efects models. Compu-
+tational Statistics & Data Analysis 141 (2020), 123–138. 
+[19] Pascal Kilian, Sangbeak Ye, and Augustin Kelava. 2023. Mixed efects in machine 
+learning – A fexible mixedML framework to add random efects to supervised 
+machine learning regression. Transactions on Machine Learning Research (2023). 
+https://openreview.net/forum?id=MKZyHtmfwH 
+[20] Diederik P. Kingma and Jimmy Ba. 2015. Adam: A Method for Stochastic Op-
+timization. In 3rd International Conference on Learning Representations, Yoshua 
+Bengio and Yann LeCun (Eds.). 
+[21] Michele Knox, Cheryl King, Gregory L Hanna, Deirdre Logan, and Neera Ghazi-
+uddin. 2000. Aggressive behavior in clinically depressed adolescents. Journal of 
+the American Academy of Child & Adolescent Psychiatry 39, 5 (2000), 611–618. 
+[22] John Laferty, Andrew McCallum, and Fernando CN Pereira. 2001. Conditional 
+random felds: Probabilistic models for segmenting and labeling sequence data. 
+(2001). 
+[23] Nan M Laird and James H Ware. 1982. Random-efects models for longitudinal 
+data. Biometrics (1982), 963–974. 
+[24] I Lawrence and Kuei Lin. 1989. A concordance correlation coefcient to evaluate 
+reproducibility. Biometrics (1989), 255–268. 
+[25] Joshua J Levy, Carly A Bobak, Mustafa Nasir-Moin, Eren M Veziroglu, Scott M Pal-
+isoul, Rachael E Barney, Lucas A Salas, Brock C Christensen, Gregory J Tsongalis, 
+and Louis J Vaickus. 2021. Mixed Efects Machine Learning Models for Colon Can-
+cer Metastasis Prediction using Spatially Localized Immuno-Oncology Markers. 
+In PACIFIC SYMPOSIUM ON BIOCOMPUTING 2022. World Scientifc, 175–186. 
+[26] Robert A Lewis, Asma Ghandeharioun, Szymon Fedor, Paola Pedrelli, Rosalind 
+Picard, and David Mischoulon. 2023. Mixed Efects Random Forests for Person-
+alised Predictions of Clinical Depression Severity. arXiv preprint arXiv:2301.09815 
+(2023). 
+[27] Paul Pu Liang, Terrance Liu, Anna Cai, Michal Muszynski, Ryo Ishii, Nick 
+Allen, Randy Auerbach, David Brent, Ruslan Salakhutdinov, and Louis-Philippe 
+Morency. 2021. Learning Language and Multimodal Privacy-Preserving Markers 
+of Mood from Mobile Data. In Proceedings of the 59th Annual Meeting of the Asso-
+ciation for Computational Linguistics and the 11th International Joint Conference 
+on Natural Language Processing (Volume 1: Long Papers). Association for Com-
+putational Linguistics, Online, 4170–4187. https://doi.org/10.18653/v1/2021.acl-
+long.322 
+[28] Mary J Lindstrom and Douglas M Bates. 1988. Newton—Raphson and EM al-
+gorithms for linear mixed-efects models for repeated-measures data. J. Amer. 
+Statist. Assoc. 83, 404 (1988), 1014–1022. 
+[29] Mary J Lindstrom and Douglas M Bates. 1990. Nonlinear mixed efects models 
+for repeated measures data. Biometrics (1990), 673–687. 
+[30] Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer 
+Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. 2020. RoBERTa: A 
+Robustly Optimized BERT Pretraining Approach. https://openreview.net/forum? 
+id=SyxS0T4tvS. 
+[31] Francesca Mandel, Riddhi Pratim Ghosh, and Ian Barnett. 2021. Neural networks 
+for clustered and longitudinal data using mixed efects models. Biometrics (2021). 
+[32] Thomas Mock. 2022. Tidy Tuesday: A weekly data project aimed at the R ecosys-
+tem. https://github.com/rfordatascience/tidytuesday 
+[33] Nuno Moniz and Luís Torgo. 2018. Multi-source social feedback of online news 
+feeds. arXiv preprint arXiv:1801.07055 (2018). 
+453
+ICMI ’23, October 09–13, 2023, Paris, France 
+[34] Benjamin W Nelson, Lisa Sheeber, Jennifer Pfeifer, and Nicholas B Allen. 2021. 
+Psychobiological markers of allostatic load in depressed and nondepressed moth-
+ers and their adolescent ofspring. Journal of Child Psychology and Psychiatry 62, 
+2 (2021), 199–211. 
+[35] Che Ngufor, Holly Van Houten, Brian S Cafo, Nilay D Shah, and Rozalina G 
+McCoy. 2019. Mixed efect machine learning: A framework for predicting longi-
+tudinal change in hemoglobin A1c. Journal of biomedical informatics 89 (2019), 
+56–67. 
+[36] Joel S Owen and Jill Fiedler-Kelly. 2014. Introduction to population pharmacoki-
+netic/pharmacodynamic analysis with nonlinear mixed efects models. John Wiley 
+& Sons. 
+[37] Theodore Papamarkou, Jacob Hinkle, M Todd Young, and David Womble. 2022. 
+Challenges in Markov chain Monte Carlo for Bayesian neural networks. Statist. 
+Sci. 37, 3 (2022), 425–442. 
+[38] Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory 
+Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban Des-
+maison, Andreas Kopf, Edward Yang, Zachary DeVito, Martin Raison, Alykhan 
+Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu Fang, Junjie Bai, and Soumith 
+Chintala. 2019. PyTorch: An Imperative Style, High-Performance Deep Learning 
+Library. In Advances in Neural Information Processing Systems 32, H. Wallach, 
+H. Larochelle, A. Beygelzimer, F. d’Alché Buc, E. Fox, and R. Garnett (Eds.). Cur-
+ran Associates, Inc., 8024–8035. http://papers.neurips.cc/paper/9015-pytorch-
+an-imperative-style-high-performance-deep-learning-library.pdf 
+[39] Paola Pedrelli, Szymon Fedor, Asma Ghandeharioun, Esther Howe, Dawn F 
+Ionescu, Darian Bhathena, Lauren B Fisher, Cristina Cusin, Maren Nyer, Albert 
+Yeung, et al. 2020. Monitoring changes in depression severity using wearable 
+and mobile sensors. Frontiers in psychiatry 11 (2020), 584711. 
+[40] James W Pennebaker, Ryan L Boyd, Kayla Jordan, and Kate Blackburn. 2015. 
+The development and psychometric properties of LIWC2015. Technical Report. 
+University of Texas at Austin. 
+[41] Niklas Pfster, Peter Bühlmann, Bernhard Schölkopf, and Jonas Peters. 2018. 
+Kernel-based tests for joint independence. Journal of the Royal Statistical Society. 
+Series B (Statistical Methodology) 80, 1 (2018), 5–31. 
+[42] José C Pinheiro and Douglas M Bates. 1995. Approximations to the log-likelihood 
+function in the nonlinear mixed-efects model. Journal of computational and 
+Graphical Statistics 4, 1 (1995), 12–35. 
+[43] José C Pinheiro and Douglas M Bates. 2000. Linear mixed-efects models: basic 
+concepts and examples. Mixed-efects models in S and S-Plus (2000), 3–56. 
+[44] Abhishek Pratap, David C Atkins, Brenna N Renn, Michael J Tanana, Sean D 
+Mooney, Joaquin A Anguera, and Patricia A Areán. 2019. The accuracy of passive 
+phone sensors in predicting daily mood. Depression and anxiety 36, 1 (2019), 
+72–81. 
+[45] Shiquan Ren, Hong Lai, Wenjing Tong, Mostafa Aminzadeh, Xuezhang Hou, and 
+Shenghan Lai. 2010. Nonparametric bootstrapping for hierarchical data. Journal 
+of Applied Statistics 37, 9 (2010), 1487–1498. 
+[46] Orli S Schwartz, Michelle L Byrne, Julian G Simmons, Sarah Whittle, Paul Dud-
+geon, Marie BH Yap, Lisa B Sheeber, and Nicholas B Allen. 2014. Parenting during 
+Wörtwein et al. 
+early adolescence and adolescent-onset major depression: A 6-year prospective 
+longitudinal study. Clinical Psychological Science 2, 3 (2014), 272–286. 
+[47] Orli S Schwartz, Paul Dudgeon, Lisa B Sheeber, Marie BH Yap, Julian G Simmons, 
+and Nicholas B Allen. 2011. Observed maternal responses to adolescent behaviour 
+predict the onset of major depression. Behaviour research and therapy 49, 5 (2011), 
+331–338. 
+[48] Jun Shi, Chengming Jiang, Aman Gupta, Mingzhou Zhou, Yunbo Ouyang, 
+Qiang Charles Xiao, Qingquan Song, Yi (Alice) Wu, Haichao Wei, and Huiji 
+Gao. 2022. Generalized Deep Mixed Models. In Proceedings of the 28th ACM 
+SIGKDD Conference on Knowledge Discovery and Data Mining (Washington DC, 
+USA) (KDD ’22). Association for Computing Machinery, New York, NY, USA, 
+3869–3877. https://doi.org/10.1145/3534678.3539103 
+[49] Giora Simchoni and Saharon Rosset. 2023. Integrating Random Efects in Deep 
+Neural Networks. Journal of Machine Learning Research 24, 156 (2023), 1–57. 
+http://jmlr.org/papers/v24/22-0501.html 
+[50] Edward H Simpson. 1951. The interpretation of interaction in contingency tables. 
+Journal of the Royal Statistical Society: Series B (Methodological) 13, 2 (1951), 
+238–241. 
+[51] Siyang Song, Zilong Shao, Shashank Jaiswal, Linlin Shen, Michel Valstar, and 
+Hatice Gunes. 2022. Learning person-specifc cognition from facial reactions 
+for automatic personality recognition. IEEE Transactions on Afective Computing
+(2022). 
+[52] Reeti Tandon, Sudeshna Adak, and Jefrey A Kaye. 2006. Neural networks for 
+longitudinal studies in Alzheimer’s disease. Artifcial intelligence in medicine 36, 
+3 (2006), 245–255. 
+[53] Sara Taylor, Natasha Jaques, Ehimwenma Nosakhare, Akane Sano, and Rosalind 
+Picard. 2017. Personalized multitask learning for predicting tomorrow’s mood, 
+stress, and health. IEEE Transactions on Afective Computing 11, 2 (2017), 200–213. 
+[54] Minh-Ngoc Tran, Nghia Nguyen, David Nott, and Robert Kohn. 2017. Ran-
+dom Efects Models with Deep Neural Network Basis Functions: Methodology and 
+Computation. Technical Report. University of Sydney Business School. 
+[55] Russ Wolfnger. 1993. Covariance structure selection in general mixed models. 
+Communications in statistics-Simulation and computation 22, 4 (1993), 1079–1106. 
+[56] Torsten Wörtwein, Lisa B Sheeber, Nicholas Allen, Jefrey F Cohn, and Louis-
+Philippe Morency. 2021. Human-Guided Modality Informativeness for Afective 
+States. In Proceedings of the 2021 International Conference on Multimodal Interac-
+tion. 728–734. 
+[57] Wrandrall. 2021. IMDB New Dataset. 
+https://www.kaggle.com/datasets/ 
+wrandrall/imdb-new-dataset 
+[58] Torsten Wörtwein, Lisa Sheeber, Nicholas Allen, Jefrey Cohn, and Louis-Philippe 
+Morency. 2022. Beyond Additive Fusion: Learning Non-Additive Multimodal 
+Interactions. In Findings of the Association for Computational Linguistics: EMNLP 
+2022. Association for Computational Linguistics, Abu Dhabi, United Arab Emi-
+rates, 4681–4696. https://aclanthology.org/2022.fndings-emnlp.344 
+[59] Yunyang Xiong, Hyunwoo J Kim, and Vikas Singh. 2019. Mixed efects neural 
+networks (menets) with applications to gaze estimation. In Proceedings of the 
+IEEE Conference on Computer Vision and Pattern Recognition. 7743–7752. 
+454
+

@@ -1,0 +1,979 @@
+Front. Biosci. (Landmark Ed) 2023; 28(8): 188
+https://doi.org/10.31083/j.fbl2808188
+Copyright: © 2023 The Author(s). Published by IMR Press.
+This is an open access article under the CC BY 4.0 license.
+Publisher’s Note: IMR Press stays neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+Original Research
+MCM6 is a Poor Prognostic Biomarker and Promotes Progression in
+Breast Cancer
+Zi Lei1,2,†, Peng Wang3,†, Da-qi Jia1, Lei-lei Li1, Yi-peng Wu1, Yuan Yang1, Guo-qing Pan2,*
+1Department of Pathology, Kunming Medical University, 650500 Kunming, Yunnan, China
+2Department of Pathology, First Affiliated Hospital of Kunming Medical University, 650032 Kunming, Yunnan, China
+3Department of General Surgery, Xinqiao Hospital, Army Medical University, 400037 Chongqing, China
+*Correspondence: guoqing_pan@163.com (Guo-qing Pan)
+†These authors contributed equally.
+Academic Editor: Taeg Kyu Kwon
+Submitted: 9 December 2022
+Revised: 11 March 2023
+Accepted: 15 March 2023
+Published: 30 August 2023
+Abstract
+Background: Breast cancer is the commonest global malignancy and the primary cause of carcinoma death. MCM6 is vital to carcino-
+genesis, but the pathogenesis of MCM6 remains unclear. Methods: MCM6 expression in patients with breast cancer was examined
+through The Cancer Genome Atlas (TCGA) database, immunohistochemistry, Quantitative Real-Time PCR (qRT‒PCR) and Western
+blotting. The prognostic factors were assessed by the Kaplan‒Meier method and Cox regression. On the basis of the key factors se-
+lected by multivariable Cox regression analysis, a nomogram risk prediction model was adopted for clinical risk assessment. The TCGA
+database was utilized to determine how MCM6 is correlated with chemotherapy sensitivity, immune checkpoint-related genes (ICGs),
+tumor-infiltrating immune cells, along with tumor mutation burden (TMB) and methylation. The impact of MCM6 on carcinoma cells
+was investigated in terms of proliferation, cell cycle as well as migrating and invasive behavior through CCK assays, flow cytometry,
+wound healing assays, Transwell assays and xenotransplantation experiments. Results: MCM6 expression was upregulated, which is
+closely associated with the size of the tumor (p = 0.001) and lymph node metastasis (p = 0.012) in patients with breast cancer. Multivari-
+ate analysis revealed MCM6 to be an independent risk factor for prognosis in patients with breast carcinoma. The nomograph prediction
+model included MCM6, age, ER, M and N stage, which displayed good discrimination with a C index of 0.817 and good calibration.
+Overexpression of MCM6 correlated with chemotherapy sensitivity, immune checkpoint-related genes (ICGs), tumor-infiltrating im-
+mune cells, tumor mutation burden (TMB), and methylation. Silencing MCM6 significantly inhibited proliferation, prolonged the G1
+phase of the cell cycle, and restrained the proliferation, migration and invasive behavior of cancerous cells in vitro and inhibited tumor
+growth in vivo. Conclusions: Our research shows that MCM6 is highly expressed in breast cancer and can be used as an independent
+prognostic factor, which is expected to become a new target for the treatment of breast cancer in the future.
+Keywords: breast cancer; MCM6; prognosis; nomogram; drug sensitivity; immune cell
+1. Introduction
+Breast cancer is the most common global malignancy
+and the primary cause of carcinoma death, severely damag-
+ing the health of the female population [1]. Breast cancer
+is a kind of disease with high heterogeneity in morphology,
+molecular biology, clinical manifestations and therapeutic
+response that leads to prevention and treatment remaining
+challenging worldwide [2–4]. In recent years, many genes
+related to the progression of breast cancer have been dis-
+covered according to its pathogenesis and drug resistance
+mechanism. Traditional chemotherapy combined with tar-
+geted therapy and immunotherapy achieved better effects
+than before. For instance, trastuzumab, a monoclonal anti-
+body utilized as a standard treatment for malignancy in the
+case of Human epidermal growth factor receptor-2 (HER2)
+overexpression in cancer cells, has an objective response
+rate of 26% in clinical treatment [5]. The combined med-
+ication of cetuximab and cisplatin could inhibit Epidermal
+Growth Factor Receptor(EGFR) and prolong progression-
+free survival by 1.5 to 3.7 months and overall survival (OS)
+time extended from 9.4 to 12.9 months [6]. Targeted ther-
+apy is of vital importance for the overall prevention and
+treatment of malignancy. However, continued treatment
+results in a loss of target expression, and gene mutations
+downstream of the target gene itself lead to acquired re-
+sistance [7–9], which are the greatest challenge facing tar-
+geted therapies. Immune checkpoint inhibitors (ICIs) have
+entered the treatment regimen for metastatic breast cancer.
+Biomarkers such as PD-L1 expression and tumor infiltrat-
+ing lymphocytes (TIL) are commonly used for immunother-
+apy, yet only a subset of patients benefit from ICIs and
+immune-based combination therapy [10]. Immunotherapy
+alone has been shown to increase the risk for early death
+compared with other treatments. Immunotherapy combined
+strategy can prevent early death [11]. Based on the com-
+bination of ICIs with each other or with other anticancer
+drugs, including systemic chemotherapy and poly ADP-
+ribose polymerase (PARP) inhibitors, targeted therapy has
+become a widely used strategy and new direction in cancer
+immunotherapy [12]. Identification of biomarkers predict-
+ing response to immune combinations is the key to progress
+[13]. Therefore, the discovery of novel diagnostic and ther-
+apeutic biomarkers could be a breakthrough in the treatment
+of the disease.
+MCM6 is a key regulator of DNA replication and
+hence plays an undeniable role in maintaining the cell cy-
+cle [14]. MCM6 expression is upregulated in many cancer-
+ous cells, and the overexpression of MCM6 promotes the
+occurrence and development of carcinoma [15–18]. Rele-
+vant studies proved that MCM6 regulates proliferation, im-
+mune response and maintenance of the DNA replication
+system and tumor cell proliferation and invasion and other
+physiological and pathological processes [19,20]. MCM6
+promotes metastasis though the MEK/ERK pathway and
+serves as a novel serum biomarker for early relapse in hep-
+atocellular carcinoma [21]. MCM6 is highly expressed in
+tumors with higher histological grades, especially in clin-
+ically aggressive breast cancers (e.g., luminal B, HER2-
+positive, and triple-negative subtypes) [16].
+Therefore,
+MCM6 might represent a sensitive and specific biomarker
+for cancer prognosis. Inhibition of MCM6 is likely to be an
+effective treatment. Nevertheless, the function and related
+mechanism are unclear in breast carcinoma.
+This study aimed to explore the correlation between
+the expression level of MCM6 and clinicopathological fea-
+tures and to evaluate whether MCM6 can be used as a prog-
+nostic factor for breast cancer. Then, the related signaling
+pathways and chemotherapy sensitivity with MCM6 over-
+expression in patients with breast cancer were evaluated
+via gene set enrichment analysis (GSEA) and Genomics of
+Drug Sensitivity in Cancer (GDSC) database. Additionally,
+The Cancer Genome Atlas (TCGA) database was employed
+to determine the correlation between MCM6 and tumor-
+infiltrating immunocytes. The functional role of MCM6
+was further investigated in vitro and in vivo in breast cancer
+cells. This study provides an important basis for further ex-
+ploring the role of MCM6 in diseased cells and for targeted
+treatment of breast carcinoma.
+2. Materials and Methods
+2.1 Cell Culture and Clinical Specimenss
+The human breast cancer cell lines MCF-7, BT549,
+T47-D, MDA-MB-231, and HCC-1806 and the human
+breast epithelial cell line MCF-10A were obtained from The
+Cell Bank of Chinese Academy of Sciences and ATCC and
+American Type Culture Collection (ATCC), and cultured
+at 37 °C with 5% CO2. MCF-7 and T47D are estrogen
+receptor positive human breast cancer cell lines, BT549,
+MDA-MB-231 and HCC-1806 human triple negative breast
+cancer cell lines. All experiments were performed using
+mycoplasma-free cells. All cell lines were authenticated
+using single nucleotide polymorphisms profiling. One hun-
+dred cases of paraffin-embedded diseased tissues and corre-
+sponding paired normal tissues were obtained from hospi-
+talized patients with breast carcinoma at the First Affiliated
+Hospital of Kunming Medical University from September
+2014 to July 2021. All paraffin tissue samples were kept by
+our hospital and were used for immunohistochemical stain-
+ing, and there was no need to consult the patient. This study
+was approved by the relevant authoritative organization of
+the hospital.
+2.2 Quantitative Real-Time PCR (qRT‒PCR) and Western
+Blotting
+TRIzol reagent (15596-026, Invitrogen, Carlsbad,
+CA, USA) was utilized for the extraction of the aggre-
+gate RNA, which was reverse transcribed to cDNA ac-
+cording to the requirements of the RevertAid First Strand
+cDNA Synthesis Kit (K1622, Thermo Scientific, Waltham,
+MA, USA). PCR amplification was conducted using the
+SYBR Green Select Master Mix System (4472908, In-
+vitrogen, Carlsbad, CA, USA) on a CFX96TM Real-
+Time PCR Detection System.
+The target mRNA ex-
+pression was normalized to the mRNA expression of
+GAPDH. The primers were as such follows:
+MCM6:
+forward, 5′-TGTCAGTGGTGTTGATGGATATG-3′, re-
+verse 5′-GCTGTCTGTTCCTCATCTCTG-3′;
+GAPDH:
+forward, 5′-GGCAACAATATCAGCAACTTC-3′, reverse
+5′-GGTCCTTAGGTGTGGTATC‑3′. All qRT‒PCR exper-
+iments were conducted no less than three times. MCM6
+expression was examined via Western blotting.
+Briefly,
+the cells were lysed for 20 min using RIPA buffer (89900,
+Thermo Fisher Scientific, Waltham, MA, USA), and all
+cell proteins were extracted after centrifugation. The BCA
+Protein Assay Kit (23227, Pierce, Waltham, MA, USA)
+was adopted for the quantification of cell lysate protein.
+The protein solution was separated using SDS–PAGE and
+transferred to a polyvinylidene fluoride (PVDF) membrane,
+which was treated with evaporated milk (5%) at 4 °C for a
+night. The PVDF membrane was cultured with anti-MCM6
+antibody (13347-2-AP, Proteintech, Rosemont, IL, USA) at
+1:1000 at approximately 23 °C and treated with secondary
+antibody at a 1:10,000 dilution. The internal control used
+was β-actin (ZSGB-BIO, Beijing, China, #TA-09).
+2.3 Immunohistochemical (IHC) Staining
+IHC staining was performed in conformity with the
+manufacturer’s protocol (Dako REAL EnVision Detection
+System; Dako, Santa Clara, CA, USA). To elaborate, the
+tissue segments underwent a baking process at 68 °C for 2
+h. The slices were dewaxed with xylene, gradient alcohol
+and distilled water. Then, the slices were boiled in citric
+acid buffer (pH 6.0, 0.01 M) for 2 min at high temperature
+and pressure for antigen repair. The slices were incubated
+with 0.3% hydrogen peroxide to block endogenous perox-
+idase activity. Subsequently, the slices were cultured with
+MCM6 antibody (diluted 1:400; 13347-2-AP, Proteintech)
+at 4 °C overnight and goat anti-mouse IgG-HRP antibody.
+2
+Fig. 1. MCM6 was significantly upregulated in breast cancer based on database analysis. (A,B) MCM6 expression was increased
+in a variety of tumors according to The Cancer Genome Atlas (TCGA) database analysis. (C) Box plot of TCGA database describes the
+different expression levels of MCM6 between normal tissues and cancerous tissues. (D) Based on the same number of samples, MCM6
+expression in normal and diseased tissues was compared. (E) MCM6 protein expression was higher in normal breast tissue according
+to the UALCAN database. *p < 0.05, **p < 0.01, ***p < 0.001. ns, not significant; CPTAC, Clinical Proteomic Tumor Analysis
+Consortium.
+Diaminobenzidine tetrahydrochloride (DAB) was used to
+observe the reaction. IHC staining was scored by two inde-
+pendent investigators. The aggregate score was obtained by
+multiplying the proportion of positive tumor cells [scored
+as 0 (<5%), 1 (6~25%), 2 (26~50%), 3 (51%~75%), 4
+(76~100%), respectively] and the staining intensity (scored
+as 0, 1, 2, and 3 according to severity). Based on the final
+scores, less than 5% of cells were stained, regardless of in-
+tensity, and specimens were categorized as negative; weak,
+moderate and strong were given marks of 1~4 points, 5~8
+points and 9~12 points, respectively. For the following sta-
+tistical analysis, the negative and weak groups were taken
+as the low MCM6 expression group, and the moderate and
+strong groups were considered to be the high MCM6 ex-
+pression group.
+2.4 Data from the TCGA Cohort and ULCAN Platform
+The RNA-seq data and relevant information about
+the research subjects were acquired from the 2022 ver-
+sion of The Cancer Genome Atlas database (TCGA)
+(https://www.genome.gov/Funded-Programs-Projects/
+Cancer-Genome-Atlas) from the official website.
+The
+subjects were grouped into two groups according to
+expression level, namely, the median MCM6 mRNA
+3
+Fig. 2. MCM6 is significantly up-regulated in tissues and cells of breast cancer based on experimental verification. (A–C) Im-
+munohistochemical staining of MCM6 expression in adjacent breast tissue and breast cancer tissues, representative immunohistochemical
+images and statistical results (n = 100). (D,E) Quantitative Real-Time PCR (qRT‒PCR) and western blotting analyses of MCM6 expres-
+sion in MCF-10A breast cells and diseased cells, including MCF-7, BT549, T470, MDA-MB-231, and HCC1806 breast cancer cells.
+Statistics are presented as the means ± SDs. ***p < 0.001.
+expression of each sample. The clinicopathological data
+of the subjects were collected, including age, clinical
+classification of primary focus, regional lymph node
+and distant metastasis, represented by TNM collectively,
+endogenous molecular classification (Luminal A, Luminal
+B, basal like, HER2 overexpression or normal type) and
+histological type. The expression level of MCM6 protein in
+breast cancer patients was obtained in UALCAN database
+(http://ualcan.path.uab.edu/).
+2.5 Prognostic Analysis and Construction of a Predictive
+Nomogram
+The online websites Kaplan‒Meier Plotter (http://km
+plot.com/analysis/) and PrognoScan (http://dna00.bio.kyut
+ech.ac.jp/PrognoScan/) were selected for the prognostic
+analysis of MCM6 in patients with breast carcinoma. The
+“rms” R package was used to combine MCM6 expression
+with clinicopathological features to construct a nomogram
+risk prediction model for the prediction of OS, and the pre-
+dictive performance was measured using calibration curves
+and the C-index [22,23].
+2.6 Gene Set Enrichment Analysis (GSEA)
+The h.all.v7.5.symbols.gmt [Hallmarks] gene set
+database was selected. GSEA was deployed to elaborate
+the functional differences of the gene between the two ex-
+pression groups, and the MCM6 expression level was con-
+sidered a label of phenotype. The arrangements of gene
+sets were arranged out by 1000 times per every analysis.
+The False Discovery Rate (FDR) q value, the normalized
+enrichment score (NES) and the nominal p value were es-
+tablished to classify each phenotypic enrichment signaling
+pathway.
+2.7 Correlation Analysis between MCM6 Expression and
+Immune Checkpoint-Related Genes in Breast Cancer
+With the RNA-seq data, the MCM6-ICG relations to
+explore the immune genes related to MCM6 expression
+were analyzed using the R package, which includes limma,
+reshape2, ggplot2, ggpubr, and corrplot. The correlation
+threshold was set to a correlation coefficient ≥0.2 and a p
+value less than 0.05.
+4
+2.8 Cell Proliferation Assay
+Diseased cell proliferation was measured with a sul-
+forhodamine B (SRB) assay.
+The cells were seeded in
+a 96-well plate (100 µL/well) and fixed with cold 10%
+trichloroacetic acid for half an hour at room temperature.
+The SRB solution (0.4%, Sigma S9012, Wappingers Falls,
+NY, USA) was treated with deionized water and then added
+for dyeing for approximately 10 min. Tris solution (10 mM)
+was incubated at 23 °C for 5 min, and the optical density
+(OD) of the cells was determined at 490–530 nm wave-
+lengths [24].
+2.9 Cell Cycle Assay
+The cell samples were collected using trypsin, fixed
+with 80% ethanol at 4 °C in a dark environment overnight,
+and then stained in the dark with propidium iodide (0.1
+mg/mL, BD Biosciences, Franklin Lake, NJ, USA) and
+RNase A (1 mg/mL) for 30 minutes. The cell cycle of each
+group was tested via flow cytometry. The data were ana-
+lyzed by FlowJo 7.6 (San Carlos, CA, USA) [25].
+2.10 Cell Apoptosis Assay
+The collected cells were resuspended in binding
+buffer, cultured with Annexin V-FITC (BD Biosciences) for
+10 minutes in a dark environment at room temperature and
+subsequently stained with binding buffer and PI (BD Bio-
+sciences) in darkness for 30 minutes at 4 °C. Cell measure-
+ment was conducted using flow cytometry [25].
+2.11 Wound Healing Assay
+The cells were inoculated into 6-well culture plates in
+complete medium until they were 80% confluence. The
+cells were scratched with a 200 µL pipette tip. Then the
+medium was changed to a serum-free medium. The mi-
+gration process was carefully observed at 0, 24 and 48 h
+on an inverted microscope (Olympus, Tokyo, Japan). Im-
+ageJ (National institutes of Health, Bethesda, MD, USA)
+was employed to calculate the migration area [25].
+2.12 Transwell Assay
+The cell suspension was cultured in serum-free
+medium into the upper layer of the experimental plates
+coated with Matrigel (BD Biosciences).
+The serum-
+containing medium was placed in the lower layer. The cells
+that invaded the lower layer received methanol treatment
+and Giemsa staining and were photographed microscopi-
+cally [26].
+2.13 Animal Experimental Procedures
+The animal experiments won approval from the au-
+thoritative organization of the hospital. Six-week-old fe-
+male BALB/C nude mice were maintained in a pathogen-
+free environment. MDA-MB-231 cells (1 × 106/point),
+which were divided into two groups (Normal control group,
+shMCM6 group), were injected subcutaneously into the
+Table 1. Correlation between MCM6 expression and
+clinicopathologic parameters in breast cancer.
+Characteristics
+MCM6 expression
+p value
+Low (%)
+High (%)
+Age
+0.309
+<60
+7 (63.6)
+69 (77.5)
+≥60
+4 (36.4)
+20 (22.4)
+History grade
+0.427
+1
+1 (9.1)
+2 (2.2)
+2
+8 (72.7)
+65 (73.0)
+3
+2 (18.2)
+22 (24.7)
+Tumor diameter
+0.001
+≤20 mm
+7 (63.6)
+14 (15.7)
+>20 mm, ≤50 mm
+3 (27.3)
+58 (65.2)
+>50 mm
+1 (9.1)
+17 (19.1)
+Lymph node metastasis
+0.012
+With
+8 (72.7)
+30 (33.7)
+Without
+3 (27.3)
+59 (66.3)
+Vascular invasion
+0.547
+With
+6 (54.5)
+40 (44.9)
+Without
+5 (45.5)
+49 (55.1)
+Distant Metastasis
+0.074
+With
+10 (90.9)
+57 (64.0)
+Without
+1 (9.1)
+32 (36.0)
+Surrogate subtypes
+0.836
+Luminal A-like
+2 (18.2)
+9 (10.1)
+Luminal B-like
+4 (36.4)
+42 (47.2)
+Her-2+
+3 (27.3)
+22 (24.7)
+Triple negative breast cancer
+2 (18.2)
+16 (18.0)
+mammary fat pads of the mice. The subcutaneous tumor
+size was observed every 4 days. The tumor size was mea-
+sured using a caliper, and the formula was as follows: vol-
+ume = 1/2 (width2 × length). The mice were sacrificed after
+24 days. The diseased tissues were excised and weighed.
+The tumors were collected and used for additional IHC
+pathological analysis [25].
+2.14 Statistical Analysis
+For data analysis, SPSS 22.0 software (IBM Corp.,
+Armonk, NY, USA) was adopted.
+The expression dif-
+ference between breast tumor and normal breast tissues
+was analyzed by the Wilcoxon signed-rank test. Univari-
+ate and multivariate Cox analyses were selected to analyze
+the influence of MCM6 expression along with other factors
+on mouse survival. Logistic regression analysis was per-
+formed to determine how MCM6 was related to other clin-
+ical factors. One-way analysis of variance was employed
+to make comparisons between two groups. p < 0.05 was
+deemed to be statistically significant.
+5
+Fig. 3. Expression of MCM6 in different clinicopathological features. (A) MCM6 expression in people under 60 years old and over
+60 years old. (B) MCM6 expression in Asian, Black or African American and White individuals. (C–E) Relationship between MCM6
+expression and Estrogen Receptors (ER), Progesterone Receptors (PR), and Human Epidermal Growth Factor Receptors 2 (HER2) status.
+(F) Relationship between MCM6 expression and different cancerous types of molecules. (G) Relationship between MCM6 expression
+and different histological subtypes of breast cancer. (H) MCM6 expression in different pathologic stages. (I–K) MCM6 expression in
+the T, N and M phases. Statistics are presented as the means ± SDs. *p < 0.05, **p < 0.01, ***p < 0.001, ns, not significant.
+6
+Fig. 4. Breast cancer with high MCM6 expression has a poor prognosis. The PrognoScan online website was selected to analyze the
+prognostic role of MCM6 in breast carcinoma, and (A), (B), and (C) represent Overall Survival (OS), Relapse Free Survival (RFS) and
+Distant Metastasis Free Survival (DMFS), respectively. The Kaplan Meier Plotter online website was also utilized for the analysis of the
+prognostic effects of MCM6 in breast cancer, and the results suggested reduced survival time in patients with overexpression of MCM6
+in terms of all three indicators mentioned above, and (D), (E), and (F) represent OS, RFS and DMFS, respectively.
+3. Results
+3.1 MCM6 Expression was Significantly Increased in
+Breast Cancer
+We first explored MCM6 expression in a wide range
+of human malignancies. The mRNA expression of MCM6
+increased in various cancers from TCGA database analysis
+(Fig. 1A,B), and MCM6 expression in breast cancer con-
+siderably exceeded that in normal tissues (Fig. 1C,D). The
+protein expression level of MCM6 in patients with breast
+cancer outstripped that in normal tissues from the online
+database UALCAN (http://ualcan.path.uab.edu/) (Fig. 1E).
+Consistent with the expression pattern from the online
+database, immunohistochemical staining outcomes indi-
+cated higher MCM6 expression in diseased tissues than in
+adjacent breast tissue. Among 100 cases of breast cancer
+tissues, 92 cases (92.0%) had overexpression of MCM6,
+and the rest (8.0%) had low expression of MCM6, while
+there were 45 cases (45.0%) with overexpression of MCM6
+and 55 cases (55.0%) with low expression of MCM6 in ad-
+jacent tissues (Fig. 2A–C). In comparison with MCF-10A
+human breast epithelial cells, MCM6 expression in breast
+cancer cell lines (MCF-7, BT549, T470, MDA-MB-231,
+HCC1806) was significantly increased (Fig. 2D,E). These
+results suggest that MCM6 was overexpressed in patients
+with breast carcinoma.
+3.2 MCM6 is a Poor Prognostic Factor in Breast Cancer
+We further explored how MCM6 expression is cor-
+related with clinicopathologic parameters (age, histologi-
+cal grade, size of tumor, lymph node metastasis, vascular
+invasion, distant metastasis, and molecular typing). The
+outcomes demonstrated that MCM6 expression was asso-
+ciated with the size of tumor (p = 0.001) and lymph node
+metastases (p = 0.012) (Table 1). An analysis of the TCGA
+database revealed that the expression of MCM6 varied ac-
+cording to age, and there were differences between Asians
+and Caucasians White (Fig. 3A,B); MCM6 expression in
+estrogen receptors (ER) and progesterone receptors (PR)-
+negative breast cancer patients was higher than that in ER-
+and PR-positive breast cancer patients (Fig. 3C,D); MCM6
+expression in HER2-positive subjects was more obvious
+than in negative breast cancer patients (Fig. 3E); MCM6
+expression was elevated in luminal B, basal and HER2
+breast cancer (Fig. 3F); MCM6 expression in invasive lob-
+ular carcinoma was higher than that in invasive lobular
+carcinoma tube carcinoma (Fig. 3G); no notable differ-
+ence in the expression of MCM6 was found in each clini-
+cal stage (Fig. 3H); MCM6 expression was different only
+in the T1 and T2 stages; no considerable difference was
+shown in MCM6 expression between the N stage and the
+M stage, which T represents tumor size stage, N repre-
+sents lymph node metastasis stage, and M represents distant
+7
+Fig. 5. Univariate and multivariable Cox regression analysis and construction of nomograms related to patient prognosis. (A) The
+prognosis of MCM6 was analyzed by univariate Cox regression. (B) Multivariate Cox regression analysis of the prognosis of MCM6. (C)
+The nomogram combined with the risk signature and clinicopathological factors. (D,E) Calibration plots for the prediction of prolonged
+survival of three and five years.
+metastasis stage (Fig. 3I–K). Based on the analysis from
+the PrognoScan online website, breast cancer patients with
+high MCM6 expression had reduced OS, relapse-free sur-
+vival (RFS) and distant metastasis-free survival (DMFS)
+(Fig. 4A–C), which is consistent with the results of the
+Kaplan-Meier Plot online prognostic analysis (Fig. 4D–F).
+In addition, univariate Cox regression analysis re-
+vealed that the expression of ER, PR, stage, T stage, M
+stage, N stage and MCM6 was associated with a low sur-
+vival rate of patients (Fig. 5A). In multivariate Cox regres-
+sion, after adjusting for other confounding factors, the ex-
+pression of age, ER, M, N and MCM6 was an independent
+indicator (Fig. 5B). Furthermore, various indicators (age,
+ER, M, N and MCM6 expression) were included in the
+nomogram prediction model by multivariate Cox regres-
+sion. The total score was obtained by age, expression of
+ER, M stage, N stage, MCM6, and prediction of survival
+probabilities at three years and five years (Fig. 5C). The
+C-index for the prediction nomogram was 0.817. Calibra-
+tion curves displayed the predictive power of the predic-
+8
+Fig. 6. Analysis of signaling pathways by using GSEA. (A) GSEA plots showing the NES for HALLMARK, which had close relations
+to the overexpression of MTM6 in breast carcinoma and involved signaling pathways, including DNA repair, signaling types of IL6 JAK
+STAT3, MTORC1 and PI3K AKT MTOR, inflammatory and interferon alpha responses, and MYC targets V1. (B) NES for KEGG, which
+has a close association with the overexpression of MTM6, including B-cell receptor, ERBB, p53, T-cell receptor signaling pathways,
+mismatch repair, natural killer cell-mediated cytotoxicity, and ubiquitin-mediated proteolysis.
+tive model in terms of survival time in patients with breast
+carcinoma (Fig. 5D,E). These results suggest that overex-
+pression of MCM6 is a dismal prognostic factor for breast
+cancer.
+3.3 Enrichment and Functional Analysis of Gene Sets
+GSEA was performed between subgroups with dif-
+ferent levels of MCM6 expression using the whole gene
+network based on the TCGA dataset with a view to ex-
+plore the biological pathways via which MCM6 works
+in diseased tissues.
+The biological processes involved
+mainly included DNA repair, different pathways of IL6-
+JAK-STAT3, MTORC1, PI3K-AKT-MTOR, MYC, etc.
+(Fig. 6A). KEGG analysis demonstrated that overexpres-
+sion of MCM6 was mainly involved in the process of mis-
+match repair, the regulation of ubiquitination proteolysis,
+ERBB signaling pathway and p53 signaling pathway. In
+addition, MCM6 is enriched in immune signaling pathways
+and activates related immune responses, such as B cell and
+T cell receptor pathways, and cytotoxic effects of natural
+killer cells (Fig. 6B).
+3.4 Evaluated MCM6 Expression and Sensitivity to
+Chemotherapy Drugs
+The impact of MCM6 expression on chemosensitiv-
+ity in patients with breast carcinoma were assessed via
+the pRRophetic algorithm and the half-maximal inhibitory
+concentration available in the Genomics of Drug Sensi-
+tivity in Cancer (GDSC) database.
+The results demon-
+strated that 134 chemotherapeutic drugs were identified to
+be significantly correlated with MCM6 expression. In the
+group overexpressing MCM6, we found that there were 14
+chemotherapy drugs with significant effects (Fig. 7A–N),
+especially PD-0332991 (p = 3.7 × 10−12) and trametinib (p
+< 2.22 × 10−16). According to these findings, the drug sen-
+sitivity of these small molecule compounds is better when
+MCM6 is highly expressed, but further exploration and ex-
+perimental verification are needed.
+3.5 Correlation Analysis of MCM6 and ICGs, Immunity,
+TMB and Methylation
+The expression correlation between MCM6 and genes
+related to immune detection points was analyzed based on
+the TCGA BRCA database. Our research outcomes indi-
+cated a positive correlation between MCM6 and the ex-
+pression of multiple immune checkpoints and a negative
+correlation with that of BTNL9 (Fig. 8A). Analysis of the
+relationship between MCM6 and immunity, including 24
+kinds of immune cells, showed a significantly negative cor-
+relation with eight immune cells (iDC, CD8 T cell, Th17
+cells, eosinophils, mast cells, NK CD56 bright cells, NK
+cells, pDC) but a significantly positive correlation with fif-
+teen immune cells (cells of Th2, aDC, Th1, Treg, T helper,
+NK CD56dim, Marcophages, B, Tcm, DC, Tgd, T, Term,
+Neutrophils, TFH) (Fig. 8B). In addition, MCM6 expres-
+sion was positively correlated with TMB (R = 0.33, p < 2.2
+× 10−16) (Fig. 8C). Finally, we also analyzed the methyla-
+tion levels of MCM6 in the diseased group and the normal
+group, and the outcomes revealed that MCM6 had a higher
+methylation level in breast cancer (Fig. 8D).
+3.6 MCM6 Knockdown Inhibited the Proliferation of
+Breast Cancer Cells
+To make a clarification of the biological role of MCM6
+in the progression and prognosis of breast carcinoma,
+the lentivirus system was used to conduct stable MCM6
+9
+Fig. 7. MCM6 expression correlates with the chemosensitivity of breast cancer. Box plots show the chemosensitivity of (5Z) –7–
+oxozeaenol (A), belinostat (B), BEZ235 (C), dabrafenib (D), elesclomol (E), erlotinib (F), lapatinib (G), MK–2206 (H), Nutlin–3a (I),
+PD-0325901 (J), phenformin (K), sorafenib (L), temsirolimus (M) and trametinib (N) in high- and low-expression of MCM6 in breast
+cancer. ***p < 0.001.
+10
+Fig. 8. Correlation analysis of MCM6 and immune checkpoint-related gene expression, immune cells, TMB and methylation.
+(A) TCGA BRCA database was used in correlational analysis of MCM6 and the expression of immune checkpoint-related genes, and
+the correlation coefficient threshold was set at 0.2. (B) Correlation analysis of MCM6 expression and immune cell infiltration. (C)
+Correlation analysis of tumor mutation burden (TMB) with MCM6 expression. (D) TCGA Breast Invasive Carcinoma (BRCA) database
+was used to analyze the promoter methylation level of MCM6 between normal tissues and diseased tissues.
+knockdown in MDA-MB-231 and MCF-7 cancerous cells
+(shMCM6), by which the mRNA and protein expression
+of MCM6 was considerably down-regulated (Fig. 9A,B).
+MCM6 down-regulation prevents the growth of cancerous
+cells (Fig. 9C), lead to a higher percentage of apoptotic cells
+(Fig. 9D). MCM6 silencing caused cancerous cells to re-
+produce in large numbers in G1 phase and reduced cancer-
+ous cells in S phase (Fig. 9E). MCM6 knockdown also re-
+duced the migrating and invasive power of diseased cells
+(Fig. 9F,G). To test whether MCM6 promoted breast tumor
+growth in vivo, a subcutaneous transplantation tumor model
+of BALB/c nude mice was constructed with MDA-MB-231
+breast cancer cells (Fig. 10A). The volume and weight of the
+xenografts of MDA-MB-231 cells with MCM6 knockdown
+were lighter than those of the control group (Fig. 10B,C).
+The quantity of ki-67-positive cells in the xenograft tu-
+mor with MCM6 knockdown was decreased compared with
+that in the control group, consistent with MCM6 expression
+(Fig. 10D). These results suggested that MCM6 knockdown
+can successfully retrain the growth of cancerous cells both
+in vivo and in vitro.
+4. Discussion
+Breast cancer prevails in the world’s female popula-
+tion, with increasing incidence and a trend toward younger
+age year by year [2].
+In recent years, targeted therapy,
+including trastuzumab, pertuzumab, lapatinib and lena-
+tinib for HER2 treatment; bevacizumab, an antiangiogenic
+11
+Fig. 9. MCM6 promotes breast cancer cell growth, migration, and invasion and inhibits apoptosis in vitro. (A,B) qRT‒PCR and
+WB showing MCM6 expression in stably silenced in MDA-MB-231 and MCF-7 cells. (C) CCK8 experiment results show that inhibition
+of MCM6 significantly inhibits the proliferation of MDA-MB-231 and MCF-7 cells. (D) Inhibition of MCM6 significantly promotes the
+apoptosis rate of MDA-MB-231 and MCF-7cells. (E) Knockdown MCM6 leads to a large number of G1 stage cancer cells to multiply,
+and S stage cancer cells to reduce. (F) Wounding healing assay showed that knockdown of MCM6 significantly slowed down the wound
+healing rate of MDA-MB-231 and MCF-7cells. (G) Invasion chamber experiment confirmed that knockdown of MCM6 significantly
+inhibited the invasion rate of MDA-MB-231 and MCF-7cells. Statistics are presented as the means ± SDs. *p < 0.05, ***p < 0.001;
+ns, not significant.
+12
+Fig. 10. CKAP4 promotes breast cancer cell growth in vivo. (A) Schematic diagram of the nude mouse xenograft model and all the
+tumors. (B,C) Knock down MCM6 significantly inhibits the growth of transplanted tumor in nude mice. (D) The immunohistochemical
+results showed that the expression of MCM6 was significantly decreased in the knockdown group, and the positive rate of KI67 in the
+knockdown group was significantly lower than that in the control group. Statistics are presented as the means ± SDs. *p < 0.05, ***p
+< 0.001; ****p < 0.0001.
+drug; PARP inhibitors iniparib, veliparib and olaparib for
+BRCA1/2 mutation, etc., has significantly prolonged life
+expectancy and quality of life in patients [26–28]. Although
+the mentioned drugs have achieved good clinical efficacy,
+they are only targeted at patients with specific molecular
+changes. There are still many breast cancer patients with
+poor efficacy because of drug resistance and other prob-
+lems. Breast cancer is a very heterogeneous tumor, and its
+occurrence and development involve many gene changes.
+Hence, it is imminent to explore new biological markers
+and potential targets of breast cancer to provide a new basis
+for prognostic effect management and the development of
+targeted medication.
+This research suggested that MCM6 expression was
+increased in a variety of tumors, including breast cancer,
+combined with TCGA database, clinical samples and breast
+cancer cells. Our conclusions are supported by Issac et al.
+[16]. Furthermore, MCM6 expression in luminal B, basal
+13
+and HER2 breast cancer was significantly increased, and
+that in invasive lobular carcinoma was higher than that in
+invasive ductal carcinoma, which indicated that the role and
+prognostic value of MCM6 in different types of breast can-
+cer may be different and that the mechanism needs to be
+further investigated.
+In recent years, studies on biomarkers, prognostic
+markers and prognostic models of breast cancer have at-
+tracted increasing attention and can provide a good basis
+for the prognosis of breast cancer. We constructed a nomo-
+gram prediction model that included five factors (age, ex-
+pression of ER, M stage, N stage and expression of MCM6)
+by multivariate Cox regression analysis, and the research
+results showed that low expression of MCM6 may indicate
+longer survival time for patients with breast cancer in our
+prognostic model. Relevant studies reported that excessive
+expression of MCM6 was related to poor prognostic effect.
+High expression of MCM6 mRNA was significantly associ-
+ated with shorter survival time of patients with breast can-
+cer [29]. Low expression of MCM6 mRNA is associated
+with increased recurrence-free survival in breast cancer pa-
+tients [16]. The expression level of MCM6 in high-grade
+tumors is significantly increased and correlated with mitotic
+count, which is an effective reference index for tumor grad-
+ing [30]. These results agreed closely with the outcomes in
+the model we constructed and suggested that overexpres-
+sion was independent as a prognostic factor for breast car-
+cinoma.
+An increasing number of studies have shown that
+the role of MCM6 in tumor progression is extensive [14].
+MCM6 silencing leads to arrest of S to G1 phase pro-
+gression by reducing CDK2, CDK2, cyclin A, cyclin B4,
+cyclin D1 and cyclin E in hepatocellular carcinoma [31].
+MCM6 promotes the metastasis of hepatocellular carci-
+noma through the MEK/ERK pathway [21]. CDK5RAP3
+reduces MCM6 nuclear translocation, thereby reducing
+gastric cancer proliferation [32].
+Liu et al.
+[33] found
+that SIX1 is an oncoprotein in cervical cancer that pro-
+motes proliferation by promoting the expression of MCM6.
+Boulay et al. [34] found that ARF1 promotes breast can-
+cer proliferation by enhancing the expression of MCM6 and
+up-regulating the activity of pRB/E2F1. Nevertheless, the
+function of MCM6 in breast carcinoma remains unclear.
+The results of this study showed that MCM6 promoted
+breast cancer cell proliferation in vitro and in vivo, and pro-
+moted breast cancer migration and invasion in vitro. How-
+ever, the biological pathway by which MCM6 plays a role
+in breast cancer remains unknown. By using GSEA, the
+study clarified the fact that overexpression of MCM6 pro-
+motes tumor progression mainly through the JAK-STAT3,
+mTOR myc, PI3K-AKT ERBB and p53 signaling path-
+ways, which are closely related to tumorigenesis. Liu et al.
+[21] reported that MCM6 activates the MEK-ERK signal-
+ing pathway to promote the metastasis of liver cancer. We
+found that MCM6 overexpression is also related to the reg-
+ulation of ubiquitination proteolysis, and whether MCM6 is
+involved in these signaling pathways has not been reported.
+Notably, MCM6 is involved in mismatch repair, which is
+consistent with the findings of Sherman et al. [35] reported
+that MCM6 was an important regulatory factor in the DNA
+replication system through complex formation with other
+MCM6 proteins to regulate DNA replication of the cell cy-
+cle in the carcinogenic process. In addition, our results in-
+dicated that the increased MCM6 expression had a bear-
+ing on cytotoxic effects of B-cell and T-cell receptor path-
+ways and natural killer cells. Recent studies have shown
+that MCM6 functions to obstruct immune progression by
+reducing the immune response in microglial cells [14].
+Therefore, MCM6 may be the key mediator of the immune
+response. We analyzed the relationship between MCM6
+expression and immune checkpoint-related genes and im-
+mune cells. The results demonstrated that MCM6 displayed
+positive relevance with many immune checkpoint-related
+genes and negative correlation with BTNL9 in breast can-
+cer, which has not been reported before and is worthy of
+further exploration. Whether MCM6 can affect the func-
+tion of these immune checkpoints in breast cancer needs
+further study.
+Given that MCM6 is key to the progression of breast
+carcinoma, we further explored the correlation between
+MCM6 and breast cancer-related chemotherapy drugs for
+therapy. Two potential drugs, PD-0332991 and trametinib,
+which are more sensitive when MCM6 is highly expressed,
+were screened out from breast cancer-related chemotherapy
+drugs. PD-0332991 is an inhibitor of CDK4 and CDK6
+with oral activity and has antiproliferative activity on cancer
+cells, inducing their cell cycle arrest [36]. In addition, PD-
+0332991 guided the apoptosis of diffuse large B-cell lym-
+phoma cells in a dose-dependent manner [37]. Studies have
+shown that PD-0332991 can be used for hormone (ER/PR)-
+positive and HER2-negative breast cancer [38]. Trametinib
+is an effective reversibility inhibitor of MEK 1/2 that re-
+strains cell proliferation by blocking the MAPK pathway
+[39]. The FDA has approved trametinib combined with
+dabrafenib for patients with metastatic melanoma who have
+the BRAF V600E/K mutation [40]. Our results indicated
+that keener sensitivity to PD-0332991 and trametinib can
+be found in patients with overexpression of MCM6, which
+can be used as a monitoring indicator of drug sensitivity in
+breast cancer. However, our screening results still need to
+be verified by a large number of clinical cases and related
+experiments.
+5. Conclusions
+In conclusion, our research shows that overexpression
+of MCM6 can be found in patients with breast carcinoma
+and used as a poor prognostic factor for the disease. MCM6
+can promote the proliferation of cancerous cells in vitro and
+in vivo. Based on database and bioinformatics analyses,
+MCM6 plays a crucial role in tumor immunity, tumor mu-
+14
+Fig. 11. MCM6 is a poor prognostic biomarker and promotes progression in breast cancer. Overexpression of MCM6 is poor
+prognostic biomarker in breast cancer. MCM6 can promote the proliferation of cancerous cells in vitro and in vivo. Based on database
+and bioinformatics analyses, MCM6 plays a crucial role in tumor immunity, tumor mutation burden and methylation through a variety
+of biological pathways and is related to drug sensitivity.
+tation burden and methylation through a variety of biolog-
+ical pathways and is related to drug sensitivity (Fig. 11).
+MCM6 can be used as a poor prognostic marker of breast
+cancer and a potential target for immunotherapy and tar-
+geted therapy. However, in our experiments, we have not
+further verified the biological pathways of MCM6 in breast
+cancer and the role and mechanism of MCM6 in tumor mu-
+tation burden and tumor immunity, and further studies are
+needed. In the future, comprehensive individualized treat-
+ment with chemotherapy combined with targeted therapy
+and immunotherapy will become the main treatment option
+for breast cancer patients. Our preliminary study showed
+that the high expression of MCM6 in breast cancer increases
+the sensitivity of related drugs. Targeting MCM6 and com-
+bining with related sensitive drugs is a promising research
+direction. Therefore, our study demonstrates that MCM6
+has a potential oncogenic role in breast cancer and provides
+a new direction for targeted therapy and immunotherapy in
+breast cancer patients.
+Availability of Data and Materials
+The datasets used and/or analyzed during the current
+study are available from the corresponding author on rea-
+sonable request.
+Author Contributions
+ZL and GP designed the study. PW, DJ, and LL an-
+alyzed the data. ZL, YW, and YY performed the experi-
+ments. ZL, PW, and GP contributed to the writing of the
+manuscript. All authors contributed to editorial changes
+15
+in the manuscript. All authors read and approved the fi-
+nal manuscript. All authors have participated sufficiently
+in the work and agreed to be accountable for all aspects of
+the work
+Ethics Approval and Consent to Participate
+This study was supported by the Ethics Committee of
+the First Affiliated Hospital of Kunming Medical Univer-
+sity (kmmu20220767). Specimens were handled in accor-
+dance with legal and ethical regulations.
+Acknowledgment
+Not applicable.
+Funding
+This study was supported by National Natural
+Science Foundation of China (82260512), Basic Re-
+search Program of Yunnan Province (202201AS070076,
+202201AT070280),
+Joint
+Projects
+of
+Applied
+Basic
+Research of Kunming Medical University and Yun-
+nan Province Department of science and Technology
+(202101AY070001-016), Science and Technology Inno-
+vation team of Education Department of Yunnan Province
+(K1322121), and High-level personnel training program of
+Yunnan Province (RLMY20200016).
+Conflict of Interest
+The authors declare no conflict of interest.
+References
+[1] Siegel RL, Miller KD, Fuchs HE, Jemal A. Cancer statistics,
+2022. CA: A Cancer Journal for Clinicians. 2022; 72: 7–33.
+[2] Lukong KE. Understanding breast cancer - The long and wind-
+ing road. BBA Clinical. 2017; 7: 64–77.
+[3] Dai X, Li T, Bai Z, Yang Y, Liu X, Zhan J, et al. Breast can-
+cer intrinsic subtype classification, clinical use and future trends.
+American Journal of Cancer Research. 2015; 5: 2929–2943.
+[4] de Melo Gagliato D, Jardim DLF, Marchesi MSP, Hortobagyi
+GN. Mechanisms of resistance and sensitivity to anti-HER2
+therapies in HER2+ breast cancer. Oncotarget. 2016; 7: 64431–
+64446.
+[5] Oh DY, Bang YJ. HER2-targeted therapies - a role beyond breast
+cancer. Nature Reviews. Clinical Oncology. 2020; 17: 33–48.
+[6] Baselga J, Gómez P, Greil R, Braga S, Climent MA, Wardley
+AM, et al. Randomized phase II study of the anti-epidermal
+growth factor receptor monoclonal antibody cetuximab with cis-
+platin versus cisplatin alone in patients with metastatic triple-
+negative breast cancer. Journal of Clinical Oncology: Official
+Journal of the American Society of Clinical Oncology. 2013;
+31: 2586–2592.
+[7] Mittendorf EA, Wu Y, Scaltriti M, Meric-Bernstam F, Hunt
+KK, Dawood S, et al. Loss of HER2 amplification following
+trastuzumab-based neoadjuvant systemic therapy and survival
+outcomes. Clinical Cancer Research: an Official Journal of the
+American Association for Cancer Research. 2009; 15: 7381–
+7388.
+[8] Berns K, Horlings HM, Hennessy BT, Madiredjo M, Hijmans
+EM, Beelen K, et al. A functional genetic approach identifies the
+PI3K pathway as a major determinant of trastuzumab resistance
+in breast cancer. Cancer Cell. 2007; 12: 395–402.
+[9] Scaltriti M, Eichhorn PJ, Cortés J, Prudkin L, Aura C, Jiménez
+J, et al. Cyclin E amplification/overexpression is a mechanism
+of trastuzumab resistance in HER2+ breast cancer patients. Pro-
+ceedings of the National Academy of Sciences of the United
+States of America. 2011; 108: 3761–3766.
+[10] Rizzo A, Ricci AD. Biomarkers for breast cancer immunother-
+apy: PD-L1, TILs, and beyond. Expert Opinion on Investiga-
+tional Drugs. 2022; 31: 549–555.
+[11] Viscardi G, Tralongo AC, Massari F, Lambertini M, Mollica V,
+Rizzo A, et al. Comparative assessment of early mortality risk
+upon immune checkpoint inhibitors alone or in combination with
+other agents across solid malignancies: a systematic review and
+meta-analysis. European Journal of Cancer (Oxford, England:
+1990). 2022; 177: 175–185.
+[12] Rizzo A, Cusmai A, Acquafredda S, Rinaldi L, Palmiotti G.
+Ladiratuzumab vedotin for metastatic triple negative cancer:
+preliminary results, key challenges, and clinical potential. Ex-
+pert Opinion on Investigational Drugs. 2022; 31: 495–498.
+[13] Rizzo A, Ricci AD, Lanotte L, Lombardi L, Di Federico A,
+Brandi G, et al. Immune-based combinations for metastatic
+triple negative breast cancer in clinical trials: current knowl-
+edge and therapeutic prospects. Expert Opinion on Investiga-
+tional Drugs. 2022; 31: 557–565.
+[14] Zeng T, Guan Y, Li YK, Wu Q, Tang XJ, Zeng X, et al. The DNA
+replication regulator MCM6: An emerging cancer biomarker
+and target. Clinica Chimica Acta; International Journal of Clin-
+ical Chemistry. 2021; 517: 92–98.
+[15] Zheng Y, Shi Y, Yu S, Han Y, Kang K, Xu H, et al. GTSE1,
+CDC20, PCNA, and MCM6 Synergistically Affect Regulations
+in Cell Cycle and Indicate Poor Prognosis in Liver Cancer. Ana-
+lytical Cellular Pathology (Amsterdam). 2019; 2019: 1038069.
+[16] Issac MSM, Yousef E, Tahir MR, Gaboury LA. MCM2, MCM4,
+and MCM6 in Breast Cancer: Clinical Utility in Diagnosis and
+Prognosis. Neoplasia (New York, N.Y.). 2019; 21: 1015–1035.
+[17] Cai HQ, Cheng ZJ, Zhang HP, Wang PF, Zhang Y, Hao JJ, et
+al. Overexpression of MCM6 predicts poor survival in patients
+with glioma. Human Pathology. 2018; 78: 182–187.
+[18] Liu YZ, Wang BS, Jiang YY, Cao J, Hao JJ, Zhang Y, et al.
+MCMs expression in lung cancer: implication of prognostic sig-
+nificance. Journal of Cancer. 2017; 8: 3641–3647.
+[19] Wagner SA, Oehler H, Voigt A, Dalic D, Freiwald A, Serve H, et
+al. ATR inhibition rewires cellular signaling networks induced
+by replication stress. Proteomics. 2016; 16: 402–416.
+[20] Noseda M, Niessen K, McLean G, Chang L, Karsan A. Notch-
+dependent cell cycle arrest is associated with downregulation of
+minichromosome maintenance proteins. Circulation Research.
+2005; 97: 102–104.
+[21] Liu M, Hu Q, Tu M, Wang X, Yang Z, Yang G, et al. MCM6
+promotes metastasis of hepatocellular carcinoma via MEK/ERK
+pathway and serves as a novel serum biomarker for early recur-
+rence. Journal of Experimental & Clinical Cancer Research: CR.
+2018; 37: 10.
+[22] Kramer AA, Zimmerman JE. Assessing the calibration of mor-
+tality benchmarks in critical care: The Hosmer-Lemeshow test
+revisited. Critical Care Medicine. 2007; 35: 2052–2056.
+[23] Pencina MJ, D’Agostino RB. Overall C as a measure of discrim-
+ination in survival analysis: model specific population value and
+confidence interval estimation. Statistics in Medicine. 2004; 23:
+2109–2123.
+[24] Wu Y, Qin J, Li F, Yang C, Li Z, Zhou Z, et al. USP3 promotes
+breast cancer cell proliferation by deubiquitinating KLF5. The
+Journal of Biological Chemistry. 2019; 294: 17837–17847.
+[25] Jia D, Li L, Wang P, Feng Q, Pan X, Lin P, et al. ZNF24 regulates
+the progression of KRAS mutant lung adenocarcinoma by pro-
+16
+moting SLC7A5 translation. Frontiers in Oncology. 2022; 12:
+1043177.
+[26] Tsimberidou
+AM.
+Targeted
+therapy
+in
+cancer.
+Cancer
+Chemotherapy and Pharmacology. 2015; 76: 1113–1132.
+[27] Diéras V, Bachelot T. The success story of trastuzumab emtan-
+sine, a targeted therapy in HER2-positive breast cancer. Targeted
+Oncology. 2014; 9: 111–122.
+[28] Silva AS, Kam Y, Khin ZP, Minton SE, Gillies RJ, Gatenby RA.
+Evolutionary approaches to prolong progression-free survival in
+breast cancer. Cancer Research. 2012; 72: 6362–6370.
+[29] Kwok HF, Zhang SD, McCrudden CM, Yuen HF, Ting KP, Wen
+Q, et al. Prognostic significance of minichromosome mainte-
+nance proteins in breast cancer. American Journal of Cancer Re-
+search. 2014; 5: 52–71.
+[30] Sadeghian D, Saffar H, Mahdavi Sharif P, Soleimani V, Jahan-
+bin B. MCM6 versus Ki-67 in diagnosis of luminal molecular
+subtypes of breast cancers. Diagnostic Pathology. 2022; 17: 24.
+[31] Liu Z, Li J, Chen J, Shan Q, Dai H, Xie H, et al. MCM family
+in HCC: MCM6 indicates adverse tumor features and poor out-
+comes and promotes S/G2 cell cycle progression. BMC Cancer.
+2018; 18: 200.
+[32] Chen QY, Liu LC, Wang JB, Xie JW, Lin JX, Lu J, et al.
+CDK5RAP3 Inhibits the Translocation of MCM6 to Influence
+the Prognosis in Gastric Cancer. Journal of Cancer. 2019; 10:
+4488–4498.
+[33] Liu D, Zhang XX, Xi BX, Wan DY, Li L, Zhou J, et al. Sine
+oculis homeobox homolog 1 promotes DNA replication and cell
+proliferation in cervical cancer. International journal of oncol-
+ogy. 2014; 45: 1232–1240.
+[34] Boulay PL, Schlienger S, Lewis-Saravalli S, Vitale N, Ferbeyre
+G, Claing A. ARF1 controls proliferation of breast cancer cells
+by regulating the retinoblastoma protein. Oncogene. 2011; 30:
+3846–3861.
+[35] Sherman DA, Pasion SG, Forsburg SL. Multiple domains of fis-
+sion yeast Cdc19p (MCM2) are required for its association with
+the core MCM complex. Molecular Biology of the Cell. 1998;
+9: 1833–1845.
+[36] Liu M, Liu H, Chen J. Mechanisms of the CDK4/6 inhibitor pal-
+bociclib (PD 0332991) and its future application in cancer treat-
+ment (Review). Oncology Reports. 2018; 39: 901–911.
+[37] Tanaka Y, Momose S, Tabayashi T, Sawada K, Yamashita T, Hi-
+gashi M, et al. Abemaciclib, a CDK4/6 inhibitor, exerts preclin-
+ical activity against aggressive germinal center-derived B-cell
+lymphomas. Cancer Science. 2020; 111: 749–759.
+[38] Finn RS, Dering J, Conklin D, Kalous O, Cohen DJ, Desai AJ,
+et al. PD 0332991, a selective cyclin D kinase 4/6 inhibitor,
+preferentially inhibits proliferation of luminal estrogen receptor-
+positive human breast cancer cell lines in vitro. Breast Cancer
+Research: BCR. 2009; 11: R77.
+[39] Zeiser R, Andrlová H, Meiss F. Trametinib (GSK1120212).
+Recent Results in Cancer Research. Fortschritte Der Krebs-
+forschung. Progres Dans Les Recherches Sur Le Cancer. 2018;
+211: 91–100.
+[40] Ascierto PA, Ferrucci PF, Fisher R, Del Vecchio M, Atkinson
+V, Schmidt H, et al. Dabrafenib, trametinib and pembrolizumab
+or placebo in BRAF-mutant melanoma. Nature Medicine. 2019;
+25: 941–946.
+17
+

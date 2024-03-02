@@ -1,0 +1,1086 @@
+Yuan et al. BMC Microbiology          (2023) 23:143  
+https://doi.org/10.1186/s12866-023-02891-0
+RESEARCH
+Open Access
+© The Author(s) 2023. Open Access  This article is licensed under a Creative Commons Attribution 4.0 International License, which 
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or 
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory 
+regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this 
+licence, visit http:// creat iveco mmons. org/ licen ses/ by/4. 0/. The Creative Commons Public Domain Dedication waiver (http:// creat iveco 
+mmons. org/ publi cdoma in/ zero/1. 0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+BMC Microbiology
+Gut microbiota in patients with kidney 
+stones: a systematic review and meta-analysis
+Tianhui Yuan1†, Yuqi Xia1†, Bojun Li1†, Weimin Yu1, Ting Rao1, Zehua Ye1, Xinzhou Yan1, Baofeng Song1, Lei Li1, 
+Fangyou Lin1* and Fan Cheng1* 
+Abstract 
+Background Mounting evidence indicates that the gut microbiome (GMB) plays an essential role in kidney stone 
+(KS) formation. In this study, we conducted a systematic review and meta-analysis to compare the composition of 
+gut microbiota in kidney stone patients and healthy individuals, and further understand the role of gut microbiota in 
+nephrolithiasis.
+Results Six databases were searched to find taxonomy-based comparison studies on the GMB until September 2022. 
+Meta-analyses were performed using RevMan 5.3 to estimate the overall relative abundance of gut microbiota in KS 
+patients and healthy subjects. Eight studies were included with 356 nephrolithiasis patients and 347 healthy subjects. 
+The meta-analysis suggested that KS patients had a higher abundance of Bacteroides (35.11% vs 21.25%, Z = 3.56, 
+P = 0.0004) and Escherichia_Shigella (4.39% vs 1.78%, Z = 3.23, P = 0.001), and a lower abundance of Prevotella_9 (8.41% 
+vs 10.65%, Z = 4.49, P < 0.00001). Qualitative analysis revealed that beta-diversity was different between the two 
+groups (P < 0.05); Ten taxa (Bacteroides, Phascolarctobacterium, Faecalibacterium, Flavobacterium, Akkermansia, Lacto-
+bacillus, Escherichia coli, Rhodobacter and Gordonia) helped the detection of kidney stones (P < 0.05); Genes or protein 
+families of the GMB involved in oxalate degradation, glycan synthesis, and energy metabolism were altered in patients 
+(P < 0.05).
+Conclusions There is a characteristic gut microbiota dysbiosis in kidney stone patients. Individualized therapies like 
+microbial supplementation, probiotic or synbiotic preparations and adjusted diet patterns based on individual gut 
+microbial characteristics of patients may be more effective in preventing stone formation and recurrence.
+Keywords Kidney stones, Gut microbiota, Gut microbiota dysbiosis, Diet, Microbiome, Systematic review and meta-
+analysis
+Background
+With an estimated 5-year recurrence rate of up to 50% 
+[1], kidney stone (KS) disease is a widespread issue that 
+affects roughly 10–15% of the global population; its 
+prevalence is the highest among urological diseases [2]. 
+The most common kidney stone type is calcium oxalate 
+(76%), followed by hydroxyapatite (18%), uric acid (4.8%), 
+struvite (0.9%), and brushite (0.9%) [3]. Long-term renal 
+stones can cause urinary tract obstruction, infection and 
+irreversible renal function damage, seriously affecting 
+the quality of life and health of patients. Moreover, kid-
+ney stone disease increases the risk of chronic kidney 
+†Tianhui Yuan, Yuqi Xia and Bojun Li contributed equally to the work as co-
+first authors.
+*Correspondence:
+Fangyou Lin
+2011302180205@whu.edu.cn
+Fan Cheng
+urology1969@aliyun.com
+1 Department of Urology, Renmin Hospital of Wuhan University, Wuhan, 
+China
+Page 2 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+disease, end-stage kidney disease, and dialysis therapy [4, 
+5]. It is believed that environmental, dietary, hormonal, 
+and genetic factors all play a role in the underlying etiol-
+ogy in the majority of patients [6–8]. Symptomatic kid-
+ney stone management has evolved from open surgical 
+lithotripsy to minimally invasive endoscopic treatment, 
+which has become the mainstream treatment. However, 
+the demand for more effective therapies to prevent the 
+occurrence and recurrence of stones persists and necessi-
+tates a deeper comprehension of the mechanisms under-
+lying stone formation [9].
+Recent research has shown a growing connection 
+between human diseases and the microbiota, and this 
+connection is especially strong for the gut microbiome 
+(GMB). GMB is formed by the trillions of commensal 
+bacteria, fungi, archaea and viruses that are densely dis-
+tributed in the gastrointestinal tract of mammals [10]. 
+Dysbiosis of the GMB can cause metabolic, immune 
+and mental disorders such as inflammatory bowel dis-
+eases (IBD), diabetes, chronic kidney disease (CKD), 
+autoimmune arthritis and depression [11–13]. There are 
+several ways to ascertain the composition and diversity 
+of the GMB due to the development of next-generation 
+sequencing technology. For example, DNA microarrays, 
+fluorescence in situ hybridization, and sequencing of 16S 
+rRNA gene or its amplicons are all methods based on 
+sequence divergences in small subunit ribosomal RNA 
+[14, 15]. Metagenomic or shotgun sequencing is another 
+method that randomly sequences all DNA extracted from 
+the sample, which provides more accurate taxonomic res-
+olution, information about the potential function of the 
+microbiome, as well as identification of microbial taxa 
+at the species level [16, 17]. By using shotgun sequenc-
+ing on patients’ feces, Qian et al. [18] developed the first 
+gut microbial gene catalog as diagnostic biomarkers of 
+Parkinson’s disease. The gut microbial dysbiosis and the 
+underlying pathogenesis of diseases such as diabetes, IBD 
+and tuberculosis were further revealed through multi-
+omics sequencing [19]. Notably, the development of 
+microbial sequencing contributes to the development of 
+prediction, diagnosis and treatment of human diseases.
+A close pathogenic association exists between the 
+intestinal microbiota and kidney diseases (gut-kidney 
+axis) like chronic kidney disease, acute kidney injury, 
+glomerulonephritis, nephrotic syndrome, and IgA 
+nephropathy, among others [20]. Patients with CKD, IgA 
+nephropathy or gout have a characteristic GMB dysbio-
+sis [21–23]. Several studies have actively performed gut 
+microbiota sequencing analysis in patients with stones 
+and have established that the gut microbiota is closely 
+associated with stone formation. However, the charac-
+teristics of GMB dysbiosis in patients with stones remain 
+unclear due to variant sample sizes, analysis methods and 
+individual differences. For the first time, we analyze the 
+altered gut microbiota composition in patients with kid-
+ney stones by conducting a meta-analysis. In addition, we 
+qualitatively summarized the altered diversity, genetic 
+functions and detection capability of GMB in KS patients 
+and discussed the role of diet in the gut-nephrolithiasis 
+axis, as well as promising therapies based on the modula-
+tion of gut microbiota to provide potential strategies for 
+the prevention and treatment of kidney stones.
+Methods
+This systematic review and meta-analysis were conducted 
+following the Preferred Reporting Items for Systematic 
+Reviews and Meta-Analyses (PRISMA) guidelines and 
+registered at PROSPERO (No. CRD42022367346).
+Search strategy and study selection
+Two members of our team independently searched scien-
+tific databases namely PubMed, Scopus, Medline, CIN-
+HAL, Web of Science, and the Cochrane Library from 
+their inception through September 2022, in consultation 
+with a sciences research librarian. Full search terms and 
+an example of the search strategy can be found in (Sup-
+plementary Table  1). Additional articles were searched 
+for in the reference lists of the included studies, system-
+atic reviews, and meta-analyses.
+Two members screened the titles and abstracts inde-
+pendently and read the full text of potentially relevant 
+articles carefully. Articles were included if (1) they were 
+original research that examined the gut microbiota from 
+kidney stone patients and compared that to controls; (2) 
+they reported on the microbial community from stool 
+samples. We excluded studies if (1) they were animal or 
+in-vitro studies, commentaries, reviews, meta-analyses 
+or editorials; (2) they detected microbiome from urine 
+or stones samples; (3) they included populations hav-
+ing received chemotherapy within the previous year, or 
+reporting antibiotic use recently.
+Outcome measures
+The primary outcome was differences in the abundance 
+of gut microbiota between KS patients and healthy sub-
+jects at the genus level. The secondary outcomes were 
+descriptions of the gut microbial diversity, potential 
+detection capability and genetic functions in each study.
+Data extraction and quality assessment
+The following information was extracted from the 
+included articles by two independent reviewers: the 
+first author’s name, the publication year, the nation, the 
+sample size, microbiota species, statistically significant 
+(P < 0.05) relative abundance at the taxonomic level of the 
+gut microbiota between the groups. Disagreements were 
+Page 3 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+ 
+discussed until a consensus was reached. Alternatively, a 
+third reviewer was able to fix them.
+The Newcastle–Ottawa Scale (NOS) was used to assess 
+the quality of the studies [24]. The scale contains eight 
+elements to assess the selection, comparability and iden-
+tification of exposure of the groups. With a total score of 
+9, studies were rated as low quality (0–5) or high quality 
+(6–9); low quality studies were excluded.
+Statistical analysis
+For continuous outcomes, the relative abundance of gut 
+microbiota, we collected the aggregate mean, standard 
+deviation (SD) and standard error (SE) for quantitative 
+synthesis to obtain the overall percentage of different 
+microbial genera in KS patients and the controls. We also 
+contacted the authors of original studies to obtain the 
+data not available in the article. The relative abundance 
+of gut microbes in kidney stone patients compared to 
+healthy subjects was determined by calculating the differ-
+ence in percentage of several genera between the KS and 
+the control group. For the diversity, potential detection 
+capability and genetic functions of gut microbiota, we 
+only conducted qualitative synthesis because of the small 
+sample sizes and the insufficient data.
+All statistical analyses in this study were performed 
+using the RevMan5.3 statistical software with the inverse-
+variance method. Forest plots represented the summary 
+metrics. The  I2 statistic was used to measure statistical 
+heterogeneity between studies [25]. Sensitivity analysis 
+was performed by excluding one study at a time to ensure 
+the stability and accuracy of the study. The funnel plot 
+and begg’s test were utilized to evaluate publication bias, 
+even though there might only be a few studies included 
+in subgroup analysis. P < 0.05 was considered statistically 
+significant [26].
+Results
+Study selection, characteristics and quality of included 
+studies
+A total of eight articles [27–34] were included. The selec-
+tion process of studies is depicted in Fig. 1. Studies were 
+mainly from China, the USA, Italy and India and account 
+for 703 samples (356 stone patients and 347 controls). 
+All eight studies were observational cohort studies. All 
+Fig. 1 PRISMA flow diagram
+Page 4 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+eligible studies used stool samples for gut microbiota 
+analysis via high-throughput molecular approaches by 
+Illumina platforms (MiSeq, NextSeq, HiSeq). In addi-
+tion to 16S rRNA sequencing, two studies combined 
+shotgun sequencing [30], frc-gene amplicon sequencing 
+and denaturing gradient gel electrophoresis (DGGE) fin-
+gerprinting [33] to characterize microorganisms. Three 
+studies [28, 29, 34] failed to report α and β diversity. 
+Intestinal flora differed between patients and controls in 
+the included studies, but the specific genera were highly 
+variable and listed in Table  1. All eight of the articles 
+received a NOS score of seven or higher, indicating high 
+quality (Supplementary Table  2). The funnel plot and 
+begg’s test suggested there were no publication bias for 
+included studies (P for begg’s test = 0.734) (Supplemen-
+tary Fig. 4).
+Relative abundance of gut microbiota composition
+Bacteroides
+The random-effects meta-analysis of Bacteroides was 
+conducted using data from four studies [27–30] and 
+revealed the following abundance: 35.11% (95% CI, 
+22.85–47.38,  I2 = 97%) in KS patients and 21.25% (95% CI, 
+-3.37–45.87,  I2 = 100%) in the control group (Fig. 2). The 
+overall effect size was moderate and significant (Z = 3.56, 
+P = 0.0004), indicating that Bacteroides was more abun-
+dant in KS patients, the percentage of the KS group was 
+1. 65-fold higher compared to the control group. Sensi-
+tive analysis was done due to obvious heterogeneity (Sup-
+plementary Fig. 1).
+Escherichia_Shigella
+Three studies [27–29] were included in the meta-anal-
+ysis of Escherichia_Shigella (Fig.  3). In the KS group, 
+Escherichia_Shigella made up 4.39% of the total micro-
+biota detected (95% CI, 2.29–6.49,  I2 = 88%), while in 
+the control group, it made up 1.78% (95% CI, 0.42–3.14, 
+ I2 = 90%). The overall effect size was moderate and sig-
+nificant (Z = 3.23, P = 0.001), showing that Escheri-
+chia_Shigella was more abundant in the KS patients, the 
+percentage of the KS group was 2.47-fold higher com-
+pared to the control group. Sensitive analysis was done 
+due to obvious heterogeneity (Supplementary Fig. 2).
+Prevotella_9
+The meta-analysis of Prevotella_9 included three studies 
+[27–29] (Fig. 4). In the KS group, Prevotella_9 accounted 
+for 8.41% of the total microbiota detected (95% CI, 4.99–
+11.83,  I2 = 74%), and in the control groups, it accounted 
+for 10.65% (95% CI, 2.10–19.20,  I2 = 96%). The over-
+all effect size was moderate and significant (Z = 4.49, 
+P < 0.0001), showing that Prevotella_9 was less prevalent 
+in KS patients than in controls, the percentage of the 
+KS group was 0.77-fold lower compared to the control 
+group. Sensitive analysis was done due to obvious hetero-
+geneity (Supplementary Fig. 3).
+Diversity and richness of gut microbiota in KS patients 
+compared to controls
+The number (richness) and distribution (evenness) of 
+taxa within a sample are measured by alpha diversity 
+[35]. Inconsistent results of α-diversity were reported 
+in five articles [27, 30–33], of which three [27, 31, 33] 
+observed no significant difference between the KS and 
+control groups. One study [30] reported that α-diversity 
+(Chao1 index) was significantly reduced in patients with 
+stones (P = 0.02). Yuan et  al. [32] reported increased 
+α-diversity in stone patients relative to controls (P < 0.05), 
+they found that in the KS group, the Simpson (P = 0.026), 
+Ace (P < 0.01) and Chao (P < 0.05) indices were remark-
+ably higher, while Shannon’s index was not significantly 
+different from the control group (P > 0.05).
+Beta diversity is a diversity indicator that shows how 
+different or similar the microbial compositions of mul-
+tiple samples are [35]. Five articles [27, 30–33] reported 
+results for β-diversity by PCA, PCoA or NMDS based on 
+Bray–Curtis, weighted and unweighted UniFrac distance 
+metrics. Of the five, four studies [30–33] reported obvi-
+ously compositional differences of the overall microbial 
+communities between kidney stone patients and controls 
+(P < 0.05).
+Potential detection of kidney stones on gut microbiota 
+characteristics
+Three studies used receiver-operating characteristic 
+curve (ROC) analysis to identify whether the gut micro-
+biota could be used to distinguish between the two 
+groups. Five genera of the gut microbiota were found to 
+be biomarkers for calcium oxalate stones by Chen et al. 
+[31]: Bacteroides, Phascolarctobacterium, Faecalibacte-
+rium, Akkermansia, and Lactobacillus (AUC = 0.871 CI, 
+0.785–0.957). According to Tang et al. [27], P. aeruginosa 
+(AUC = 0.947) and Escherichia coli (AUC = 0.840) could 
+be used to accurately categorize patients with nephro-
+lithiasis. Xiang et al. [34] reported that the relative abun-
+dances of genera Flavobacterium, Rhodobacter, Gordonia 
+were found useful in predicting kidney stones (AUCs 
+ranging from 0.682 to 0.763). They found that using data 
+from the three genera and four clinical indicators (oxa-
+late concentration, acetic acid concentration, citrate 
+concentration, phosphorus concentration) together pro-
+duced predictions that were more accurate than those 
+made using just genus or clinical data, and random forest 
+developed the most accurate model (AUC = 0.936).
+Page 5 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+ 
+Table 1 Characteristics of included studies
+Reference
+Country
+KS(n)
+HA(n)
+Microbiota analysis 
+technique
+Diversity metrics
+Differentially distributed species
+α-diversity
+β-diversity
+Higher abundance in KS 
+group
+Higher abundance in 
+control group
+Tang et al. 2018 [27]
+China
+13
+13
+16S rRNA gene amplicon 
+sequencing (V4 region)
+Illumina Hiseq 2500 
+platform
+Not significantly different 
+(Chao1, Shannon, Simpson 
+and Good’s coverage 
+indices, P > 0.05);
+Distinct but not sig-
+nificantly different (NMDS, 
+p = 0.096 with ANOSIM 
+and p = 0.058 with MPRR 
+based on the Bray–Curtis 
+distance metric)
+Alloprevotella, Erysipela-
+toclostridium, unidenti-
+fied_Lachnospiraceae, 
+Phascolarctobacterium, 
+Megamonas, Acinetobac-
+ter, Escherichia–Shigella, 
+Sutterella
+Eubacterium_hallii_group, 
+Dorea, Ruminiclostridium_5, 
+Anaerostipes, Fusicateni-
+bacter, Subdoligranulum, 
+Eubacterium_ruminan-
+tium_group, Holdemania, 
+Dialister, Ruminococcus_1, 
+Parasutterella Biliphil
+Stern et al. 2016 [28]
+USA
+23
+6
+16S rRNA gene sequenc-
+ing (V4 region)
+Illumina MiSeq
+Not reported
+Bacteroides, Parabacte-
+roides, Alistipes
+Varibaculum, Prevotella, 
+Finegoldia, Peptoniphilus
+Zhao et al. 2021 [29]
+China
+91
+75
+16S rRNA gene sequenc-
+ing (V4 region)
+Illumina MiSeq
+Not reported
+Bacteroides, Prevotella
+Lachnoclostridium, Blautia, 
+Bifidobacterium
+Ticinesi et al. 2018 [30]
+Italy
+52
+48
+16S rRNA gene sequenc-
+ing (V3 region) Illumina 
+MiSeq;
+Shotgun metagenomics 
+on sub-sample
+Illumina NextSeq
+Significantly reduced 
+(Chao1 index, P < 0.05)
+Significantly different 
+(PCOA method based 
+on weighted unifrac and 
+Bray–Curtis, P < 0.05)
+Bacteroides, Acidaminococ-
+cus, Cellulosimicrobium
+Klebsiella, Enterobacter, Enter-
+orhabdus, Enterococcus, Veil-
+lonella, Christensenellaceae 
+R-7 group, Oribacterium, 
+Ruminococcaceae UCG-003, 
+Lachnospiraceae NK4A136 
+group, Rothia, Family XIII 
+UCG-001, Lachnospiraceae, 
+Ruminiclostridium 5,
+Chen et al. 2021 [31]
+China
+30
+30
+16S rDNA gene sequenc-
+ing (V3 and V4 region)
+Illumina MiSeq;
+Not significantly different 
+(OTUs, Shannon and Simp-
+son index, P > 0.05);
+Significantly different (PCA, 
+P < 0.01)
+Bacteroidetes and Phasco-
+larctobacterium
+Firmicutes, Akkermansia, 
+Faecalibacterium, Lactobacil-
+lus and Verrucomicrobia
+Yuan et al. 2022 [32]
+China
+69
+84
+16S rRNA gene sequenc-
+ing (V3 and V4 region)
+Illumina MiSeq PE300 
+platform
+Shannon index was not 
+significantly different 
+(P > 0.05), Simpson index 
+was significantly elevated 
+in LNR_KS vs HNR_NS 
+group, Ace and Chao index 
+were significantly elevated 
+in the HNR_KS vs NS group 
+(P < 0.05);
+Significantly different 
+between HNR-KS and 
+HNR-NS groups, and 
+between HNR-KS and LNR-
+NS groups (P < 0.05)
+Not reported
+Suryavanshi et al. 2016 [33] India
+24
+25
+16S rRNA gene (V3 region)
+and frc-gene amplicon 
+sequencing; Quantitative 
+polymerase chain reaction 
+& PCR-DGGE
+Iron Torrent PGM system
+Not significantly different 
+(Chao1, observed spe-
+cies/OTUs, phylogenetic 
+diversity, Shannon and 
+Simpson’s indices, P > 0.05);
+Significantly different 
+(PCOA plots of weighted 
+and unweighted unifrac 
+results; statistical test and 
+P-value not reported)
+Phylum level: Firmicutes, 
+Proteobacteria, TM7;
+Class level: Bacilli, Gam-
+maproteobacteria and 
+TM7-3
+Phylum level: Bacteroidetes, 
+Cyanobacteria;
+Class level: Bacteroidia, 
+Betaproteobacteria, Chloro-
+plast, Coriobacteriia
+Page 6 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+Table 1 (continued)
+Reference
+Country
+KS(n)
+HA(n)
+Microbiota analysis 
+technique
+Diversity metrics
+Differentially distributed species
+α-diversity
+β-diversity
+Higher abundance in KS 
+group
+Higher abundance in 
+control group
+Xiang et al. 2022 [34]
+China
+54
+66
+16S rRNA gene sequenc-
+ing
+Not reported
+Flavobacterium, Rhodobacter, Gordonia
+Abbreviations: PCoA Principal coordinate analysis, NMDS Non-metric multi-dimensional scaling, PCA Principal component analysis
+Page 7 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+ 
+Altered genetic functions of the gut microbiota in KS 
+patients
+Four studies reported using shotgun sequencing, func-
+tional gene-targeted amplicon sequencing, or the 
+bioinformatics software platform PICRUSt that the 
+predicted genetic functions of KS patients were differ-
+ent from the controls. Through shotgun metagenom-
+ics, Ticinesi et al. [30] performed a functional analysis 
+of the fecal microbiota, revealing a decreased repre-
+sentation of genes involved in oxalate degradation in 
+patients compared to controls (0.0021% vs 0.0041% of 
+the total genome, P = 0.007), such as formyl-CoA trans-
+ferase and oxalyl-CoA decarboxylase. Interestingly, 
+these results were challenged by Suryavanshi et al. [33] 
+who observed that the enzymes involved in oxalate 
+degradation were enriched in KS patients. Tang et  al. 
+[27], reported observing that the oxalate degradation 
+enzymes were not statistically different from healthy 
+controls to nephrolithiasis subjects (P > 0.05).
+Other different functions including glycan synthesis, 
+energy metabolism, co-factors metabolism, and vita-
+mins metabolism, of which protein families were down-
+regulated in KS patients according to Suryavanshi et al. 
+[33], whereas protein families of lipid metabolism, car-
+bohydrate metabolism and xenobiotic degradation and 
+metabolism were up-regulated in KS subjects (P < 0.05). 
+One study indicated that, compared to healthy sub-
+jects, a higher abundance of metabolic pathways 
+related to inflammation, lipid metabolism, xenobiotics 
+biodegradation and mineral metabolism were found in 
+KS patients (P < 0.05) [32].
+Discussion
+To our knowledge, this is the first meta-analysis of the 
+gut microbiota composition of patients with kidney 
+stones. There are consistent results indicating a char-
+acteristic gut microbiota dysbiosis in kidney stone 
+patients. Identifying these dysbiosis characteristics may 
+help in personalized clinical intervention. The results 
+showed that, compared to healthy subjects, those with 
+nephrolithiasis showed a higher relative abundance 
+of genera Bacteroides and Escherichia_Shigella, and a 
+lower relative abundance of genera Prevotella_9. We 
+could not conduct meta-analysis of the altered dis-
+tribution of other gut microbial genera due to insuf-
+ficient data and limited overlap of findings. A clinical 
+study reported that the expansion of Escherichia_Shi-
+gella in gut was related with the onset and response 
+to immunosuppressive therapy of IgA nephropathy, 
+and may serve as a promising diagnostic biomarker 
+and therapeutic target [23]. Escherichia trended to an 
+inverse correlation with urinary citrate (r =  − 0.56, 
+P < 0.08) [28], which can bind free calcium and create 
+soluble calcium citrate, lowering the supersaturation 
+of calcium-containing salts, making it a urinary stone 
+inhibitor [36]. With the decline of citrate concentra-
+tion, the risk of nephrolithiasis increased. Bacteroides 
+were found useful in detecting kidney stone disease 
+Fig. 2 Forest plot of relative abundance of Bacteroides in kidney stone patients relative to controls
+Page 8 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+[31]. Some Bacteroides can produce urease [37], which 
+degrades urea and promotes the formation of ammo-
+nia and carbon dioxide, leading to urine alkalinization 
+and phosphate salt formation. It has been reported 
+that the altered gut microbial species have been associ-
+ated with various clinical parameters: the abundance of 
+Bacteroides has a negative relationship with all short-
+chain fatty acids (SCFAs) [31]; the abundance of Prevo-
+tella negatively correlated with urine oxalate content 
+[33] and is positively correlated with serum uric acid 
+levels [29]. Modulating the relative abundance of gut 
+microbiota based on the dysbiosis characteristics may 
+be an effective therapeutic strategy for nephrolithiasis 
+prevention and treatment.
+Numerous other clinical disorders, such as inflamma-
+tory bowel disease (IBD), obesity, type 1 and type 2 dia-
+betes, have been linked to lower gut microbial diversity 
+[38, 39]. However, differences in gut microbial diversity 
+between kidney stone groups and controls remain incon-
+clusive in this review. The β-diversity analysis of the four 
+studies showed statistically significant difference between 
+kidney stones and the control group, which indicated 
+Fig. 3 Forest plot of relative abundance of Escherichia_Shigella in kidney stone patients relative to controls
+Fig. 4 Forest plot of relative abundance of Prevotella_9 in kidney stone patients relative to controls
+Page 9 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+ 
+that the microbial community structure was significantly 
+different. However, the results of α-diversity measure-
+ments were inconsistent among the eight studies. One 
+study reported a significant reduction in α-diversity in 
+patients with kidney stones compared to controls, while 
+another one reported increased gut microbial α-diversity 
+in stone patients relative to controls. Studies have shown 
+that decreased α-diversity of gut microbiota may increase 
+the risk of stone formation by reducing immunity and the 
+ability to metabolize oxalate, phosphate, and citrate; an 
+increase in microbial abundance in patients may reflect 
+the proliferation of some potential pathogenic bacte-
+ria species, through the relevant intestinal uric poison-
+ous toxin concentration increase, leading to the loss and 
+destruction of intestinal epithelial barrier [40], so as to 
+promote the occurrence and progress of kidney disease. 
+It may be due to the individual differences, insufficient 
+sample size and different control of the confounding fac-
+tors of the original study that lead to the inconsistent 
+results of diversity. More studies with larger sample sizes 
+and comparable and reproducible methods are required 
+to determine the changes in intestinal microbial diversity 
+in stone patients.
+Advanced omics methods have enabled unprecedented 
+levels of functional characterization and deep sequenc-
+ing of gut microbial communities over the past ten years 
+[41]. The systematic reviews suggested that functional 
+activities of the gut microbiota involved in oxalate deg-
+radation, lipid, carbohydrate and energy metabolism, gly-
+can synthesis and amino acid biosynthesis were altered in 
+KS patients compared to controls. The studies established 
+that the gut-nephrolithiasis axis is not limited to Oxalo-
+bacter formigenes [30, 33]. It has been proved that urinary 
+oxalate is a crucial risk factor for kidney stones [42, 43]. 
+The intestinal tract plays a significant role in oxalate bal-
+ance and subsequent oxalate homeostasis [44, 45]. Gut 
+microbiota with oxalate degradation properties (Oxalo-
+bacter, Bifidobacterium, and Lactobacillus) may inhibit 
+stone formation through extra-renal elimination of oxa-
+late in the intestines and decreasing the oxalate concen-
+tration in plasma and urine [46]. Genes involved in lipid 
+metabolism were enriched in stone patients, which indi-
+cated that dysbiosis of gut microbiota may contribute to 
+stone formation by promoting lipid metabolism. Several 
+studies have suggested that some fatty acid supplements 
+improve gut microbial diversity and thus improve dis-
+eases including nervous system disorders and alcoholic 
+liver disease [47, 48], and N-3 fatty acid supplementation 
+has been shown to reduce the levels of important stone 
+risk factors, namely, hypercalciuria [49–51], hyperoxalu-
+ria [52]. Glycan synthesis functions of altered gut micro-
+biota were observed to be downregulated. Hyperglycemia 
+may contribute to the development of nephrolithiasis 
+[53] by changing hydro-electrolytes in 24-h urine excre-
+tions, which leads to more acidic urine, a problem with 
+renal acid excretion, and hypo-citraturia [54], all of which 
+are significant risk factors for stone formation. Carbo-
+hydrate metabolism disorder caused by gut microbiota 
+dysbiosis delivers a marked acid load to the kidney, might 
+decrease calcium balance and increase the risk for stone 
+formation [55]. Overall, the predicted gene functional 
+profile suggests that dysbiosis of gut microbiota may 
+contribute to stone formation by breaking the metabolic 
+homeostasis, and may be considered for developing new 
+therapeutic strategies. At the meantime, to further clar-
+ify the relationship of the gut microbiota, host metabo-
+lism and stone formation, more thorough investigations 
+using shotgun metagenomics, metatranscriptomics, and 
+metaproteomics are required.
+The metagenome-wide association study conducted 
+by Zhernakova et  al. has shown that inter-individual 
+variations in gut microbiota composition are linked to a 
+number of factors, including lifestyle, diet, diseases, and 
+medications, of which dietary factors are the most crucial 
+[56]. Dietary patterns like high tea consumption reduce 
+the abundance of Akkermansia spp. and Lactobacillus 
+spp. to promote the formation of calcium oxalate renal 
+calculi [31]. Shikany’s team [57] reported the Prevotella 
+enterotype to be associated with low nephrolithiasis risk 
+dietary patterns characterized by a high-carbohydrate 
+diet, while the Bacteroides enterotype was associated 
+with high nephrolithiasis risk dietary patterns character-
+ized by a high intake of animal protein [58]. Several stud-
+ies have shown that high fiber intake also modulates the 
+composition of the gut microbiota, increasing the num-
+ber of the SCFA-producing species Lactobacillus and 
+other health-promoting species [59–61], some of which 
+possess characteristics of oxalate degradation. Although 
+few studies have specifically focused on the role of die-
+tary patterns in the gut-nephrolithiasis axis, the stone-
+promoting effects of high salt, high oxalate intake, and 
+the stone-preventing effects of increasing fruit, vegetable, 
+juice and water intake, are at least in part mediated by 
+altered gut microbiota composition and metabolic func-
+tion [62]. Therefore, we believe that for high-risk groups, 
+increasing the intake of fruits, vegetables, fiber and car-
+bohydrates, and reducing that of tea and animal protein 
+can prevent the formation and recurrence of stones. 
+However, as nutrients are not consumed in isolation, 
+the complex interplay between dietary factors of overall 
+dietary patterns is far from being fully understood, and 
+further research is needed to address these issues.
+The above analysis provides us with further insights 
+into the prevention and treatment of kidney stones. 
+Restoring gut dysbiosis to maintain the balance of oxalate, 
+citrate, and lipid metabolism may become a promising 
+Page 10 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+treatment for kidney stones. Antibiotics are proven to 
+be effective in gut microbiota modulation by preventing 
+pathogenic bacteria, but they also kill beneficial micro-
+bial communities and lead to antibiotic resistance in 
+harmful bacteria [63]. The use of oral probiotic prepara-
+tions, including Oxalobacter formigenes, Lactobacillus, 
+Bifidobacterium, Enterococcus, or other oxalate-lowering 
+bacteria, alone or in combination, resulted in a reduction 
+in urinary oxalate excretion in humans and rodents [64]. 
+Miller et al. [65] recently transplanted oxalate-degrading 
+bacteria into a laboratory rat, showing that whole com-
+munity microbial transplantation is an effective method 
+to colonize oxalate-degrading bacteria continuously in 
+mammalian intestinal tract. Growing evidence supports 
+Lactiplantibacillus Plantarum’s ability to prevent kidney 
+stone formation. Probiotic Lactiplantibacillus Plantarum 
+N-1 prevented kidney stones caused by ethylene glycol by 
+regulating the gut microbiota and improving intestinal 
+barrier function [66], Lactiplantibacillus Plantarum J-15 
+corrected metabolic disorder, protected intestinal bar-
+rier function, and reduced inflammation to prevent stone 
+formation [67]. Synbiotic supplementation improved the 
+total oxalate-degrading activity of gut microbiota, result-
+ing in decreased oxalate excretion in rats [68]. The safety 
+and efficacy of fecal microbiota transplantation have been 
+demonstrated in the treatment of diseases such as meta-
+bolic syndrome, diabetes, cancer and Parkinson’s disease 
+[69]. In the future, we will also look forward to personal-
+ized fecal microbiota transplantation strategies accord-
+ing to the condition of stone patients. Although most of 
+the current studies are based on animal experiments, the 
+appropriate dietary intervention has been proven a con-
+tribution in the prevention of recurrent stones in humans 
+[62]. It may be more effective to take into account the 
+characteristics of GMB of individual patients when for-
+mulating individualized therapeutic strategies in future 
+clinical interventions (Fig. 5).
+This study is limited in that the number of studies and 
+samples restricts the meta-analysis of more microbial 
+species, and thus, more studies with larger sample sizes 
+in this field are required to obtain more specific data on 
+characteristic dysbiosis. In the included studies, only the 
+effects of chemotherapy and antibiotics on intestinal flora 
+were excluded; confounding variables like food and geog-
+raphy were not taken into account. Some of the included 
+studies did not distinguish between primary and recur-
+rent kidney stone formation and did not distinguish 
+between the types of stones.
+Conclusions
+Kidney stone patients have a characteristic gut micro-
+biota dysbiosis with higher relative abundance of Bacte-
+roides and Escherichia_Shigella, lower relative abundance 
+of Prevotella_9. The dysbiotic gut affects the formation 
+of stone by regulating the host metabolism, particularly 
+oxalate metabolism. Gut microbiota characteristics com-
+bined with clinical indicators help predict the occur-
+rence and recurrence of kidney stones. High protein, tea, 
+low carbohydrate, juice or fiber intake are risk factors 
+for stone formation. Individualized therapies like fecal 
+Fig. 5 Various methods for restoration of gut microbial dysbiosis to prevent occurrence and recurrence of kidney stones
+Page 11 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+ 
+microbial transplantation, probiotic or synbiotic prepara-
+tions and adjusted diet patterns based on the individual 
+gut microbiota characteristics are promising therapeutic 
+options.
+Supplementary Information
+The online version contains supplementary material available at https:// doi. 
+org/ 10. 1186/ s12866- 023- 02891-0.
+Additional file 1: Supplementary Table 1. An example of the search 
+strategy. Supplementary Table 2. Quality assessment of studies included 
+for the meta-analysis. Supplementary Figure 1. Sensitivity analysis of 
+relative abundance of Bacteroides in subgroup of kidney stone patient vs 
+control. Supplementary Figure 2. Sensitivity analysis of relative abun-
+dance of Escherichia_Shigella in subgroup of kidney stone patient vs con-
+trol. Supplementary Figure 3. Sensitivity analysis of relative abundance 
+of Prevotella_9 in subgroup of kidney stone patient vs control. Supple-
+mentary Figure 4. Funnel plot of studies included for meta-analysis.
+Acknowledgements
+We would like to thank the authors of the original studies for providing the 
+data. We thank Bullet Edits Limited for the linguistic editing and proofreading 
+of the manuscript.
+Authors’ contributions
+TY, YX, and BL collected and analyzed the data, and wrote the manuscript. 
+TY, YX, and BL contributed equally to the work as co-first authors. ZY, BS, XY, 
+and LL conceptualized the figures and tables. WY, TR, FL and FC revised the 
+manuscript. FC and FL are the corresponding authors. All authors reviewed 
+the manuscript.
+Funding
+The work was supported by the grants from the National Natural Science 
+Foundation of China [grant numbers 82170775, 82100806 and 82270802].
+Availability of data and materials
+The datasets used and/or analyzed during the current study available from the 
+corresponding author on reasonable request.
+Declarations
+Ethics approval and consent to participate
+Not applicable.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+Received: 22 November 2022   Accepted: 10 May 2023
+References
+ 1. 
+Fink HA, Wilt TJ, Eidman KE, Garimella PS, MacDonald R, Rutks IR, et al. 
+Medical management to prevent recurrent nephrolithiasis in adults: a 
+systematic review for an American College of Physicians Clinical Guide-
+line. Ann Intern Med. 2013;158(7):535–43. https:// doi. org/ 10. 7326/ 0003- 
+4819- 158-7- 20130 4020- 00005.
+ 2. 
+Nojaba L, Guzman N. Nephrolithiasis. StatPearls. Treasure Island (FL): 
+StatPearls Publishing Copyright © 2022, StatPearls Publishing LLC.; 2022.
+ 3. 
+Singh P, Enders FT, Vaughan LE, Bergstralh EJ, Knoedler JJ, Krambeck AE, 
+et al. Stone Composition Among First-Time Symptomatic Kidney Stone 
+Formers in the Community. Mayo Clin Proc. 2015;90(10):1356–65. https:// 
+doi. org/ 10. 1016/j. mayocp. 2015. 07. 016.
+ 4. 
+Dhondup T, Kittanamongkolchai W, Vaughan LE, Mehta RA, Chhina JK, 
+Enders FT, et al. Risk of ESRD and Mortality in Kidney and Bladder Stone 
+Formers. Am J Kidney Dis. 2018;72(6):790–7. https:// doi. org/ 10. 1053/j. 
+ajkd. 2018. 06. 012.
+ 5. 
+Shoag J, Halpern J, Goldfarb DS, Eisner BH. Risk of chronic and end stage 
+kidney disease in patients with nephrolithiasis. J Urol. 2014;192(5):1440–5. 
+https:// doi. org/ 10. 1016/j. juro. 2014. 05. 117.
+ 6. 
+Brzica H, Breljak D, Burckhardt BC, Burckhardt G, Sabolić I. Oxalate: from 
+the environment to kidney stones. Arh Hig Rada Toksikol. 2013;64(4):609–
+30. https:// doi. org/ 10. 2478/ 10004- 1254- 64- 2013- 2428.
+ 7. 
+Ferraro PM, Bargagli M, Trinchieri A, Gambaro G. Risk of Kidney Stones: 
+Influence of Dietary Factors, Dietary Patterns, and Vegetarian-Vegan Diets. 
+Nutrients. 2020;12(3):779. https:// doi. org/ 10. 3390/ nu120 30779.
+ 8. 
+Howles SA, Thakker RV. Genetics of kidney stone disease. Nat Rev Urol. 
+2020;17(7):407–21. https:// doi. org/ 10. 1038/ s41585- 020- 0332-x.
+ 9. 
+Khan SR, Pearle MS, Robertson WG, Gambaro G, Canales BK, Doizi S, et al. 
+Kidney stones. Nat Rev Dis Primers. 2016;2:16008. https:// doi. org/ 10. 
+1038/ nrdp. 2016.8.
+ 10. Woo V, Alenghat T. Epigenetic regulation by gut microbiota. Gut 
+microbes. 2022;14(1):2022407. https:// doi. org/ 10. 1080/ 19490 976. 2021. 
+20224 07.
+ 11. Glassner KL, Abraham BP, Quigley EMM. The microbiome and inflamma-
+tory bowel disease. J Allergy Clin Immunol. 2020;145(1):16–27. https:// 
+doi. org/ 10. 1016/j. jaci. 2019. 11. 003.
+ 12. Peirce JM, Alviña K. The role of inflammation and the gut microbiome in 
+depression and anxiety. J Neurosci Res. 2019;97(10):1223–41. https:// doi. 
+org/ 10. 1002/ jnr. 24476.
+ 13. Wu J, Wang K, Wang X, Pang Y, Jiang C. The role of the gut microbiome 
+and its metabolites in metabolic diseases. Protein Cell. 2021;12(5):360–73. 
+https:// doi. org/ 10. 1007/ s13238- 020- 00814-7.
+ 14. Allaband C, McDonald D, Vázquez-Baeza Y, Minich JJ, Tripathi A, Bren-
+ner DA, et al. Microbiome 101: Studying, Analyzing, and Interpret-
+ing Gut Microbiome Data for Clinicians. Clin Gastroenterol Hepatol. 
+2019;17(2):218–30. https:// doi. org/ 10. 1016/j. cgh. 2018. 09. 017.
+ 15. Fraher MH, O’Toole PW, Quigley EM. Techniques used to characterize the 
+gut microbiota: a guide for the clinician. Nat Rev Gastroenterol Hepatol. 
+2012;9(6):312–22. https:// doi. org/ 10. 1038/ nrgas tro. 2012. 44.
+ 16. Morgan XC, Huttenhower C. Meta’omic analytic techniques for studying 
+the intestinal microbiome. Gastroenterology. 2014;146(6):1437-48.e1. 
+https:// doi. org/ 10. 1053/j. gastro. 2014. 01. 049.
+ 17. Stanford J, Charlton K, Stefoska-Needham A, Ibrahim R, Lambert K. The 
+gut microbiota profile of adults with kidney disease and kidney stones: a 
+systematic review of the literature. BMC Nephrol. 2020;21(1):215. https:// 
+doi. org/ 10. 1186/ s12882- 020- 01805-w.
+ 18. Qian Y, Yang X, Xu S, Huang P, Li B, Du J, et al. Gut metagenomics-
+derived genes as potential biomarkers of Parkinson’s disease. Brain. 
+2020;143(8):2474–89. https:// doi. org/ 10. 1093/ brain/ awaa2 01.
+ 19. Yang K, Niu J, Zuo T, Sun Y, Xu Z, Tang W, et al. Alterations in the Gut 
+Virome in Obesity and Type 2 Diabetes Mellitus. Gastroenterology. 
+2021;161(4):1257-69.e13. https:// doi. org/ 10. 1053/j. gastro. 2021. 06. 056.
+ 20. Chen YY, Chen DQ, Chen L, Liu JR, Vaziri ND, Guo Y, et al. Microbi-
+ome-metabolome reveals the contribution of gut-kidney axis on 
+kidney disease. J Transl Med. 2019;17(1):5. https:// doi. org/ 10. 1186/ 
+s12967- 018- 1756-4.
+ 21. Li J, Zhao F, Wang Y, Chen J, Tao J, Tian G, et al. Gut microbiota dys-
+biosis contributes to the development of hypertension. Microbiome. 
+2017;5(1):14. https:// doi. org/ 10. 1186/ s40168- 016- 0222-x.
+ 22. Stavropoulou E, Kantartzi K, Tsigalou C, Aftzoglou K, Voidarou C, Kon-
+stantinidis T, et al. Microbiome, Immunosenescence, and Chronic Kidney 
+Disease. Front Med. 2021;8:661203. https:// doi. org/ 10. 3389/ fmed. 2021. 
+661203.
+ 23. Zhao J, Bai M, Ning X, Qin Y, Wang Y, Yu Z, et al. Expansion of Escher-
+ichia-Shigella in Gut Is Associated with the Onset and Response to 
+Immunosuppressive Therapy of IgA Nephropathy. J Am Soc Nephrol. 
+2022;33(12):2276–92. https:// doi. org/ 10. 1681/ asn. 20220 20189.
+ 24. Stang A. Critical evaluation of the Newcastle-Ottawa scale for the assess-
+ment of the quality of nonrandomized studies in meta-analyses. Eur J 
+Epidemiol. 2010;25(9):603–5. https:// doi. org/ 10. 1007/ s10654- 010- 9491-z.
+Page 12 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+ 25. Higgins JP, Thompson SG, Deeks JJ, Altman DG. Measuring inconsistency 
+in meta-analyses. BMJ (Clinical research ed). 2003;327(7414):557–60. 
+https:// doi. org/ 10. 1136/ bmj. 327. 7414. 557.
+ 26. Begg CB, Mazumdar M. Operating characteristics of a rank correlation test 
+for publication bias. Biometrics. 1994;50(4):1088–101.
+ 27. Tang R, Jiang Y, Tan A, Ye J, Xian X, Xie Y, et al. 16S rRNA gene sequenc-
+ing reveals altered composition of gut microbiota in individuals with 
+kidney stones. Urolithiasis. 2018;46(6):503–14. https:// doi. org/ 10. 1007/ 
+s00240- 018- 1037-y.
+ 28. Stern JM, Moazami S, Qiu Y, Kurland I, Chen Z, Agalliu I, et al. Evidence for 
+a distinct gut microbiome in kidney stone formers compared to non-
+stone formers. Urolithiasis. 2016;44(5):399–407. https:// doi. org/ 10. 1007/ 
+s00240- 016- 0882-9.
+ 29. Zhao E, Zhang W, Geng B, You B, Wang W, Li X. Intestinal dysbacteriosis 
+leads to kidney stone disease. Mol Med Rep. 2021;23(3):180. https:// doi. 
+org/ 10. 3892/ mmr. 2020. 11819.
+ 30. Ticinesi A, Milani C, Guerra A, Allegri F, Lauretani F, Nouvenne A, et al. 
+Understanding the gut-kidney axis in nephrolithiasis: an analysis of the 
+gut microbiota composition and functionality of stone formers. Gut. 
+2018;67(12):2097–106. https:// doi. org/ 10. 1136/ gutjnl- 2017- 315734.
+ 31. Chen F, Bao X, Liu S, Ye K, Xiang S, Yu L, et al. Gut microbiota affect the 
+formation of calcium oxalate renal calculi caused by high daily tea con-
+sumption. Appl Microbiol Biotechnol. 2021;105(2):789–802. https:// doi. 
+org/ 10. 1007/ s00253- 020- 11086-w.
+ 32. Yuan C, Jin X, He Y, Liu Y, Xiang L, Wang K. Association of dietary 
+patterns with gut microbiota in kidney stone and non-kidney stone 
+individuals. Urolithiasis. 2022;50(4):389–99. https:// doi. org/ 10. 1007/ 
+s00240- 022- 01325-2.
+ 33. Suryavanshi MV, Bhute SS, Jadhav SD, Bhatia MS, Gune RP, Shouche YS. 
+Hyperoxaluria leads to dysbiosis and drives selective enrichment of 
+oxalate metabolizing bacterial species in recurrent kidney stone endures. 
+Sci Rep. 2016;6:34712. https:// doi. org/ 10. 1038/ srep3 4712.
+ 34. Xiang L, Jin X, Liu Y, Ma Y, Jian Z, Wei Z, et al. Prediction of the occurrence 
+of calcium oxalate kidney stones based on clinical and gut microbiota 
+characteristics. World J Urol. 2022;40(1):221–7. https:// doi. org/ 10. 1007/ 
+s00345- 021- 03801-7.
+ 35. Morgan XC, Huttenhower C. Chapter 12: Human microbiome analysis. 
+PLoS Comput Biol. 2012;8(12):e1002808. https:// doi. org/ 10. 1371/ journ al. 
+pcbi. 10028 08.
+ 36. Rodgers AL, Siener R. The Efficacy of Polyunsaturated Fatty Acids as 
+Protectors against Calcium Oxalate Renal Stone Formation: A Review. 
+Nutrients. 2020;12(4):1069. https:// doi. org/ 10. 3390/ nu120 41069.
+ 37. Wozny MA, Bryant MP, Holdeman LV, Moore WE. Urease assay and urease-
+producing species of anaerobes in the bovine rumen and human feces. 
+Appl Environ Microbiol. 1977;33(5):1097–104. https:// doi. org/ 10. 1128/ 
+aem. 33.5. 1097- 1104. 1977.
+ 38. Lozupone CA, Stombaugh JI, Gordon JI, Jansson JK, Knight R. Diver-
+sity, stability and resilience of the human gut microbiota. Nature. 
+2012;489(7415):220–30. https:// doi. org/ 10. 1038/ natur e11550.
+ 39. Valdes AM, Walter J, Segal E, Spector TD. Role of the gut microbiota in 
+nutrition and health. BMJ (Clinical research ed). 2018;361. https:// doi. org/ 
+10. 1136/ bmj. k2179.
+ 40. Ramezani A, Raj DS. The gut microbiome, kidney disease, and targeted 
+interventions. J Am Soc Nephrol. 2014;25(4):657–70. https:// doi. org/ 10. 
+1681/ asn. 20130 80905.
+ 41. Rescigno M. The microbiota revolution: Excitement and caution. Eur J 
+Immunol. 2017;47(9):1406–13. https:// doi. org/ 10. 1002/ eji. 20164 6576.
+ 42. Mehta M, Goldfarb DS, Nazzal L. The role of the microbiome in kidney 
+stone formation. Int J Surg (London, England). 2016;36(Pt D):607–12. 
+https:// doi. org/ 10. 1016/j. ijsu. 2016. 11. 024.
+ 43. Song Q, Liao W, Chen X, He Z, Li D, Li B, et al. Oxalate Activates 
+Autophagy to Induce Ferroptosis of Renal Tubular Epithelial Cells and 
+Participates in the Formation of Kidney Stones. Oxid Med Cell Longev. 
+2021;2021:6630343. https:// doi. org/ 10. 1155/ 2021/ 66303 43.
+ 44. Hatch M, Freel RW, Vaziri ND. Mechanisms of oxalate absorption and 
+secretion across the rabbit distal colon. Pflugers Arch. 1994;426(1–2):101–
+9. https:// doi. org/ 10. 1007/ bf003 74677.
+ 45. Peck AB, Canales BK, Nguyen CQ. Oxalate-degrading microorganisms or 
+oxalate-degrading enzymes: which is the future therapy for enzymatic 
+dissolution of calcium-oxalate uroliths in recurrent stone disease? Uro-
+lithiasis. 2016;44(1):45–50. https:// doi. org/ 10. 1007/ s00240- 015- 0845-6.
+ 46. Cornelius JG, Peck AB. Colonization of the neonatal rat intestinal tract 
+from environmental exposure to the anaerobic bacterium Oxalobacter 
+formigenes. J Med Microbiol. 2004;53(Pt 3):249–54. https:// doi. org/ 10. 
+1099/ jmm.0. 05418-0.
+ 47. Mirzaei R, Bouzari B, Hosseini-Fard SR, Mazaheri M, Ahmadyousefi Y, Abdi 
+M, et al. Role of microbiota-derived short-chain fatty acids in nervous 
+system disorders. Biomed Pharmacother. 2021;139:111661. https:// doi. 
+org/ 10. 1016/j. biopha. 2021. 111661.
+ 48. Wang M, Ma LJ, Yang Y, Xiao Z, Wan JB. n-3 Polyunsaturated fatty acids for 
+the management of alcoholic liver disease: A critical review. Crit Rev Food 
+Sci Nutr. 2019;59(sup1):S116–29. https:// doi. org/ 10. 1080/ 10408 398. 2018. 
+15445 42.
+ 49. Baggio B, Budakovic A, Nassuato MA, Vezzoli G, Manzato E, Luisetto G, 
+et al. Plasma phospholipid arachidonic acid content and calcium metab-
+olism in idiopathic calcium nephrolithiasis. Kidney Int. 2000;58(3):1278–
+84. https:// doi. org/ 10. 1046/j. 1523- 1755. 2000. 00283.x.
+ 50. Rodgers A, Lewandowski S, Allie-Hamdulay S, Pinnock D, Baretta G, Gam-
+baro G. Evening primrose oil supplementation increases citraturia and 
+decreases other urinary risk factors for calcium oxalate urolithiasis. J Urol. 
+2009;182(6):2957–63. https:// doi. org/ 10. 1016/j. juro. 2009. 08. 021.
+ 51. Yasui T, Tanaka H, Fujita K, Iguchi M, Kohri K. Effects of eicosapentaenoic 
+acid on urinary calcium excretion in calcium stone formers. Eur Urol. 
+2001;39(5):580–5. https:// doi. org/ 10. 1159/ 00005 2507.
+ 52. Siener R, Jansen B, Watzer B, Hesse A. Effect of n-3 fatty acid supplemen-
+tation on urinary risk factors for calcium oxalate stone formation. J Urol. 
+2011;185(2):719–24. https:// doi. org/ 10. 1016/j. juro. 2010. 09. 074.
+ 53. Kim S, Chang Y, Jung HS, Hyun YY, Lee KB, Joo KJ, et al. Glycemic Status, 
+Insulin Resistance, and the Risk of Nephrolithiasis: A Cohort Study. Am J 
+Kidney Dis. 2020;76(5):658-68.e1. https:// doi. org/ 10. 1053/j. ajkd. 2020. 03. 
+013.
+ 54. Chobanian MC, Hammerman MR. Insulin stimulates ammoniagenesis 
+in canine renal proximal tubular segments. Am J Physiol. 1987;253(6 Pt 
+2):F1171–7. https:// doi. org/ 10. 1152/ ajpre nal. 1987. 253.6. F1171.
+ 55. Reddy ST, Wang CY, Sakhaee K, Brinkley L, Pak CY. Effect of low-carbohy-
+drate high-protein diets on acid-base balance, stone-forming propensity, 
+and calcium metabolism. Am J Kidney Dis. 2002;40(2):265–74. https:// doi. 
+org/ 10. 1053/ ajkd. 2002. 34504.
+ 56. Zhernakova A, Kurilshikov A, Bonder MJ, Tigchelaar EF, Schirmer M, 
+Vatanen T, et al. Population-based metagenomics analysis reveals markers 
+for gut microbiome composition and diversity. Science (New York, NY). 
+2016;352(6285):565–9. https:// doi. org/ 10. 1126/ scien ce. aad33 69.
+ 57. Shikany JM, Demmer RT, Johnson AJ, Fino NF, Meyer K, Ensrud KE, 
+et al. Association of dietary patterns with the gut microbiota in older, 
+community-dwelling men. Am J Clin Nutr. 2019;110(4):1003–14. https:// 
+doi. org/ 10. 1093/ ajcn/ nqz174.
+ 58. Zhao A, Dai M, Chen YJ, Chang HE, Liu AP, Wang PY. Risk factors associ-
+ated with nephrolithiasis: a case-control study in China. Asia-Pac J Public 
+Health. 2015;27(2):414–24. https:// doi. org/ 10. 1177/ 10105 39512 445189.
+ 59. Chung WS, Walker AW, Louis P, Parkhill J, Vermeiren J, Bosscher D, et al. 
+Modulation of the human gut microbiota by dietary fibres occurs 
+at the species level. BMC Biol. 2016;14:3. https:// doi. org/ 10. 1186/ 
+s12915- 015- 0224-3.
+ 60. Lin D, Peters BA, Friedlander C, Freiman HJ, Goedert JJ, Sinha R, et al. 
+Association of dietary fibre intake and gut microbiota in adults. Br J Nutr. 
+2018;120(9):1014–22. https:// doi. org/ 10. 1017/ s0007 11451 80024 65.
+ 61. Tomova A, Bukovsky I, Rembert E, Yonas W, Alwarith J, Barnard ND, et al. 
+The Effects of Vegetarian and Vegan Diets on Gut Microbiota. Front Nutr. 
+2019;6:47. https:// doi. org/ 10. 3389/ fnut. 2019. 00047.
+ 62. Ticinesi A, Nouvenne A, Chiussi G, Castaldo G, Guerra A, Meschi T. Calcium 
+Oxalate Nephrolithiasis and Gut Microbiota: Not just a Gut-Kidney Axis. 
+A Nutritional Perspective. Nutrients. 2020;12(2):548. https:// doi. org/ 10. 
+3390/ nu120 20548.
+ 63. Albrecht P. Antibiotic therapy for an ENT specialist. Otolaryngol Pol. 
+2018;72(6):1–9. https:// doi. org/ 10. 5604/ 01. 3001. 0012. 4704. The Polish 
+otolaryngology.
+ 64. Abratt VR, Reid SJ. Oxalate-degrading bacteria of the human gut as pro-
+biotics in the management of kidney stone disease. Adv Appl Microbiol. 
+2010;72:63–87. https:// doi. org/ 10. 1016/ s0065- 2164(10) 72003-7.
+ 65. Miller AW, Oakeson KF, Dale C, Dearing MD. Microbial Community Trans-
+plant Results in Increased and Long-Term Oxalate Degradation. Microb 
+Ecol. 2016;72(2):470–8. https:// doi. org/ 10. 1007/ s00248- 016- 0800-2.
+Page 13 of 13
+Yuan et al. BMC Microbiology          (2023) 23:143 
+ 
+•
+ 
+fast, convenient online submission
+ 
+•
+  
+thorough peer review by experienced researchers in your ﬁeld
+• 
+ 
+rapid publication on acceptance
+• 
+ 
+support for research data, including large and complex data types
+•
+  
+gold Open Access which fosters wider collaboration and increased citations 
+ 
+maximum visibility for your research: over 100M website views per year 
+•
+  
+At BMC, research is always in progress.
+Learn more biomedcentral.com/submissions
+Ready to submit your research
+Ready to submit your research ?  Choose BMC and benefit from: 
+?  Choose BMC and benefit from: 
+ 66. Wei Z, Cui Y, Tian L, Liu Y, Yu Y, Jin X, et al. Probiotic Lactiplantibacillus 
+plantarum N-1 could prevent ethylene glycol-induced kidney stones 
+by regulating gut microbiota and enhancing intestinal barrier function. 
+FASEB J. 2021;35(11):e21937. https:// doi. org/ 10. 1096/ fj. 20210 0887RR.
+ 67. Tian L, Liu Y, Xu X, Jiao P, Hu G, Cui Y, et al. Lactiplantibacillus plan-
+tarum J-15 reduced calcium oxalate kidney stones by regulating 
+intestinal microbiota, metabolism, and inflammation in rats. FASEB J. 
+2022;36(6):e22340. https:// doi. org/ 10. 1096/ fj. 20210 1972RR.
+ 68. Stepanova N, Akulenko I, Serhiichuk T, Dovbynchuk T, Savchenko S, 
+Tolstanova G. Synbiotic supplementation and oxalate homeostasis 
+in rats: focus on microbiota oxalate-degrading activity. Urolithiasis. 
+2022;50(3):249–58. https:// doi. org/ 10. 1007/ s00240- 022- 01312-7.
+ 69. Antushevich H. Fecal microbiota transplantation in disease therapy. 
+Clinica Chim Acta. 2020;503:90–8. https:// doi. org/ 10. 1016/j. cca. 2019. 12. 
+010.
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in pub-
+lished maps and institutional affiliations.
+
