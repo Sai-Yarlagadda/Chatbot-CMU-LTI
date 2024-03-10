@@ -46,7 +46,7 @@ def recall(reference, test):
     else:
         return len(reference.intersection(test)) / len(reference)
 
-def F1score(generated_answers_path, correct_answers_path):
+def f1(generated_answers_path, correct_answers_path):
     """
     Calculating the F1 score based on precision and recall
     F1 = (2 * precision_val * recall_val) / (precision_val + recall_val)
@@ -73,4 +73,4 @@ if __name__ == '__main__':
     exact_match_score = exact_match(generated_answers_path,
                                     correct_answers_path)
     
-    f1_score = F1score(generated_answers_path, correct_answers_path)
+    f1_score = f1(generated_answers_path, correct_answers_path)
