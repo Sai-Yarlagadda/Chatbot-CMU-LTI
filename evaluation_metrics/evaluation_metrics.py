@@ -63,8 +63,8 @@ def F1score(generated_answers_path, correct_answers_path):
         correct_answer_set = set(correct_answers[i])
         precision_val = precision(gen_answer_set, correct_answer_set)
         recall_val = recall(gen_answer_set, correct_answer_set)
-        F1score = (2 * precision_val * recall_val) / (precision_val + recall_val)
-        return F1score
+        f1score = (2 * precision_val * recall_val) / (precision_val + recall_val)
+        return f1score
 
 if __name__ == '__main__':
     generated_answers_path = 'path to generated answers'
