@@ -41,7 +41,7 @@ def precision(reference, test):
     """
     if not hasattr(reference, "intersection") or not hasattr(test, "intersection"):
         raise TypeError("reference and test should be sets")
-
+   
     #remove punctuation 
     reference = set(remove_punctuation(word) for word in reference)
     test = set(remove_punctuation(word) for word in test)
@@ -49,12 +49,11 @@ def precision(reference, test):
     #remove case sensitivity
     reference = set(remove_punctuation(word.lower()) for word in reference)
     test = set(remove_punctuation(word.lower()) for word in test)
-    for i in range(len(reference)):
 
-        if len(test) == 0:
-            return None
-        else:
-            return len(reference.intersection(test)) / len(test)
+    if len(test) == 0:
+        return None
+    else:
+        return len(reference.intersection(test)) / len(test)
 
 def recall(reference, test):
     """
@@ -62,6 +61,7 @@ def recall(reference, test):
     """
     if not hasattr(reference, "intersection") or not hasattr(test, "intersection"):
         raise TypeError("reference and test should be sets")
+
 
     #remove punctuation 
     reference = set(remove_punctuation(word) for word in reference)
@@ -75,6 +75,7 @@ def recall(reference, test):
         return None
     else:
         return len(reference.intersection(test)) / len(reference)
+
 
 def f1(reference_path, test_path):
     """
@@ -104,6 +105,7 @@ def f1(reference_path, test_path):
 
             try:
                 f1score = (2 * float(precision_val) * float(recall_val)) / (float(precision_val) + float(recall_val))
+
             except:
                 f1score = 0
 
