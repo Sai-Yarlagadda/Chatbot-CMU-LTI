@@ -1,7 +1,7 @@
 from langchain.evaluation import ExactMatchStringEvaluator
 import string
 
-def exact_match(generated_answers_path, correct_answers_path):
+def exact_match(correct_answers_path, generated_answers_path):
     """This is a function that calculates the exact match of 
     generated answer and correct answers"""
 
@@ -19,11 +19,6 @@ def exact_match(generated_answers_path, correct_answers_path):
             prediction=gen_answers[i],
             reference=corr_answers[i],
         )
-        print(f'generated_Answer is : {gen_answers[i]}')
-        print(f'given answer is: {corr_answers[i]}')
-        m = int(scores['score'])
-        print(f'scores is {m}')
-        print('============================')
         exact_match_scores += int(scores['score'])
 
     
@@ -86,52 +81,68 @@ def f1(reference_path, test_path):
     with open(test_path, 'r') as file:
         generated_answers = file.read().replace('\n', '').split('==================')
     
-    
     with open(reference_path, 'r') as file:
         correct_answers = file.readlines()
-    
 
     final_f1 = 0
-    print(generated_answers[176])
-    print(len(correct_answers))
+    final_precision = 0
+    final_recall = 0
+
     with open('comp-genanswers-corranswers.txt', 'w') as file:
         for i in range(len(generated_answers)):
-            if i==176:
-                break
-            gen_answer_set = set(generated_answers[i])
-            correct_answer_set = set(correct_answers[i])
-            precision_val = precision(correct_answer_set, gen_answer_set)
-            recall_val = recall(correct_answer_set, gen_answer_set)
+            if not generated_answers[i].strip():
+                continue
 
-            try:
-                f1score = (2 * float(precision_val) * float(recall_val)) / (float(precision_val) + float(recall_val))
+            reference_answers = correct_answers[i].strip().split(';')
+            best_f1_score = 0
+            best_precision_val = 0
+            best_recall_val = 0
 
-            except:
-                f1score = 0
+            for reference_answer in reference_answers:
+                gen_answer_set = set(generated_answers[i])
+                correct_answer_set = set(reference_answer)
 
-            file.write(f'The precision val is {precision_val}\n')
-            file.write(f'The recall val is {recall_val}\n')
-            file.write(f'generated_Answer is : {generated_answers[i]}\ngiven answer is: {correct_answers[i]}\nf1score is {f1score}\n===========\n')
-            final_f1+=f1score
-    return final_f1/len(correct_answers)
+                precision_val = precision(correct_answer_set, gen_answer_set)
+                recall_val = recall(correct_answer_set, gen_answer_set)
+
+                try:
+                    f1score = (2 * float(precision_val) * float(recall_val)) / (float(precision_val) + float(recall_val))
+                
+                except ZeroDivisionError:
+                    f1score = 0
+
+                if f1score > best_f1_score:
+                    best_f1_score = f1score
+                    best_precision_val = precision_val
+                    best_recall_val = recall_val
+
+            file.write(f'The best F1 score is {best_f1_score}\n')
+            file.write(f'Precision: {best_precision_val}, Recall: {best_recall_val}\n')
+            file.write(f'generated_Answer is : {generated_answers[i]}\ngiven answer is: {correct_answers[i]}\n===========\n')
+            final_f1 += best_f1_score
+            final_precision += best_precision_val
+            final_recall += best_recall_val
+    
+    f1_score_complete_data = final_f1 / len(correct_answers)
+    precision_complete_data = final_precision / len(correct_answers)
+    recall_complete_data = final_recall / len(correct_answers)
+    return f1_score_complete_data, precision_complete_data, recall_complete_data
 
 if __name__ == '__main__':
     generated_answers_path = 'rag_with_reranker_answers.txt'
     correct_answers_path = 'answers.txt'
 
-    '''exact_match_score = exact_match(generated_answers_path,
-                                    correct_answers_path)
-    
-    f1_score = f1(correct_answers_path, generated_answers_path)'''
-
-    f1_score = f1('answers.txt', 'rag_with_reranker_answers.txt')
-    #print(exact_match_score)
+    f1_score = f1(correct_answers_path, generated_answers_path)
     print(f1_score)
 
+if __name__ == '__main__':
+    generated_answers_path = 'rag_with_reranker_answers.txt'
+    correct_answers_path = 'answers.txt'
 
-'''generated_answers_file = 'rag_with_reranker_answers.txt'
-with open(generated_answers_file, 'r') as generated_answers_file:
-        gen_answers = generated_answers_file.read().split('==================')
-for x, i in enumerate(gen_answers):
-    print(x)
-    print(i)'''
+    exact_match_score = exact_match('answers.txt', 'rag_with_reranker_answers.txt')
+    
+    '''f1_score = f1(correct_answers_path, generated_answers_path)'''
+
+    f1_score = f1('answers.txt', 'rag_with_reranker_answers.txt')
+    print(exact_match_score)
+    print(f1_score)
