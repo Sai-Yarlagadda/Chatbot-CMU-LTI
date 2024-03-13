@@ -1,4 +1,5 @@
-Contributions: \\
+Contributions:
+
 Sai Sravan Yarlagadda  
 1. Scraping all the research papers and meta data of all the LTI faculties
 2. Annotation of all the research papers and meta data of all the LTI faculties
