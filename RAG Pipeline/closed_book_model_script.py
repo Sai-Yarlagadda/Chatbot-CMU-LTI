@@ -18,7 +18,7 @@ from langchain_core.prompts import ChatPromptTemplate, format_document
 from langchain.prompts.prompt import PromptTemplate
 
 # Setting the Together API Key
-os.environ["TOGETHER_API_KEY"] = "fcb5dca384064dce53475051ef6c784761895841b000c09e5611b0344b5466c4"  # Please do not run it with this API Key.
+os.environ["TOGETHER_API_KEY"] = ""  # Removed the API Key that we used
 
 # Defining the LLM (LLaMa2 - 70B - Chat) using Together API
 def get_answer(input_text) -> str:
