@@ -4,6 +4,6 @@
 
 -What each folder on the github contains:
  -Annotations folder: 
-This folder contains the initial annotations we collected based on the data scraped from sources related to CMU and LTI department.  
+  - This folder contains the initial annotations we collected based on the data scraped from sources related to CMU and LTI department.  
  -Embeddings folder:
   -
