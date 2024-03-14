@@ -27,3 +27,11 @@
 14. py_files_for_scraping: Contains all the scripts we used for collecting data.
 15. system_outputs: Contains outputs of our top 3 models. (Based on the test set we were provided (https://github.com/neubig/nlp-from-scratch-assignment-spring2024/tree/main/data)
 16. Contributions_md: Contains the contributions of every person in this project
+17. report.pdf: Contains the final report of the project.
+
+## How to run our code:
+1. The folder RAG pipeline containes the script 'rag_pipeline.py'. Download the dataset from the 'data' folder, or use your own data. Specify the output file to store the generated answers. Running the script will give generated answers for all three of our systems.
+2. You will also need the embeddings that we created to run the RAG pipeline. They can be downloaded from here: https://drive.google.com/drive/folders/12Ktts4F89tUa3m38RLZOzK9Fka8XBSej?usp=sharing
+3. Note: Please open the link using CMU Email ID.
+4. The evaluation metrics can be run by specifying the reference_answers path and the system_output path
+5. For significance testing, we can run it through command line using: python significance_testing_script.py reference_answers.txt sys1_output.txt sys2_output.txt --num samples 10000
